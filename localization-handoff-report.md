@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5d7560de49ae51c6752ef98c430f40c1eb48032c/virtualization/windowscontainers/management/container_networking.md) | HandedOff | [Details](#c2fccbebf31fda8f478bc62f12694a3da87c285a208)
+ [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/32b7fac911945007d0037a150100c7c33d39e902/virtualization/windowscontainers/deployment/deployment.md) | HandedOff | [Details](#46e130aa20ab7eb6bb06afcb4dc458eb12a17847199)
 
 ## Item Details
-##### <a name='c2fccbebf31fda8f478bc62f12694a3da87c285a208'></a> Source: [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/5d7560de49ae51c6752ef98c430f40c1eb48032c/virtualization/windowscontainers/management/container_networking.md)
+##### <a name='46e130aa20ab7eb6bb06afcb4dc458eb12a17847199'></a> Source: [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/32b7fac911945007d0037a150100c7c33d39e902/virtualization/windowscontainers/deployment/deployment.md)
 * Status: HandedOff
 * Target File: 
-* Handoff File: [container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1e2a27482cea919cd731cc535b09a715a3c02d68/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/container_networking.7cf72391b3aa727681997232feeeb0a32d363edc.es-es.xlf)
-* Handoff Datetime: 2015-12-11 08:27:27
+* Handoff File: [deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/8e9aaf500f5155c084b86662d9b8575a370a29fc/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/deployment.4ddcd8318b2db72f246478d26d82fb4a73b6da65.es-es.xlf)
+* Handoff Datetime: 2015-12-11 08:48:22
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
