@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\windows_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f9d155d4a61a8db99b65374bfa4dd79f3a55bc7a/virtualization/hyperv_on_windows/windows_welcome.md) | HandedOff | [Details](#55e6b7d576cdaa06773b63556435753e1d191803183)
+ [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fb8e11aa1f93d7548c3cd383a939fe845718c8ea/virtualization/hyperv_on_windows/user_guide/vmsession.md) | HandedOff | [Details](#02a74d5f1ff50a45b6cac5cf935d1b321d1f7331182)
 
 ## Item Details
-##### <a name='55e6b7d576cdaa06773b63556435753e1d191803183'></a> Source: [virtualization\hyperv_on_windows\windows_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f9d155d4a61a8db99b65374bfa4dd79f3a55bc7a/virtualization/hyperv_on_windows/windows_welcome.md)
+##### <a name='02a74d5f1ff50a45b6cac5cf935d1b321d1f7331182'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fb8e11aa1f93d7548c3cd383a939fe845718c8ea/virtualization/hyperv_on_windows/user_guide/vmsession.md)
 * Status: HandedOff
 * Target File: 
-* Handoff File: [windows_welcome.5cc1a907523a3cc51d983b8dc14732d35513e54e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/daa02c0a91177e2372c435da6ff3cdd574737f60/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/windows_welcome.5cc1a907523a3cc51d983b8dc14732d35513e54e.es-es.xlf)
-* Handoff Datetime: 2015-12-18 23:55:30
+* Handoff File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/888f32a59bb38c6e602724b5f097856e4ed4e813/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf)
+* Handoff Datetime: 2015-12-19 00:22:49
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
