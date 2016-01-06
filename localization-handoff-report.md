@@ -6,20 +6,20 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\management\manage_resources.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a1cd5a5735c98779195b8d8b93157a4747cf9017/virtualization/windowscontainers/management/manage_resources.md) | PartialHandedBack | [Details](#5a82d33ca629f2f3243e201815f493c7d26a6ba2214)
+ [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/524f61ef8290a73608cc1cc138adfc59432f0db5/virtualization/windowscontainers/quick_start/manage_powershell.md) | PartialHandedBack | [Details](#80b21c67eeefc5cf7874dc7f9a0981911918ad50230)
 
 ## Item Details
-##### <a name='5a82d33ca629f2f3243e201815f493c7d26a6ba2214'></a> Source: [virtualization\windowscontainers\management\manage_resources.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a1cd5a5735c98779195b8d8b93157a4747cf9017/virtualization/windowscontainers/management/manage_resources.md)
+##### <a name='80b21c67eeefc5cf7874dc7f9a0981911918ad50230'></a> Source: [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/524f61ef8290a73608cc1cc138adfc59432f0db5/virtualization/windowscontainers/quick_start/manage_powershell.md)
 * Status: PartialHandedBack
 * Target File: 
-* Handoff File: [manage_resources.839340b4309893f4c3f5446b5e6a628843d99eb2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/915a9a7d6ea16715890c0a3f63055fbf0da4e480/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_resources.839340b4309893f4c3f5446b5e6a628843d99eb2.es-es.xlf)
-* Handoff Datetime: 2016-01-06 06:22:22
+* Handoff File: [manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/d5afa21cff85ec06ded88b1556fbe627ffb48e2f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.es-es.xlf)
+* Handoff Datetime: 2016-01-06 18:43:52
 * Handoff Reason: Include
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\management\manage_resources.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/windowscontainers/management/manage_resources.md)
-* Current Handback File: [manage_resources.839340b4309893f4c3f5446b5e6a628843d99eb2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_resources.839340b4309893f4c3f5446b5e6a628843d99eb2.es-es.xlf)
-* Current Handback Datetime: 2016-01-04 21:56:18
+* Current Target File: [virtualization\windowscontainers\quick_start\manage_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/7adedf21dcadf3b02f61ced790d0e3622f36e63a/virtualization/windowscontainers/quick_start/manage_powershell.md)
+* Current Handback File: [manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/a9b22cd836b24ce91a50d8ff8d6f7c75f5094496/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_powershell.fccfd13be3f4bd16afbe4f31a5ca5ed4e93806b7.es-es.xlf)
+* Current Handback Datetime: 2016-01-05 22:07:08
 * [Back to Top](#report-top)
 
 
