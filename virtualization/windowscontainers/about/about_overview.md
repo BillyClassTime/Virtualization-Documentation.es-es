@@ -64,7 +64,7 @@ Los contenedores ayudan a los administradores a crear una infraestructura que se
 ## Vídeo de introducción
 
 <iframe 
-src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player#ccLang=de" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
 ## Pruebe los contenedores de Windows Server
