@@ -31,7 +31,7 @@ Ahora, los sockets de Hyper-V están disponibles en código nativo (C/C++).
 Para escribir una aplicación sencilla, necesitará:
 * Un compilador de C. Si no dispone de uno, eche un vistazo a [Visual Studio Code](https://aka.ms/vs)
 * Un equipo que ejecute Hyper-V con una máquina virtual.
-    * Los sistemas operativos del host y los invitados (máquinas virtuales) deben ser Windows 10, Windows Server Technical Preview 3 o versiones posteriores.
+* Los sistemas operativos del host y los invitados (máquinas virtuales) deben ser Windows 10, Windows Server Technical Preview 3 o versiones posteriores.
 * Windows SDK; aquí hay un vínculo a [SDK Win10](https://dev.windows.com/en-us/downloads/windows-10-sdk) que incluye `hvsocket.h`.
 
 ## Registrar una nueva aplicación
@@ -66,7 +66,7 @@ En esta ubicación del Registro, verá varios GUID. Son nuestros servicios en el
 
 Información del Registro por cada servicio:
 * `Service GUID`
-    * `ElementName (REG_SZ)`: este es el nombre descriptivo del servicio
+* `ElementName (REG_SZ)`: este es el nombre descriptivo del servicio
 
 Para registrar su propio servicio, cree una nueva clave del Registro con su propio GUID y un nombre descriptivo.
 
@@ -81,7 +81,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
         ElementName REG_SZ  Your Service Friendly Name
 ```
 
-> ** Sugerencia: ** Para generar un GUID en PowerShell y copiarlo en el Portapapeles, ejecute:
+>** Sugerencia: ** Para generar un GUID en PowerShell y copiarlo en el Portapapeles, ejecute:
 ``` PowerShell
 [System.Guid]::NewGuid().ToString() | clip.exe
 ```
@@ -90,9 +90,9 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 En el caso más básico, la definición de un socket requiere una familia de direcciones, un tipo de conexión y un protocolo.
 
-Esta es una [definición de socket] simple(
+Esta es una [definición de socket](
 https://msdn.microsoft.com/es-es/library/windows/desktop/ms740506(v=vs.85).aspx
-)
+) simple
 
 ``` C
 SOCKET WSAAPI socket(
@@ -165,12 +165,12 @@ Hay también un conjunto de caracteres comodín de VMID disponibles cuando no se
 | HV_GUID_PARENT| a42e7cda-d03f-480c-9cc2-a4de20abb878| Dirección del elemento primario.Al usar este elemento VmId, se conecta a la partición primaria del conector.*|
 
 
-***HV_GUID_PARENT**  
-El elemento primario de una máquina virtual es su host. El elemento primario de un contenedor es el host del contenedor.  
-La conexión desde un contenedor que se ejecuta en una máquina virtual hará que se conecte a la máquina virtual que hospeda el contenedor.  
-La escucha en este elemento VmId acepta conexiones desde:  
-(Dentro de contenedores): host contenedor.  
-(Dentro de la máquina virtual: host contenedor / ningún contenedor): host de la máquina virtual.  
+***HV_GUID_PARENT**
+El elemento primario de una máquina virtual es su host. El elemento primario de un contenedor es el host del contenedor.
+La conexión desde un contenedor que se ejecuta en una máquina virtual hará que se conecte a la máquina virtual que hospeda el contenedor.
+La escucha en este elemento VmId acepta conexiones desde:
+(Dentro de contenedores): host contenedor.
+(Dentro de la máquina virtual: host contenedor / ningún contenedor): host de la máquina virtual.
 (Fuera de la máquina virtual: host contenedor / ningún contenedor): no se admite.
 
 ## Comandos de socket admitidos
@@ -191,3 +191,4 @@ estable
 
 
 
+<!--HONumber=Dec15_HO1-->
