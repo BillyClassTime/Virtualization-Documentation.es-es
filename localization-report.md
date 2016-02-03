@@ -1224,9 +1224,9 @@
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\community\contribute_to_docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/community/contribute_to_docs.md)
-* Current Handback File: [contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.es-es.xlf)
-* Current Handback Datetime: 2016-01-04 21:56:18
+* Current Target File: [virtualization\community\contribute_to_docs.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/36935f9824503b34c85e586cda3a718ad65526e1/virtualization/community/contribute_to_docs.md)
+* Current Handback File: [contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/51ce85bad5b9c3911b7bfc652e957b615869ac3d/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/contribute_to_docs.d73574c30ea237d679cf11495f670244e941fb1d.es-es.xlf)
+* Current Handback Datetime: 2016-02-03 22:32:53
 * [Back to Top](#report-top)
 
 ##### <a name='63821ccd19e5a21742458bf42a0a1eea46969adf65'></a> Source: [virtualization\community\docfx.json](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/952fcfcca9c9dc69aaeb2dd75aa157c42fad92a5/virtualization/community/docfx.json)
