@@ -8,12 +8,12 @@ Para conocer paso a paso la implementación con script de un host de contenedor 
 
 Se necesita lo siguiente para completar los ejercicios de **contenedores de Hyper-V** y **Windows Server** de esta guía de inicio rápido.
 
-* Un sistema que ejecute la versión de compilación 1056 de Windows 10 o una versión posterior y Windows Server Technical Preview 4 o una versión posterior.
-* Disponer del rol de Hyper-V habilitado ([consulte las instrucciones](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install#UsingPowerShell)).
+* Un sistema que ejecute la versión de compilación 10586 de Windows 10 o una versión posterior y Windows Server Technical Preview 4 o una versión posterior.
+* Disponer del rol de Hyper-V habilitado ([consulte las instrucciones](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install#UsingPowerShell))).
 * Disponer de 20 GB de almacenamiento disponibles para la imagen del host de contenedor, la imagen base del sistema operativo y los scripts de instalación.
 * Disponer de permisos de administrador en el host de Hyper-V.
 
-> Un host de contenedor virtualizado, que ejecute contenedores de Hyper-V, requerirá virtualización anidada. El host físico y el host virtual deberán ejecutar un sistema operativo que admita virtualización anidada. Para obtener más información, consulte Novedades de Hyper-V en [Windows Server 2016 Technical Preview](https://technet.microsoft.com/library/dn765471.aspx#BKMK_nested).
+> Un host de contenedor virtualizado, que ejecute contenedores de Hyper-V, requerirá virtualización anidada. El host físico y el host virtual deberán ejecutar un sistema operativo que admita virtualización anidada. Para más información, consulte Novedades de Hyper-V en [Windows Server 2016 Technical Preview](https://technet.microsoft.com/library/dn765471.aspx#BKMK_nested).
 
 ## Instalar un nuevo host de contenedor en una nueva máquina virtual
 
@@ -33,13 +33,13 @@ Ejecute lo siguiente para devolver una lista de conmutadores virtuales externos.
 PS C:\> Get-VMSwitch | where {$_.SwitchType –eq “External”}
 ```
 
-Utilice el comando siguiente para descargar el script de configuración. El script también se puede descargar manualmente desde esta ubicación: [script de instalación](https://aka.ms/tp4/New-ContainerHost).
+Utilice el comando siguiente para descargar el script de configuración. El script también se puede descargar manualmente desde esta ubicación: [script de configuración](https://aka.ms/tp4/New-ContainerHost).
 
 ``` PowerShell
 PS C:\> wget -uri https://aka.ms/tp4/New-ContainerHost -OutFile c:\New-ContainerHost.ps1
 ```
 
-Ejecute el siguiente comando para crear y configurar el host de contenedor, donde `<containerhost>` será el nombre de la máquina virtual.
+Ejecute el siguiente comando para crear y configurar el host de contenedor, donde `&lt;containerhost&gt;` será el nombre de la máquina virtual.
 
 ``` powershell
 PS C:\> c:\New-ContainerHost.ps1 –VmName <containerhost> -WindowsImage ServerDatacenterCore -Hyperv
@@ -71,3 +71,5 @@ Ahora que tiene un sistema de Windows Server 2016 ejecutando la característica 
 
 
 
+
+<!--HONumber=Jan16_HO2-->

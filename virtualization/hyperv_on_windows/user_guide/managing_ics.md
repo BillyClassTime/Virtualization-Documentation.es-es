@@ -2,18 +2,18 @@
 
 Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades (por ejemplo, la copia de archivos de invitado), mientras que otros pueden ser bastante importantes para la capacidad de funcionar correctamente del sistema operativo invitado (la sincronización de la hora).
 
-En este artículo se detalla cómo administrar los servicios de integración con el administrador de Hyper-V y PowerShell en Windows 10. Para obtener más información sobre cada servicio de integración individual, consulte [Servicios de integración](https://technet.microsoft.com/en-us/library/dn798297.aspx).
+En este artículo se detalla cómo administrar los servicios de integración con el administrador de Hyper-V y PowerShell en Windows 10. Para más información sobre cada servicio de integración individual, consulte [Servicios de integración](https://technet.microsoft.com/en-us/library/dn798297.aspx).
 
 ## Habilitar o deshabilitar los servicios de integración con el administrador de Hyper-V
 
 1. Seleccione una máquina virtual y abra la configuración.
-    ![](./media/HyperVManager-OpenVMSettings.png)
+  ![](./media/HyperVManager-OpenVMSettings.png)
 
 2. En la ventana de configuración de la máquina virtual, vaya a la pestaña Servicios de integración en Administración.
 
-    ![](./media/HyperVManager-IntegrationServices.png)
+  ![](./media/HyperVManager-IntegrationServices.png)
 
-    Aquí puede ver todos los servicios de integración disponibles en este host de Hyper-V. Cabe destacar que el sistema operativo invitado puede admitir o no todos los servicios de integración que se muestran.
+  Aquí puede ver todos los servicios de integración disponibles en este host de Hyper-V. Cabe destacar que el sistema operativo invitado puede admitir o no todos los servicios de integración que se muestran.
 
 ## Habilitar o deshabilitar los servicios de integración mediante PowerShell
 
@@ -39,7 +39,7 @@ En este ejemplo, se habilitará y luego deshabilitará el servicio de integraci�
   demovm      VSS                     True    OK
   ```
 
-2. Habilitar el servicio de integración `Interfaz de servicio de invitado`
+2. Habilitación del servicio de integración `Interfaz de servicio de invitado`
 
    ``` PowerShell
    Enable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
@@ -47,7 +47,7 @@ En este ejemplo, se habilitará y luego deshabilitará el servicio de integraci�
 
    Si ejecuta `Get-VMIntegrationService -VMName "demovm"`, verá que el servicio de integración Interfaz de servicio de invitado está habilitado.
 
-3. Deshabilitar el servicio de integración `Interfaz de servicio de invitado`
+3. Deshabilitación del servicio de integración `Interfaz de servicio de invitado`
 
    ``` PowerShell
    Disable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
@@ -147,9 +147,9 @@ Compruebe si se están ejecutando el controlador de servicio de integración y l
   ```
 
   Los demonios de servicio de integración que puede ver:
-* **`hv_vss_daemon`**: este demonio es necesario para crear copias de seguridad de máquinas virtuales de Linux en vivo.
-* **`hv_kvp_daemon`**: este demonio permite establecer y consultar los pares de clave/valor intrínsecos y extrínsecos.
-* **`hv_fcopy_daemon`**: este demonio implementa un servicio de copia de archivos entre el host y el invitado.
+  * **`hv_vss_daemon`**: este demonio es necesario para crear copias de seguridad de máquinas virtuales de Linux en vivo.
+  * **`hv_kvp_daemon`**: este demonio permite establecer y consultar los pares de clave/valor intrínsecos y extrínsecos.
+  * **`hv_fcopy_daemon`**: este demonio implementa un servicio de copia de archivos entre el host y el invitado.
 
 > **Nota:** Si los demonios de servicios de integración anteriores no están disponibles, puede que no se admitan en el sistema o que no estén instalados. Busque más información específica [aquí](https://technet.microsoft.com/en-us/library/dn531030.aspx).
 
@@ -172,7 +172,7 @@ sudo hv_kvp_daemon
 Ahora, si ejecuta de nuevo `ps -ef | hv`, descubrirá un proceso `hv_kvp_daemon` con un nuevo identificador de proceso.
 
 
-## Mantenimiento de los servicios de integración
+## Mantenimiento del servicio de integración
 
 Mantenga los servicios de integración actualizados con el fin de obtener el mejor rendimiento y las mejores características posibles de la máquina virtual.
 
@@ -188,11 +188,12 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 | -| | |
 | Windows Server 2012 R2| Windows Update| |
 | Windows Server 2012| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
-| Windows Server 2008 R2| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
-| Windows Server 2008 (SP 2)| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
-| Windows Home Server 2011| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
-| Windows Small Business Server 2011| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
-
+| Windows Server 2008 R2 (SP 1)| Windows Update| Requiere el Servicio de integración de intercambio de datos.*****|
+| Windows Server 2008 (SP 2)| Windows Update| Soporte técnico ampliado solo en Server 2016 ([leer más](https://support.microsoft.com/en-us/lifecycle?p1=12925)).|
+| Windows Home Server 2011| Windows Update| No se admite en Server 2016 ([leer más](https://support.microsoft.com/en-us/lifecycle?p1=15820)).|
+| Windows Small Business Server 2011| Windows Update| No se admite con el soporte estándar ([leer más](https://support.microsoft.com/en-us/lifecycle?p1=15817))).|
+| -| | |
+| Invitados Linux| administrador de paquetes| Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales.********|
 
 **\*** Si no se puede habilitar el Servicio de integración de intercambio de datos, los componentes de integración de estos invitados están disponibles [aquí](https://support.microsoft.com/en-us/kb/3071740) como un archivo .cab en el centro de descarga. Las instrucciones para aplicar un archivo .cab están disponibles [aquí](http://blogs.technet.com/b/virtualization/archive/2015/07/24/integration-components-available-for-virtual-machines-not-connected-to-windows-update.aspx).
 
@@ -216,6 +217,9 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 | Windows Small Business Server 2011| Disco de servicios de integración| |
 | Windows Server 2003 R2 (SP 2)| Disco de servicios de integración| |
 | Windows Server 2003 (SP 2)| Disco de servicios de integración| |
+| -| | |
+| Invitados Linux| administrador de paquetes| Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales.********|
+
 
 **Para las máquinas virtuales que se ejecutan en hosts de Windows 8:**
 
@@ -235,11 +239,15 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 | Windows Small Business Server 2011| Disco de servicios de integración| |
 | Windows Server 2003 R2 (SP 2)| Disco de servicios de integración| |
 | Windows Server 2003 (SP 2)| Disco de servicios de integración| |
+| -| | |
+| Invitados Linux| administrador de paquetes| Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales.********|
+
 
 Las instrucciones para la actualización a través del disco de servicios de integración para Windows 8 y Windows 8.1 están disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4).
 
-**\*\*** Obtenga más información sobre los invitados Linux [aquí](https://technet.microsoft.com/en-us/library/dn531030.aspx).
+ **\*\*** Obtenga más información sobre los invitados Linux [aquí](https://technet.microsoft.com/en-us/library/dn531030.aspx).
 
 
 
 
+<!--HONumber=Jan16_HO3-->

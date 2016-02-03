@@ -3,8 +3,8 @@
 Puede usar PowerShell Direct para administrar de forma remota una máquina virtual de Windows 10 o Windows Server Technical Preview desde un host de Hyper-V de Windows 10 o Windows Server Technical Preview. PowerShell Direct permite la administración de PowerShell dentro de una máquina virtual, independientemente de la configuración de la red o la configuración de administración remota en el host de Hyper-V o la máquina virtual. Esto facilita a los administradores de Hyper-V la automatización y creación de scripts de configuración y administración de las máquinas virtuales.
 
 Hay dos maneras de ejecutar PowerShell Direct:
-* Como si fuera una sesión interactiva: [vaya a esta sección](vmsession.md#create-and-exit-an-interactive-powershell-session) para crear y salir de una sesión de PowerShell Direct mediante los cmdlets de PSSession.
-* Mediante la ejecución de un conjunto de comandos o un script: [vaya a esta sección](vmsession.md#run-a-script-or-command-with-invoke-command) para ejecutar un script o un comando con el cmdlet Invoke-Command.
+* Como si fuera una sesión interactiva: [vaya a esta sección](vmsession.md#create-and-exit-an-interactive-powershell-session) para crear una sesión de PowerShell Direct, y salir de ella, mediante los cmdlets de PSSession.
+* Para ejecutar un conjunto de comandos o scripts, [vaya a esta sección](vmsession.md#run-a-script-or-command-with-invoke-command) para ejecutar un script o un comando con el cmdlet Invoke-Command.
 
 
 ## Requisitos
@@ -36,7 +36,7 @@ Enter-PSSession -VMGUID <VMGUID>
 Exit-PSSession 
 ```
 
->Nota: Si la sesión no se conecta, asegúrese de que utiliza las credenciales de la máquina virtual a la que se está conectando, no del host de Hyper-V.
+> Nota: Si la sesión no se conecta, asegúrese de que utiliza las credenciales de la máquina virtual a la que se está conectando, no del host de Hyper-V.
 
 Para más información sobre estos cmdlets, consulte [Enter-PSSession](http://technet.microsoft.com/library/hh849707.aspx) y [Exit-PSSession](http://technet.microsoft.com/library/hh849743.aspx).
 
@@ -60,24 +60,39 @@ Hay un pequeño conjunto de mensajes de error comunes que aparecen mediante Powe
 
 ### Error: Puede que haya finalizado una sesión remota
 
-Mensaje de error:
+**Mensaje de error:**
 ```
 Enter-PSSession : An error has occurred which Windows PowerShell cannot handle. A remote session might have ended.
 ```
 
-Causas posibles:
+**Causas posibles:**
 * No se está ejecutando la máquina virtual
-* El sistema operativo invitado no admite PowerShell Direct (consulte los [requisitos](#Requirements))
+* El sistema operativo invitado no admite PowerShell Direct (consulte los [requisitos](#Requirements))).
 * PowerShell aún no está disponible en el invitado
-* El sistema operativo no ha terminado de iniciarse
-* El sistema operativo no se puede iniciar correctamente
-* Algunos eventos de tiempo de arranque necesitan entrada del usuario
+  * El sistema operativo no ha terminado de iniciarse
+  * El sistema operativo no se puede iniciar correctamente
+  * Algunos eventos de tiempo de arranque necesitan entrada del usuario
 * No se pudieron validar las credenciales de invitado
-* Las credenciales proporcionadas son incorrectas
-* No hay ninguna cuenta de usuario en el invitado (el sistema operativo no arrancó antes)
-* Si se conecta como administrador, tenga en cuenta que el administrador no se estableció como un usuario activo. Más información [aquí](https://technet.microsoft.com/en-us/library/hh825104.aspx).
+  * Las credenciales proporcionadas son incorrectas
+  * No hay ninguna cuenta de usuario en el invitado (el sistema operativo no arrancó antes)
+  * Si se conecta como administrador, tenga en cuenta que el administrador no se estableció como un usuario activo. Más información [aquí](https://technet.microsoft.com/en-us/library/hh825104.aspx).
 
-Puede usar el cmdlet [Get-VM](http://technet.microsoft.com/library/hh848479.aspx) para comprobar que las credenciales que usa tienen el rol de administrador de Hyper-V y para ver qué máquinas virtuales se ejecutan localmente en el host y están iniciadas.
+Puede usar el cmdlet [Get-VM](http://technet.microsoft.com/library/hh848479.aspx) para comprobar que las credenciales que usa tengan el rol de administrador de Hyper-V y para ver qué máquinas virtuales se ejecutan localmente en el host y están iniciadas.
+
+### Error: No se puede resolver el conjunto de parámetros
+
+**Mensaje de error:**
+``` 
+Enter-PSSession : Parameter set cannot be resolved using the specified named parameters.
+```
+
+**Causas posibles:**  
+`- RunAsAdministrator` no se admite al conectarse a máquinas virtuales.
+
+PowerShell Direct tiene comportamientos diferentes al conectarse a máquinas virtuales frente a contenedores de Windows. Cuando se conecta a un contenedor de Windows, el indicador `- RunAsAdministrator` permite conexiones de administrador sin credenciales explícitas. Dado que las máquinas virtuales no proporcionan al host implícito acceso de administrador, debe especificar explícitamente las credenciales.
+
+Las credenciales de administrador se pueden pasar a la máquina virtual con el parámetro `-credencial` o especificándolas manualmente cuando se le solicite.
+
 
 ## Ejemplos
 
@@ -87,4 +102,5 @@ Consulte los [fragmentos de código de PowerShell Direct](../develop/powershell_
 
 
 
-<!--HONumber=Jan16_HO1-->
+
+<!--HONumber=Jan16_HO2-->

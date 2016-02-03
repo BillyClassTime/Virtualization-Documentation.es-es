@@ -14,7 +14,7 @@
 
 ## [Contenedores en una nueva máquina virtual de Hyper-V](quick_start/container_setup.md)
 
-## [Contenedores en un sistema existente físico o virtual](quick_start/inplace_setup.md)
+## [Contenedores en un sistema existente](quick_start/inplace_setup.md)
 
 ## [Inicio rápido de PowerShell](quick_start/manage_powershell.md)
 
@@ -24,9 +24,9 @@
 
 ## [Requisitos del sistema](deployment/system_requirements.md)
 
-## [Implementar host de contenedor](deployment/deployment.md)
+## [Implementación de un host de contenedor](deployment/deployment.md)
 
-## [Implementar Docker en Windows](deployment/docker_windows.md)
+## [Implementación de Docker en Windows](deployment/docker_windows.md)
 
 # Administrar contenedores de Windows
 
@@ -34,11 +34,11 @@
 
 ## [Contenedores de Hyper-V](management/hyperv_container.md)
 
-## [Imágenes de contenedores](management/manage_images.md)
+## [Imágenes del contenedor](management/manage_images.md)
 
 ## [Red de contenedores](management/container_networking.md)
 
-## [Datos de contenedores](management/manage_data.md)
+## [Carpetas compartidas de contenedores](management/manage_data.md)
 
 ## [Control de recursos de contenedores](management/manage_resources.md)
 
@@ -46,7 +46,7 @@
 
 # Ejemplos de implementación de contenedores
 
-## [Crear imagen de contenedor de .Net 3.5](examples/dotnet35.md)
+## [Creación de una imagen de contenedor de .Net 3.5](examples/dotnet35.md)
 
 # Comunidad y soporte técnico
 
@@ -60,6 +60,9 @@
 
 ## [Compatibilidad de aplicaciones](reference/app_compat.md)
 
-# [EULA](EULA.md)
+# [CLUF de Windows Server](EULA.md)
+
+# [CLUF de Nano Server](Nano_EULA.md)
 
 
+<!--HONumber=Jan16_HO1-->

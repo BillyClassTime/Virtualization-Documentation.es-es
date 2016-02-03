@@ -167,13 +167,13 @@ RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
-Este comando iniciará el proceso de compilación automatizada de imágenes. El parámetro `-t` indica al proceso que asigne un nombre a la nueva imagen `iis`.
+Este comando iniciará el proceso de compilación automatizada de imágenes. El parámetro `-t` indica al proceso que asigna un nombre a la nueva imagen `iis`.
 
 ```powershell
 C:\> docker build -t iis c:\Build
 ```
 
-Cuando complete este proceso, podrá comprobar que la imagen se creó mediante el comando `docker images`.
+Cuando se complete este proceso, podrá comprobar que la imagen se ha creado mediante el comando `docker images`.
 
 ```powershell
 C:\> docker images
@@ -233,9 +233,9 @@ Cree un directorio en el host de contenedor que se compartirá con el contenedor
 C:\> powershell New-Item -Type Directory c:\share\en-us
 ```
 
-Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` del host de contenedor.
+Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` en el host de contenedor.
 
-Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` del host de contenedor.
+Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` en el host de contenedor.
 
 Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este texto en dicho archivo.
 
@@ -255,7 +255,7 @@ Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este text
 </unattend>
 ```
 
-Cuando se complete, el directorio `c:\share` del host de contenedor debería estar configurado de esta manera.
+Cuando finalice la operación, el directorio `c:\share` en el host de contenedor debería estar configurado de esta manera.
 
 ```
 c:\share

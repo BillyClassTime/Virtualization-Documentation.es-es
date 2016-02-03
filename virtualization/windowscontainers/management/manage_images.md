@@ -13,7 +13,7 @@ Hay dos tipos de imágenes de contenedor:
 
 ### Enumerar imágenes
 
-Ejecute `get-containerImage` para devolver una lista de imágenes en el host del contenedor. El tipo de imagen de contenedor se diferencia cuando incluye la propiedad `IsOSImage`.
+Ejecute `get-containerImage` para devolver una lista de imágenes en el host de contenedor. El tipo de imagen de contenedor se diferencia cuando incluye la propiedad `IsOSImage`.
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -43,7 +43,7 @@ NanoServer           10.0.10586.0            Container OS Image of Windows Serve
 WindowsServerCore    10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
 ```
 
-Para descargar e instalar la imagen del sistema operativo base Nano Server, ejecute lo siguiente.
+Para descargar e instalar la imagen del sistema operativo base Nano Server, ejecute lo siguiente. El parámetro `– versión` es opcional. Sin una versión de imagen de SO base especificada, se instalará la versión más reciente.
 
 ```powershell
 PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
@@ -51,9 +51,9 @@ PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
 Downloaded in 0 hours, 0 minutes, 10 seconds.
 ```
 
-Del mismo modo, este comando descargará e instalará la imagen del sistema operativo base de Windows Server Core.
+Del mismo modo, este comando descargará e instalará la imagen del sistema operativo base de Windows Server Core. El parámetro `– versión` es opcional. Sin una versión de imagen de SO base especificada, se instalará la versión más reciente.
 
-> **Problema:** los cmdlets Save-ContainerImage e Install-ContainerImage no funcionan con una imagen de contenedor WindowsServerCore en una sesión de comunicación remota de PowerShell. **Solución alternativa:** inicie sesión en el equipo con Escritorio remoto y use directamente el cmdlet Save-ContainerImage.
+>**Problema:** los cmdlets Save-ContainerImage e Install-ContainerImage no funcionan con una imagen de contenedor WindowsServerCore en una sesión de comunicación remota de PowerShell. **Solución alternativa:** inicie sesión en la máquina con Escritorio remoto y use directamente el cmdlet Save-ContainerImage.
 
 ```powershell
 PS C:\> Install-ContainerImage -Name WindowsServerCore -Version 10.0.10586.0
@@ -71,7 +71,7 @@ Name              Publisher    Version      IsOSImage
 NanoServer        CN=Microsoft 10.0.10586.0 True
 WindowsServerCore CN=Microsoft 10.0.10586.0 True
 ```
-Para obtener más información sobre la administración de imágenes de contenedor, vea [Imágenes del contenedor de Windows](../management/manage_images.md).
+Para más información sobre la administración de imágenes de contenedor, consulte [Imágenes del contenedor de Windows](../management/manage_images.md).
 
 ### Crear nueva imagen
 
@@ -202,3 +202,4 @@ IMAGE               CREATED             CREATED BY          SIZE                
 
 
 
+<!--HONumber=Jan16_HO1-->

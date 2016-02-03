@@ -4,7 +4,7 @@
 
 La tecnología de contenedor de Windows incluye dos tipos distintos de contenedores, contenedores de Windows Server y de Hyper-V. Los dos tipos de contenedores se crean, se administran y funcionan de forma idéntica. La diferencia entre ellos es el nivel de aislamiento entre el contenedor, el sistema operativo host y todo lo que incluye el otro contenedor que se ejecuta en ese host.
 
-**Contenedores de Windows Server**: varios contenedores que se ejecutan en un host con aislamiento que se ofrece a través de tecnologías de aislamiento de proceso y espacio de nombres.
+**Contenedores de Windows Server**: varios contenedores que se ejecutan en un host con aislamiento proporcionado a través de tecnologías de aislamiento de proceso y espacio de nombres.
 
 **Contenedores de Hyper-V**: varios contenedores se ejecutan en un host, pero cada contenedor se ejecuta dentro de una máquina virtual de utilidad. Esto ofrece aislamiento a nivel de kernel entre un contenedor de Hyper-V, el host de contenedor y los demás contenedores que se ejecutan en el host de contenedor.
 
@@ -24,7 +24,7 @@ PS C:\> $con = New-Container -Name HYPVCON -ContainerImageName NanoServer -Switc
 
 Además de crear un contenedor como un contenedor de Hyper-V en tiempo de compilación, los contenedores que se han creado con PowerShell también se pueden convertir de un contenedor de Windows Server a un contenedor de Hyper-V.
 
-> Actualmente, el único sistema operativo de host que admite la conversión en tiempo de ejecución del contenedor es Nano Server.
+>Actualmente, el único sistema operativo de host que admite la conversión en tiempo de ejecución del contenedor es Nano Server.
 
 Cree un nuevo contenedor con el tiempo de ejecución predeterminado.
 
@@ -99,7 +99,7 @@ B8D7B55A-6B27-4832-88D8-4774DF98F208 TST  VMMS  Container
 CCDF6A6E-3358-4419-8DDA-FFE87F1DE184 TST2 VMMS  Container
 ```
 
-Para obtener más información sobre el comando `Get-ComputeProcess`, consulte [Interoperabilidad de administración](./hcs_powershell.md).
+Para más información sobre el comando `Get-ComputeProcess`, consulte [Interoperabilidad de administración](./hcs_powershell.md).
 
 ## Demostración de aislamiento
 
@@ -214,3 +214,4 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 
 
 
+<!--HONumber=Jan16_HO1-->

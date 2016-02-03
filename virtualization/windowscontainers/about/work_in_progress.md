@@ -78,7 +78,7 @@ PS C:\> Set-ContainerProcessor -ContainerName test2 -Maximum 3
 PS C:\> Start-Container test2
 ```
 
-** Solución alternativa:**  
+**Solución alternativa:**  
 Aumente los procesadores disponibles para el contenedor, sin especificar explícitamente los procesadores disponibles para el contenedor ni reducir los procesadores disponibles para la máquina virtual.
 
 --------------------------
@@ -108,6 +108,9 @@ Esto puede lograrse mediante PowerShell
 ```
 Get-VMNetworkAdapter -VMName "[YourVMNameHere]"  | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
+### No se admiten HTTPS y TLS
+
+Los contenedores de Windows Server y de Hyper-V no admiten HTTPS ni TLS. Estamos trabajando para que lo hagan en el futuro.
 
 --------------------------
 
@@ -145,10 +148,10 @@ C:\build>wmic product get
 No Instance(s) Available.
 ```
 
-Se trata de un problema de interoperabilidad con el filtro de desduplicación. La desduplicación comprueba el destino del cambio de nombre para ver si se trata de un archivo desduplicado. Se produce un error en la creación de emite con `STATUS_IO_REPARSE_TAG_NOT_HANDLED` porque el filtro de contenedor de Windows Server se encuentra por encima de desduplicación.
+Se trata de un problema de interoperabilidad con el filtro de desduplicación. La desduplicación comprueba el destino del cambio de nombre para ver si se trata de un archivo desduplicado. Se produce un error en la emisión de create it con el mensaje `STATUS_IO_REPARSE_TAG_NOT_HANDLED` porque el filtro de contenedor de Windows Server se encuentra por encima de la desduplicación.
 
 
-Consulte el [artículo de compatibilidad de aplicaciones](../reference/app_compat.md) para obtener más información sobre las aplicaciones que se pueden incluir en contenedores.
+Consulte el [artículo de compatibilidad de aplicaciones](../reference/app_compat.md) para más información sobre las aplicaciones que se pueden incluir en contenedores.
 
 --------------------------
 
@@ -162,9 +165,8 @@ En esta versión preliminar, la comunicación con Docker es pública si sabe dó
 
 ### No todos los comandos de Docker funcionan
 
-Se produce un error en la ejecución de Docker en los contenedores de Hyper-V.
-
-Los comandos relacionados con DockerHub aún no se admiten.
+* Se produce un error en la ejecución de Docker en los contenedores de Hyper-V.
+* Los comandos relacionados con DockerHub aún no se admiten.
 
 Si se produce un error relacionado con algo que no está en esta lista (o si un comando genera un error diferente al esperado), háganoslo saber a través de [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers).
 
@@ -187,6 +189,11 @@ net use S: \\your\sources\here /User:shareuser [yourpassword]
 ```
 
 
+--------------------------
+
+
+
+
 ## Escritorio remoto
 
 No es posible administrar los contenedores de Windows ni interactuar con ellos a través de una sesión RDP en TP4.
@@ -200,8 +207,36 @@ No es posible administrar los contenedores de Windows ni interactuar con ellos a
 
 Esto es correcto. Está planificada una compatibilidad completa con cimsession en el futuro.
 
+### La salida de un contenedor en un host de contenedor Nano Server no se puede realizar con "exit"
+
+Si intenta salir de un contenedor que se encuentra en un host de contenedor Nano Server, con "exit", se desconectará de dicho host y no saldrá del contenedor.
+
+**Solución alternativa:**
+Utilice en su lugar Exit-PSSession para salir del contenedor.
+
 No dude en solicitar características en [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers).
 
 
+--------------------------
 
 
+
+## Usuarios y dominios
+
+### Usuarios locales
+
+Se pueden crear cuentas de usuario locales y usarse para ejecutar aplicaciones y servicios de Windows en contenedores.
+
+
+### Pertenencia al dominio
+
+Los contenedores no pueden unirse a dominios de Active Directory y no pueden ejecutar servicios ni aplicaciones como usuarios de dominio, cuentas de servicio o cuentas de equipo.
+
+Los contenedores están diseñados para comenzar rápidamente en un estado coherente conocido que es en gran medida independiente del entorno. Unirse a un dominio y aplicar configuraciones de directiva de grupo desde el dominio aumentarán el tiempo que se tarda en iniciar un contenedor, cambiarán su funcionamiento con el tiempo y limitarán la posibilidad de mover o compartir imágenes entre desarrolladores e implementaciones.
+
+Estamos considerando cuidadosamente los comentarios que nos llegan sobre cómo las aplicaciones y los servicios usan Active Directory y la intersección de implementar estos en los contenedores. Si tiene información sobre lo que funcionaría mejor en su caso, compártalo con nosotros en [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers). Estamos buscando activamente soluciones que admitan estos tipos de escenarios.
+
+
+
+
+<!--HONumber=Jan16_HO3-->

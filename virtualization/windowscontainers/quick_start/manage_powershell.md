@@ -46,7 +46,7 @@ NanoServer        CN=Microsoft 10.0.10586.0 True
 WindowsServerCore CN=Microsoft 10.0.10586.0 True
 ```
 
-Para crear un contenedor de Windows Server, use el comando `New-Container`. En el ejemplo siguiente, se crea un contenedor denominado `TP4Demo` a partir de la imagen de sistema operativo `WindowsServerCore`; a continuación, se conecta el contenedor a un conmutador de máquina virtual denominado `Virtual Switch`. Tenga en cuenta que la salida, un objeto que representa el contenedor, se almacena en una variable `$con`. Esta variable se usa en los comandos posteriores.
+Para crear un contenedor de Windows Server, use el comando `New-Container`. En el ejemplo siguiente, se crea un contenedor denominado `TP4Demo` a partir de la imagen de sistema operativo `WindowsServerCore`; a continuación, se conecta el contenedor a un conmutador de máquina virtual denominado `Virtual Switch`.
 
 ```powershell
 PS C:\> New-Container -Name TP4Demo -ContainerImageName WindowsServerCore -SwitchName "Virtual Switch"
@@ -109,7 +109,7 @@ PS C:\> Stop-Container -Name TP4Demo
 
 Ahora se puede capturar el estado de este contenedor en una nueva imagen de contenedor. Hágalo mediante el comando `New-ContainerImage`.
 
-En este ejemplo, se crea una nueva imagen de contenedor denominada `WindowsServerCoreIIS` con un publicador `Demo` y una versión `1.0`.
+En este ejemplo, se crea una nueva imagen de contenedor denominada `WindowsServerCoreIIS` con un publicador de `Demo` y una versión `1.0`.
 
 ```powershell
 PS C:\> New-ContainerImage -ContainerName TP4Demo -Name WindowsServerCoreIIS -Publisher Demo -Version 1.0
@@ -145,7 +145,7 @@ PS C:\> Start-Container -Name IIS
 
 ### Configurar redes
 
-La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto en el host de contenedor a un puerto en el contenedor.
+La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto en el host de contenedor a un puerto en el contenedor. Para más información sobre redes de contenedor, consulte [Redes de contenedor](../management/container_networking.md).
 
 Para este ejercicio, se hospeda un sitio web en IIS, que se ejecuta dentro de un contenedor. Para acceder al sitio web en el puerto 80, asigne el puerto 80 de la dirección IP del host de contenedor al puerto 80 de la dirección IP de los contenedores.
 
@@ -268,7 +268,7 @@ Name State Uptime   ParentImageName
 HYPV Off   00:00:00 NanoServer
 ```
 
-Cuando se cree el contenedor, **no lo inicie**.
+Cuando se haya creado el contenedor, **no lo inicie**.
 
 ### Crear una carpeta compartida
 
@@ -309,7 +309,7 @@ Cree una sesión remota de PowerShell con el contenedor mediante el comando `Ent
 PS C:\> Enter-PSSession -ContainerName HYPV -RunAsAdministrator
 [HYPV]: PS C:\windows\system32\config\systemprofile\Documents>cd /
 ```
-Cuando se encuentre en la sesión remota, tenga en cuenta que la carpeta compartida `c:\iisinstall\en-us` que se creó está vacía.
+Cuando se encuentre en la sesión remota, observe que la carpeta compartida `c:\iisinstall\en-us` que se creó está vacía.
 
 ```powershell
 [HYPV]: PS C:\> ls c:\iisinstall
@@ -325,9 +325,9 @@ d-----       11/18/2015   5:27 PM                en-us
 
 Como el contenedor ejecuta una imagen de sistema operativo Nano Server, se necesitan los paquetes de IIS de Nano Server para instalar IIS. Puede encontrarlos en los elementos multimedia de instalación Windows Sever 2016 TP4 en el directorio `NanoServer\Packages`.
 
-Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` del host de contenedor.
+Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` en el host de contenedor.
 
-Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` del host de contenedor.
+Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` en el host de contenedor.
 
 Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este texto en dicho archivo.
 
@@ -347,7 +347,7 @@ Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este text
 </unattend>
 ```
 
-Cuando se complete, el directorio `c:\share` del host de contenedor debería estar configurado de esta manera.
+Cuando finalice la operación, el directorio `c:\share` en el host de contenedor debería estar configurado de esta manera.
 
 ```
 c:\share

@@ -16,12 +16,12 @@ PS C:\> New-Container –Name TestContainer –MaximumMemoryBytes 256MB -Contain
 También puede establecer el límite de memoria de un contenedor existente con el cmdlet `Set-ContainerMemory`.
 
 ```powershell
-PS C:\> Set-ContainerMemory -ContainerName TestContainer -MaximumBytes 500mb
+PS C:\> Set-ContainerMemory -ContainerName TestContainer -MaximumBytes 256mb
 ```
 
 ### Ancho de banda de la red
 
-Se pueden establecer límites de ancho de banda de la red en un contenedor existente. Para ello, asegúrese de que el contenedor tiene un adaptador de red mediante el comando `Get-ContainerNetworkAdapter`. Si no existe un adaptador de red, use el comando `Add-ContainerNetworkAdapter` para crear uno. Por último, use el comando `Set-ContainerNetworkAdapter` para limitar el ancho de banda de la red de salida máximo del contenedor.
+Se pueden establecer límites de ancho de banda de la red en un contenedor existente. Para ello, asegúrese de que el contenedor tenga un adaptador de red mediante el comando `Get-ContainerNetworkAdapter`. Si no existe un adaptador de red, use el comando `Add-ContainerNetworkAdapter` para crear uno. Por último, use el comando `Set-ContainerNetworkAdapter` para limitar el ancho de banda de la red máximo de salida del contenedor.
 
 En el ejemplo siguiente, el ancho de banda máximo es 100 Mbps.
 
@@ -36,7 +36,7 @@ Puede limitar la cantidad de procesos que un contenedor puede utilizar estableci
 Lo siguiente establece el peso relativo del contenedor a 1000. El peso predeterminado de un contenedor es 100, por lo que este contenedor tendrá 10 veces la prioridad de un contenedor con el valor predeterminado. El valor máximo es 10000.
 
 ```powershell
-PS C:\> Set-ContainerProcessor -ContainerName Container1 –RelativeWeight 10000.
+PS C:\> Set-ContainerProcessor -ContainerName Container1 –RelativeWeight 10000
 ```
 
 También puede establecer un límite en la cantidad de CPU que un contenedor puede utilizar, en términos de porcentaje de tiempo de CPU. De forma predeterminada, un contenedor puede utilizar el 100 % de la CPU. Lo siguiente establece el porcentaje máximo de una CPU que puede utilizar un contenedor al 30 %. Si se usa la marca –Maximum, se establece automáticamente el valor de RelativeWeight en 100.
@@ -62,7 +62,7 @@ Se ofrece la capacidad de administrar un subconjunto de recursos del contenedor 
 
 ### CPU
 
-Es posible administrar los recursos compartidos de la CPU entre contenedores en tiempo de ejecución mediante la marca --cpu-shares. De forma predeterminada, todos los contenedores tienen la misma proporción de tiempo de CPU. Para cambiar el recurso compartido relativo de la CPU que usan los contenedores, ejecute la marca --cpu-shares con un valor de 1-10000. De forma predeterminada, todos los contenedores reciben un peso de 5000.
+Es posible administrar los recursos compartidos de la CPU entre contenedores en tiempo de ejecución mediante la marca --cpu-shares. De forma predeterminada, todos los contenedores tienen la misma proporción de tiempo de CPU. Para cambiar el recurso compartido relativo de la CPU que usan los contenedores, ejecute la marca --cpu-shares con un valor de 1-10000. De forma predeterminada, todos los contenedores reciben un peso de 5000. Para más información sobre la limitación de uso compartido de la CPU, consulte [Referencia de ejecución de Docker](https://docs.docker.com/engine/reference/run/#cpu-share-constraint).
 
 ```powershell 
 C:\> docker run –it --cpu-shares 2 --name dockerdemo windowsservercore cmd
@@ -77,3 +77,4 @@ C:\> docker run –it --cpu-shares 2 --name dockerdemo windowsservercore cmd
 
 
 
+<!--HONumber=Jan16_HO1-->
