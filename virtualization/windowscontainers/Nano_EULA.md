@@ -1,110 +1,110 @@
-# Nano Server installation option of Windows Server Technical Preview 4 for Developers
+# Opción de instalación de Nano Server de Windows Server Technical Preview 4 para Desarrolladores
 
-PLEASE READ PRIOR TO DOWNLOAD: By downloading and using the VHD at the link below, you agree to the License Terms, and you may not use it if you have not accepted the License Terms.
+LEER ANTES DE DESCARGAR: Al descargar y utilizar VHD en el siguiente vínculo, usted acepta los Términos de Licencia. Si no acepta los Términos de Licencia, no puede utilizar VHD.
 
-Download VHD:  [Nano Server installation option of Windows Server Technical Preview 4 for Developers](http://aka.ms/nanoevalvhd)
+Descargar VHD:  [Opción de instalación de Nano Server de Windows Server Technical Preview 4 para Desarrolladores](http://aka.ms/nanoevalvhd)
 
-# End User License Agreement
+# Contrato de Licencia para el Usuario Final
 
-MICROSOFT LICENSE TERMS FOR A VIRTUAL HARD DISK IMAGE OF THE FOLLOWING SOFTWARE:
+TÉRMINOS DE LICENCIA DE MICROSOFT PARA UNA IMAGEN DE DISCO DURO VIRTUAL DEL SIGUIENTE SOFTWARE:
 MICROSOFT WINDOWS SERVER
 
 ---------------------
 
 
-These license terms are an agreement between Microsoft Corporation (or based on where you live, one of its affiliates) and you. Please read them. They apply to the software product identified above and any documentation, which includes the media on which you received it (collectively referred to as the "software" or "VHD"). The terms also apply to any Microsoft Internet-based services for this software.
+Los presentes términos de licencia constituyen un contrato entre Microsoft Corporation (o, en función de donde resida, una de sus filiales) y usted. Le rogamos que lo lea atentamente. Se aplican al producto de software identificado anteriormente y a cualquier documentación, la que incluye el soporte físico en el que lo recibió (denominado en conjunto, “software” o “VHD”). Estos términos también se aplican a cualquier servicio basado en Internet para este software.
 
-**BY USING THE SOFTWARE, YOU ACCEPT THESE TERMS. IF YOU DO NOT ACCEPT THEM, DO NOT USE THE SOFTWARE.
-AS DESCRIBED BELOW, USING SOME FEATURES ALSO OPERATES AS YOUR CONSENT TO THE TRANSMISSION OF CERTAIN STANDARD COMPUTER INFORMATION FOR INTERNET-BASED SERVICES.
-YOUR RIGHT TO USE THE SOFTWARE IS LIMITED TO A SPECIFIED PERIOD OF TIME. PLEASE REFER TO SECTION 3 FOR DETAILS.**
+**AL HACER USO DEL SOFTWARE, ESTARÁ ACEPTANDO ESTOS TÉRMINOS. SI NO LOS ACEPTA, NO UTILICE EL SOFTWARE.
+TAL Y COMO SE DESCRIBE A CONTINUACIÓN, EL USO QUE USTED HAGA DE DETERMINADAS FUNCIONES CONSTITUIRÁ SU CONSENTIMIENTO PARA LA TRANSMISIÓN DE DETERMINADA INFORMACIÓN ESTÁNDAR DEL EQUIPO PARA LOS SERVICIOS BASADOS EN INTERNET.
+SU DERECHO A UTILIZAR EL SOFTWARE SE LIMITA AL PERIODO ESPECIFICADO. CONSULTE LA SECCIÓN 3 PARA OBTENER DETALLES.**
 
 ---------------------
 
 
-If you comply with these license terms, you have the rights below.
+Si cumple con estos términos de licencia, dispondrá de los derechos siguientes.
 
-1.  **INSTALLATION AND USE RIGHTS.**
-*  Supersede other terms.
-The terms of this license supersede the terms of any Microsoft software license term agreement that requires “acceptance” of a separate license term agreement during installation.
-* Installation.
-You may install and use the software on your device of which you are running any virtualization software able to run Virtual Hard Disk (VHD) formats, including Microsoft Virtual Server.
-*  Limited use rights.
-You may use the software in the virtual hard disk image only to internally demonstrate and evaluate it. You may not use the software in a live operating environment.
-*  No separation.
-The Microsoft software in the virtual hard disk image is licensed as a single piece of software. The software may include tools and components to support new features of the operating system. You may not separate, use, or redistribute these tools or components for any purpose other than for use by those new features that are distributed as part of the operating system. For example, Service Fabric is a software component that may be used by the Network Controller of the operation system only.
-*  Third party programs
-The software may contain third party software programs that are licensed under proprietary terms that are presented to you. The software may also contain third party open source programs that Microsoft, not the third party, licenses to you under Microsoft’s license terms. Notices, if any, for the third party open source programs are included for your information only.
+1.  **DERECHOS DE INSTALACIÓN Y DE USO.**
+*  Sustitución de otros términos.
+Los términos de esta licencia sustituyen los términos de cualquier contrato de términos de licencia de software de Microsoft que exijan la “aceptación” de un contrato de términos de licencia independiente durante la instalación.
+* Instalación.
+Puede instalar y utilizar el software en el dispositivo que utiliza para ejecutar software de virtualización capaces de ejecutar formatos Virtual Hard Disk (VHD), incluyendo Microsoft Virtual Server.
+*  Derechos de uso limitados.
+Puede utilizar el software en la imagen de disco duro virtual solo con fines de demostración y evaluación interna. No puede utilizar el software en un entorno operativo activo.
+*  Indivisibilidad.
+El software de Microsoft en la imagen de disco duro virtual se licencia como un solo software. El software puede incluir componentes y herramientas para ser compatible con nuevas características del sistema operativo. No puede separar, utilizar o redistribuir estas herramientas o componentes con una finalidad que no sea la de su uso por parte de tales características nuevas que se distribuyen como parte del sistema operativo. Por ejemplo, Service Fabric es un componente de software que solo puede utilizar la Controladora de Red del sistema operativo.
+*  Programas de terceros
+El software puede contener programas de software de terceros que se licencian en virtud de los términos de propiedad que se le presentan. El software también puede contener programas de código abierto de terceros que Microsoft, no el tercero, le licencia conforme a los términos de licencia de Microsoft. Las notificaciones para programas de código abierto de terceros, si las hay, se incluyen para su información solamente.
 
-2.  **INTERNET-BASED SERVICES.**
-Microsoft may provide Internet-based services with the software. It may change or cancel them at any time. Should the Virtual Hard Drive Image be configured to transmit over the Internet the following terms apply:
-Consent for Internet-Based Services. Because this software is a pre-release version, we have turned on some internet-based features by default to obtain feedback about them. The software features described below and in the Windows Privacy Statement connect to Microsoft or service provider computer systems over the Internet. In some cases, you will not receive a separate notice when they connect. In some cases, you may switch off these features or not use them. For more information about these features, see go.microsoft.com/fwlink/?LinkId=506737. By using these features, you consent to the transmission of this information to any country Microsoft operates in. The list below may not be fully-inclusive.
-Computer Information. Some software features use Internet protocols, which send to Microsoft (or its suppliers or service providers) computer information, such as your Internet protocol address, the type of operating system, browser and name and version of the software you are using, and the language code of the device where you installed the software. Microsoft uses this information to make the Internet-based services available to you, in accordance with the Privacy Statement at go.microsoft.com/fwlink/?LinkId=506737.
+2.  **SERVICIOS BASADOS EN INTERNET.**
+Es posible que Microsoft preste servicios basados en Internet con el software. Dichos servicios se podrán modificar o cancelar en cualquier momento. En caso de que la imagen de disco duro virtual esté configurada para transmitir por Internet, se aplican los siguientes términos:
+Consentimiento para servicios basados en Internet. Debido a que este software es una versión preliminar, hemos activado algunas características basadas en Internet de manera predeterminada para conocer sus comentarios respecto de las mismas. Las características del software que se describen a continuación y en la Declaración de Privacidad de Windows se conectan a través de Internet a los sistemas informáticos de Microsoft o de proveedores de servicios. En algunos casos, usted no recibirá ninguna notificación específica cuando esto ocurra. En algunos casos, puede optar por desactivar estas características o no utilizarlas. Para obtener más información sobre estas características, consulte go.microsoft.com/fwlink/?LinkId=506737. Al utilizar estas características, estará dando su consentimiento para que se transmita esta información a cualquier país en el que opere Microsoft. Es posible que la lista siguiente no sea completa.
+Información del equipo. Algunas características del software utilizan protocolos de Internet, que envían a Microsoft (o a sus proveedores o proveedores de servicios) información de su equipo, como la dirección IP, el tipo de sistema operativo, el explorador, y el nombre y la versión del software que está utilizando, además del código de idioma en el que se instaló el software. Microsoft utiliza esta información para poner a su disposición los servicios basados en Internet, de acuerdo con la Declaración de Privacidad, en go.microsoft.com/fwlink/?LinkId=506737.
 
-3.  **TIME-SENSITIVE SOFTWARE.**
-The software will stop running on a predetermined date. You will not receive any other notice. You may not be able to access data used with the software when it stops running. Please see go.microsoft.com/fwlink/?LinkId=624232 for specific information about the end date for the software..
+3.  **SOFTWARE SUJETO A LIMITACIÓN TEMPORAL.**
+El software dejará de ejecutarse en una fecha predeterminada. No recibirá ninguna otra notificación. No podrá acceder a los datos utilizados con el software cuando este deje de ejecutarse. Consulte go.microsoft.com/fwlink/?LinkId=624232 para obtener información específica acerca de la fecha final del software.
 
-4.  **NO ACTIVATION.**
-To prevent its unlicensed use, the software may contain activation enforcement technology. Because this is an evaluation-only license, you are not licensed to activate the software for any purpose even if it prompts you to do so.
+4.  **SIN ACTIVACIÓN.**
+Para evitar su uso sin licencia, el software puede contener tecnología de obligatoriedad de activación. Dado que esta es únicamente una licencia de evaluación, usted no tiene licencia para activar el software para ningún fin, incluso si se le solicita hacerlo.
 
-5.  **PRE-RELEASE SOFTWARE.**
-This software is a pre-release version. It may not work the way a final version of the software will. We may change it for the final, commercial version. We also may not release a commercial version.
+5.  **VERSIÓN PRELIMINAR DEL SOFTWARE.**
+Esta es una versión preliminar del software. Puede no funcionar de la forma en que la versión final del software lo hará. Puede cambiar en la versión comercial final. Puede que no lancemos una versión comercial.
 
-6.  **FEEDBACK.**
-If you give feedback about the software to Microsoft, you give to Microsoft, without charge, the right to use, share and commercialize your feedback in any way and for any purpose. You also give to third parties, without charge, any patent rights needed for their products, technologies and services to use or interface with any specific parts of a Microsoft software or service that includes the feedback. You will not give feedback that is subject to a license that requires Microsoft to license its software or documentation to third parties because Microsoft includes your feedback in them. These rights survive this agreement.
+6.  **COMENTARIOS.**
+Si usted proporciona comentarios a Microsoft sobre el software, otorga a Microsoft, de forma gratuita, el derecho a utilizar, compartir y comercializar sus comentarios de cualquier forma y para cualquier propósito. También le concede a terceros, de forma gratuita, cualquier derecho de patente que necesiten para sus productos, tecnologías y servicios para utilizar o interactuar con alguna parte específica de un software o servicio de Microsoft que incluya el comentario. No otorgará comentarios que estén sujetos a una licencia que requiera que Microsoft licencie su software o documentación a terceros debido a que Microsoft incluye sus comentarios en ellos. Estos derechos seguirán vigentes aún después de la terminación de este contrato.
 
-7.  **.NET FRAMEWORK SOFTWARE.**
-The software includes one or more components of the .NET Framework, which you may use only as described at go.microsoft.com/fwlink/?linkid=66406, if you use the .NET Framework components to conduct internal benchmark testing.
+7.  **SOFTWARE .NET FRAMEWORK.**
+El software incluye uno o varios componentes de .NET Framework, que puede utilizar solo según lo descrito en go.microsoft.com/fwlink/?linkid=66406, para realizar pruebas comparativas internas.
 
-8.  **H.264/AVC AND MPEG-4 VISUAL STANDARDS AND VC-1 AND MPEG-2 VIDEO STANDARDS**
-This software may include H.264/AVC, VC-1, and MPEG-4 Part 2, and MPEG-2 visual compression technology. MPEG LA, L.L.C. requires this notice:
+8.  **ESTÁNDARES VISUALES H.264/AVC Y MPEG-4 Y ESTÁNDARES DE VÍDEO VC-1 y mpeg-2**
+Este software puede incluir tecnología de compresión visual H.264/AVC, VC-1, MPEG-4 Parte 2 Y MPEG-2. MPEG LA, L.L.C. requiere la inclusión de esta notificación:
 
-THIS PRODUCT IS LICENSED UNDER THE AVC, THE VC-1, THE MPEG-4 PART 2 VISUAL, AND THE MPEG-2 VIDEO PATENT PORTFOLIO LICENSES FOR THE PERSONAL AND NON-COMMERCIAL USE OF A CONSUMER TO (i) ENCODE VIDEO IN COMPLIANCE WITH THE ABOVE STANDARDS (“VIDEO STANDARDS”) AND/OR (ii) DECODE AVC, VC-1, MPEG-4 PART 2 AND MPEG-2 VIDEO THAT WAS ENCODED BY A CONSUMER ENGAGED IN A PERSONAL AND NON-COMMERCIAL ACTIVITY AND/OR WAS OBTAINED FROM A VIDEO PROVIDER LICENSED TO PROVIDE SUCH VIDEO. NO LICENSE IS GRANTED OR SHALL BE IMPLIED FOR ANY OTHER USE. ADDITIONAL INFORMATION MAY BE OBTAINED FROM MPEG LA, L.L.C SEE WWW.MPEGLA.COM.
+LA LICENCIA DE ESTE PRODUCTO SE CONCEDE EN CUMPLIMIENTO DE LAS LICENCIAS DE LA CARTERA DE PATENTES DE VÍDEO VISUAL AVC, VC-1, MPEG-4 PARTE 2 Y MPEG-2 PARA USO PERSONAL Y NO COMERCIAL POR PARTE DE UN CONSUMIDOR PARA (i) CODIFICAR VÍDEO EN CUMPLIMIENTO CON LOS ESTÁNDARES ANTERIORES (“ESTÁNDARES DE VÍDEO”) Y/O (ii) DESCODIFICAR VÍDEO AVC, VC-1, MPEG-4 PARTE 2 Y MPEG-2 QUE HAYA SIDO CODIFICADO POR UN CONSUMIDOR EJERCIENDO UNA ACTIVIDAD PERSONAL NO COMERCIAL Y/U OBTENIDO DE UN PROVEEDOR DE VÍDEO CON LICENCIA PARA PROPORCIONAR DICHO VÍDEO. NO SE CONCEDE NINGUNA OTRA LICENCIA PARA NINGÚN OTRO USO, NI SE DEBE PRESUPONER SU CONCESIÓN. SE PUEDE OBTENER INFORMACIÓN ADICIONAL DE MPEG LA, L.L.C. CONSULTE WWW.MPEGLA.COM.
 
 9.  **ADOBE FLASH PLAYER**
-The software may include a version of Adobe Flash Player. You agree that your use of the Adobe Flash Player is governed by the license terms for Adobe Systems Incorporated, at go.microsoft.com/fwlink/?LinkID=248532. Adobe and Flash are either registered trademarks or trademarks of Adobe Systems Incorporated in the United States and/or other countries.
-10. **SCOPE OF LICENSE.**
-The software is licensed, not sold. This agreement only gives you some rights     to use the software. Microsoft reserves all other rights. Unless applicable law gives you more rights   despite this limitation, you may use the software only as expressly permitted in this agreement. In     doing so, you must comply with any technical limitations in the software that only allow you to use it  in certain ways. You may not
-*  Disclose the results of any benchmark tests of the software, other than the Microsoft .NET Framework (see separate term above), to any third party without Microsoft’s prior written approval;
-*  work around any technical limitations in the software;
-*  reverse engineer, decompile, or disassemble the software, except and only to the extent that applicable law expressly permits, despite this limitation;
-*  make more copies of the software than specified in this agreement or allowed by applicable law, despite this limitation;
-*  publish the software for others to copy;
-*  rent, lease, or lend the software;
-*  transfer the software or this agreement to any third party; or
-*  use the software for commercial software hosting services.
+El software puede incluir una versión de Adobe Flash Player. Usted acepta que el uso que hace de Adobe Flash Player se rige por los términos de licencia de Adobe Systems Incorporated, que se encuentran en go.microsoft.com/fwlink/?LinkID=248532. Adobe y Flash son marcas o marcas registradas de Adobe Systems Incorporated en Estados Unidos y/u otros países.
+10. **ÁMBITO DE LA LICENCIA.**
+El software se cede bajo licencia y no es objeto de venta. Este contrato solo le otorga algunos derechos de uso del software. Microsoft se reserva todos los demás derechos. A menos que la legislación aplicable le otorgue más derechos a pesar de esta limitación, solo podrá utilizar el software tal como se permite expresamente en este contrato. Al hacerlo, deberá ajustarse a las limitaciones técnicas del software que solo permiten utilizarlo de determinadas formas. No podrá:
+*  divulgar a terceros los resultados de ninguna prueba comparativa del software, excepto Microsoft .NET Framework (consulte el término independiente anterior), sin obtener la autorización previa y por escrito de Microsoft;
+*  eludir las limitaciones técnicas del software;
+*  utilizar técnicas de ingeniería inversa, descompilar o desensamblar el software, excepto y únicamente en la medida en que lo permita expresamente la legislación aplicable, a pesar de esta limitación;
+*  hacer más copias del software de las que se especifican en este contrato o estén permitidas por la legislación aplicable, a pesar de esta limitación;
+*  hacer público el software para que otros lo copien;
+*  alquilar o dar en préstamo el software;
+*  transmitir el software o este contrato a terceros; o
+*  utilizar el software para prestar servicios de hosting de software comercial.
 
-You also may not remove, minimize, block or modify any logos, trademarks, copyright, digital watermarks, or other notices of Microsoft or its suppliers that are included in the software, including any content made available to you through the software.
+Tampoco podrá eliminar, minimizar, bloquear o modificar ningún logotipo, marca, propiedad intelectual, marca de agua digital ni ningún otro aviso de Microsoft ni de sus proveedores que venga incluido en el software, lo que incluye todo contenido que se ponga a su disposición a través del software.
 
-Rights to access the software on any device do not give you any right to implement Microsoft patents or other Microsoft intellectual property in software or devices that access that device.
+Los derechos de acceso al software en cualquier dispositivo no le otorgan ningún derecho para implementar patentes u otra propiedad intelectual e industrial de Microsoft en programas de software o equipos que accedan a dicho dispositivo.
 
-11. **EXPORT RESTRICTIONS.**
-The software is subject to United States export laws and  regulations. You must comply with all domestic and international export laws and regulations that   apply to the software. These laws include restrictions on destinations, end users and end use. For  additional information, see www.microsoft.com/exporting.
+11. **RESTRICCIONES EN MATERIA DE EXPORTACIÓN.**
+El software está sujeto a las leyes y a los reglamentos en materia de exportación de Estados Unidos. Usted debe cumplir la totalidad de las leyes y reglamentos internacionales y nacionales en materia de exportación que se apliquen al software. Dichas leyes incluyen limitaciones en cuanto a destino, usuarios finales y uso final. Para obtener información adicional, consulte www.microsoft.com/exporting.
 
-12. **SUPPORT SERVICES.**
-Because this software is “as is,” Microsoft may not provide support services  for it.
+12. **SERVICIOS DE SOPORTE TÉCNICO.**
+Debido a que este software se presenta “tal cual”, Microsoft no puede prestar servicios de soporte técnico para el mismo.
 
-13. **ENTIRE AGREEMENT.**
-This agreement, and the terms for supplements, updates, Internet-based services and support services that you use, are the entire agreement for the software and support services.
+13. **CONTRATO COMPLETO.**
+Este contrato y los términos aplicables a complementos, actualizaciones, servicios basados en Internet y servicios de soporte técnico que utilice constituyen el contrato completo respecto al software y a los servicios de soporte técnico.
 
-14. **APPLICABLE LAW.**
-a. United States. If you acquired the software in the United States, Washington state law governs the interpretation of this agreement and applies to claims for breach of it, regardless of conflict of laws principles. The laws of the state where you live govern all other claims, including claims under state consumer protection laws, unfair competition laws, and in tort.
-b. Outside the United States. If you acquired the software in any other country, the laws of that country apply.
+14. **LEGISLACIÓN APLICABLE.**
+a. Estados Unidos. Si adquirió el software en los Estados Unidos, la interpretación de este contrato se regirá por la legislación del Estado de Washington, que se aplicará a las reclamaciones por incumplimiento del mismo, con independencia de conflictos de principios legales. Para el resto de reclamaciones, será aplicable la legislación de su estado de residencia, incluidas las reclamaciones en virtud de las leyes estatales en materia de protección del consumidor, competencia desleal y responsabilidad extracontractual.
+b. Fuera de los Estados Unidos. Si adquirió el software en otro país, se aplicará la legislación de dicho país.
 
-15. **LEGAL EFFECT.**
-This agreement describes certain legal rights. You may have other rights under    the laws of your country. You may also have rights with respect to the party from whom you  acquired the software. This agreement does not change your rights under the laws of your country if     the laws of your country do not permit it to do so.
+15. **EFECTOS LEGALES.**
+En este contrato se describen determinados derechos legales. Es posible que disponga de otros derechos en virtud de la legislación de su país. Asimismo, pueden asistirle determinados derechos con respecto a la parte de la que adquirió el software. Este contrato no modifica los derechos de los que dispone en virtud de la legislación de su país si dicha legislación no permite tal cosa.
 
-16. **DISCLAIMER OF WARRANTY. THE SOFTWARE IS LICENSED “AS-IS.” YOU BEAR THE RISK OF USING IT. MICROSOFT GIVES NO EXPRESS WARRANTIES, GUARANTEES OR CONDITIONS. YOU MAY HAVE ADDITIONAL CONSUMER RIGHTS OR STATUTORY GUARANTEES UNDER YOUR LOCAL LAWS WHICH THIS AGREEMENT CANNOT CHANGE. TO THE EXTENT PERMITTED UNDER YOUR LOCAL LAWS, MICROSOFT EXCLUDES THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
-FOR AUSTRALIA – YOU HAVE STATUTORY GUARANTEES UNDER THE AUSTRALIAN CONSUMER LAW AND NOTHING IN THESE TERMS IS INTENDED TO AFFECT THOSE RIGHTS.**
+16. **EXCLUSIÓN DE GARANTÍAS. EL SOFTWARE SE LICENCIA “TAL CUAL”. USTED ASUME EL RIESGO DE UTILIZARLA. MICROSOFT NO OTORGA NINGUNA GARANTÍA NI CONDICIÓN EXPRESAS. ES POSIBLE QUE LA LEGISLACIÓN LOCAL LE OTORGUE DERECHOS DE CONSUMIDOR O GARANTÍAS LEGALES ADICIONALES QUE ESTE CONTRATO NO PUEDA MODIFICAR. EN LA MEDIDA EN QUE ASÍ LO PERMITA LA LEGISLACIÓN LOCAL, MICROSOFT EXCLUYE LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR Y AUSENCIA DE INFRACCIÓN.
+PARA AUSTRALIA: USTED CUENTA CON GARANTÍAS LEGALES CONFORME A LA LEY DE PROTECCIÓN AL CONSUMIDOR DE AUSTRALIA Y NINGÚN PUNTO DE ESTOS TÉRMINOS PRETENDE MODIFICAR DICHOS DERECHOS.**
 
-17. **LIMITATION ON AND EXCLUSION OF REMEDIES AND DAMAGES. YOU CAN RECOVER FROM MICROSOFT AND ITS SUPPLIERS ONLY DIRECT DAMAGES UP TO U.S. $5.00. YOU CANNOT RECOVER ANY OTHER DAMAGES, INCLUDING CONSEQUENTIAL, LOST PROFITS, SPECIAL, INDIRECT OR INCIDENTAL DAMAGES.**
+17. **LIMITACIÓN Y EXCLUSIÓN DE RECURSOS E INDEMNIZACIONES. LA CANTIDAD MÁXIMA QUE SE PODRÁ OBTENER DE MICROSOFT Y DE SUS PROVEEDORES EN CONCEPTO DE INDEMNIZACIÓN POR DAÑOS DIRECTOS SERÁ DE 5 USD. NO PODRÁ OBTENER INDEMNIZACIÓN ALGUNA POR DAÑOS DE OTRA ÍNDOLE, INCLUIDOS LOS DAÑOS CONSECUENCIALES, POR LUCRO CESANTE, ESPECIALES, INDIRECTOS O INCIDENTALES.**
 
-This limitation applies to
-*  anything related to the software, services, content (including code) on third party Internet sites, or third party programs; and
-*  claims for breach of contract, breach of warranty, guarantee or condition, strict liability, negligence, or other tort to the extent permitted by applicable law.
+Esta limitación se aplica a
+*  cualquier cuestión relacionada con el software, los servicios, el contenido (incluido el código) que se hallen en sitios de Internet de terceros o programas de terceros; y
+*  reclamaciones por incumplimiento de contrato, incumplimiento de garantía o condición, responsabilidad objetiva, negligencia u otra responsabilidad extracontractual en la medida que lo permita la legislación aplicable.
 
-It also applies even if Microsoft knew or should have known about the possibility of the damages. The above limitation or exclusion may not apply to you because your country may not allow the exclusion or limitation of incidental, consequential or other damages. If your local law allows you to recover other damages from Microsoft even though we do not, you cannot recover more than $5.00 USD, or the amount you paid for the software, whichever is higher.
+Asimismo, también será de aplicación incluso si Microsoft conocía o debería haber conocido la posibilidad de que se produjesen dichos daños. También pueden producirse situaciones en las que la limitación o exclusión precedente no pueda aplicarse a su caso porque su jurisdicción no admite la exclusión o limitación de daños incidentales, consecuenciales o de otra índole. Si la legislación local le permite recuperar otros daños de Microsoft, aunque nosotros no lo permitamos, su valor nunca podrá superar 5,00 USD o el importe abonado por el software, lo que sea superior.
 
-**Please note: As this software is distributed in Quebec, Canada, some of the clauses in this agreement are provided below in French.**
+**Nota: Debido a que este software se distribuye en Quebec, Canadá, algunas de las clausulas de este contrato se suministran en francés.**
 
 **Remarque : Ce logiciel étant distribué au Québec, Canada, certaines des clauses dans ce contrat sont fournies ci-dessous en français.**
 
