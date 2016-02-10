@@ -24,9 +24,11 @@
 
 ## [Requisitos del sistema](deployment/system_requirements.md)
 
-## [Implementación de un host de contenedor](deployment/deployment.md)
+## [Contenedores en Windows Server](deployment/deployment.md)
 
-## [Implementación de Docker en Windows](deployment/docker_windows.md)
+## [Contenedores en Nano Server](deployment/deployment_nano.md)
+
+## [Docker en Windows](deployment/docker_windows.md)
 
 # Administrar contenedores de Windows
 
@@ -65,4 +67,4 @@
 # [CLUF de Nano Server](Nano_EULA.md)
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

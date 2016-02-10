@@ -234,9 +234,10 @@ Los contenedores no pueden unirse a dominios de Active Directory y no pueden eje
 
 Los contenedores están diseñados para comenzar rápidamente en un estado coherente conocido que es en gran medida independiente del entorno. Unirse a un dominio y aplicar configuraciones de directiva de grupo desde el dominio aumentarán el tiempo que se tarda en iniciar un contenedor, cambiarán su funcionamiento con el tiempo y limitarán la posibilidad de mover o compartir imágenes entre desarrolladores e implementaciones.
 
-Estamos considerando cuidadosamente los comentarios que nos llegan sobre cómo las aplicaciones y los servicios usan Active Directory y la intersección de implementar estos en los contenedores. Si tiene información sobre lo que funcionaría mejor en su caso, compártalo con nosotros en [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers). Estamos buscando activamente soluciones que admitan estos tipos de escenarios.
+Estamos considerando cuidadosamente los comentarios que nos llegan sobre cómo las aplicaciones y los servicios usan Active Directory y la intersección de implementar estos en los contenedores. Si tiene información sobre lo que funcionaría mejor en su caso, compártalo con nosotros en [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers).
+
+Estamos buscando activamente soluciones que admitan estos tipos de escenarios.
 
 
 
-
-<!--HONumber=Jan16_HO3-->
+<!--HONumber=Feb16_HO1-->

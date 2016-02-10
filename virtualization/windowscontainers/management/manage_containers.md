@@ -4,13 +4,13 @@
 
 El ciclo de vida del contenedor incluye acciones tales como iniciar, detener y quitar contenedores. Al realizar estas acciones, puede que también tenga que recuperar una lista de imágenes de contenedores, administrar redes de contenedores y limitar recursos de contenedores. En este documento se detallarán las tareas básicas de administración de contenedores mediante PowerShell.
 
-Para obtener documentación sobre la administración de contenedores de Windows con Docker, consulte el documento de Docker [Trabajar con contenedores](https://docs.docker.com/userguide/usingdocker/).
+Para obtener documentación sobre la administración de contenedores de Windows con Docker, consulte el documento de Docker [Working with Containers](https://docs.docker.com/userguide/usingdocker/) (Trabajar con contenedores).
 
 ## PowerShell
 
 ### Crear un contenedor
 
-Al crear un nuevo contenedor, necesita el nombre de una imagen de contenedor que servirá como la base del contenedor. Se puede encontrar mediante el comando `Get-ContainerImageName`.
+Al crear un nuevo contenedor, necesita el nombre de una imagen de contenedor que servirá como la base del contenedor. Se puede encontrar mediante el comando `Get-ContainerImage`.
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -48,7 +48,7 @@ DHCP External   Microsoft Hyper-V Network Adapter
 NAT  NAT
 ```
 
-Conecte el adaptador de red al conmutador virtual con `Connect-ContainerNetowkrAdapter`. Nota: Esto también se puede realizar cuando el contenedor se crea mediante el parámetro –SwitchName.
+Conecte el adaptador de red al conmutador virtual con `Connect-ContainerNetworkAdapter`. Nota: Esto también se puede realizar cuando el contenedor se crea mediante el parámetro –SwitchName.
 
 ```powershell
 PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
@@ -56,7 +56,7 @@ PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
 
 ### Iniciar un contenedor
 
-Para iniciar el contenedor, un objeto de PowerShell que represente el contenedor se enumerará. Esto puede realizarse si se coloca la salida de `Get-Container` en una variable de PowerShell.
+Para iniciar el contenedor, un objeto de PowerShell que represente el contenedor se enumerará. Esto puede realizarse colocando la salida de `Get-Container` en una variable de PowerShell.
 
 ```powershell
 PS C:\> $container = Get-Container -Name TST
@@ -106,7 +106,7 @@ d-----       10/28/2015   3:31 PM                application                    
 
 ### Detener un contenedor
 
-Para detener el contenedor, se necesitará un objeto de PowerShell que represente ese contenedor. Esto puede realizarse si se coloca la salida de `Get-Container` en una variable de PowerShell.
+Para detener el contenedor, se necesitará un objeto de PowerShell que represente ese contenedor. Esto puede realizarse colocando la salida de `Get-Container` en una variable de PowerShell.
 
 ```powershell
 PS C:\> $container = Get-Container -Name TST
@@ -193,8 +193,9 @@ dc3e282c064d
 2230b0433370
 ```
 
-Para obtener más información sobre el comando Docker rm, consulte la [referencia de Docker rm](https://docs.docker.com/engine/reference/commandline/rm/).
+Para obtener más información sobre el comando Docker rm, consulte el artículo de referencia sobre [Docker rm](https://docs.docker.com/engine/reference/commandline/rm/).
 
 
 
 
+<!--HONumber=Feb16_HO1-->

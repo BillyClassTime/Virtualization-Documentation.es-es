@@ -2,7 +2,7 @@
 
 Los contenedores de Windows se pueden utilizar para implementar rápidamente varias aplicaciones aisladas en un único equipo. En este inicio rápido se muestra la implementación y administración de contenedores de Windows Server y Hyper-V mediante PowerShell. En este ejercicio se creará desde cero una aplicación "hello world" muy simple, que se ejecuta tanto en un contenedor de Windows Server como de Hyper-V. Durante este proceso, se crearán imágenes del contenedor, se trabajará con carpetas compartidas de contenedor y se administrará el ciclo de vida del contenedor. Cuando lo complete, tendrá un conocimiento básico de la administración e implementación de contenedores de Windows.
 
-En este tutorial se detallan los contenedores de Windows Server y Hyper-V. Cada tipo de contenedor tiene sus propios requisitos básicos. Con la documentación de contenedores de Windows se incluye un procedimiento para implementar rápidamente un host de contenedor. Se trata de la manera más fácil para empezar a trabajar rápidamente con contenedores de Windows. Si aún no dispone de un host de contenedor, consulte [Inicio rápido de implementación del host de contenedor](./container_setup.md).
+En este tutorial se detallan los contenedores de Windows Server y Hyper-V. Cada tipo de contenedor tiene sus propios requisitos básicos. Con la documentación de contenedores de Windows se incluye un procedimiento para implementar rápidamente un host de contenedor. Se trata de la manera más fácil para empezar a trabajar rápidamente con contenedores de Windows. Si aún no dispone de un host de contenedor, consulte [Implementar un host de contenedor de Windows en una nueva máquina virtual de Hyper-V](./container_setup.md).
 
 Para cada uno de los ejercicios se requieren los elementos siguientes.
 
@@ -15,7 +15,7 @@ Para cada uno de los ejercicios se requieren los elementos siguientes.
 - Un host de contenedor de Windows habilitado con virtualización anidada.
 - Elementos multimedia de Windows Server 2016: [descargar](https://aka.ms/tp4/serveriso).
 
->Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de Hyper-V, necesita un host de contenedor local.
+> Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de Hyper-V, necesita un host de contenedor local.
 
 ## Contenedor de Windows Server
 
@@ -35,7 +35,7 @@ Copyright (C) 2015 Microsoft Corporation. All rights reserved.
 PS C:\>
 ```
 
-Para comprobar si se instaló la imagen del sistema operativo Windows Server Core, use el comando `Get-ContainerImage`. Puede ver varias imágenes de sistema operativo, lo cual es normal.
+Para comprobar si se ha instalado la imagen del sistema operativo Windows Server Core, use el comando `Get-ContainerImage`. Puede ver varias imágenes de sistema operativo, lo cual es normal.
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -46,7 +46,7 @@ NanoServer        CN=Microsoft 10.0.10586.0 True
 WindowsServerCore CN=Microsoft 10.0.10586.0 True
 ```
 
-Para crear un contenedor de Windows Server, use el comando `New-Container`. En el ejemplo siguiente, se crea un contenedor denominado `TP4Demo` a partir de la imagen de sistema operativo `WindowsServerCore`; a continuación, se conecta el contenedor a un conmutador de máquina virtual denominado `Virtual Switch`.
+Para crear un contenedor de Windows Server, use el comando `New-Container`. En el ejemplo siguiente, se crea un contenedor denominado `TP4Demo` a partir de la imagen de sistema operativo `WindowsServerCore`. A continuación, se conecta el contenedor a un conmutador de máquina virtual denominado `Virtual Switch`.
 
 ```powershell
 PS C:\> New-Container -Name TP4Demo -ContainerImageName WindowsServerCore -SwitchName "Virtual Switch"
@@ -72,7 +72,7 @@ Inicie el contenedor mediante el comando `Start-Container`.
 PS C:\> Start-Container -Name TP4Demo
 ```
 
-Conéctese al contenedor mediante el comando `Enter-PSSession`. Observe que cuando se creó la sesión de PowerShell con el contenedor, el símbolo de PowerShell cambia para reflejar el nombre del contenedor.
+Conéctese al contenedor mediante el comando `Enter-PSSession`. Observe que cuando se crea la sesión de PowerShell con el contenedor, el símbolo de PowerShell cambia para reflejar el nombre del contenedor.
 
 ```powershell
 PS C:\> Enter-PSSession -ContainerName TP4Demo -RunAsAdministrator
@@ -145,9 +145,9 @@ PS C:\> Start-Container -Name IIS
 
 ### Configurar redes
 
-La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto en el host de contenedor a un puerto en el contenedor. Para más información sobre redes de contenedor, consulte [Redes de contenedor](../management/container_networking.md).
+La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto del host de contenedor a un puerto del contenedor. Para obtener más información sobre redes de contenedor, consulte [Red de contenedores](../management/container_networking.md).
 
-Para este ejercicio, se hospeda un sitio web en IIS, que se ejecuta dentro de un contenedor. Para acceder al sitio web en el puerto 80, asigne el puerto 80 de la dirección IP del host de contenedor al puerto 80 de la dirección IP de los contenedores.
+Para este ejercicio, se hospeda un sitio web en IIS, que se ejecuta dentro de un contenedor. Para acceder al sitio web en el puerto 80, asigne el puerto 80 de la dirección IP del host de contenedor al puerto 80 de la dirección IP del contenedor.
 
 Ejecute lo siguiente para devolver la dirección IP del contenedor.
 
@@ -166,7 +166,7 @@ Ethernet adapter vEthernet (Virtual Switch-7570F6B1-E1CA-41F1-B47D-F3CA73121654-
    Default Gateway . . . . . . . . . : 172.16.0.1
 ```
 
-Para crear la asignación de puertos de NAT, use el comando `Add-NetNatStaticMapping`. En el ejemplo siguiente se comprueba si hay una regla de asignación de puertos existente y, si no existe, la crea. Tenga en cuenta que `-InternalIPAddress` debe coincidir con la dirección IP del contenedor.
+Para crear la asignación de puertos de NAT, use el comando `Add-NetNatStaticMapping`. En el ejemplo siguiente se comprueba si hay una regla de asignación de puertos existente y, si no existe, se crea. Tenga en cuenta que `-InternalIPAddress` debe coincidir con la dirección IP del contenedor.
 
 ```powershell
 if (!(Get-NetNatStaticMapping | where {$_.ExternalPort -eq 80})) {
@@ -182,7 +182,7 @@ if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
 }
 ```
 
-Si está trabajando en Azure y aún no ha creado un grupo de seguridad de red, debe crear uno ahora. Para más información sobre los grupos de seguridad de red, consulte este artículo: [¿Qué es un grupo de seguridad de red?](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-nsg/).
+Si está trabajando en Azure y aún no ha creado un grupo de seguridad de red, debe crear uno ahora. Para obtener más información sobre los grupos de seguridad de red, consulte el artículo [¿Qué es un grupo de seguridad de red?](https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-nsg/).
 
 ### Crear aplicación
 
@@ -190,7 +190,7 @@ Ahora que se ha creado un contenedor a partir de la imagen de IIS y se han confi
 
 ![](media/iis1.png)
 
-Con las instancias de IIS comprobadas como en ejecución, ahora puede crear una aplicación "Hello World" y alojarla en la instancia de IIS. Para ello, cree una sesión de PowerShell con el contenedor.
+Una vez que se comprueba que las instancias de IIS están en ejecución, se puede crear una aplicación "Hello World" y hospedarla en la instancia de IIS. Para ello, cree una sesión de PowerShell con el contenedor.
 
 ```powershell
 PS C:\> Enter-PSSession -ContainerName IIS -RunAsAdministrator
@@ -208,7 +208,7 @@ Ejecute el comando siguiente para reemplazar el sitio de IIS predeterminado por 
 [IIS]: PS C:\> "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.html
 ```
 
-Explore de nuevo hasta la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
+Vaya de nuevo a la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
 
 ![](media/HWWINServer.png)
 
@@ -227,7 +227,7 @@ Antes de poder quitar un contenedor, debe detenerse.
 PS C:\> Stop-Container -Name IIS
 ```
 
-Cuando el contenedor se detenga, lo puede quitar con el comando `Remove-Container`.
+Cuando el contenedor se detenga, lo podrá quitar con el comando `Remove-Container`.
 
 ```powershell
 PS C:\> Remove-Container -Name IIS -Force
@@ -241,13 +241,13 @@ PS C:\> Remove-ContainerImage -Name WindowsServerCoreIIS -Force
 
 ## Contenedor de Hyper-V
 
-Los contenedores de Hyper-V ofrecen una capa de aislamiento adicional sobre los contenedores de Windows Server. Cada contenedor de Hyper-V se crea dentro de una máquina virtual altamente optimizada. Si un contenedor de Windows Server comparte un kernel con el host de contenedor y todos los demás contenedores de Windows Server se ejecutan en ese host, un contenedor de Hyper-V está completamente aislado de los otros contenedores. Los contenedores de Hyper-V se crean y administran de forma idéntica a los contenedores de Windows Server. Para más información sobre los contenedores de Hyper-V, consulte [Administración de contenedores de Hyper-V](../management/hyperv_container.md).
+Los contenedores de Hyper-V ofrecen una capa de aislamiento adicional sobre los contenedores de Windows Server. Cada contenedor de Hyper-V se crea dentro de una máquina virtual altamente optimizada. Si un contenedor de Windows Server comparte un kernel con el host de contenedor y todos los demás contenedores de Windows Server se ejecutan en ese host, un contenedor de Hyper-V está completamente aislado de los otros contenedores. Los contenedores de Hyper-V se crean y administran de forma idéntica a los contenedores de Windows Server. Para obtener más información sobre los contenedores de Hyper-V, consulte [Contenedores de Hyper-V](../management/hyperv_container.md).
 
->Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de contenedor de Hyper-V, necesita un host de contenedor local.
+> Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de contenedor de Hyper-V, necesita un host de contenedor local.
 
 ### Crear contenedor
 
-En el momento de la publicación de TP4, los contenedores de Hyper-V deben utilizar una imagen de sistema operativo Nano Server Core. Para comprobar si se instaló la imagen de sistema operativo de Nano Server, use el comando `Get-ContainerImage`.
+En el momento de la publicación de TP4, los contenedores de Hyper-V deben utilizar una imagen de sistema operativo Nano Server Core. Para comprobar si se ha instalado la imagen de sistema operativo de Nano Server, use el comando `Get-ContainerImage`.
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -272,9 +272,9 @@ Cuando se haya creado el contenedor, **no lo inicie**.
 
 ### Crear una carpeta compartida
 
-Las carpetas compartidas exponen un directorio del host de contenedor en el contenedor. Cuando se cree una carpeta compartida, los archivos ubicados en la carpeta compartida estarán disponibles en el contenedor. Una carpeta compartida se utiliza en este ejemplo para copiar los paquetes de IIS de Nano Server en el contenedor. Estos paquetes se usarán después para instalar IIS. Para más información sobre la carpeta compartida, consulte [Administración de datos de contenedor](../management/manage_data.md).
+Las carpetas compartidas exponen un directorio del host de contenedor en el contenedor. Cuando se cree una carpeta compartida, los archivos ubicados en la carpeta compartida estarán disponibles en el contenedor. En este ejemplo, se utiliza una carpeta compartida para copiar los paquetes de IIS de Nano Server en el contenedor. Estos paquetes se usarán después para instalar IIS. Para obtener más información sobre la carpeta compartida, consulte [Carpetas compartidas de contenedores](../management/manage_data.md).
 
-Cree un directorio denominado `c:\share\en-us` en el host de contenedor.
+Cree un directorio denominado `c:\share\es-es` en el host de contenedor.
 
 ```powershell
 S C:\> New-Item -Type Directory c:\share\en-us
@@ -288,7 +288,7 @@ d-----       11/18/2015   5:27 PM                en-us
 
 Use el comando `Add-ContainerSharedFolder` para crear una nueva carpeta compartida en el nuevo contenedor.
 
->El contenedor debe estar en estado detenido cuando se crea una carpeta compartida.
+> El contenedor debe estar en estado detenido cuando se crea una carpeta compartida.
 
 ```powershell
 PS C:\> Add-ContainerSharedFolder -ContainerName HYPV -SourcePath c:\share -DestinationPath c:\iisinstall
@@ -309,7 +309,7 @@ Cree una sesión remota de PowerShell con el contenedor mediante el comando `Ent
 PS C:\> Enter-PSSession -ContainerName HYPV -RunAsAdministrator
 [HYPV]: PS C:\windows\system32\config\systemprofile\Documents>cd /
 ```
-Cuando se encuentre en la sesión remota, observe que la carpeta compartida `c:\iisinstall\en-us` que se creó está vacía.
+Cuando se encuentre en la sesión remota, observe que la carpeta compartida `c:\iisinstall\es-es` se ha creado, aunque está vacía.
 
 ```powershell
 [HYPV]: PS C:\> ls c:\iisinstall
@@ -327,7 +327,7 @@ Como el contenedor ejecuta una imagen de sistema operativo Nano Server, se neces
 
 Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` en el host de contenedor.
 
-Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` en el host de contenedor.
+Copie `NanoServer\Packages\es-es\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\es-es` en el host de contenedor.
 
 Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este texto en dicho archivo.
 
@@ -444,9 +444,9 @@ PS C:\> Start-Container -Name IISApp
 
 ### Configurar redes
 
-La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual, configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto en el host de contenedor a un puerto en el contenedor.
+La configuración de red predeterminada de los inicios rápidos de contenedores de Windows es que los contenedores estén conectados a un conmutador virtual, configurado con traducción de direcciones de red (NAT). Debido a ello, para conectarse a una aplicación que se ejecute dentro de un contenedor, debe asignarse un puerto del host de contenedor a un puerto del contenedor.
 
-Para este ejercicio, se hospeda un sitio web en IIS, que se ejecuta dentro de un contenedor. Para acceder al sitio web en el puerto 80, asigne el puerto 80 de la dirección IP del host de contenedor al puerto 80 de la dirección IP de los contenedores.
+Para este ejercicio, se hospeda un sitio web en IIS, que se ejecuta dentro de un contenedor. Para acceder al sitio web en el puerto 80, asigne el puerto 80 de la dirección IP del host de contenedor al puerto 80 de la dirección IP del contenedor.
 
 Ejecute lo siguiente para devolver la dirección IP del contenedor.
 
@@ -465,7 +465,7 @@ Ethernet adapter Ethernet:
    Default Gateway . . . . . . . . . : 172.16.0.1
 ```
 
-Para crear la asignación de puertos de NAT, use el comando `Add-NetNatStaticMapping`. Los ejemplos siguientes comprueban si hay una regla de asignación de puertos existente y, si no hay ninguna, la crea. Tenga en cuenta que `-InternalIPAddress` debe coincidir con la dirección IP del contenedor.
+Para crear la asignación de puertos de NAT, use el comando `Add-NetNatStaticMapping`. Los ejemplos siguientes comprueban si hay una regla de asignación de puertos y, si no hay ninguna, la crean. Tenga en cuenta que `-InternalIPAddress` debe coincidir con la dirección IP del contenedor.
 
 ```powershell
 if (!(Get-NetNatStaticMapping | where {$_.ExternalPort -eq 80})) {
@@ -486,7 +486,7 @@ Ahora que se ha creado un contenedor a partir de la imagen de IIS y se han confi
 
 ![](media/iis1.png)
 
-Con las instancias de IIS comprobadas como en ejecución, ahora puede crear una aplicación "Hello World" y alojarla en la instancia de IIS. Para ello, cree una sesión de PowerShell con el contenedor.
+Una vez que se comprueba que las instancias de IIS están en ejecución, se puede crear una aplicación "Hello World" y hospedarla en la instancia de IIS. Para ello, cree una sesión de PowerShell con el contenedor.
 
 ```powershell
 PS C:\> Enter-PSSession -ContainerName IISApp -RunAsAdministrator
@@ -504,7 +504,7 @@ Ejecute el comando siguiente para reemplazar el sitio de IIS predeterminado por 
 [IISApp]: PS C:\> "Hello World From a Hyper-V Container" > C:\inetpub\wwwroot\index.html
 ```
 
-Explore de nuevo hasta la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
+Vaya de nuevo a la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
 
 ![](media/HWWINServer.png)
 
@@ -517,4 +517,4 @@ exit
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

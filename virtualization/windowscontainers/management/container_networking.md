@@ -12,18 +12,18 @@ En este documento encontrará información detallada de los beneficios y la conf
 
 ## Modo de red NAT
 
-**Traducción de direcciones de red**: esta configuración se compone de un conmutador de red interno con un tipo de NAT, y WinNat. En esta configuración, el host de contenedor tiene una dirección IP "externa" con la que se puede establecer comunicación en una red. Todos los contenedores tienen asignadas direcciones "internas" no accesibles desde una red. Para que un contenedor sea accesible en esta configuración, se asigna un puerto externo del host a un puerto interno del contenedor. Estas asignaciones se almacenan en una tabla de asignaciones de puertos NAT. El contenedor es accesible a través de la dirección IP y del puerto externo del host, que reenvía el tráfico a la dirección IP interna y al puerto del contenedor. La ventaja de NAT es que el host del contenedor puede escalar a cientos de contenedores, mientras se usa solo una dirección IP disponible externamente. Además, NAT permite que varios contenedores hospeden aplicaciones que requieran puertos de comunicación idénticos.
+**Traducción de direcciones de red**: esta configuración se compone de un conmutador de red interno con un tipo de NAT y WinNat. En esta configuración, el host de contenedor tiene una dirección IP "externa" con la que se puede establecer comunicación en una red. Todos los contenedores tienen asignadas direcciones "internas" no accesibles desde una red. Para que un contenedor sea accesible en esta configuración, se asigna un puerto externo del host a un puerto interno del contenedor. Estas asignaciones se almacenan en una tabla de asignaciones de puertos NAT. El contenedor es accesible a través de la dirección IP y del puerto externo del host, que reenvía el tráfico a la dirección IP interna y al puerto del contenedor. La ventaja de NAT es que el host del contenedor puede escalar a cientos de contenedores, mientras se usa solo una dirección IP disponible externamente. Además, NAT permite que varios contenedores hospeden aplicaciones que requieran puertos de comunicación idénticos.
 
 ### Configuración del host
 
 Para configurar el host del contenedor para la traducción de direcciones de red, siga estos pasos.
 
-Cree un conmutador virtual con un tipo de "NAT" y configúrelo con una subred interna. Para más información sobre el comando **New-VMSwitch**, consulte la [referencia New-VMSwitch](https://technet.microsoft.com/en-us/library/hh848455.aspx).
+Cree un conmutador virtual con un tipo de "NAT" y configúrelo con una subred interna. Para obtener más información sobre el comando **New-VMSwitch**, consulte el artículo de referencia sobre [New-VMSwitch](https://technet.microsoft.com/en-us/library/hh848455.aspx).
 
 ```powershell
 New-VMSwitch -Name "NAT" -SwitchType NAT -NATSubnetAddress "172.16.0.0/12"
 ```
-Cree el objeto de traducción de direcciones de red. Este objeto es responsable de la traducción de direcciones NAT. Para más información sobre el comando **New-NetNat**, consulte la [referencia New-NetNat](https://technet.microsoft.com/en-us/library/dn283361.aspx).
+Cree el objeto de traducción de direcciones de red. Este objeto es responsable de la traducción de direcciones NAT. Para obtener más información sobre el comando **New-NetNat**, consulte el artículo de referencia sobre [New-NetNat](https://technet.microsoft.com/en-us/library/dn283361.aspx).
 
 ```powershell
 New-NetNat -Name NAT -InternalIPInterfaceAddressPrefix "172.16.0.0/12" 
@@ -53,24 +53,24 @@ Ethernet adapter vEthernet (Virtual Switch-527ED2FB-D56D-4852-AD7B-E83732A032F5-
    Default Gateway . . . . . . . . . : 172.16.0.1
 ```
 
-Para más información sobre cómo iniciar un contenedor de Windows y conectarse a él, consulte [Administración de contenedores](./manage_containers.md).
+Para obtener más información sobre cómo iniciar un contenedor de Windows y conectarse a él, consulte [Administración de contenedores de Windows Server](./manage_containers.md).
 
 ### Asignación de puertos
 
 Para tener acceso a las aplicaciones dentro de un contenedor "habilitado para NAT", las asignaciones de puertos deben crearse entre el contenedor y el host del contenedor. Para crear la asignación, necesita la dirección IP del contenedor, el puerto del contenedor "interno" y el puerto del host "externo".
 
-En este ejemplo se crea una asignación entre el puerto **80** del host y el puerto **80** de un contenedor con una dirección IP de **172.16.0.2**.
+En este ejemplo se crea una asignación entre el puerto **80** del host y el puerto **80** de un contenedor con la dirección IP **172.16.0.2**.
 
 ```powershell
 Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 -InternalIPAddress 172.16.0.2 -InternalPort 80 -ExternalPort 80
 ```
 
-En este ejemplo se crea una asignación entre el puerto **82** del host del contenedor y el puerto **80** de un contenedor con una dirección IP de **172.16.0.3**.
+En este ejemplo se crea una asignación entre el puerto **82** del host del contenedor y el puerto **80** de un contenedor con la dirección IP **172.16.0.3**.
 
 ```powershell
 Add-NetNatStaticMapping -NatName "Nat" -Protocol TCP -ExternalIPAddress 0.0.0.0 -InternalIPAddress 172.16.0.3 -InternalPort 80 -ExternalPort 82
 ```
->Una regla de firewall correspondiente será necesaria para cada puerto externo. Puede crearse con el comando `New-NetFirewallRule`. Para más información, consulte la [referencia New-NetFirewallRule](https://technet.microsoft.com/en-us/library/jj554908.aspx).
+> Una regla de firewall correspondiente será necesaria para cada puerto externo. Puede crearse con el comando `New-NetFirewallRule`. Para obtener más información, consulte el artículo de referencia sobre [New-NetFirewallRule](https://technet.microsoft.com/en-us/library/jj554908.aspx).
 
 Una vez creada la asignación de puertos, se puede obtener acceso a una aplicación de contenedores a través de la dirección IP del host del contenedor (física o virtual) y del puerto externo expuesto. Por ejemplo, el diagrama siguiente representa una configuración de NAT con una solicitud dirigida al puerto externo **82** del host del contenedor. Según la asignación de puertos, esta solicitud devolvería la aplicación hospedada en el contenedor 2.
 
@@ -117,7 +117,7 @@ Para detener el servicio, use el comando de PowerShell siguiente.
 Stop-Service docker
 ```
 
-El archivo de configuración puede encontrarse en 'c:\programdata\docker\runDockerDaemon.cmd'. Edite la siguiente línea reemplazando `Virtual Switch` por el nombre del conmutador virtual que va a usar el servicio Docker.
+El archivo de configuración puede encontrarse en `c:\programdata\docker\runDockerDaemon.cmd`. Edite la siguiente línea reemplazando `Virtual Switch` por el nombre del conmutador virtual que va a usar el servicio Docker.
 
 ```powershell
 docker daemon -D -b “New Switch Name"
@@ -135,18 +135,18 @@ Independientemente de la configuración de red (NAT o transparente), hay varios 
 Administrar un adaptador de red de contenedores
 
 - Add-ContainerNetworkAdapter: agrega un adaptador de red a un contenedor.
-- Set-ContainerNetworkAdapter: modifica un adaptador de red de contenedores.
-- Remove-ContainerNetworkAdapter: elimina un adaptador de red de contenedores.
-- Get-ContainerNetworkAdapter: devuelve datos acerca de un adaptador de red de contenedores.
+- Set-ContainerNetworkAdapter: modifica un adaptador de red del contenedor.
+- Remove-ContainerNetworkAdapter: elimina un adaptador de red del contenedor.
+- Get-ContainerNetworkAdapter: devuelve datos acerca de un adaptador de red del contenedor.
 
 Administre la conexión entre un adaptador de red de contenedores y un conmutador virtual.
 
 - Connect-ContainerNetworkAdapter: conecta un contenedor a un conmutador virtual.
 - Disconect-ContainerNetworkAdapter: desconecta un contenedor de un conmutador virtual.
 
-Para más información sobre cada uno de estos comandos, consulte la [referencia de PowerShell sobre contenedores](https://technet.microsoft.com/en-us/library/mt433069.aspx).
+Para obtener más información sobre cada uno de estos comandos, consulte el artículo de referencia [Containers Cmdlets](https://technet.microsoft.com/en-us/library/mt433069.aspx) (Cmdlets de los contenedores).
 
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO1-->

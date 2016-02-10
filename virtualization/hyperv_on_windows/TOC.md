@@ -30,7 +30,7 @@
 
 ## [Trabajar con puntos de control](user_guide/checkpoints.md)
 
-## [Exportación e importación](user_guide/export_import.md)
+## [Exportar e importar](user_guide/export_import.md)
 
 ## [PowerShell Direct](user_guide/vmsession.md)
 
@@ -38,7 +38,7 @@
 
 ## [Virtualización anidada](user_guide/nesting.md)
 
-## [Solución de problemas](user_guide/troubleshooting.md)
+## [Solucionar problemas](user_guide/troubleshooting.md)
 
 # Desarrollar
 
@@ -46,14 +46,15 @@
 
 ## [Ejemplos de PowerShell](develop/powershell_snippets.md)
 
-## [Servicio de administración](develop/make_mgmt_service.md)
+## [Crear un servicio de integración](develop/make_mgmt_service.md)
 
 ## [Proveedor WMI de Hyper-V (V2)](https://msdn.microsoft.com/library/hh850319.aspx)
 
-## [Arquitectura de Hyper-V](https://msdn.microsoft.com/es-es/library/cc768520(v=bts.10).aspx)
+## [Arquitectura de Hyper-V](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
 # Conectar con la comunidad y el soporte técnico
 
 ## [Foros de Hyper-V](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)
 
 
+<!--HONumber=Feb16_HO1-->
