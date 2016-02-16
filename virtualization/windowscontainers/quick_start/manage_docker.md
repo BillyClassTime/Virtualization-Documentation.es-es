@@ -2,7 +2,7 @@
 
 Los contenedores de Windows se pueden utilizar para implementar rápidamente varias aplicaciones aisladas en un único equipo. En este ejercicio se muestra la creación de contenedores de Windows y la administración con Docker. Cuando lo complete, debería tener un conocimiento básico de cómo se integra Docker con los contenedores de Windows y habrá obtenido experiencia práctica con la tecnología.
 
-En este tutorial se detallarán los contenedores de Windows Server y Hyper-V. Cada tipo de contenedor tiene sus propios requisitos básicos. Con la documentación de contenedores de Windows se incluye un procedimiento para implementar rápidamente un host de contenedor. Se trata de la manera más fácil para empezar a trabajar rápidamente con contenedores de Windows. Si aún no dispone de un host de contenedor, consulte [Inicio rápido de implementación del host de contenedor](./container_setup.md).
+En este tutorial se detallarán los contenedores de Windows Server y Hyper-V. Cada tipo de contenedor tiene sus propios requisitos básicos. Con la documentación de contenedores de Windows se incluye un procedimiento para implementar rápidamente un host de contenedor. Se trata de la manera más fácil para empezar a trabajar rápidamente con contenedores de Windows. Si aún no dispone de un host de contenedor, consulte [Implementar un host de contenedor de Windows en una nueva máquina virtual de Hyper-V](./container_setup.md).
 
 Para cada uno de los ejercicios se requerirán los elementos siguientes.
 
@@ -15,7 +15,7 @@ Para cada uno de los ejercicios se requerirán los elementos siguientes.
 - Un host de contenedor de Windows habilitado con virtualización anidada.
 - Elementos multimedia de Windows Server 2016: [descargar](https://aka.ms/tp4/serveriso).
 
->Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de contenedor de Hyper-V, necesita un host de contenedor local.
+> Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de contenedor de Hyper-V, necesita un host de contenedor local.
 
 ## Contenedor de Windows Server
 
@@ -35,7 +35,7 @@ nanoserver          10.0.10586.0        8572198a60f1        2 weeks ago         
 nanoserver          latest              8572198a60f1        2 weeks ago         0 B
 ```
 
-En este ejemplo, cree un contenedor con la imagen de Windows Server Core. Esto se realiza con el comando `docker run`. Para más información sobre `docker run`, consulte la [referencia sobre Docker Run en docker.com](https://docs.docker.com/engine/reference/run/).
+En este ejemplo, cree un contenedor con la imagen de Windows Server Core. Esto se realiza con el `comando docker run`. Para más información sobre `docker run`, consulte [Docker Run reference on docker.com](https://docs.docker.com/engine/reference/run/) (referencia sobre Docker Run en docker.com).
 
 En este ejemplo se crea un contenedor denominado `iisbase` y se inicia una sesión interactiva con el contenedor.
 
@@ -82,7 +82,7 @@ nanoserver             latest              8572198a60f1        2 weeks ago      
 
 ### Configurar red
 
-Antes de crear un contenedor con Docker, debe crear una regla para el Firewall de Windows que permitirá conectividad de red con el contenedor. Ejecute lo siguiente para crear una regla para el puerto 80.
+Antes de crear un contenedor con Docker, debe crear una regla para el Firewall de Windows que permitirá conectividad de red con el contenedor. Ejecute el siguiente script de PowerShell para crear una regla para el puerto 80. Nota: Este se debe ejecutar desde una sesión de PowerShell.
 
 ```powershell
 if (!(Get-NetFirewallRule | where {$_.Name -eq "TCP80"})) {
@@ -96,7 +96,7 @@ También puede tomar nota de la dirección IP del host de contenedor. Se usará 
 
 Ahora tiene una imagen de contenedor que contiene IIS, que se puede utilizar para implementar entornos operativos preparados para IIS.
 
-Para crear un contenedor a partir de la nueva imagen, use el comando `docker run` especificando esta vez el nombre de la imagen de IIS. Observe que en este ejemplo se especifica un parámetro `-p 80:80`. Como el contenedor está conectado a un conmutador virtual que facilita la IP direcciones mediante traducción de direcciones de red, debe asignarse un puerto desde el host de contenedor a un puerto en las direcciones IP de NAT de los contenedores. Para más información sobre el parámetro `-p`, consulte la [referencia sobre Docker Run en docker.com](https://docs.docker.com/engine/reference/run/)
+Para crear un contenedor a partir de la nueva imagen, use el comando `docker run` especificando esta vez el nombre de la imagen de IIS. Observe que en este ejemplo se especifica un parámetro `-p 80:80`. Como el contenedor está conectado a un conmutador virtual que facilita la IP direcciones mediante traducción de direcciones de red, debe asignarse un puerto desde el host de contenedor a un puerto en las direcciones IP de NAT de los contenedores. Para más información sobre el parámetro `-p`, consulte [Docker Run reference on docker.com](https://docs.docker.com/engine/reference/run/) (referencia sobre Docker Run en docker.com)
 
 ```powershell
 C:\> docker run --name iisdemo -it -p 80:80 windowsservercoreiis cmd
@@ -120,7 +120,7 @@ Ejecute el comando siguiente para reemplazar el sitio de IIS predeterminado por 
 C:\> echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.html
 ```
 
-Explore de nuevo hasta la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
+Vaya de nuevo a la dirección IP del host de contenedor, ahora debería ver la aplicación "Hello World". Nota: Es posible que tenga que cerrar las conexiones del explorador existentes o borrar la memoria caché del explorador para ver la aplicación actualizada.
 
 ![](media/HWWINServer.png)
 
@@ -159,7 +159,7 @@ Abra el archivo dockerfile en el Bloc de notas.
 C:\> notepad c:\build\dockerfile
 ```
 
-Copie el texto siguiente en el archivo dockerfile y guárdelo. Estos comandos indican a Docker que debe crear una nueva imagen con `windosservercore` como base, e incluir las modificaciones que se especifican con `RUN`. Para más información sobre archivos Dockerfile, consulte la [referencia sobre Dockerfile en docker.com](http://docs.docker.com/engine/reference/builder/).
+Copie el texto siguiente en el archivo dockerfile y guárdelo. Estos comandos indican a Docker que debe crear una nueva imagen con `windowsservercore` como base, e incluir las modificaciones que se especifican con `RUN`. Para más información sobre archivos Dockerfile, consulte [Dockerfile reference at docker.com](http://docs.docker.com/engine/reference/builder/) (referencia sobre Dockerfile en docker.com).
 
 ```powershell
 FROM windowsservercore
@@ -167,7 +167,7 @@ RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
-Este comando iniciará el proceso de compilación automatizada de imágenes. El parámetro `-t` indica al proceso que asigna un nombre a la nueva imagen `iis`.
+Este comando iniciará el proceso de compilación automatizada de imágenes. El parámetro `-t` indica al proceso que asigne un nombre a la nueva imagen `iis`.
 
 ```powershell
 C:\> docker build -t iis c:\Build
@@ -217,9 +217,9 @@ C:\> docker rmi iis
 
 ## Contenedor de Hyper-V
 
-Los contenedores de Hyper-V ofrecen una capa de aislamiento adicional sobre los contenedores de Windows Server. Cada contenedor de Hyper-V se crea dentro de una máquina virtual altamente optimizada. Mientras que un contenedor de Windows Server comparte el kernel con el host de contenedor, un contenedor de Hyper-V está completamente aislado. Los contenedores de Hyper-V se crean y administran de forma idéntica a los contenedores de Windows Server. Para más información sobre los contenedores de Hyper-V, consulte [Administración de contenedores de Hyper-V](../management/hyperv_container.md).
+Los contenedores de Hyper-V ofrecen una capa de aislamiento adicional sobre los contenedores de Windows Server. Cada contenedor de Hyper-V se crea dentro de una máquina virtual altamente optimizada. Mientras que un contenedor de Windows Server comparte el kernel con el host de contenedor, un contenedor de Hyper-V está completamente aislado. Los contenedores de Hyper-V se crean y administran de forma idéntica a los contenedores de Windows Server. Para obtener más información sobre los contenedores de Hyper-V, consulte [Contenedores de Hyper-V](../management/hyperv_container.md).
 
->Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de Hyper-V, necesita un host de contenedor local.
+> Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de Hyper-V, necesita un host de contenedor local.
 
 ### Crear contenedor
 
@@ -235,7 +235,7 @@ C:\> powershell New-Item -Type Directory c:\share\en-us
 
 Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` en el host de contenedor.
 
-Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` en el host de contenedor.
+Copie `NanoServer\Packages\es-es\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\es-es` en el host de contenedor.
 
 Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este texto en dicho archivo.
 
@@ -274,7 +274,7 @@ C:\> docker run --name iisnanobase -it -v c:\share:c:\iisinstall --isolation=hyp
 
 ### Crear imagen de IIS
 
-Desde la misma sesión de shell del contenedor, puede instalar IIS con `dism`. Ejecute el comando siguiente para instalar IIS en el contenedor.
+Desde dentro de la sesión de shell del contenedor, IIS puede instalarse con `dism`. Ejecute el comando siguiente para instalar IIS en el contenedor.
 
 ```powershell
 C:\> dism /online /apply-unattend:c:\iisinstall\unattend.xml
@@ -348,4 +348,4 @@ C:\> exit
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO2-->

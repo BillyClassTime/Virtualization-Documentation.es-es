@@ -1,14 +1,14 @@
 # Inicio rápido de Azure
 
-Antes de crear y administrar contenedores de Windows Server en Azure, deberá implementar una imagen de Windows Server 2016 Technical Preview que se haya configurado previamente con la característica de contenedores de Windows Server. Esta guía le guiará a través de este proceso.
+Antes de crear y administrar contenedores de Windows Server en Azure, deberá implementar una imagen de Windows Server 2016 Technical Preview que se haya configurado previamente con la característica de contenedores de Windows Server. Esta guía le acompañará en este proceso.
 
 > Microsoft Azure no admite contenedores de Hyper-V. Para completar los ejercicios de contenedor de Hyper-V, necesita un host de contenedor local.
 
 ## Empezar a usar el Portal de Azure
 
-Si tiene una cuenta de Azure, vaya directamente a [Crear una máquina virtual de host de contenedor](#CreateacontainerhostVM).
+Si tiene una cuenta de Azure, vaya a [Crear una máquina virtual de host de contenedor](#CreateacontainerhostVM).
 
-1. Vaya a [azure.com](https://azure.com) y siga los pasos para obtener una [prueba de evaluación gratuita](https://azure.microsoft.com/en-us/pricing/free-trial/).
+1. Vaya a [azure.com](https://azure.com) y siga los pasos para obtener una [evaluación gratuita de Azure](https://azure.microsoft.com/en-us/pricing/free-trial/).
 2. Inicie sesión con su cuenta de Microsoft.
 3. Cuando su cuenta esté lista, inicie sesión en el [Portal de administración de Azure](https://portal.azure.com).
 
@@ -38,7 +38,7 @@ Cuando se complete la implementación de la máquina virtual, seleccione el bot�
 
 ![](media/newazure6.png)
 
-Inicie sesión en la máquina virtual con el nombre de usuario y la contraseña especificados durante el Asistente para la creación de máquinas virtuales. Con la sesión iniciada, se encontrará con un símbolo del sistema de Windows.
+Inicie sesión en la máquina virtual con el nombre de usuario y la contraseña especificados durante el Asistente para creación de máquina virtual. Con la sesión iniciada, se encontrará con un símbolo del sistema de Windows.
 
 ![](media/newazure7.png)
 
@@ -49,10 +49,11 @@ Inicie sesión en la máquina virtual con el nombre de usuario y la contraseña 
 
 ## Pasos siguientes: empezar a usar contenedores
 
-Ahora que tiene un sistema de Windows Server 2016 ejecutando la característica de contenedor de Windows Server, continúe con las guías siguientes para empezar a trabajar con contenedores de Windows Server e imágenes de contenedores de Windows Server.
+Ahora que tiene un sistema con Windows Server 2016 que ejecuta la característica de contenedor de Windows Server, continúe con las guías siguientes para empezar a trabajar con contenedores de Windows Server e imágenes de contenedor de Windows Server.
 
 [Inicio rápido: contenedores de Windows y Docker](./manage_docker.md)  
 [Inicio rápido: contenedores de Windows y PowerShell](./manage_powershell.md)
 
 
 
+<!--HONumber=Feb16_HO1-->

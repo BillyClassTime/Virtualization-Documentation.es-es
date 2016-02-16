@@ -21,14 +21,14 @@ NanoServer        CN=Microsoft 10.0.10584.1000 True
 WindowsServerCore CN=Microsoft 10.0.10584.1000 True
 ```
 
-Use el comando `New-Container` para crear un nuevo contenedor.
+Use el comando `New-Container` para crear un nuevo contenedor. También puede asignarse el nombre NetBIOS al contenedor con el parámetro `-ContainerComputerName`.
 
 ```powershell
-PS C:\> New-Container -Name TST -ContainerImageName WindowsServerCore
+PS C:\> New-Container -ContainerImageName WindowsServerCore -Name demo -ContainerComputerName demo
 
 Name State Uptime   ParentImageName
 ---- ----- ------   ---------------
-TST  Off   00:00:00 WindowsServerCore
+demo  Off   00:00:00 WindowsServerCore
 ```
 
 Cuando el contenedor se haya creado, agregue un adaptador de red al contenedor.
@@ -48,7 +48,7 @@ DHCP External   Microsoft Hyper-V Network Adapter
 NAT  NAT
 ```
 
-Conecte el adaptador de red al conmutador virtual con `Connect-ContainerNetworkAdapter`. Nota: Esto también se puede realizar cuando el contenedor se crea mediante el parámetro –SwitchName.
+Conecte el adaptador de red al conmutador virtual con `Connect-ContainerNetworkAdapter`. **NOTA**: Esto también se puede realizar cuando el contenedor se crea mediante el parámetro –SwitchName.
 
 ```powershell
 PS C:\> Connect-ContainerNetworkAdapter -ContainerName TST -SwitchName NAT
@@ -162,6 +162,7 @@ Use el comando `docker stop` para detener un contenedor con Docker.
 
 ```powershell
 PS C:\> docker stop tender_panini
+
 tender_panini
 ```
 

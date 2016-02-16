@@ -16,7 +16,7 @@ El rol de Hyper-V no se puede instalar en:
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
-> 10 de Windows Home edition puede actualizarse a Windows 10 Professional. Para hacerlo, abra **Configuración** > **Actualización y seguridad** > **Activación**. Aquí puede visitar la tienda y comprar una actualización.
+>10 de Windows Home edition puede actualizarse a Windows 10 Professional. Para hacerlo, abra **Configuración** > **Actualización y seguridad** > **Activación**. Aquí puede visitar la tienda y comprar una actualización.
 
 ## Requisitos de hardware
 
@@ -37,7 +37,7 @@ Si todos los requisitos que se enumeran de Hyper-V tienen un valor de **Sí**, e
 
 ![](media/SystemInfo_upd.png)
 
-Si ejecuta **systeminfo.exe** en un host de Hyper-V existente, la sección de requisitos de Hyper-V se indica:
+Si ejecuta **systeminfo.exe** en un host de Hyper-V existente, se indicará lo siguiente en la sección de requisitos de Hyper-V:
 
 ```
 Hyper-V Requirements: A hypervisor has been detected. Features required for Hyper-V are not be displayed.
@@ -45,8 +45,9 @@ Hyper-V Requirements: A hypervisor has been detected. Features required for Hype
 
 ## Siguiente paso: instalar Hyper-V
 
-[Siguiente paso: instalar Hyper-V](walkthrough_install.md)
+[Instalar Hyper-V](walkthrough_install.md)
 
 
 
 
+<!--HONumber=Feb16_HO2-->

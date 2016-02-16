@@ -34,14 +34,14 @@ Utilice el comando siguiente para descargar el script de instalación. El script
 PS C:\> wget -uri https://aka.ms/tp4/Install-ContainerHost -OutFile C:\Install-ContainerHost.ps1
 ```
 
-Cuando finalice la descarga, ejecute el script.
+ Cuando finalice la descarga, ejecute el script.
 ``` PowerShell
-PS C:\> C:\Install-ContainerHost.ps1 -HyperV
+PS C:\> powershell.exe -NoProfile C:\Install-ContainerHost.ps1 -HyperV
 ```
 
 El script comenzará entonces a descargar y configurar los componentes del contenedor de Windows. Este proceso puede tardar bastante tiempo debido a la descarga de gran tamaño. Es posible que la máquina se reinicie durante el proceso. Cuando termine, la máquina estará configurada y lista para que cree y administre contenedores de Windows e imágenes de contenedores de Windows con PowerShell y Docker.
 
-Con estos elementos completados, el sistema debería estar preparado para los contenedores de Windows.
+ Con estos elementos completados, el sistema debería estar preparado para los contenedores de Windows.
 
 ## Pasos siguientes: empezar a usar contenedores
 
@@ -54,4 +54,4 @@ Ahora que tiene un sistema de Windows Server 2016 ejecutando la característica 
 
 
 
-<!--HONumber=Jan16_HO1-->
+<!--HONumber=Feb16_HO2-->
