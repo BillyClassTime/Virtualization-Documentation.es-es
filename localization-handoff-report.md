@@ -6,15 +6,30 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d1a0ad054cfe26986cb2dfb13a0cc392e7fd7e63/virtualization/windowscontainers/deployment/media/nssm1.png) | OutofSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
- [virtualization\windowscontainers\reference\ps_docker_comparison.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d1a0ad054cfe26986cb2dfb13a0cc392e7fd7e63/virtualization/windowscontainers/reference/ps_docker_comparison.md) | OutofSyncHandedBackSuccess | [Details](#5c8977137b82b08bbd8a308dac97df307d329695288)
+ [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f8434fe5c4f0ed3f3a746d3cadbc07b27957274f/virtualization/hyperv_on_windows/develop/make_mgmt_service.md) | OutofSyncHandedBackSuccess | [Details](#95c2d9c37551a871d127e11921ab6831a52d36de85)
+ [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f8434fe5c4f0ed3f3a746d3cadbc07b27957274f/virtualization/windowscontainers/deployment/media/nssm1.png) | OutofSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
 
 ## Item Details
-##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d1a0ad054cfe26986cb2dfb13a0cc392e7fd7e63/virtualization/windowscontainers/deployment/media/nssm1.png)
+##### <a name='95c2d9c37551a871d127e11921ab6831a52d36de85'></a> Source: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f8434fe5c4f0ed3f3a746d3cadbc07b27957274f/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/edfa401f1e8f1f079177d08a3facb743e004080f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handoff Datetime: 2016-03-01 00:10:30
+* Handoff File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/5c4b9eced4b98ebdbb7bd557c82310a42125d1d5/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.es-es.xlf)
+* Handoff Datetime: 2016-03-01 01:00:44
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\develop\make_mgmt_service.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/965f2c1f84880ad498652b4951d98594a7ebe2d0/virtualization/hyperv_on_windows/develop/make_mgmt_service.md)
+* Current Handback File: [make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/526188c8c80c1c143e75df229c71d33526d6dd5f/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/make_mgmt_service.f08a72226cda804bf52172777630838cf58daa2b.es-es.xlf)
+* Current Handback Datetime: 2016-02-10 22:41:49
+* [Back to Top](#report-top)
+
+##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f8434fe5c4f0ed3f3a746d3cadbc07b27957274f/virtualization/windowscontainers/deployment/media/nssm1.png)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/5c4b9eced4b98ebdbb7bd557c82310a42125d1d5/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
+* Handoff Datetime: 2016-03-01 01:00:44
 * Handoff Reason: IsDependency
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
@@ -24,21 +39,6 @@
 * Current Handback File: [312f08a0f7c0c08c7a7f0c005b76bc4ee38d6bc4.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/312f08a0f7c0c08c7a7f0c005b76bc4ee38d6bc4.png)
 * Current Handback Datetime: 2016-01-04 21:56:18
 * Dependency From: virtualization\windowscontainers\deployment\docker_windows.md
-* [Back to Top](#report-top)
-
-##### <a name='5c8977137b82b08bbd8a308dac97df307d329695288'></a> Source: [virtualization\windowscontainers\reference\ps_docker_comparison.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d1a0ad054cfe26986cb2dfb13a0cc392e7fd7e63/virtualization/windowscontainers/reference/ps_docker_comparison.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [ps_docker_comparison.ebee670390084537f2252c760f11eefb8de5efa5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/edfa401f1e8f1f079177d08a3facb743e004080f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/ps_docker_comparison.ebee670390084537f2252c760f11eefb8de5efa5.es-es.xlf)
-* Handoff Datetime: 2016-03-01 00:10:30
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\reference\ps_docker_comparison.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/windowscontainers/reference/ps_docker_comparison.md)
-* Current Handback File: [ps_docker_comparison.ebee670390084537f2252c760f11eefb8de5efa5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/ps_docker_comparison.ebee670390084537f2252c760f11eefb8de5efa5.es-es.xlf)
-* Current Handback Datetime: 2016-01-04 21:56:18
 * [Back to Top](#report-top)
 
 
