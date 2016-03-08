@@ -10,7 +10,7 @@
 
 ## [Linux y FreeBSD en Hyper-V](https://technet.microsoft.com/library/dn531030.aspx)
 
-# Hyper-V en Inicio rápido de Windows
+# Inicio rápido de Hyper-V en Windows
 
 ## [Requisitos del sistema](quick_start/walkthrough_compatibility.md)
 
@@ -56,5 +56,7 @@
 
 ## [Arquitectura de Hyper-V](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
+## [TLFS del hipervisor](develop/tlfs.md)
 
-<!--HONumber=Feb16_HO2-->
+
+<!--HONumber=Feb16_HO3-->

@@ -1,3 +1,7 @@
+
+
+
+
 # Compatibilidad de las aplicaciones en los contenedores de Windows
 
 Se trata de una vista previa. Aunque finalmente la aplicación que se ejecuta en Windows también debería ejecutarse en un contenedor, es un buen lugar para ver el estado de compatibilidad de la aplicación actual.
@@ -73,3 +77,4 @@ Se han intentado ejecutar las siguientes aplicaciones en un contenedor de Hyper-
 
 
 
+<!--HONumber=Feb16_HO3-->

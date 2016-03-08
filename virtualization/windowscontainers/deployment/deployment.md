@@ -1,14 +1,18 @@
+
+
+
+
 # Implementación de host de contenedor - Windows Server
 
 **Esto es contenido preliminar y está sujeto a cambios.**
 
-La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). Los pasos descritos en este documento se usan para implementar un host de contenedor de Windows en Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual. Para instalar un host de contenedor de Windows en Nano Server, consulte [Container Host Deployment - Nano Server](./deployment_nano.md) (Implementación de host de contenedor - Nano Server).
+La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). Los pasos que se describen en este documento se usan para implementar un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual. Para instalar un host de contenedor de Windows en Nano Server, consulte [Implementación de host de contenedor - Nano Server](./deployment_nano.md).
 
 Para obtener detalles sobre los requisitos del sistema, consulte [Requisitos del sistema host de contenedor de Windows](./system_requirements.md).
 
-También hay scripts de PowerShell disponibles para automatizar la implementación de un host de contenedor de Windows.
-- [Implementar un host de contenedor en una nueva máquina virtual de Hyper-V](../quick_start/container_setup.md).
-- [Implementar un host de contenedor en un sistema existente](../quick_start/inplace_setup.md).
+Los scripts de PowerShell también están disponibles para automatizar la implementación de un host de contenedor de Windows.
+- [Implementación de un host de contenedor en una nueva máquina virtual de Hyper-V](../quick_start/container_setup.md).
+- [Implementación de un host de contenedor en un sistema existente](../quick_start/inplace_setup.md).
 
 # Host de Windows Server
 
@@ -37,11 +41,11 @@ Los pasos que se indican en esta tabla se pueden utilizar para implementar un ho
 </tr>
 <tr>
 <td>[Instalación de Docker](#docker)</td>
-<td>Opcional, pero es necesario para crear y administrar contenedores de Windows con Docker.</td>
+<td>Este paso es opcional, pero es necesario para crear y administrar contenedores de Windows con Docker.</td>
 </tr>
 </table>
 
-Estos pasos deben realizarse si van a usarse contenedores de Hyper-V. Tenga en cuenta que los pasos marcados con y * son necesarios solo si el host de contenedor es una máquina virtual de Hyper-V.
+Estos pasos deben realizarse si se van a usar contenedores de Hyper-V. Tenga en cuenta que los pasos marcados con * son necesarios si el host del contenedor es una máquina virtual de Hyper-V.
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
 <tr valign="top">
@@ -98,7 +102,7 @@ WIN-LJGU7HD7TEP C:\ProgramData\Microsoft\Windows\Hyper-V\Container Image Store
 
 ### <a name=vswitch></a>Creación de un conmutador virtual
 
-Cada uno de los contenedores debe estar conectado a un conmutador virtual para comunicarse a través de una red. Un conmutador virtual se crea con el comando `New-VMSwitch`. Los contenedores admiten un conmutador virtual con el tipo `External` o `NAT`. Para obtener más información sobre redes de contenedor de Windows, consulte [Red de contenedores](../management/container_networking.md).
+Cada uno de los contenedores debe estar conectado a un conmutador virtual para comunicarse a través de una red. Un conmutador virtual se crea con el comando `New-VMSwitch`. Los contenedores admiten un conmutador virtual con el tipo `External` o `NAT`. Para obtener más información sobre las redes de contenedor de Windows, consulte [Red de contenedores](../management/container_networking.md).
 
 Este ejemplo crea un conmutador virtual con el nombre "Virtual Switch", un tipo NAT y una subred de NAT 172.16.0.0/12.
 
@@ -137,7 +141,7 @@ Las imágenes de sistema operativo del contenedor se pueden encontrar e instalar
 PS C:\> Install-PackageProvider ContainerProvider -Force
 ```
 
-Use `Find-ContainerImage` para obtener una lista de imágenes a partir del administrador de paquetes de PowerShell OneGet:
+Use `Find-ContainerImage` para obtener una lista de imágenes del administrador de paquetes de PowerShell OneGet:
 ```powershell
 PS C:\> Find-ContainerImage
 
@@ -162,9 +166,9 @@ PS C:\> Install-ContainerImage -Name WindowsServerCore -Version 10.0.10586.0
 Downloaded in 0 hours, 2 minutes, 28 seconds.
 ```
 
-**Problema:** los cmdlet Save-ContainerImage e Install-ContainerImage no funcionan con una imagen de contenedor WindowsServerCore en una sesión remota de PowerShell.<br /> **Solución alternativa:** inicie sesión en la máquina con Escritorio remoto y use directamente el cmdlet Save-ContainerImage.
+**Problema:** los cmdlets Save-ContainerImage e Install-ContainerImage no funcionan con una imagen de contenedor WindowsServerCore en una sesión remota de PowerShell.<br /> **Solución alternativa:** inicie sesión en el equipo con Escritorio remoto y use directamente el cmdlet Save-ContainerImage.
 
-Compruebe que las imágenes se han instalado con el comando `Get-ContainerImage`.
+Compruebe que las imágenes se instalaron con el comando `Get-ContainerImage`.
 
 ```powershell
 PS C:\> Get-ContainerImage
@@ -186,13 +190,13 @@ El demonio de Docker y una interfaz de línea de comandos no se incluyen con Win
 
 ### <a name=hypv></a>Habilitación del rol de Hyper-V
 
-Si se implementarán los contenedores de Hyper-V, el rol de Hyper-V deberá estar habilitado en el host del contenedor. El rol de Hyper-V puede instalarse en Windows Server 2016 o Windows Server 2016 Core con el comando `Install-WindowsFeature`. Si el propio host de contenedor es una máquina virtual de Hyper-V, primero debe habilitarse la virtualización anidada. Para ello, consulte [Configuración de la virtualización anidada](#nest).
+Si se implementarán los contenedores de Hyper-V, el rol de Hyper-V deberá estar habilitado en el host del contenedor. El rol de Hyper-V puede instalarse en Windows Server 2016 o Windows Server 2016 Core con el comando `Install-WindowsFeature`. Si el propio host de contenedor es una máquina virtual de Hyper-V, debe habilitarse primero la virtualización anidada. Para hacerlo, consulte [Configuración de la virtualización anidada](#nest)
 
 ```powershell
 PS C:\> Install-WindowsFeature hyper-v
 ```
 
-### <a name=nest></a>Configuración de la virtualización anidada
+### <a name=nest></a>Virtualización anidada
 
 Si el propio host de contenedor se ejecutará en una máquina virtual de Hyper-V y también hospedará contenedores de Hyper-V, la virtualización anidada debe habilitarse. Esto se puede completar con el siguiente comando de PowerShell.
 
@@ -209,7 +213,7 @@ Si el propio host de contenedor se ejecutará en una máquina virtual de Hyper-V
 **Nota**: Las máquinas virtuales deben estar desconectadas cuando se ejecute este comando.
 
 ```poweshell
-PS C:\> Set-VMProcessor –VMName <VM Name> -Count 2
+PS C:\> Set-VMProcessor -VMName <VM Name> -Count 2
 ```
 
 ### <a name=dyn></a>Deshabilitación de la memoria dinámica
@@ -222,7 +226,7 @@ Si el host de contenedor es una máquina virtual de Hyper-V, la memoria dinámic
 PS C:\> Set-VMMemory <VM Name> -DynamicMemoryEnabled $false
 ```
 
-### <a name=mac></a>Configuración de la suplantación de direcciones MAC
+### <a name=mac></a>Suplantación de direcciones MAC
 
 Finalmente, si el host de contenedor se ejecuta en una máquina virtual de Hyper-V, la suplantación de direcciones MAC se debe habilitar. Esto permite que cada contenedor reciba una dirección IP. Para habilitar la suplantación de direcciones MAC, ejecute el siguiente comando en el host de Hyper-V. La propiedad VMName será el nombre del host de contenedor.
 
@@ -234,4 +238,4 @@ PS C:\> Get-VMNetworkAdapter -VMName <VM Name> | Set-VMNetworkAdapter -MacAddres
 
 
 
-<!--HONumber=Feb16_HO1-->
+<!--HONumber=Feb16_HO4-->

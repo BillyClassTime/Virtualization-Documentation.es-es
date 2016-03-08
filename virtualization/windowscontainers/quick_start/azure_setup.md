@@ -1,3 +1,7 @@
+
+
+
+
 # Inicio rápido de Azure
 
 Antes de crear y administrar contenedores de Windows Server en Azure, deberá implementar una imagen de Windows Server 2016 Technical Preview que se haya configurado previamente con la característica de contenedores de Windows Server. Esta guía le acompañará en este proceso.
@@ -6,7 +10,7 @@ Antes de crear y administrar contenedores de Windows Server en Azure, deberá im
 
 ## Empezar a usar el Portal de Azure
 
-Si tiene una cuenta de Azure, vaya a [Crear una máquina virtual de host de contenedor](#CreateacontainerhostVM).
+Si tiene una cuenta de Azure, vaya directamente a [Crear una máquina virtual de host de contenedor](#CreateacontainerhostVM).
 
 1. Vaya a [azure.com](https://azure.com) y siga los pasos para obtener una [evaluación gratuita de Azure](https://azure.microsoft.com/en-us/pricing/free-trial/).
 2. Inicie sesión con su cuenta de Microsoft.
@@ -56,4 +60,4 @@ Ahora que tiene un sistema con Windows Server 2016 que ejecuta la característic
 
 
 
-<!--HONumber=Feb16_HO1-->
+<!--HONumber=Feb16_HO3-->

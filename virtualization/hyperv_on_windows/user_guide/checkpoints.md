@@ -11,7 +11,7 @@ Hyper-V de Windows 10 incluye dos tipos de puntos de control:
 Los puntos de control de producción se seleccionan de forma predeterminada, pero puede cambiarlo con el Administrador de Hyper-V o PowerShell.
 
 > **Nota:** El módulo de PowerShell de Hyper-V tiene varios alias para que el punto de control y la instantánea se puedan usar indistintamente.  
->   En este documento se utiliza el punto de control, pero tenga en cuenta que puede ver un comando similar que use el término snapshot.
+>  En este documento se utiliza el punto de control, pero tenga en cuenta que puede ver un comando similar que use el término snapshot.
 
 ## Cambiar el tipo de punto de control
 
@@ -60,7 +60,7 @@ Para crear un punto de control:
 Cree un punto de control con el comando **CheckPoint-VM**.
 
 ```powershell
-Checkpoint-VM –Name <VMName>
+Checkpoint-VM -Name <VMName>
 ```
 
 Cuando se complete el proceso del punto de control, vea una lista de los puntos de control de una máquina virtual, use el comando **Get-VMCheckpoint**.
@@ -78,11 +78,11 @@ Si quiere revertir la máquina virtual a un momento concreto anterior, puede apl
 1.  En **Administrador de Hyper-V**, en **Máquinas virtuales**, seleccione la máquina virtual.
 2.  En la sección Puntos de control, haga clic con el botón derecho en el punto de control que quiere usar y haga clic en **Aplicar**.
 3.  Aparece un cuadro de diálogo con las siguientes opciones:
-    * **Crear punto de control y aplicar**: crea un nuevo punto de control de la máquina virtual antes de aplicar el punto de control anterior.
-    * **Aplicar**: se aplica solo el punto de control que eligió. No se puede deshacer esta acción.
-    * **Cancelar**: cierra el cuadro de diálogo sin hacer nada.
+  * **Crear punto de control y aplicar**: crea un nuevo punto de control de la máquina virtual antes de aplicar el punto de control anterior.
+  * **Aplicar**: se aplica solo el punto de control que eligió. No se puede deshacer esta acción.
+  * **Cancelar**: cierra el cuadro de diálogo sin hacer nada.
 
-    Seleccione cualquier opción Aplicar para crear el punto de control.
+  Seleccione cualquier opción Aplicar para crear el punto de control.
 
 **Uso de PowerShell**
 
@@ -104,7 +104,7 @@ Muchos puntos de comprobación se crean en un momento concreto. Darles un nombre
 De forma predeterminada, el nombre de un punto de control es el nombre de la máquina virtual combinado con la fecha y hora en que se capturó el punto de control. Este es el formato estándar:
 
 ```
-virtual_machine_name (MM/DD/YYY –hh:mm:ss AM\PM)
+virtual_machine_name (MM/DD/YYY -hh:mm:ss AM\PM)
 ```
 
 Los nombres están limitados a 100 caracteres o menos y el nombre no puede estar en blanco.
@@ -119,7 +119,7 @@ Los nombres están limitados a 100 caracteres o menos y el nombre no puede estar
 **Uso de PowerShell**
 
 ``` powershell
-Rename-VMCheckpoint –VMName <virtual machine name> –Name <checkpoint name> --NewName <new checkpoint name>
+Rename-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> --NewName <new checkpoint name>
 ```
 
 ## Eliminación de puntos de control
@@ -140,7 +140,7 @@ Para eliminar correctamente un punto de control:
 
 **Uso de PowerShell**
 ```powershell
-Remove-VMCheckpoint –VMName <virtual machine name> –Name <checkpoint name>
+Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 ```
 
 ## Exportación de puntos de control
@@ -149,7 +149,7 @@ La exportación empaqueta el punto de control como una máquina virtual para que
 
 **Uso de PowerShell**
 ``` powershell
-Export-VMCheckpoint –VMName <virtual machine name>  –Name <checkpoint name> -Path <path for export>
+Export-VMCheckpoint -VMName <virtual machine name>  -Name <checkpoint name> -Path <path for export>
 ```
 
 ## Habilitar o deshabilitar puntos de control
@@ -157,7 +157,7 @@ Export-VMCheckpoint –VMName <virtual machine name>  –Name <checkpoint name> 
 1.  En **Administrador de Hyper-V**, haga clic con el botón derecho en el nombre de la máquina virtual y haga clic en **Configuración**.
 2.  En la sección **Administración**, seleccione **Puntos de control**.
 3.  Para permitir que se capturen puntos de control de esta máquina virtual, asegúrese de que la opción Habilitar puntos de control está seleccionada (se trata del comportamiento predeterminado).  
-    Para deshabilitar los puntos de control, anule la selección de la casilla **Habilitar puntos de control**.
+Para deshabilitar los puntos de control, anule la selección de la casilla **Habilitar puntos de control**.
 4.  Haga clic en **Aplicar** para aplicar los cambios. Si ya terminó, haga clic en **Aceptar** para cerrar el cuadro de diálogo.
 
 ## Configurar la ubicación del punto de control
@@ -230,3 +230,4 @@ Cuando se haya aplicado el punto de control de producción, observe que la máqu
 
 
 
+<!--HONumber=Feb16_HO4-->
