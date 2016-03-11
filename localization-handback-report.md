@@ -1,27 +1,11 @@
 # <a name='report-top'></a> Localization Handback Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ed376b24c1960faea6625fea79c2f9e11574d28/virtualization/windowscontainers/deployment/media/nssm1.png) | InSyncHandedBackSuccess | [Details](#22320b32fb8af15c2e7125ec4f50c2b19643b9bf215)
 
 ## Item Details
-##### <a name='22320b32fb8af15c2e7125ec4f50c2b19643b9bf215'></a> Source: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ed376b24c1960faea6625fea79c2f9e11574d28/virtualization/windowscontainers/deployment/media/nssm1.png)
-* Status: InSyncHandedBackSuccess
-* Target File: [virtualization\windowscontainers\deployment\media\nssm1.png](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/16b6ae6c8b7470bab636d8134d66c82b8e862820/virtualization/windowscontainers/deployment/media/nssm1.png)
-* Handoff File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1bc6bd30bf601423debeaa51290336ea99e4c927/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handoff Datetime: 2016-03-07 06:13:24
-* Handoff Reason: IsDependency
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: [22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/7971dc04e475523ed07a5b913518d15b680b8453/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/22320b32fb8af15c2e7125ec4f50c2b19643b9bf.png)
-* Handback Datetime: 2016-03-11 00:07:29
-* Dependency From: virtualization\windowscontainers\deployment\docker_windows.md
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
