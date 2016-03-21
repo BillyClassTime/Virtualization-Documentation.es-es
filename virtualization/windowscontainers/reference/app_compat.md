@@ -1,6 +1,6 @@
-
-
-
+---
+author: scooley
+---
 
 # Compatibilidad de las aplicaciones en los contenedores de Windows
 
@@ -29,7 +29,7 @@ Hemos intentado ejecutando las siguientes aplicaciones en un contenedor de Windo
 | ASP.NET| 5 beta 6| Sí| Sí| Ambos, x64 y x86|
 | Django| | Sí| Sí| |
 | Go| 1.4.2| Sí| Sí| |
-| Internet Information Service| 10.0| Sí| Sí| El tiempo de ejecución de VC++ no se instala si se ha cargado el filtro de desduplicación.Descargar la desduplicación mediante `fltmc unload dedup`|
+| Internet Information Service| 10.0| Sí| Sí| HTTPS/TLS no funciona.El tiempo de ejecución de VC++ no se instala si se ha cargado el filtro de desduplicación.Descargar la desduplicación mediante `fltmc unload dedup`|
 | Java| 1.8.0_51| Sí| Sí| Utilice la versión de servidor.La versión de cliente no se instala correctamente|
 | MongoDB| 3.0.4| Sí| Desconocido| |
 | MySQL| 5.6.26| Sí| Sí| |
@@ -59,7 +59,7 @@ Se han intentado ejecutar las siguientes aplicaciones en un contenedor de Hyper-
 | ASP.NET| 5 beta 6| Sí| Ambos, x64 y x86|
 | Django| | Sí| Si la imagen se crea un archivo DockerFile y los archivos binarios de Python se copian como parte de él, Python no funciona.Inicie el contenedor y después copie los archivos binarios de Python.|
 | Go| 1.4.2| Sí| |
-| Internet Information Service| 10.0| Sí| IIS no se instala mediante dism directamente.Realice una instalación desatendida de IIS mediante los comandos de dism.|
+| Internet Information Service| 10.0| Sí| HTTPS/TLS no funciona.IIS no se instala mediante dism directamente.Realice una instalación desatendida de IIS mediante los comandos de dism.|
 | Java| 1.8.0_51| Sí| Utilice la versión de servidor.La versión de cliente no se instala correctamente|
 | MySQL| 5.6.26| Sí| |
 | NGinx| 1.9.3| Sí| |
@@ -77,4 +77,4 @@ Se han intentado ejecutar las siguientes aplicaciones en un contenedor de Hyper-
 
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO2-->
