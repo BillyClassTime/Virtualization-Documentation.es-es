@@ -56,7 +56,7 @@
 
 ## [Arquitectura de Hyper-V](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
 
-## [TLFS del hipervisor](develop/tlfs.md)
+## [Especificaciones de hipervisor](develop/tlfs.md)
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO2-->
