@@ -1,6 +1,6 @@
 {
   "LastProcessedCommit": "025cf28322111758d4ea47778246fb494358e9f6",
-  "LastTranslatedCommit": "70d070cd2d8fb53745cb0f72d3096ff0b8452bc1",
+  "LastTranslatedCommit": "97eb4d352d8f7f5ac12ecfb9bacb7248cc69ad12",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
       "FileHash": "5090f6d60b5cbdce0990242d795d9e4e3736e791",
@@ -8290,7 +8290,7 @@
       "TargetFilePath": null,
       "HandbackFilePath": null,
       "HandbackFileCommit": null,
-      "HandbackDateTime": "2016-03-24T17:09:06.2454908Z",
+      "HandbackDateTime": "2016-03-24T17:30:35.1542539Z",
       "HandbackException": {
         "internal_error_code": "handback_transform_failed",
         "internal_error_message": "Handback file: C:\\ol\\master\\VDP.handback\\0e62d1\\ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf failed.",
@@ -8300,7 +8300,7 @@
         "stack_trace": "   at System.Xml.XmlTextReaderImpl.Throw(Exception e)\r\n   at System.Xml.XmlTextReaderImpl.ParseRootLevelWhitespace()\r\n   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()\r\n   at System.Xml.XmlReader.MoveToContent()\r\n   at System.Xml.XmlReader.ReadStartElement(String name)\r\n   at Microsoft.Content.Build.Components.MarkdownFile.LoadSkeletonInternal(XmlReader reader)\r\n   at Microsoft.Content.Build.Components.MarkdownFile.LoadSkeleton(Stream stream)\r\n   at Microsoft.Content.Build.Components.XliffToMarkdownTransformHandler.Transform(ILocalizationFile source)\r\n   at Microsoft.OpenLocalization.Transformer.MarkdownTransformer.XliffToMarkdownCore(Stream xliffStream, Stream sklStream, Stream markdownStream)\r\n   at Microsoft.OpenLocalization.Transformer.XliffTransformerExtensions.XliffToMarkdown(IMarkdownTransformer markdownTransformer, Stream xliffStream, Stream skeletonStream, Stream targetStream)\r\n   at Microsoft.OpenLocalization.Transformer.XliffTransformerExtensions.XliffToMarkdown(IMarkdownTransformer markdownTransformer, String xliffFile, String skeletonFile, String markdownFile)\r\n   at Microsoft.OpenLocalization.Helper.XliffTransformUtil.XliffToMarkdown(String skeletonFile, String xliffFile, String mdfile, Boolean useJavascriptTransformer) in D:\\DevEnlistments\\Source\\OpenLocalization\\src\\OpenLocalization\\Helper\\XliffTransformUtil.cs:line 41\r\n   at Microsoft.OpenLocalization.Localization.LocalizationCore.<>c__DisplayClass5_0.<GetHandbackFiles>b__0(String file) in D:\\DevEnlistments\\Source\\OpenLocalization\\src\\OpenLocalization\\Localization\\HandbackCore.cs:line 407",
         "extended_information": null
       },
-      "HandbackFailureTimes": 4,
+      "HandbackFailureTimes": 5,
       "UpdatedDateTime": "0001-01-01T00:00:00",
       "ArchiveFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\archive\\vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf",
       "ArchiveFileCommit": "5c00cf5e76a3a24183c794504a5214efa9fd87fc",
@@ -8468,14 +8468,14 @@
       "HandoffPriority": "",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
-      "TargetFileCommit": null,
-      "TargetFilePath": null,
-      "HandbackFilePath": null,
-      "HandbackFileCommit": null,
-      "HandbackDateTime": "0001-01-01T00:00:00",
+      "TargetFileCommit": "97eb4d352d8f7f5ac12ecfb9bacb7248cc69ad12",
+      "TargetFilePath": "virtualization\\windowscontainers\\reference\\app_compat.md",
+      "HandbackFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\app_compat.85ea42fd0d23543a8fad7596dfdec7699ec15654.es-es.xlf",
+      "HandbackFileCommit": "d3c5292b0837960d476bc012d807119300ba8be4",
+      "HandbackDateTime": "2016-03-24T17:30:35.1542539Z",
       "HandbackException": null,
       "HandbackFailureTimes": 0,
-      "UpdatedDateTime": "0001-01-01T00:00:00",
+      "UpdatedDateTime": "2016-03-24T17:30:35.1542539Z",
       "ArchiveFilePath": null,
       "ArchiveFileCommit": null,
       "ArchiveFileDateTime": "0001-01-01T00:00:00",
