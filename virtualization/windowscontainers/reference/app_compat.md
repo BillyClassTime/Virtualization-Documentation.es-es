@@ -45,7 +45,7 @@ Hemos intentado ejecutando las siguientes aplicaciones en un contenedor de Windo
 | Ruby| 2.2.2| Sí| Sí| Ambos, x64 y x86|
 | Ruby on Rails| 4.2.3| Sí| Sí| |
 | SQLite| 3.8.11.1| Sí| No| |
-| SQL Server Express| LocalDB 2014| No| No| |
+| SQL Server Express| 2014| Sí| Desconocido| Puede iniciarse rápidamente mediante la compilación de este [archivo Dockerfile proporcionado por la comunidad](https://github.com/brogersyh/Dockerfiles-for-windows/tree/master/sqlexpress) que instala SQL Express 2014.|
 | Herramientas de Sysinternals| *| Sí| Sí| Solo se intentaron las que no requieren una GUI.PsExec no funciona por el diseño actual|
 
 ## Contenedores de Hyper-V
