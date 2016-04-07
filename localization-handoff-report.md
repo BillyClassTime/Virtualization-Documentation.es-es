@@ -1,21 +1,52 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 3
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8899794e0406ced781092ec90c266fc981a69ce3/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | OutofSyncHandedBackSuccess | [Details](#0ecd65702bc12ec59ae9556d8971352272070dbd194)
+ [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/quick_start/walkthrough.md) | OutofSyncHandedBackSuccess | [Details](#eff2133b5970f1c04145fc472e357b27094fb167162)
+ [virtualization\hyperv_on_windows\quick_start\walkthrough_compatibility.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility.md) | OutofSyncHandedBackSuccess | [Details](#12695afc9ce6e98c62405bf520ac3723d10ccfbc164)
+ [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | OutofSyncHandedBackSuccess | [Details](#710de79fd1d511a029c76d169ee6057135986509194)
 
 ## Item Details
-##### <a name='0ecd65702bc12ec59ae9556d8971352272070dbd194'></a> Source: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8899794e0406ced781092ec90c266fc981a69ce3/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
+##### <a name='eff2133b5970f1c04145fc472e357b27094fb167162'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/quick_start/walkthrough.md)
 * Status: OutofSyncHandedBackSuccess
 * Target File: 
-* Handoff File: 
-* Handoff Datetime: 0001-01-01 00:00:00
-* Handoff Reason: Ignored
-* Handoff Error: [handoff_transform_failed](#0ecd65702bc12ec59ae9556d8971352272070dbd194handoff_transform_failed)
+* Handoff File: [walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1a1b3363ac044fe52c0d372237539e490bd7cc55/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf)
+* Handoff Datetime: 2016-04-07 04:32:37
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/hyperv_on_windows/quick_start/walkthrough.md)
+* Current Handback File: [walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf)
+* Current Handback Datetime: 2016-01-04 21:56:18
+* [Back to Top](#report-top)
+
+##### <a name='12695afc9ce6e98c62405bf520ac3723d10ccfbc164'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_compatibility.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1a1b3363ac044fe52c0d372237539e490bd7cc55/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf)
+* Handoff Datetime: 2016-04-07 04:32:37
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough_compatibility.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/51faa27dd32b754ea39bcf4a7b06f6a3b118c2ed/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility.md)
+* Current Handback File: [walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/58fd25ec7af6c9e49d231c7906c988db32c23446/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf)
+* Current Handback Datetime: 2016-02-16 21:12:00
+* [Back to Top](#report-top)
+
+##### <a name='710de79fd1d511a029c76d169ee6057135986509194'></a> Source: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ce90b78c45a493f61556d288363e70817835181e/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1a1b3363ac044fe52c0d372237539e490bd7cc55/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf)
+* Handoff Datetime: 2016-04-07 04:32:37
+* Handoff Reason: Include
 * Archive File: 
 * Archive Datetime: 0001-01-01 00:00:00
 * Handback File: 
@@ -27,11 +58,5 @@
 
 
 ## Error Details
-##### <a name='0ecd65702bc12ec59ae9556d8971352272070dbd194handoff_transform_failed'></a> Source: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](#0ecd65702bc12ec59ae9556d8971352272070dbd194)
-* Error Code: handoff_transform_failed
-* Error Message: Handoff source file: virtualization\hyperv_on_windows\user_guide\remote_host_management.md transformed failed.
-* Retriable: False
-* Error Details: {"internal_error_code":"handoff_transform_failed","internal_error_message":"Handoff source file: virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md transformed failed.","internal_error_retriable":false,"exception_message":"Value cannot be null.\r\nParameter name: srcLocale","exception_type":"System.ArgumentNullException","stack_trace":"   at Microsoft.OpenLocalization.Guard.ArgumentNotNullOrEmpty(String argumentValue, String argumentName)\r\n   at Microsoft.OpenLocalization.Transformer.MarkdownTransformer.MarkdownToXliffCore(Stream markdownStream, Stream xliffStream, Stream sklStream, String contentClass, String srcLocale, String targetLocale)\r\n   at Microsoft.OpenLocalization.Transformer.XliffTransformerExtensions.MarkdownToXliff(IMarkdownTransformer markdownTransformer, Stream sourceStream, Stream xliffStream, Stream skeletonStream, String contentClass, String srcLocale, String targetLocale, String xliffVersion)\r\n   at Microsoft.OpenLocalization.Transformer.XliffTransformerExtensions.MarkdownToXliff(IMarkdownTransformer markdownTransformer, String markdownFile, String xliffFile, String skeletonFile, String srcLocale, String targetLocale, String xliffVersion)\r\n   at Microsoft.OpenLocalization.Helper.XliffTransformUtil.MarkdownToXliff(String mdfile, String xliffFile, String skeletonFile, String sourceLocale, String targetLocale, String xliffVersion, Boolean useJavascriptTransformer) in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization\\Helper\\XliffTransformUtil.cs:line 28\r\n   at Microsoft.OpenLocalization.Localization.LocalizationCore.<>c__DisplayClass10_1.<GetHandoffFiles>b__1(Tuple`3 handoff) in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization\\Localization\\HandoffCore.cs:line 376","extended_information":null}
-
 
 Generated by OpenLocalization.
