@@ -1,42 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 2
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\quick_start\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c0a71a7a23527b6534eb8ea7d5485e53a0e41ac3/virtualization/hyperv_on_windows/quick_start/index.md) | HandedOffSuccess | [Details](#380e6aec81d02bed84769a4b31c0d1fdeb72d8dc103)
- [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e6367bca6c8403bb2e69638dafaeac1abc830fd5/virtualization/hyperv_on_windows/quick_start/walkthrough.md) | OutofSyncHandedBackSuccess | [Details](#380e6aec81d02bed84769a4b31c0d1fdeb72d8dc170)
 
 ## Item Details
-##### <a name='380e6aec81d02bed84769a4b31c0d1fdeb72d8dc103'></a> Source: [virtualization\hyperv_on_windows\quick_start\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c0a71a7a23527b6534eb8ea7d5485e53a0e41ac3/virtualization/hyperv_on_windows/quick_start/index.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [index.40b8186d52cab3ff775675407a35cc8c9efd33a9.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/dbe534a3c7ee642bdb6e9358dfd7cc24e47a7d11/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/index.40b8186d52cab3ff775675407a35cc8c9efd33a9.es-es.xlf)
-* Handoff Datetime: 2016-04-27 21:42:38
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* [Back to Top](#report-top)
-
-##### <a name='380e6aec81d02bed84769a4b31c0d1fdeb72d8dc170'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e6367bca6c8403bb2e69638dafaeac1abc830fd5/virtualization/hyperv_on_windows/quick_start/walkthrough.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [index.40b8186d52cab3ff775675407a35cc8c9efd33a9.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/dbe534a3c7ee642bdb6e9358dfd7cc24e47a7d11/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/index.40b8186d52cab3ff775675407a35cc8c9efd33a9.es-es.xlf)
-* Handoff Datetime: 2016-04-27 21:42:38
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/hyperv_on_windows/quick_start/walkthrough.md)
-* Current Handback File: [walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough.479a697a5c0e6d13e1bbfafdcd36fe03e025a38d.es-es.xlf)
-* Current Handback Datetime: 2016-01-04 21:56:18
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
