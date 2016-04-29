@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "8b58449712624d50d787532ab6933f1581d99919",
+  "LastProcessedCommit": "bd8e1b7d1c2994b577279a4545607165abbb8523",
   "LastTranslatedCommit": "c0eadf6ba9d5517b22668c6f4f217cdbc8b64283",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
@@ -11920,6 +11920,35 @@
       "HandoffFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf",
       "HandoffFileCommit": "876c943ac0325a71195caea0bf2ece24e95351b0",
       "HandoffDateTime": "2016-04-29T20:11:31.930474Z",
+      "HandoffPriority": "",
+      "HandoffException": null,
+      "HandoffFailureTimes": 0,
+      "TargetFileCommit": null,
+      "TargetFilePath": null,
+      "HandbackFilePath": null,
+      "HandbackFileCommit": null,
+      "HandbackDateTime": "0001-01-01T00:00:00",
+      "HandbackException": null,
+      "HandbackFailureTimes": 0,
+      "UpdatedDateTime": "0001-01-01T00:00:00",
+      "ArchiveFilePath": null,
+      "ArchiveFileCommit": null,
+      "ArchiveFileDateTime": "0001-01-01T00:00:00",
+      "ArchiveException": null
+    },
+    "4110917190df7cef09bb546d199db7b429bb87ca": {
+      "FileHash": "4110917190df7cef09bb546d199db7b429bb87ca",
+      "SourceFileCommit": "bd8e1b7d1c2994b577279a4545607165abbb8523",
+      "SourceFilePath": "virtualization\\windowscontainers\\deployment\\docker_windows.md",
+      "HandoffReason": 1,
+      "DependencyFrom": null,
+      "TokenReference": null,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\deployment\\docker_windows.md"
+      ],
+      "HandoffFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\docker_windows.48c2b5c855b2e2f9c878a0dd97aec82b1b8b1a92.es-es.xlf",
+      "HandoffFileCommit": "a91fc598ca5116b2ddb07062788d5187541b78bb",
+      "HandoffDateTime": "2016-04-29T22:11:57.1012145Z",
       "HandoffPriority": "",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
