@@ -1,29 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7a40328a8623c56dd9ddcdcd2ccaac57ffdb1b0/virtualization/hyperv_on_windows/user_guide/vmsession.md) | OutofSyncHandedBackSuccess | [Details](#36d3294d117e68705a01b465cd8f93d719b8b48f206)
 
 ## Item Details
-##### <a name='36d3294d117e68705a01b465cd8f93d719b8b48f206'></a> Source: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7a40328a8623c56dd9ddcdcd2ccaac57ffdb1b0/virtualization/hyperv_on_windows/user_guide/vmsession.md)
-* Status: OutofSyncHandedBackSuccess
-* Target File: 
-* Handoff File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/c3c195253ddecd366a0085e7db67a021671d8298/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf)
-* Handoff Datetime: 2016-05-01 00:49:40
-* Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/2edd22ef076ee2a789caa24faa746b03b975ce61/virtualization/hyperv_on_windows/user_guide/vmsession.md)
-* Current Handback File: [vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/2907cdd1e3edcf58af1566a1c474c0db29b814e2/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/vmsession.5b8e9c3583d826412e0ae8e2f58f1deca9901582.es-es.xlf)
-* Current Handback Datetime: 2016-02-03 22:00:33
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
