@@ -1,12 +1,27 @@
-
-
-
+---
+author: neilpeterson
+---
 
 # Requisitos de los contenedores de Windows
 
 **Esto es contenido preliminar y está sujeto a cambios.**
 
 Esta guía enumera los requisitos de un host de contenedor de Windows.
+
+## Contenedores de Windows en un sistema físico
+
+- El rol de contenedor de Windows solo está disponible en Windows Server 2016 TP4 (Full y Core) y Nano Server.
+- Si se van a ejecutar contenedores de Hyper-V, será necesario instalar el rol Hyper-V.
+
+## Contenedores de Windows en un sistema virtual
+
+Si un host de contenedor de Windows se ejecuta en una máquina virtual de Hyper-V y también hospeda contenedores de Hyper-V, será necesario habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
+
+- Al menos 4 GB de RAM disponibles para el host de Hyper-V virtualizado.
+- Windows Server 2016 Technical Preview 4 o la compilación 10565 de Windows 10 en el sistema host y Windows Server Technical Preview 4 (Full o Core) o Nano Server en la máquina virtual.
+- Un procesador con Intel VT-x (actualmente, esta característica solo está disponible para los procesadores Intel).
+- La máquina virtual del host de contenedor también necesitará, al menos, 2 procesadores virtuales.
+
 
 ## Imágenes de sistemas operativos compatibles
 
@@ -39,21 +54,11 @@ En Windows Server Technical Preview 4 se incluyen dos imágenes de sistemas oper
 </tbody>
 </table>
 
-## Requisitos de los contenedores de Hyper-V
-
-Si un host de contenedor de Windows se ejecuta en una máquina virtual de Hyper-V y también hospeda contenedores de Hyper-V, será necesario habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
-
-- Al menos 4 GB de RAM disponibles para el host de Hyper-V virtualizado.
-- Windows Server 2016 Technical Preview 4 o la compilación 10565 de Windows 10, tanto en el host físico como en el virtualizado.
-- Un procesador con Intel VT-x (actualmente, esta característica solo está disponible para los procesadores Intel).
-- La máquina virtual del host de contenedor también necesitará, al menos, 2 procesadores virtuales.
 
 
 
 
 
-
-
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO1-->
 
 

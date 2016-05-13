@@ -1,6 +1,6 @@
-
-
-
+---
+author: neilpeterson
+---
 
 # Inicio rápido de contenedores de Windows: PowerShell
 
@@ -281,7 +281,7 @@ Las carpetas compartidas exponen un directorio del host de contenedor en el cont
 Cree un directorio denominado `c:\share\en-us` en el host de contenedor.
 
 ```powershell
-S C:\> New-Item -Type Directory c:\share\en-us
+PS C:\> New-Item -Type Directory c:\share\en-us
 
     Directory: C:\share
 
@@ -500,7 +500,7 @@ PS C:\> Enter-PSSession -ContainerName IISApp -RunAsAdministrator
 Ejecute el siguiente comando para quitar la pantalla de presentación de IIS.
 
 ```powershell
-[IIS]: PS C:\> del C:\inetpub\wwwroot\iisstart.htm
+[IISApp]: PS C:\> del C:\inetpub\wwwroot\iisstart.htm
 ```
 Ejecute el comando siguiente para reemplazar el sitio de IIS predeterminado por un nuevo sitio estático.
 
@@ -523,6 +523,6 @@ exit
 
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO1-->
 
 

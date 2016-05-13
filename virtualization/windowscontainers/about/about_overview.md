@@ -1,6 +1,6 @@
-
-
-
+---
+author: neilpeterson
+---
 
 # Contenedores de Windows
 
@@ -16,7 +16,7 @@ Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejec
 
 Si estuviera dentro de un contenedor, parecería que está dentro de una máquina virtual o un equipo físico recién instalados. Y, para [Docker](https://www.docker.com/), un contenedor de Windows Server se puede administrar de la misma forma que cualquier otro contenedor.
 
-## Contenedores de Windows
+## Tipos de contenedores de Windows
 
 Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
 
@@ -81,6 +81,6 @@ src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-an
 
 
 
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=Mar16_HO2-->
 
 
