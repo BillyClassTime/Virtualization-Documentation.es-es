@@ -38,7 +38,7 @@ En los documentos siguientes se detalla la característica Hyper-V en Windows 10
             <p>Recursos adicionales de la comunidad y de soporte técnico</p>
             <ul>
                 <li class="unordered">[Foros de Hyper-V](https://social.technet.microsoft.com/Forums/windowsserver/en-US/home?forum=winserverhyperv)<br /><br /></li>
-                <li class="unordered">[Recursos de la comunidad para contenedores de Hyper-V y Windows](/virtualization/community/community_overview.md)<br /><br /></li>
+                <li class="unordered">[Recursos de la comunidad para contenedores de Hyper-V y Windows](/virtualization/community/community_overview)<br /><br /></li>
             </ul>   
         </td>
     </tr>
@@ -47,4 +47,8 @@ En los documentos siguientes se detalla la característica Hyper-V en Windows 10
 
 
 
-<!--HONumber=Jan16_HO1-->
+
+
+<!--HONumber=Mar16_HO3-->
+
+
