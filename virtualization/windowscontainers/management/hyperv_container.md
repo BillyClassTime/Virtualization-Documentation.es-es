@@ -1,12 +1,16 @@
+---
+autor: neilpeterson
+---
+
 # Contenedores de Hyper-V
 
-**Esto es contenido preliminar y está sujeto a cambios.**
+**Esto es contenido preliminar y está sujeto a cambios.** 
 
-La tecnología de contenedor de Windows incluye dos tipos distintos de contenedores, contenedores de Windows Server y de Hyper-V. Los dos tipos de contenedores se crean, se administran y funcionan de forma idéntica. Incluso producen y consumen las mismas imágenes de contenedor. La diferencia entre ellos es el nivel de aislamiento entre el contenedor, el sistema operativo host y todo lo que incluye el otro contenedor que se ejecuta en ese host.
+La tecnología de contenedor de Windows incluye dos tipos distintos de contenedores, contenedores de Windows Server y de Hyper-V. Los dos tipos de contenedores se crean, se administran y funcionan de forma idéntica.  Incluso generan y usan las mismas imágenes de contenedor. La diferencia entre ellos es el nivel de aislamiento entre el contenedor, el sistema operativo host y todo lo que incluye el otro contenedor que se ejecuta en ese host.
 
-**Contenedores de Windows Server**: varias instancias del contenedor se pueden ejecutar en un host con aislamiento proporcionado a través de tecnologías de aislamiento de proceso, control de recursos y espacio de nombres. Los contenedores de Windows Server comparten el mismo kernel con el host y también entre sí.
+**Contenedores de Windows Server**: varios instancias de contenedor pueden ejecutarse simultáneamente en un host con aislamiento proporcionado a través de tecnologías de aislamiento de proceso, espacio de nombres y control de recursos.  Los contenedores de Windows Server comparten el mismo kernel con el host, así como entre sí.
 
-**Contenedores de Hyper-V**: varias instancias del contenedor se pueden ejecutar simultáneamente en un host; sin embargo, cada contenedor se ejecuta en una máquina virtual especial. Esto ofrece aislamiento a nivel de kernel entre cada contenedor de Hyper-V y el host de contenedor.
+**Contenedores de Hyper-V**: varias instancias de contenedor pueden ejecutarse simultáneamente en un host; sin embargo, cada contenedor se ejecuta dentro de una máquina virtual especial. Esto proporciona aislamiento de nivel de kernel entre cada contenedor de Hyper-V y el host de contenedor.
 
 ## PowerShell de contenedor de Hyper-V
 
@@ -26,12 +30,12 @@ Además de crear un contenedor como un contenedor de Hyper-V en tiempo de compil
 
 > Actualmente, el único sistema operativo de host que admite la conversión en tiempo de ejecución del contenedor es Nano Server.
 
-Cree un nuevo contenedor con el tiempo de ejecución predeterminado.
+Cree un nuevo contenedor con el tiempo de ejecución predeterminado. 
 
 ```powershell
-PS C:\> New-Container -Name DEMO -ContainerImageName nanoserver -SwitchName NAT
+PS C:\> $con = New-Container -Name DEMO -ContainerImageName nanoserver -SwitchName NAT
 ```
-Devuelva la propiedad de tiempo de ejecución del contenedor, observe que el tiempo de ejecución está establecido como valor predeterminado.
+Devuelva la propiedad de tiempo de ejecución del contenedor, observe que el tiempo de ejecución está establecido como valor predeterminado. 
 
 ```powershell
 PS C:\> Get-Container | Select ContainerName, RuntimeType
@@ -59,9 +63,9 @@ DEMO               HyperV
 
 ## Docker de contenedor de Hyper-V
 
-### Crear contenedor
+### Crear contenedor <!--docker-->
 
-La administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Al crear un contenedor de Hyper-V con Docker, se usa el parámetro `–-isolation=hyperv`.
+La administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Al crear un contenedor de Hyper-V con Docker, se usa el parámetro `--isolation=hyperv`.
 
 ```powershell
 docker run -it --isolation=hyperv 646d6317b02f cmd
@@ -85,7 +89,7 @@ TST2      HyperV ccdf6a6e-3358-4419-8dda-ffe87f1de184
 
 Tenga en cuenta que el contenedor puede hacerse coincidir con un proceso según el identificador de contenedor y el nombre de usuario del proceso.
 
-![](media/process.png)
+![](media/process.png) 
 
 Esta relación también se puede ver con el comando `Get-ComputeProcess`.
 
@@ -120,7 +124,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 Crear nuevo contenedor de Windows Server:
 
 ```powershell
-PS C:\> New-Container -Name WINCONT -ContainerImageName WindowsServerCore -SwitchName "Virtual Switch"
+PS C:\> $con = New-Container -Name WINCONT -ContainerImageName WindowsServerCore -SwitchName "Virtual Switch"
 ```
 
 Inicie el contenedor.
@@ -132,7 +136,7 @@ PS C:\> Start-Container $con
 Crear una sesión remota de PS con el contenedor.
 
 ```powershell
-PS C:\> Enter-PSSession -ContainerId $con.ContainerId –RunAsAdministrator
+PS C:\> Enter-PSSession -ContainerId $con.ContainerId -RunAsAdministrator
 ```
 
 Desde la sesión remota del contenedor, devuelva todos los procesos con un nombre de proceso de csrss. Anote el identificador de proceso del proceso csrss en ejecución (1228 en el ejemplo siguiente).
@@ -186,7 +190,7 @@ PS C:\> Start-Container $con
 Cree una sesión remota de PS con el contenedor de Hyper-V.
 
 ```powershell
-PS C:\> Enter-PSSession -ContainerId $con.ContainerId –RunAsAdministrator
+PS C:\> Enter-PSSession -ContainerId $con.ContainerId -RunAsAdministrator
 ```
 
 Devuelva una lista de procesos csrss que se ejecuten dentro del contenedor de Hyper-V. Anote el identificador de proceso del proceso csrss (956 en el ejemplo siguiente).
@@ -213,9 +217,9 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 
 ## Tutorial en vídeo
 
-<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-5-Hyper-V-Containers/player#ccLang=es" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
+<iframe src="https://channel9.msdn.com/Blogs/containers/Container-Fundamentals--Part-5-Hyper-V-Containers/player" width="800" height="450"  allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
+<!--HONumber=Feb16_HO4-->
 
 
-<!--HONumber=Feb16_HO2-->

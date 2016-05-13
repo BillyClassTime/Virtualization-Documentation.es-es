@@ -2,7 +2,7 @@
 
 Debe habilitar el rol de Hyper-V para poder crear máquinas virtuales en Windows 10. Esto se puede realizar mediante el panel de control de Windows 10, PowerShell o la herramienta de Administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada uno de ellos.
 
-> Antes de habilitar Hyper-V, asegúrese de que el sistema es compatible. Para obtener más información, consulte [Requisitos del sistema para Hyper-V en Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility).
+> Antes de habilitar Hyper-V, asegúrese de que el sistema es compatible. Para obtener más información, consulte [Requisitos de sistema de Hyper-V en Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility).
 
 ## Instalar manualmente el rol de Hyper-V
 
@@ -25,7 +25,7 @@ Cuando la instalación se complete, se le pedirá confirmación para reiniciar e
 2. Ejecute el siguiente comando:
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 Cuando la instalación se haya completado, deberá reiniciar el equipo.
 
@@ -49,5 +49,11 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 [Crear un conmutador virtual](walkthrough_virtual_switch.md)
 
+
+
+
+
+
+<!--HONumber=Feb16_HO4-->
 
 

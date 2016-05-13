@@ -1,3 +1,7 @@
+
+
+
+
 # Documentación acerca de los contenedores de Windows
 
 Los contenedores de Windows proporcionan una virtualización a nivel de sistema operativo que permite ejecutar varias aplicaciones aisladas en un solo sistema. En esta característica se incluyen dos tipos diferentes de contenedores en tiempo de ejecución, cada uno de ellos con distintos grados de aislamiento de aplicaciones. Asimismo, los contenedores de Windows Server obtienen el aislamiento mediante el aislamiento del proceso y del espacio de nombres. En cuanto a los contenedores de Hyper-V, estos encapsulan cada contenedor en una máquina virtual ligera. Además de poseer dos tiempos de ejecución, ambos se pueden administrar con PowerShell o Docker. En este conjunto de documentación encontrará detalles técnicos, guías de implementación y guías de inicio rápido referentes a las operaciones de administración.
@@ -9,8 +13,8 @@ Los contenedores de Windows proporcionan una virtualización a nivel de sistema 
 Para probar los contenedores de Windows Server y Hyper-V, puede usar las siguientes guías de inicio rápido.<br /><br />
 <ul>
 <li>[Inicio rápido de Azure](quick_start/azure_setup.md)<br /><br /></li>
-<li>[Implementar un nuevo host de contenedor](quick_start/container_setup.md)<br /><br /></li>
-<li>[Implementar un host en el sistema existente](quick_start/inplace_setup.md)<br /><br /></li>
+<li>[Implementación de un nuevo host de contenedor](quick_start/container_setup.md)<br /><br /></li>
+<li>[Implementación de un host en el sistema existente](quick_start/inplace_setup.md)<br /><br /></li>
 <li>[Inicio rápido de PowerShell](quick_start/manage_powershell.md)<br /><br /></li>
 <li>[Inicio rápido de Docker](quick_start/manage_docker.md)<br /><br /></li>
 </ul>
@@ -22,7 +26,7 @@ Para probar los contenedores de Windows Server y Hyper-V, puede usar las siguien
 Aprenda a implementar contenedores de Windows en Windows Server 2016 y Nano Server.<br /><br />
 <ul>
 <li>[Requisitos del sistema](deployment/system_requirements.md)<br /><br /></li>
-<li>[Implementación de host de contenedor](deployment/deployment.md)<br /><br /></li>
+<li>[Implementación de un host de contenedor](deployment/deployment.md)<br /><br /></li>
 <li>[Implementación de Docker en Windows](deployment/docker_windows.md)<br /><br /></li>
 </ul>
 </td>
@@ -45,7 +49,7 @@ Obtenga más información acerca de cómo administrar el contenedor de Windows e
 <tr>
 <td><center>![](media/video.png)</center></td>
 <td>**Inspección**<br /><br />
-¿Está interesado en demostraciones y entrevistas del equipo del contenedor de Windows?<br /><br />
+¿Está interesado en demostraciones y entrevistas del equipo de contenedor de Windows?<br /><br />
 <ul>
 <li>[Canal de contenedores](https://channel9.msdn.com/Blogs/containers)</li>
 </ul>
@@ -57,9 +61,9 @@ Obtenga más información acerca de cómo administrar el contenedor de Windows e
 <td>**Comunidad**<br /><br />
 Interactúe con la comunidad, pruebe los ejemplos que le ofrecemos y busque recursos adicionales.<br /><br />
 <ul>
-<li>[Container Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers) (Foro acerca de los contenedores)<br /><br /></li>
-<li>[Container Resources](https://msdn.microsoft.com/virtualization/community/community_overview) (Recursos acerca de los contenedores)<br /><br /></li>
-<li>[Samples and Scripts](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-samples) (Ejemplos y scripts)<br /><br /></li>
+<li>[Foro acerca de los contenedores](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)<br /><br /></li>
+<li>[Recursos acerca de los contenedores](https://msdn.microsoft.com/virtualization/community/community_overview)<br /><br /></li>
+<li>[Ejemplos y scripts](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-samples)<br /><br /></li>
 </ul>
 </td>
 </tr>
@@ -68,4 +72,8 @@ Interactúe con la comunidad, pruebe los ejemplos que le ofrecemos y busque recu
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO3-->
+
+

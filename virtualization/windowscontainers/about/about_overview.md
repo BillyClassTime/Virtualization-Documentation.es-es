@@ -1,3 +1,7 @@
+
+
+
+
 # Contenedores de Windows
 
 Las aplicaciones impulsan la innovación en la era móvil y de la nube. Los contenedores y el ecosistema que se está desarrollando en torno a ellos ofrecerán a los desarrolladores de software lo necesario para crear la próxima generación de experiencias de aplicaciones.
@@ -73,5 +77,10 @@ src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-an
 [Introducción a los contenedores de Windows localmente](../quick_start/container_setup.md)
 
 
+
+
+
+
+<!--HONumber=Feb16_HO3-->
 
 

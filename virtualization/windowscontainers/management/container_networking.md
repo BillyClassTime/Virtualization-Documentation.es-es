@@ -1,3 +1,7 @@
+
+
+
+
 # Red de contenedores
 
 **Esto es contenido preliminar y está sujeto a cambios.**
@@ -106,7 +110,7 @@ Ahora se puede conectar el conmutador virtual externo a un contenedor, que es ca
 Al iniciar el demonio de Docker, puede seleccionarse un puente de red. Cuando ejecute Docker en Windows, este es el conmutador virtual externo o NAT. En el ejemplo siguiente se inicia el demonio de Docker, que especifica un conmutador virtual denominado `Virtual Switch`.
 
 ```powershell
-Docker daemon –D –b “Virtual Switch” -H 0.0.0.0:2375
+Docker daemon -D -b “Virtual Switch” -H 0.0.0.0:2375
 ```
 
 Si implementó el host del contenedor y Docker con los scripts que se proporcionan en el Inicio rápido del contenedor de Windows, se crea un conmutador virtual interno con un tipo de NAT y se crea un servicio Docker que se preconfigura para usar este conmutador. Para cambiar el conmutador virtual que está usando el servicio Docker, debe detener el servicio Docker, modificar un archivo de configuración y volver a iniciar el servicio.
@@ -149,4 +153,8 @@ Para obtener más información sobre cada uno de estos comandos, consulte el art
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

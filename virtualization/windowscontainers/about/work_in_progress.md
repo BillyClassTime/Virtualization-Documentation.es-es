@@ -1,3 +1,7 @@
+
+
+
+
 # Trabajo en curso
 
 Si no ve que su problema se trate aquí o tiene preguntas, publique lo que necesite en el [foro](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers).
@@ -16,15 +20,6 @@ Si instala las actualizaciones en el sistema operativo del host del contenedor d
 
 **Solución alternativa:**   
 Descargue e instale una imagen base de contenedor que coincida con el nivel de revisión y la versión del sistema operativo del host del contenedor.
-
-### Todas las unidades excepto C:/ son visibles en los contenedores
-
-Todas las unidades distintas de C:/ que estén disponibles para el host del contenedor se asignan automáticamente a los nuevos contenedores de Windows en ejecución.
-
-En este momento, no hay ninguna manera de asignar carpetas selectivamente en un contenedor, así que como solución provisional, las unidades se asignan automáticamente.
-
-**Solución alternativa: **  
-Estamos trabajando en ella. En el futuro habrá uso compartido de carpetas.
 
 ### Comportamiento del firewall predeterminado
 
@@ -94,9 +89,9 @@ En esta versión se admite un compartimiento de red por contenedor. Esto signifi
 Si un contenedor debe exponer varios puntos de conexión, utilice la asignación de puertos NAT.
 
 
-### Las asignaciones de NAT estáticas podrían entrar en conflicto con asignaciones de puertos a través de Docker
+### Las asignaciones estáticas de NAT podrían entrar en conflicto con las asignaciones de puerto a través de Docker
 
-Si va a crear contenedores con Windows PowerShell y a agregar asignaciones de NAT estáticas, es posible que provoquen conflictos si no los quita antes de iniciar un contenedor con `docker -p &lt;src&gt;:&lt;dst&gt;`
+Si crea contenedores con Windows PowerShell y agrega asignaciones estáticas de NAT, pueden provocar conflictos si no las quita antes de iniciar un contenedor con `docker -p &lt;src&gt;:&lt;dst&gt;`.
 
 Este es un ejemplo de un conflicto con una asignación estática en el puerto 80
 ```
@@ -138,7 +133,7 @@ duplicate name exists on the network. If joining a domain, go to System in Contr
 
 
 ***Mitigación***
-Esto se puede resolver mediante la eliminación de la asignación de puertos con PowerShell. Esto acabará con el conflicto del puerto 80 provocado en el ejemplo anterior.
+Este problema puede resolverse con la eliminación de la asignación de puertos mediante PowerShell. Esta acción quitará el conflicto del puerto 80 del ejemplo anterior.
 ```powershell
 Get-NetNatStaticMapping | ? ExternalPort -eq 80 | Remove-NetNatStaticMapping
 ```
@@ -292,4 +287,8 @@ Estamos buscando activamente soluciones que admitan estos tipos de escenarios.
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

@@ -1,3 +1,7 @@
+
+
+
+
 # Implementar un host de contenedor de Windows en una nueva máquina virtual de Hyper-V
 
 En este documento se detallan los pasos para usar un script de PowerShell a fin de implementar una nueva máquina virtual de Hyper-V, que se configura después como un host de contenedor de Windows.
@@ -30,7 +34,7 @@ Antes de descargar y ejecutar el script, asegúrese de que se ha creado un conmu
 Ejecute lo siguiente para devolver una lista de conmutadores virtuales externos. Si no se devuelve nada, cree un nuevo conmutador virtual externo y luego continúe con el paso siguiente de esta guía.
 
 ```powershell
-PS C:\> Get-VMSwitch | where {$_.SwitchType –eq “External”}
+PS C:\> Get-VMSwitch | where {$_.SwitchType -eq “External”}
 ```
 
 Utilice el comando siguiente para descargar el script de configuración. El script también se puede descargar manualmente desde esta ubicación: [script de configuración](https://aka.ms/tp4/New-ContainerHost).
@@ -42,7 +46,7 @@ PS C:\> wget -uri https://aka.ms/tp4/New-ContainerHost -OutFile c:\New-Container
 Ejecute el siguiente comando para crear y configurar el host de contenedor, donde `&lt;containerhost&gt;` será el nombre de la máquina virtual.
 
 ``` powershell
-PS C:\> powershell.exe -NoProfile c:\New-ContainerHost.ps1 –VmName testcont -WindowsImage ServerDatacenterCore -Hyperv
+PS C:\> powershell.exe -NoProfile c:\New-ContainerHost.ps1 -VMName testcont -WindowsImage ServerDatacenterCore -Hyperv
 ```
 
 Cuando se inicie el script, le pedirá una contraseña. Será de la contraseña asignada a la cuenta de administrador.
@@ -72,4 +76,8 @@ Ahora que tiene un sistema de Windows Server 2016 ejecutando la característica 
 
 
 
-<!--HONumber=Feb16_HO2-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

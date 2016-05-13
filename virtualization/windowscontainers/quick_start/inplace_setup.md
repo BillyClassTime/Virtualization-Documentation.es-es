@@ -1,3 +1,7 @@
+
+
+
+
 # Implementar un host de contenedor de Windows en un sistema físico o virtual existentes
 
 En este documento se explican los pasos del uso de un script de PowerShell para implementar y configurar el rol de contenedor de Windows en un sistema físico o virtual existente.
@@ -54,4 +58,8 @@ Ahora que tiene un sistema de Windows Server 2016 ejecutando la característica 
 
 
 
-<!--HONumber=Feb16_HO2-->
+
+
+<!--HONumber=Feb16_HO3-->
+
+

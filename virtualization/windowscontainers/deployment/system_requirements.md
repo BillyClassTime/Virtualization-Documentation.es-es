@@ -1,3 +1,7 @@
+
+
+
+
 # Requisitos de los contenedores de Windows
 
 **Esto es contenido preliminar y está sujeto a cambios.**
@@ -48,4 +52,8 @@ Si un host de contenedor de Windows se ejecuta en una máquina virtual de Hyper-
 
 
 
-<!--HONumber=Jan16_HO1-->
+
+
+<!--HONumber=Feb16_HO3-->
+
+

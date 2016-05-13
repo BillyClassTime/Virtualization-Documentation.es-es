@@ -1,3 +1,7 @@
+
+
+
+
 # Docker y Windows
 
 **Esto es contenido preliminar y está sujeto a cambios.**
@@ -26,7 +30,7 @@ Cree un directorio denominado `c:\programdata\docker`. En este directorio, cree 
 PS C:\> New-Item -ItemType File -Path C:\ProgramData\Docker\runDockerDaemon.cmd -Force
 ```
 
-Copie el texto siguiente en el archivo `runDockerDaemon.cmd`. Este archivo por lotes inicia el demonio de Docker con el comando `docker daemon –D –b "Virtual Switch"`. Nota: El nombre del conmutador virtual de este archivo deberá coincidir con el nombre del conmutador virtual que usarán los contenedores para la conectividad de red.
+Copie el texto siguiente en el archivo `runDockerDaemon.cmd`. Este archivo por lotes inicia el demonio de Docker con el comando `docker daemon -D -b "Virtual Switch"`. Nota: El nombre del conmutador virtual de este archivo deberá coincidir con el nombre del conmutador virtual que usarán los contenedores para la conectividad de red.
 
 ```powershell
 @echo off
@@ -70,7 +74,7 @@ Pestaña Aplicación:
 
 - **Directorio de inicio:** C:\Windows\System32
 
-- **Argumentos:** /s /c C:\ProgramData\docker\runDockerDaemon.cmd
+- **Argumentos:** /s /c C:\ProgramData\docker\runDockerDaemon.cmd < nul
 
 - **Nombre del servicio:** Docker
 
@@ -174,4 +178,8 @@ Por ejemplo, si desea ver las imágenes disponibles:
 
 
 
-<!--HONumber=Jan16_HO3-->
+
+
+<!--HONumber=Feb16_HO4-->
+
+

@@ -1,3 +1,7 @@
+
+
+
+
 # Inicio rápido de contenedores de Windows: PowerShell
 
 Los contenedores de Windows se pueden utilizar para implementar rápidamente varias aplicaciones aisladas en un único equipo. En este inicio rápido se muestra la implementación y administración de contenedores de Windows Server y Hyper-V mediante PowerShell. En este ejercicio se creará desde cero una aplicación "hello world" muy simple, que se ejecuta tanto en un contenedor de Windows Server como de Hyper-V. Durante este proceso, se crearán imágenes del contenedor, se trabajará con carpetas compartidas de contenedor y se administrará el ciclo de vida del contenedor. Cuando lo complete, tendrá un conocimiento básico de la administración e implementación de contenedores de Windows.
@@ -274,7 +278,7 @@ Cuando se haya creado el contenedor, **no lo inicie**.
 
 Las carpetas compartidas exponen un directorio del host de contenedor en el contenedor. Cuando se cree una carpeta compartida, los archivos ubicados en la carpeta compartida estarán disponibles en el contenedor. En este ejemplo, se utiliza una carpeta compartida para copiar los paquetes de IIS de Nano Server en el contenedor. Estos paquetes se usarán después para instalar IIS. Para obtener más información sobre la carpeta compartida, consulte [Carpetas compartidas de contenedores](../management/manage_data.md).
 
-Cree un directorio denominado `c:\share\es-es` en el host de contenedor.
+Cree un directorio denominado `c:\share\en-us` en el host de contenedor.
 
 ```powershell
 S C:\> New-Item -Type Directory c:\share\en-us
@@ -309,7 +313,7 @@ Cree una sesión remota de PowerShell con el contenedor mediante el comando `Ent
 PS C:\> Enter-PSSession -ContainerName HYPV -RunAsAdministrator
 [HYPV]: PS C:\windows\system32\config\systemprofile\Documents>cd /
 ```
-Cuando se encuentre en la sesión remota, observe que la carpeta compartida `c:\iisinstall\es-es` se ha creado, aunque está vacía.
+Cuando se encuentre en la sesión remota, observe que la carpeta compartida `c:\iisinstall\en-us` se ha creado, aunque está vacía.
 
 ```powershell
 [HYPV]: PS C:\> ls c:\iisinstall
@@ -327,7 +331,7 @@ Como el contenedor ejecuta una imagen de sistema operativo Nano Server, se neces
 
 Copie `Microsoft-NanoServer-IIS-Package.cab` de `NanoServer\Packages` a `c:\share` en el host de contenedor.
 
-Copie `NanoServer\Packages\es-es\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\es-es` en el host de contenedor.
+Copie `NanoServer\Packages\en-us\Microsoft-NanoServer-IIS-Package.cab` en `c:\share\en-us` en el host de contenedor.
 
 Cree un archivo en la carpeta c:\share denominado unattend.xml y copie este texto en dicho archivo.
 
@@ -517,4 +521,8 @@ exit
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+<!--HONumber=Feb16_HO3-->
+
+

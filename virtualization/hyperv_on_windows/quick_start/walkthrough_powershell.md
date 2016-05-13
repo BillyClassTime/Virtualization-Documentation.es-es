@@ -8,7 +8,7 @@ Ahora que ya ha visto los conceptos básicos de implementación de Hyper-V, la c
 2.  Ejecute el siguiente comando para mostrar una lista de comandos de PowerShell que permite búsqueda, que están disponibles con el módulo de PowerShell de Hyper-V.
 
  ```powershell
-get-command –module hyper-v | out-gridview
+get-command -module hyper-v | out-gridview
  ```
   Obtendrá algo parecido a esto:
 
@@ -40,12 +40,12 @@ get-vm
 2. Para devolver una lista que solo incluya las máquinas virtuales encendidas, agregue un filtro al comando `get-vm`. Puede agregar un filtro si usa el comando where-object. Para más información sobre el filtrado, consulte la documentación de [Uso de Where-Object](https://technet.microsoft.com/en-us/library/ee177028.aspx).
 
  ```powershell
- get-vm | where {$_.State –eq ‘Running’}
+ get-vm | where {$_.State -eq ‘Running’}
  ```
 3.  Para enumerar todas las máquinas virtuales que se encuentran en un estado apagado, ejecute el siguiente comando. Este comando es una copia del comando del paso 2 con el filtro cambiado de "Running" a "Off".
 
  ```powershell
- get-vm | where {$_.State –eq ‘Off’}
+ get-vm | where {$_.State -eq ‘Off’}
  ```
 
 ### Iniciar y apagar las máquinas virtuales
@@ -53,18 +53,18 @@ get-vm
 1. Para iniciar una máquina virtual determinada, ejecute el comando siguiente con el nombre de la máquina virtual:
 
  ```powershell
- Start-vm –Name <virtual machine name>
+ Start-vm -Name <virtual machine name>
  ```
 
 2. Para iniciar todas las máquinas virtuales actualmente apagadas, obtenga una lista de esas máquinas y canalice la lista al comando "start-vm":
 
   ```powershell
- get-vm | where {$_.State –eq ‘Off’} | start-vm
+ get-vm | where {$_.State -eq ‘Off’} | start-vm
   ```
 3. Para cerrar todas las máquinas virtuales en ejecución, ejecute lo siguiente:
 
   ```powershell
- get-vm | where {$_.State –eq ‘Running’} | stop-vm
+ get-vm | where {$_.State -eq ‘Running’} | stop-vm
   ```
 
 ### Crear un punto de control de máquina virtual
@@ -103,5 +103,10 @@ En el ejemplo siguiente se muestra cómo crear una nueva máquina virtual en el 
 En este documento se han mostrado algunos pasos sencillos para explorar el módulo de PowerShell de Hyper-V, así como algunos escenarios de ejemplo. Para obtener más información sobre el módulo de PowerShell de Hyper-V, consulte la [referencia de cmdlets de Hyper-V en Windows PowerShell](https://technet.microsoft.com/%5Clibrary/Hh848559.aspx).
 
 
+
+
+
+
+<!--HONumber=Feb16_HO4-->
 
 

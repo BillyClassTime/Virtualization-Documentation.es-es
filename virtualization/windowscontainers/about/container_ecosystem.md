@@ -1,3 +1,7 @@
+
+
+
+
 # Creación de un ecosistema de contenedor
 
 Para entender por qué es tan importante la creación de un ecosistema de contenedor, primero se explicará Docker.
@@ -23,7 +27,6 @@ El ecosistema de contenedores ofrece maneras de administrar contenedores, compar
 
 ![](media/containerEcosystem.png)
 
-
 Microsoft quiere impulsar las opciones de los desarrolladores y la productividad a medida que crean estas aplicaciones de última generación. Nuestro objetivo es aumentar la productividad del desarrollador, que supone permitir que las aplicaciones tengan como destino cualquier nube de Microsoft, sin tener que modificar, reescribir o volver a configurar el código.
 
 Microsoft tiene un gran compromiso con ser abierto y contribuir al ecosistema. Colaboramos activamente con la llegada simultánea de ecosistemas de varios desarrolladores de interés, como Windows y Linux, para impulsar la innovación.
@@ -31,5 +34,10 @@ Microsoft tiene un gran compromiso con ser abierto y contribuir al ecosistema. C
 Durante los próximos meses, ofreceremos más información sobre las asociaciones adicionales de este ecosistema en desarrollo.
 
 
+
+
+
+
+<!--HONumber=Feb16_HO4-->
 
 

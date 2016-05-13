@@ -1,3 +1,7 @@
+
+
+
+
 # Interoperabilidad de administración
 
 **Esto es contenido preliminar y está sujeto a cambios.**
@@ -30,5 +34,10 @@ PS C:\> Stop-ComputeProcess -Id 2088E0FA-1F7C-44DE-A4BC-1E29445D082B -Force
 ```
 
 
+
+
+
+
+<!--HONumber=Feb16_HO3-->
 
 
