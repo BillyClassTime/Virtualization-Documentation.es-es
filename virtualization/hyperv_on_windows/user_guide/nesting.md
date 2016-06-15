@@ -1,95 +1,89 @@
+---
+title: Virtualización anidada
+description: Virtualización anidada
+keywords: windows 10, hyper-v
+author: theodthompson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
+---
+
 # Virtualización anidada
 
-> **Nota:** Esta característica de vista previa anticipada solo está disponible para Windows Insiders que ejecuten la compilación 10565 o una versión posterior y no incluye garantías de rendimiento o estabilidad.
+La virtualización anidada proporciona la capacidad de ejecutar hosts de Hyper-V en un entorno virtualizado. En otras palabras: un host de Hyper-V puede virtualizarse con la virtualización anidada. Algunos casos de uso para la virtualización anidada podrían ser la ejecución de un laboratorio de Hyper-V en un entorno virtualizado, los servicios de virtualización que se proporcionan a otros usuarios sin la necesidad de hardware individual y la tecnología de contenedor de Windows que confía en la virtualización anidada al ejecutar contenedores de Hyper-V en un host contenedor virtualizado. En este documento se detallan los requisitos previos de hardware y software, los pasos de configuración y la información para solucionar errores.
 
-La virtualización anidada es virtualización en ejecución dentro de un entorno virtualizado. En otras palabras, el anidamiento permite ejecutar el rol de servidor de Hyper-V en una máquina virtual.
+> La virtualización anidada está en fase preliminar y no se debería usar en entornos de producción.
 
-![](./media/HyperVNesting.png)
+## Requisitos previos
 
-Hyper-V se basa en la compatibilidad de virtualización de hardware (por ejemplo, Intel VT-x y AMD-V) para ejecutar máquinas virtuales. Normalmente, cuando se ha instalado Hyper-V, el hipervisor oculta esta capacidad a las máquinas virtuales invitadas. Esto impide que las máquinas virtuales invitadas ejecuten el rol de servidor de Hyper-V entre otros hipervisores.
+- Versión de Windows Insider (Windows Server 2016, Nano Server o Windows 10) que ejecute la versión 10565 o una versión posterior.
+- Los dos hipervisores (principal y secundario) deben ejecutar la misma versión de Windows (10565 o una posterior).
+- Mínimo de 4 GB de RAM disponible.
+- Un procesador Intel con tecnología VT-x de Intel.
 
-La virtualización anidada expone dichos componentes de compatibilidad de virtualización de hardware a la máquina virtual invitada.
+## Configurar la virtualización anidada
 
-En el diagrama siguiente se muestra Hyper-V sin anidamiento. El hipervisor de Hyper-V toma el control completo de las extensiones de virtualización de hardware (flecha naranja) y no las expone al sistema operativo invitado.
+Primero cree una máquina virtual que ejecute la misma versión que el host; **no apague la máquina virtual**. Para obtener más información, consulte [Crear una máquina virtual](../quick_start/walkthrough_create_vm.md).
 
-![](./media/HVNoNesting.png)
+Una vez se haya creado la máquina virtual, ejecute el siguiente comando en el hipervisor principal, que habilitará la virtualización anidada en la máquina virtual.
 
-En cambio, en el diagrama siguiente se muestra Hyper-V con anidamiento. En este caso, Hyper-V expone las extensiones de virtualización de hardware a sus máquinas virtuales. Con el anidamiento habilitado, una máquina virtual invitada puede instalar su propio hipervisor y ejecutar sus propias máquinas virtuales invitadas.
+```none
+Set-VMProcessor -VMName <virtual machine> -ExposeVirtualizationExtensions $true -Count 2
+```
 
-![](./media/HVNesting.png)
+Al ejecutar un host de Hyper-V anidado, debe deshabilitarse la memoria dinámica en la máquina virtual. Esto puede configurarse en las propiedades de la máquina virtual o usando el siguiente comando de PowerShell.
 
-## Requisitos de virtualización anidada
+```none
+Set-VMMemory <virtual machine> -DynamicMemoryEnabled $false
+```
 
-Antes de habilitar la virtualización anidada, tenga en cuenta que se trata de una vista previa. No utilice el anidamiento en entornos de producción.
+Para que las máquinas virtuales anidadas reciban direcciones IP, debe habilitarse la suplantación de dirección MAC. Esto se completa con el siguiente comando de PowerShell.
 
-Requisitos:
-* Mínimo de 4 GB de RAM disponible. La virtualización anidada requiere una gran cantidad de memoria.
-* Ambos hipervisores deben ser la compilación de Windows Insider más reciente (10565 o posterior). Otros hipervisores no funcionarán.
-* Esta característica actualmente es solo para Intel. Se requiere Intel VT-x.
+```none
+Get-VMNetworkAdapter -VMName <virtual machine> | Set-VMNetworkAdapter -MacAddressSpoofing On
+```
 
-## Habilitar la virtualización anidada
+Cuando haya completado estos pasos, se podrá iniciar una máquina virtual y se podrá instalar Hyper-V. Para obtener más información sobre la instalación de Hyper-V, consulte [Instalar Hyper-V]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_install).
 
-1. Cree una máquina virtual con la misma compilación que el host. [Las instrucciones se encuentran aquí](../quick_start/walkthrough_create_vm.md).
+## Script de configuración
 
-2. Ejecute [este script](https://github.com/Microsoft/Virtualization-Documentation/blob/master/hyperv-tools/Nested/Enable-NestedVm.ps1) como administrador en el host de Hyper-V.
+También puede usar el siguiente script para habilitar y configurar la virtualización anidada. Con los siguientes comandos, se descargará y ejecutará el script.
+  
+```none
+# download script
+Invoke-WebRequest https://raw.githubusercontent.com/Microsoft/Virtualization-Documentation/master/hyperv-tools/Nested/Enable-NestedVm.ps1 -OutFile .\Enable-NestedVm.ps1 
 
-    En esta presentación preliminar, el anidamiento incluye unos requisitos de configuración. Para facilitar las cosas, [este script de PowerShell](https://github.com/Microsoft/Virtualization-Documentation/blob/master/hyperv-tools/Nested/Enable-NestedVm.ps1) comprobará la configuración, cambiará lo que no sea correcto y habilitará la virtualización anidada para la máquina virtual especificada.
-
-  ``` PowerShell
-  Invoke-WebRequest https://raw.githubusercontent.com/Microsoft/Virtualization-Documentation/master/hyperv-tools/Nested/Enable-NestedVm.ps1 -OutFile ~/Enable-NestedVm.ps1 
-  ~/Enable-NestedVm.ps1 -VmName "DemoVM"
-  ```
-
-3. Instale Hyper-V en la máquina virtual.
-
-  ``` PowerShell
-  Invoke-Command -VMName "DemoVM" -ScriptBlock { Enable-WindowsOptionalFeature -FeatureName Microsoft-Hyper-V -Online; Restart-Computer }
-  ```
-
-4. Cree las máquinas virtuales anidadas.
+# run script
+.\Enable-NestedVm.ps1 -VmName "DemoVM"
+```
 
 ## Problemas conocidos
 
-A continuación se muestra una lista de problemas conocidos:
-* Los hosts con Device Guard habilitado no pueden exponer las extensiones de virtualización a los invitados.
-
-* Los hosts con seguridad basada en la virtualización (VBS) habilitada no pueden exponer las extensiones de virtualización a los invitados. Primero debe deshabilitar VBS para obtener una vista previa de la virtualización anidada.
-
-* Cuando se habilite la virtualización anidada en una máquina virtual, las siguientes características ya no serán compatibles con esa máquina virtual.  
-    Estas acciones producirán un error o provocarán que la máquina virtual no se inicie si hospeda otras máquinas virtuales:
-    * La memoria dinámica debe estar desactivada. Esto impedirá que la máquina virtual se arranque.
-    * El cambio de tamaño de memoria en tiempo de ejecución producirá un error.
-    * La aplicación de puntos de control en una máquina virtual producirá un error.
-    * La migración en vivo producirá un error; en otras palabras, una máquina virtual que hospede otras máquinas virtuales no se puede migrar en vivo.
-    * Guardar o restaurar producirán un error.
-
-    > **Nota:** Estas características seguirán funcionando en la máquina virtual invitada "más interna". Las restricciones solo se aplican a la máquina virtual de la primera capa.
-
-* Cuando se habilita la virtualización anidada, la suplantación de direcciones MAC debe estar habilitada en la máquina virtual para que las redes funcionen en los invitados "más internos".
+- Los hosts con Device Guard habilitado no pueden exponer las extensiones de virtualización a los invitados.
+- Los hosts con seguridad basada en la virtualización (VBS) habilitada no pueden exponer las extensiones de virtualización a los invitados. Primero debe deshabilitar VBS para usar la virtualización anidada.
+- Es posible que se pierda la conexión a la máquina virtual si usa una contraseña en blanco. Cambie la contraseña; el problema debería resolverse.
+- Cuando se habilite la virtualización anidada en una máquina virtual, las siguientes características ya no serán compatibles con esa máquina virtual.  
+  * Cambio de tamaño de memoria en tiempo de ejecución.
+  * Aplicación de un punto de control a una máquina virtual en ejecución.
+  * Una máquina virtual que hospeda otras máquinas virtuales no se puede migrar mientras está activa.
+  * No podrá guardar ni restaurar el contenido.
 
 ## Preguntas más frecuentes y solución de problemas
 
-### Mi máquina virtual no se inicia, ¿qué debo hacer?
+Mi máquina virtual no se inicia, ¿qué debo hacer?
 
 1. Asegúrese de que la memoria dinámica esté desactivada.
-2. Ejecute este script de PowerShell en el equipo host desde un símbolo de sistema con privilegios elevados.
+2. Ejecute [este script de PowerShell](https://raw.githubusercontent.com/Microsoft/Virtualization-Documentation/master/hyperv-tools/Nested/Get-NestedVirtStatus.ps1) en el equipo host desde un símbolo de sistema con privilegios elevados.
+  
+## Comentarios
 
-    Este script le indica si el host y las máquinas virtuales están configurados correctamente para anidarse.
+Informe de otros problemas a través de la aplicación de comentarios de Windows, los [foros de virtualización](https://social.technet.microsoft.com/Forums/windowsserver/En-us/home?forum=winserverhyperv) o a través de [GitHub](https://github.com/Microsoft/Virtualization-Documentation).
 
-  ``` PowerShell
-  Invoke-WebRequest https://raw.githubusercontent.com/Microsoft/Virtualization-Documentation/master/hyperv-tools/Nested/Get-NestedVirtStatus.ps1 -OutFile ~/Get-NestedVirtStatus.ps1 
-  ~/Get-NestedVirtStatus.ps1
-  ```
 
-### Conexión a máquina virtual se pierde una y otra vez.
 
-Si está utilizando una contraseña en blanco, se trata de un problema conocido. Cambie su contraseña y el problema debería solucionarse.
-
-### Mi problema no aparece aquí.
-
-¿No ve su problema? ¿Tiene comentarios? Póngase en contacto con nosotros.
-
-Infórmenos a través de la aplicación de comentarios de Windows, los [foros de virtualización](https://social.technet.microsoft.com/Forums/windowsserver/En-us/home?forum=winserverhyperv) o mediante [GitHub](https://github.com/Microsoft/Virtualization-Documentation).
-
+<!--HONumber=Jun16_HO2-->
 
 
