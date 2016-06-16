@@ -4583,9 +4583,9 @@
 * Archive Datetime: 2016-06-16 07:18:24
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/e268b17d4f3f4c30d7b2cbc63e94c89774172acd/virtualization/windowscontainers/TOC.md)
-* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/bca9838f018be9703517287c2c614732f9178e04/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
-* Current Handback Datetime: 2016-06-15 13:15:51
+* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/40d962c643445eeb3dcfd1e8204b25f8d0d3332e/virtualization/windowscontainers/TOC.md)
+* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/5a3fbdee3e8f075dd373a1c52b03ad5ae0776118/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
+* Current Handback Datetime: 2016-06-16 07:47:07
 * [Back to Top](#report-top)
 
 ##### <a name='600fd94bf56ee1f241fc7c06f31e2a49c744b394323'></a> Source: [windows-container-samples\nanoserver\golang\dockerfile](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f49ba2d5b38478e74e682a895f596655aeada47f/windows-container-samples/nanoserver/golang/dockerfile)

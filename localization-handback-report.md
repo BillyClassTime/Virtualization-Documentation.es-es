@@ -1,11 +1,29 @@
 # <a name='report-top'></a> Localization Handback Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cb689563fac8479fe9012cf41b183c1d1ef76657/virtualization/windowscontainers/TOC.md) | OutofSyncHandedBackSuccess | [Details](#a497db5e3d4b8dacf688b2578e39f92f418d2ac3322)
 
 ## Item Details
+##### <a name='a497db5e3d4b8dacf688b2578e39f92f418d2ac3322'></a> Source: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cb689563fac8479fe9012cf41b183c1d1ef76657/virtualization/windowscontainers/TOC.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/08009028f27cf579a66a98dccbbf2e5e527786b8/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
+* Handoff Datetime: 2016-06-10 21:02:50
+* Handoff Reason: Include
+* Archive File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/50f20fe43f009074abc486d35858e2b7c926f65a/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
+* Archive Datetime: 2016-06-16 07:18:24
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/40d962c643445eeb3dcfd1e8204b25f8d0d3332e/virtualization/windowscontainers/TOC.md)
+* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/5a3fbdee3e8f075dd373a1c52b03ad5ae0776118/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
+* Current Handback Datetime: 2016-06-16 07:47:07
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
