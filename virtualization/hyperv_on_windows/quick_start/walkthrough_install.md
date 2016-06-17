@@ -1,3 +1,16 @@
+---
+title: &2064330931 Instalar Hyper-V en Windows 10
+description: Instalar Hyper-V en Windows 10
+keywords: windows 10, hyper-v
+author: neilpeterson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1621365481 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
+---
+
 # Instalar Hyper-V en Windows 10
 
 Debe habilitar el rol de Hyper-V para poder crear máquinas virtuales en Windows 10. Esto se puede realizar mediante el panel de control de Windows 10, PowerShell o la herramienta de Administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada uno de ellos.
@@ -54,6 +67,6 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 
 
-<!--HONumber=Feb16_HO4-->
+<!--HONumber=May16_HO1-->
 
 

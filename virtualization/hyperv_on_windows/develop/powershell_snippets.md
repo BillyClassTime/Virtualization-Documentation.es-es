@@ -1,3 +1,16 @@
+---
+title: &687375212 Fragmentos de código de PowerShell
+description: Fragmentos de código de PowerShell
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &626044203 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: dc33c703-c5bc-434e-893b-0c0976b7cb88
+---
+
 # Fragmentos de código de PowerShell
 
 PowerShell es una maravillosa herramienta de creación de scripts, automatización y administración para Hyper-V.  Aquí puede encontrar un cuadro de herramientas para explorar algunas de las interesantes cosas que puede hacer.
@@ -60,14 +73,14 @@ A menudo, los scripts de Hyper-V necesitan controlar las credenciales de una o v
 Hay varias formas de lograr esto al trabajar con PowerShell Direct o con la comunicación remota estándar de PowerShell:
 
 1. La forma primera (y más sencilla) es que las mismas credenciales de usuario sean válidas en el host y en el invitado, o en los hosts local y remoto.  
-    Esto es bastante fácil si inicia sesión con su cuenta de Microsoft (o si se encuentra en un entorno de dominio).  
-    En este escenario puede ejecutar simplemente `Invoke-Command -VMName "test" {get-process}`.
+  Esto es bastante fácil si inicia sesión con su cuenta de Microsoft (o si se encuentra en un entorno de dominio).  
+  En este escenario puede ejecutar simplemente `Invoke-Command -VMName "test" {get-process}`.
 
 2. Permiten que PowerShell solicite credenciales  
-    Si las credenciales no coinciden, automáticamente obtendrá una petición de credenciales que le permitirá facilitar las credenciales adecuadas para la máquina virtual.
+  Si las credenciales no coinciden, automáticamente obtendrá una petición de credenciales que le permitirá facilitar las credenciales adecuadas para la máquina virtual.
 
 3. Almacenar las credenciales en una variable para su reutilización.
-    Ejecute un comando simple similar al siguiente:
+  Ejecute un comando simple similar al siguiente:
   ``` PowerShell
   $localCred = Get-Credential
   ```
@@ -78,9 +91,9 @@ Hay varias formas de lograr esto al trabajar con PowerShell Direct o con la comu
   Que significará que las credenciales solo se le solicitarán una vez por cada sesión de PowerShell o script.
 
 4. Codifique las credenciales en los scripts. **No haga esto en ningún sistema ni carga de trabajo real**
-    > Advertencia: _No haga esto en un sistema de producción. No lo haga con contraseñas reales._
+> Advertencia: _No haga esto en un sistema de producción. No lo haga con contraseñas reales._
 
-    Puede crear manualmente un objeto de PSCredential con código similar al siguiente:
+  Puede crear manualmente un objeto de PSCredential con código similar al siguiente:
   ``` PowerShell
   $localCred = New-Object -typename System.Management.Automation.PSCredential -argumentlist "Administrator", (ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force) 
   ```
@@ -88,5 +101,10 @@ Hay varias formas de lograr esto al trabajar con PowerShell Direct o con la comu
 
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 

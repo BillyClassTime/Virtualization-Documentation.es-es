@@ -1,3 +1,16 @@
+---
+title: &268219175 Especificaciones de hipervisor
+description: Especificaciones de hipervisor
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1209300377 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
+---
+
 # Especificaciones de hipervisor
 
 ## Especificación funcional de nivel superior del hipervisor
@@ -25,4 +38,8 @@ Los sistemas operativos Windows requieren que un conjunto limitado de interfaces
 
 
 
-<!--HONumber=Mar16_HO2-->
+
+
+<!--HONumber=May16_HO1-->
+
+
