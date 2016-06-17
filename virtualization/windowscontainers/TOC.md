@@ -14,17 +14,17 @@
 ## [Host de contenedor: Windows Server](deployment/deployment.md)
 ## [Host de contenedor: Nano Server](deployment/deployment_nano.md)
 
+# Docker en Windows
+## [Demonio de Docker en Windows](docker/configure_docker_daemon.md)
+## [Dockerfiles en Windows](docker/manage_windows_dockerfile.md)
+## [Optimizar Dockerfiles](docker/optimize_windows_dockerfile.md)
+
 # Administrar contenedores de Windows
 ## [Contenedores de Hyper-V](management/hyperv_container.md)
 ## [Imágenes del contenedor](management/manage_images.md)
 ## [Red de contenedores](management/container_networking.md)
 ## [Volúmenes de datos de contenedor](management/manage_data.md)
 ## [Control de recursos de contenedor](management/manage_resources.md)
-
-# Docker en Windows
-## [Docker Engine en Windows](deployment/docker_windows.md)
-## [Dockerfiles en Windows](docker/manage_windows_dockerfile.md)
-## [Optimizar Dockerfiles](docker/optimize_windows_dockerfile.md)
 
 # Ejemplos de contenedor
 ## [Dockerfiles: Windows Server Core](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/windowsservercore)
@@ -42,6 +42,6 @@
 
 
 
-<!--HONumber=Jun16_HO1-->
+<!--HONumber=Jun16_HO2-->
 
 
