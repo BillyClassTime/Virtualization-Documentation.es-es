@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "1ba6af300d0a3eba3fc6d27598044f983a4c9168",
+  "LastProcessedCommit": "b9cb3750984af30189eeb4ea8e4b9b6e5547b3e7",
   "LastTranslatedCommit": "af61a1c94b026cdea9b1f98680c9531dda3eb6b7",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
@@ -20204,6 +20204,40 @@
       "HandoffFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\deployment_nano.b4ad903b48200665d4d0c8e4d0956bddc0d52f79.es-es.xlf",
       "HandoffFileCommit": "34ba9c4d46c039cae17bad4ea2a08943488f453f",
       "HandoffDateTime": "2016-06-17T19:45:37.5977577Z",
+      "HandoffPriority": "",
+      "HandoffException": null,
+      "HandoffFailureTimes": 0,
+      "TargetFileCommit": null,
+      "TargetFilePath": null,
+      "HandbackFilePath": null,
+      "HandbackFileCommit": null,
+      "HandbackDateTime": "0001-01-01T00:00:00",
+      "HandbackException": null,
+      "HandbackFailureTimes": 0,
+      "UpdatedDateTime": "0001-01-01T00:00:00",
+      "ArchiveFilePath": null,
+      "ArchiveFileCommit": null,
+      "ArchiveFileDateTime": "0001-01-01T00:00:00",
+      "ArchiveException": null,
+      "BilingualFilePath": null,
+      "BilingualFileCommit": null,
+      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualException": null
+    },
+    "7270493b8c42935434f72b01524530079d5fb539": {
+      "FileHash": "7270493b8c42935434f72b01524530079d5fb539",
+      "SourceFileCommit": "b030c5ff8668bfbacf6932faf9ad322cdce4975a",
+      "SourceFilePath": "virtualization\\hyperv_on_windows\\user_guide\\nesting.md",
+      "HandoffReason": 1,
+      "DependencyFrom": null,
+      "TokenReference": null,
+      "FilePathList": [
+        "virtualization\\hyperv_on_windows\\user_guide\\nesting.md"
+      ],
+      "HasMetadata": true,
+      "HandoffFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf",
+      "HandoffFileCommit": "b7dd89e63c8afa1854c05344bc8bdd0086743486",
+      "HandoffDateTime": "2016-06-20T06:14:45.2731426Z",
       "HandoffPriority": "",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
