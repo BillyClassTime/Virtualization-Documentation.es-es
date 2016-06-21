@@ -1,11 +1,31 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3db43b433e7b1a9484d530cf209ea80ef269a307/virtualization/windowscontainers/management/manage_images.md) | OutofSyncHandedBackSuccess | [Details](#505cc64fa19fb9fc8c2d5c109830f460f09332dd255)
 
 ## Item Details
+##### <a name='505cc64fa19fb9fc8c2d5c109830f460f09332dd255'></a> Source: [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3db43b433e7b1a9484d530cf209ea80ef269a307/virtualization/windowscontainers/management/manage_images.md)
+* Status: OutofSyncHandedBackSuccess
+* Target File: 
+* Handoff File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/9126d54e7a86125a6483a068727de43ae3ac4057/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf)
+* Handoff Datetime: 2016-06-21 21:44:54
+* Handoff Reason: Include
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Current Target File: [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/1de76912f3341a55b73ad2dd9ee3383b638bf2e2/virtualization/windowscontainers/management/manage_images.md)
+* Current Handback File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/06f401ad06586b863f6f68669ff5924c4a9d0733/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf)
+* Current Handback Datetime: 2016-05-13 23:33:57
+* Bilingual File: [manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/06f401ad06586b863f6f68669ff5924c4a9d0733/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_images.6d8d709cbc19bb63cc7d4553991616c57920cdfd.es-es.xlf)
+* Bilingual Datetime: 2016-06-16 07:50:11
+* [Back to Top](#report-top)
+
 
 ## Error Details
 
