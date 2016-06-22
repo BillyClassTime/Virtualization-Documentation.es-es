@@ -1728,6 +1728,8 @@
 * Current Target File: [virtualization\hyperv_on_windows\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/b20bdc73d50518e6b2b22f203445d62dbda10f75/virtualization/hyperv_on_windows/index.md)
 * Current Handback File: [index.ed20041a86dfe858d5ca1a68bb48f4bd5b024074.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/30b7597fcca798b75a8e7c276b8e0dc090fb0e60/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/index.ed20041a86dfe858d5ca1a68bb48f4bd5b024074.es-es.xlf)
 * Current Handback Datetime: 2016-06-22 19:55:51
+* Bilingual File: [index.ed20041a86dfe858d5ca1a68bb48f4bd5b024074.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/30b7597fcca798b75a8e7c276b8e0dc090fb0e60/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/index.ed20041a86dfe858d5ca1a68bb48f4bd5b024074.es-es.xlf)
+* Bilingual Datetime: 2016-06-22 19:56:41
 * [Back to Top](#report-top)
 
 ##### <a name='8489e1cb35de12a7cc54a8c1b29f40672eaac85199'></a> Source: [virtualization\hyperv_on_windows\media\All_ContentTypeIcons_VisualWalkthrough_65.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/240aa916b6122cd564fdee62f723cd199db8dfe5/virtualization/hyperv_on_windows/media/All_ContentTypeIcons_VisualWalkthrough_65.png)
