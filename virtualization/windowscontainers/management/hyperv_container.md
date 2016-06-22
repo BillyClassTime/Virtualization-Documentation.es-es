@@ -28,7 +28,7 @@ La tecnología de contenedor de Windows incluye dos tipos distintos de contenedo
 La administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Al crear un contenedor de Hyper-V con Docker, se usa el parámetro `--isolation=hyperv`.
 
 ```none
-docker run -it --isolation=hyperv windowsservercore cmd
+docker run -it --isolation=hyperv nanoserver cmd
 ```
 
 ### Explicación del aislamiento
@@ -97,6 +97,6 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 ```
 
 
-<!--HONumber=May16_HO3-->
+<!--HONumber=Jun16_HO2-->
 
 
