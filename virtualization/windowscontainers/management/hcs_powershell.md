@@ -1,18 +1,25 @@
-
-
-
+---
+title: HCS PowerShell
+description: Trabajo con HCS PowerShell y contenedores de Windows.
+keywords: docker, containers
+author: neilpeterson
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: 45144ec5-f76a-4460-abd1-9b60e47506d6
+---
 
 # Interoperabilidad de administración
 
-**Esto es contenido preliminar y está sujeto a cambios.**
-
-En su mayor parte, los contenedores de Windows creados con PowerShell deben administrarse con PowerShell y los creados con Docker deben administrarse con Docker. Dicho eso, el módulo de PowerShell de informática de host ofrece la capacidad de detectar y detener contenedores **en ejecución**, independientemente de cómo se hayan creado. Este módulo funciona como un "administrador de tareas" para los contenedores que se ejecutan en un host de contenedor.
+**Esto es contenido preliminar y está sujeto a cambios.** 
 
 ## Mostrar todos los contenedores
 
 Para devolver una lista de contenedores, use el comando `Get-ComputeProcess`.
 
-```powershell
+```none
 PS C:\> Get-ComputeProcess
 
 Id                                                Name                                      Owner       Type
@@ -29,15 +36,11 @@ Para detener un contenedor independientemente de si se creó con PowerShell o Do
 
 > En el momento de la escritura, el servicio de VMMS deberá reiniciarse para que los contenedores se muestren como detenidos cuando se use el comando `Get-Container`.
 
-```powershell
+```none
 PS C:\> Stop-ComputeProcess -Id 2088E0FA-1F7C-44DE-A4BC-1E29445D082B -Force
 ```
 
 
-
-
-
-
-<!--HONumber=Feb16_HO3-->
+<!--HONumber=May16_HO3-->
 
 

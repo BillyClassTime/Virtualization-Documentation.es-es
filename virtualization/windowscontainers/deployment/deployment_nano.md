@@ -1,242 +1,194 @@
 ---
+title: Implementación de contenedores de Windows en Nano Server
+description: Implementación de contenedores de Windows en Nano Server
+keywords: docker, containers
 author: neilpeterson
+manager: timlt
+ms.date: 05/26/2016
+ms.topic: article
+ms.prod: windows-containers
+ms.service: windows-containers
+ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 ---
 
+# Implementación de host de contenedor: Nano Server
 
-# Implementación de host de contenedor - Nano Server
+**Esto es contenido preliminar y está sujeto a cambios.** 
 
-**Esto es contenido preliminar y está sujeto a cambios.**
+Antes de iniciar la configuración del contenedor de Windows en Nano Server, necesitará un sistema que ejecute Nano Server y una conexión remota de PowerShell con este sistema.
 
-La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). Los pasos que se describen en este documento se usan para implementar un host de contenedor de Windows para Nano Server, en un sistema físico o virtual. Para instalar un host de contenedor de Windows en Windows Server, consulte [Implementación de host de contenedor - Windows Server](./deployment.md).
+Para obtener más información sobre la implementación y la conexión con Nano Server, vea [Getting Started with Nano Server]( https://technet.microsoft.com/en-us/library/mt126167.aspx) (Introducción a Nano Server).
 
-Para obtener detalles sobre los requisitos del sistema, consulte [Requisitos del sistema host de contenedor de Windows](./system_requirements.md).
+Encontrará una copia de evaluación de Nano Server [aquí](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula).
 
-Hay scripts de PowerShell disponibles para automatizar la implementación de un host de contenedor de Windows.
-- [Implementación de un host de contenedor en una nueva máquina virtual de Hyper-V](../quick_start/container_setup.md).
-- [Implementación de un host de contenedor en un sistema existente](../quick_start/inplace_setup.md).
+## Instalar la característica de contenedor
 
+Instale el proveedor de administración del paquete de Nano Server.
 
-# Host de Nano Server
-
-Los pasos que se indican en esta tabla se pueden utilizar para implementar un host de contenedor en Nano Server. Se incluyen las configuraciones necesarias para los contenedores de Hyper-V y Windows Server.
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
-<tr valign="top">
-<td width="30%"><strong>Acción de implementación</strong></td>
-<td width="70%"><strong>Detalles</strong></td>
-</tr>
-<tr>
-<td>[Preparación de Nano Server para contenedores](#nano)</td>
-<td>Preparar un VHD de Nano Server con las capacidades de Hyper-V y contenedores.</td>
-</tr>
-<tr>
-<td>[Creación de un conmutador virtual](#vswitch)</td>
-<td>Los contenedores se conectan a un conmutador virtual para la conectividad de red.</td>
-</tr>
-<tr>
-<td>[Configuración de NAT](#nat)</td>
-<td>Si se configura un conmutador virtual con traducción de direcciones de red, la propia NAT necesita una configuración.</td>
-</tr>
-<tr>
-<td>[Instalación de imágenes del sistema operativo del contenedor](#img)</td>
-<td>Las imágenes del sistema operativo proporcionan la base para las implementaciones de contenedores.</td>
-</tr>
-<tr>
-<td>[Instalación de Docker](#docker)</td>
-<td>Este paso es opcional, pero es necesario para crear y administrar contenedores de Windows con Docker. </td>
-</tr>
-</table>
-
-Estos pasos deben realizarse si se van a usar contenedores de Hyper-V. Tenga en cuenta que los pasos marcados con * son necesarios si el host del contenedor es una máquina virtual de Hyper-V.
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:100%" cellpadding="5" cellspacing="5">
-<tr valign="top">
-<td width="30%"><strong>Acción de implementación</strong></td>
-<td width="70%"><strong>Detalles</strong></td>
-</tr>
-<tr>
-<td>[Habilitación del rol de Hyper-V](#hypv) </td>
-<td>Hyper-V solo es necesario si se usarán los contenedores de Hyper-V.</td>
-</tr>
-<tr>
-<td>[Habilitación de la virtualización anidada*](#nest)</td>
-<td>Si el propio host de contenedor es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada.</td>
-</tr>
-<tr>
-<td>[Configuración de procesadores virtuales*](#proc)</td>
-<td>Si el host de contenedor es una máquina virtual de Hyper-V, se deben configurar al menos dos procesadores virtuales.</td>
-</tr>
-<tr>
-<td>[Deshabilitación de la memoria dinámica*](#dyn)</td>
-<td>Si el host del contenedor es una máquina virtual de Hyper-V, la memoria dinámica debe estar deshabilitada.</td>
-</tr>
-<tr>
-<td>[Configuración de la suplantación de direcciones MAC*](#mac)</td>
-<td>Si el host de contenedor está virtualizado, la suplantación de direcciones MAC deberá habilitarse.</td>
-</tr>
-</table>
-
-## Pasos de implementación
-
-### <a name=nano></a> Preparación de Nano Server
-
-La implementación de Nano Server implica la creación de un disco duro virtual preparado, que incluye el sistema operativo Nano Server y paquetes de características adicionales. En esta guía se detalla rápidamente la preparación de un disco duro virtual de Nano Server, que se puede usar para contenedores de Windows. Para más información sobre Nano Server y para explorar las diferentes opciones de implementación de Nano Server, consulte la [Documentación de Nano Server](https://technet.microsoft.com/en-us/library/mt126167.aspx).
-
-Cree una carpeta denominada `nano`.
-
-```powershell
-PS C:\> New-Item -ItemType Directory c:\nano
+```none
+Install-PackageProvider NanoServerPackage
 ```
 
-Busque los archivos `NanoServerImageGenerator.psm1` y `Convert-WindowsImage.ps1` de la carpeta de Nano Server en el servidor de Windows Media. Cópielos en `c:\nano`.
+Una vez que haya instalado el proveedor del paquete, instale la característica de contenedor.
 
-```powershell
-#Set path to Windows Server 2016 Media
-PS C:\> $WindowsMedia = "C:\Users\Administrator\Desktop\TP4 Release Media"
-
-PS C:\> Copy-Item $WindowsMedia\NanoServer\Convert-WindowsImage.ps1 c:\nano
-
-PS C:\> Copy-Item $WindowsMedia\NanoServer\NanoServerImageGenerator.psm1 c:\nano
-```
-Ejecute lo siguiente para crear un disco duro virtual de Nano Server. El parámetro `-Containers` indica que el paquete del contenedor está instalado y el parámetro `-Compute` se encarga del paquete de Hyper-V. Hyper-V solo es necesario si se usan contenedores de Hyper-V.
-
-```powershell
-PS C:\> Import-Module C:\nano\NanoServerImageGenerator.psm1
-
-PS C:\> New-NanoServerImage -MediaPath $WindowsMedia -BasePath c:\nano -TargetPath C:\nano\NanoContainer.vhdx -MaxSize 10GB -GuestDrivers -ReverseForwarders -Compute -Containers
-```
-Cuando se complete la operación, cree una máquina virtual a partir del archivo `NanoContainer.vhdx`. Esta máquina virtual ejecutará el sistema operativo Nano Server y paquetes opcionales.
-
-### <a name=vswitch></a>Creación de un conmutador virtual
-
-Cada uno de los contenedores debe estar conectado a un conmutador virtual para comunicarse a través de una red. Un conmutador virtual se crea con el comando `New-VMSwitch`. Los contenedores admiten un conmutador virtual con el tipo `External` o `NAT`. Para obtener más información sobre las redes de contenedor de Windows, consulte [Red de contenedores](../management/container_networking.md).
-
-Este ejemplo crea un conmutador virtual con el nombre "Virtual Switch", un tipo NAT y una subred de NAT 172.16.0.0/12.
-
-```powershell
-PS C:\> New-VMSwitch -Name "Virtual Switch" -SwitchType NAT -NATSubnetAddress "172.16.0.0/12"
+```none
+Install-NanoServerPackage -Name Microsoft-NanoServer-Containers-Package
 ```
 
-### <a name=nat></a>Configuración de NAT
+Deberá reiniciar el host de Nano Server después de instalar estas características.
 
-Además de crear el conmutador virtual, si el tipo de conmutador es NAT, se debe crear un objeto NAT. Esta operación se completa con el comando `New-NetNat`. En este ejemplo se crea un objeto NAT, con el nombre `ContainerNat` y un prefijo de dirección que coincida con la subred NAT asignada al conmutador de contenedor.
+## Instalar Docker
 
-```powershell
-PS C:\> New-NetNat -Name ContainerNat -InternalIPInterfaceAddressPrefix "172.16.0.0/12"
+Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. Instale el demonio de Docker siguiendo estos pasos.
 
-Name                             : ContainerNat
-ExternalIPInterfaceAddressPrefix :
-InternalIPInterfaceAddressPrefix : 172.16.0.0/12
-IcmpQueryTimeout                 : 30
-TcpEstablishedConnectionTimeout  : 1800
-TcpTransientConnectionTimeout    : 120
-TcpFilteringBehavior             : AddressDependentFiltering
-UdpFilteringBehavior             : AddressDependentFiltering
-UdpIdleSessionTimeout            : 120
-UdpInboundRefresh                : False
-Store                            : Local
-Active                           : True
+Descargue el demonio de Docker y cópielo en `$env:SystemRoot\system32\` en el host de contenedor. Nano Server no admite actualmente `Invoke-Webrequest`, por lo que deberá completarlo desde un sistema remoto.
+
+```none
+Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile .\dockerd.exe
 ```
 
-### <a name=img></a>Instalación de imágenes de sistema operativo
+Instale Docker como un servicio de Windows.
 
-Una imagen de sistema operativo se utiliza como base para cualquier contenedor de Hyper-V o Windows Server. La imagen se usa para implementar un contenedor, que luego se puede modificar y capturar en una nueva imagen de contenedor. Se han creado imágenes de sistema operativo con Windows Server Core y Nano Server como el sistema operativo subyacente.
-
-Las imágenes de sistema operativo del contenedor se pueden encontrar e instalar con el módulo de PowerShell ContainerProvider. Antes de utilizar este módulo, debe instalarse. Se pueden utilizar los siguientes comandos para instalar el módulo.
-
-```powershell
-PS C:\> Install-PackageProvider ContainerProvider -Force
+```none
+dockerd.exe --register-service
 ```
 
-Use `Find-ContainerImage` para obtener una lista de imágenes del administrador de paquetes de PowerShell OneGet.
+Inicie el servicio Docker.
 
-```powershell
-PS C:\> Find-ContainerImage
-
-Name                 Version                 Description
-----                 -------                 -----------
-NanoServer           10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
-WindowsServerCore    10.0.10586.0            Container OS Image of Windows Server 2016 Techn...
-```
-**Nota**: En este momento, solo la imagen del sistema operativo Nano Server es compatible con un host de contenedor de Nano Server. Para descargar e instalar la imagen del sistema operativo base Nano Server, ejecute lo siguiente.
-
-```powershell
-PS C:\> Install-ContainerImage -Name NanoServer -Version 10.0.10586.0
-
-Downloaded in 0 hours, 0 minutes, 10 seconds.
+```none
+Start-Service Docker
 ```
 
-Compruebe que la imagen se instaló con el comando `Get-ContainerImage`.
+## Instalar imágenes base del contenedor
 
-```powershell
-PS C:\> Get-ContainerImage
+Las imágenes del sistema operativo base se usan como base para cualquier contenedor de Hyper-V o Windows Server. Las imágenes del sistema operativo base están disponibles con Windows Server Core y Nano Server como sistema operativo subyacente y se pueden instalar mediante el proveedor de imágenes de contenedores. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
 
-Name              Publisher    Version      IsOSImage
-----              ---------    -------      ---------
-NanoServer        CN=Microsoft 10.0.10586.0 True
+Se puede usar el siguiente comando para instalar el proveedor de imágenes de contenedores.
+
+```none
+Install-PackageProvider ContainerImage -Force
 ```
-Para más información sobre la administración de imágenes de contenedor, consulte [Imágenes del contenedor de Windows](../management/manage_images.md).
 
+Para descargar e instalar la imagen base de Nano Server, ejecute lo siguiente:
 
-### <a name=docker></a>Instalación de Docker
+```none
+Install-ContainerImage -Name NanoServer
+```
 
-El demonio de Docker y una interfaz de línea de comandos no se incluyen con Windows y no se instalan con la característica de contenedor de Windows. Docker no es un requisito para trabajar con contenedores de Windows. Si quiere instalar Docker, siga las instrucciones de este artículo [Docker y Windows](./docker_windows.md).
+**Nota**: En este momento, solo la imagen base de Nano Server es compatible con un host de contenedor de Nano Server.
 
-Puede usar el comando `Enter-PSSession` en el host de administración de Hyper-V para conectarse al host del contenedor.
+Reinicie el servicio Docker.
 
-```powershell
-PS C:\> Enter-PSSession -VMName <VM Name>
+```none
+Restart-Service Docker
+```
+
+Por último, debe etiquetar la imagen con una versión "latest". Para ello, ejecute el comando siguiente.
+
+```none
+docker tag nanoserver:10.0.14300.1010 nanoserver:latest
 ```
 
 ## Host de contenedor de Hyper-V
 
-### <a name=hypv></a>Habilitación del rol de Hyper-V
+Para implementar contenedores de Hyper-V, es necesario el rol de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea Virtualización anidada.
 
-En Nano Server, esta acción se puede llevar a cabo al crear la imagen de Nano Server. Consulte las instrucciones en [Preparación de Nano Server para contenedores](#nano).
+### Virtualización anidada
 
-### <a name=nest></a>Virtualización anidada
+El script siguiente configurará la virtualización anidada para el host de contenedor. Este script se ejecuta en la máquina de Hyper-V que hospeda la máquina virtual del host de contenedor. Asegúrese de que la máquina virtual del host de contenedor está desactivada cuando ejecute este script.
 
-Si el propio host de contenedor se ejecutará en una máquina virtual de Hyper-V y también hospedará contenedores de Hyper-V, la virtualización anidada debe habilitarse. Esto se puede completar con el siguiente comando de PowerShell.
+```none
+#replace with the virtual machine name
+$vm = "<virtual-machine>"
 
-**Nota**: Las máquinas virtuales deben estar desconectadas cuando se ejecute este comando.
+#configure virtual processor
+Set-VMProcessor -VMName $vm -ExposeVirtualizationExtensions $true -Count 2
 
-```powershell
-PS C:\> Set-VMProcessor -VMName <VM Name> -ExposeVirtualizationExtensions $true
+#disable dynamic memory
+Set-VMMemory $vm -DynamicMemoryEnabled $false
+
+#enable mac spoofing
+Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
-### <a name=proc></a>Configuración de procesadores virtuales
+### Habilitación del rol de Hyper-V
 
-Si el propio host de contenedor se ejecutará en una máquina virtual de Hyper-V y también hospedará contenedores de Hyper-V, la máquina virtual requerirá al menos dos procesadores. Esto se puede configurar a través de la configuración de la máquina virtual o con el siguiente comando.
-
-**Nota**: Las máquinas virtuales deben estar desconectadas cuando se ejecute este comando.
-
-```poweshell
-PS C:\> Set-VMProcessor -VMName <VM Name> -Count 2
+```none
+Install-NanoServerPackage Microsoft-NanoServer-Compute-Package
 ```
 
-### <a name=dyn></a>Deshabilitación de la memoria dinámica
+## Administración de Docker en Nano Server
 
-Si el host de contenedor es una máquina virtual de Hyper-V, la memoria dinámica debe estar deshabilitada en la máquina virtual del host de contenedor. Esto se puede configurar a través de la configuración de la máquina virtual o con el siguiente comando.
+**Prepare el demonio de Docker:**
 
-**Nota**: Las máquinas virtuales deben estar desconectadas cuando se ejecute este comando.
+Para obtener la mejor experiencia posible, administre Docker en Nano Server desde un sistema remoto. Para ello, debe completar los pasos siguientes.
 
-```poweshell
-PS C:\> Set-VMMemory <VM Name> -DynamicMemoryEnabled $false
+Cree una regla de firewall en el host de contenedor para la conexión de Docker. Use el puerto `2375` para una conexión no segura o el puerto `2376` para una conexión segura.
+
+```none
+netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2376
 ```
 
-### <a name=mac></a>Suplantación de direcciones MAC
+Configure el demonio de Docker para que acepte las conexiones entrantes a través de TCP.
 
-Finalmente, si el host de contenedor se ejecuta en una máquina virtual de Hyper-V, la suplantación de direcciones MAC se debe habilitar. Esto permite que cada contenedor reciba una dirección IP. Para habilitar la suplantación de direcciones MAC, ejecute el siguiente comando en el host de Hyper-V. La propiedad VMName será el nombre del host de contenedor.
+En primer lugar, cree un archivo `daemon.json` en `c:\ProgramData\docker\config\daemon.json`.
 
-```powershell
-PS C:\> Get-VMNetworkAdapter -VMName <VM Name> | Set-VMNetworkAdapter -MacAddressSpoofing On
+```none
+new-item -Type File c:\ProgramData\docker\config\daemon.json
 ```
 
+Después, copie este archivo JSON en el archivo. De este modo se configura el demonio de Docker para que acepte las conexiones entrantes a través del puerto TCP 2375. Esta conexión no es segura y no se recomienda, pero se puede usar para pruebas aisladas.
 
+```none
+{
+    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
+}
+```
 
+En el ejemplo siguiente se configura una conexión remota segura. Los certificados TLS deben crearse y copiarse en las ubicaciones correctas. Para obtener más información, vea [Docker Daemon on Windows](./docker_windows.md) (El demonio de Docker en Windows).
 
+```none
+{
+    "hosts": ["tcp://0.0.0.0:2376", "npipe://"],
+    "tlsverify": true,
+    "tlscacert": "C:\\ProgramData\\docker\\certs.d\\ca.pem",
+    "tlscert": "C:\\ProgramData\\docker\\certs.d\\server-cert.pem",
+    "tlskey": "C:\\ProgramData\\docker\\certs.d\\server-key.pem",
+}
+```
 
+Reinicie el servicio Docker.
 
-<!--HONumber=Mar16_HO3-->
+```none
+Restart-Service docker
+```
+
+**Prepare el cliente de Docker:**
+
+Descargue el cliente de Docker en el sistema de administración remota.
+
+```none
+Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:SystemRoot\system32\docker.exe
+```
+
+Una vez completados los pasos, puede obtener acceso al demonio de Docker con el parámetro `Docker -H`.
+
+```none
+docker -H tcp://10.0.0.5:2376 run -it nanoserver cmd
+```
+
+Puede crear una variable de entorno `DOCKER_HOST` que eliminará el requisito del parámetro `-H`. Para ello, puede usar el siguiente comando de PowerShell.
+
+```none
+$env:DOCKER_HOST = "tcp://<ipaddress of server:2376"
+```
+
+Una vez que haya establecido esta variable, el comando tendrá el aspecto siguiente.
+
+```none
+docker run -it nanoserver cmd
+```
+
+<!--HONumber=May16_HO5-->
 
 
