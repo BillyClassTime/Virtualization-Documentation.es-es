@@ -1638,9 +1638,9 @@
 * Archive Datetime: 2016-06-16 07:18:24
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\about\whats_new.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c637cfefa2407f088975966ffa52f204202326d1/virtualization/hyperv_on_windows/about/whats_new.md)
-* Current Handback File: [whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf)
-* Current Handback Datetime: 2016-01-04 21:56:18
+* Current Target File: [virtualization\hyperv_on_windows\about\whats_new.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/bc9dabf42d4dc024a4c4c55fd1a48cacd2377996/virtualization/hyperv_on_windows/about/whats_new.md)
+* Current Handback File: [whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/743afb5ab874e96dd9f7338e7fbdeafa9f1a7c97/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf)
+* Current Handback Datetime: 2016-06-23 16:05:20
 * Bilingual File: [whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/63980253af91094a1572b085910951488775d39b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/whats_new.dae7a7074466e85ccbefc13ff0f5e799912523e9.es-es.xlf)
 * Bilingual Datetime: 2016-06-16 07:50:11
 * [Back to Top](#report-top)
