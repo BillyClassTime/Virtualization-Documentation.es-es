@@ -1,7 +1,8 @@
 ---
 author: scooley
-redirect_url: ./manage_docker
+redirect_url: ../quick_start/manage_docker
 ---
+
 
 # Comparación de PowerShell frente a Docker para administrar contenedores de Windows
 

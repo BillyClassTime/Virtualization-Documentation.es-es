@@ -1,10 +1,23 @@
+---
+title: &648573241 Solución de problemas de Hyper-V en Windows 10
+description: Solución de problemas de Hyper-V en Windows 10
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1014769577 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: f0ec8eb4-ffc4-4bf1-9a19-7a8c3975b359
+---
+
 # Solución de problemas de Hyper-V en Windows 10
 
 ## Actualicé a Windows 10 y ahora no puedo conectarme a mi host con una versión anterior (Windows 8.1 o Server 2012 R2)
 
 En Windows 10, el Administrador de Hyper-V se movió a WinRM para la administración remota. Lo que eso implica ahora es que la administración remota debe estar habilitada en el host remoto para poder utilizar el Administrador de Hyper-V para administrarlo.
 
-Para obtener más información, consulte [Administración de hosts remotos de Hyper-V](remote_host_management.md)
+Para obtener más información, consulte [Administrar hosts remotos de Hyper-V](remote_host_management.md)
 
 ## Cambié el tipo de punto de control, pero sigue teniendo un tipo de punto de control incorrecto
 
@@ -26,5 +39,10 @@ Hyper-V requiere SLAT para ejecutar máquinas virtuales. Si el equipo no admite 
 Si solo está intentando instalar las herramientas de administración, anule la selección de **Plataforma de Hyper-V** en **Programas y características** > **Activar o desactivar las características de Windows**.
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 

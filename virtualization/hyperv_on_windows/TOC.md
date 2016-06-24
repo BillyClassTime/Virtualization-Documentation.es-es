@@ -1,16 +1,14 @@
-# Acerca de Hyper-V en Windows
+# Acerca de Hyper-V
 
 ## [Hyper-V en Windows](./windows_welcome.md)
 
 ## [Introducción a Hyper-V](./about/hyperv_on_windows.md)
 
-## [Novedades en Windows 10](./about/whats_new.md)
-
 ## [Sistemas operativos invitados admitidos](about/supported_guest_os.md)
 
 ## [Linux y FreeBSD en Hyper-V](https://technet.microsoft.com/library/dn531030.aspx)
 
-# Inicio rápido de Hyper-V en Windows
+# Inicio rápido de Hyper-V
 
 ## [Requisitos del sistema](quick_start/walkthrough_compatibility.md)
 
@@ -22,23 +20,29 @@
 
 ## [Hyper-V y PowerShell](quick_start/walkthrough_powershell.md)
 
-# Administrar Hyper-V en Windows
+# Administrar máquinas virtuales con Hyper-V
 
-## [Migrar y actualizar máquinas virtuales](user_guide/migrating_vms.md)
+## [Migrar y actualizar máquinas virtuales](http://aka.ms/upgradevmconfig)
 
 ## [Administrar los servicios de integración](user_guide/managing_ics.md)
 
 ## [Trabajar con puntos de control](user_guide/checkpoints.md)
 
-## [Exportar e importar](user_guide/export_import.md)
+## [Exportar e importar máquinas virtuales](user_guide/export_import.md)
 
-## [PowerShell Direct](user_guide/vmsession.md)
+## [Conectar con PowerShell Direct](user_guide/vmsession.md)
 
-## [Administración remota](user_guide/remote_host_management.md)
+## [Crear máquinas virtuales preliminares](user_guide/create_pre-release_vm.md)
 
-## [Virtualización anidada](user_guide/nesting.md)
+# Administrar hosts de Hyper-V
 
-## [Solucionar problemas](user_guide/troubleshooting.md)
+## [Administrar hosts remotos de Hyper-V](user_guide/remote_host_management.md)
+
+## [Habilitar la virtualización anidada](user_guide/nesting.md)
+
+## [Configurar una red NAT](user_guide/setup_nat_network.md)
+
+## [Crear un servicio de integración](develop/make_mgmt_service.md)
 
 # Comunidad y soporte técnico
 
@@ -48,10 +52,6 @@
 
 ## [PowerShell de Hyper-V](https://technet.microsoft.com/library/hh848559.aspx)
 
-## [Ejemplos de PowerShell](develop/powershell_snippets.md)
-
-## [Crear un servicio de integración](develop/make_mgmt_service.md)
-
 ## [Proveedor WMI de Hyper-V (V2)](https://msdn.microsoft.com/library/hh850319.aspx)
 
 ## [Arquitectura de Hyper-V](https://msdn.microsoft.com/en-us/library/cc768520(v=bts.10).aspx)
@@ -59,4 +59,8 @@
 ## [Especificaciones de hipervisor](develop/tlfs.md)
 
 
-<!--HONumber=Mar16_HO2-->
+
+
+<!--HONumber=May16_HO1-->
+
+

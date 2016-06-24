@@ -1,116 +1,129 @@
-# Contribute to the docs
+---
+title: &297201350 Recursos de la comunidad
+description: Recursos de la comunidad
+keywords: windows 10, hyper-v, container, docker
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &56969895 virtualization
+ms.service: virtualization
+ms.assetid: 731ed95a-ce13-4c6e-a450-49563bdc498c
+---
 
-> **Note:**  In order to contribute, you must have a [GitHub](https://www.github.com) account.
+# Contribuir a los documentos
 
-## Edit an existing doc
+> **Nota:** Para contribuir, debe tener una cuenta de [GitHub](https://www.github.com).
 
-1. Find the doc you'd like to edit.
+## Editar un documento existente
 
-2. Select **Contribute to this topic**  
+1. Busque al documento que quiere editar.
+
+2. Seleccione **Contribuir a este tema**  
   ![](media/editDoc.png)
 
-  This will automatically redirect you to the markdown file in GitHub associated with this file.
+  Esto le redirigirá automáticamente al archivo de marcado de GitHub asociado a este archivo.
 
-  Make sure you are signed into GitHub. If not, either sign in or create a GitHub account.
+  Asegúrese de que inició sesión en GitHub. Si no es así, inicie sesión en GitHub o cree una cuenta de GitHub.
 
   ![](media/GitHubView.png)
 
-3. Select the edit icon to edit with the in browser editor.
+3. Seleccione el icono de edición para editar con el editor del explorador.
 
   ![](media/GitHubEdit.png)
 
-4. Make changes inline.
+4. Realice los cambios en línea.
 
-  Possible actions:
-  1. Edit file
-  2. Preview changes
-  3. Rename the file (it's very unlikely you'll want to do this)
+  Acciones posibles:
+  1. Editar archivo
+  2. Vista previa de cambios
+  3. Cambiar nombre del archivo (es muy poco probable que quiera hacerlo)
 
   ![](media/GitHubEditor.png)
 
-5. Propose your changes as a pull request
+5. Proponer los cambios como una solicitud de incorporación de cambios
 
   ![](media/GitHubProposeChange.png)
 
-6. Review your changes
+6. Revisar los cambios
 
-  **What we're looking for in a pull request**
-  * The change is correct -- it accurately represents the technology
-  * Spelling/grammar are correct
-  * Logical location in the documentation
+  **Qué buscamos en una solicitud de incorporación de cambios**
+  * El cambio es correcto, representa de manera precisa la tecnología
+  * La ortografía y la gramática son correctos
+  * Ubicación lógica en la documentación
 
   ![](media/GitHubCreatePR.png)
 
-7. Create a [pull request](contribute_to_docs.md#pull-requests)
+7. Crear una [solicitud de incorporación de cambios](contribute_to_docs.md#pull-requests)
 
-## Pull requests
+## Solicitudes de incorporación de cambios
 
-Most changes will be committed via pull request. A pull request is a way of reviewing a change set with multiple reviewers, changing, and commenting on the current content.
+La mayoría de los cambios se confirmarán a través de una solicitud de incorporación de cambios. Una solicitud de incorporación de cambios es una manera de revisar un conjunto de cambios con varios revisores que cambian y comentan el contenido actual.
 
 
-## Fork the repo and edit locally
+## Bifurcar el repositorio y editar localmente
 
-For long term doc work Clone the repository locally and work on your machine.
+Para el trabajo con documentos a largo plazo, clone el repositorio localmente y trabaje en su equipo.
 
-The following guide shows you how to emulate my (Sarah Cooley's) set up. There are many alternative setups that work equally well.
+En la guía siguiente se muestra cómo emular mi configuración (Sarah Cooley). Hay muchas configuraciones alternativas que también funcionan bien.
 
-> **Note:** All of these doc tools work equally well on Linux/OSX. If you want other guides, ask.
+> **Nota:** Todas estas herramientas de documentos también funcionan bien en Linux y OSX. Si quiere obtener otras guías, solicítelas.
 
-This is broken into three sections:
-* [Set up git](contribute_to_docs.md#set-up-git)
-  * git installation
-  * initial set up
-  * forking the documentation repo
-  * cloning your copy to your local machine
-* [Initial credential management](contribute_to_docs.md#validate-and-stash-credentials)
-  * information about stashing credentials and cred helper.
-* [Set up doc environment](contribute_to_docs.md#set-up-markdown-editing-environment)
-  * install VSCode
-  * VSCode for Git walk through some handy features
-  * Make first commit.
+El proceso se divide en tres secciones:
+* [Configuración de Git](contribute_to_docs.md#set-up-git)
+  * Instalación de Git
+  * Configuración inicial
+  * Bifurcación del repositorio de documentación
+  * Clonación de la copia en el equipo local
+* [Administración de credenciales inicial](contribute_to_docs.md#validate-and-stash-credentials)
+  * Información sobre el guardado provisional de credenciales y la aplicación auxiliar de credenciales.
+* [Configuración del entorno de documentación](contribute_to_docs.md#set-up-markdown-editing-environment)
+  * Instalación de VSCode
+  * Tutorial de VSCode para Git con algunas características útiles
+  * Realización de la primera confirmación
 
-### Set up Git
+### Configuración de Git
 
-1. Install git (on Windows) from [here](https://git-for-windows.github.io/)
+1. Instale Git (en Windows) desde [aquí](https://git-for-windows.github.io/).
 
-  There is only one value in the installation you need to change:
+  Solo deberá cambiar un valor de la instalación:
 
-  **Adjusting your PATH environment**
-  Use Git from the Windows Command Prompt
+  **Adjusting your PATH environment** (Ajustar el entorno PATH)
+  Use Git from the Windows Command Prompt (Usar Git desde el símbolo del sistema de Windows)
 
   ![](media/GitFromWinCMD.png)
 
-  This lets you use git commands in the PowerShell console/in any Windows console.
+  Esto le permite usar comandos de Git en la consola de PowerShell o en cualquier consola de Windows.
 
-2. Configure your git identity
+2. Configurar la identidad de Git.
 
-  Open a PowerShell Window and run:
+  Abra una ventana de PowerShell y ejecute lo siguiente:
 
   ``` PowerShell
   git config --global user.name "User Name"
   git config --global user.email username@microsoft.com
   ```
 
-  Git uses these values to label your commits.
+  Git usa estos valores para etiquetar las confirmaciones.
 
-> If recieved the following error git probably isn't installed properly or you need to relaunch PowerShell.
+> Si recibe el siguiente error, probablemente Git no esté instalado correctamente o deba reiniciar PowerShell.
 >    ``` PowerShell
->    git : The term 'git' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+>    Git: el término “Git” no se reconoce como el nombre de un cmdlet, una función, un archivo de script o un programa ejecutable. Compruebe la ortografía del nombre; si se incluyó una ruta de acceso, compruebe que dicha ruta sea correcta e inténtelo de nuevo.
 >    ```
 
-3. Configure your git environment
+3. Configure el entorno de Git.
 
-   Set up a credential helper so you only need to enter username and password once (at least on this machine).
-   I use this basic [Windows cred helper](https://github.com/Microsoft/Git-Credential-Manager-for-Windows#download-and-install)
+   Configure una aplicación auxiliar de credenciales para que solo tenga que escribir el nombre de usuario y la contraseña una vez (al menos en este equipo).
+   Yo uso esta [aplicación auxiliar de credenciales de Windows](https://github.com/Microsoft/Git-Credential-Manager-for-Windows#download-and-install).
 
-   Once that is installed, run the following to enable the credential helper and set your push behavior:
+   Una vez que esté instalada, ejecute lo siguiente para habilitar la aplicación auxiliar de credenciales y establecer el comportamiento de inserción:
    ```
    git config --global credential.helper manager
    git config --global push.default simple
    ```
 
-   The first time you need to authenticate against GitHub - you will be prompted for your username, and the two-factor authcode if you have it enabled.
-   Example:
+   La primera vez que se tenga que autenticar en GitHub se le solicitará el nombre de usuario y el código de autenticación en dos fases si está habilitado.
+   Ejemplo:
    ```
    C:\Users\plang\Source\Repos\Virtualization-Documentation [master]> git pull
    Please enter your GitHub credentials for https://github.com/
@@ -118,37 +131,37 @@ This is broken into three sections:
    password:
    authcode (app): 562689
    ```
-   This will automatically a [Personal Access Token](https://github.com/settings/tokens) with the right permissions on GitHub,
-   then store that token securely on the local machine. You shouldn't be prompted again in the future.
+   Esto configurará automáticamente un [token de acceso personal](https://github.com/settings/tokens) con los permisos adecuados en GitHub
+   y lo almacenará de forma segura en el equipo local. No se le volverá a solicitar en el futuro.
 
-4. Fork the repository
+4. Bifurque el repositorio.
 
-5. Clone the repository
+5. Clone el repositorio.
 
-  Git clone makes a local copy of the git repository with the right hooks to sync with other clones of the same repository.
+  Git Clone hace una copia local del repositorio de Git con los enlaces adecuados para sincronizarse con otros clones del mismo repositorio.
 
-  By default, clone will create a folder with the same name as the repository in the current directory. I keep all of my git repos in my user directory. Read more about git clone [here](http://git-scm.com/docs/git-clone).
+  De forma predeterminada, el clon creará una carpeta con el mismo nombre que el repositorio en el directorio actual. En mi caso, guardo todos los repositorios de Git en mi directorio de usuarios. Obtenga más información sobre Git Clone [aquí](http://git-scm.com/docs/git-clone).
 
   ``` PowerShell
   cd ~
   git clone https://github.com/Microsoft/Virtualization-Documentation.git
   ```
 
-  If successful, you now have a `Virtualization-Documentation` folder.
+  Si el proceso se ha realizado correctamente, ahora tendrá una carpeta `Virtualization-Documentation`.
 
   ``` PowerShell
   cd Virtualization-Documentation
   ```
 
-5. [Optional] Set up Posh-Git
+5. [Opcional] Configure Posh-Git.
 
-  Posh-Git is a community created PowerShell module that makes using Git in PowerShell a little friendlier. It adds tab completion for Git in PowerShell, and can also make your prompt display useful about branching and file state. Read more about it [here](https://github.com/dahlbyk/posh-git). You can install Posh-Git by running the following in an Administrator PowerShell console.
+  Posh-Git es un módulo de PowerShell creado por la comunidad que facilita el uso de Git en PowerShell. Agrega tabulación para Git en PowerShell y también puede hacer que el símbolo del sistema muestre información útil sobre el estado de la bifurcación y los archivos. Obtenga [aquí](https://github.com/dahlbyk/posh-git) más información al respecto. Puede instalar Posh-Git ejecutando lo siguiente en una consola de administrador de PowerShell.
 
   ``` PowerShell
   Install-Module -Name posh-git
   ```
 
-  To make Posh-Git work automatically each time you start PowerShell, add the following code to your PowerShell Profile (e.g. `%UserProfile%\My Documents\WindowsPowerShell\profile.ps1 `)
+  Para que Posh-Git funcione automáticamente cada vez que inicie PowerShell, agregue el código siguiente a su perfil de PowerShell (por ejemplo, `%UserProfile%\My Documents\WindowsPowerShell\profile.ps1 `).
 
   ``` PowerShell
   Import-Module posh-git
@@ -165,25 +178,29 @@ This is broken into three sections:
   }
   ```
 
-### Validate and stash credentials
+### Validación y guardado provisional de las credenciales
 
-  To validate that the repository is set up correctly, try pulling new content.
+  Para validar que el repositorio se ha configurado correctamente, intente extraer contenido nuevo.
 
   ``` PowerShell
   git pull
   ```
 
 
-### Set up markdown editing environment
+### Configuración del entorno de edición de Markdown
 
-1. Download VSCode
+1. Descargue VSCode.
 
-6. Make a test commit. If your credentials are stashed correctly, it should all work perfectly.
-
-
+6. Realice una confirmación de prueba. Si el guardado provisional de las credenciales se ha realizado correctamente, todo debería funcionar a la perfección.
 
 
 
 
 
-<!--HONumber=Feb16_HO1-->
+
+
+
+
+<!--HONumber=May16_HO1-->
+
+

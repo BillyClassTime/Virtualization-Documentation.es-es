@@ -1,3 +1,16 @@
+---
+title: &297201350 Administración de los servicios de integración de Hyper-V
+description: Administración de los servicios de integración de Hyper-V
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &431849629 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
+---
+
 # Administración de los servicios de integración de Hyper-V
 
 Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades (por ejemplo, la copia de archivos de invitado), mientras que otros pueden ser bastante importantes para la capacidad de funcionar correctamente del sistema operativo invitado (la sincronización de la hora).
@@ -87,7 +100,9 @@ Stopped  vmicvmsession      Hyper-V VM Session Service
 Running  vmicvss            Hyper-V Volume Shadow Copy Requestor
 ```
 
-Inicie o detenga servicios mediante [`Start-Service`](https://technet.microsoft.com/es-es/library/hh849825.aspx) o [`Stop-Service`](https://technet.microsoft.com/es-es/library/hh849790.aspx) .
+Inicie o detenga servicios mediante [`Start-Service`](https://technet.microsoft.com/es-es/library/hh849825.aspx) o [`Stop-Service`](https://technet.microsoft.com/es-es/library/hh849790.aspx).
+
+Por ejemplo, para deshabilitar PowerShell Direct, puede ejecutar `Stop-Service -Name vmicvmsession`.
 
 De forma predeterminada, todos los servicios de integración están habilitados en el sistema operativo invitado.
 
@@ -178,6 +193,8 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 
 **Para máquinas virtuales que se ejecutan en hosts de Windows 10:**
 
+> **Nota:** El archivo de imagen ISO vmguest.iso ya no es necesario para actualizar los componentes de integración. No se incluye con Hyper-V en Windows 10.
+
 | SO invitado| Mecanismo de actualización| Notas|
 |:---------|:---------|:---------|
 | Windows 10| Windows Update| |
@@ -250,4 +267,8 @@ Las instrucciones para la actualización a través del disco de servicios de int
 
 
 
-<!--HONumber=Jan16_HO3-->
+
+
+<!--HONumber=May16_HO1-->
+
+

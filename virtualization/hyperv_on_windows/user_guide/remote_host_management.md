@@ -1,3 +1,16 @@
+---
+title: &1606372923 Administrar hosts remotos de Hyper-V con el Administrador de Hyper-V
+description: Administrar hosts remotos de Hyper-V con el Administrador de Hyper-V
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &1726839336 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
+---
+
 # Administrar hosts remotos de Hyper-V con el Administrador de Hyper-V
 
 El Administrador de Hyper-V es una herramienta incluida de forma predeterminada para diagnosticar y administrar el host de Hyper-V local y un pequeño número de hosts remotos. En este artículo se documentan los pasos de configuración para conectarse a los hosts de Hyper-V con el Administrador de Hyper-V en todas las configuraciones admitidas.
@@ -14,6 +27,7 @@ El Administrador de Hyper-V en Windows 10 le permite administrar los siguientes 
 * Windows 10
 * Windows 8.1
 * Windows 8
+* Windows Server 2016 + Windows Server Core, Nano Server e Hyper-V Server
 * Windows Server 2012 R2 + Windows Server Core, Datacenter y Hyper-V Server
 * Windows 2012 + Windows Server Core, Datacenter y Hyper-V Server
 
@@ -39,7 +53,7 @@ Para agregar localhost al Administrador de Hyper-V como un host de Hyper-V, sele
 
 Si no se puede establecer una conexión:
 *  Asegúrese de que el rol de la plataforma Hyper-V está habilitado.  
-    Consulte la [sección del tutorial para la comprobación de la compatibilidad](../quick_start/walkthrough_compatibility.md) a fin de ver si se admite Hyper-V.
+  Consulte la [sección del tutorial para la comprobación de la compatibilidad](../quick_start/walkthrough_compatibility.md) a fin de ver si se admite Hyper-V.
 *  Confirme que su cuenta de usuario forma parte del grupo Administrador de Hyper-V.
 
 
@@ -93,14 +107,19 @@ Para conectarse mediante la dirección IP, escriba la dirección IP en el campo 
 En el Host de Hyper-V que se va a administrar, ejecute lo siguiente como administrador:
 
 1.  [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx)
-    * [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) creará las reglas de firewall necesarias para las zonas de red *privadas*. Para permitir este acceso en zonas públicas, deberá habilitar las reglas para CredSSP y WinRM.
+  * [Enable-PSRemoting](https://technet.microsoft.com/en-us/library/hh849694.aspx) creará las reglas de firewall necesarias para las zonas de red *privadas*. Para permitir este acceso en zonas públicas, deberá habilitar las reglas para CredSSP y WinRM.
 2. Set-Item WSMan:\localhost\Client\TrustedHosts -value "fqdn-of-managing-pc"
-    * Como alternativa, puede permitir que todos los hosts sean de confianza para administrarlos mediante:
-    * Set-Item WSMan:\localhost\Client\TrustedHosts -value * -force
+  * Como alternativa, puede permitir que todos los hosts sean de confianza para administrarlos mediante:
+  * Set-Item WSMan:\localhost\Client\TrustedHosts -value * -force
 3. [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer "fqdn-of-managing-pc"
-    * Como alternativa, puede permitir que todos los hosts sean de confianza para administrarlos mediante:
-    * [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer *
+  * Como alternativa, puede permitir que todos los hosts sean de confianza para administrarlos mediante:
+  * [Enable-WSManCredSSP](https://technet.microsoft.com/en-us/library/hh849872.aspx) -Role client -DelegateComputer *
 
 
+
+
+
+
+<!--HONumber=May16_HO1-->
 
 

@@ -1,3 +1,16 @@
+---
+title: Cree sus propios servicios de integración
+description: Servicios de integración de Windows 10.
+keywords: windows 10, hyper-v
+author: scooley
+manager: timlt
+ms.date: 05/02/2016
+ms.topic: article
+ms.prod: &326375774 windows-10-hyperv
+ms.service: windows-10-hyperv
+ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
+---
+
 # Cree sus propios servicios de integración
 
 A partir de Windows 10, cualquier usuario puede crear un servicio muy similar a los servicios de integración de Hyper-V con un nuevo canal de comunicación basado en sockets entre el host de Hyper-V y las máquinas virtuales que se ejecuten en él. Mediante el uso de estos sockets de Hyper-V, los servicios pueden ejecutarse independientemente de la pila de red, y todos los datos se mantienen en la misma memoria física.
@@ -30,7 +43,7 @@ Este documento le guía por la creación de una aplicación sencilla basada en s
 Ahora, los sockets de Hyper-V están disponibles en código nativo (C/C++).
 
 Para escribir una aplicación sencilla, necesitará:
-* Un compilador de C. Si no dispone de uno, eche un vistazo a [Visual Studio Code](https://aka.ms/vs).
+* Un compilador de C. Si no dispone de uno, eche un vistazo a la [comunidad de Visual Studio](https://aka.ms/vs).
 * Un equipo que ejecute Hyper-V y una máquina virtual.
   * Los sistemas operativos del host y los invitados (máquinas virtuales) deben ser Windows 10, Windows Server Technical Preview 3 o versiones posteriores.
 * [Windows 10 SDK](http://aka.ms/flightingSDK) instalado en el host de Hyper-V
@@ -210,6 +223,6 @@ estable
 
 
 
-<!--HONumber=Mar16_HO4-->
+<!--HONumber=May16_HO1-->
 
 
