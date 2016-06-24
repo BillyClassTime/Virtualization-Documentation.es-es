@@ -101,14 +101,14 @@ RUN ["<executable", "<param 1>", "<param 2>"
 RUN <command>
 ```
 
-La diferencia entre exec form y shell form es la manera en que se ejecuta la instrucción `RUN`. Cuando se usa el método exec, el programa especificado se ejecuta explícitamente. 
+La diferencia entre exec form y shell form es la manera en que se ejecuta la instrucción `RUN`. Cuando se usa el método exec form, el programa especificado se ejecuta explícitamente. 
 
-En el ejemplo siguiente se usa exec form.
+En el ejemplo siguiente se usa el método exec form.
 
 ```none
 FROM windowsservercore
 
-RUN ["powershell","New-Item","c:/test"]
+RUN ["powershell", "New-Item", "c:/test"]
 ```
 
 Si se examina la imagen resultante, se observa que el comando que se ejecutó es `powershell new-item c:/test`.
@@ -142,7 +142,7 @@ IMAGE               CREATED             CREATED BY                              
 En Windows, cuando se usa la instrucción `RUN` con el formato exec, las barras diagonales inversas deben llevar un símbolo de escape.
 
 ```none
-RUN ["powershell","New-Item","c:\\test"]
+RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
 **Ejemplos**
@@ -179,7 +179,7 @@ COPY ["<source>" "<destination>"]
 
 **Consideraciones sobre Windows**
  
-En Windows, el formato de destino debe usar barras diagonales. Por ejemplo, las siguientes son instrucciones `ADD` válidas.
+En Windows, el formato de destino debe usar barras diagonales. Por ejemplo, las siguientes son instrucciones `COPY` válidas.
 
 ```none
 COPY test1.txt /temp/
@@ -203,6 +203,8 @@ En este ejemplo se agregan todos los archivos que comienzan por "config" al dire
 ```none
 COPY config* c:/temp/
 ```
+
+Para obtener información detallada sobre la instrucción `COPY`, consulte la [referencia sobre COPY en Docker.com]( https://docs.docker.com/engine/reference/builder/#copy).
 
 ### AGREGAR
 
@@ -297,7 +299,7 @@ La instrucción `CMD` tiene el formato siguiente:
 ```none
 # exec form
 
-CMD ["<executable";"<param>"]
+CMD ["<executable", "<param>"]
 
 # shell form
 
@@ -311,7 +313,7 @@ En Windows, las rutas de acceso de archivo que se especifican en la instrucción
 ```none
 # exec form
 
-CMD ["c:\\Apache24\\bin\\httpd.exe","-w"]
+CMD ["c:\\Apache24\\bin\\httpd.exe", "-w"]
 
 # shell form
 
@@ -381,7 +383,7 @@ RUN powershell.exe -executionpolicy bypass c:\windows\temp\script.ps1
 
 ## Compilación de Docker 
 
-Una vez que se ha creado un archivo Dockerfile y se ha guardado en el disco, se puede ejecutar `docker build` para crear la imagen. El comando `docker build` toma varios parámetros opcionales y una ruta de acceso al archivo Dockerfile. Para obtener documentación completa sobre la compilación de Docker, incluida una lista de todas las opciones de compilación, consulte la información sobre [compilación en Docker.com](https://docs.docker.com/engine/reference/commandline/build/#build-with).
+Una vez que se ha creado un archivo Dockerfile y se ha guardado en el disco, se puede ejecutar `docker build` para crear la imagen. El comando `docker build` toma varios parámetros opcionales y una ruta de acceso al archivo Dockerfile. Para obtener documentación completa sobre la compilación de Docker, incluida una lista de todas las opciones de compilación, consulte la [referencia de compilación en Docker.com](https://docs.docker.com/engine/reference/commandline/build/#build).
 
 ```none
 Docker build [OPTIONS] PATH
@@ -440,6 +442,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 [Referencia sobre Dockerfile en Docker.com](https://docs.docker.com/engine/reference/builder/)
 
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO3-->
 
 
