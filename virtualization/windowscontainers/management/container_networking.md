@@ -52,7 +52,7 @@ Stop-Service docker
 El archivo de configuración se encuentra en `c:\programdata\docker\runDockerDaemon.cmd`. Edite la línea siguiente y agregue `-b "none"`
 
 ```none
-dockerd -b "none"
+dockerd <options> -b “none”
 ```
 
 Reinicie el servicio.
@@ -102,24 +102,47 @@ IsDeleted          : False
 
 ### Red NAT
 
-**Traducción de direcciones de red**: este modo de red es útil para asignar rápidamente direcciones IP privadas a un contenedor. El acceso externo al contenedor se proporciona mediante la asignación de un puerto entre la dirección IP externa y el puerto (host de contenedor) y la dirección IP interna y el puerto del contenedor. Todo el tráfico de red recibido en la combinación de dirección IP externa y puerto se compara con una tabla de asignación de puertos WinNAT y se reenvía a la dirección IP y el puerto del contenedor correcto. Además, NAT permite que varios contenedores hospeden aplicaciones que requieran puertos de comunicación (interna) idénticos asignándolos a puertos externos únicos. En TP5, solo puede existir una red NAT.
+**Traducción de direcciones de red**: este modo de red es útil para asignar rápidamente direcciones IP privadas a un contenedor. El acceso externo al contenedor se proporciona mediante la asignación de un puerto entre la dirección IP externa y el puerto (host de contenedor) y la dirección IP interna y el puerto del contenedor. Todo el tráfico de red recibido en la combinación de dirección IP externa y puerto se compara con una tabla de asignación de puertos WinNAT y se reenvía a la dirección IP y el puerto del contenedor correcto. Además, NAT permite que varios contenedores hospeden aplicaciones que requieran puertos de comunicación (interna) idénticos asignándolos a puertos externos únicos. Windows solo admite la existencia de un prefijo interno de red NAT por host. Para más información, lea la entrada de blog [Capacidades y limitaciones de WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/). 
 
-> En TP5, se creará automáticamente una regla de firewall para todas las asignaciones de puertos estáticos NAT. Esta regla de firewall será global para el host de contenedor y no estará localizada en un adaptador de red o punto de conexión de contenedor específico.
+> Desde TP5, se creará automáticamente una regla de firewall para todas las asignaciones de puertos estáticos NAT. Esta regla de firewall será global para el host de contenedor y no estará localizada en un adaptador de red o punto de conexión de contenedor específico.
 
 #### Configuración del host <!--1-->
 
-Para usar el modo de red NAT, cree una red de contenedor con el nombre de controlador "nat".
+Para usar el modo de red NAT, cree una red de contenedor con el nombre de controlador "nat". 
+
+> Como solo se puede crear una red _nat_ predeterminada por host, asegúrese de que solo crea una nueva red NAT cuando todas las demás redes NAT se hayan quitado y el demonio de Docker se ejecute con la opción '-b "none"'. O bien, si simplemente quiere controlar qué red IP interna usa NAT, puede agregar la opción _--fixed-cidr=<máscara/prefijo interno NAT>_ del comando dockerd en C:\ProgramData\docker\runDockerDaemon.cmd.
 
 ```none
-docker network create -d nat MyNatNetwork
+docker network create -d nat MyNatNetwork [--subnet=<string[]>] [--gateway=<string[]>]
 ```
-
-Puede agregar al comando de creación de red de Docker parámetros adicionales como la dirección IP de la puerta de enlace (--gateway=<string[]>) y el prefijo de subred (--subnet=<string[]>). Vea más adelante los detalles adicionales.
 
 Para crear una red NAT con PowerShell, use la sintaxis siguiente. Tenga en cuenta que se pueden especificar parámetros adicionales mediante PowerShell, incluidos DNSServers y DNSSuffix. Si no se especifican, estos valores de configuración se heredan del host de contenedor.
 
 ```none
 New-ContainerNetwork -Name MyNatNetwork -Mode NAT -SubnetPrefix "172.16.0.0/12" [-GatewayAddress <address>] [-DNSServers <address>] [-DNSSuffix <string>]
+```
+
+> Hay un problema conocido en Windows Server 2016 Technical Preview 5 y en las compilaciones recientes no finales de Windows Insider Preview (WIP) donde, después de la actualización a una nueva compilación da como resultado una red de contenedor duplicada (es decir, "perdida") y un conmutador virtual. Para solucionar este problema, ejecute el script siguiente.
+```none
+PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+PS> $keys = get-childitem $KeyPath
+PS> foreach($key in $keys)
+PS> {
+PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
+PS>    {
+PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
+PS>       Remove-Item -Path $newKeyPath -Recurse
+PS>    }
+PS> }
+PS> remove-netnat -Confirm:$false
+PS> Get-ContainerNetwork | Remove-ContainerNetwork
+PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS> Stop-Service docker
+PS> Set-Service docker -StartupType Disabled
+Reboot Host
+PS> Get-NetNat | Remove-NetNat
+PS> Set-Service docker -StartupType automaticac
+PS> Start-Service docker 
 ```
 
 ### Red transparente
@@ -140,18 +163,14 @@ En este ejemplo se crea una red transparente y se le asigna una puerta de enlace
 docker network create -d transparent --gateway=10.50.34.1 "MyTransparentNet"
 ```
 
-El comando de PowerShell se parecerá a lo siguiente:
-
-```none
-New-ContainerNetwork -Name MyTransparentNet -Mode Transparent -NetworkAdapterName "Ethernet"
-```
-
 Si el host de contenedor está virtualizado y quiere usar DHCP para la asignación de direcciones IP, debe habilitar MACAddressSpoofing en el adaptador de red de las máquinas virtuales.
 
 ```none
 Get-VMNetworkAdapter -VMName ContainerHostVM | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
+> Si quiere crear más de una red transparente (o puente de nivel 2), debe especificar a qué adaptador de red (virtual) se debe enlazar el conmutador virtual externo de Hyper-V (creado automáticamente).
+ 
 ### Redes de puente de nivel 2
 
 **Redes de puente de nivel 2**: en esta configuración, la extensión vSwitch de la plataforma de filtrado virtual (VFP) del host de contenedor actuará como puente y realizará la traducción de direcciones de nivel 2 (reescritura de dirección MAC) según sea necesario. Las direcciones IP de nivel 3 y los puertos de nivel 4 no cambiarán. Las direcciones IP se pueden asignar estáticamente para que coincidan con el prefijo de subred IP de la red física o, si se usa una implementación de nube privada de Microsoft, con una dirección IP del prefijo de subred de la red virtual.
@@ -164,12 +183,6 @@ Para usar el modo de redes de puente de nivel 2, cree una red de contenedor con 
 docker network create -d l2bridge --subnet=192.168.1.0/24 --gateway=192.168.1.1 MyBridgeNetwork
 ```
 
-El comando de PowerShell se parecerá a lo siguiente:
-
-```none
-New-ContainerNetwork -Name MyBridgeNetwork -Mode L2Bridge -NetworkAdapterName "Ethernet"
-```
-
 ## Quitar una red
 
 Use `docker network rm` para eliminar una red de contenedor.
@@ -178,11 +191,6 @@ Use `docker network rm` para eliminar una red de contenedor.
 docker network rm "<network name>"
 ```
 O bien, `Remove-ContainerNetwork` con PowerShell:
-
-Mediante PowerShell
-```
-Remove-ContainerNetwork -Name <network name>
-```
 
 De este modo se limpian los conmutadores virtuales de Hyper-V que haya usado la red de contenedor, así como los objetos de traducción de direcciones de red creados para las redes de contenedor nat.
 
@@ -217,7 +225,6 @@ docker network create -d transparent -o com.docker.network.windowsshim.interface
 Pueden crearse varias redes de contenedor en un host de contenedor único, pero deben tenerse en cuenta las advertencias siguientes:
 * Solo se puede crear una red NAT por host contenedor.
 * Las redes que usen un vSwitch externo para conectividad (por ejemplo, transparente, puente de nivel 2, transparente de nivel 2) deben usar su propio adaptador de red.
-* Cada red debe usar un vSwitch diferente.
 
 ### Selección de red
 
@@ -231,7 +238,7 @@ docker run -it --net=MyTransparentNet windowsservercore cmd
 
 ### Dirección IP estática
 
-Las direcciones IP estáticas se establecen en el adaptador de red del contenedor y solo se admiten para los modos de red NAT, transparente y puente de nivel 2. Además, no se admite la asignación de dirección IP estática para la red "nat" predeterminada a través de Docker.
+Las direcciones IP estáticas se establecen en el adaptador de red del contenedor y solo se admiten para los modos de red NAT, transparente ([PR](https://github.com/docker/docker/pull/22208) pendiente) y puente de nivel 2. Además, no se admite la asignación de dirección IP estática para la red "nat" predeterminada a través de Docker.
 
 ```none
 docker run -it --net=MyTransparentNet --ip=10.80.123.32 windowsservercore cmd
@@ -303,7 +310,6 @@ Una vista de la solicitud de un explorador de Internet.
 
 ![](./media/PortMapping.png)
 
-
 ## Advertencias y problemas comunes
 
 ### Firewall
@@ -327,6 +333,6 @@ En este momento, no se admiten en Windows Docker las siguientes opciones de red:
  * --internal
  * --ip-range
 
-<!--HONumber=May16_HO3-->
+<!--HONumber=Jun16_HO1-->
 
 
