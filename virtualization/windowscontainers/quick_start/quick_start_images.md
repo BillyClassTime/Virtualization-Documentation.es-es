@@ -48,6 +48,8 @@ echo "Hello World From a Windows Server Container" > C:\inetpub\wwwroot\index.ht
 
 Desde otro sistema, vaya a la dirección IP del host de contenedor. Ahora debería ver la aplicación "Hello World".
 
+**Nota:** Si está trabajando en Azure, debe existir una regla de grupo de seguridad de red que permita el tráfico en el puerto 80. Para más información, consulte [Cómo administrar grupos de seguridad de red con el Portal de Azure]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg).
+
 ![](media/hello.png)
 
 De vuelta en el contenedor, salga de la sesión interactiva del contenedor.
@@ -159,6 +161,6 @@ docker rm -f cranky_brown
 
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO2-->
 
 

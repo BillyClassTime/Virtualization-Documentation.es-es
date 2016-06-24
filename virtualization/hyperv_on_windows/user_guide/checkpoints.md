@@ -52,7 +52,7 @@ Configurar como punto de control de producción, si se produce un error en un pu
 Set-VM -Name <vmname> -CheckpointType Production
 ```
 
-Configurar como punto de control de producción, si se produce un error en un punto de control de producción, no se crea un punto de control estándar: 
+Configurar como punto de control de producción, si se produce un error en un punto de control de producción, no se crea un punto de control estándar. 
 ```powershell
 Set-VM -Name <vmname> -CheckpointType ProductionOnly
 ```
@@ -162,7 +162,7 @@ La exportación empaqueta el punto de control como una máquina virtual para que
 
 **Uso de PowerShell**
 ``` powershell
-Export-VMCheckpoint -VMName <virtual machine name>  -Name <checkpoint name> -Path <path for export>
+Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export>
 ```
 
 ## Habilitar o deshabilitar puntos de control
@@ -245,6 +245,6 @@ Cuando se haya aplicado el punto de control de producción, observe que la máqu
 2. Tenga en cuenta que se ha restaurado el archivo de texto. Pero, a diferencia del punto de control estándar, el Bloc de notas no está abierto.   
 
 
-<!--HONumber=May16_HO3-->
+<!--HONumber=Jun16_HO3-->
 
 

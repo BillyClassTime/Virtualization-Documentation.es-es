@@ -13,19 +13,23 @@ ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 
 # Implementación de host de contenedor - Windows Server
 
-**Esto es contenido preliminar y está sujeto a cambios.** 
+**Esto es contenido preliminar y está sujeto a cambios.**
 
 La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). En este documento se describe la implementación de un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual.
 
 ## Instalar la característica de contenedor
 
-La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados. 
+La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados.
 
 ```none
 Install-WindowsFeature containers
 ```
 
 Cuando la instalación de la característica haya finalizado, reinicie el equipo.
+
+```none
+Restart-Computer -Force
+```
 
 ## Instalar Docker
 
@@ -71,17 +75,17 @@ Start-Service Docker
 
 ## Instalar imágenes base del contenedor
 
-Para poder implementar un contenedor, es necesario descargar una imagen base del sistema operativo del contenedor. En el ejemplo siguiente, se descargará la imagen base del sistema operativo de Windows Server Core. Puede completar este mismo procedimiento para instalar la imagen base de Nano Server. Puede completar este mismo procedimiento para instalar la imagen base de Nano Server. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
-    
+Para poder implementar un contenedor, es necesario descargar una imagen base del sistema operativo del contenedor. En el ejemplo siguiente, se descargará la imagen base del sistema operativo de Windows Server Core. Puede completar este mismo procedimiento para instalar la imagen base de Nano Server. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
+
 En primer lugar, instale el proveedor de paquetes de imágenes del contenedor.
 
 ```none
 Install-PackageProvider ContainerImage -Force
 ```
 
-Después, instale la imagen de Windows Server Core. Este proceso puede tardar algún tiempo, por lo que puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
+Después, instale la imagen de Windows Server Core. Como este proceso puede tardar algún tiempo, puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
 
-```none 
+```none
 Install-ContainerImage -Name WindowsServerCore    
 ```
 
@@ -99,11 +103,11 @@ docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
 
 ## Host de contenedor de Hyper-V
 
-Para implementar contenedores de Hyper-V, es necesario el rol de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea [Virtualización anidada]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
+Para ejecutar contenedores de Hyper-V, es necesario el rol de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea [Virtualización anidada]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
 ### Virtualización anidada
 
-El script siguiente configurará la virtualización anidada para el host de contenedor. Este script se ejecuta en la máquina de Hyper-V que hospeda la máquina virtual del host de contenedor. Asegúrese de que la máquina virtual del host de contenedor está desactivada cuando ejecute este script.
+El script siguiente configurará la virtualización anidada para el host de contenedor. Este script se ejecuta en el equipo de Hyper-V primario. Asegúrese de que la máquina virtual del host de contenedor está desactivada cuando ejecute este script.
 
 ```none
 #replace with the virtual machine name
@@ -128,7 +132,6 @@ Install-WindowsFeature hyper-v
 ```
 
 
-
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO2-->
 
 

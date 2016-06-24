@@ -13,9 +13,9 @@ ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 
 # Contenedores de Windows en Windows Server
 
-**Esto es contenido preliminar y está sujeto a cambios.** 
+**Esto es contenido preliminar y está sujeto a cambios.**
 
-Este ejercicio le guiará a través de la implementación básica y el uso de la característica de contenedores de Windows en Windows Server. Una vez realizado, habrá instalado el rol de contenedor e implementado un contenedor sencillo de Windows Server. Antes de comenzar este inicio rápido, familiarícese con la terminología y los conceptos básicos de los contenedores. Esta información se encuentra en la [Introducción a los contenedores](./quick_start.md). 
+Este ejercicio le guiará a través de la implementación básica y el uso de la característica de contenedores de Windows en Windows Server. Una vez realizado, habrá instalado el rol de contenedor e implementado un contenedor sencillo de Windows Server. Antes de comenzar este inicio rápido, familiarícese con la terminología y los conceptos básicos de los contenedores. Esta información se encuentra en la [Introducción a los contenedores](./quick_start.md).
 
 Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2016. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
 
@@ -25,13 +25,17 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 
 ## 1. Instalar la característica de contenedor
 
-La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados. 
+La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados.
 
 ```none
 Install-WindowsFeature containers
 ```
 
 Cuando la instalación de la característica haya finalizado, reinicie el equipo.
+
+```none
+Restart-Computer -Force
+```
 
 ## 2. Instalar Docker
 
@@ -70,22 +74,22 @@ dockerd --register-service
 Una vez instalado, puede iniciar el servicio.
 
 ```none
-Start-Service Docker
+Start-Service docker
 ```
 
 ## 3. Instalar imágenes base del contenedor
 
-Los contenedores de Windows se implementan a partir de plantillas o imágenes. Para implementar un contenedor, es necesario descargar una imagen base del sistema operativo. Los comandos siguientes descargarán la imagen base de Windows Server Core. 
-    
+Los contenedores de Windows se implementan a partir de plantillas o imágenes. Para implementar un contenedor, es necesario descargar una imagen base del sistema operativo. Los comandos siguientes descargarán la imagen base de Windows Server Core.
+
 En primer lugar, instale el proveedor de paquetes de imágenes del contenedor.
 
 ```none
 Install-PackageProvider ContainerImage -Force
 ```
 
-Después, instale la imagen de Windows Server Core. Este proceso puede tardar algún tiempo, por lo que puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
+Después, instale la imagen de Windows Server Core. Como este proceso puede tardar algún tiempo, puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
 
-```none 
+```none
 Install-ContainerImage -Name WindowsServerCore    
 ```
 
@@ -175,6 +179,8 @@ CONTAINER ID    IMAGE                             COMMAND               CREATED 
 
 Desde otro equipo, abra un explorador web y escriba la dirección IP del host de contenedor. Si todo se ha configurado correctamente, debería ver la pantalla de presentación de IIS. Se sirve desde la instancia de IIS hospedada en el contenedor de Windows.
 
+**Nota:** Si está trabajando en Azure, debe existir una regla de grupo de seguridad de red que permita el tráfico en el puerto 80. Para más información, consulte [Cómo administrar grupos de seguridad de red con el Portal de Azure]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg).
+
 ![](media/iis1.png)
 
 De vuelta en el host de contenedor, use el comando `docker rm` para quitar el contenedor. Nota: Reemplace el nombre del contenedor de este ejemplo por el nombre real del contenedor.
@@ -189,6 +195,6 @@ docker rm -f grave_jang
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
 
-<!--HONumber=May16_HO4-->
+<!--HONumber=Jun16_HO3-->
 
 
