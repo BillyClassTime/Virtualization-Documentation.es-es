@@ -1,6 +1,6 @@
 ---
 title: Dockerfile y contenedores de Windows
-description: Creación de archivos Dockerfile para contenedores de Windows.
+description: "Creación de archivos Dockerfile para contenedores de Windows."
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,9 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
+ms.sourcegitcommit: 960b40e8c1eda9c19ebff0972df2c87e70c7e8f6
+ms.openlocfilehash: 71e0fb430498f8a5ae4ac5b297cf5e4a2c904098
+
 ---
 
 # Dockerfile en Windows
@@ -327,6 +330,40 @@ CMD c:\Apache24\bin\httpd.exe -w
 
 Para obtener información detallada sobre la instrucción `CMD`, consulte la [referencia sobre CMD en Docker.com]( https://docs.docker.com/engine/reference/builder/#cmd). 
 
+## Carácter de escape
+
+En muchos casos, las instrucciones Dockerfile tendrán que abarcar varias líneas, para lo que se usa un carácter de escape. El carácter de escape predeterminado para Dockerfile es una barra diagonal inversa `\`. Dado que la barra diagonal inversa es un separador en las rutas de acceso de archivo en Windows, pueden surgir problemas. Para cambiar el carácter de escape predeterminado, se puede utilizar una directiva de analizador. Para más información al respecto, consulte el apartado sobre [directivas de analizador en Docker.com]( https://docs.docker.com/engine/reference/builder/#parser-directives).
+
+En el ejemplo siguiente se muestra una instrucción RUN individual que abarca varias líneas en la que se usa el carácter de escape predeterminado.
+
+```none
+FROM windowsservercore
+
+RUN powershell.exe -Command \
+    $ErrorActionPreference = 'Stop'; \
+    wget https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe -OutFile c:\python-3.5.1.exe ; \
+    Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait ; \
+    Remove-Item c:\python-3.5.1.exe -Force
+```
+
+Para modificar el carácter de escape, coloque una directiva del analizador de escape en la primera línea de la instrucción Dockerfile. A continuación, puede verse un ejemplo.
+
+> Tenga en cuenta que solo hay dos valores que puedan utilizarse como caracteres de escape, `\` y `` ` ``.
+
+```none
+# escape=`
+
+FROM windowsservercore
+
+RUN powershell.exe -Command `
+    $ErrorActionPreference = 'Stop'; `
+    wget https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe -OutFile c:\python-3.5.1.exe ; `
+    Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait ; `
+    Remove-Item c:\python-3.5.1.exe -Force
+```
+
+Para más información sobre la directiva del analizador de escape, consulte el apartado sobre la [directiva del analizador de escape en Docker.com]( https://docs.docker.com/engine/reference/builder/#escape).
+
 ## PowerShell en Dockerfile
 
 ### Comandos de PowerShell
@@ -442,6 +479,7 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 [Referencia sobre Dockerfile en Docker.com](https://docs.docker.com/engine/reference/builder/)
 
 
-<!--HONumber=Jun16_HO3-->
+
+<!--HONumber=Jun16_HO4-->
 
 
