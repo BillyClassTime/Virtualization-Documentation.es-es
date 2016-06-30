@@ -1,6 +1,6 @@
 ---
-title: Administrar máquinas virtuales de Windows con PowerShell Direct
-description: Administrar máquinas virtuales de Windows con PowerShell Direct
+title: "Administrar máquinas virtuales de Windows con PowerShell Direct"
+description: "Administrar máquinas virtuales de Windows con PowerShell Direct"
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
+translationtype: Human Translation
+ms.sourcegitcommit: 6eb26eda92217917a3abe7d9dd4c77c48283c8dc
+ms.openlocfilehash: 91927b751021efa9ba2cf696516ba50af28c6e05
+
 ---
 
 # Administrar máquinas virtuales de Windows con PowerShell Direct
@@ -276,6 +280,7 @@ Consulte los ejemplos de [GitHub](https://github.com/Microsoft/Virtualization-Do
 Consulte los [fragmentos de código de PowerShell Direct](../develop/powershell_snippets.md) para ver numerosos ejemplos de cómo usar PowerShell Direct en su entorno, así como sugerencias y trucos para escribir scripts de Hyper-V con PowerShell.
 
 
-<!--HONumber=May16_HO4-->
+
+<!--HONumber=Jun16_HO4-->
 
 

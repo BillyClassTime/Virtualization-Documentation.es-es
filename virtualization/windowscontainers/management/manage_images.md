@@ -9,6 +9,7 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: d8163185-9860-4ee4-9e96-17b40fb508bc
+translationtype: Human Translation
 ms.sourcegitcommit: 3db43b433e7b1a9484d530cf209ea80ef269a307
 ms.openlocfilehash: 505cc64fa19fb9fc8c2d5c109830f460f09332dd
 
@@ -290,6 +291,6 @@ En este momento la imagen del contenedor está disponible y puede obtenerse con 
 
 
 
-<!--HONumber=Jun16_HO3-->
+<!--HONumber=Jun16_HO4-->
 
 

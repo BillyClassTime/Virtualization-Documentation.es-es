@@ -1,6 +1,5 @@
 # Acerca de los contenedores de Windows
 ## [Introducción a los contenedores de Windows](about/about_overview.md)
-## [Trabajo en curso](about/work_in_progress.md)
 ## [P+F](about/faq.md)
 
 # Inicio rápido de contenedor
@@ -42,6 +41,6 @@
 
 
 
-<!--HONumber=Jun16_HO2-->
+<!--HONumber=Jun16_HO4-->
 
 

@@ -1,6 +1,6 @@
 ---
 title: Ecosistema de contenedor
-description: Creación de un ecosistema de contenedor.
+description: "Creación de un ecosistema de contenedor."
 keywords: metadata, containers
 author: scooley
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
+translationtype: Human Translation
+ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
+ms.openlocfilehash: 1aad093c2c4e1c64200fcc1c10cbdee6c93b80c5
+
 ---
 
 # Creación de un ecosistema de contenedor
@@ -43,6 +47,7 @@ Microsoft tiene un gran compromiso con ser abierto y contribuir al ecosistema.  
 Durante los próximos meses, ofreceremos más información sobre las asociaciones adicionales de este ecosistema en desarrollo.
 
 
-<!--HONumber=May16_HO3-->
+
+<!--HONumber=Jun16_HO4-->
 
 
