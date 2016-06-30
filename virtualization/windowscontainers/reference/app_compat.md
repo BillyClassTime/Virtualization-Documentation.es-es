@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3e524458-bd03-400e-913f-210335add8dc
+translationtype: Human Translation
+ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
+ms.openlocfilehash: 2830dc81317311dd54dfcca45251b668f3d2cc29
+
 ---
 
 # Compatibilidad de las aplicaciones en los contenedores de Windows
@@ -85,6 +89,7 @@ Se han intentado ejecutar las siguientes aplicaciones en un contenedor de Hyper-
 ¿Falta algo en esta lista?  Háganos saber lo que funciona correctamente en su entorno y lo que no a través de [los foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers).
 
 
-<!--HONumber=May16_HO3-->
+
+<!--HONumber=Jun16_HO4-->
 
 

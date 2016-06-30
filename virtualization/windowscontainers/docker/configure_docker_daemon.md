@@ -1,6 +1,6 @@
 ---
-title: Configuración de Docker en Windows
-description: Configuración de Docker en Windows
+title: "Configuración de Docker en Windows"
+description: "Configuración de Docker en Windows"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,7 +9,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
+ms.sourcegitcommit: 7113f1dc1e9a0a18d4eb25e6d604e89f96f826c4
+ms.openlocfilehash: 1fddaff6fc260c0cf91c8626a60d768a06995e53
+
 ---
+
+# Demonio de Docker en Windows
 
 El motor de Docker no se incluye con Windows y deberá instalarse y configurarse por separado. Además, el demonio de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. En este documento se detallará cómo instalar y configurar el demonio de Docker. Asimismo, se proporcionarán algunos ejemplos de configuraciones frecuentes.
 
@@ -35,7 +40,7 @@ Descargue el cliente de Docker.
 Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
 ```
 
-Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
+Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
 
 ```none
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
@@ -151,6 +156,7 @@ Si ha iniciado sesión en el host de Docker y ejecuta comandos de Docker de form
 ```
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO4-->
 
 
