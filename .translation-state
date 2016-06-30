@@ -1,6 +1,6 @@
 {
   "LastProcessedCommit": "eae45c2c81c7edc94d963da69dcdee2b6f08f37d",
-  "LastTranslatedCommit": "f2618e6ab48b569c334e9ff40a465df79a6700a9",
+  "LastTranslatedCommit": "6695bcd93d0a5ba61ff513f5ea565b669c9f27ce",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
       "FileHash": "5090f6d60b5cbdce0990242d795d9e4e3736e791",
@@ -19591,7 +19591,7 @@
       "TargetFilePath": "virtualization\\windowscontainers\\quick_start\\manage_docker.md",
       "HandbackFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\manage_docker.d8787c7831358fa02dcde847d887fa29a1767ee5.es-es.xlf",
       "HandbackFileCommit": "8f54e3956c7887df34d760a1df01b3c3919f2826",
-      "HandbackDateTime": "2016-06-30T12:40:29.7597367Z",
+      "HandbackDateTime": "2016-06-30T13:09:30.236857Z",
       "HandbackException": {
         "internal_error_code": "handback_transform_failed",
         "internal_error_message": "Handback file: C:\\ol\\master\\VDP.handback\\0e62d1\\ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\manage_docker.d8787c7831358fa02dcde847d887fa29a1767ee5.es-es.xlf failed.",
@@ -19601,7 +19601,7 @@
         "stack_trace": "   at Microsoft.OpenLocalization.Transformer.TransformerClient.XliffToMarkdown(Stream xliffStream, Stream skeletonStream, Stream targetStream) in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Transformer.Core\\TransformerClient.cs:line 119\r\n   at Microsoft.OpenLocalization.Helper.XliffTransformUtil.XliffToMarkdown(String skeletonFile, String xliffFile, String mdfile, Boolean useJavascriptTransformer) in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization\\Helper\\XliffTransformUtil.cs:line 92\r\n   at Microsoft.OpenLocalization.Localization.LocalizationCore.<>c__DisplayClass5_0.<GetHandbackFiles>b__0(String file) in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization\\Localization\\HandbackCore.cs:line 406",
         "extended_information": null
       },
-      "HandbackFailureTimes": 4,
+      "HandbackFailureTimes": 5,
       "UpdatedDateTime": "2016-06-22T16:59:51.9194821Z",
       "ArchiveFilePath": "ol-handoff\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\archive\\manage_docker.d8787c7831358fa02dcde847d887fa29a1767ee5.es-es.xlf",
       "ArchiveFileCommit": "b359dec23b600ef8a23000045f8d26f227c8e983",
