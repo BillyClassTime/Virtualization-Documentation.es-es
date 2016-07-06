@@ -1,14 +1,18 @@
 ---
 title: Contenedor de Windows en Windows 10
-description: Inicio rápido de implementación de contenedores
+description: "Inicio rápido de implementación de contenedores"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 06/28/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
+translationtype: Human Translation
+ms.sourcegitcommit: 3fc388632dee4d714ab5a7869fa852c079c11910
+ms.openlocfilehash: e2d86c6f1aba07c7c40d1f932b3884c99bfd8f0a
+
 ---
 
 # Contenedores de Windows en Windows 10
@@ -160,7 +164,13 @@ Para obtener información más detallada sobre el comando Run de Docker, consult
 docker run --isolation=hyperv --rm microsoft/sample-dotnet
 ```
 
-El resultado de este comando es que se crea un contenedor de Hyper-V a partir de la imagen sample-dotnet, entonces se ejecuta una aplicación de ejemplo (el resultado se muestra en el shell) y luego el contenedor se detiene y se quita. Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en la creación e implementación de aplicaciones en contenedores en Windows 10.
+**Nota**: si se produce un error que indica un evento de tiempo de espera, ejecute el siguiente script de PowerShell y vuelva a intentar la operación.
+
+```none
+Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
+```
+
+El resultado de este comando `docker run` es que se crea un contenedor de Hyper-V a partir de la imagen sample-dotnet, entonces se ejecuta una aplicación de ejemplo (el resultado se muestra en el shell) y luego el contenedor se detiene y se quita. Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en la creación e implementación de aplicaciones en contenedores en Windows 10.
 
 ## Pasos siguientes
 
@@ -169,6 +179,7 @@ El resultado de este comando es que se crea un contenedor de Hyper-V a partir de
 
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO4-->
 
 

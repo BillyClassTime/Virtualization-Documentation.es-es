@@ -1,14 +1,18 @@
 ---
-title: &1838257206 Trabajar con Hyper-V y Windows PowerShell
+title: Trabajar con Hyper-V y Windows PowerShell
 description: Trabajar con Hyper-V y Windows PowerShell
 keywords: windows 10, hyper-v
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &663565799 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6d1ae036-0841-4ba5-b7e0-733aad31e9a7
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: a8e567b6447aa73f14825b7054d977d2b003a726
+
 ---
 
 # Trabajar con Hyper-V y Windows PowerShell
@@ -22,16 +26,16 @@ Ahora que ya ha visto los conceptos básicos de implementación de Hyper-V, la c
 
  ```powershell
 get-command -module hyper-v | out-gridview
- ```
+```
   Obtendrá algo parecido a esto:
 
   ![](media\command_grid.png)
 
-3. Para obtener más información sobre un comando de PowerShell determinado, use `get-help`. Por ejemplo, al ejecutar el comando siguiente se devuelve información sobre el comando `get-vm` de Hyper-V.
+3. Para más información sobre un comando de PowerShell determinado, use `get-help`. Por ejemplo, al ejecutar el comando siguiente se devuelve información sobre el comando `get-vm` de Hyper-V.
 
   ```powershell
 get-help get-vm
-  ```
+```
  El resultado muestra cómo estructurar el comando, cuáles son los parámetros obligatorios y opcionales y los alias que puede utilizar.
 
  ![](media\get_help.png)
@@ -42,15 +46,15 @@ get-help get-vm
 Use el comando `get-vm` para devolver una lista de máquinas virtuales.
 
 1. En PowerShell, ejecute el siguiente comando:
-
+ 
  ```powershell
 get-vm
- ```
+```
  Se muestra algo parecido a esto:
 
  ![](media\get_vm.png)
 
-2. Para devolver una lista que solo incluya las máquinas virtuales encendidas, agregue un filtro al comando `get-vm`. Puede agregar un filtro si usa el comando where-object. Para más información sobre el filtrado, consulte la documentación de [Uso de Where-Object](https://technet.microsoft.com/en-us/library/ee177028.aspx).
+2. Para devolver una lista que solo incluya las máquinas virtuales encendidas, agregue un filtro al comando `get-vm`. Puede agregar un filtro si usa el comando where-object. Para más información sobre el filtrado, consulte la documentación de [Uso de Where-Object](https://technet.microsoft.com/en-us/library/ee177028.aspx).   
 
  ```powershell
  get-vm | where {$_.State -eq ‘Running’}
@@ -73,12 +77,12 @@ get-vm
 
   ```powershell
  get-vm | where {$_.State -eq ‘Off’} | start-vm
-  ```
+ ```
 3. Para cerrar todas las máquinas virtuales en ejecución, ejecute lo siguiente:
-
+ 
   ```powershell
  get-vm | where {$_.State -eq ‘Running’} | stop-vm
-  ```
+ ```
 
 ### Crear un punto de control de máquina virtual
 
@@ -113,13 +117,10 @@ En el ejemplo siguiente se muestra cómo crear una nueva máquina virtual en el 
 
 ## Resumen y referencias
 
-En este documento se han mostrado algunos pasos sencillos para explorar el módulo de PowerShell de Hyper-V, así como algunos escenarios de ejemplo. Para obtener más información sobre el módulo de PowerShell de Hyper-V, consulte la [referencia de cmdlets de Hyper-V en Windows PowerShell](https://technet.microsoft.com/%5Clibrary/Hh848559.aspx).
+En este documento se han mostrado algunos pasos sencillos para explorar el módulo de PowerShell de Hyper-V, así como algunos escenarios de ejemplo. Para más información sobre el módulo de PowerShell de Hyper-V, consulte la [referencia de cmdlets de Hyper-V en Windows PowerShell](https://technet.microsoft.com/%5Clibrary/Hh848559.aspx).  
+ 
 
 
-
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 

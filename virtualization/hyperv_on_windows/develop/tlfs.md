@@ -1,14 +1,18 @@
 ---
-title: &268219175 Especificaciones de hipervisor
+title: Especificaciones de hipervisor
 description: Especificaciones de hipervisor
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &1209300377 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 82b5055c390ce6754403b4de571b4c75298ff462
+
 ---
 
 # Especificaciones de hipervisor
@@ -16,17 +20,16 @@ ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
 ## Especificación funcional de nivel superior del hipervisor
 
 La especificación funcional de nivel superior (TLFS) del hipervisor de Hyper-V describe el comportamiento externo visible del hipervisor para otros componentes del sistema operativo. Se prevé que esta especificación sea útil para los desarrolladores de sistemas operativos invitados.
-
-> Esta especificación se proporciona en virtud de Microsoft Open Specification Promise. Lea la información siguiente para obtener más detalles acerca de [Microsoft Open Specification Promise](https://msdn.microsoft.com/en-us/openspecifications).
+  
+> Esta especificación se proporciona en virtud de Microsoft Open Specification Promise.  Lea la información siguiente para más información acerca de [Microsoft Open Specification Promise](https://msdn.microsoft.com/en-us/openspecifications).  
 
 #### Descarga
-
- Versión| Documento
+Versión | Documento
 --- | ---
- Windows Server 2012 R2 (revisión B)| [Especificación funcional de nivel superior del hipervisor v4.0b.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0b.pdf)
- Windows Server 2012 R2| [Especificación funcional de nivel superior del hipervisor v4.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0.pdf)
- Windows Server 2012| [Especificación funcional de nivel superior del hipervisor v3.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v3.0.pdf)
- Windows Server 2008 R2| [Especificación funcional de nivel superior del hipervisor v2.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v2.0.pdf)
+Windows Server 2012 R2 (revisión B) | [Hypervisor Top Level Functional Specification v4.0b.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0b.pdf)
+Windows Server 2012 R2 | [Hypervisor Top Level Functional Specification v4.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v4.0.pdf)
+Windows Server 2012 | [Hypervisor Top Level Functional Specification v3.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v3.0.pdf)
+Windows Server 2008 R2 | [Hypervisor Top Level Functional Specification v2.0.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v2.0.pdf)
 
 ## Requisitos para implementar la interfaz de hipervisor de Microsoft
 
@@ -34,12 +37,9 @@ Los sistemas operativos Windows requieren que un conjunto limitado de interfaces
 
 #### Descarga
 
-[Requisitos para implementar la interfaz de hipervisor de Microsoft.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Requirements%20for%20Implementing%20the%20Microsoft%20Hypervisor%20Interface.pdf)
+[Requirements for Implementing the Microsoft Hypervisor Interface.pdf](https://github.com/Microsoft/Virtualization-Documentation/raw/master/tlfs/Requirements%20for%20Implementing%20the%20Microsoft%20Hypervisor%20Interface.pdf)
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 

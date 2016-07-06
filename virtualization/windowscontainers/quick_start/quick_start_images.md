@@ -1,6 +1,6 @@
 ---
-title: Inicio rápido de implementación de contenedores (imágenes)
-description: Inicio rápido de implementación de contenedores
+title: "Inicio rápido de implementación de contenedores (imágenes)"
+description: "Inicio rápido de implementación de contenedores"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
+translationtype: Human Translation
+ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
+ms.openlocfilehash: ac9596d210e72b9fd576f728e8e6bbdc293597d7
+
 ---
 
 # Imágenes de contenedores en Windows Server
 
 **Esto es contenido preliminar y está sujeto a cambios.** 
 
-En el anterior inicio rápido de Windows Server se creó un contenedor de Windows a partir de una imagen de contenedor existente. Este ejercicio detallará la creación manual de imágenes de contenedor propias y de imágenes mediante un Dockerfile.
+En el anterior inicio rápido de Windows Server se creó un contenedor de Windows a partir de una imagen de contenedor existente. Este ejercicio detallará la creación manual de imágenes de contenedor personalizadas y mediante un Dockerfile.
 
 Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2016. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido. 
 
@@ -161,6 +165,7 @@ docker rm -f cranky_brown
 
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO5-->
 
 

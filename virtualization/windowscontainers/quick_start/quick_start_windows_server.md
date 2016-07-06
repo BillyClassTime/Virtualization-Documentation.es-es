@@ -1,6 +1,6 @@
 ---
 title: Contenedores de Windows en Windows Server
-description: Inicio rápido de implementación de contenedores
+description: "Inicio rápido de implementación de contenedores"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
+translationtype: Human Translation
+ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
+ms.openlocfilehash: 40b55028820472aadc5d70d338de417616c653d3
+
 ---
 
 # Contenedores de Windows en Windows Server
@@ -21,7 +25,13 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 
 **Requisitos previos:**
 
-- Un equipo (físico o virtual) con [Windows Server 2016 Technical Preview 5](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-technical-preview).
+Un equipo (físico o virtual) con [Windows Server 2016 Technical Preview 5](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-technical-preview).
+
+Hay una imagen de Windows Server totalmente configurada disponible en Azure. Para usar esta imagen, implemente una máquina virtual haciendo clic en el botón siguiente. La implementación tardará unos 10 minutos. Una vez completada, inicie sesión en la máquina virtual de Azure y vaya al paso 4 de este tutorial. 
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Fmaster%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>
 
 ## 1. Instalar la característica de contenedor
 
@@ -50,13 +60,13 @@ New-Item -Type Directory -Path 'C:\Program Files\docker\'
 Descargue el demonio de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
+Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe -UseBasicParsing
 ```
 
 Descargue el cliente de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
+Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe -UseBasicParsing
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -179,7 +189,7 @@ CONTAINER ID    IMAGE                             COMMAND               CREATED 
 
 Desde otro equipo, abra un explorador web y escriba la dirección IP del host de contenedor. Si todo se ha configurado correctamente, debería ver la pantalla de presentación de IIS. Se sirve desde la instancia de IIS hospedada en el contenedor de Windows.
 
-**Nota:** Si está trabajando en Azure, debe existir una regla de grupo de seguridad de red que permita el tráfico en el puerto 80. Para más información, consulte [Cómo administrar grupos de seguridad de red con el Portal de Azure]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg).
+**Nota**: Si está trabajando en Azure, necesitará la dirección IP externa de la máquina virtual y una seguridad de red configurada. Para más información, consulte [Cómo administrar grupos de seguridad de red con el Portal de Azure]( https://azure.microsoft.com/en-us/documentation/articles/virtual-networks-create-nsg-arm-pportal/#create-rules-in-an-existing-nsg).
 
 ![](media/iis1.png)
 
@@ -195,6 +205,7 @@ docker rm -f grave_jang
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
 
-<!--HONumber=Jun16_HO3-->
+
+<!--HONumber=Jun16_HO5-->
 
 

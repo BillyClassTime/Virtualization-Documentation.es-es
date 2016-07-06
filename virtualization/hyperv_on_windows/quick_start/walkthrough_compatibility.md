@@ -1,14 +1,18 @@
 ---
-title: &1067729278 Requisitos de sistema de Hyper-V en Windows 10
+title: Requisitos de sistema de Hyper-V en Windows 10
 description: Requisitos de sistema de Hyper-V en Windows 10
 keywords: windows 10, hyper-v
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &319284841 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 6364ecd2df13f5abc96fc22da03c9bca65d353b2
+
 ---
 
 # Requisitos de sistema de Hyper-V en Windows 10
@@ -29,12 +33,12 @@ El rol de Hyper-V **no** se puede instalar en:
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
->10 de Windows Home edition puede actualizarse a Windows 10 Professional. Para hacerlo, abra **Configuración** > **Actualización y seguridad** > **Activación**. Aquí puede visitar la tienda y comprar una actualización.
+>10 de Windows Home edition puede actualizarse a Windows 10 Professional. Para hacerlo, abra **Configuración** > **Actualización y seguridad** > ** Activación**. Aquí puede visitar la tienda y comprar una actualización.
 
 ## Requisitos de hardware
 
 Aunque este documento no ofrece una lista completa del hardware compatible con Hyper-V, son necesarios los siguientes elementos:
-
+    
 - Procesador de 64 bits con traducción de direcciones de segundo nivel (SLAT).
 - Compatibilidad de CPU con la extensión del modo monitor de la máquina virtual (VT-c en CPU de Intel).
 - Mínimo de 4 GB de memoria. Como las máquinas virtuales comparten memoria con el host de Hyper-V, debe proporcionar memoria suficiente para administrar la carga de trabajo virtual prevista.
@@ -49,21 +53,17 @@ Para comprobar la compatibilidad, abra PowerShell o un símbolo del sistema (cmd
 
 ![](media/SystemInfo_upd.png)
 
-Si ejecuta **systeminfo.exe** en un host de Hyper-V existente, la sección de requisitos de Hyper-V se indica:
+Si ejecuta**systeminfo.exe** en un host de Hyper-V existente, la sección de requisitos de Hyper-V se indica:
 
 ```
 Hyper-V Requirements: A hypervisor has been detected. Features required for Hyper-V are not be displayed.
 ```
 
 ## Siguiente paso: instalar Hyper-V
-
 [Instalar Hyper-V](walkthrough_install.md)
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 

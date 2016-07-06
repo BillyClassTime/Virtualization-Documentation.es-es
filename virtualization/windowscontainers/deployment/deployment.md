@@ -1,6 +1,6 @@
 ---
-title: Implementación de contenedores de Windows en Windows Server
-description: Implementación de contenedores de Windows en Windows Server
+title: "Implementación de contenedores de Windows en Windows Server"
+description: "Implementación de contenedores de Windows en Windows Server"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
@@ -9,6 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
+translationtype: Human Translation
+ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
+ms.openlocfilehash: cbbff2bf4a68ee348bcc33979ef4469daf54a8a7
+
 ---
 
 # Implementación de host de contenedor - Windows Server
@@ -16,6 +20,14 @@ ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 **Esto es contenido preliminar y está sujeto a cambios.**
 
 La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). En este documento se describe la implementación de un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual.
+
+## Imagen de Azure 
+
+Hay una imagen de Windows Server totalmente configurada disponible en Azure. Para usar esta imagen, implemente una máquina virtual haciendo clic en el botón siguiente. Si implementa un sistema de contenedores de Windows en Azure con esta plantilla, puede omitir el resto de este documento.
+
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Fmaster%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
+    <img src="http://azuredeploy.net/deploybutton.png"/>
+</a>
 
 ## Instalar la característica de contenedor
 
@@ -132,6 +144,7 @@ Install-WindowsFeature hyper-v
 ```
 
 
-<!--HONumber=Jun16_HO2-->
+
+<!--HONumber=Jun16_HO5-->
 
 

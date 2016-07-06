@@ -1,6 +1,10 @@
 ---
 author: scooley
 redirect_url: ../quick_start/manage_docker
+translationtype: Human Translation
+ms.sourcegitcommit: e56aa08067fb18caa28224ddc0577a677f09ded3
+ms.openlocfilehash: 5a10afe0f0adcfa86fe9776efa45cfb935ca1beb
+
 ---
 
 
@@ -9,57 +13,52 @@ redirect_url: ../quick_start/manage_docker
 Hay muchas maneras de administrar contenedores de Windows con herramientas incluidas con Windows (en esta vista previa, PowerShell) y herramientas de administración de código abierto como Docker.  
 Hay guías disponibles que explican cada una de ellas de manera individual, aquí:
 * [Administrar contenedores de Windows con Docker](../quick_start/manage_docker.md)
-* [Administrar contenedores de Windows con PowerShell](../quick_start/manage_powershell.md)
+* [Administrar contenedores de Windows con PowerShell](../quick_start/manage_powershell.md) 
 
 Esta página es una referencia que compara en más profundidad las herramientas de Docker y las herramientas de administración de PowerShell.
 
 ## PowerShell para contenedores frente a máquinas virtuales de Hyper-V
-
 Puede crear, ejecutar e interactuar con contenedores de Windows mediante cmdlets de PowerShell. Todo lo que necesita para empezar está disponible de forma predeterminada.
 
-Si ha usado PowerShell de Hyper-V, el diseño de los cmdlets debe resultarle bastante familiar. Gran parte del flujo de trabajo es similar a la forma de administrar una máquina virtual con el módulo de Hyper-V. En lugar de `New-VM`, `Get-VM`, `Start-VM`, `Stop-VM`, dispone de `New-Container`, `Get-Container`, `Start-Container`, `Stop-Container`. Hay una gran cantidad de parámetros y cmdlets específicos de contenedores, pero la administración y el ciclo de vida general de un contenedor de Windows es relativamente similar al de una máquina virtual de Hyper-V.
+Si ha usado PowerShell de Hyper-V, el diseño de los cmdlets debe resultarle bastante familiar. Gran parte del flujo de trabajo es similar a la forma de administrar una máquina virtual con el módulo de Hyper-V. En lugar de `New-VM`, `Get-VM`, `Start-VM`, `Stop-VM`, tiene `New-Container`, `Get-Container`, `Start-Container`, `Stop-Container`.  Hay una gran cantidad de parámetros y cmdlets específicos de contenedores, pero la administración y el ciclo de vida general de un contenedor de Windows es relativamente similar al de una máquina virtual de Hyper-V.
 
-## Comparativa de la administración de PowerShell frente a Docker
-
+## Comparativa de la administración de PowerShell frente a Docker 
 Los cmdlets de PowerShell de contenedores exponen una API que no es exactamente igual a Docker; como regla general, los cmdlets son más granulares en operación. Algunos comandos de Docker tienen equivalentes muy claros en PowerShell:
 
-| Comando de Docker| Cmdlet de PowerShell|
+| Comando de Docker |  Cmdlet de PowerShell |
 |----|----|
-| `docker ps -a`| `Get-Container`|
-| `docker images`| `Get-ContainerImage`|
-| `docker rm`| `Remove-Container`|
-| `docker rmi`| `Remove-ContainerImage`|
-| `docker create`| `New-Container`|
-| `docker commit <Id. de contenedor>`| `New-ContainerImage -Container &lt;contenedor&gt;`|
-| `docker load &lt;tarball&gt;`| `Import-ContainerImage <paquete AppX>`|
-| `docker save`| `Export-ContainerImage`|
-| `docker start`| `Start-Container`|
-| `docker stop`| `Stop-Container`|
+| `docker ps -a`    | `Get-Container` |
+| `docker images`   | `Get-ContainerImage` |
+| `docker rm`   | `Remove-Container` |
+| `docker rmi` | `Remove-ContainerImage` |
+| `docker create`   | `New-Container` |
+| `docker commit <container ID>` | `New-ContainerImage -Container <container>` |
+| `docker load <tarball>` | `Import-ContainerImage <AppX package>` |
+| `docker save` |   `Export-ContainerImage` |
+| `docker start` |  `Start-Container` |
+| `docker stop` |   `Stop-Container` |
 
 Los cmdlets de PowerShell no son equivalentes perfectamente exactos y hay un número importante de comandos para los que no se ofrecen reemplazos de PowerShell* (en concreto, `docker build` y `docker cp`). Pero lo que probablemente más le llame la atención es que no hay sustituto de línea única para `docker run`.
 
 \* Sujeto a cambios.
 
-### Pero necesito docker run. ¿Qué está ocurriendo?
-
+### Pero necesito docker run. ¿Qué está ocurriendo?  
 Hay un par de aspectos con los que trabajamos aquí para ofrecer un modelo de interacción ligeramente más familiar para los usuarios que ya conocen bien PowerShell. Por supuesto, si está acostumbrado a la manera en que funciona Docker, implicará un pequeño cambio de mentalidad.
 
 1.  El ciclo de vida de un contenedor en el modelo de PowerShell es ligeramente diferente. En el módulo de PowerShell de contenedores, se exponen las operaciones más granulares `New-Container` (que crea un contenedor nuevo que está detenido) y `Start-Container`.
-
+  
   Entre la creación y el inicio del contenedor, también puede definir la configuración del contenedor; para TP3, la única otra configuración que tenemos intención de exponer es la capacidad para establecer la conexión de red del contenedor mediante los cmdlets (Add/Remove/Connect/Disconnect/Get/Set)-ContainerNetworkAdapter.
 
-2.  Actualmente no se puede pasar un comando para que se ejecute dentro del contenedor al inicio. Sin embargo, sigue pudiendo obtener una sesión de PowerShell interactiva en un contenedor en ejecución mediante `Enter-PSSession -ContainerId <Id. de un contenedor en ejecución>` y puede ejecutar un comando dentro de un contenedor en ejecución mediante `Invoke-Command -ContainerId <Id. de contenedor> -ScriptBlock { código que se ejecutará dentro del contenedor }` o `Invoke-Command -ContainerId <Id. de contenedor> -FilePath <ruta al script>`.  
-Dos de estos comandos permiten la marca opcional `-RunAsAdministrator` para las acciones con privilegios elevados.
+2.  Actualmente no se puede pasar un comando para que se ejecute dentro del contenedor al inicio. Sin embargo, todavía puede obtener una sesión de PowerShell interactiva en un contenedor en ejecución mediante `Enter-PSSession -ContainerId <ID of a running container>`. Asimismo, puede ejecutar un comando dentro de un contenedor en ejecución mediante `Invoke-Command -ContainerId <container id> -ScriptBlock { code to run inside the container }` o `Invoke-Command -ContainerId <container id> -FilePath <path to script>`.  
+Estos dos comandos permiten la marca opcional `-RunAsAdministrator` para las acciones con privilegios elevados.  
 
 
 ## Advertencias y problemas conocidos
-
 1.  En este momento, los cmdlets de contenedores no tienen información sobre los contenedores o las imágenes creadas mediante Docker y Docker no sabe nada sobre los contenedores y las imágenes creadas mediante PowerShell. Si se creó en Docker, se debe administrar con Docker; si se ha creado mediante PowerShell, se debe administrar con PowerShell.
 
 2.  Hay una gran cantidad de trabajo que nos gustaría realizar para mejorar la experiencia del usuario final: mejores mensajes de error mejorados, informes de progreso mejorados, cadenas de eventos no válidos, etc. Si se encontrara en alguna situación en la que le gustaría recibir más información o más detallada, no dude en enviar sus sugerencias a los foros.
 
 ## Un rápido repaso
-
 Este es un tutorial sobre algunos flujos de trabajo comunes.
 
 Se supone que ha instalado una imagen de contenedor de sistema operativo llamada "ServerDatacenterCore" y ha creado un conmutador virtual denominado "Virtual Switch" (mediante New-VMSwitch).
@@ -153,15 +152,14 @@ Start-Container -Container $container2
 ```
 
 ### Compilar su propio ejemplo
+Puede ver todos los cmdlets Container mediante `Get-Command -Module Containers`.  Hay muchos otros cmdlets que no se describen aquí, que dejaremos para que se informe por su cuenta.    
+**Nota** No se devolverán los cmdlets `Enter-PSSession` e `Invoke-Command`, que forman parte del núcleo de PowerShell.
 
-Puede ver todos los cmdlets de contenedores mediante `Get-Command -Module Containers`. Hay muchos otros cmdlets que no se describen aquí, que dejaremos para que se informe por su cuenta.    
-**Nota**: No devolverá los cmdlets `Enter-PSSession` e `Invoke-Command`, que forman parte del núcleo de PowerShell.
-
-También puede obtener ayuda sobre cualquier cmdlet mediante `Get-Help [nombre de cmdlet]`o su equivalente `[nombre de cmdlet] -?`. En la actualidad, el resultado de la ayuda se genera automáticamente y simplemente indica la sintaxis de los comandos; iremos agregando más documentación a medida que nos acerquemos a finalizar el diseño de los cmdlets.
+También puede obtener ayuda sobre el uso de cualquier cmdlet `Get-Help [cmdlet name]`, o de forma equivalente `[cmdlet name] -?`.  En la actualidad, el resultado de la ayuda se genera automáticamente y simplemente indica la sintaxis de los comandos; iremos agregando más documentación a medida que nos acerquemos a finalizar el diseño de los cmdlets.
 
 Una forma más adecuada de conocer la sintaxis es PowerShell ISE, que puede que nunca haya visto si no ha utilizado mucho PowerShell. Si está ejecutando en una SKU que lo permita, pruebe a iniciar el ISE, abra el panel Comandos y elija el módulo "Contenedores", que mostrará una representación gráfica de los cmdlets y sus conjuntos de parámetros.
 
-P. D.: Para demostrar que es posible, aquí se muestra una función de PowerShell que forma parte de algunos de los cmdlets que vimos anteriormente en una imitación de `docker run`. (Como aclaración, cabe destacar que se trata de una prueba de concepto, no está en desarrollo activo).
+PS: Para demostrar que es posible, aquí se muestra una función de PowerShell que forma parte de algunos de los cmdlets que vimos anteriormente en una imitación de `docker run`. (Como aclaración, cabe destacar que se trata de una prueba de concepto, no está en desarrollo activo).
 
 ``` PowerShell
 function Run-Container ([string]$ContainerImageName, [string]$Name="fancy_name", [switch]$Remove, [switch]$Interactive, [scriptblock]$Command) {
@@ -184,18 +182,14 @@ function Run-Container ([string]$ContainerImageName, [string]$Name="fancy_name",
 ```
 
 ## Docker
+Los contenedores de Windows se pueden administrar con comandos de Docker.  Aunque los contenedores de Windows deberían ser comparables a sus homólogos de Linux y tener la misma experiencia de administración mediante Docker, hay algunos comandos de Docker que simplemente no tienen sentido con un contenedor de Windows.  Otros simplemente no se han probado (pronto lo haremos).
 
-Los contenedores de Windows se pueden administrar con comandos de Docker. Aunque los contenedores de Windows deberían ser comparables a sus homólogos de Linux y tener la misma experiencia de administración mediante Docker, hay algunos comandos de Docker que simplemente no tienen sentido con un contenedor de Windows. Otros simplemente no se han probado (pronto lo haremos).
-
-En un esfuerzo por no duplicar la documentación de API disponible en Docker, <a href="https://docs.docker.com/engine/reference/commandline/cli/" >aquí</a> se muestra un vínculo a sus API de administración. Sus tutoriales son fantásticos.
+En un esfuerzo por no duplicar la documentación de API disponible en Docker, <a href="https://docs.docker.com/engine/reference/commandline/cli/" >aquí</a> se muestra un vínculo a sus API de administración.  Sus tutoriales son fantásticos.
 
 Estamos realizando un seguimiento lo que funciona y lo que no en las API de Docker en nuestro documento de trabajo en curso.
 
 
 
-
-
-
-<!--HONumber=Apr16_HO4-->
+<!--HONumber=Jun16_HO4-->
 
 

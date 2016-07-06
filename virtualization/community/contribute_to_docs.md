@@ -1,73 +1,77 @@
 ---
-title: &297201350 Recursos de la comunidad
+title: Recursos de la comunidad
 description: Recursos de la comunidad
 keywords: windows 10, hyper-v, container, docker
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &56969895 virtualization
+ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 731ed95a-ce13-4c6e-a450-49563bdc498c
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 5d41a694d4b6cac6b6381379bda4a8f959ec4854
+
 ---
 
 # Contribuir a los documentos
 
-> **Nota:** Para contribuir, debe tener una cuenta de [GitHub](https://www.github.com).
+> **Nota**: Para contribuir, debe tener una cuenta de [GitHub](https://www.github.com).
 
 ## Editar un documento existente
 
-1. Busque al documento que quiere editar.
+1. Busque al documento que quiere editar.  
 
-2. Seleccione **Contribuir a este tema**  
+2. Seleccione **Contribute to this topic** (Contribuir a este tema).  
   ![](media/editDoc.png)
-
+  
   Esto le redirigirá automáticamente al archivo de marcado de GitHub asociado a este archivo.
-
-  Asegúrese de que inició sesión en GitHub. Si no es así, inicie sesión en GitHub o cree una cuenta de GitHub.
-
+  
+  Asegúrese de que inició sesión en GitHub.  Si no es así, inicie sesión en GitHub o cree una cuenta de GitHub.
+  
   ![](media/GitHubView.png)
-
+  
 3. Seleccione el icono de edición para editar con el editor del explorador.
-
+  
   ![](media/GitHubEdit.png)
 
 4. Realice los cambios en línea.
-
+  
   Acciones posibles:
   1. Editar archivo
   2. Vista previa de cambios
   3. Cambiar nombre del archivo (es muy poco probable que quiera hacerlo)
-
+  
   ![](media/GitHubEditor.png)
-
+  
 5. Proponer los cambios como una solicitud de incorporación de cambios
-
+  
   ![](media/GitHubProposeChange.png)
 
 6. Revisar los cambios
-
-  **Qué buscamos en una solicitud de incorporación de cambios**
+  
+  **Qué buscamos en una solicitud de incorporación de cambios**  
   * El cambio es correcto, representa de manera precisa la tecnología
   * La ortografía y la gramática son correctos
   * Ubicación lógica en la documentación
-
+    
   ![](media/GitHubCreatePR.png)
 
-7. Crear una [solicitud de incorporación de cambios](contribute_to_docs.md#pull-requests)
+7. Crear una [solicitud de incorporación de cambios](contribute_to_docs.md#pull-requests)  
 
 ## Solicitudes de incorporación de cambios
 
-La mayoría de los cambios se confirmarán a través de una solicitud de incorporación de cambios. Una solicitud de incorporación de cambios es una manera de revisar un conjunto de cambios con varios revisores que cambian y comentan el contenido actual.
+La mayoría de los cambios se confirmarán a través de una solicitud de incorporación de cambios.  Una solicitud de incorporación de cambios es una manera de revisar un conjunto de cambios con varios revisores que cambian y comentan el contenido actual.
 
 
 ## Bifurcar el repositorio y editar localmente
 
 Para el trabajo con documentos a largo plazo, clone el repositorio localmente y trabaje en su equipo.
 
-En la guía siguiente se muestra cómo emular mi configuración (Sarah Cooley). Hay muchas configuraciones alternativas que también funcionan bien.
+En la guía siguiente se muestra cómo emular mi configuración (Sarah Cooley).  Hay muchas configuraciones alternativas que también funcionan bien.
 
-> **Nota:** Todas estas herramientas de documentos también funcionan bien en Linux y OSX. Si quiere obtener otras guías, solicítelas.
+> **Nota**: Todas estas herramientas de documentos también funcionan bien en Linux y OSX.  Si quiere obtener otras guías, solicítelas.
 
 El proceso se divide en tres secciones:
 * [Configuración de Git](contribute_to_docs.md#set-up-git)
@@ -75,7 +79,7 @@ El proceso se divide en tres secciones:
   * Configuración inicial
   * Bifurcación del repositorio de documentación
   * Clonación de la copia en el equipo local
-* [Administración de credenciales inicial](contribute_to_docs.md#validate-and-stash-credentials)
+* [Administración de credenciales iniciales](contribute_to_docs.md#validate-and-stash-credentials)
   * Información sobre el guardado provisional de credenciales y la aplicación auxiliar de credenciales.
 * [Configuración del entorno de documentación](contribute_to_docs.md#set-up-markdown-editing-environment)
   * Instalación de VSCode
@@ -88,8 +92,7 @@ El proceso se divide en tres secciones:
 
   Solo deberá cambiar un valor de la instalación:
 
-  **Adjusting your PATH environment** (Ajustar el entorno PATH)
-  Use Git from the Windows Command Prompt (Usar Git desde el símbolo del sistema de Windows)
+  **Adjusting your PATH environment** (Ajustar el entorno PATH) Use Git desde el símbolo del sistema de Windows
 
   ![](media/GitFromWinCMD.png)
 
@@ -106,10 +109,10 @@ El proceso se divide en tres secciones:
 
   Git usa estos valores para etiquetar las confirmaciones.
 
-> Si recibe el siguiente error, probablemente Git no esté instalado correctamente o deba reiniciar PowerShell.
->    ``` PowerShell
->    Git: el término “Git” no se reconoce como el nombre de un cmdlet, una función, un archivo de script o un programa ejecutable. Compruebe la ortografía del nombre; si se incluyó una ruta de acceso, compruebe que dicha ruta sea correcta e inténtelo de nuevo.
->    ```
+  > Si recibe el siguiente error, probablemente Git no esté instalado correctamente o deba reiniciar PowerShell.
+    ``` PowerShell
+    git : The term 'git' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+    ```
 
 3. Configure el entorno de Git.
 
@@ -131,8 +134,7 @@ El proceso se divide en tres secciones:
    password:
    authcode (app): 562689
    ```
-   Esto configurará automáticamente un [token de acceso personal](https://github.com/settings/tokens) con los permisos adecuados en GitHub
-   y lo almacenará de forma segura en el equipo local. No se le volverá a solicitar en el futuro.
+   Esto configurará automáticamente un [token de acceso personal](https://github.com/settings/tokens) con los permisos adecuados en GitHub y lo almacenará de forma segura en el equipo local. No se le volverá a solicitar en el futuro.
 
 4. Bifurque el repositorio.
 
@@ -140,14 +142,14 @@ El proceso se divide en tres secciones:
 
   Git Clone hace una copia local del repositorio de Git con los enlaces adecuados para sincronizarse con otros clones del mismo repositorio.
 
-  De forma predeterminada, el clon creará una carpeta con el mismo nombre que el repositorio en el directorio actual. En mi caso, guardo todos los repositorios de Git en mi directorio de usuarios. Obtenga más información sobre Git Clone [aquí](http://git-scm.com/docs/git-clone).
+  De forma predeterminada, el clon creará una carpeta con el mismo nombre que el repositorio en el directorio actual.  En mi caso, guardo todos los repositorios de Git en mi directorio de usuarios.  Obtenga más información sobre Git Clone [aquí](http://git-scm.com/docs/git-clone).
 
   ``` PowerShell
   cd ~
   git clone https://github.com/Microsoft/Virtualization-Documentation.git
   ```
 
-  Si el proceso se ha realizado correctamente, ahora tendrá una carpeta `Virtualization-Documentation`.
+  Si tiene éxito, ahora tiene una carpeta `Virtualization-Documentation`.
 
   ``` PowerShell
   cd Virtualization-Documentation
@@ -155,7 +157,7 @@ El proceso se divide en tres secciones:
 
 5. [Opcional] Configure Posh-Git.
 
-  Posh-Git es un módulo de PowerShell creado por la comunidad que facilita el uso de Git en PowerShell. Agrega tabulación para Git en PowerShell y también puede hacer que el símbolo del sistema muestre información útil sobre el estado de la bifurcación y los archivos. Obtenga [aquí](https://github.com/dahlbyk/posh-git) más información al respecto. Puede instalar Posh-Git ejecutando lo siguiente en una consola de administrador de PowerShell.
+  Posh-Git es un módulo de PowerShell creado por la comunidad que facilita el uso de Git en PowerShell.  Agrega tabulación para Git en PowerShell y también puede hacer que el símbolo del sistema muestre información útil sobre el estado de la bifurcación y los archivos.  Obtenga más información al respecto [aquí](https://github.com/dahlbyk/posh-git).  Puede instalar Posh-Git ejecutando lo siguiente en una consola de administrador de PowerShell.
 
   ``` PowerShell
   Install-Module -Name posh-git
@@ -191,16 +193,13 @@ El proceso se divide en tres secciones:
 
 1. Descargue VSCode.
 
-6. Realice una confirmación de prueba. Si el guardado provisional de las credenciales se ha realizado correctamente, todo debería funcionar a la perfección.
+6. Realice una confirmación de prueba.  Si el guardado provisional de las credenciales se ha realizado correctamente, todo debería funcionar a la perfección.
 
 
 
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 
