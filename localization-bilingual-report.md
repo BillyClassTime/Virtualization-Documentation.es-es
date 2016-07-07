@@ -1,11 +1,28 @@
 # <a name='report-top'></a> Localization Bilingual Report
 
 ## Summary
- Total Files | 0
+ Total Files | 1
 
 ## File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\quick_start\walkthrough_install.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e14ede0a2b13de08cea0a955b37a21a150fb88cf/virtualization/hyperv_on_windows/quick_start/walkthrough_install.md) | InSyncHandedBackSuccess | [Details](#9e2b16f3e6c9882246a5a4c21683112eaa089ce8176)
 
 ## Item Details
+##### <a name='9e2b16f3e6c9882246a5a4c21683112eaa089ce8176'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_install.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e14ede0a2b13de08cea0a955b37a21a150fb88cf/virtualization/hyperv_on_windows/quick_start/walkthrough_install.md)
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough_install.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/f186283131e983a17219d131f8085abb9f3e2b47/virtualization/hyperv_on_windows/quick_start/walkthrough_install.md)
+* Handoff File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b6cb64a6c0e2d9e8331548f2e648a132074817d5/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
+* Handoff Datetime: 2016-06-28 17:47:35
+* Handoff Reason: Include
+* Archive File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/b359dec23b600ef8a23000045f8d26f227c8e983/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
+* Archive Datetime: 2016-06-30 07:22:56
+* Handback File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/4a61787dd960fae8e464abf4093e13e2f8fdb3cd/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
+* Handback Datetime: 2016-07-07 10:14:27
+* Bilingual File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/4a61787dd960fae8e464abf4093e13e2f8fdb3cd/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
+* Bilingual Datetime: 2016-07-07 10:16:16
+* [Back to Top](#report-top)
+
 
 ## Error Details
 

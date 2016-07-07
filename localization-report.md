@@ -2687,8 +2687,8 @@
 * Archive Datetime: 2016-06-30 07:22:56
 * Handback File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/4a61787dd960fae8e464abf4093e13e2f8fdb3cd/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
 * Handback Datetime: 2016-07-07 10:14:27
-* Bilingual File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/36629d8ae025cb22dd4ad656abb24da9a07ba71f/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
-* Bilingual Datetime: 2016-06-17 09:18:55
+* Bilingual File: [walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/4a61787dd960fae8e464abf4093e13e2f8fdb3cd/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_install.775f3dd3ffd893bcec04436e9648ed46ba3e501e.es-es.xlf)
+* Bilingual Datetime: 2016-07-07 10:16:16
 * [Back to Top](#report-top)
 
 ##### <a name='a8e567b6447aa73f14825b7054d977d2b003a726177'></a> Source: [virtualization\hyperv_on_windows\quick_start\walkthrough_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e14ede0a2b13de08cea0a955b37a21a150fb88cf/virtualization/hyperv_on_windows/quick_start/walkthrough_powershell.md)
