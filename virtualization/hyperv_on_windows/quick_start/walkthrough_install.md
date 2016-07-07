@@ -1,21 +1,25 @@
 ---
-title: &2064330931 Instalar Hyper-V en Windows 10
+title: Instalar Hyper-V en Windows 10
 description: Instalar Hyper-V en Windows 10
 keywords: windows 10, hyper-v
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
-ms.prod: &1621365481 windows-10-hyperv
+ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
+translationtype: Human Translation
+ms.sourcegitcommit: e14ede0a2b13de08cea0a955b37a21a150fb88cf
+ms.openlocfilehash: 9e2b16f3e6c9882246a5a4c21683112eaa089ce8
+
 ---
 
 # Instalar Hyper-V en Windows 10
 
 Debe habilitar el rol de Hyper-V para poder crear máquinas virtuales en Windows 10. Esto se puede realizar mediante el panel de control de Windows 10, PowerShell o la herramienta de Administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada uno de ellos.
 
-> Antes de habilitar Hyper-V, asegúrese de que el sistema es compatible. Para obtener más información, consulte [Requisitos de sistema de Hyper-V en Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility).
+> Antes de habilitar Hyper-V, asegúrese de que el sistema es compatible. Para más información, consulte [Requisitos de sistema de Hyper-V en Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility).
 
 ## Instalar manualmente el rol de Hyper-V
 
@@ -23,7 +27,7 @@ Debe habilitar el rol de Hyper-V para poder crear máquinas virtuales en Windows
 
 2. Seleccione **Activar o desactivar las características de Windows**.
 
-3. Seleccione **Hyper-V** y haga clic en **Aceptar**.
+3. Seleccione **Hyper-V** y haga clic en **Aceptar**.  
 
 ![](media/enable_role_upd.png)
 
@@ -44,7 +48,7 @@ Cuando la instalación se haya completado, deberá reiniciar el equipo.
 
 ## Instalar Hyper-V con DISM
 
-La herramienta de Administración y mantenimiento de imágenes de implementación (o DISM) se utiliza para mantener imágenes de Windows y preparar los entornos de preinstalación de Windows. DISM también se puede utilizar para habilitar las características de Windows mientras se ejecuta el sistema operativo. Para obtener más información, consulte [Referencia técnica de DISM](https://technet.microsoft.com/en-us/library/hh824821.aspx).
+La herramienta de Administración y mantenimiento de imágenes de implementación (o DISM) se utiliza para mantener imágenes de Windows y preparar los entornos de preinstalación de Windows. DISM también se puede utilizar para habilitar las características de Windows mientras se ejecuta el sistema operativo. Para más información, consulte la [referencia técnica de DISM](https://technet.microsoft.com/en-us/library/hh824821.aspx).
 
 Para habilitar el rol de Hyper-V mediante DISM:
 
@@ -59,14 +63,10 @@ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
 
 
 ## Siguiente paso: crear un conmutador virtual
-
 [Crear un conmutador virtual](walkthrough_virtual_switch.md)
 
 
 
-
-
-
-<!--HONumber=May16_HO1-->
+<!--HONumber=Jun16_HO4-->
 
 
