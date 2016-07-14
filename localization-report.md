@@ -5,9 +5,9 @@
  -------- | ----- 
  Total Files | 469
 [ Handoff Failed Files ](#handoff-failed-list)| 0
-[ Handoff Success Files ](#handoff-success-list)| 1
+[ Handoff Success Files ](#handoff-success-list)| 0
 [ Archive Failed Files ](#archive-failed-list)| 0
-[ Archive Success Files ](#archive-success-list)| 0
+[ Archive Success Files ](#archive-success-list)| 1
 [ Handback Failed Files ](#handback-failed-list)| 2
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 44
 [ In Sync Handback Files ](#insync-handback-success-list)| 91
@@ -16,13 +16,13 @@
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
 
 ## <a name='handoff-success-list'></a> Handoff Success File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyperv_on_windows\reference\ic_info.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/94e00095a41163c5f635685af01c215f4b4efce5/virtualization/hyperv_on_windows/reference/ic_info.md) | HandedOffSuccess | [Details](#e1c0404ee45ad8e775dc2319359cd16c6487ef12179)
 
 ## <a name='archive-failed-list'></a> Archive Failed File List
 
 ## <a name='archive-success-list'></a> Archive Success File List
+ Source File | Status | Details 
+ ----------- | ------ | ------- 
+ [virtualization\hyperv_on_windows\reference\ic_info.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/94e00095a41163c5f635685af01c215f4b4efce5/virtualization/hyperv_on_windows/reference/ic_info.md) | ArchivedSuccess | [Details](#e1c0404ee45ad8e775dc2319359cd16c6487ef12179)
 
 ## <a name='handback-failed-list'></a> Handback Failed File List
  Source File | Status | Details 
@@ -1582,8 +1582,8 @@
 * Handoff File: [hyperv_on_windows.d9da0ac74ee24f28f940324928905e38e074d9e2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/6dc3eee5064d0cd738179a7b25c1ec4d81199107/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/hyperv_on_windows.d9da0ac74ee24f28f940324928905e38e074d9e2.es-es.xlf)
 * Handoff Datetime: 2016-07-13 22:51:39
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [hyperv_on_windows.d9da0ac74ee24f28f940324928905e38e074d9e2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/80c8e780c69a5d7b25d1315f4d5403bcce63fb37/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/hyperv_on_windows.d9da0ac74ee24f28f940324928905e38e074d9e2.es-es.xlf)
+* Archive Datetime: 2016-07-14 07:15:38
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\hyperv_on_windows\about\hyperv_on_windows.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c38e4f10ca611baa3d69c819043a8d0cb17ba6b5/virtualization/hyperv_on_windows/about/hyperv_on_windows.md)
@@ -2644,8 +2644,8 @@
 * Handoff File: [walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/6dc3eee5064d0cd738179a7b25c1ec4d81199107/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf)
 * Handoff Datetime: 2016-07-13 22:51:39
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/80c8e780c69a5d7b25d1315f4d5403bcce63fb37/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/walkthrough_compatibility.b81630a3813897e1115f050cb3fb67a3db007cf8.es-es.xlf)
+* Archive Datetime: 2016-07-14 07:15:38
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\hyperv_on_windows\quick_start\walkthrough_compatibility.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c38e4f10ca611baa3d69c819043a8d0cb17ba6b5/virtualization/hyperv_on_windows/quick_start/walkthrough_compatibility.md)
@@ -2726,13 +2726,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='e1c0404ee45ad8e775dc2319359cd16c6487ef12179'></a> Source: [virtualization\hyperv_on_windows\reference\ic_info.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/94e00095a41163c5f635685af01c215f4b4efce5/virtualization/hyperv_on_windows/reference/ic_info.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/6dc3eee5064d0cd738179a7b25c1ec4d81199107/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf)
 * Handoff Datetime: 2016-07-13 22:51:39
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/80c8e780c69a5d7b25d1315f4d5403bcce63fb37/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf)
+* Archive Datetime: 2016-07-14 07:15:38
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * [Back to Top](#report-top)
@@ -4538,8 +4538,8 @@
 * Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/616f5a9ccf4b73bd0b5b2044a751c3291c6d9dc9/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
 * Handoff Datetime: 2016-07-11 05:47:27
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/80c8e780c69a5d7b25d1315f4d5403bcce63fb37/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/archive/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
+* Archive Datetime: 2016-07-14 07:15:38
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/f7ecdf33d1b4c2253f29c572d80b2d26837fe99c/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
