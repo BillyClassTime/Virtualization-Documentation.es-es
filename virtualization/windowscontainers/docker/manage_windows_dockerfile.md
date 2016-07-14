@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: 960b40e8c1eda9c19ebff0972df2c87e70c7e8f6
-ms.openlocfilehash: 71e0fb430498f8a5ae4ac5b297cf5e4a2c904098
+ms.sourcegitcommit: daf82c943f9e19ec68e37207bba69fb0bf46f46f
+ms.openlocfilehash: ace5fd12856cdcff3a380eb35e4982c4c1ce4c5a
 
 ---
 
@@ -98,7 +98,7 @@ La instrucción RUN tiene el formato siguiente:
 ```none
 # exec form
 
-RUN ["<executable", "<param 1>", "<param 2>"
+RUN ["<executable", "<param 1>", "<param 2>"]
 
 # shell form
 
@@ -149,6 +149,8 @@ En Windows, cuando se usa la instrucción `RUN` con el formato exec, las barras 
 RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
+Si el programa de destino es Windows Installer, se necesita un paso más para poder iniciar el procedimiento de instalación (silenciosa) real: extraer la instalación a través de la marca `/x:<directory>`. Además, hay que esperar la salida del comando. De lo contrario, el proceso finalizará prematuramente, sin instalar nada. Para más información, vea el siguiente ejemplo.
+
 **Ejemplos**
 
 En este ejemplo se usa DISM para instalar IIS en la imagen del contenedor.
@@ -160,6 +162,13 @@ En este ejemplo se instala el paquete redistribuible de Visual Studio.
 ```none
 RUN powershell.exe -Command c:\vcredist_x86.exe /quiet
 ``` 
+
+En este ejemplo se instala el Paquete de desarrollador de .NET Framework 4.5.2, para lo cual se extrae primero y, después, se inicia el programa de instalación real. 
+```none
+RUN start /wait C:\temp\NDP452-KB2901951-x86-x64-DevPack.exe /q /x:C:\temp\NDP452DevPackSetupDir && \
+    start /wait C:\temp\NDP452DevPackSetupDir\Setup.exe /norestart /q /log %TEMP%\ndp452_install_log.txt && \
+    rmdir /s /q C:\temp\NDP452DevPackSetupDir
+```
 
 Para obtener información detallada sobre la instrucción RUN, consulte la [referencia sobre RUN en Docker.com]( https://docs.docker.com/engine/reference/builder/#run). 
 
@@ -481,6 +490,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 

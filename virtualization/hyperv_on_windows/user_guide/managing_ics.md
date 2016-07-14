@@ -1,7 +1,7 @@
 ---
 title: "Administración de los servicios de integración de Hyper-V"
 description: "Administración de los servicios de integración de Hyper-V"
-keywords: windows 10, hyper-v
+keywords: windows 10, hyper-v, integration services, integration components
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,16 +10,18 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 translationtype: Human Translation
-ms.sourcegitcommit: ef9ce04b2532fd314a21920b9cc5c28459c9a438
-ms.openlocfilehash: d2fbf3b714ac70e096ba80aadd9533c62cf0c34e
+ms.sourcegitcommit: 852f7fafe7192d85b0e9840ea3767a1206a1c285
+ms.openlocfilehash: e7abf05c899e2acca07312813b7808a5db00a9f7
 
 ---
 
 # Administración de los servicios de integración de Hyper-V
 
-Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades (por ejemplo, la copia de archivos de invitado), mientras que otros pueden ser bastante importantes para la capacidad de funcionar correctamente del sistema operativo invitado (la sincronización de la hora).
+Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades (por ejemplo, la copia de archivos de invitado), mientras que otros pueden ser bastante importantes para la capacidad de la máquina virtual de funcionar correctamente (la sincronización de la hora).
 
-En este artículo se detalla cómo administrar los servicios de integración con el administrador de Hyper-V y PowerShell en Windows 10. Para más información sobre cada uno de los servicios de integración individuales, consulte [Integration Services]( https://technet.microsoft.com/en-us/library/dn798297.aspx) (Servicios de integración).
+En este artículo se detalla cómo administrar los servicios de integración con el administrador de Hyper-V y PowerShell en Windows 10.  
+
+Para más información sobre cada uno de los servicios de integración individuales, consulte [Integration Services](../reference/ic_info.md) (Servicios de integración).
 
 ## Habilitar o deshabilitar los servicios de integración con el administrador de Hyper-V
 
@@ -41,33 +43,33 @@ En este ejemplo, se habilitará y luego deshabilitará el servicio de integraci�
 1. Ver los servicios de integración que se están ejecutando
   
   ``` PowerShell
-  Get-VMIntegrationService -VMName "demovm"
+  Get-VMIntegrationService -VMName "DemoVM"
   ```
 
   El resultado tendrá este aspecto:  
   ``` PowerShell
   VMName      Name                    Enabled PrimaryStatusDescription SecondaryStatusDescription
   ------      ----                    ------- ------------------------ --------------------------
-  demovm      Guest Service Interface False   OK
-  demovm      Heartbeat               True    OK                       OK
-  demovm      Key-Value Pair Exchange True    OK
-  demovm      Shutdown                True    OK
-  demovm      Time Synchronization    True    OK
-  demovm      VSS                     True    OK
+  DemoVM      Guest Service Interface False   OK
+  DemoVM      Heartbeat               True    OK                       OK
+  DemoVM      Key-Value Pair Exchange True    OK
+  DemoVM      Shutdown                True    OK
+  DemoVM      Time Synchronization    True    OK
+  DemoVM      VSS                     True    OK
   ```
 
 2. Habilite el servicio de integración `Guest Service Interface`.
 
    ``` PowerShell
-   Enable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
+   Enable-VMIntegrationService -VMName "DemoVM" -Name "Guest Service Interface"
    ```
    
-   Si ejecuta `Get-VMIntegrationService -VMName "demovm"`, verá que el servicio de integración Guest Service Interface está habilitado.
+   Si ejecuta `Get-VMIntegrationService -VMName "DemoVM"`, verá que el servicio de integración Interfaz de servicio de invitado está habilitado.
  
 3. Deshabilite el servicio de integración `Guest Service Interface`.
 
    ``` PowerShell
-   Disable-VMIntegrationService -VMName "demovm" -Name "Guest Service Interface"
+   Disable-VMIntegrationService -VMName "DemoVM" -Name "Guest Service Interface"
    ```
    
 Los servicios de integración se han diseñado de forma que deben habilitarse tanto en el host como en el invitado para poder funcionar.  Aunque todos los servicios de integración están habilitados de forma predeterminada en los sistemas operativos invitados de Windows, pueden deshabilitarse.  Vea cómo en la sección siguiente.
@@ -193,7 +195,9 @@ Ahora, si vuelve a ejecutar `ps -ef | hv`, descubrirá un proceso de `hv_kvp_dae
 
 ## Mantenimiento del servicio de integración
 
-Mantenga los servicios de integración actualizados con el fin de obtener el mejor rendimiento y las mejores características posibles de la máquina virtual.
+El mantenimiento del servicio de integración de Windows 10 ocurre de forma predeterminada, siempre y cuando las máquinas virtuales puedan recibir actualizaciones importantes de Windows Update.  
+
+Si los servicios de integración se mantienen actualizados, se obtendrá el mejor rendimiento y las mejores características posibles de la máquina virtual.
 
 **Para máquinas virtuales que se ejecutan en hosts de Windows 10:**
 
@@ -226,19 +230,19 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 |:---------|:---------|:---------|
 | Windows 10 | Windows Update | |
 | Windows 8.1 | Windows Update | |
-| Windows 8 | Disco de servicios de integración | |
-| Windows 7 | Disco de servicios de integración | |
-| Windows Vista (SP 2) | Disco de servicios de integración | |
-| Windows XP (SP 2, SP 3) | Disco de servicios de integración | |
+| Windows 8 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows 7 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Vista (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows XP (SP 2, SP 3) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
-| Windows Server 2012 | Disco de servicios de integración | |
-| Windows Server 2008 R2 | Disco de servicios de integración | |
-| Windows Server 2008 (SP 2) | Disco de servicios de integración | |
-| Windows Home Server 2011 | Disco de servicios de integración | |
-| Windows Small Business Server 2011 | Disco de servicios de integración | |
-| Windows Server 2003 R2 (SP 2) | Disco de servicios de integración | |
-| Windows Server 2003 (SP 2) | Disco de servicios de integración | |
+| Windows Server 2012 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2008 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Home Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Small Business Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2003 R2 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2003 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | - | | |
 | Invitados Linux | administrador de paquetes | Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales. ** |
 
@@ -248,29 +252,26 @@ Mantenga los servicios de integración actualizados con el fin de obtener el mej
 | SO invitado | Mecanismo de actualización | Notas |
 |:---------|:---------|:---------|
 | Windows 8.1 | Windows Update | |
-| Windows 8 | Disco de servicios de integración | |
-| Windows 7 | Disco de servicios de integración | |
-| Windows Vista (SP 2) | Disco de servicios de integración | |
-| Windows XP (SP 2, SP 3) | Disco de servicios de integración | |
+| Windows 8 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows 7 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Vista (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows XP (SP 2, SP 3) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
-| Windows Server 2012 | Disco de servicios de integración | |
-| Windows Server 2008 R2 | Disco de servicios de integración | |
-| Windows Server 2008 (SP 2) | Disco de servicios de integración | |
-| Windows Home Server 2011 | Disco de servicios de integración | |
-| Windows Small Business Server 2011 | Disco de servicios de integración | |
-| Windows Server 2003 R2 (SP 2) | Disco de servicios de integración | |
-| Windows Server 2003 (SP 2) | Disco de servicios de integración | |
+| Windows Server 2012 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4).|
+| Windows Server 2008 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Home Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Small Business Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2003 R2 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2003 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | - | | |
 | Invitados Linux | administrador de paquetes | Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales. ** |
-
-
-Las instrucciones para realizar la actualización a través del disco de Servicios de integración para Windows 8 y Windows 8.1 están disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4).
 
  > ** [Aquí](https://technet.microsoft.com/en-us/library/dn531030.aspx) encontrará más información sobre los invitados Linux. 
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 

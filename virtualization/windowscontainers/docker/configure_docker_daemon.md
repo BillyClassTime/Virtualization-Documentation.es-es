@@ -9,8 +9,9 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.sourcegitcommit: 7113f1dc1e9a0a18d4eb25e6d604e89f96f826c4
-ms.openlocfilehash: 1fddaff6fc260c0cf91c8626a60d768a06995e53
+translationtype: Human Translation
+ms.sourcegitcommit: 2d6f2c24624883457302c925c2bb47e6c867b730
+ms.openlocfilehash: 533f3a3277e3d9654f0d425c9c0f442c93e2d24a
 
 ---
 
@@ -156,7 +157,20 @@ Si ha iniciado sesión en el host de Docker y ejecuta comandos de Docker de form
 ```
 
 
+## Recopilación de registros
+El demonio de Docker registra en el registro de eventos 'Application' de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
 
-<!--HONumber=Jun16_HO4-->
+Por ejemplo, esto mostrará los registros del demonio de Docker de los últimos 5 minutos a partir de los más antiguos.
+```
+Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
+```
+
+Esto también se podría canalizar fácilmente en un archivo CSV para que otra herramienta u hoja de cálculo pueda leerlo.
+```
+Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.csv ```
+
+
+
+<!--HONumber=Jul16_HO1-->
 
 

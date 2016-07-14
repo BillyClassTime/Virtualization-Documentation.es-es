@@ -1,7 +1,7 @@
 ---
 title: "Administrar máquinas virtuales de Windows con PowerShell Direct"
 description: "Administrar máquinas virtuales de Windows con PowerShell Direct"
-keywords: windows 10, hyper-v
+keywords: windows 10, hyper-v, powershell, integration services, integration components, automation, powershell direct
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,19 +10,19 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 translationtype: Human Translation
-ms.sourcegitcommit: 6eb26eda92217917a3abe7d9dd4c77c48283c8dc
-ms.openlocfilehash: 91927b751021efa9ba2cf696516ba50af28c6e05
+ms.sourcegitcommit: 87f8fb2ae8958c9c6177f6eda90678708054fce7
+ms.openlocfilehash: 75186d48346efbaaac264b00f0f92fe82fcfe424
 
 ---
 
-# Administrar máquinas virtuales de Windows con PowerShell Direct
+# Administración y automatización de máquinas virtuales con PowerShell
  
-Puede usar PowerShell Direct para administrar de forma remota una máquina virtual de Windows 10 o Windows Server Technical Preview desde un host de Hyper-V de Windows 10 o Windows Server Technical Preview. PowerShell Direct permite la administración de PowerShell dentro de una máquina virtual, independientemente de la configuración de la red o la configuración de administración remota en el host de Hyper-V o la máquina virtual. Esto facilita a los administradores de Hyper-V la automatización y las tareas de administración y configuración de scripts.
+Puede usar PowerShell Direct para ejecutar PowerShell arbitrario en una máquina virtual con Windows 10 o Windows Server Technical Preview desde el host de Hyper-V, independientemente de la configuración de administración remota o la configuración de red.
 
 **Formas de ejecutar PowerShell Direct:**  
 * Como una sesión interactiva: [haga clic aquí](vmsession.md#create-and-exit-an-interactive-powershell-session) para crear una sesión interactiva de PowerShell con Enter-PSSession y luego cerrarla.
 * Como una sesión de un solo uso para ejecutar un único comando o script: [haga clic aquí](vmsession.md#run-a-script-or-command-with-invoke-command) para ejecutar un script o comando mediante Invoke-Command.
-* Como una sesión persistente (compilación 14280 y posteriores): [haga clic aquí](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item) para crear una sesión persistente mediante New-PSSession.  
+* Como una sesión persistente (compilación 14280 y posteriores): [haga clic aquí](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item) para crear una sesión persistente con New-PSSession.  
 Luego copie un archivo en la máquina virtual y desde ella mediante Copy-Item y desconecte con Remove-PSSession.
 
 ## Requisitos
@@ -281,6 +281,6 @@ Consulte los [fragmentos de código de PowerShell Direct](../develop/powershell_
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO1-->
 
 
