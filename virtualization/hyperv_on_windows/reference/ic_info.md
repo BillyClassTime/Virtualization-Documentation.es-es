@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 translationtype: Human Translation
-ms.sourcegitcommit: eae8f504039a1b3732ecfb31b8068667aab104f9
-ms.openlocfilehash: 633a6b2f3fe737a6e7515fd3f923335e39cf9d17
+ms.sourcegitcommit: 94e00095a41163c5f635685af01c215f4b4efce5
+ms.openlocfilehash: e1c0404ee45ad8e775dc2319359cd16c6487ef12
 
 ---
 
@@ -20,6 +20,13 @@ ms.openlocfilehash: 633a6b2f3fe737a6e7515fd3f923335e39cf9d17
 Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades, mientras que otros pueden ser bastante importantes para la capacidad de la máquina virtual de funcionar correctamente.
 
 Este artículo es una referencia para cada servicio de integración disponible en Windows.  También sirve como punto de partida para cualquier información relacionada con servicios de integración específicos o su historial.
+
+**Guías de usuario:**  
+* [Habilitar o deshabilitar los servicios de integración desde el host de Hyper-V](../user_guide/managing_ics.md#enable-or-disable-integration-services-using-powershell)
+* Habilitar o deshabilitar los servicios de integración desde dentro de la máquina virtual.
+  * [Windows](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-windows)
+  * [Linux](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-linux)
+* [Mantenimiento y actualización del servicio de integración](../user_guide/managing_ics.md#integration-service-maintenance)
 
 
 ## Referencia rápida
@@ -69,7 +76,7 @@ El campo `Status` viene determinado por el servicio de latido.
 
 **Nombre del servicio de Windows:** vmicshutdown  
 **Nombre del demonio de Linux:** hv_utils  
-**Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar que la máquina virtual se desactive, pero sería como accionar un interruptor, en vez de seleccionar el apagado.
+**Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar la desconexión de la máquina virtual, pero sería apagarlo con el interruptor, en vez de seleccionar el apagado.
 **Incluido en:** Windows Server 2012, Windows 8  
 **Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se producirán como desconexiones de hardware, lo que podría causar pérdidas o daños en los datos.
 
@@ -149,16 +156,7 @@ PowerShell Direct permite la administración de PowerShell dentro de una máquin
 * [Copiar archivos en y desde una máquina virtual](../user_guide/vmsession.md#copy-files-with-new-pssession-and-copy-item)
 
 
-## Recursos adicionales
 
-**Guías de usuario:**  
-* [Habilitar o deshabilitar los servicios de integración desde el host de Hyper-V](../user_guide/managing_ics.md#enable-or-disable-integration-services-using-powershell)
-* Habilitar o deshabilitar los servicios de integración desde la máquina virtual
-** [Windows](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-windows)
-** [Linux](../user_guide/managing_ics.md#manage-integration-services-from-guest-os-linux)
-* [Mantenimiento y actualización del servicio de integración](../user_guide/managing_ics.md#integration-service-maintenance)
-
-
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO2-->
 
 

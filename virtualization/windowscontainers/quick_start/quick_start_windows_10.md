@@ -4,14 +4,14 @@ description: "Inicio rápido de implementación de contenedores"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 06/28/2016
+ms.date: 07/07/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 5980babe886024de93f6d6c5f04eaed47407209d
-ms.openlocfilehash: 188c85a9e6f5d1c334e51853efd8fa3ca461837c
+ms.sourcegitcommit: 5f42cae373b1f8f0484ffac82f5ebc761c37d050
+ms.openlocfilehash: 9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e
 
 ---
 
@@ -19,7 +19,7 @@ ms.openlocfilehash: 188c85a9e6f5d1c334e51853efd8fa3ca461837c
 
 **Esto es contenido preliminar y está sujeto a cambios.** 
 
-Este ejercicio le guiará a través de la implementación básica y el uso de la característica de contenedor de Windows en Windows 10 (compilación de Insider 14352 y superiores). Una vez realizado, habrá instalado el rol de contenedor e implementado un contenedor sencillo de Hyper-V. Antes de comenzar este inicio rápido, familiarícese con la terminología y los conceptos básicos de los contenedores. Esta información se encuentra en la [Introducción a los contenedores](./quick_start.md). 
+Este ejercicio le guiará a través de la implementación básica y el uso de la característica de contenedor de Windows en Windows 10 (compilación 14372 de Insider y superiores). Una vez realizado, habrá instalado el rol de contenedor e implementado un contenedor sencillo de Hyper-V. Antes de comenzar este inicio rápido, familiarícese con la terminología y los conceptos básicos de los contenedores. Esta información se encuentra en la [Introducción a los contenedores](./quick_start.md). 
 
 Este inicio rápido es específico de los contenedores de Hyper-V en Windows 10. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
 
@@ -61,19 +61,19 @@ New-Item -Type Directory -Path $env:ProgramFiles\docker\
 Descargue el demonio de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
+Invoke-WebRequest https://master.dockerproject.org/windows/amd64/dockerd.exe -OutFile $env:ProgramFiles\docker\dockerd.exe
 ```
 
 Descargue el cliente de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
+Invoke-WebRequest https://master.dockerproject.org/windows/amd64/docker.exe -OutFile $env:ProgramFiles\docker\docker.exe
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema.
 
 ```none
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\\Docker", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\", [EnvironmentVariableTarget]::Machine)
 ```
 
 Reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -94,28 +94,18 @@ Start-Service Docker
 
 Los contenedores de Windows se implementan a partir de plantillas o imágenes. Para poder implementar un contenedor, es necesario descargar una imagen base del sistema operativo del contenedor. Los comandos siguientes descargarán la imagen base de Nano Server.
     
-Establezca la directiva de ejecución de PowerShell del proceso actual de PowerShell. Esto solo afectará a los scripts que se ejecuten en la sesión actual de PowerShell, de todas formas, se deben tomar precauciones al cambiar la directiva de ejecución.
+> Este procedimiento se aplica a las compilaciones de Windows Insiders superiores a la 14372 y es temporal hasta que 'docker pull' esté funcional.
+
+Descargue la imagen base de Nano Server. 
 
 ```none
-Set-ExecutionPolicy Bypass -scope Process
+Start-BitsTransfer https://aka.ms/tp5/6b/docker/nanoserver -Destination nanoserver.tar.gz
 ```
 
-Instale el proveedor de paquetes de imágenes del contenedor.
+Instale la imagen base.
 
 ```none  
-Install-PackageProvider ContainerImage -Force
-```
-
-Luego instale la imagen de Nano Server.
-
-```none
-Install-ContainerImage -Name NanoServer
-```
-
-Cuando se haya instalado la imagen base, debe reiniciar el servicio Docker.
-
-```none
-Restart-Service docker
+docker load -i nanoserver.tar.gz
 ```
 
 En este punto, si se ejecuta `docker images`, se devolverá una lista de imágenes instaladas, en este caso la imagen de Nano Server.
@@ -124,13 +114,13 @@ En este punto, si se ejecuta `docker images`, se devolverá una lista de imágen
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-nanoserver          10.0.14300.1016     3f5112ddd185        3 weeks ago         810.2 MB
+nanoserver          10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
 ```
 
 Antes de continuar, debe etiquetar la imagen con una versión "reciente". Para ello, ejecute el comando siguiente.
 
 ```none
-docker tag nanoserver:10.0.14300.1016 nanoserver:latest
+docker tag microsoft/nanoserver:10.0.14300.1030 nanoserver:latest
 ```
 
 Para obtener información detallada sobre las imágenes de contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
@@ -148,11 +138,11 @@ docker pull microsoft/sample-dotnet
 Esto se puede comprobar con el comando `docker images`.
 
 ```none
-docker images
+docker 
 
 REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
 microsoft/sample-dotnet  latest              28da49c3bff4        41 hours ago        918.3 MB
-nanoserver               10.0.14300.1016     3f5112ddd185        3 weeks ago         810.2 MB
+nanoserver               10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
 nanoserver               latest              3f5112ddd185        3 weeks ago         810.2 MB
 ```
 
@@ -164,7 +154,7 @@ Para obtener información más detallada sobre el comando Run de Docker, consult
 docker run --isolation=hyperv --rm microsoft/sample-dotnet
 ```
 
-**Nota**: si se produce un error que indica un evento de tiempo de espera, ejecute el siguiente script de PowerShell y vuelva a intentar la operación.
+**Nota**: Si se produce un error que indica un evento de tiempo de espera, ejecute el siguiente script de PowerShell y vuelva a intentar la operación.
 
 ```none
 Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
@@ -180,6 +170,6 @@ El resultado de este comando `docker run` es que se crea un contenedor de Hyper-
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO2-->
 
 
