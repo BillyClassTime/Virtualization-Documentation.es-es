@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
 translationtype: Human Translation
-ms.sourcegitcommit: 94e00095a41163c5f635685af01c215f4b4efce5
-ms.openlocfilehash: e1c0404ee45ad8e775dc2319359cd16c6487ef12
+ms.sourcegitcommit: 03c3ede85ff8b2fe4783581c717c1c97810b3bdd
+ms.openlocfilehash: a2fc8845bdc3e5f977d50b99ca9687b3dafd0cb6
 
 ---
 
@@ -76,9 +76,9 @@ El campo `Status` viene determinado por el servicio de latido.
 
 **Nombre del servicio de Windows:** vmicshutdown  
 **Nombre del demonio de Linux:** hv_utils  
-**Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar la desconexión de la máquina virtual, pero sería apagarlo con el interruptor, en vez de seleccionar el apagado.
+**Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar la desconexión de la máquina virtual, pero sería apagarlo con el interruptor, en vez de seleccionar el apagado.  
 **Incluido en:** Windows Server 2012, Windows 8  
-**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se producirán como desconexiones de hardware, lo que podría causar pérdidas o daños en los datos.
+**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se producirán como desconexiones de hardware, lo que podría causar pérdidas o daños en los datos.  
 
 
 ## Servicio de sincronización de hora de Hyper-V
@@ -96,7 +96,7 @@ El campo `Status` viene determinado por el servicio de latido.
 **Nombre del demonio de Linux:** hv_kvp_daemon  
 **Descripción:** proporciona un mecanismo para intercambiar metadatos básicos entre la máquina virtual y el host.  
 **Incluido en:** Windows Server 2012, Windows 8  
-**Efecto:** cuando está deshabilitado, las máquinas virtuales que ejecutan Windows 8 o Windows Server 2012 (o anterior) no recibirán actualizaciones de los servicios de integración de Hyper-V.  La desactivación del intercambio de datos también puede afectar a algunos tipos de supervisión y diagnósticos del lado host.
+**Efecto:** cuando está deshabilitado, las máquinas virtuales que ejecutan Windows 8 o Windows Server 2012 (o anterior) no recibirán actualizaciones de los servicios de integración de Hyper-V.  La desactivación del intercambio de datos también puede afectar a algunos tipos de supervisión y diagnósticos del lado host.  
 
 El servicio de intercambio de datos (denominado a veces KVP) comparte pequeñas cantidades de información sobre el equipo entre la máquina virtual y el host de Hyper-V, usando para ello pares de clave-valor (KVP) a través del Registro de Windows.  Este mismo mecanismo también puede servir para compartir datos personalizados entre la máquina virtual y el host.
 
@@ -106,7 +106,7 @@ El servicio de intercambio de datos es una herramienta excelente para conservar 
 
 
 **Guías de usuario:**  
-* [Utilizar pares clave-valor para compartir información entre el host y el invitado en Hyper-V](https://technet.microsoft.com/en-us/library/dn798287.aspx).
+* [Utilizar pares clave-valor para compartir información entre el host y el invitado en Hyper-V](https://technet.microsoft.com/en-us/library/dn798287.aspx).  
 
 
 ## Solicitante de instantáneas de volumen de Hyper-V
