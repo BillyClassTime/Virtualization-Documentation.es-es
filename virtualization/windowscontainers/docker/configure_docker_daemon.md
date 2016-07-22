@@ -4,14 +4,14 @@ description: "Configuración de Docker en Windows"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 06/02/2016
+ms.date: 07/15/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 2d6f2c24624883457302c925c2bb47e6c867b730
-ms.openlocfilehash: 533f3a3277e3d9654f0d425c9c0f442c93e2d24a
+ms.sourcegitcommit: 475240afdf97af117519cfaa287f1e4fec8837a5
+ms.openlocfilehash: 5b86442643fb5937b62a67d144ae0d1c98373b41
 
 ---
 
@@ -121,8 +121,6 @@ De la misma forma, en esta muestra se configura el demonio de Docker para acepta
 }
 ```
 
-
-
 ## administrador de control de servicios
 
 El demonio de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de demonio de Docker directamente en el servicio de Docker.
@@ -156,6 +154,21 @@ Si ha iniciado sesión en el host de Docker y ejecuta comandos de Docker de form
 }
 ```
 
+## Configuración de proxy
+
+Para establecer la información del proxy para `docker search` y `docker pull`, cree una variable de entorno de Windows con el nombre `HTTP_PROXY` o `HTTPS_PROXY` y un valor de información del proxy. Esto se puede completar con PowerShell mediante un comando similar al siguiente:
+
+```none
+[Environment]::SetEnvironmentVariable("HTTP_PROXY”, “http://username:password@proxy:port/”, [EnvironmentVariableTarget]::Machine)
+```
+
+Una vez que se ha establecido la variable, reinicie el servicio Docker.
+
+```none
+restart-service docker
+```
+
+Para más información, consulte [las opciones de socket de demonio en Docker.com](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option).
 
 ## Recopilación de registros
 El demonio de Docker registra en el registro de eventos 'Application' de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
@@ -171,6 +184,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Jul16_HO3-->
 
 

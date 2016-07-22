@@ -4,14 +4,14 @@ description: "Inicio rápido de implementación de contenedores"
 keywords: docker, containers
 author: neilpeterson
 manager: timlt
-ms.date: 07/07/2016
+ms.date: 07/13/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 5f42cae373b1f8f0484ffac82f5ebc761c37d050
-ms.openlocfilehash: 9ef41ff031e8b7bc463e71f39ee6a3b8e4fd846e
+ms.sourcegitcommit: edf2c2597e57909a553eb5e6fcc75cdb820fce68
+ms.openlocfilehash: b37d402f2e6c950db061f5de0c86f0e9aace62b4
 
 ---
 
@@ -46,6 +46,12 @@ Cuando la instalación haya finalizado, reinicie el equipo.
 
 ```none
 Restart-Computer -Force
+```
+
+Una vez realizada la copia de seguridad, ejecute el comando siguiente para solucionar un problema conocido con la vista previa técnica de contenedores de Windows.  
+
+ ```none
+Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
 ```
 
 ## 2. Instalar Docker
@@ -127,40 +133,51 @@ Para obtener información detallada sobre las imágenes de contenedor de Windows
 
 ## 4. Implementar el primer contenedor
 
-En este ejemplo sencillo, se ha creado previamente una imagen de .NET Core. Descargue esta imagen mediante el comando `docker pull`.
+En este ejemplo simple, se va a crear e implementar una imagen de contenedor "Hola a todos". Para una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados.
 
-Cuando se ejecute, se iniciará un contenedor, se ejecutará la aplicación .NET Core sencilla y luego se cerrará el contenedor. 
-
-```none
-docker pull microsoft/sample-dotnet
-```
-
-Esto se puede comprobar con el comando `docker images`.
+En primer lugar, inicie un contenedor con una sesión interactiva desde la imagen `nanoserver`. Una vez que se ha iniciado el contenedor, aparecerá un shell de comandos desde dentro del mismo.  
 
 ```none
-docker 
-
-REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
-microsoft/sample-dotnet  latest              28da49c3bff4        41 hours ago        918.3 MB
-nanoserver               10.0.14300.1030     3f5112ddd185        3 weeks ago         810.2 MB
-nanoserver               latest              3f5112ddd185        3 weeks ago         810.2 MB
+docker run -it nanoserver cmd
 ```
 
-Ejecute el contenedor con el comando `docker run`. En el ejemplo siguiente se especifica el parámetro `--rm`, que indica al motor de Docker que elimine el contenedor cuando ya no se esté ejecutando. 
-
-Para obtener información más detallada sobre el comando Run de Docker, consulte [Docker Run Reference (Referencia de Run de Docker)]( https://docs.docker.com/engine/reference/run/) en Docker.com.
+Dentro del contenedor se creará un script sencillo de "Hola a todos".
 
 ```none
-docker run --isolation=hyperv --rm microsoft/sample-dotnet
-```
+powershell.exe Add-Content C:\helloworld.ps1 'Write-Host "Hello World"'
+```   
 
-**Nota**: Si se produce un error que indica un evento de tiempo de espera, ejecute el siguiente script de PowerShell y vuelva a intentar la operación.
+Una vez completado, salga del contenedor.
 
 ```none
-Set-ItemProperty -Path 'HKLM:SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\Containers' -Name VSmbDisableOplocks -Type DWord -Value 1 -Force
+exit
 ```
 
-El resultado de este comando `docker run` es que se crea un contenedor de Hyper-V a partir de la imagen sample-dotnet, entonces se ejecuta una aplicación de ejemplo (el resultado se muestra en el shell) y luego el contenedor se detiene y se quita. Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en la creación e implementación de aplicaciones en contenedores en Windows 10.
+Ahora creará una nueva imagen de contenedor a partir del contenedor modificado. Para ver una lista de contenedores ejecute lo siguiente y anote el identificador de contenedor.
+
+```none
+docker ps -a
+```
+
+Ejecute el siguiente comando para crear la nueva imagen de "Hola a todos". Reemplace <containerid> con el identificador del contenedor.
+
+```none
+docker commit <containerid> helloworld
+```
+
+Una vez finalizado, tendrá una imagen personalizada que contiene el script de hola a todos. Esto puede verse con el comando siguiente.
+
+```none
+docker images
+```
+
+Finalmente, para quitar el contenedor, use el comando `docker run`.
+
+```none
+docker run --rm helloworld powershell c:\helloworld.ps1
+```
+
+El resultado de este comando `docker run` es que se crea un contenedor de Hyper-V a partir de la imagen de "Hola a todos", a continuación se ejecuta un script "Hola a todos" de ejemplo (el resultado se muestra en el shell) y luego el contenedor se detiene y se quita. Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en la creación e implementación de aplicaciones en contenedores en Windows 10.
 
 ## Pasos siguientes
 

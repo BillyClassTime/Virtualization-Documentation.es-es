@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
 translationtype: Human Translation
-ms.sourcegitcommit: 53539a0325b3f07e542ca1dd0a4352239e8a65b3
-ms.openlocfilehash: 25295b8a2888e25090439a3490c9ff7c3214f23a
+ms.sourcegitcommit: c3e7cc07ac7e7d4e1c5f1827deb5951daa1e3749
+ms.openlocfilehash: ad84961d0a79853e2aadcf9ed0e37e340103835a
 
 ---
 
@@ -44,7 +44,7 @@ Dicho esto, Hyper-V es compatible con sistemas operativos de 32 y 64 bits en las
 
 Puede ejecutar tres o cuatro máquinas virtuales básicas en un host que tenga 4 GB de RAM, aunque se necesitarán más recursos si se desea ejecutar más. En el otro extremo del espectro, también se pueden crear máquinas virtuales grandes con 32 procesadores y 512 GB de RAM, en función del hardware físico.
 
-Para más información acerca de los requisitos del sistema de Hyper-V y cómo comprobar que Hyper-V se ejecuta en un equipo, consulte [Instalar Hyper-V en Windows 10](..\quick_start\walkthrough_install.md)
+Para más información acerca de los requisitos del sistema de Hyper-V y cómo comprobar que Hyper-V se ejecuta en un equipo, consulte [Instalar Hyper-V en Windows 10](..\quick_start\walkthrough_install.md).
 
 
 ## Sistemas operativos que puede ejecutar en una máquina virtual

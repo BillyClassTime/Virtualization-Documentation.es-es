@@ -1,7 +1,7 @@
 ---
 title: Requisitos de los contenedores de Windows
 description: Requisitos de los contenedores de Windows.
-keywords: metadata, containers
+keywords: metadatos, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: cc216f56acd5e547d05a48beea57450ba5fcb28b
-ms.openlocfilehash: 12ae565f012dc87a2cab883c0486322db42b1dcc
+ms.sourcegitcommit: 6f1d9c09774adde047508835caf9dcf54deab9d2
+ms.openlocfilehash: 9d015a570a0b1a9d7304e601daa7ace73df4e827
 
 ---
 
@@ -23,7 +23,7 @@ En esta guía se enumeran los requisitos de un host de contenedor de Windows.
 
 ## Requisitos de sistema operativo
 
-- El rol de contenedor de Windows solo está disponible en Windows Server 2016 TP5 (Full y Core), Nano Server y Windows 10 (compilación de Insider 14352 y superiores).
+- La función de contenedores de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Nano Server y Windows 10 Professional y Enterprise (compilaciones de Insider 14352 y superiores).
 - Si se van a ejecutar contenedores de Hyper-V, será necesario instalar el rol de Hyper-V.
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\\. Si solo se van a implementar contenedores de Hyper-V, esta restricción no se aplica.
 
@@ -74,6 +74,6 @@ En Windows Server Technical Preview 5 se incluyen dos imágenes de sistemas oper
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO3-->
 
 

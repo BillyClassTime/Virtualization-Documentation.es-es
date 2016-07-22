@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: f5998534-917b-453c-b873-2953e58535b1
 translationtype: Human Translation
-ms.sourcegitcommit: 111a4ca9f5d693cd1159f7597110409d670f0f5c
-ms.openlocfilehash: b8eca51e347f17e787095b7e4349337cc3ae69a7
+ms.sourcegitcommit: 493b669bc47fc589486a82cfea73a0bb1e88cf79
+ms.openlocfilehash: 26c010e79a4913b2e138f6d1d78f9406dbacbc6b
 
 ---
 
@@ -73,6 +73,20 @@ c:\container-share>dir
 
 Para obtener más información sobre el montaje de un solo archivo, consulte [Manage data in containers (Administrar datos de contenedores) en docker.com](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume).
 
+### Montaje de la unidad completa
+
+Se puede montar una unidad completa con un comando similar al siguiente. Tenga en cuenta que no debe incluir ninguna barra diagonal inversa.
+
+```none
+docker run -it -v d: windowsservercore cmd
+```
+
+En este momento, el montaje de una parte de la segunda unidad no funciona. Por ejemplo, lo siguiente no es posible.
+
+```none
+docker run -it -v d:\source:d:\destination windowsservercore cmd
+```
+
 ### Contenedores de volúmenes de datos
 
 Los volúmenes de datos se pueden heredar de otros contenedores en ejecución mediante el parámetro `--volumes-from` del comando `docker run`. Mediante esta herencia, se puede crear un contenedor con el propósito explícito de hospedar volúmenes de datos para aplicaciones incluidas en contenedores. 
@@ -111,6 +125,6 @@ Para obtener más información sobre la inspección de volúmenes, consulte [Man
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO3-->
 
 
