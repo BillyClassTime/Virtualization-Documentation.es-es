@@ -1,7 +1,7 @@
 ---
 title: Red de contenedores de Windows
 description: "Configuración de la red para contenedores de Windows."
-keywords: docker, containers
+keywords: docker, contenedores
 author: jmesser81
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: cd344ef02f03149129171b99bfdd92338ffdf24f
-ms.openlocfilehash: 161aaeed6c625d92b45be59dde4357836934956b
+ms.sourcegitcommit: 5cb7dca9469a687add1348753d89d04dc4a633b7
+ms.openlocfilehash: 406966a2bc80cdfc6fbe7461bf478fab317ed7e5
 
 ---
 
@@ -145,7 +145,7 @@ PS> Stop-Service docker
 PS> Set-Service docker -StartupType Disabled
 Reboot Host
 PS> Get-NetNat | Remove-NetNat
-PS> Set-Service docker -StartupType automaticac
+PS> Set-Service docker -StartupType automatic
 PS> Start-Service docker 
 ```
 
@@ -220,6 +220,11 @@ Pueden realizarse personalizaciones adicionales en una red de contenedor a trav�
 Para especificar qué adaptador de red del host de contenedor se usará para una red transparente, de puente de nivel 2 o de túnel de nivel 2, especifique la opción *com.docker.network.windowsshim.interface*. 
 ```none
 docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" "TransparentNetTwo"
+```
+
+El valor de *com.docker.network.windowsshim.interface* es el *nombre* del adaptador de: 
+```none
+Get-NetAdapter
 ```
 
 > Las redes de contenedor creadas a través de PowerShell no estarán disponibles en Docker hasta que se reinicie el demonio de Docker. Los demás cambios realizados en una red de contenedor a través de PowerShell también requieren el reinicio del demonio de Docker.
@@ -338,6 +343,6 @@ En este momento, no se admiten en Windows Docker las siguientes opciones de red:
  * --ip-range
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Jul16_HO5-->
 
 

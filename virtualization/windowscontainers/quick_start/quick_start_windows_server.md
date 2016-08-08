@@ -1,7 +1,7 @@
 ---
 title: Contenedores de Windows en Windows Server
 description: "Inicio rápido de implementación de contenedores"
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
-ms.openlocfilehash: 40b55028820472aadc5d70d338de417616c653d3
+ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
+ms.openlocfilehash: 4e7123dcff2564bd264c91f228941e86a0723674
 
 ---
 
@@ -51,22 +51,16 @@ Restart-Computer -Force
 
 Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. En este ejercicio se instalarán ambos.
 
-Cree una carpeta para los ejecutables de Docker.
+Descargue el motor de Docker y el cliente como un archivo zip.
 
 ```none
-New-Item -Type Directory -Path 'C:\Program Files\docker\'
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-Descargue el demonio de Docker.
+Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe -UseBasicParsing
-```
-
-Descargue el cliente de Docker.
-
-```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe -UseBasicParsing
+Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -78,7 +72,7 @@ Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho e
 Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
 
 ```none
-dockerd --register-service
+& $env:ProgramFiles\docker\dockerd.exe --register-service
 ```
 
 Una vez instalado, puede iniciar el servicio.
@@ -206,6 +200,6 @@ docker rm -f grave_jang
 
 
 
-<!--HONumber=Jun16_HO5-->
+<!--HONumber=Aug16_HO1-->
 
 
