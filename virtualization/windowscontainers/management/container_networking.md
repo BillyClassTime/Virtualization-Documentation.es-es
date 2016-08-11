@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: 5cb7dca9469a687add1348753d89d04dc4a633b7
-ms.openlocfilehash: 406966a2bc80cdfc6fbe7461bf478fab317ed7e5
+ms.sourcegitcommit: fa636f08858353664a3b2ff9fe0d4471d965db54
+ms.openlocfilehash: e680dac160c5da92a2329babefb397faa8654c91
 
 ---
 
@@ -128,25 +128,27 @@ New-ContainerNetwork -Name MyNatNetwork -Mode NAT -SubnetPrefix "172.16.0.0/12" 
 
 > Hay un problema conocido en Windows Server 2016 Technical Preview 5 y en las compilaciones recientes no finales de Windows Insider Preview (WIP) donde, después de la actualización a una nueva compilación da como resultado una red de contenedor duplicada (es decir, "perdida") y un conmutador virtual. Para solucionar este problema, ejecute el script siguiente.
 ```none
-PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
-PS> $keys = get-childitem $KeyPath
-PS> foreach($key in $keys)
-PS> {
-PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
-PS>    {
-PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
-PS>       Remove-Item -Path $newKeyPath -Recurse
-PS>    }
-PS> }
-PS> remove-netnat -Confirm:$false
-PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
-PS> Set-Service docker -StartupType Disabled
-Reboot Host
-PS> Get-NetNat | Remove-NetNat
-PS> Set-Service docker -StartupType automatic
-PS> Start-Service docker 
+$KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+$keys = get-childitem $KeyPath
+foreach($key in $keys)
+{
+   if ($key.GetValue("FriendlyName") -eq 'nat')
+   {
+      $newKeyPath = $KeyPath+"\"+$key.PSChildName
+      Remove-Item -Path $newKeyPath -Recurse
+   }
+}
+remove-netnat -Confirm:$false
+Get-ContainerNetwork | Remove-ContainerNetwork
+Get-VmSwitch -Name nat | Remove-VmSwitch # Note: failure is expected
+Stop-Service docker
+Set-Service docker -StartupType Disabled
+```
+> Reinicie el host y ejecute los pasos restantes:
+```none
+Get-NetNat | Remove-NetNat -Confirm $false
+Set-Service docker -StartupType automatic
+Start-Service docker 
 ```
 
 ### Red transparente
@@ -343,6 +345,7 @@ En este momento, no se admiten en Windows Docker las siguientes opciones de red:
  * --ip-range
 
 
-<!--HONumber=Jul16_HO5-->
+
+<!--HONumber=Aug16_HO2-->
 
 

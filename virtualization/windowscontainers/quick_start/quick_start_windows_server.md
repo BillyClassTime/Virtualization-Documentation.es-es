@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
-ms.openlocfilehash: 4e7123dcff2564bd264c91f228941e86a0723674
+ms.sourcegitcommit: b3f273d230344cff28d4eab7cebf96bac14f68c2
+ms.openlocfilehash: 808436ba179daa09fbc45ee7f7708a505bd1b4c8
 
 ---
 
@@ -83,39 +83,21 @@ Start-Service docker
 
 ## 3. Instalar imágenes base del contenedor
 
-Los contenedores de Windows se implementan a partir de plantillas o imágenes. Para implementar un contenedor, es necesario descargar una imagen base del sistema operativo. Los comandos siguientes descargarán la imagen base de Windows Server Core.
-
-En primer lugar, instale el proveedor de paquetes de imágenes del contenedor.
+Los contenedores de Windows se implementan a partir de plantillas o imágenes. Para implementar un contenedor, es necesario descargar una imagen base del sistema operativo. El comando siguiente descargará la imagen base de Windows Server Core.
 
 ```none
-Install-PackageProvider ContainerImage -Force
+docker pull microsoft/windowsservercore
 ```
 
-Después, instale la imagen de Windows Server Core. Como este proceso puede tardar algún tiempo, puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
+Como este proceso puede tardar algún tiempo, puede dedicarse a otros asuntos y retomarlo cuando se haya completado la extracción.
 
-```none
-Install-ContainerImage -Name WindowsServerCore    
-```
-
-Cuando se haya instalado la imagen base, debe reiniciar el servicio Docker.
-
-```none
-Restart-Service docker
-```
-
-En este punto, si se ejecuta `docker images`, se devolverá una lista de imágenes instaladas, en este caso la imagen de Windows Server Core.
+Una vez extraída, si se ejecuta `docker images`, se devolverá una lista de imágenes instaladas, en este caso la imagen de Windows Server Core.
 
 ```none
 docker images
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-windowsservercore   10.0.14300.1000     dbfee88ee9fd        7 weeks ago         9.344 GB
-```
-
-Antes de continuar, debe etiquetar la imagen con una versión "reciente". Para ello, ejecute el comando siguiente.
-
-```none
-docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+microsoft/windowsservercore   latest              02cb7f65d61b        7 weeks ago         7.764 GB
 ```
 
 Para obtener información detallada sobre las imágenes de contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
