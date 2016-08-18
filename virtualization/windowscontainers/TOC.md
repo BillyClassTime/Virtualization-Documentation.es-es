@@ -14,7 +14,7 @@
 ## [Host de contenedor: Nano Server](deployment/deployment_nano.md)
 
 # Docker en Windows
-## [Demonio de Docker en Windows](docker/configure_docker_daemon.md)
+## [Docker Engine en Windows](docker/configure_docker_daemon.md)
 ## [Dockerfiles en Windows](docker/manage_windows_dockerfile.md)
 ## [Optimizar Dockerfiles](docker/optimize_windows_dockerfile.md)
 
@@ -41,6 +41,6 @@
 
 
 
-<!--HONumber=Jun16_HO5-->
+<!--HONumber=Aug16_HO3-->
 
 
