@@ -1,7 +1,7 @@
 ---
 title: Configurar una red NAT
 description: Configurar una red NAT
-keywords: windows 10, hyper-v
+keywords: Windows 10, Hyper-V
 author: jmesser81
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
 translationtype: Human Translation
-ms.sourcegitcommit: b22150198f199f9b2be38a9c08e0e08972781f6e
-ms.openlocfilehash: d98445932ccbe77b6a4e798c3c2edb9c63bd351b
+ms.sourcegitcommit: 03a72e6608c08d6adcf32fc5665533831904a032
+ms.openlocfilehash: 5a1cb0964034db491481e2d6db84221730264fa0
 
 ---
 
@@ -129,6 +129,7 @@ Como WinNAT por sí mismo no asigna direcciones IP a un punto de conexión (por 
 
 
 ## Ejemplo de configuración: conexión de máquinas virtuales y contenedores a una red NAT
+
 _Si necesita conectar varias máquinas virtuales y contenedores a una única red NAT, debe asegurarse de que el prefijo de subred interna NAT es lo suficientemente grande como para abarcar los intervalos IP que se asignan mediante distintas aplicaciones o servicios (por ejemplo, Docker para Windows y Windows Container - SNP). Esto requiere una asignación de nivel de aplicación de direcciones IP y de configuración de red o una configuración manual que debe realizarla un administrador y no se garantiza que se vuelvan a usar las asignaciones de IP existentes en el mismo host._
 
 ### Docker para Windows (máquina virtual Linux) y contenedores de Windows
@@ -163,84 +164,6 @@ Docker/HNS asignará direcciones IP a los contenedores de Windows desde el <cont
 
 Al final, debe tener dos conmutadores internos de máquina virtual y una red NAT compartida entre ellos.
 
-## Solucionar problemas
-Asegúrese de que solo tiene una NAT
-```none
-Get-NetNat
-```
-Si ya existe una NAT, elimínela
-```none
-Get-NetNat | Remove-NetNat
-```
-Asegúrese de que solo tiene un conmutador de máquina virtual "interno" para la aplicación o característica (por ejemplo, contenedores Windows). Registro del nombre del conmutador virtual
-```none
-Get-VMSwitch
-```
-Compruebe si hay direcciones IP privadas (por ejemplo, dirección IP de puerta de enlace predeterminada NAT, normalmente *.1) de la antigua NAT todavía asignadas a un adaptador.
-```none
-Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
-```
-Si alguna dirección IP privada antigua está en uso, elimínela
-```none
-Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
-```
-Eliminación de varias redes NAT Hemos visto informes de varias redes NAT creadas inadvertidamente. Esto es debido a un error en las compilaciones recientes (incluidas las compilaciones de Windows Server 2016 Technical Preview 5 y Windows 10 Insider Preview). Si ve varias redes NAT, después de la ejecución de docker network ls o de Get-ContainerNetwork, lleve a cabo lo siguiente desde un PowerShell con privilegios elevados:
-
-```none
-PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
-PS> $keys = get-childitem $KeyPath
-PS> foreach($key in $keys)
-PS> {
-PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
-PS>    {
-PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
-PS>       Remove-Item -Path $newKeyPath -Recurse
-PS>    }
-PS> }
-PS> remove-netnat -Confirm:$false
-PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
-PS> Set-Service docker -StartupType Disabled
-Reboot Host
-PS> Get-NetNat | Remove-NetNat
-PS> Set-Service docker -StartupType automaticac
-PS> Start-Service docker 
-```
-
-## Solucionar problemas
-
-Este flujo de trabajo asume que no hay otras redes NAT en el host. Aunque a veces varias aplicaciones o servicios exigirán el uso de una red NAT. Puesto que Windows (WinNAT) solo admite un prefijo de subred interno NAT, si intenta crear varias NAT, dejará al sistema en un estado desconocido.
-
-### Pasos para la solución de problemas
-1. Asegúrese de que solo tiene una NAT
-
-  ``` PowerShell
-  Get-NetNat
-  ```
-2. Si ya existe una NAT, elimínela
-
-  ``` PowerShell
-  Get-NetNat | Remove-NetNat
-  ```
-
-3. Asegúrese de que solo tiene un vmSwitch "interno" para NAT. Registre el nombre del vSwitch del paso 4
-
-  ``` PowerShell
-  Get-VMSwitch
-  ```
-
-4. Compruebe si hay direcciones IP privadas (por ejemplo, dirección IP de puerta de enlace predeterminada NAT, normalmente *.1) de la antigua NAT todavía asignadas a un adaptador
-
-  ``` PowerShell
-  Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
-  ```
-
-5. Si alguna dirección IP privada antigua está en uso, elimínela  
-   ``` PowerShell
-  Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
-  ```
-
 ## Varias aplicaciones que usan la misma NAT
 
 Algunos escenarios exigen que varias aplicaciones o servicios usen la misma NAT. En este caso, debe seguir el siguiente flujo de trabajo para que varias aplicaciones o servicios puedan usar un prefijo de subred interna NAT mayor
@@ -272,11 +195,67 @@ Algunos escenarios exigen que varias aplicaciones o servicios usen la misma NAT.
 Al final, debería tener dos vSwitches internos: uno denominado DockerNAT y el otro nat. Si ejecuta Get-NetNat, solo tendrá una red NAT (10.0.0.0/17) confirmada. Las direcciones IP de los contenedores de Windows serán asignadas por el servicio de red de host (HNS) de Windows desde la subred 10.0.76.0/24. Según el script MobyLinux.ps1 existente, las direcciones IP de Docker 4 Windows se asignarán desde la subred 10.0.75.0/24.
 
 
+## Solucionar problemas
+
+### No se admiten varias redes NAT  
+En esta guía se da por supuesto que no hay otras redes NAT en el host. Sin embargo, las aplicaciones o los servicios requerirán el uso de una NAT y podrían crear una como parte de la instalación. Puesto que Windows (WinNAT) solo admite un prefijo de subred interno NAT, si intenta crear varias NAT, dejará al sistema en un estado desconocido.
+
+Para comprobar si es este el problema, asegúrese de que solo tiene una NAT:
+``` PowerShell
+Get-NetNat
+```
+
+Si ya existe una NAT, elimínela.
+``` PowerShell
+Get-NetNat | Remove-NetNat
+```
+Asegúrese de que solo tiene un conmutador de máquina virtual "interno" para la aplicación o característica (por ejemplo, contenedores Windows). Registro del nombre del conmutador virtual
+``` PowerShell
+Get-VMSwitch
+```
+
+Compruebe si hay direcciones IP privadas (por ejemplo, dirección IP de puerta de enlace predeterminada NAT, normalmente *.1) de la antigua NAT todavía asignadas a un adaptador.
+``` PowerShell
+Get-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)"
+```
+
+Si alguna dirección IP privada antigua está en uso, elimínela
+``` PowerShell
+Remove-NetIPAddress -InterfaceAlias "vEthernet(<name of vSwitch>)" -IPAddress <IPAddress>
+```
+
+**Eliminar varias redes NAT**  
+Hemos visto informes de varias redes NAT creadas inadvertidamente. Esto es debido a un error en las compilaciones recientes (incluidas las compilaciones de Windows Server 2016 Technical Preview 5 y Windows 10 Insider Preview). Si ve varias redes NAT, después de la ejecución de docker network ls o de Get-ContainerNetwork, lleve a cabo lo siguiente desde un PowerShell con privilegios elevados:
+
+```none
+PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
+PS> $keys = get-childitem $KeyPath
+PS> foreach($key in $keys)
+PS> {
+PS>    if ($key.GetValue("FriendlyName") -eq 'nat')
+PS>    {
+PS>       $newKeyPath = $KeyPath+"\"+$key.PSChildName
+PS>       Remove-Item -Path $newKeyPath -Recurse
+PS>    }
+PS> }
+PS> remove-netnat -Confirm:$false
+PS> Get-ContainerNetwork | Remove-ContainerNetwork
+PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS> Stop-Service docker
+PS> Set-Service docker -StartupType Disabled
+Reboot Host
+PS> Get-NetNat | Remove-NetNat
+PS> Set-Service docker -StartupType automaticac
+PS> Start-Service docker 
+```
+
+Consulte esta [guía de configuración para varias aplicaciones que usan la misma NAT](setup_nat_network.md#multiple-applications-using-the-same-nat) para volver a generar el entorno de NAT, si es necesario. 
+
 ## Referencias
 Obtenga más información sobre [redes NAT](https://en.wikipedia.org/wiki/Network_address_translation)
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO2-->
 
 

@@ -1,23 +1,23 @@
 ---
 title: "Configuración de Docker en Windows"
 description: "Configuración de Docker en Windows"
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 07/15/2016
+ms.date: 08/17/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 475240afdf97af117519cfaa287f1e4fec8837a5
-ms.openlocfilehash: 5b86442643fb5937b62a67d144ae0d1c98373b41
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: 7ba03dbcedbe42d54c955ff321e9f3f180a5a674
 
 ---
 
-# Demonio de Docker en Windows
+# Docker Engine en Windows
 
-El motor de Docker no se incluye con Windows y deberá instalarse y configurarse por separado. Además, el demonio de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. En este documento se detallará cómo instalar y configurar el demonio de Docker. Asimismo, se proporcionarán algunos ejemplos de configuraciones frecuentes.
+El cliente y el motor de Docker no se incluyen con Windows y deberán instalarse y configurarse por separado. Además, el motor de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. En este documento se detallará cómo instalar y configurar el motor de Docker. Además, se proporcionarán algunos ejemplos de configuraciones frecuentes.
 
 ## Instalar Docker
 
@@ -29,7 +29,7 @@ Cree una carpeta para los ejecutables de Docker.
 New-Item -Type Directory -Path 'C:\Program Files\docker\'
 ```
 
-Descargue el demonio de Docker.
+Descargue el motor de Docker.
 
 ```none
 Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
@@ -63,9 +63,9 @@ Tendrán que instalarse imágenes de contenedor antes de poder usar Docker. Para
 
 ## Archivo de configuración de Docker
 
-El método preferido para configurar el demonio de Docker en Windows es usar un archivo de configuración. Puede encontrar el archivo de configuración en “c:\ProgramData\docker\config\daemon.json”. Si este archivo no existe, se puede crear.
+El método preferido para configurar el motor de Docker en Windows es usar un archivo de configuración. Puede encontrar el archivo de configuración en “c:\ProgramData\docker\config\daemon.json”. Si este archivo no existe, se puede crear.
 
-Nota: no todas las opciones de configuración de Docker disponibles se pueden aplicar a Docker en Windows. El siguiente ejemplo muestra cuáles son. Para obtener documentación completa sobre la configuración del demonio de Docker, incluida para Linux, consulte [Demonio de Docker]( https://docs.docker.com/v1.10/engine/reference/commandline/daemon/).
+Nota: no todas las opciones de configuración de Docker disponibles se pueden aplicar a Docker en Windows. El siguiente ejemplo muestra cuáles son. Para obtener documentación completa sobre la configuración del motor de Docker, incluida para Linux, consulte [Demonio de Docker]( https://docs.docker.com/v1.10/engine/reference/commandline/daemon/).
 
 ```none
 {
@@ -101,7 +101,7 @@ Nota: no todas las opciones de configuración de Docker disponibles se pueden ap
 }
 ```
 
-Solo se necesitan agregar los cambios de configuración deseados al archivo de configuración. Por ejemplo, en esta muestra se configura el demonio de Docker para que acepte las conexiones entrantes a través del puerto TCP 2375. Las demás opciones de configuración usarán los valores predeterminados.
+Solo se necesitan agregar los cambios de configuración deseados al archivo de configuración. Por ejemplo, en esta muestra se configura el motor de Docker para que acepte las conexiones entrantes a través del puerto TCP 2375. Las demás opciones de configuración usarán los valores predeterminados.
 
 ```none
 {
@@ -123,7 +123,7 @@ De la misma forma, en esta muestra se configura el demonio de Docker para acepta
 
 ## administrador de control de servicios
 
-El demonio de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de demonio de Docker directamente en el servicio de Docker.
+El motor de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de motor de Docker directamente en el servicio de Docker.
 
 
 ```none
@@ -136,7 +136,7 @@ Los siguientes ejemplos de archivos de configuración muestran configuraciones d
 
 ### Creación de red predeterminada 
 
-Para configurar el demonio de Docker para que no se cree la red NAT predeterminada, use lo siguiente. Para obtener más información, vea [Administrar redes de Docker](../management/container_networking.md).
+Para configurar el motor de Docker para que no se cree la red NAT predeterminada, use lo siguiente. Para obtener más información, vea [Administrar redes de Docker](../management/container_networking.md).
 
 ```none
 {
@@ -146,7 +146,7 @@ Para configurar el demonio de Docker para que no se cree la red NAT predetermina
 
 ### Definir el grupo de seguridad de Docker
 
-Si ha iniciado sesión en el host de Docker y ejecuta comandos de Docker de forma local, estos se ejecutan a través de una canalización con nombre. De forma predeterminada, solo los miembros del grupo de administradores pueden acceder al demonio de Docker a través de la canalización con nombre. Para especificar un grupo de seguridad que tiene este acceso, use la marca `group`.
+Si ha iniciado sesión en el host de Docker y ejecuta comandos de Docker de forma local, estos se ejecutan a través de una canalización con nombre. De forma predeterminada, solo los miembros del grupo de administradores pueden tener acceso al motor de Docker a través de la canalización con nombre. Para especificar un grupo de seguridad que tiene este acceso, use la marca `group`.
 
 ```none
 {
@@ -171,9 +171,9 @@ restart-service docker
 Para más información, consulte [las opciones de socket de demonio en Docker.com](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option).
 
 ## Recopilación de registros
-El demonio de Docker registra en el registro de eventos 'Application' de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
+El motor de Docker registra en el registro de eventos "Application" de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
 
-Por ejemplo, esto mostrará los registros del demonio de Docker de los últimos 5 minutos a partir de los más antiguos.
+Por ejemplo, esto mostrará los registros del motor de Docker de los últimos 5 minutos, empezando por los más antiguos.
 ```
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
 ```
@@ -184,6 +184,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Aug16_HO3-->
 
 

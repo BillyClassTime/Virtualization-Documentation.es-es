@@ -1,7 +1,7 @@
 ---
 title: "Implementación de contenedores de Windows en Nano Server"
 description: "Implementación de contenedores de Windows en Nano Server"
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 07/06/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: e035a45e22eee04263861d935b338089d8009e92
-ms.openlocfilehash: 876ffb4f4da32495fb77b735391203c33c78cff3
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: d2f19e96f06ba18ab7e23e62652f569265c6f43f
 
 ---
 
@@ -74,7 +74,7 @@ Tras la copia de seguridad, vuelva a establecer la conexión remota de PowerShel
 
 ## Instalar Docker
 
-Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. Instale el cliente y el demonio de Docker mediante estos pasos.
+Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. Instale el cliente y el motor de Docker mediante estos pasos.
 
 Cree una carpeta en el host de Nano Server para los ejecutables de Docker.
 
@@ -82,7 +82,7 @@ Cree una carpeta en el host de Nano Server para los ejecutables de Docker.
 New-Item -Type Directory -Path $env:ProgramFiles'\docker\'
 ```
 
-Descargue el cliente y el demonio de Docker y cópielos en 'C:\Program Files\docker\' del host del contenedor. 
+Descargue el cliente y el motor de Docker y cópielos en "C:\Archivos de programa\docker\' del host de contenedor. 
 
 **Nota:** Nano Server no admite `Invoke-WebRequest` en estos momentos, por lo que deberá completarlo desde un sistema remoto y, después, copiarlo en el host de Nano Server.
 
@@ -96,7 +96,7 @@ Descargue el cliente de Docker.
 Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile .\docker.exe
 ```
 
-Una vez que el cliente y el demonio de Docker se han descargado, cópielos en la carpeta 'C:\Program Files\docker\' en el host de contenedor de Nano Server. Será necesario configurar el firewall de Nano Server para permitir las conexiones entrantes de SMB. Esto puede realizarse con PowerShell o la consola de recuperación de Nano Server. 
+Una vez que el cliente y el motor de Docker se han descargado, cópielos en la carpeta "C:\Archivos de programa\docker\' en el host de contenedor de Nano Server. Será necesario configurar el firewall de Nano Server para permitir las conexiones entrantes de SMB. Esto puede realizarse con PowerShell o la consola de recuperación de Nano Server. 
 
 ```none
 Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
@@ -158,7 +158,7 @@ Cree una regla de firewall en el host de contenedor para la conexión de Docker.
 netsh advfirewall firewall add rule name="Docker daemon " dir=in action=allow protocol=TCP localport=2376
 ```
 
-Configure el demonio de Docker para que acepte las conexiones entrantes a través de TCP.
+Configure el motor de Docker para que acepte las conexiones entrantes a través de TCP.
 
 En primer lugar, cree un archivo `daemon.json` en `c:\ProgramData\docker\config\daemon.json` en el host de Nano Server.
 
@@ -166,7 +166,7 @@ En primer lugar, cree un archivo `daemon.json` en `c:\ProgramData\docker\config\
 new-item -Type File c:\ProgramData\docker\config\daemon.json
 ```
 
-Luego, ejecute el siguiente comando para agregar una configuración de conexión al archivo `daemon.json`. De este modo se configura el demonio de Docker para que acepte las conexiones entrantes a través del puerto TCP 2375. Esta conexión no es segura y no se recomienda, pero se puede usar para pruebas aisladas. Para más información sobre cómo proteger esta conexión, vea [Protect the Docker Daemon on Docker.com](https://docs.docker.com/engine/security/https/) (Proteger el demonio de Docker en Docker.com).
+Luego, ejecute el siguiente comando para agregar una configuración de conexión al archivo `daemon.json`. De este modo se configura el motor de Docker para que acepte las conexiones entrantes a través del puerto TCP 2375. Esta conexión no es segura y no se recomienda, pero se puede usar para pruebas aisladas. Para más información sobre cómo proteger esta conexión, vea [Protect the Docker Daemon on Docker.com](https://docs.docker.com/engine/security/https/) (Proteger el demonio de Docker en Docker.com).
 
 ```none
 Add-Content 'c:\programdata\docker\config\daemon.json' '{ "hosts": ["tcp://0.0.0.0:2375", "npipe://"] }'
@@ -238,6 +238,6 @@ Restart-Computer
 ```
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Aug16_HO3-->
 
 

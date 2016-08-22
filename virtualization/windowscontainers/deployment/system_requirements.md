@@ -4,14 +4,14 @@ description: Requisitos de los contenedores de Windows.
 keywords: metadatos, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 08/17/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: 6f1d9c09774adde047508835caf9dcf54deab9d2
-ms.openlocfilehash: 9d015a570a0b1a9d7304e601daa7ace73df4e827
+ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
+ms.openlocfilehash: f76dc45e6035c72fd7b07f25d4b4c55f2a95aafb
 
 ---
 
@@ -23,7 +23,7 @@ En esta guía se enumeran los requisitos de un host de contenedor de Windows.
 
 ## Requisitos de sistema operativo
 
-- La función de contenedores de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Nano Server y Windows 10 Professional y Enterprise (compilaciones de Insider 14352 y superiores).
+- La característica de contenedor de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Nano Server y Windows 10 Professional y Enterprise (Anniversary Edition).
 - Si se van a ejecutar contenedores de Hyper-V, será necesario instalar el rol de Hyper-V.
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\\. Si solo se van a implementar contenedores de Hyper-V, esta restricción no se aplica.
 
@@ -65,7 +65,7 @@ En Windows Server Technical Preview 5 se incluyen dos imágenes de sistemas oper
 <td><center>Imagen de Nano Server</center></td>
 </tr>
 <tr valign="top">
-<td><center>Versiones Insider de Windows 10</center></td>
+<td><center>Windows 10 Anniversary Edition</center></td>
 <td><center>No disponible</center></td>
 <td><center>Imagen de Nano Server</center></td>
 </tr>
@@ -74,6 +74,6 @@ En Windows Server Technical Preview 5 se incluyen dos imágenes de sistemas oper
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Aug16_HO3-->
 
 
