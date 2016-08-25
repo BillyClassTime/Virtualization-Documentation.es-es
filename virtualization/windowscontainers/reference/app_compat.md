@@ -1,17 +1,18 @@
 ---
 title: Compatibilidad de las aplicaciones en los contenedores de Windows
 description: Compatibilidad de las aplicaciones en los contenedores de Windows.
-keywords: docker, containers
+keywords: docker, contenedores
 author: scooley
 manager: timlt
-ms.date: 05/02/2016
+ms.date: 08/19/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3e524458-bd03-400e-913f-210335add8dc
+redirect_url: ../containers_welcome
 translationtype: Human Translation
-ms.sourcegitcommit: cfa3c14e932f8b86edf6667200ac028ea0a16b67
-ms.openlocfilehash: 2830dc81317311dd54dfcca45251b668f3d2cc29
+ms.sourcegitcommit: 3a65fd7630ca1399d7bfd9e0a8b10f0cbd4febcc
+ms.openlocfilehash: 48d455079f0668d95ac31d36c644dabb8d716eda
 
 ---
 
@@ -31,15 +32,15 @@ Hemos intentado ejecutando las siguientes aplicaciones en un contenedor de Windo
 
 | **Nombre** | **Version** | **Imagen base de Windows Server Core** | **Imagen base de Nano Server** | **Comentario** |
 |:-----|:-----|:-----|:-----|:-----|
-| .NET | 3.5 | Sí | Unknown |  | 
-| .NET | 4.6 | Sí | Unknown |  | 
+| .NET | 3.5 | Sí | Desconocido |  | 
+| .NET | 4.6 | Sí | Desconocido |  | 
 | .NET CLR | 5 beta 6 | Sí | Sí| Ambos, x64 y x86 | 
 | Active Python | 3.4.1 | Sí | Sí | |
 | Apache Cassandra || Sí | Desconocido | 
 | Apache CouchDB | 1.6.1 | No | No | |
 | Apache Hadoop | | Sí | No | |
 | Apache HTTPD | 2.4 | Sí | Sí | El tiempo de ejecución de VC++ no se instala si se ha cargado el filtro de desduplicación. Descargar la desduplicación mediante `fltmc unload dedup` |
-| Apache Tomcat | 8.0.24 x64 | Sí | Unknown | |
+| Apache Tomcat | 8.0.24 x64 | Sí | Desconocido | |
 | ASP.NET | 4.6 | Sí | Desconocido | |
 | ASP.NET | 5 beta 6 | Sí | Sí | Ambos, x64 y x86 |
 | Django | |Sí|Sí| |
@@ -90,6 +91,6 @@ Se han intentado ejecutar las siguientes aplicaciones en un contenedor de Hyper-
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO3-->
 
 

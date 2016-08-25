@@ -1,7 +1,7 @@
 ---
 title: "Inicio rápido de implementación de contenedores (imágenes)"
 description: "Inicio rápido de implementación de contenedores"
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
 translationtype: Human Translation
-ms.sourcegitcommit: eae45c2c81c7edc94d963da69dcdee2b6f08f37d
-ms.openlocfilehash: ac9596d210e72b9fd576f728e8e6bbdc293597d7
+ms.sourcegitcommit: f2a3eec656acf5a3cd48a2be71169b76ce25400b
+ms.openlocfilehash: a9bc0b1511e161ef9b648bfafd4d0456966d8f9f
 
 ---
 
@@ -35,7 +35,7 @@ Para una mejor experiencia, realice este ejercicio desde un shell de comandos (c
 El primer paso para la creación manual de una imagen de contenedor es implementar un contenedor. En este ejemplo, implemente un contenedor de IIS a partir de la imagen de IIS creada previamente. Una vez implementado el contenedor, trabajará en una sesión de shell desde dentro del contenedor. La sesión interactiva se inicia con la marca `-it`. Para obtener información más detallada sobre los comandos Run de Docker, consulte [Docker Run Reference (Referencia de Run de Docker)]( https://docs.docker.com/engine/reference/run/) en Docker.com. 
 
 ```none
-docker run -it -p 80:80 microsoft/iis:windowsservercore cmd
+docker run -it -p 80:80 microsoft/iis cmd
 ```
 
 A continuación, se realizará una modificación en el contenedor. Ejecute el siguiente comando para quitar la pantalla de presentación de IIS.
@@ -68,7 +68,7 @@ Ahora se puede capturar el contenedor modificado en una nueva imagen de contened
 docker ps -a
 
 CONTAINER ID     IMAGE                             COMMAND   CREATED             STATUS   PORTS   NAMES
-489b0b447949     microsoft/iis:windowsservercore   "cmd"     About an hour ago   Exited           pedantic_lichterman
+489b0b447949     microsoft/iis   "cmd"     About an hour ago   Exited           pedantic_lichterman
 ```
 
 Para crear una nueva imagen de contenedor, use el comando `docker commit`. La confirmación de Docker adopta el formato "confirmación de docker nombre de contenedor nombre de nueva imagen". Nota: Reemplace el nombre del contenedor de este ejemplo por el nombre real del contenedor.
@@ -112,7 +112,7 @@ Copie el texto siguiente en el Dockerfile y guarde el archivo. Estos comandos in
 Para obtener más información sobre los Dockerfiles, consulte [Dockerfiles on Windows (Dockerfiles en Windows)](../docker/manage_windows_dockerfile.md).
 
 ```none
-FROM microsoft/iis:windowsservercore
+FROM microsoft/iis
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 ```
 
@@ -166,6 +166,7 @@ docker rm -f cranky_brown
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
 
-<!--HONumber=Jun16_HO5-->
+
+<!--HONumber=Aug16_HO3-->
 
 
