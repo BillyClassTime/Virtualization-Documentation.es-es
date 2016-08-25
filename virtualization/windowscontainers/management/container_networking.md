@@ -4,14 +4,14 @@ description: "Configuración de la red para contenedores de Windows."
 keywords: docker, contenedores
 author: jmesser81
 manager: timlt
-ms.date: 05/02/2016
+ms.date: 08/22/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: c412171773e9c66569eab2252b5adfc187eedafd
-ms.openlocfilehash: eb7d2c25d929cb51abfad17c26a89105f6574a48
+ms.sourcegitcommit: 7b5cf299109a967b7e6aac839476d95c625479cd
+ms.openlocfilehash: 2e26177f3e653e9102dc91070b987e28ef713bed
 
 ---
 
@@ -37,7 +37,7 @@ Pueden crearse en el mismo host de contenedor redes adicionales mediante un cont
 
 - **Túnel de nivel 2**:_este modo solo se debe usar en una pila en la nube de Microsoft.
 
-> Para obtener información sobre cómo conectar puntos de conexión de contenedor a una red virtual superpuesta con la pila de redes definidas por software (SDN) de Microsoft, consulte el tema [Attaching Containers to a Virtual Network](location) (Asociar contenedores a una red virtual).
+> Para obtener información sobre cómo conectar puntos de conexión de contenedor a una red virtual superpuesta con la pila de redes definidas por software (SDN) de Microsoft, consulte el tema [Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network) (Asociar contenedores a una red virtual).
 
 ## Nodo único
 
@@ -182,7 +182,7 @@ C:\> docker network create -d l2bridge --subnet=192.168.1.0/24 --gateway=192.168
 
 Solo se admite la asignación de IP estática con redes l2bridge. 
 
-> Cuando se usa una red l2bridge en un tejido de SDN, solo se admite la asignación de IP dinámica. Consulte el tema [Attaching Containers to a Virtual Network](location) (Asociar contenedores a una red virtual) para obtener más información.
+> Cuando se usa una red l2bridge en un tejido de SDN, solo se admite la asignación de IP dinámica. Consulte el tema [Attaching Containers to a Virtual Network](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network) (Asociar contenedores a una red virtual) para obtener más información.
 
 ## Otras operaciones y configuraciones
 
@@ -291,6 +291,6 @@ Start-Service docker
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 
