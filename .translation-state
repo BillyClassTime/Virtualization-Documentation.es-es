@@ -23169,9 +23169,9 @@
       "ArchiveFileCommit": "cf300f1fbd5b4306512c3ac0734c3fcf7a148fd6",
       "ArchiveFileDateTime": "2016-08-25T07:05:42.6241224Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\quick_start_images.a9795e9bf873991bac21ba0e69a669599e6dac7b.es-es.xlf",
+      "BilingualFileCommit": "1992912ef99f94689a7a4bf5977baa1b8bf48429",
+      "BilingualDateTime": "2016-08-25T08:21:57.733536Z",
       "BilingualException": null
     },
     "aa3117d05870c832e373a8d2a2333a9a288c5b07": {
@@ -23274,9 +23274,9 @@
       "ArchiveFileCommit": "cf300f1fbd5b4306512c3ac0734c3fcf7a148fd6",
       "ArchiveFileDateTime": "2016-08-25T07:05:42.6241224Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\app_compat.85ea42fd0d23543a8fad7596dfdec7699ec15654.es-es.xlf",
+      "BilingualFileCommit": "1992912ef99f94689a7a4bf5977baa1b8bf48429",
+      "BilingualDateTime": "2016-08-25T08:21:57.733536Z",
       "BilingualException": null
     },
     "e83bb57cc6c040106ce6de7ec867ba417aced740": {
@@ -23799,9 +23799,9 @@
       "ArchiveFileCommit": "cf300f1fbd5b4306512c3ac0734c3fcf7a148fd6",
       "ArchiveFileDateTime": "2016-08-25T07:05:42.6241224Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf",
+      "BilingualFileCommit": "1992912ef99f94689a7a4bf5977baa1b8bf48429",
+      "BilingualDateTime": "2016-08-25T08:21:57.733536Z",
       "BilingualException": null
     }
   }
