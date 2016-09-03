@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
-ms.openlocfilehash: 57d35f9e871bdd3bd0798833bcbaf6a7948a65f2
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: 8d3c8263819688d1a47893726619458ee44be59b
 
 ---
 
@@ -25,7 +25,7 @@ Este inicio rápido es específico de los contenedores de Hyper-V en Windows 10.
 
 **Requisitos previos:**
 
-- Un equipo físico con una [versión Insider de Windows 10](https://insider.windows.com/).   
+- Un sistema de equipo físico que ejecuta Windows 10 Anniversary Edition (Professional o Enterprise).   
 - Este inicio rápido se puede ejecutar en una máquina virtual de Windows 10, pero la virtualización anidada tendrá que estar habilitada. Puede encontrar más información en la [guía de virtualización anidada](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
 ## 1. Instalar la característica de contenedor
@@ -63,19 +63,23 @@ Para trabajar con contenedores de Windows es necesario Docker. Docker consta de 
 Descargue el motor de Docker y el cliente como un archivo zip.
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://master.dockerproject.org/windows/amd64/docker-1.13.0-dev.zip" -OutFile "$env:TEMP\docker-1.13.0-dev.zip" -UseBasicParsing
 ```
 
 Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker-1.13.0-dev.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema.
 
 ```none
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$env:ProgramFiles\docker\", [EnvironmentVariableTarget]::Machine)
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
 Reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -83,7 +87,7 @@ Reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificad
 Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 Una vez instalado, puede iniciar el servicio.
@@ -120,7 +124,7 @@ En este ejemplo simple, se va a crear e implementar una imagen de contenedor "Ho
 En primer lugar, inicie un contenedor con una sesión interactiva desde la imagen `nanoserver`. Una vez que se ha iniciado el contenedor, aparecerá un shell de comandos desde dentro del mismo.  
 
 ```none
-docker run -it nanoserver cmd
+docker run -it microsoft/nanoserver cmd
 ```
 
 Dentro del contenedor se creará un script sencillo de "Hola a todos".
@@ -169,6 +173,6 @@ El resultado de este comando `docker run` es que se crea un contenedor de Hyper-
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 

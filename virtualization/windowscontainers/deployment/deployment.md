@@ -4,14 +4,14 @@ description: "Implementación de contenedores de Windows en Windows Server"
 keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 05/26/2016
+ms.date: 08/22/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 translationtype: Human Translation
-ms.sourcegitcommit: 6c7ce9f1767c6c6391cc6d33a553216bd815ff72
-ms.openlocfilehash: ce387b29f1bd311c70c17f3e7a98ae4f625bd3c2
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: b60329a09ea0f119446fa2aa20de68e3edc2b245
 
 ---
 
@@ -59,9 +59,13 @@ Expanda el archivo zip en Archivos de programa. El contenido del archivo ya est�
 Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
-Agregue el directorio de Docker a la ruta de acceso del sistema.
+Ejecute los dos comandos siguientes para agregar el directorio de Docker a la ruta de acceso del sistema.
 
 ```none
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
@@ -70,7 +74,7 @@ Reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificad
 Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 Una vez instalado, puede iniciar el servicio.
@@ -81,30 +85,18 @@ Start-Service Docker
 
 ## Instalar imágenes base del contenedor
 
-Para poder implementar un contenedor, es necesario descargar una imagen base del sistema operativo del contenedor. En el ejemplo siguiente, se descargará la imagen base del sistema operativo de Windows Server Core. Puede completar este mismo procedimiento para instalar la imagen base de Nano Server. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
+Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo subyacente. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
 
-En primer lugar, instale el proveedor de paquetes de imágenes del contenedor.
+Para instalar la imagen base de Windows Server Core, ejecute lo siguiente:
 
 ```none
-Install-PackageProvider ContainerImage -Force
+docker pull microsoft/windowsservercore
 ```
 
-Después, instale la imagen de Windows Server Core. Como este proceso puede tardar algún tiempo, puede dedicarse a otros asuntos y retomarlo cuando se haya completado la descarga.
+Para instalar la imagen base de Nano Server, ejecute lo siguiente:
 
 ```none
-Install-ContainerImage -Name WindowsServerCore    
-```
-
-Cuando se haya instalado la imagen base, debe reiniciar el servicio Docker.
-
-```none
-Restart-Service docker
-```
-
-Por último, debe etiquetar la imagen con una versión "latest". Para ello, ejecute el comando siguiente.
-
-```none
-docker tag windowsservercore:10.0.14300.1000 windowsservercore:latest
+docker pull microsoft/nanoserver
 ```
 
 ## Host de contenedor de Hyper-V
@@ -139,6 +131,6 @@ Install-WindowsFeature hyper-v
 
 
 
-<!--HONumber=Aug16_HO1-->
+<!--HONumber=Aug16_HO4-->
 
 

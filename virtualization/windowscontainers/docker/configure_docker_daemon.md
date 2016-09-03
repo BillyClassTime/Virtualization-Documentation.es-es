@@ -4,14 +4,14 @@ description: "Configuración de Docker en Windows"
 keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 08/17/2016
+ms.date: 08/23/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: fac57150de3ffd6c7d957dd628b937d5c41c1b35
-ms.openlocfilehash: 7ba03dbcedbe42d54c955ff321e9f3f180a5a674
+ms.sourcegitcommit: 4dded90462c5438a6836ec32a165a9cc1019d6ec
+ms.openlocfilehash: 6ae49d82a89b2f30198de05aa4915726853172f5
 
 ---
 
@@ -23,22 +23,16 @@ El cliente y el motor de Docker no se incluyen con Windows y deberán instalarse
 
 Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. En este ejercicio se instalarán ambos.
 
-Cree una carpeta para los ejecutables de Docker.
-
-```none
-New-Item -Type Directory -Path 'C:\Program Files\docker\'
-```
-
 Descargue el motor de Docker.
 
 ```none
-Invoke-WebRequest https://aka.ms/tp5/b/dockerd -OutFile $env:ProgramFiles\docker\dockerd.exe
+Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-Descargue el cliente de Docker.
+Expanda el archivo zip en Archivos de programa.
 
-```none
-Invoke-WebRequest https://aka.ms/tp5/b/docker -OutFile $env:ProgramFiles\docker\docker.exe
+```
+Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -184,6 +178,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Aug16_HO3-->
+<!--HONumber=Aug16_HO4-->
 
 

@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: b3f273d230344cff28d4eab7cebf96bac14f68c2
-ms.openlocfilehash: 808436ba179daa09fbc45ee7f7708a505bd1b4c8
+ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
+ms.openlocfilehash: 6c92f5fea1b9344aa160feaf8444a57a1a05fa08
 
 ---
 
@@ -57,22 +57,26 @@ Descargue el motor de Docker y el cliente como un archivo zip.
 Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
 ```
 
-Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
+Expanda el archivo zip en Archivos de programa.
 
 ```none
 Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
 ```
 
-Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
+Agregue el directorio de Docker a la ruta de acceso del sistema.
 
 ```none
+# for quick use, does not require shell to be restarted
+$env:path += ";c:\program files\docker"
+
+# for persistent use, will apply even after a reboot 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
 Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
 
 ```none
-& $env:ProgramFiles\docker\dockerd.exe --register-service
+dockerd --register-service
 ```
 
 Una vez instalado, puede iniciar el servicio.
@@ -97,7 +101,7 @@ Una vez extraída, si se ejecuta `docker images`, se devolverá una lista de im�
 docker images
 
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
-microsoft/windowsservercore   latest              02cb7f65d61b        7 weeks ago         7.764 GB
+microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
 ```
 
 Para obtener información detallada sobre las imágenes de contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
@@ -111,26 +115,32 @@ Para buscar imágenes de contenedores de Windows en Docker Hub, ejecute `docker 
 ```none
 docker search microsoft
 
-NAME                                         DESCRIPTION                                     
-microsoft/sample-django:windowsservercore    Django installed in a Windows Server Core ...   
-microsoft/dotnet35:windowsservercore         .NET 3.5 Runtime installed in a Windows Se...   
-microsoft/sample-golang:windowsservercore    Go Programming Language installed in a Win...   
-microsoft/sample-httpd:windowsservercore     Apache httpd installed in a Windows Server...   
-microsoft/iis:windowsservercore              Internet Information Services (IIS) instal...   
-microsoft/sample-mongodb:windowsservercore   MongoDB installed in a Windows Server Core...   
-microsoft/sample-mysql:windowsservercore     MySQL installed in a Windows Server Core b...   
-microsoft/sample-nginx:windowsservercore     Nginx installed in a Windows Server Core b...  
-microsoft/sample-python:windowsservercore    Python installed in a Windows Server Core ...   
-microsoft/sample-rails:windowsservercore     Ruby on Rails installed in a Windows Serve...  
-microsoft/sample-redis:windowsservercore     Redis installed in a Windows Server Core b...   
-microsoft/sample-ruby:windowsservercore      Ruby installed in a Windows Server Core ba...   
-microsoft/sample-sqlite:windowsservercore    SQLite installed in a Windows Server Core ...  
+NAME                                         DESCRIPTION
+microsoft/aspnet                             ASP.NET is an open source server-side Web ...
+microsoft/dotnet                             Official images for working with .NET Core...
+mono                                         Mono is an open source implementation of M...
+microsoft/azure-cli                          Docker image for Microsoft Azure Command L...
+microsoft/iis                                Internet Information Services (IIS) instal...
+microsoft/mssql-server-2014-express-windows  Microsoft SQL Server 2014 Express installe...
+microsoft/nanoserver                         Nano Server base OS image for Windows cont...
+microsoft/windowsservercore                  Windows Server Core base OS image for Wind...
+microsoft/oms                                Monitor your containers using the Operatio...
+microsoft/dotnet-preview                     Preview bits for microsoft/dotnet image
+microsoft/dotnet35
+microsoft/applicationinsights                Application Insights for Docker helps you ...
+microsoft/sample-redis                       Redis installed in Windows Server Core and...
+microsoft/sample-node                        Node installed in a Nano Server based cont...
+microsoft/sample-nginx                       Nginx installed in Windows Server Core and...
+microsoft/sample-httpd                       Apache httpd installed in Windows Server C...
+microsoft/sample-dotnet                      .NET Core running in a Nano Server container
+microsoft/sqlite                             SQLite installed in a Windows Server Core ...
+...
 ```
 
 Descargue la imagen de IIS mediante `docker pull`.  
 
 ```none
-docker pull microsoft/iis:windowsservercore
+docker pull microsoft/iis
 ```
 
 La descarga de la imagen puede comprobarse con el comando `docker images`. Observe que aparecerá tanto la imagen base (windowsservercore) como la imagen de IIS.
@@ -138,16 +148,15 @@ La descarga de la imagen puede comprobarse con el comando `docker images`. Obser
 ```none
 docker images
 
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-microsoft/iis       windowsservercore   c26f4ceb81db        2 weeks ago         9.48 GB
-windowsservercore   10.0.14300.1000     dbfee88ee9fd        8 weeks ago         9.344 GB
-windowsservercore   latest              dbfee88ee9fd        8 weeks ago         9.344 GB
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+microsoft/iis                 latest              accd044753c1        11 days ago         7.907 GB
+microsoft/windowsservercore   latest              02cb7f65d61b        8 weeks ago         7.764 GB
 ```
 
 Usuario `docker run` para implementar el contenedor de IIS.
 
 ```none
-docker run -d -p 80:80 microsoft/iis:windowsservercore ping -t localhost
+docker run -d -p 80:80 microsoft/iis ping -t localhost
 ```
 
 Este comando ejecuta la imagen de IIS como un servicio en segundo plano (-d) y configura la red de forma que el puerto 80 del host de contenedor se asigne al puerto 80 del contenedor.
@@ -159,8 +168,8 @@ Los contenedores en ejecución pueden verse con el comando `docker ps`. Tome not
 ```none
 docker ps
 
-CONTAINER ID    IMAGE                             COMMAND               CREATED              STATUS   PORTS                NAMES
-9cad3ea5b7bc    microsoft/iis:windowsservercore   "ping -t localhost"   About a minute ago   Up       0.0.0.0:80->80/tcp   grave_jang
+CONTAINER ID  IMAGE          COMMAND              CREATED             STATUS             PORTS               NAME
+09c9cc6e4f83  microsoft/iis  "ping -t localhost"  About a minute ago  Up About a minute  0.0.0.0:80->80/tcp  big_jang
 ```
 
 Desde otro equipo, abra un explorador web y escriba la dirección IP del host de contenedor. Si todo se ha configurado correctamente, debería ver la pantalla de presentación de IIS. Se sirve desde la instancia de IIS hospedada en el contenedor de Windows.
@@ -172,7 +181,7 @@ Desde otro equipo, abra un explorador web y escriba la dirección IP del host de
 De vuelta en el host de contenedor, use el comando `docker rm` para quitar el contenedor. Nota: Reemplace el nombre del contenedor de este ejemplo por el nombre real del contenedor.
 
 ```none
-docker rm -f grave_jang
+docker rm -f big_jang
 ```
 ## Pasos siguientes
 
@@ -182,6 +191,6 @@ docker rm -f grave_jang
 
 
 
-<!--HONumber=Aug16_HO1-->
+<!--HONumber=Aug16_HO4-->
 
 
