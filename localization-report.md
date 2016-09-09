@@ -5,9 +5,9 @@
  -------- | ----- 
  Total Files | 471
 [ Handoff Failed Files ](#handoff-failed-list)| 0
-[ Handoff Success Files ](#handoff-success-list)| 1
+[ Handoff Success Files ](#handoff-success-list)| 0
 [ Archive Failed Files ](#archive-failed-list)| 0
-[ Archive Success Files ](#archive-success-list)| 7
+[ Archive Success Files ](#archive-success-list)| 8
 [ Handback Failed Files ](#handback-failed-list)| 2
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 0
 [ In Sync Handback Files ](#insync-handback-success-list)| 128
@@ -16,9 +16,6 @@
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
 
 ## <a name='handoff-success-list'></a> Handoff Success File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/960f523b7ff72bbb1eff6db5172c20b253fc7182/virtualization/windowscontainers/management/manage_data.md) | HandedOffSuccess | [Details](#bd7e6af1dabadce2b89a48b916596849371026a8256)
 
 ## <a name='archive-failed-list'></a> Archive Failed File List
 
@@ -29,6 +26,7 @@
  [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5/virtualization/windowscontainers/deployment/deployment.md) | ArchivedSuccess | [Details](#cc662d0c688eadeef8011a2b97e212ec6399060a226)
  [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/deaed93924d4c8bff55e1f95342381bf4621076e/virtualization/windowscontainers/deployment/deployment_nano.md) | ArchivedSuccess | [Details](#4e71c39c98a61365b3b4f9c0ac55ace9c47cf10c228)
  [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ebd83d5d3a098fc8760f5dfba7e350c3f167232/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md) | ArchivedSuccess | [Details](#19a363aa013b51e0c80d56572de77e94f27e546f249)
+ [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/960f523b7ff72bbb1eff6db5172c20b253fc7182/virtualization/windowscontainers/management/manage_data.md) | ArchivedSuccess | [Details](#bd7e6af1dabadce2b89a48b916596849371026a8256)
  [virtualization\windowscontainers\management\manage_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/eccce83d7e376be592694162f54ccb67be9d3c12/virtualization/windowscontainers/management/manage_images.md) | ArchivedSuccess | [Details](#bb99d0c15d6d1dd9e126fde05207431153b4f94a257)
  [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | ArchivedSuccess | [Details](#78c67351f3e5606b8225c71d221a871e58530e57317)
  [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5/virtualization/windowscontainers/quick_start/quick_start_windows_server.md) | ArchivedSuccess | [Details](#6fae5625731c936903c808e286dbb9b4abcddd06318)
@@ -3748,13 +3746,13 @@
 * [Back to Top](#report-top)
 
 ##### <a name='bd7e6af1dabadce2b89a48b916596849371026a8256'></a> Source: [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/960f523b7ff72bbb1eff6db5172c20b253fc7182/virtualization/windowscontainers/management/manage_data.md)
-* Status: HandedOffSuccess
+* Status: ArchivedSuccess
 * Target File: 
 * Handoff File: [manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/497b5852f29d2cddcd9168406158a0c0ee92336b/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.es-es.xlf)
 * Handoff Datetime: 2016-09-08 22:12:20
 * Handoff Reason: Include
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
+* Archive File: [manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/607773a20ab98b29ce977362dc626794616679e2/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/manage_data.126a73641d5e96ee6d89d8d64e7ecfbdcacd6929.es-es.xlf)
+* Archive Datetime: 2016-09-09 00:10:44
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Current Target File: [virtualization\windowscontainers\management\manage_data.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/7d74b47591e3decc5c16a8a14749c70438238958/virtualization/windowscontainers/management/manage_data.md)
