@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 2319649d1dd39677e59a9431fbefaf82982492c6
-ms.openlocfilehash: a79469987879656117812ff6f9563046584172c0
+ms.sourcegitcommit: 939a1b69f159504b998792adb95ccabc326db333
+ms.openlocfilehash: 538fb27d6170f0a8dab5c189b90040e40c546e14
 
 ---
 
@@ -105,10 +105,10 @@ Agregue el directorio de Docker a la ruta de acceso del sistema en Nano Server.
 > Asegúrese de volver a la sesión de Nano Server remota.
 
 ```none
-# for quick use, does not require shell to be restarted
+# For quick use, does not require shell to be restarted.
 $env:path += “;C:\program files\docker”
 
-# for persistent use, will apply even after a reboot 
+# For persistent use, will apply even after a reboot.
 setx PATH $env:path /M
 ```
 
@@ -185,17 +185,17 @@ Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:Program
 Ejecute los dos comandos siguientes para agregar el directorio de Docker a la ruta de acceso del sistema.
 
 ```none
-# for quick use, does not require shell to be restarted
+# For quick use, does not require shell to be restarted.
 $env:path += ";c:\program files\docker"
 
-# for persistent use, will apply even after a reboot 
+# For persistent use, will apply even after a reboot. 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
 
 Una vez completados estos pasos, puede acceder al host de Docker remoto con el parámetro `docker -H`.
 
 ```none
-docker -H tcp://<IPADDRESS>:2375 run -it nanoserver cmd
+docker -H tcp://<IPADDRESS>:2375 run -it microsoft/nanoserver cmd
 ```
 
 Puede crear una variable de entorno `DOCKER_HOST` que eliminará el requisito del parámetro `-H`. Para ello, puede usar el siguiente comando de PowerShell.
@@ -207,7 +207,7 @@ $env:DOCKER_HOST = "tcp://<ipaddress of server>:2375"
 Una vez que haya establecido esta variable, el comando tendrá el aspecto siguiente.
 
 ```none
-docker run -it nanoserver cmd
+docker run -it microsoft/nanoserver cmd
 ```
 
 ## Host de contenedor de Hyper-V
@@ -230,6 +230,7 @@ Restart-Computer
 ```
 
 
-<!--HONumber=Aug16_HO4-->
+
+<!--HONumber=Sep16_HO2-->
 
 
