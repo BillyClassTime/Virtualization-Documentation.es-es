@@ -1,7 +1,7 @@
 ---
 title: "Volúmenes de datos de contenedor"
 description: "Cree y administre volúmenes de datos con contenedores de Windows."
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: f5998534-917b-453c-b873-2953e58535b1
 translationtype: Human Translation
-ms.sourcegitcommit: 493b669bc47fc589486a82cfea73a0bb1e88cf79
-ms.openlocfilehash: 26c010e79a4913b2e138f6d1d78f9406dbacbc6b
+ms.sourcegitcommit: 08f893b646046d18def65602eb926bc0ea211804
+ms.openlocfilehash: a175091c943cf596b2a810245b1b73b8baddb0c6
 
 ---
 
@@ -49,29 +49,17 @@ Para obtener más información sobre el montaje de directorios de host, consulte
 
 ### Montar un solo archivo
 
-Para montar un solo archivo en un contenedor, es necesario indicar explícitamente el nombre del archivo. En este ejemplo, el directorio que se comparte incluye muchos archivos, pero en el contenedor solo está disponible el archivo "config.ini". 
+No se puede montar un único archivo en un contenedor de Windows. Al ejecutar el siguiente comando no se devolverá ningún error, pero el contenedor resultante no contendrá el archivo. 
 
 ```none
-docker run -it -v c:\container-share\config.ini windowsservercore cmd
+docker run -it -v c:\config\config.ini microsoft/windowsservercore cmd
 ```
 
-Dentro del contenedor en ejecución, solo está visible el archivo config.ini.
+Como alternativa a eso, todos los archivos que quiera montar en un contenedor deberán montarse desde un directorio.
 
 ```none
-c:\container-share>dir
- Volume in drive C has no label.
- Volume Serial Number is 7CD5-AC14
-
- Directory of c:\container-share
-
-04/04/2016  12:53 PM    <DIR>          .
-04/04/2016  12:53 PM    <DIR>          ..
-04/04/2016  12:53 PM    <SYMLINKD>     config.ini
-               0 File(s)              0 bytes
-               3 Dir(s)  21,184,208,896 bytes free
+docker run -it -v c:\config:c:\config microsoft/windowsservercore cmd
 ```
-
-Para obtener más información sobre el montaje de un solo archivo, consulte [Manage data in containers (Administrar datos de contenedores) en docker.com](https://docs.docker.com/engine/userguide/containers/dockervolumes/#mount-a-host-directory-as-a-data-volume).
 
 ### Montaje de la unidad completa
 
@@ -125,6 +113,6 @@ Para obtener más información sobre la inspección de volúmenes, consulte [Man
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Sep16_HO1-->
 
 
