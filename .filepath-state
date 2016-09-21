@@ -132,9 +132,6 @@
   "8a84da80199479907c3bf4cf0c7b1cfb1b44bf9d": [
     "virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md"
   ],
-  "fee2b24469b45efae982f4dfca4afb9f737b5bdf": [
-    "virtualization\\hyperv_on_windows\\user_guide\\remote_host_management.md"
-  ],
   "5f21c845594a8663b7458e86c121563d3b199e4d": [
     "virtualization\\hyperv_on_windows\\user_guide\\media\\HyperVManager-ConnectToHost.png"
   ],
@@ -186,9 +183,6 @@
     "virtualization\\windowscontainers\\about\\work_in_progress.md"
   ],
   "2c9821ef7ac414640790b3cfdb7fd457710a67f4": [
-    "virtualization\\windowscontainers\\containers_welcome.md"
-  ],
-  "b50c27e723fb8db13adec37d6b969e93d607243e": [
     "virtualization\\windowscontainers\\containers_welcome.md"
   ],
   "cc662d0c688eadeef8011a2b97e212ec6399060a": [
@@ -246,9 +240,6 @@
     "virtualization\\windowscontainers\\reference\\ps_docker_comparison.md"
   ],
   "d7bdf3f8880e67873264399e3b2e6b6e768eb703": [
-    "virtualization\\windowscontainers\\TOC.md"
-  ],
-  "d98e0e00e8435107191e62f5f5cd8b8696830ec9": [
     "virtualization\\windowscontainers\\TOC.md"
   ],
   "5d41a694d4b6cac6b6381379bda4a8f959ec4854": [
@@ -315,9 +306,6 @@
     "virtualization\\windowscontainers\\docker\\manage_windows_dockerfile.md"
   ],
   "19a363aa013b51e0c80d56572de77e94f27e546f": [
-    "virtualization\\windowscontainers\\docker\\optimize_windows_dockerfile.md"
-  ],
-  "4822ff2f0248b2d7752299ea55b08e3499e2e2f7": [
     "virtualization\\windowscontainers\\docker\\optimize_windows_dockerfile.md"
   ],
   "19c1070cee496d52eba1b2ce80f4f939edccdffd": [

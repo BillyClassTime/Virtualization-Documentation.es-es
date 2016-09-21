@@ -7,10 +7,10 @@
 [ Handoff Failed Files ](#handoff-failed-list)| 0
 [ Handoff Success Files ](#handoff-success-list)| 0
 [ Archive Failed Files ](#archive-failed-list)| 0
-[ Archive Success Files ](#archive-success-list)| 8
+[ Archive Success Files ](#archive-success-list)| 5
 [ Handback Failed Files ](#handback-failed-list)| 2
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 0
-[ In Sync Handback Files ](#insync-handback-success-list)| 128
+[ In Sync Handback Files ](#insync-handback-success-list)| 131
 [ Ignored Files ](#ignored-list)| 333
 
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
@@ -26,10 +26,7 @@
  [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | ArchivedSuccess | [Details](#0779ef5b3f83bcf99f5681c13d445bcd33720dc6185)
  [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md) | ArchivedSuccess | [Details](#c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205)
  [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e0d957ebb953f1e5b3e56de9764c7c3e560024c1/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | ArchivedSuccess | [Details](#852800b19fb39737f0d7104eb2d50521b6cca982206)
- [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/containers_welcome.md) | ArchivedSuccess | [Details](#2c9821ef7ac414640790b3cfdb7fd457710a67f4225)
- [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ebd83d5d3a098fc8760f5dfba7e350c3f167232/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md) | ArchivedSuccess | [Details](#19a363aa013b51e0c80d56572de77e94f27e546f249)
  [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | ArchivedSuccess | [Details](#02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317)
- [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/TOC.md) | ArchivedSuccess | [Details](#d7bdf3f8880e67873264399e3b2e6b6e768eb703324)
 
 ## <a name='handback-failed-list'></a> Handback Failed File List
  Source File | Status | Details 
@@ -115,6 +112,7 @@
  [virtualization\windowscontainers\about\media\containerEcosystem.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d238cfdfbaadc09ed9c8ebb67ec348cd9ab03e08/virtualization/windowscontainers/about/media/containerEcosystem.png) | InSyncHandedBackSuccess | [Details](#93ee375f9efb3462c5d1e4ba45248fe9dde58566215)
  [virtualization\windowscontainers\about\media\containerfund.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/caa93f2e8248a2f8e006f299602a1ef1fa5d86e5/virtualization/windowscontainers/about/media/containerfund.png) | InSyncHandedBackSuccess | [Details](#b62d8af1f08bc8085945c8aa154d46d2215879cb216)
  [virtualization\windowscontainers\about\work_in_progress.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e3f5535594123f6b4f8931e41a91d92f3b837814/virtualization/windowscontainers/about/work_in_progress.md) | InSyncHandedBackSuccess | [Details](#085bb8c0158aedf4270cf2423114ec1901af1ebd224)
+ [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/containers_welcome.md) | InSyncHandedBackSuccess | [Details](#2c9821ef7ac414640790b3cfdb7fd457710a67f4225)
  [virtualization\windowscontainers\deployment\deployment.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5/virtualization/windowscontainers/deployment/deployment.md) | InSyncHandedBackSuccess | [Details](#cc662d0c688eadeef8011a2b97e212ec6399060a226)
  [virtualization\windowscontainers\deployment\deployment_azure.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/96c7d1b9e72f574ad66577a09ca1cd382e75f290/virtualization/windowscontainers/deployment/deployment_azure.md) | InSyncHandedBackSuccess | [Details](#207ab784e2c64a6075c427509e7269820ed22d47227)
  [virtualization\windowscontainers\deployment\deployment_nano.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/939a1b69f159504b998792adb95ccabc326db333/virtualization/windowscontainers/deployment/deployment_nano.md) | InSyncHandedBackSuccess | [Details](#538fb27d6170f0a8dab5c189b90040e40c546e14228)
@@ -131,6 +129,7 @@
  [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/fac57150de3ffd6c7d957dd628b937d5c41c1b35/virtualization/windowscontainers/deployment/system_requirements.md) | InSyncHandedBackSuccess | [Details](#f76dc45e6035c72fd7b07f25d4b4c55f2a95aafb245)
  [virtualization\windowscontainers\docker\configure_docker_daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4dded90462c5438a6836ec32a165a9cc1019d6ec/virtualization/windowscontainers/docker/configure_docker_daemon.md) | InSyncHandedBackSuccess | [Details](#6ae49d82a89b2f30198de05aa4915726853172f5247)
  [virtualization\windowscontainers\docker\manage_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/97a7d5fdd25f755d73e05bfc5f3c4a80a7b6b8c5/virtualization/windowscontainers/docker/manage_windows_dockerfile.md) | InSyncHandedBackSuccess | [Details](#84baad10511eb070e654f1ee7d71eb547d3f2ee7248)
+ [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ebd83d5d3a098fc8760f5dfba7e350c3f167232/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md) | InSyncHandedBackSuccess | [Details](#19a363aa013b51e0c80d56572de77e94f27e546f249)
  [virtualization\windowscontainers\EULA.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4cff38fe495e9237285d2895bf3e45b99aaf5c6d/virtualization/windowscontainers/EULA.md) | InSyncHandedBackSuccess | [Details](#f2cb1cdc1a98bf328a24610af6f7313a1071b079250)
  [virtualization\windowscontainers\management\container_networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7b5cf299109a967b7e6aac839476d95c625479cd/virtualization/windowscontainers/management/container_networking.md) | InSyncHandedBackSuccess | [Details](#2e26177f3e653e9102dc91070b987e28ef713bed251)
  [virtualization\windowscontainers\management\docker-powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/9d9bd347e20cdd57bf107b9d859ac0fe096e359e/virtualization/windowscontainers/management/docker-powershell.md) | InSyncHandedBackSuccess | [Details](#03ceaa83723db0870623cbc579d81b8d4ee6e813252)
@@ -170,6 +169,7 @@
  [virtualization\windowscontainers\removed\dotnet35.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/2bc48278e48915577149ae6c1ae1f4cb9c52cc8c/virtualization/windowscontainers/removed/dotnet35.md) | InSyncHandedBackSuccess | [Details](#dde80a4599bd099b5361b016b8547169589d4c8e321)
  [virtualization\windowscontainers\removed\powershell_overview.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/af065ec180f1b5de9e40ef269e7278a16b0c3b7f/virtualization/windowscontainers/removed/powershell_overview.md) | InSyncHandedBackSuccess | [Details](#5463412d44bd7c657401c55558bb817df4cc1eb2322)
  [virtualization\windowscontainers\removed\ps_docker_comparison.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e56aa08067fb18caa28224ddc0577a677f09ded3/virtualization/windowscontainers/removed/ps_docker_comparison.md) | InSyncHandedBackSuccess | [Details](#5a10afe0f0adcfa86fe9776efa45cfb935ca1beb323)
+ [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/TOC.md) | InSyncHandedBackSuccess | [Details](#d7bdf3f8880e67873264399e3b2e6b6e768eb703324)
 
 ## <a name='ignored-list'></a> Ignored File List
  Source File | Status | Details 
@@ -3093,9 +3093,9 @@
 * Archive Datetime: 2016-09-21 00:08:16
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/c38e4f10ca611baa3d69c819043a8d0cb17ba6b5/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
-* Current Handback File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1179de29876c3d8d0c1904d3a62fd8fc3b98984f/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf)
-* Current Handback Datetime: 2016-07-06 14:33:02
+* Current Target File: [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/0b030d7a6a95b1d20cdb5a208eacdbd770bd0809/virtualization/hyperv_on_windows/user_guide/remote_host_management.md)
+* Current Handback File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d34e8abd57fe0a991329db35949bc91f7dce225b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf)
+* Current Handback Datetime: 2016-09-21 11:35:07
 * Bilingual File: [remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1179de29876c3d8d0c1904d3a62fd8fc3b98984f/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf)
 * Bilingual Datetime: 2016-07-06 14:33:48
 * [Back to Top](#report-top)
@@ -3335,18 +3335,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='2c9821ef7ac414640790b3cfdb7fd457710a67f4225'></a> Source: [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/containers_welcome.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/0b030d7a6a95b1d20cdb5a208eacdbd770bd0809/virtualization/windowscontainers/containers_welcome.md)
 * Handoff File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f6608b435031b0ffd562dc3578d2230c347fd6b/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf)
 * Handoff Datetime: 2016-09-14 16:38:31
 * Handoff Reason: Include
 * Archive File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/9b4b2e9ae96bd1285d115589b6c188828c95eee8/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf)
 * Archive Datetime: 2016-09-15 00:14:54
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\containers_welcome.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/153cd0647b0f87b615693381b96ef30390f3e141/virtualization/windowscontainers/containers_welcome.md)
-* Current Handback File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/310fedb327b3bb6a724958f6f3162ac624012ac1/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf)
-* Current Handback Datetime: 2016-06-30 12:08:00
+* Handback File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d34e8abd57fe0a991329db35949bc91f7dce225b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf)
+* Handback Datetime: 2016-09-21 11:35:07
 * Bilingual File: [containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/310fedb327b3bb6a724958f6f3162ac624012ac1/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/containers_welcome.2c85b1345b8dfcc523a3848ed7661e25d5ffbb17.es-es.xlf)
 * Bilingual Datetime: 2016-06-30 12:12:32
 * [Back to Top](#report-top)
@@ -3651,18 +3648,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='19a363aa013b51e0c80d56572de77e94f27e546f249'></a> Source: [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7ebd83d5d3a098fc8760f5dfba7e350c3f167232/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/0b030d7a6a95b1d20cdb5a208eacdbd770bd0809/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md)
 * Handoff File: [optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/3941cf7e7a68d23079d7ff010f9377fd0da916de/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf)
 * Handoff Datetime: 2016-08-31 21:37:46
 * Handoff Reason: Include
 * Archive File: [optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/e06317f71f8528e3033c2cfdc420dbfce2ec82c8/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf)
 * Archive Datetime: 2016-09-01 07:07:45
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\docker\optimize_windows_dockerfile.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/153cd0647b0f87b615693381b96ef30390f3e141/virtualization/windowscontainers/docker/optimize_windows_dockerfile.md)
-* Current Handback File: [optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/310fedb327b3bb6a724958f6f3162ac624012ac1/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf)
-* Current Handback Datetime: 2016-06-30 12:08:00
+* Handback File: [optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d34e8abd57fe0a991329db35949bc91f7dce225b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf)
+* Handback Datetime: 2016-09-21 11:35:07
 * Bilingual File: [optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/310fedb327b3bb6a724958f6f3162ac624012ac1/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/optimize_windows_dockerfile.8acb58c9a0cb3119d370c90c749222ed5b757368.es-es.xlf)
 * Bilingual Datetime: 2016-06-30 12:12:32
 * [Back to Top](#report-top)
@@ -4628,18 +4622,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='d7bdf3f8880e67873264399e3b2e6b6e768eb703324'></a> Source: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/TOC.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/0b030d7a6a95b1d20cdb5a208eacdbd770bd0809/virtualization/windowscontainers/TOC.md)
 * Handoff File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/2f6608b435031b0ffd562dc3578d2230c347fd6b/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
 * Handoff Datetime: 2016-09-14 16:38:31
 * Handoff Reason: Include
 * Archive File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/9b4b2e9ae96bd1285d115589b6c188828c95eee8/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
 * Archive Datetime: 2016-09-15 00:14:54
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/cd93c5b942275aace73d3d42f892ce555411ba36/virtualization/windowscontainers/TOC.md)
-* Current Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1992912ef99f94689a7a4bf5977baa1b8bf48429/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
-* Current Handback Datetime: 2016-08-25 08:18:00
+* Handback File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d34e8abd57fe0a991329db35949bc91f7dce225b/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
+* Handback Datetime: 2016-09-21 11:35:07
 * Bilingual File: [TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1992912ef99f94689a7a4bf5977baa1b8bf48429/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf)
 * Bilingual Datetime: 2016-08-25 08:21:57
 * [Back to Top](#report-top)
