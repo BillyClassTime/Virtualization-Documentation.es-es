@@ -1,7 +1,7 @@
 ---
 title: "Documentación acerca de los contenedores de Windows"
 description: "Documentación acerca de los contenedores de Windows"
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
 translationtype: Human Translation
-ms.sourcegitcommit: 9070126c8cc944f9db0f8bacee8dbf135a3a23db
-ms.openlocfilehash: b50c27e723fb8db13adec37d6b969e93d607243e
+ms.sourcegitcommit: 59626096d428072dec098c7817e2d6b39c10e9cf
+ms.openlocfilehash: 2c9821ef7ac414640790b3cfdb7fd457710a67f4
 
 ---
 
@@ -40,24 +40,25 @@ Aprenda a implementar contenedores de Windows en Windows Server 2016 y Nano Serv
 <li>[Requisitos del sistema](deployment/system_requirements.md)<br /><br /></li>
 <li>[Implementación de un host de contenedor: Windows Server](deployment/deployment.md)<br /><br /></li>
 <li>[Implementación de un host de contenedor: Nano Server](deployment/deployment_nano.md)<br /><br /></li>
-
+<li>[Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)<br /><br /></li>
 </ul>
 </td>
 </tr>
 
 <tr>
 <td ><center>![](media/explore.png)</center></td>
-<td>**Management**<br /><br />
-Obtenga más información acerca de cómo administrar el contenedor de Windows en Windows Server 2016 y en Nano Server.<br /><br />
+<td>**Docker en Windows**<br /><br />
+Obtenga información acerca de cómo administrar Docker en Windows.<br /><br />
 <ul>
-<li>[Administración de imágenes](management/manage_images.md)<br /><br /></li>
-<li>[Administración de redes](management/container_networking.md)<br /><br /></li>
+<li>[Docker Engine en Windows](docker/configure_docker_daemon.md)<br /><br /></li>
+<li>[Dockerfiles en Windows](docker/manage_windows_dockerfile.md)<br /><br /></li>
 <li>[Administración de datos de los contenedores](management/manage_data.md)<br /><br /></li>
-<li>[Administración de contenedores de Hyper-V](management/hyperv_container.md)<br /><br /></li>
-<li>[Administración de recursos de contenedores](management/manage_resources.md)<br /><br /></li>
+<li>[Optimizar Dockerfiles](docker/optimize_windows_dockerfile.md)<br /><br /></li>
+<li>[Red de contenedores](management/container_networking.md)<br /><br /></li>
 </ul>
 </td>
 </tr>
+
 <tr>
 <td ><center>![](media/video.png)</center></td>
 <td>**Inspección**<br /><br />
@@ -68,6 +69,7 @@ Obtenga más información acerca de cómo administrar el contenedor de Windows e
 <br />
 </td>
 </tr>
+
 <tr>
 <td ><center>![](media/question.png)</center></td>
 <td>**Comunidad**<br /><br />
@@ -82,6 +84,6 @@ Interactúe con la comunidad, pruebe los ejemplos que le ofrecemos y busque recu
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Sep16_HO2-->
 
 

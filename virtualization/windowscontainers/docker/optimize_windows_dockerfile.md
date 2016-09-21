@@ -1,7 +1,7 @@
 ---
 title: Optimizar Dockerfiles de Windows
 description: Optimizar Dockerfiles para contenedores de Windows.
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 translationtype: Human Translation
-ms.sourcegitcommit: cc216f56acd5e547d05a48beea57450ba5fcb28b
-ms.openlocfilehash: 4822ff2f0248b2d7752299ea55b08e3499e2e2f7
+ms.sourcegitcommit: 7ebd83d5d3a098fc8760f5dfba7e350c3f167232
+ms.openlocfilehash: 19a363aa013b51e0c80d56572de77e94f27e546f
 
 ---
 # Optimizar Dockerfiles de Windows
@@ -65,7 +65,7 @@ Dado que cada instrucción `RUN` crea una nueva capa en la imagen del contenedor
 
 Los dos ejemplos siguientes muestran la misma operación, que produce imágenes de contenedor de capacidad idéntica; sin embargo, los dos Dockerfiles se construyen de forma diferente. También se comparan las imágenes resultantes.  
 
-Este primer ejemplo descarga, extrae y limpia el paquete redistribuible de Visual Studio. Cada una de estas acciones se ejecuta en su propia instrucción `RUN`.
+En este primer ejemplo se descarga Python para Windows, lo instala y limpia quitando el archivo de instalación descargado. Cada una de estas acciones se ejecuta en su propia instrucción `RUN`.
 
 ```none
 FROM windowsservercore
@@ -305,6 +305,6 @@ RUN powershell -Command \
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Aug16_HO5-->
 
 
