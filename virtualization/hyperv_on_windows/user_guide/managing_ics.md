@@ -1,7 +1,7 @@
 ---
 title: "Administración de los servicios de integración de Hyper-V"
 description: "Administración de los servicios de integración de Hyper-V"
-keywords: windows 10, hyper-v, integration services, integration components
+keywords: "windows 10, hyper-v, servicios de integración, componentes de integración"
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 translationtype: Human Translation
-ms.sourcegitcommit: 852f7fafe7192d85b0e9840ea3767a1206a1c285
-ms.openlocfilehash: e7abf05c899e2acca07312813b7808a5db00a9f7
+ms.sourcegitcommit: 22d29dbde56319a2a9d7fbc8afd041d1dc224101
+ms.openlocfilehash: 0779ef5b3f83bcf99f5681c13d445bcd33720dc6
 
 ---
 
@@ -32,7 +32,9 @@ Para más información sobre cada uno de los servicios de integración individua
   
   ![](./media/HyperVManager-IntegrationServices.png)
   
-  Aquí puede ver todos los servicios de integración disponibles en este host de Hyper-V.  Cabe destacar que el sistema operativo invitado puede admitir o no todos los servicios de integración que se muestran.
+  Aquí puede ver todos los servicios de integración disponibles en este host de Hyper-V.  Cabe destacar que el sistema operativo invitado puede admitir o no todos los servicios de integración que se muestran. Para determinar la información de la versión de un sistema operativo invitado, inicie sesión en dicho sistema operativo y ejecute el siguiente comando del símbolo del sistema.
+
+REG QUERY "HKLM\Software\Microsoft\Virtual Machine\Auto" /v IntegrationServicesVersion
 
 ## Habilitar o deshabilitar los servicios de integración mediante PowerShell
 
@@ -237,7 +239,7 @@ Si los servicios de integración se mantienen actualizados, se obtendrá el mejo
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
 | Windows Server 2012 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
-| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
+| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | Windows Server 2008 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | Windows Home Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | Windows Small Business Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
@@ -259,7 +261,7 @@ Si los servicios de integración se mantienen actualizados, se obtendrá el mejo
 | - | | |
 | Windows Server 2012 R2 | Windows Update | |
 | Windows Server 2012 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
-| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4).|
+| Windows Server 2008 R2 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4).|
 | Windows Server 2008 (SP 2) | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | Windows Home Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
 | Windows Small Business Server 2011 | Disco de servicios de integración | Instrucciones disponibles [aquí](https://technet.microsoft.com/en-us/library/hh846766.aspx#BKMK_step4). |
@@ -272,6 +274,6 @@ Si los servicios de integración se mantienen actualizados, se obtendrá el mejo
 
 
 
-<!--HONumber=Jul16_HO1-->
+<!--HONumber=Sep16_HO3-->
 
 
