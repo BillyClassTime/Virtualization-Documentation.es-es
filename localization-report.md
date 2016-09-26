@@ -7,10 +7,10 @@
 [ Handoff Failed Files ](#handoff-failed-list)| 0
 [ Handoff Success Files ](#handoff-success-list)| 0
 [ Archive Failed Files ](#archive-failed-list)| 0
-[ Archive Success Files ](#archive-success-list)| 5
+[ Archive Success Files ](#archive-success-list)| 2
 [ Handback Failed Files ](#handback-failed-list)| 2
 [ Out Of Sync Handback Files ](#outofsync-handback-success-list)| 0
-[ In Sync Handback Files ](#insync-handback-success-list)| 131
+[ In Sync Handback Files ](#insync-handback-success-list)| 134
 [ Ignored Files ](#ignored-list)| 333
 
 ## <a name='handoff-failed-list'></a> Handoff Failed File List
@@ -23,10 +23,7 @@
  Source File | Status | Details 
  ----------- | ------ | ------- 
  [virtualization\hyperv_on_windows\quick_start\walkthrough_powershell.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/cb573c6ecb658fc8f314d66d70a62558b183209d/virtualization/hyperv_on_windows/quick_start/walkthrough_powershell.md) | ArchivedSuccess | [Details](#8b688e666c7189888af3a7f182002f06fa2e2c0b177)
- [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | ArchivedSuccess | [Details](#0779ef5b3f83bcf99f5681c13d445bcd33720dc6185)
- [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md) | ArchivedSuccess | [Details](#c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205)
  [virtualization\hyperv_on_windows\user_guide\remote_host_management.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e0d957ebb953f1e5b3e56de9764c7c3e560024c1/virtualization/hyperv_on_windows/user_guide/remote_host_management.md) | ArchivedSuccess | [Details](#852800b19fb39737f0d7104eb2d50521b6cca982206)
- [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | ArchivedSuccess | [Details](#02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317)
 
 ## <a name='handback-failed-list'></a> Handback Failed File List
  Source File | Status | Details 
@@ -87,6 +84,7 @@
  [virtualization\hyperv_on_windows\user_guide\checkpoints.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4cdf81cace246c5de041d378391dca9b9d318dd5/virtualization/hyperv_on_windows/user_guide/checkpoints.md) | InSyncHandedBackSuccess | [Details](#bd0ee06f4e5eab4f33bb7e7c6dd71119dddde5c9182)
  [virtualization\hyperv_on_windows\user_guide\create_pre-release_vm.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7d97a2177a14f455ed5b54b0773e3003969303e2/virtualization/hyperv_on_windows/user_guide/create_pre-release_vm.md) | InSyncHandedBackSuccess | [Details](#7dee9e53f0e95b0c3b0ec0afc5b9d510c1962dbc183)
  [virtualization\hyperv_on_windows\user_guide\export_import.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8006ec4d71159113efce497d70ba591da2b84de9/virtualization/hyperv_on_windows/user_guide/export_import.md) | InSyncHandedBackSuccess | [Details](#e11c8d1a8fabc6e8282c9396a8efcbc448b9a6d4184)
+ [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md) | InSyncHandedBackSuccess | [Details](#0779ef5b3f83bcf99f5681c13d445bcd33720dc6185)
  [virtualization\hyperv_on_windows\user_guide\media\apply_standard_upd.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/78f5cb78bdd2bf1ae8cf99094e25a8deb452c1cd/virtualization/hyperv_on_windows/user_guide/media/apply_standard_upd.png) | InSyncHandedBackSuccess | [Details](#1808dbf613804162cbe255a058de2d5cc4f9f794186)
  [virtualization\hyperv_on_windows\user_guide\media\checkpoint_upd.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3b424e20a02876bc3b7209a4d639c2460bf88995/virtualization/hyperv_on_windows/user_guide/media/checkpoint_upd.png) | InSyncHandedBackSuccess | [Details](#7746c4675bfca7f94a2145e6b08059a99ea6b2c5189)
  [virtualization\hyperv_on_windows\user_guide\media\HVNesting.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/41787ff5de230b2494e520ec7fbf54771a3d4786/virtualization/hyperv_on_windows/user_guide/media/HVNesting.png) | InSyncHandedBackSuccess | [Details](#23b750c6cfe2679bdb5dd72285939f46e9141af4191)
@@ -102,6 +100,7 @@
  [virtualization\hyperv_on_windows\user_guide\media\production_Checkpoin_upd.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/78f5cb78bdd2bf1ae8cf99094e25a8deb452c1cd/virtualization/hyperv_on_windows/user_guide/media/production_Checkpoin_upd.png) | InSyncHandedBackSuccess | [Details](#5dbb953b1b4dbaf1291bfa0a590c49b539c54cb7202)
  [virtualization\hyperv_on_windows\user_guide\media\std_checkpoint_upd.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/78f5cb78bdd2bf1ae8cf99094e25a8deb452c1cd/virtualization/hyperv_on_windows/user_guide/media/std_checkpoint_upd.png) | InSyncHandedBackSuccess | [Details](#3436e8146018e5a07a847a00dc72d134d19506a1203)
  [virtualization\hyperv_on_windows\user_guide\migrating_vms.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e14ede0a2b13de08cea0a955b37a21a150fb88cf/virtualization/hyperv_on_windows/user_guide/migrating_vms.md) | InSyncHandedBackSuccess | [Details](#54db04f9096dc1ef9572594b321f400fbbfeada0204)
+ [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md) | InSyncHandedBackSuccess | [Details](#c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205)
  [virtualization\hyperv_on_windows\user_guide\setup_nat_network.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/03a72e6608c08d6adcf32fc5665533831904a032/virtualization/hyperv_on_windows/user_guide/setup_nat_network.md) | InSyncHandedBackSuccess | [Details](#5a1cb0964034db491481e2d6db84221730264fa0207)
  [virtualization\hyperv_on_windows\user_guide\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/e14ede0a2b13de08cea0a955b37a21a150fb88cf/virtualization/hyperv_on_windows/user_guide/troubleshooting.md) | InSyncHandedBackSuccess | [Details](#97ae940c03df2ab18350a31c56c93da85a348110208)
  [virtualization\hyperv_on_windows\user_guide\vmsession.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/87f8fb2ae8958c9c6177f6eda90678708054fce7/virtualization/hyperv_on_windows/user_guide/vmsession.md) | InSyncHandedBackSuccess | [Details](#75186d48346efbaaac264b00f0f92fe82fcfe424209)
@@ -163,6 +162,7 @@
  [virtualization\windowscontainers\quick_start\media\newazure7.png](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/8e4de4ed6517ab1b3b40ecf19ebbae2612aa66a6/virtualization/windowscontainers/quick_start/media/newazure7.png) | InSyncHandedBackSuccess | [Details](#ac6168b0f3d4e8b2044dd10d1dba101e2290f1d8309)
  [virtualization\windowscontainers\quick_start\quick_start.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4ea609a6e4636e53cc8632bb700e37ba58f3cc72/virtualization/windowscontainers/quick_start/quick_start.md) | InSyncHandedBackSuccess | [Details](#c0176d4f5445263a5fd522a80ce2a9dca7ac90e6315)
  [virtualization\windowscontainers\quick_start\quick_start_images.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/f2a3eec656acf5a3cd48a2be71169b76ce25400b/virtualization/windowscontainers/quick_start/quick_start_images.md) | InSyncHandedBackSuccess | [Details](#a9bc0b1511e161ef9b648bfafd4d0456966d8f9f316)
+ [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md) | InSyncHandedBackSuccess | [Details](#02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317)
  [virtualization\windowscontainers\quick_start\quick_start_windows_server.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d4b509054aebf510b650ec21ede4df2515a87827/virtualization/windowscontainers/quick_start/quick_start_windows_server.md) | InSyncHandedBackSuccess | [Details](#6e2232c8a043d482c0d6b734a66762c2d22003fe318)
  [virtualization\windowscontainers\reference\app_compat.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/reference/app_compat.md) | InSyncHandedBackSuccess | [Details](#ba5c77d51e263b776557ea8021c03e76ba37bcb7319)
  [virtualization\windowscontainers\reference\ps_docker_comparison.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/59626096d428072dec098c7817e2d6b39c10e9cf/virtualization/windowscontainers/reference/ps_docker_comparison.md) | InSyncHandedBackSuccess | [Details](#4e0abfdf7c96a78ba8e8a74a7eb273b2032d85fd320)
@@ -2806,18 +2806,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='0779ef5b3f83bcf99f5681c13d445bcd33720dc6185'></a> Source: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/22d29dbde56319a2a9d7fbc8afd041d1dc224101/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/12f5f4cfc70e4c9dc8dd9b558ab9511c1d6d5aca/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
 * Handoff File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/ade88467bafe835b42dabcca8a9c81829993d1c3/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf)
 * Handoff Datetime: 2016-09-19 14:14:51
 * Handoff Reason: Include
 * Archive File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/98d0367a6d2edf6066f2ef581031636b2a6e39a7/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf)
 * Archive Datetime: 2016-09-20 00:19:42
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\user_guide\managing_ics.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/50b171d10fa0d64168cb74dd2afac38c305b042b/virtualization/hyperv_on_windows/user_guide/managing_ics.md)
-* Current Handback File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/368ddcf5331276f7aae3dd814487627e206d1530/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf)
-* Current Handback Datetime: 2016-07-14 17:38:33
+* Handback File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/24a2764391df486284010b3b7db11f8c02dd7fc5/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf)
+* Handback Datetime: 2016-09-26 14:09:10
 * Bilingual File: [managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/368ddcf5331276f7aae3dd814487627e206d1530/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/managing_ics.8df7555f0b61b9ddcddca7419ee655ef1d9a2119.es-es.xlf)
 * Bilingual Datetime: 2016-07-14 17:39:17
 * [Back to Top](#report-top)
@@ -3067,18 +3064,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669205'></a> Source: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/4eb3e733990ca86f28620e23bf408ff71b879173/virtualization/hyperv_on_windows/user_guide/nesting.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/12f5f4cfc70e4c9dc8dd9b558ab9511c1d6d5aca/virtualization/hyperv_on_windows/user_guide/nesting.md)
 * Handoff File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/04a4c7ab298f3f074cea124b892de3700a51b432/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf)
 * Handoff Datetime: 2016-09-19 22:10:40
 * Handoff Reason: Include
 * Archive File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/98d0367a6d2edf6066f2ef581031636b2a6e39a7/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf)
 * Archive Datetime: 2016-09-20 00:19:42
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\hyperv_on_windows\user_guide\nesting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/f7ecdf33d1b4c2253f29c572d80b2d26837fe99c/virtualization/hyperv_on_windows/user_guide/nesting.md)
-* Current Handback File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/08194618113599ecc5ded558e15142415d9a2c76/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf)
-* Current Handback Datetime: 2016-07-07 08:15:36
+* Handback File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/24a2764391df486284010b3b7db11f8c02dd7fc5/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf)
+* Handback Datetime: 2016-09-26 14:09:10
 * Bilingual File: [nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/08194618113599ecc5ded558e15142415d9a2c76/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf)
 * Bilingual Datetime: 2016-07-07 08:17:43
 * [Back to Top](#report-top)
@@ -4521,18 +4515,15 @@
 * [Back to Top](#report-top)
 
 ##### <a name='02b4e01e404fe5ab3a6fadbb3481c741cb4aa563317'></a> Source: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/16630b534367791114a4844c3c1f582f13d09d6d/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
-* Status: ArchivedSuccess
-* Target File: 
+* Status: InSyncHandedBackSuccess
+* Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/12f5f4cfc70e4c9dc8dd9b558ab9511c1d6d5aca/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
 * Handoff File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/04a4c7ab298f3f074cea124b892de3700a51b432/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
 * Handoff Datetime: 2016-09-19 22:10:40
 * Handoff Reason: Include
 * Archive File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/98d0367a6d2edf6066f2ef581031636b2a6e39a7/ol-archive/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
 * Archive Datetime: 2016-09-20 00:19:42
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Current Target File: [virtualization\windowscontainers\quick_start\quick_start_windows_10.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/b96c05d41561a8bb62e5d070ceeae62a60e41327/virtualization/windowscontainers/quick_start/quick_start_windows_10.md)
-* Current Handback File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d02d0b07083ec6926c9e4ed4cf05197c03765541/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
-* Current Handback Datetime: 2016-09-14 11:08:29
+* Handback File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/24a2764391df486284010b3b7db11f8c02dd7fc5/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
+* Handback Datetime: 2016-09-26 14:09:10
 * Bilingual File: [quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/d02d0b07083ec6926c9e4ed4cf05197c03765541/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf)
 * Bilingual Datetime: 2016-09-14 11:09:31
 * [Back to Top](#report-top)
