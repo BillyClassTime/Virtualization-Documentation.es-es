@@ -1,7 +1,7 @@
 ---
 title: "Inicio rápido de contenedores de Windows"
 description: "Inicio rápido de contenedores de Windows."
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,14 +10,12 @@ ms.prod: windows-contianers
 ms.service: windows-containers
 ms.assetid: 4878f5d2-014f-4f3c-9933-97f03348a147
 translationtype: Human Translation
-ms.sourcegitcommit: 4ea609a6e4636e53cc8632bb700e37ba58f3cc72
-ms.openlocfilehash: c0176d4f5445263a5fd522a80ce2a9dca7ac90e6
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: f795cfde1174a62b85aefd58c6bd07e81e196718
 
 ---
 
 # Inicio rápido de contenedores de Windows
-
-**Esto es contenido preliminar y está sujeto a cambios.** 
 
 El inicio rápido de contenedores de Windows presenta la terminología del producto y los contenedores, guía a través de ejemplos sencillos de implementación de contenedores y además proporciona referencias de temas más avanzados. Si no está familiarizado con los contenedores o los contenedores de Windows, cada paso de este inicio rápido le proporcionará experiencias prácticas con la tecnología.
 
@@ -60,6 +58,6 @@ Al empezar a trabajar con contenedores, observará muchas similitudes entre un c
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Sep16_HO4-->
 
 

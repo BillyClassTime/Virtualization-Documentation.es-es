@@ -10,13 +10,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 translationtype: Human Translation
-ms.sourcegitcommit: 7ebd83d5d3a098fc8760f5dfba7e350c3f167232
-ms.openlocfilehash: 19a363aa013b51e0c80d56572de77e94f27e546f
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: 59f096ce914e0f1cbee5678b7db980297ca89364
 
 ---
 # Optimizar Dockerfiles de Windows
-
-**Esto es contenido preliminar y está sujeto a cambios.** 
 
 Pueden usarse varios métodos para optimizar el proceso de compilación de Docker y las imágenes de Docker resultantes. En este documento se explica cómo funciona el proceso de compilación de Docker y se muestran varias tácticas que se pueden usar para una creación de imagen óptima con contenedores de Windows.
 
@@ -305,6 +303,6 @@ RUN powershell -Command \
 
 
 
-<!--HONumber=Aug16_HO5-->
+<!--HONumber=Sep16_HO4-->
 
 

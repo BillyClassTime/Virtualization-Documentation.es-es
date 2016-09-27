@@ -1,7 +1,7 @@
 ---
 title: Dockerfile y contenedores de Windows
 description: "Creación de archivos Dockerfile para contenedores de Windows."
-keywords: docker, containers
+keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
 ms.date: 05/26/2016
@@ -10,14 +10,12 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: 97a7d5fdd25f755d73e05bfc5f3c4a80a7b6b8c5
-ms.openlocfilehash: 84baad10511eb070e654f1ee7d71eb547d3f2ee7
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: ea84ac6c688fa258c9b72f50565ec6e21e8051db
 
 ---
 
 # Dockerfile en Windows
-
-**Esto es contenido preliminar y está sujeto a cambios.** 
 
 El motor de Docker incluye herramientas para automatizar la creación de imágenes del contenedor. Aunque se pueden crear imágenes del contenedor manualmente mediante el comando `docker commit`, la adopción de un proceso automatizado de creación de imágenes ofrece numerosas ventajas, entre otras las siguientes:
 
@@ -484,6 +482,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Jul16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
