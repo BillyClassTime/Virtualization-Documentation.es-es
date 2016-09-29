@@ -4,30 +4,20 @@ description: "Implementación de contenedores de Windows en Windows Server"
 keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 08/22/2016
+ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 translationtype: Human Translation
-ms.sourcegitcommit: 39e480b8bf3f90cfe9b7d4d17141b9dbec5f93e5
-ms.openlocfilehash: cc662d0c688eadeef8011a2b97e212ec6399060a
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: 4d7e8fb1fcbb7e9680b7d5bd143ef6d59e45035e
 
 ---
 
 # Implementación de host de contenedor - Windows Server
 
-**Esto es contenido preliminar y está sujeto a cambios.**
-
 La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). En este documento se describe la implementación de un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual.
-
-## Imagen de Azure 
-
-Hay una imagen de Windows Server totalmente configurada disponible en Azure. Para usar esta imagen, implemente una máquina virtual haciendo clic en el botón siguiente. Si implementa un sistema de contenedores de Windows en Azure con esta plantilla, puede omitir el resto de este documento.
-
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Fmaster%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
-</a>
 
 ## Instalar la característica de contenedor
 
@@ -50,13 +40,13 @@ Para trabajar con contenedores de Windows es necesario Docker. Docker consta de 
 Descargue el motor de Docker y el cliente como un archivo zip.
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Ejecute los dos comandos siguientes para agregar el directorio de Docker a la ruta de acceso del sistema.
@@ -68,8 +58,6 @@ $env:path += ";c:\program files\docker"
 # For persistent use, will apply even after a reboot. 
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
 ```
-
-Reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
 
 Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
 
@@ -85,7 +73,7 @@ Start-Service Docker
 
 ## Instalar imágenes base del contenedor
 
-Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo subyacente. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
+Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo subyacente. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
 Para instalar la imagen base de Windows Server Core, ejecute lo siguiente:
 
@@ -98,6 +86,8 @@ Para instalar la imagen base de Nano Server, ejecute lo siguiente:
 ```none
 docker pull microsoft/nanoserver
 ```
+
+> Lea el CLUF de la imagen de sistema operativo de contenedores de Windows que se encuentra aquí: [CLUF](../Images_EULA.md).
 
 ## Host de contenedor de Hyper-V
 
@@ -131,6 +121,6 @@ Install-WindowsFeature hyper-v
 
 
 
-<!--HONumber=Aug16_HO4-->
+<!--HONumber=Sep16_HO4-->
 
 

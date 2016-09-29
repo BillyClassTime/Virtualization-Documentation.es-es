@@ -1,12 +1,14 @@
 # Acerca de los contenedores de Windows
 ## [Introducción a los contenedores de Windows](about/about_overview.md)
-## [P+F](about/faq.md)
 
-# Inicio rápido de contenedor
-## [1 - Conceptos y terminología](quick_start/quick_start.md)
-## [2 - Inicio rápido de Windows Server](quick_start/quick_start_windows_server.md)
-## [3 - Imágenes de Windows Server](quick_start/quick_start_images.md)
-## [4 - Inicio rápido de Windows 10](quick_start/quick_start_windows_10.md)
+# Inicio rápido de Windows Server
+## [Paso 1: Conceptos](quick_start/quick_start.md)
+## [Paso 2: Primer contenedor](quick_start/quick_start_windows_server.md)
+## [Paso 3: Imágenes del contenedor](quick_start/quick_start_images.md)
+
+# Inicio rápido de Windows 10
+## [Paso 1: Conceptos](quick_start/quick_start.md)
+## [Paso 2: Primer contenedor](quick_start/quick_start_windows_10.md)
 
 # Implementar contenedores de Windows
 ## [Requisitos del sistema](deployment/system_requirements.md)
@@ -27,11 +29,9 @@
 # Comunidad y soporte técnico
 ## [Foro acerca de los contenedores](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
 
-# [Términos de licencia de Windows Server](EULA.md)
-# [Términos de licencia de Nano Server](Nano_EULA.md)
+# [CLUF de la imagen de sistema operativo del contenedor](Images_EULA.md)
 
 
-
-<!--HONumber=Sep16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 

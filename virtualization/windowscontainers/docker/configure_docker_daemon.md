@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: 4dded90462c5438a6836ec32a165a9cc1019d6ec
-ms.openlocfilehash: 6ae49d82a89b2f30198de05aa4915726853172f5
+ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
+ms.openlocfilehash: f3eceaa84de7dfb4e6783835939a498a3e798e91
 
 ---
 
@@ -26,13 +26,13 @@ Para trabajar con contenedores de Windows es necesario Docker. Docker consta de 
 Descargue el motor de Docker.
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 Expanda el archivo zip en Archivos de programa.
 
 ```
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema. Una vez hecho esto, reinicie la sesión de PowerShell para que reconozca la ruta de acceso modificada.
@@ -55,7 +55,7 @@ Start-Service Docker
 
 Tendrán que instalarse imágenes de contenedor antes de poder usar Docker. Para obtener más información, vea [Administrar imágenes de contenedores](../management/manage_images.md).
 
-## Archivo de configuración de Docker
+## Configurar Docker con el archivo de configuración
 
 El método preferido para configurar el motor de Docker en Windows es usar un archivo de configuración. Puede encontrar el archivo de configuración en “c:\ProgramData\docker\config\daemon.json”. Si este archivo no existe, se puede crear.
 
@@ -115,7 +115,7 @@ De la misma forma, en esta muestra se configura el demonio de Docker para acepta
 }
 ```
 
-## administrador de control de servicios
+## Configurar Docker en Docker Service
 
 El motor de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de motor de Docker directamente en el servicio de Docker.
 
@@ -165,19 +165,22 @@ restart-service docker
 Para más información, consulte [las opciones de socket de demonio en Docker.com](https://docs.docker.com/v1.10/engine/reference/commandline/daemon/#daemon-socket-option).
 
 ## Recopilación de registros
+
 El motor de Docker registra en el registro de eventos "Application" de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
 
 Por ejemplo, esto mostrará los registros del motor de Docker de los últimos 5 minutos, empezando por los más antiguos.
+
 ```
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
 ```
 
 Esto también se podría canalizar fácilmente en un archivo CSV para que otra herramienta u hoja de cálculo pueda leerlo.
+
 ```
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.csv ```
 
 
 
-<!--HONumber=Aug16_HO4-->
+<!--HONumber=Sep16_HO4-->
 
 

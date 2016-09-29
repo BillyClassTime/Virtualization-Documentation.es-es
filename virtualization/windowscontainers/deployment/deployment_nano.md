@@ -4,14 +4,14 @@ description: "Implementación de contenedores de Windows en Nano Server"
 keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 08/23/2016
+ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 939a1b69f159504b998792adb95ccabc326db333
-ms.openlocfilehash: 538fb27d6170f0a8dab5c189b90040e40c546e14
+ms.sourcegitcommit: 185c83b69972765a72af2dbbf5d0c7d2551212ce
+ms.openlocfilehash: 6ada7de02bbdfab8986fdfeeda60b6373a6e2d96
 
 ---
 
@@ -91,13 +91,13 @@ Descargue el cliente y el motor de Docker y cópielos en "C:\Archivos de program
 > Nano Server no admite actualmente `Invoke-WebRequest`. la descarga se debe realizar en un sistema remoto y los archivos se copian en el host de Nano Server.
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile .\docker-1.12.0.zip -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile .\docker.zip -UseBasicParsing
 ```
 
 Extraiga el paquete descargado. Una vez completada la extracción, tendrá un directorio con **dockerd.exe** y **docker.exe**. Copie ambos archivos en la carpeta **C:\Program Files\docker\** en el host del contenedor de Nano Server. 
 
 ```none
-Expand-Archive .\docker-1.12.0.zip
+Expand-Archive .\docker.zip
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema en Nano Server.
@@ -126,15 +126,19 @@ Start-Service Docker
 
 ## Instalar imágenes base del contenedor
 
-Las imágenes del sistema operativo base se usan como base para cualquier contenedor de Hyper-V o Windows Server. Las imágenes del sistema operativo base están disponibles con Windows Server Core y Nano Server como sistema operativo subyacente y se pueden instalar con `docker pull`. Para obtener información detallada sobre las imágenes del contenedor de Windows, consulte [Administración de imágenes del contenedor](../management/manage_images.md).
+Las imágenes del sistema operativo base se usan como base para cualquier contenedor de Hyper-V o Windows Server. Las imágenes del sistema operativo base están disponibles con Windows Server Core y Nano Server como sistema operativo subyacente y se pueden instalar con `docker pull`. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
-Para descargar e instalar la imagen base de Nano Server, ejecute lo siguiente:
+Para descargar e instalar la imagen base de Windows Server y Nano Server, ejecute los siguientes comandos.
 
 ```none
 docker pull microsoft/nanoserver
 ```
 
-> En este momento, solo la imagen base de Nano Server es compatible con un host de contenedor de Nano Server.
+```none
+docker pull microsoft/windowsservercore
+```
+
+> Lea el CLUF de la imagen de sistema operativo de contenedores de Windows que se encuentra aquí: [CLUF](../Images_EULA.md).
 
 ## Administración de Docker en Nano Server
 
@@ -173,13 +177,13 @@ Restart-Service docker
 En el sistema remoto donde vaya a trabajar, descargue un cliente de Docker.
 
 ```none
-Invoke-WebRequest "https://get.docker.com/builds/Windows/x86_64/docker-1.12.0.zip" -OutFile "$env:TEMP\docker-1.12.0.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 Extraiga el paquete comprimido.
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker-1.12.0.zip" -DestinationPath $env:ProgramFiles
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Ejecute los dos comandos siguientes para agregar el directorio de Docker a la ruta de acceso del sistema.
@@ -231,6 +235,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO2-->
+<!--HONumber=Sep16_HO4-->
 
 
