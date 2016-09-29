@@ -25724,9 +25724,9 @@
       "ArchiveFileCommit": "ef504f56591aca2b54c10ba7158dba1e4770c4a5",
       "ArchiveFileDateTime": "2016-09-29T00:17:23.6746163Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "0001-01-01T00:00:00",
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\nesting.ece03f90d41cea4ab592ff16c6288e2349863da7.es-es.xlf",
+      "BilingualFileCommit": "5a5939f4ac327b5fb6ea2bf67eac008c86b3a8eb",
+      "BilingualDateTime": "2016-09-29T05:43:29.6291379Z",
       "BilingualException": null
     },
     "6d242d2706280e70ae2c09939ee5b0c8e13aa418": {
