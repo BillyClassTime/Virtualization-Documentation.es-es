@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
 translationtype: Human Translation
-ms.sourcegitcommit: 4eb3e733990ca86f28620e23bf408ff71b879173
-ms.openlocfilehash: c94b7f2c9c90eaf2834a1d0c54fb1f9b2a8f9669
+ms.sourcegitcommit: 6f003c6e78fb6a0977f30611b7da135a30268f51
+ms.openlocfilehash: 46c43a38dc3a3ee56ac3136cda60c41019cc733d
 
 ---
 
@@ -30,8 +30,9 @@ La virtualización anidada es una característica que le permite ejecutar Hyper-
 
 1. Cree una máquina virtual. Vea los requisitos previos anteriores para las versiones requeridas de máquina virtual y sistema operativo.
 2. Mientras la máquina virtual esté con el estado desactivado, ejecute el siguiente comando en el host físico de Hyper-V. Esto permite la virtualización anidada de la máquina virtual.
+
 ```none
-    Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
+Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
 3. Inicie la máquina virtual.
 4. Instale Hyper-V en la máquina virtual, como lo haría en un servidor físico. Para obtener más información sobre la instalación de Hyper-V, consulte [Instalar Hyper-V]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_install).
@@ -79,6 +80,6 @@ Las aplicaciones de virtualización que no sean Hyper-V no se admiten en las má
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Sep16_HO4-->
 
 
