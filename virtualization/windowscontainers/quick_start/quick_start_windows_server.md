@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 891c9e9805bf2089fd11f86420de5ed251916c3f
-ms.openlocfilehash: 77dca1499abf406b1d599c28afdb19dd823b8401
+ms.sourcegitcommit: 0fae34a5a85678a25c47b0312650e67aa6cd7efd
+ms.openlocfilehash: 4d02d6423cc910c2bd2fe0691cbb62bddcabb117
 
 ---
 
@@ -24,6 +24,8 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 **Requisitos previos:**
 
 Un equipo (físico o virtual) con Windows Server 2016. Si usa Windows Server 2016 TP5, actualice a [Windows Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ). 
+
+> Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
 
 ## 1. Instalar la característica de contenedor
 
@@ -139,6 +141,6 @@ Para obtener información más detallada sobre el comando Run de Docker, consult
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 
