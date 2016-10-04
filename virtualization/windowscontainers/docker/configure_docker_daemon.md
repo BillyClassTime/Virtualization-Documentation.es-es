@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
-ms.openlocfilehash: f3eceaa84de7dfb4e6783835939a498a3e798e91
+ms.sourcegitcommit: d30136e66bf15dc015629e359422c9b8346b8426
+ms.openlocfilehash: 3ee39f57890248951b69887edc87c9fedb13c285
 
 ---
 
@@ -117,12 +117,14 @@ De la misma forma, en esta muestra se configura el demonio de Docker para acepta
 
 ## Configurar Docker en Docker Service
 
-El motor de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de motor de Docker directamente en el servicio de Docker.
+El motor de Docker también se puede configurar modificando el servicio de Docker con `sc config`. Con este método, se establecen marcas de motor de Docker directamente en el servicio de Docker. Ejecute el siguiente comando en un símbolo del sistema (cmd.exe, no PowerShell):
 
 
 ```none
 sc config docker binpath= "\"C:\Program Files\docker\dockerd.exe\" --run-service -H tcp://0.0.0.0:2375"
 ```
+
+Nota: No es necesario ejecutar este comando si el archivo daemon.json ya contiene la entrada `"hosts": ["tcp://0.0.0.0:2375"]`.
 
 ## Configuración común
 
@@ -181,6 +183,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 

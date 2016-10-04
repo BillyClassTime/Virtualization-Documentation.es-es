@@ -10,8 +10,8 @@ ms.prod: windows-contianers
 ms.service: windows-containers
 ms.assetid: 4878f5d2-014f-4f3c-9933-97f03348a147
 translationtype: Human Translation
-ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
-ms.openlocfilehash: f795cfde1174a62b85aefd58c6bd07e81e196718
+ms.sourcegitcommit: b5e52d567bcfafbdd412d4fcf24a14481f51c080
+ms.openlocfilehash: b11167ae429d4529a6bec679a4cd6b0ad6538e39
 
 ---
 
@@ -33,7 +33,7 @@ Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiem
 
 **Contenedores de Windows Server**: ofrecen aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y todos los contenedores que se ejecutan en el host.
 
-**Contenedores de Hyper-V**: amplían el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con los contenedores de Hyper-V.
+**Contenedores de Hyper-V**: amplían el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores de Hyper-V.
 
 ## 3. Conceptos básicos de los contenedores
 
@@ -58,6 +58,6 @@ Al empezar a trabajar con contenedores, observará muchas similitudes entre un c
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO1-->
 
 
