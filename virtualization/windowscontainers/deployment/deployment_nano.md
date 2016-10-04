@@ -4,20 +4,18 @@ description: "Implementación de contenedores de Windows en Nano Server"
 keywords: docker, contenedores
 author: neilpeterson
 manager: timlt
-ms.date: 09/26/2016
+ms.date: 09/28/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: 185c83b69972765a72af2dbbf5d0c7d2551212ce
-ms.openlocfilehash: 6ada7de02bbdfab8986fdfeeda60b6373a6e2d96
+ms.sourcegitcommit: df9723e3a9d9ada778d01d43dcb36c99813dea8f
+ms.openlocfilehash: 9af33e6bce21aa339109f060100b2c7ab3c1eb91
 
 ---
 
 # Implementación de host de contenedor: Nano Server
-
-**Esto es contenido preliminar y está sujeto a cambios.** 
 
 Este documento le guiará paso a paso por una implementación básica de Nano Server con la característica de contenedor de Windows. Este es un tema avanzado y en él se presupone un conocimiento general de Windows y de los contenedores de Windows. Para obtener una introducción a los contenedores de Windows, vea [Inicio rápido de contenedores de Windows](../quick_start/quick_start.md).
 
@@ -27,7 +25,7 @@ En la siguiente sección se describe la implementación de una configuración mu
 
 ### Crear una máquina virtual de Nano Server
 
-En primer lugar, descargue el VHD de evaluación de Nano Server desde [esta ubicación](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/nano_eula). Cree una máquina virtual desde este VHD, iníciela y conéctese a ella con la opción de conexión de Hyper-V (o equivalente) correspondiente a la plataforma de virtualización que se esté usando.
+En primer lugar, descargue el VHD de evaluación de Nano Server desde [esta ubicación](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016). Cree una máquina virtual desde este VHD, iníciela y conéctese a ella con la opción de conexión de Hyper-V (o equivalente) correspondiente a la plataforma de virtualización que se esté usando.
 
 ### Crear una sesión de PowerShell remota
 
@@ -47,6 +45,22 @@ Enter-PSSession -ComputerName 192.168.1.50 -Credential ~\Administrator
 
 Cuando finalice estos pasos, estará en una sesión de PowerShell remota con el sistema Nano Server. A menos que se indique lo contrario, el resto de este documento tendrá lugar desde la sesión remota.
 
+### Instalar actualizaciones de Windows
+
+Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Estas actualizaciones se pueden instalar ejecutando los siguientes comandos.
+
+```none
+$sess = New-CimInstance -Namespace root/Microsoft/Windows/WindowsUpdate -ClassName MSFT_WUOperationsSession
+Invoke-CimMethod -InputObject $sess -MethodName ApplyApplicableUpdates
+```
+
+Cuando se hayan aplicado las actualizaciones, reinicie el sistema.
+
+```none
+Restart-Computer
+```
+
+Tras la copia de seguridad, vuelva a establecer la conexión remota de PowerShell.
 
 ## Instalar la característica de contenedor
 
@@ -74,35 +88,19 @@ Tras la copia de seguridad, vuelva a establecer la conexión remota de PowerShel
 
 Para trabajar con contenedores de Windows es necesario el motor de Docker. Instale el motor de Docker siguiendo estos pasos.
 
-En primer lugar, asegúrese de que el firewall de Nano Server se haya configurado para SMB. Esto se puede completar mediante la ejecución de este comando en el host de Nano Server.
+Descargue el motor de Docker y el cliente como un archivo zip.
 
 ```none
-Set-NetFirewallRule -Name FPS-SMB-In-TCP -Enabled True
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
-Cree una carpeta en el host de Nano Server para los ejecutables de Docker.
+Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
 
 ```none
-New-Item -Type Directory -Path $env:ProgramFiles'\docker\'
-```
-
-Descargue el cliente y el motor de Docker y cópielos en "C:\Archivos de programa\docker\' del host de contenedor. 
-
-> Nano Server no admite actualmente `Invoke-WebRequest`. la descarga se debe realizar en un sistema remoto y los archivos se copian en el host de Nano Server.
-
-```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile .\docker.zip -UseBasicParsing
-```
-
-Extraiga el paquete descargado. Una vez completada la extracción, tendrá un directorio con **dockerd.exe** y **docker.exe**. Copie ambos archivos en la carpeta **C:\Program Files\docker\** en el host del contenedor de Nano Server. 
-
-```none
-Expand-Archive .\docker.zip
+Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
 ```
 
 Agregue el directorio de Docker a la ruta de acceso del sistema en Nano Server.
-
-> Asegúrese de volver a la sesión de Nano Server remota.
 
 ```none
 # For quick use, does not require shell to be restarted.
@@ -235,6 +233,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Sep16_HO5-->
 
 
