@@ -4449,8 +4449,8 @@
 * Archive Datetime: 2016-10-08 00:14:48
 * Handback File: [samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/21e41f3a06e08982072cb7b351073e3708245c0e/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf)
 * Handback Datetime: 2016-10-12 23:03:02
-* Bilingual File: [samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/11112888bc54db75765d5ccbd3ab5dcffeceb861/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf)
-* Bilingual Datetime: 2016-10-07 16:29:35
+* Bilingual File: [samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/21e41f3a06e08982072cb7b351073e3708245c0e/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/samples.31014494d9f148c358b40bd77949cf0f75f2ea75.es-es.xlf)
+* Bilingual Datetime: 2016-10-12 23:03:38
 * [Back to Top](#report-top)
 
 ##### <a name='e5807f86034da2a6e63a20cc6ee40f0c07b4a3d0313'></a> Source: [virtualization\windowscontainers\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/7039bb010c58f364d774dfb1d50a8df4e99f63b3/virtualization/windowscontainers/TOC.md)
