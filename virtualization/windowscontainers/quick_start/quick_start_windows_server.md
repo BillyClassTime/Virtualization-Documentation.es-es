@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: 0fae34a5a85678a25c47b0312650e67aa6cd7efd
-ms.openlocfilehash: 4d02d6423cc910c2bd2fe0691cbb62bddcabb117
+ms.sourcegitcommit: ac962391cd3b82be2dd18b145ee5e6d7a483a91a
+ms.openlocfilehash: 334f19fa645ad50eb59ad61890842f0b6a43dce2
 
 ---
 
@@ -48,7 +48,7 @@ Para trabajar con contenedores de Windows es necesario Docker. Docker consta de 
 Descargue la versión candidata para lanzamiento del cliente Commercially Supported Docker Engine como un archivo zip.
 
 ```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
+Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker-1.12.2.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
 ```
 
 Expanda el archivo zip en Archivos de programa.
@@ -141,6 +141,7 @@ Para obtener información más detallada sobre el comando Run de Docker, consult
 [Contenedores de Windows en Windows 10](./quick_start_windows_10.md)
 
 
-<!--HONumber=Sep16_HO5-->
+
+<!--HONumber=Oct16_HO2-->
 
 
