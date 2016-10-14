@@ -198,7 +198,7 @@
       "ArchivedDateTime": "2016-10-14T00:08:25.7799104Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\4fdd93badef908d694c5fbcd335645f565454091.1d569eaeea16bd9d9361cf13ba98aefe12841538.xml",
       "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\manage_windows_dockerfile.cf56579c9136245b4cbef41fabc5df7a6ab9832a.es-es.xlf",
-      "LocXliffCommit": "5b82489d5826cbff1feab3e58bb80f75fc62ed7b"
+      "LocXliffCommit": "c7ae5ac3d2a199d8a41a5c19fc373a01de40967b"
     },
     "virtualization\\windowscontainers\\deployment\\deployment.md.7a541f0d6d50943c1fc0c3d8e95c1847a22f65f1.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\deployment\\deployment.md",
