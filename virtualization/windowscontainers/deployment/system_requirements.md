@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
-ms.openlocfilehash: a17a0e4eca2596c8cebbef93ea91c854f09d0b76
+ms.sourcegitcommit: 08355d7a7da50d0f244bd750508fd42084818d7f
+ms.openlocfilehash: ac48bc7ee7b70483d8a368749aea0862c52f049c
 
 ---
 
@@ -22,7 +22,7 @@ En esta guía se enumeran los requisitos de un host de contenedor de Windows.
 ## Requisitos de sistema operativo
 
 - La característica de contenedor de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Nano Server y Windows 10 Professional y Enterprise (Anniversary Edition).
-- Si se van a ejecutar contenedores de Hyper-V, será necesario instalar el rol de Hyper-V.
+- Si se van a ejecutar contenedores de Hyper-V, será necesario instalar el rol Hyper-V.
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\.. Si solo se implementarán los contenedores de Hyper-V, esta restricción no se aplica.
 
 ## Hosts de contenedor virtualizados
@@ -71,7 +71,6 @@ Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Win
 </table>
 
 
-
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO2-->
 
 
