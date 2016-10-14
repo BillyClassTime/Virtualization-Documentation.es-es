@@ -357,8 +357,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-12T12:07:51.7291006Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\d3340019629a3ad92f856372345e4c2ceef85b6c.662f360e22ab760bb6ae85c23ec71a648ff1468d.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\checkpoints.fb864e32f956b43d9a6ce0ccc72ba67b60ea8362.es-es.xlf",
+      "LocXliffCommit": "284a769e4fb0812f3622b2f2231e98ab8967004d"
     },
     "virtualization\\windowscontainers\\quick_start\\quick_start_windows_10.md.0ae9d25c4097cbd814750b7840f9c670f1a3fab2.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\quick_start\\quick_start_windows_10.md",
@@ -367,8 +367,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-12T12:07:51.7291006Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\4322b650b511a8b2a8e926c1fca69971528dc07c.f8e89840a4ba4fbfa95aa4fa75d544446ab08380.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\quick_start_windows_10.5f887ea7d45d865c81fe971abab095fb8e272cc8.es-es.xlf",
+      "LocXliffCommit": "284a769e4fb0812f3622b2f2231e98ab8967004d"
     },
     "virtualization\\windowscontainers\\docker\\configure_docker_daemon.md.74ea9d0b6da39d7b6724d53246037449608db970.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\docker\\configure_docker_daemon.md",
@@ -377,8 +377,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-10-14T00:08:25.7996517Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\7b4276dd8e961bf278bee2baea2449e04eef7a2f.27f257eaeccf55ce82f15b1e944b4cc6e82e8d76.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\configure_docker_daemon.593d065aaeaa40359a3e774b03d152311eb6570c.es-es.xlf",
+      "LocXliffCommit": "284a769e4fb0812f3622b2f2231e98ab8967004d"
     },
     "virtualization\\windowscontainers\\deployment\\system_requirements.md.b152c27ca36d44c56b66af957fa7b50788f93b64.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\deployment\\system_requirements.md",
