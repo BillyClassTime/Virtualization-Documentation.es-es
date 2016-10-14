@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: 0fae34a5a85678a25c47b0312650e67aa6cd7efd
-ms.openlocfilehash: 74686f222e8eec1daacd45a9e388d94abf6381f4
+ms.sourcegitcommit: c1c16d94bade83e8623ad89aae0abb356a829e1e
+ms.openlocfilehash: 4322b650b511a8b2a8e926c1fca69971528dc07c
 
 ---
 
@@ -26,7 +26,9 @@ Este inicio rápido es específico de los contenedores de Hyper-V en Windows 10.
 - Un sistema de equipo físico que ejecuta Windows 10 Anniversary Edition (Professional o Enterprise).   
 - Este inicio rápido se puede ejecutar en una máquina virtual de Windows 10, pero la virtualización anidada tendrá que estar habilitada. Puede encontrar más información en la [guía de virtualización anidada](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
-> Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
+> Debe instalar las actualizaciones críticas para que funcionen los contenedores de Windows. 
+> Para comprobar la versión del SO, ejecute `winver.exe` y compare la versión que se muestra con el [Historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history). 
+> Asegúrese de tener la versión 14393.222 o una posterior antes de continuar.
 
 ## 1. Instalar la característica de contenedor
 
@@ -166,6 +168,6 @@ Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en l
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO2-->
 
 

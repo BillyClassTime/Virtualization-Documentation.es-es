@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: d30136e66bf15dc015629e359422c9b8346b8426
-ms.openlocfilehash: 3ee39f57890248951b69887edc87c9fedb13c285
+ms.sourcegitcommit: ac962391cd3b82be2dd18b145ee5e6d7a483a91a
+ms.openlocfilehash: 11bc16813153beb5b819c80284a30f9f188709d0
 
 ---
 
@@ -19,11 +19,22 @@ ms.openlocfilehash: 3ee39f57890248951b69887edc87c9fedb13c285
 
 El cliente y el motor de Docker no se incluyen con Windows y deberán instalarse y configurarse por separado. Además, el motor de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. En este documento se detallará cómo instalar y configurar el motor de Docker. Además, se proporcionarán algunos ejemplos de configuraciones frecuentes.
 
+
 ## Instalar Docker
+Para trabajar con contenedores de Windows es necesario Docker. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La forma más fácil de instalar todo está en las guías de inicio rápido. Le ayudará a configurar todo y a poner en ejecución su primer contenedor. 
 
-Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. En este ejercicio se instalarán ambos.
+* [Contenedores de Windows en Windows Server 2016](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_server)
+* [Contenedores de Windows en Windows 10](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/quick_start/quick_start_windows_10)
 
-Descargue el motor de Docker.
+
+### Instalación manual
+Si desea utilizar una versión en desarrollo del motor y el cliente de Docker, puede seguir los siguientes pasos. Esto instalará el motor de Docker y el cliente. De lo contrario, vaya al paso siguiente.
+
+> Si ha instalado Docker para Windows, asegúrese de quitarlo antes de seguir estos pasos de instalación manual. 
+
+Descargar el motor de Docker
+
+Siempre puede encontrar la versión más reciente en https://master.dockerproject.org. Este ejemplo utiliza la versión más reciente de la bifurcación v1.13-development. 
 
 ```none
 Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
@@ -183,6 +194,6 @@ Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-3
 
 
 
-<!--HONumber=Oct16_HO1-->
+<!--HONumber=Oct16_HO2-->
 
 

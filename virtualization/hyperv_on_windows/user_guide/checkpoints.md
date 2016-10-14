@@ -1,7 +1,7 @@
 ---
 title: Uso de puntos de control
 description: Uso de puntos de control
-keywords: windows 10, hyper-v
+keywords: Windows 10, Hyper-V
 author: scooley
 manager: timlt
 ms.date: 05/02/2016
@@ -10,8 +10,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 translationtype: Human Translation
-ms.sourcegitcommit: 4cdf81cace246c5de041d378391dca9b9d318dd5
-ms.openlocfilehash: bd0ee06f4e5eab4f33bb7e7c6dd71119dddde5c9
+ms.sourcegitcommit: 54f3855efd820d77b17c171b5b4c2a0c66957bc3
+ms.openlocfilehash: d3340019629a3ad92f856372345e4c2ceef85b6c
 
 ---
 
@@ -28,7 +28,7 @@ Hyper-V de Windows 10 incluye dos tipos de puntos de control:
 Los puntos de control de producción se seleccionan de forma predeterminada, pero puede cambiarlo con el Administrador de Hyper-V o PowerShell.
 
 > **Nota:** El módulo de PowerShell de Hyper-V tiene varios alias para que el punto de control y la instantánea se puedan usar indistintamente.  
-  En este documento se utiliza el punto de control, pero tenga en cuenta que puede ver un comando similar que use el término snapshot.
+  En este documento se utiliza el punto de control, pero tenga en cuenta que puede ver comandos similares que usen el término instantánea.
 
 ## Cambiar el tipo de punto de control
 
@@ -42,7 +42,7 @@ Los puntos de control de producción se seleccionan de forma predeterminada, per
 <br />
 ![](media/checkpoint_upd.png)
 
-**Uso de PowerShell**
+**Con PowerShell**
 
 Los siguientes comandos se pueden ejecutar para cambiar el punto de control con PowerShell. 
 
@@ -72,7 +72,7 @@ Para crear un punto de control:
 2. Haga clic con el botón derecho en el nombre de la máquina virtual y luego haga clic en **Punto de control**.
 3. Cuando se complete el proceso, el punto de control aparecerá en **Puntos de control** en el **Administrador de Hyper-V**.
 
-**Uso de PowerShell**
+**Con PowerShell**
 
 Cree un punto de control con el comando **CheckPoint-VM**.  
 
@@ -101,7 +101,7 @@ Si quiere revertir la máquina virtual a un momento concreto anterior, puede apl
   
   Seleccione cualquier opción Aplicar para crear el punto de control.
 
-**Uso de PowerShell**
+**Con PowerShell**
 
 5. Para ver una lista de los puntos de control de una máquina virtual, use el comando **Get-VMCheckpoint**.
 
@@ -155,7 +155,7 @@ Para eliminar correctamente un punto de control:
 2.  En la sección **Puntos de control**, haga clic con el botón derecho en el punto de control que quiere eliminar y haga clic en Eliminar. También puede eliminar un punto de control y todos los puntos de control posteriores. Para ello, haga clic con el botón derecho en el punto de control más antiguo que quiera eliminar y después haga clic en ****Eliminar punto de control** Subárbol**.
 3.  Es posible que se le pida confirmación para eliminar el punto de control. Confirme que se trata del punto de control correcto y luego haga clic en **Eliminar**. 
  
-**Uso de PowerShell**
+**Con PowerShell**
 ```powershell
 Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 ```
@@ -164,7 +164,7 @@ Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 
 La exportación empaqueta el punto de control como una máquina virtual para que se pueda mover a una nueva ubicación. Una vez importado, se restaura el punto de control como una máquina virtual.  Los puntos de control exportados pueden usarse como copias de seguridad.
 
-**Uso de PowerShell**
+**Con PowerShell**
 ``` powershell
 Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export>
 ```
@@ -250,6 +250,6 @@ Cuando se haya aplicado el punto de control de producción, observe que la máqu
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO2-->
 
 
