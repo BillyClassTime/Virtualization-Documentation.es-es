@@ -1,6 +1,6 @@
 {
   "LastProcessedCommit": "fec6539353900a44de06bf1659d893372728cd13",
-  "LastTranslatedCommit": "9ecc00a5f99c7c245a286cf78a1477f98771a8b7",
+  "LastTranslatedCommit": "f0b543863120493220059765a775d41cbb455028",
   "Items": {
     "5090f6d60b5cbdce0990242d795d9e4e3736e791": {
       "FileHash": "5090f6d60b5cbdce0990242d795d9e4e3736e791",
@@ -26552,14 +26552,14 @@
       "HandoffPriority": "",
       "HandoffException": null,
       "HandoffFailureTimes": 0,
-      "TargetFileCommit": null,
-      "TargetFilePath": null,
-      "HandbackFilePath": null,
-      "HandbackFileCommit": null,
-      "HandbackDateTime": "0001-01-01T00:00:00",
+      "TargetFileCommit": "f0b543863120493220059765a775d41cbb455028",
+      "TargetFilePath": "virtualization\\windowscontainers\\TOC.md",
+      "HandbackFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf",
+      "HandbackFileCommit": "edc851372b554472321cfcc9fd24f700057f931c",
+      "HandbackDateTime": "2016-10-18T22:34:29.4239535Z",
       "HandbackException": null,
       "HandbackFailureTimes": 0,
-      "UpdatedDateTime": "0001-01-01T00:00:00",
+      "UpdatedDateTime": "2016-10-18T22:34:29.4239535Z",
       "ArchiveFilePath": "ol-archive\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf",
       "ArchiveFileCommit": "13e96ab1d2782709a4a682291550c0dbba532b56",
       "ArchiveFileDateTime": "2016-10-18T00:12:25.8218549Z",
