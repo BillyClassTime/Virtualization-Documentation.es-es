@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: ac962391cd3b82be2dd18b145ee5e6d7a483a91a
-ms.openlocfilehash: 334f19fa645ad50eb59ad61890842f0b6a43dce2
+ms.sourcegitcommit: af648c1235ab9af181a88a65901401bfbd40656e
+ms.openlocfilehash: 791de65ac6e4222c4cae77fe9dd24f4e07e5a936
 
 ---
 
@@ -27,59 +27,30 @@ Un equipo (físico o virtual) con Windows Server 2016. Si usa Windows Server 201
 
 > Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
 
-## 1. Instalar la característica de contenedor
+## 1. Instalar Docker
 
-La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados.
+Para instalar Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/oneget/oneget). El proveedor habilitará la característica de contenedores en la máquina e instalará Docker, lo que requerirá un reinicio. Para trabajar con contenedores de Windows es necesario Docker. Este consta de motor y de cliente.
+
+Abra una sesión de PowerShell con privilegios elevados y ejecute los comandos siguientes.
+
+Primero instalaremos el módulo de PowerShell de OneGet.
 
 ```none
-Install-WindowsFeature containers
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-Cuando la instalación de la característica haya finalizado, reinicie el equipo.
+Después, usaremos OneGet para instalar la versión más reciente de Docker.
+```none
+Install-Package -Name docker -ProviderName DockerMsftProvider
+```
+
+Cuando PowerShell le pregunte si se debe confiar en el origen del paquete "DockerDefault", escriba A para continuar con la instalación. Cuando finalice la instalación, reinicie el equipo.
 
 ```none
 Restart-Computer -Force
 ```
 
-## 2. Instalar Docker
-
-Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. En este ejercicio se instalarán ambos.
-
-Descargue la versión candidata para lanzamiento del cliente Commercially Supported Docker Engine como un archivo zip.
-
-```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker-1.12.2.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
-```
-
-Expanda el archivo zip en Archivos de programa.
-
-```none
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
-```
-
-Agregue el directorio de Docker a la ruta de acceso del sistema.
-
-```none
-# For quick use, does not require shell to be restarted.
-$env:path += ";c:\program files\docker"
-
-# For persistent use, will apply even after a reboot. 
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\Program Files\Docker", [EnvironmentVariableTarget]::Machine)
-```
-
-Para instalar Docker como un servicio de Windows, ejecute lo siguiente.
-
-```none
-dockerd.exe --register-service
-```
-
-Una vez instalado, puede iniciar el servicio.
-
-```none
-Start-Service docker
-```
-
-## 3. Implementar el primer contenedor
+## 2. Implementar el primer contenedor
 
 Para este ejercicio, se descarga una imagen de ejemplo de .NET creada previamente desde el registro de Docker Hub y se implementa un contenedor simple que ejecuta una aplicación de .NET Hello World.  
 

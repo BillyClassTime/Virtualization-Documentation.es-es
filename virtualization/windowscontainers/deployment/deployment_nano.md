@@ -10,8 +10,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: b82acdf9-042d-4b5c-8b67-1a8013fa1435
 translationtype: Human Translation
-ms.sourcegitcommit: df9723e3a9d9ada778d01d43dcb36c99813dea8f
-ms.openlocfilehash: 9af33e6bce21aa339109f060100b2c7ab3c1eb91
+ms.sourcegitcommit: a2c78d3945f1d5b0ebe2a4af480802f8c0c656c2
+ms.openlocfilehash: a9d398de94cb0d6c54c2e82f4a024bb65de9806d
 
 ---
 
@@ -62,64 +62,28 @@ Restart-Computer
 
 Tras la copia de seguridad, vuelva a establecer la conexión remota de PowerShell.
 
-## Instalar la característica de contenedor
-
-El proveedor de administración de paquetes de Nano Server permite instalar roles y características en Nano Server. Instale el proveedor con este comando.
-
-```none
-Install-PackageProvider NanoServerPackage
-```
-
-Una vez que haya instalado el proveedor del paquete, instale la característica de contenedor.
-
-```none
-Install-NanoServerPackage -Name Microsoft-NanoServer-Containers-Package
-```
-
-Deberá reiniciar el host de Nano Server después de instalar estas características de contenedor. 
-
-```none
-Restart-Computer
-```
-
-Tras la copia de seguridad, vuelva a establecer la conexión remota de PowerShell.
-
 ## Instalar Docker
 
-Para trabajar con contenedores de Windows es necesario el motor de Docker. Instale el motor de Docker siguiendo estos pasos.
+Para trabajar con contenedores de Windows es necesario Docker. Para instalar Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/oneget/oneget). El proveedor habilitará la característica de contenedores en la máquina e instalará Docker, lo que requerirá un reinicio. 
 
-Descargue el motor de Docker y el cliente como un archivo zip.
+Ejecute los comandos siguientes en su sesión de PowerShell remota.
+
+Primero instalaremos el módulo de PowerShell de OneGet.
 
 ```none
-Invoke-WebRequest "https://download.docker.com/components/engine/windows-server/cs-1.12/docker.zip" -OutFile "$env:TEMP\docker.zip" -UseBasicParsing
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 ```
 
-Expanda el archivo zip en Archivos de programa. El contenido del archivo ya está en el directorio de Docker.
+Después, usaremos OneGet para instalar la versión más reciente de Docker.
 
 ```none
-Expand-Archive -Path "$env:TEMP\docker.zip" -DestinationPath $env:ProgramFiles
+Install-Package -Name docker -ProviderName DockerMsftProvider
 ```
 
-Agregue el directorio de Docker a la ruta de acceso del sistema en Nano Server.
+Cuando finalice la instalación, reinicie el equipo.
 
 ```none
-# For quick use, does not require shell to be restarted.
-$env:path += “;C:\program files\docker”
-
-# For persistent use, will apply even after a reboot.
-setx PATH $env:path /M
-```
-
-Instale Docker como un servicio de Windows.
-
-```none
-dockerd --register-service
-```
-
-Inicie el servicio Docker.
-
-```none
-Start-Service Docker
+Restart-Computer -Force
 ```
 
 ## Instalar imágenes base del contenedor
@@ -233,6 +197,6 @@ Restart-Computer
 
 
 
-<!--HONumber=Sep16_HO5-->
+<!--HONumber=Oct16_HO2-->
 
 
