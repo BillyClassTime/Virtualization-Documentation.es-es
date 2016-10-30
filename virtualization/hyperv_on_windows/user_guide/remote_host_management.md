@@ -3,15 +3,14 @@ title: Administrar hosts remotos de Hyper-V con el Administrador de Hyper-V
 description: Administrar hosts remotos de Hyper-V con el Administrador de Hyper-V
 keywords: Windows 10, Hyper-V
 author: scooley
-manager: timlt
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: e0d957ebb953f1e5b3e56de9764c7c3e560024c1
-ms.openlocfilehash: 852800b19fb39737f0d7104eb2d50521b6cca982
+ms.sourcegitcommit: 906eba05c921757b9655505c3f419fcf003d5160
+ms.openlocfilehash: 9ae09f49af4a0d7a3dd91b739ec30d4989615799
 
 ---
 
@@ -71,7 +70,7 @@ Para agregar un host remoto de Hyper-V al Administrador de Hyper-V, seleccione *
 
 Para administrar los hosts remotos de Hyper-V, debe habilitar la administración remota en el equipo local y el host remoto.
 
-Puede hacerlo mediante `System Properties -> Remote Management Settings` o ejecutando el siguiente comando de PowerShell como administrador:  
+Puede hacerlo mediante `Server Manager -> Remote management` o ejecutando el siguiente comando de PowerShell como administrador: 
 
 ``` PowerShell
 Enable-PSRemoting
@@ -122,6 +121,6 @@ En el equipo de administración, ejecute lo siguiente como administrador:
 
 
 
-<!--HONumber=Sep16_HO3-->
+<!--HONumber=Oct16_HO4-->
 
 
