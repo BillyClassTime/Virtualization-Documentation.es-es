@@ -2809,7 +2809,8 @@
 * Archive Datetime: 2016-10-29 00:07:57
 * Handback File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/60e4c5111bbae01d932ad2feacd33ec509595423/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf)
 * Handback Datetime: 2016-11-02 12:02:13
-* Bilingual Error:[bilingual_uploading_failed](#71ec8f80e721a0c66dc8709473a427792df1cf24185bilingual_uploading_failed)
+* Bilingual File: [ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/60e4c5111bbae01d932ad2feacd33ec509595423/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf)
+* Bilingual Datetime: 2016-11-02 14:14:56
 * [Back to Top](#report-top)
 
 ##### <a name='a92ba96f26ae2881d2c6013e8b8dcf7bafe69a47186'></a> Source: [virtualization\hyperv_on_windows\reference\tlfs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ffdf89b0ae346197b9ae631ee5260e0565261c55/virtualization/hyperv_on_windows/reference/tlfs.md)

@@ -28002,18 +28002,10 @@
       "ArchiveFileCommit": "f5643357760c969d37f5d5d500dbf3090adcf7f7",
       "ArchiveFileDateTime": "2016-10-29T00:07:57.1352101Z",
       "ArchiveException": null,
-      "BilingualFilePath": null,
-      "BilingualFileCommit": null,
-      "BilingualDateTime": "2016-11-02T12:05:36.9822831Z",
-      "BilingualException": {
-        "internal_error_code": "bilingual_uploading_failed",
-        "internal_error_message": "Bilingual file: ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf with commit: 60e4c5111bbae01d932ad2feacd33ec509595423 failed.",
-        "internal_error_retriable": false,
-        "exception_message": "HTTP POST http://oltm.azurewebsites.net//trainxliff?sourceLocale=en-US&targetLocale=es-es&correlation=71ec8f80e721a0c66dc8709473a427792df1cf24&tenant=ol timed out after 10000 milliseconds.",
-        "exception_type": "System.Net.WebException",
-        "stack_trace": "   at Microsoft.OpenLocalization.RestClientCore.<ExecuteAsync>d__18.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\RestClient.cs:line 169\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliffInternal>d__6.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 57\r\n--- End of stack trace from previous location where exception was thrown ---\r\n   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   at Microsoft.OpenLocalization.Common.Bilingual.BilingualTrainer.<TrainXliff>d__7.MoveNext() in C:\\Jenkins\\workspace\\OpenLocalization-Prod\\src\\OpenLocalization.Common\\Bilingual\\BilingualTrainer.cs:line 85",
-        "extended_information": null
-      }
+      "BilingualFilePath": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\ic_info.98dd018260e2c766210a8b9aa82efa377f584781.es-es.xlf",
+      "BilingualFileCommit": "60e4c5111bbae01d932ad2feacd33ec509595423",
+      "BilingualDateTime": "2016-11-02T14:14:56.9884089Z",
+      "BilingualException": null
     },
     "a92ba96f26ae2881d2c6013e8b8dcf7bafe69a47": {
       "FileHash": "a92ba96f26ae2881d2c6013e8b8dcf7bafe69a47",
