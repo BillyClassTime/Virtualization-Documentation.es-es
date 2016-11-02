@@ -1,17 +1,16 @@
 ---
 title: "Exportar e importar máquinas virtuales"
 description: "Exportar e importar máquinas virtuales"
-keywords: windows 10, hyper-v
-author: neilpeterson
-manager: timlt
+keywords: Windows 10, Hyper-V
+author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 7fd996f5-1ea9-4b16-9776-85fb39a3aa34
 translationtype: Human Translation
-ms.sourcegitcommit: 8006ec4d71159113efce497d70ba591da2b84de9
-ms.openlocfilehash: e11c8d1a8fabc6e8282c9396a8efcbc448b9a6d4
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 620a2c38514488100bae4eb71d0683e3994801b4
 
 ---
 
@@ -37,7 +36,7 @@ Al crear una exportación de una máquina virtual, todos los archivos asociados 
 
 Cuando se haya completado la exportación, podrá ver todos los archivos exportados en la ubicación de exportación.
 
-### Uso de PowerShell
+### Con PowerShell
 
 Para exportar una máquina virtual con PowerShell, use el comando **Export-VM**. 
 
@@ -90,7 +89,7 @@ Para importar una máquina virtual, el asistente hace lo siguiente:
 5. Quita la copia del archivo de configuración. Cuando el asistente hace esto, la máquina virtual está lista para iniciarse.
 
 
-### Uso de PowerShell
+### Con PowerShell
 
 Para importar una máquina virtual con PowerShell, use el comando **Import-VM**.  Los comandos siguientes muestran una importación de cada uno de los tres tipos de importación mediante PowerShell.
 
@@ -116,6 +115,6 @@ Para obtener más información, vea [Import-VM](https://technet.microsoft.com/li
 
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 

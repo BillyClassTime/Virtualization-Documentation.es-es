@@ -1,17 +1,16 @@
 ---
 title: "Implementar una máquina virtual de Windows en Hyper-V en Windows 10"
 description: "Implementar una máquina virtual de Windows en Hyper-V en Windows 10"
-keywords: windows 10, hyper-v
-author: neilpeterson
-manager: timlt
+keywords: Windows 10, Hyper-V
+author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
 translationtype: Human Translation
-ms.sourcegitcommit: 4885ad982804d17c8b3643f8a855fb3f3f834505
-ms.openlocfilehash: 206521ae366d5e0f5f7ca2ca510736cc178557fe
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 2b644f56829d6f92822875e77ba53e5b68d2f1ef
 
 ---
 
@@ -110,6 +109,6 @@ Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y c
 [Hyper-V y Windows PowerShell](walkthrough_powershell.md)
 
 
-<!--HONumber=Jun16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 

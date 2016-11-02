@@ -2,16 +2,15 @@
 title: Optimizar Dockerfiles de Windows
 description: Optimizar Dockerfiles para contenedores de Windows.
 keywords: docker, contenedores
-author: neilpeterson
-manager: timlt
+author: PatrickLang
 ms.date: 05/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 translationtype: Human Translation
-ms.sourcegitcommit: f721639b1b10ad97cc469df413d457dbf8d13bbe
-ms.openlocfilehash: 59f096ce914e0f1cbee5678b7db980297ca89364
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 73c445a896e76d54e002184ae1235c4c5c38ad9d
 
 ---
 # Optimizar Dockerfiles de Windows
@@ -303,6 +302,6 @@ RUN powershell -Command \
 
 
 
-<!--HONumber=Sep16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 

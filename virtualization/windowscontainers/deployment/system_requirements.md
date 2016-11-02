@@ -2,16 +2,15 @@
 title: Requisitos de los contenedores de Windows
 description: Requisitos de los contenedores de Windows.
 keywords: metadatos, contenedores
-author: neilpeterson
-manager: timlt
+author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
 translationtype: Human Translation
-ms.sourcegitcommit: d4c453e800d4057b3ad0be06c28e7f23b81443f0
-ms.openlocfilehash: 008eff4731a8835b0b3f664edc9955f85c12a629
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: af8d8a05fc953dcc93672a0f936caca5e37f0de3
 
 ---
 
@@ -89,6 +88,6 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 A diferencia de los contenedores de Windows Server, en cuyo caso los contenedores y el host comparten el kernel, cada contenedor de Hyper-V usa su propia instancia del kernel de Windows.  Por este motivo, es posible que las versiones del host de contenedor y de la imagen de contenedor no coincidan.  En este momento, las compilaciones con un número de compilación igual o mayor que Windows Server 2016 GA (10.0.14393.206) pueden ejecutar las imágenes de Windows Server 2016 GA de Windows Server Core y de Nano Server en una configuración compatible, independientemente del número de revisión.  En respuesta a los comentarios de los clientes, en el futuro proporcionaremos instrucciones específicas sobre la distancia que puede separar a los números de compilación.  Es importante comprender que, para tener la funcionalidad completa, la confiabilidad y las garantías de seguridad que proporcionan las actualizaciones de Windows, es necesario mantener las versiones más recientes en todos los sistemas.  
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 

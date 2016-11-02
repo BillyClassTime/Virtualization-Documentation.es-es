@@ -2,16 +2,15 @@
 title: Contenedores de Windows en Windows Server
 description: "Inicio rápido de implementación de contenedores"
 keywords: docker, contenedores
-author: neilpeterson
-manager: timlt
+author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
 translationtype: Human Translation
-ms.sourcegitcommit: af648c1235ab9af181a88a65901401bfbd40656e
-ms.openlocfilehash: 791de65ac6e4222c4cae77fe9dd24f4e07e5a936
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 80a2efcb9fff58d357dc1630a335665fc91147cb
 
 ---
 
@@ -50,7 +49,35 @@ Cuando PowerShell le pregunte si se debe confiar en el origen del paquete "Docke
 Restart-Computer -Force
 ```
 
-## 2. Implementar el primer contenedor
+## 2. Instalar actualizaciones de Windows
+
+Para comprobar que su sistema de Windows Server esté actualizado, le recomendamos que instale actualizaciones de Windows ejecutando el siguiente comando:
+
+```none
+sconfig
+```
+
+Verá un menú de configuración basado en texto, donde puede elegir la opción 6 para descargar e instalar actualizaciones:
+
+```none
+===============================================================================
+                         Server Configuration
+===============================================================================
+
+1) Domain/Workgroup:                    Workgroup:  WORKGROUP
+2) Computer Name:                       WIN-HEFDK4V68M5
+3) Add Local Administrator
+4) Configure Remote Management          Enabled
+
+5) Windows Update Settings:             DownloadOnly
+6) Download and Install Updates
+7) Remote Desktop:                      Disabled
+...
+```
+
+Cuando se le solicite, elija la opción A descargar todas las actualizaciones.
+
+## 3. Implementar el primer contenedor
 
 Para este ejercicio, se descarga una imagen de ejemplo de .NET creada previamente desde el registro de Docker Hub y se implementa un contenedor simple que ejecuta una aplicación de .NET Hello World.  
 
@@ -113,6 +140,6 @@ Para obtener información más detallada sobre el comando Run de Docker, consult
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!--HONumber=Oct16_HO4-->
 
 
