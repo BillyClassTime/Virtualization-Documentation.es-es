@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 2d34e98c-6134-479b-8000-3eb360b8b8a3
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 7d7aee3d87237b93887ac7303c70cf6c9a02285d
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: c562e1a1370e9286680afa1b498d625195edebb2
 
 ---
 
@@ -18,7 +18,7 @@ ms.openlocfilehash: 7d7aee3d87237b93887ac7303c70cf6c9a02285d
 
 El Administrador de Hyper-V es una herramienta incluida de forma predeterminada para diagnosticar y administrar el host de Hyper-V local y un pequeño número de hosts remotos.  En este artículo se documentan los pasos de configuración para conectarse a los hosts de Hyper-V con el Administrador de Hyper-V en todas las configuraciones admitidas.
 
-> El Administrador de Hyper-V está disponible en **Programas y características** como **Herramientas de administración de Hyper-V** en [cualquier sistema operativo de Windows que incluya Hyper-V](../quick_start/walkthrough_compatibility.md#OperatingSystemRequirements).  No es necesario habilitar la plataforma de Hyper-V para administrar los hosts remotos.
+> El Administrador de Hyper-V está disponible en **Programas y características** como **Herramientas de administración de Hyper-V** en [cualquier sistema operativo de Windows que incluya Hyper-V](../quick_start/walkthrough_compatibility.md#operating-system-requirements).  No es necesario habilitar la plataforma de Hyper-V para administrar los hosts remotos.
 
 Para conectarse a un host de Hyper-V en el **Administrador de Hyper-V**, asegúrese de que se ha seleccionado Administrador de Hyper-V en el panel izquierdo y, luego, seleccione **Conectarse al servidor...** en el panel derecho.
 
@@ -121,6 +121,6 @@ En el equipo de administración, ejecute lo siguiente como administrador:
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 

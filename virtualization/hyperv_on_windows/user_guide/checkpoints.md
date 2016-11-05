@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: ed4a2cb6fb3cd4006a5085e4ce8e058a3f201e41
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: 4e887dc8c284dd189dc59a71aa9d22d6c8a231ea
 
 ---
 
@@ -62,7 +62,7 @@ Set-VM -Name <vmname> -CheckpointType ProductionOnly
 
 ## Creación de puntos de control
 
-Crea un punto de control del tipo configurado para la máquina virtual. Consulte la sección [Configuración del tipo de punto de control](checkpoints.md#changing-the-checkpoint-type-for-a-VM) anterior de este documento para obtener instrucciones sobre cómo cambiar este tipo.
+Crea un punto de control del tipo configurado para la máquina virtual. Consulte la sección [Configuración del tipo de punto de control](checkpoints.md#changing-the-checkpoint-type) anterior de este documento para obtener instrucciones sobre cómo cambiar este tipo.
 
 **Uso del Administrador de Hyper-V**
 
@@ -201,7 +201,7 @@ En este ejercicio se le guía a través de la creación y la aplicación de un p
 
 1. Inicie sesión en la máquina virtual y cree un archivo de texto en el escritorio.
 2. Abra el archivo con el Bloc de notas y escriba el texto "Esto es un punto de control estándar.". **No guarde el archivo ni cierre el Bloc de notas**.  
-3. Cambie el punto de control a estándar, consulte las instrucciones [aquí](checkpoints.md#changing-the-checkpoint-type-using-hyper-V-manager).
+3. Cambie el punto de control a estándar, consulte las instrucciones [aquí](checkpoints.md#changing-the-checkpoint-type).
 4. Cree un punto de control nuevo.
 
 <br />
@@ -249,6 +249,6 @@ Cuando se haya aplicado el punto de control de producción, observe que la máqu
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
