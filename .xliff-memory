@@ -458,7 +458,7 @@
       "ArchivedDateTime": "2016-11-05T00:08:37.4631764Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\71ce38a8d6cd75079558827c806fdbbc5a2bcfd2.114c17c2fe909ce25ea227f2488bddace9b17f48.xml",
       "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf",
-      "LocXliffCommit": "4dc38808b87d2b11c212f93fa58e02fbd1eeec70"
+      "LocXliffCommit": "73dfcb169c3b45919b5234cd2668db14f82cb3f5"
     },
     "virtualization\\windowscontainers\\docker\\configure_docker_daemon.md.a4f27b8ee00aa8249f747f31e80b2546ded00d1a.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\docker\\configure_docker_daemon.md",
@@ -797,8 +797,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-11-05T00:08:37.4475548Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\c562e1a1370e9286680afa1b498d625195edebb2.e8a400d8a859bfac4c57ea29e26a76fdb16e9489.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\remote_host_management.40d5636e508c5b95bb2917be75ca6b5aa426a915.es-es.xlf",
+      "LocXliffCommit": "73dfcb169c3b45919b5234cd2668db14f82cb3f5"
     },
     "virtualization\\hyperv_on_windows\\user_guide\\checkpoints.md.8d51291597c6bb814ef47edc4b3c35c1a9dd9a05.HT": {
       "SourceFilename": "virtualization\\hyperv_on_windows\\user_guide\\checkpoints.md",
@@ -807,8 +807,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-11-05T00:08:37.4631764Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\4e887dc8c284dd189dc59a71aa9d22d6c8a231ea.27b49e3c00f4de8a2ea0bd3ca64b8c091f964da2.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\checkpoints.fb864e32f956b43d9a6ce0ccc72ba67b60ea8362.es-es.xlf",
+      "LocXliffCommit": "73dfcb169c3b45919b5234cd2668db14f82cb3f5"
     },
     "virtualization\\windowscontainers\\quick_start\\quick_start_windows_server.md.674b38cfa2876545e9b61834f2c82fddea4714eb.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\quick_start\\quick_start_windows_server.md",
