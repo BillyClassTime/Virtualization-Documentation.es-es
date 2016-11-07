@@ -2,16 +2,15 @@
 title: "Configuración de Docker en Windows"
 description: "Configuración de Docker en Windows"
 keywords: docker, contenedores
-author: neilpeterson
-manager: timlt
+author: PatrickLang
 ms.date: 08/23/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 translationtype: Human Translation
-ms.sourcegitcommit: ea86e2dd88413569e4329ab27a8b6a4d3a7afca9
-ms.openlocfilehash: d2fe856b9d00c5f7ac33d683f1c2204dc06d4a11
+ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
+ms.openlocfilehash: 569b8861ca01ee8a0b794e01b0acb1a1c501fa55
 
 ---
 
@@ -114,6 +113,14 @@ Solo se necesitan agregar los cambios de configuración deseados al archivo de c
 }
 ```
 
+Del mismo modo, este ejemplo configura el demonio de Docker para mantener las imágenes y los contenedores en una ruta alternativa. Si no se especifica, el valor predeterminado es c:\programdata\docker.
+
+```none
+{    
+    "graph": "d:\\docker"
+}
+```
+
 De la misma forma, en esta muestra se configura el demonio de Docker para aceptar únicamente conexiones seguras a través del puerto 2376.
 
 ```none
@@ -180,6 +187,6 @@ Para obtener más información, consulte [Archivo de configuración de Windows e
 
 
 
-<!--HONumber=Oct16_HO3-->
+<!--HONumber=Oct16_HO4-->
 
 

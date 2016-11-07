@@ -10,22 +10,20 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 translationtype: Human Translation
-ms.sourcegitcommit: 7b5cf299109a967b7e6aac839476d95c625479cd
-ms.openlocfilehash: 2e26177f3e653e9102dc91070b987e28ef713bed
+ms.sourcegitcommit: f489d3e6f98fd77739a2016813506be6962b34d1
+ms.openlocfilehash: 499788666f306494c894b2e82f65ab68c9fc295a
 
 ---
 
 # Red de contenedores
 
-Los contenedores de Windows funcionan de forma similar a las máquinas virtuales en lo que respecta a las redes. Cada contenedor tiene un adaptador de red virtual, que está conectado a un conmutador virtual, a través del cual se reenvía el tráfico entrante y saliente. Para aplicar el aislamiento entre contenedores del mismo host, se crea un compartimento de red para cada Windows Server y contenedor de Hyper-V en el que esté instalado el adaptador de red para el contenedor. Los contenedores de Windows Server usan una vNIC de host para conectarse al conmutador virtual. Los contenedores de Hyper-V usan una NIC de máquina virtual sintética (no expuesta a la máquina virtual de utilidad) para conectarse al conmutador virtual.
+Los contenedores de Windows funcionan de forma similar a las máquinas virtuales en lo que respecta a las redes. Cada contenedor tiene un adaptador de red virtual (vNIC), que está conectado a un conmutador virtual (vSwitch), a través del cual se reenvía el tráfico de entrada y salida. Para aplicar el aislamiento entre contenedores del mismo host, se crea un compartimento de red para cada Windows Server y contenedor de Hyper-V en el que esté instalado el adaptador de red para el contenedor. Los contenedores de Windows Server usan una vNIC de host para conectarse al conmutador virtual. Los contenedores de Hyper-V usan una NIC de máquina virtual sintética (no expuesta a la máquina virtual de utilidad) para conectarse al conmutador virtual.
 
 Los contenedores de Windows admiten cuatro modos o controladores de red diferentes: *nat*, *transparent*, *l2bridge* y *l2tunnel*. En función de su infraestructura de red física y de sus requisitos de red de un solo host o de varios hosts, debe elegir el modo de red que mejor se adapte a sus necesidades. 
 
-El motor de Docker crea una red NAT de forma predeterminada cuando se ejecuta por primera vez el servicio dockerd. El prefijo IP interno predeterminado que se crea es 172.16.0.0/12. 
+El motor de Docker crea una red NAT de manera predeterminada cuando se ejecuta por primera vez el servicio dockerd. El prefijo IP interno predeterminado que se crea es 172.16.0.0/12. Los puntos de conexión del contenedor se adjuntarán de forma automática a esta red predeterminada y se les asignará una dirección IP desde su prefijo interno.
 
 > Nota: Si su dirección IP del host de contenedor está en este mismo prefijo, deberá cambiar el prefijo IP interno de NAT como se indica a continuación.
-
-Los puntos de conexión del contenedor se adjuntarán a esta red predeterminada y se les asignará una dirección IP desde el prefijo interno. Actualmente solo se admite una red NAT en Windows (aunque una [solicitud de incorporación de cambios](https://github.com/docker/docker/pull/25097) pendiente podría solucionar esta restricción). 
 
 Pueden crearse en el mismo host de contenedor redes adicionales mediante un controlador diferente (por ejemplo, transparent, l2bridge). En la tabla siguiente se muestra cómo se proporciona conectividad de red para las conexiones internas (de contenedor a contenedor) y externas para cada modo.
 
@@ -62,7 +60,7 @@ Pueden crearse en el mismo host de contenedor redes adicionales mediante un cont
 
 ### Red NAT (predeterminada)
 
-El motor de Docker de Windows crea una red "nat" predeterminada con el prefijo IP 172.16.0.0/12. Actualmente solo se permite una red NAT en un host de contenedor de Windows. Si un usuario quiere crear una red NAT con un prefijo IP específico, puede hacer una de estas dos cosas cambiando las opciones en el archivo daemon.json de configuración de docker (ubicado en C:\ProgramData\Docker\config\daemon.json; si no existe, créelo).
+El motor de Docker de Windows crea una red NAT predeterminada (que Docker denomina "nat") con el prefijo IP 172.16.0.0/12. Si un usuario quiere crear una red NAT con un prefijo IP específico, puede realizar una de estas dos acciones cambiando las opciones en el archivo daemon.json de configuración de Docker (ubicado en C:\ProgramData\Docker\config\daemon.json; si no existe, créelo).
  1. Usar la opción _"fixed-cidr": "< prefijo IP > / Mask"_, que creará la red NAT predeterminada con el prefijo IP y la máscara especificada.
  2. Usar la opción _"bridge": "none"_, que no creará una red predeterminada. El usuario puede crear una red definida por el usuario con cualquier controlador mediante el comando *docker network create -d<driver>*.
 
@@ -77,14 +75,14 @@ PS C:\> Get-ContainerNetwork | Remove-ContainerNetwork
 PS C:\> Start-Service docker
 ```
 
-Si el usuario agrega la opción "fixed-cidr" al archivo daemon.json, el motor de Docker creará una red NAT definida por el usuario con el prefijo IP personalizado y la máscara especificada. En cambio, si agregó la opción "bridge:none", tendrá que crear una red de forma manual.
+Si la opción "fixed-cidr" se agrega al archivo daemon.json, el motor de Docker creará una red NAT definida por el usuario con el prefijo IP personalizado y la máscara especificada. Si en su lugar se agrega la opción "bridge:none", la red debe crearse de forma manual.
 
 ```none
-# Create a user-defined nat network
+# Create a user-defined NAT network
 C:\> docker network create -d nat --subnet=192.168.1.0/24 --gateway=192.168.1.1 MyNatNetwork
 ```
 
-De forma predeterminada, los puntos de conexión de contenedor se conectarán a la red NAT predeterminada. Si no se ha creado la red NAT predeterminada (porque se ha especificado "bridge:none" en el archivo daemon.json) o si se requiere acceso a una red diferente definida por el usuario, los usuarios pueden especificar el parámetro *--network* con el comando de ejecución de Docker.
+De manera predeterminada, los puntos de conexión de contenedor se conectarán a la red "nat" predeterminada. Si no se ha creado la red "nat" (porque se ha especificado "bridge:none" en el archivo daemon.json) o si se requiere acceso a una red diferente definida por el usuario, los usuarios pueden especificar el parámetro *--network* con el comando de ejecución de Docker.
 
 ```none
 # Connect new container to the MyNatNetwork
@@ -99,11 +97,11 @@ Para tener acceso a las aplicaciones que se ejecutan dentro de un contenedor con
 # Creates a static mapping between port TCP:80 of the container host and TCP:80 of the container
 C:\> docker run -it -p 80:80 <image> <cmd>
 
-# Create a static mapping between port 8082 of the container host and port 80 of the container.
+# Creates a static mapping between port 8082 of the container host and port 80 of the container.
 C:\> docker run -it -p 8082:80 windowsservercore cmd
 ```
 
-También se admiten las asignaciones de puertos dinámicos mediante el parámetro -p o el comando EXPOSE en un archivo Dockerfile con el parámetro -P. Se seleccionará un puerto efímero aleatorio en el host de contenedor, que se puede inspeccionar al ejecutar Docker ps.
+También se admiten las asignaciones de puertos dinámicos mediante el parámetro -p o el comando EXPOSE en un archivo Dockerfile con el parámetro -P. Si no se especifica, se seleccionará un puerto efímero aleatorio en el host de contenedor, que se puede inspeccionar al ejecutar "docker ps".
 
 ```none
 C:\> docker run -itd -p 80 windowsservercore cmd
@@ -119,8 +117,8 @@ C:\> docker network
 > A partir de WS2016 TP5 y compilaciones de Windows Insider superiores a 14300, se creará automáticamente una regla de firewall para todas las asignaciones de puertos NAT. Esta regla de firewall será global para el host de contenedor y no estará localizada en un adaptador de red o punto de conexión de contenedor específico.
 
 La implementación de Windows NAT (WinNAT) tiene algunas brechas de funcionalidad que se comentan en la entrada de blog [WinNAT capabilities and limitations](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/) (Funcionalidades y limitaciones de WinNAT). 
- 1. Solo se admite una red NAT (un prefijo IP interno) por host de contenedor.
- 2. Solo se puede tener acceso a los extremos de conexión de contenedor desde el host de contenedor mediante el puerto y la dirección IP interna.
+ 1. Solo se admite un prefijo IP interno de NAT por host de contenedor; para definir "varias" redes NAT, se deben crear particiones del prefijo (consulte la sección "Varias redes NAT" de este documento).
+ 2. Los puntos de conexión de contenedor solo son accesibles desde el host de contenedor mediante los puertos y direcciones IP internos del contenedor (puede encontrar esta información mediante "docker network inspect <CONTAINER ID>").
 
 Se pueden crear redes adicionales mediante controladores diferentes. 
 
@@ -133,6 +131,7 @@ Para usar el modo de red transparente, cree una red de contenedor con el nombre 
 ```none
 C:\> docker network create -d transparent MyTransparentNetwork
 ```
+> Nota: Si se produce un error al crear la red transparente, es posible que haya un vSwitch externo en el sistema que no ha detectado Docker de forma automática y, por tanto, impide que la red transparente se enlace con el adaptador de red externo del host de contenedor. Consulte la siguiente sección, "Un vSwitch existente bloquea la creación de redes transparentes" en "Advertencias y problemas comunes" para obtener más información.
 
 Si el host de contenedor está virtualizado y quiere usar DHCP para la asignación de direcciones IP, debe habilitar MACAddressSpoofing en el adaptador de red de las máquinas virtuales. En caso contrario, el host de Hyper-V bloqueará el tráfico de red procedente de los contenedores en la máquina virtual con varias direcciones MAC.
 
@@ -216,10 +215,34 @@ C:\> docker network inspect <network name>
 ```
 
 ### Varias redes de contenedor
+ Actualmente solo se admite una red NAT en Windows (aunque una [solicitud de incorporación de cambios](https://github.com/docker/docker/pull/25097) pendiente podría solucionar esta restricción). 
 
 Pueden crearse varias redes de contenedor en un host de contenedor único, pero deben tenerse en cuenta las advertencias siguientes:
-* Solo se puede crear una red NAT por host contenedor.
+
 * Las redes que usen un vSwitch externo para conectividad (por ejemplo, transparente, puente de nivel 2, transparente de nivel 2) deben usar su propio adaptador de red.
+* Actualmente, la solución para crear varias redes NAT en un host de contenedor único es realizar particiones del prefijo interno de la red NAT existente. Consulte la siguiente sección "Varias redes NAT" para obtener más información.
+
+### Varias redes NAT
+Es posible definir varias redes NAT en un host de contenedor único al realizar particiones del prefijo interno de red NAT del host. 
+
+Las particiones de las nuevas redes NAT deben crearse en el prefijo de red NAT interno más grande. El prefijo puede encontrarse ejecutando el siguiente comando de PowerShell y al hacer referencia al campo "InternalIPInterfaceAddressPrefix".
+
+```none
+PS C:\> get-netnat
+```
+
+Por ejemplo, el prefijo interno de red NAT del host podría ser 172.16.0.0/12. En este caso, se puede usar Docker para crear redes NAT adicionales *siempre que estén en el prefijo 172.16.0.0/12.* Por ejemplo, se podrían crear dos redes NAT con los prefijos IP 172.16.0.0/16 (puerta de enlace, 172.16.0.1) y 172.17.0.0/16 (puerta de enlace, 172.17.0.1). 
+
+```none
+C:\> docker network create -d nat --subnet=172.16.0.0/16 --gateway=172.16.0.1 CustomNat1
+C:\> docker network create -d nat --subnet=172.17.0.0/16 --gateway=172.17.0.1 CustomNat2
+```
+
+Las redes recién creadas se pueden enumerar mediante:
+```none
+C:\> docker network ls
+```
+
 
 ### Selección de red
 
@@ -239,6 +262,39 @@ C:\> docker run -it --network=MyTransparentNet --ip=10.80.123.32 windowsserverco
 
 La asignación de dirección IP estática se lleva a cabo directamente en el adaptador de red del contenedor y solo debe realizarse cuando el contenedor se encuentre en estado detenido. No se admite el "agregado en caliente" de los adaptadores de red de contenedor ni los cambios en la pila de red mientras se esté ejecutando el contenedor.
 
+## Docker Compose y detección de servicios
+
+> Para obtener un ejemplo práctico de cómo se pueden usar Docker Compose y la detección de servicios para definir aplicaciones escaladas horizontalmente de varios servicios, visite [esta publicación](https://blogs.technet.microsoft.com/virtualization/2016/10/18/use-docker-compose-and-service-discovery-on-windows-to-scale-out-your-multi-service-container-application/) en nuestro [Blog Virtualization](https://blogs.technet.microsoft.com/virtualization/).
+
+### Docker Compose
+
+[Docker Compose](https://docs.docker.com/compose/overview/) puede usarse para definir y configurar redes de contenedor junto con los contenedores y servicios que usarán esas redes. La clave de Compose "networks" se usa como clave de nivel superior en la definición de las redes a las que se conectarán los contenedores. Por ejemplo, la siguiente sintaxis define la red NAT preexistente creada por Docker como la red "default" (predeterminada) para todos los contenedores y servicios definidos en un archivo determinado de Compose.
+
+```none
+networks:
+ default:
+  external:
+   name: "nat"
+```
+
+De forma similar, puede usarse la sintaxis siguiente para definir una red NAT personalizada.
+
+> Nota: La "red NAT personalizada" definida en el ejemplo siguiente se define como una partición del prefijo interno de NAT preexistente del host de contenedor. Para obtener más contexto, consulte la sección anterior "Varias redes NAT".
+
+```none
+networks:
+  default:
+    driver: nat
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.17.0.0/16
+```
+
+Para obtener más información sobre la definición y configuración de redes de contenedor mediante Docker Compose, consulte la [referencia del archivo de Compose](https://docs.docker.com/compose/compose-file/).
+
+### Detección de servicios
+La detección de servicios, que controla el registro de servicios y las asignaciones de nombre a IP (DNS) para contenedores y servicios, está integrada en Docker. Con la detección de servicios, todos los puntos de conexión de contenedor pueden detectarse entre ellos por nombre (ya sea por nombre del contenedor o nombre del servicio). Esto resulta especialmente útil en escenarios de escalado horizontal, en los que se usan varios puntos de conexión de contenedor para definir un servicio único. En tales casos, la detección de servicios facilita que un servicio se considere una entidad única, independientemente de cuántos contenedores se ejecuten en segundo plano. Para los servicios de varios contenedores, el tráfico de red de entrada se administra con un enfoque round-robin, mediante el que el equilibrio de carga DNS se usa para distribuir el tráfico de manera uniforme en todas las instancias de contenedor que implementan un servicio determinado.
 
 ## Advertencias y problemas comunes
 
@@ -246,12 +302,27 @@ La asignación de dirección IP estática se lleva a cabo directamente en el ada
 
 El host de contenedor requiere la creación de reglas de firewall específicas para habilitar ICMP (Ping) y DHCP. Los contenedores de Windows Server requieren que ICMP y DHCP hagan ping entre dos contenedores del mismo host y que reciban direcciones IP asignadas dinámicamente mediante DHCP. En TP5, estas reglas se crearán mediante el script Install-ContainerHost.ps1. En versiones posteriores a TP5, estas reglas se crearán automáticamente. Todas las reglas de firewall correspondientes a las reglas de reenvío de puerto NAT se crean automáticamente y se limpian cuando se detiene el contenedor.
 
+### Un vSwitch existente bloquea la creación de redes transparentes
+
+Al crear una red transparente, Docker crea un vSwitch externo para la red y después intenta enlazar el conmutador a un adaptador de red (externo); el adaptador podría ser un adaptador de red de máquina virtual o el adaptador de red físico. Si ya ha creado un vSwitch en el host de contenedor *y está visible para Docker*, el motor de Docker de Windows usará ese conmutador en lugar de crear uno nuevo. En cambio, si el vSwitch que se ha creado fuera de banda (es decir, se ha creado en el host de contenedor mediante el Administrador de Hyper-V o PowerShell) aún no está visible para Docker, el motor de Docker de Windows intentará crear un vSwitch nuevo y después no podrá conectar el nuevo conmutador con el adaptador de red externo del host de contenedor (porque el adaptador de red ya estará conectado al conmutador que se ha creado fuera de banda).
+
+Por ejemplo, este problema podría aparecer si ha creado un vSwitch nuevo en el host mientras se estaba ejecutando el servicio Docker y después intenta crear una red transparente. En este caso, Docker no reconocería el conmutador que ha creado y crearía un vSwitch nuevo para la red transparente.
+
+Hay tres formas de resolver este problema:
+
+* Por supuesto, puede eliminar el vSwitch que se ha creado fuera de banda, lo que permitirá a Docker crear un vSwitch nuevo y conectarlo al adaptador de red de host sin ningún problema. Antes de elegir este enfoque, asegúrese de que ningún otro servicio (por ejemplo, Hyper-V) usa el vSwitch fuera de banda.
+* Como alternativa, si decide usar un vSwitch externo que se ha creado fuera de banda, reinicie los servicios Docker y SNP para que *el conmutador esté visible para Docker.*
+```none
+PS C:\> restart-service hns
+PS C:\> restart-service docker
+```
+* Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). La opción "-o" se describe con más detalle más adelante, en la sección [Red transparente](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/management/container_networking#transparent-network) de este documento.
+
 ### Características no admitidas
 
 En la actualidad no se admiten las siguientes características de red a través de la CLI de Docker:
- * vinculación de contenedores (por ejemplo, --link)
- * resolución de IP basada en nombres o servicios para los contenedores. _Esto se admitirá pronto con una actualización de servicios_
  * controlador de red superpuesta predeterminada
+ * vinculación de contenedores (por ejemplo, --link)
 
 En este momento, no se admiten en Windows Docker las siguientes opciones de red:
  * --add-host
@@ -264,33 +335,8 @@ En este momento, no se admiten en Windows Docker las siguientes opciones de red:
  * --internal
  * --ip-range
 
- > Hay un problema conocido en Windows Server 2016 Technical Preview 5 y en las compilaciones recientes no finales de Windows Insider Preview (WIP) donde, después de la actualización a una nueva compilación da como resultado una red de contenedor duplicada (es decir, "perdida") y un conmutador virtual. Para solucionar este problema, ejecute el script siguiente.
-```none
-$KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
-$keys = get-childitem $KeyPath
-foreach($key in $keys)
-{
-   if ($key.GetValue("FriendlyName") -eq 'nat')
-   {
-      $newKeyPath = $KeyPath+"\"+$key.PSChildName
-      Remove-Item -Path $newKeyPath -Recurse
-   }
-}
-remove-netnat -Confirm:$false
-Get-ContainerNetwork | Remove-ContainerNetwork
-Get-VmSwitch -Name nat | Remove-VmSwitch # Note: failure is expected
-Stop-Service docker
-Set-Service docker -StartupType Disabled
-```
-> Reinicie el host y ejecute los pasos restantes:
-```none
-Get-NetNat | Remove-NetNat -Confirm $false
-Set-Service docker -StartupType automatic
-Start-Service docker 
-```
 
 
-
-<!--HONumber=Aug16_HO4-->
+<!--HONumber=Oct16_HO4-->
 
 
