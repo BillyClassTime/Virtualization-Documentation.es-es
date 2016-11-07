@@ -9,8 +9,8 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 16624e181bec81d90c960df30e89f25eab23f7ea
+ms.sourcegitcommit: 8f08c85921b9d41f10f3b8cff5e4bafe945bd4af
+ms.openlocfilehash: 807043a744c4735158720371ec3afb22ebe7fc24
 
 ---
 
@@ -21,7 +21,7 @@ Puede usar PowerShell Direct para ejecutar PowerShell arbitrario en una máquina
 **Formas de ejecutar PowerShell Direct:**  
 * Como una sesión interactiva: [haga clic aquí](vmsession.md#create-and-exit-an-interactive-powershell-session) para crear una sesión interactiva de PowerShell con Enter-PSSession y luego cerrarla.
 * Como una sesión de un solo uso para ejecutar un único comando o script: [haga clic aquí](vmsession.md#run-a-script-or-command-with-invoke-command) para ejecutar un script o comando mediante Invoke-Command.
-* Como una sesión persistente (compilación 14280 y posteriores): [haga clic aquí](vmsession.md#copy-files-with-New-PSSession-and-Copy-Item) para crear una sesión persistente con New-PSSession.  
+* Como una sesión persistente (compilación 14280 y posteriores): [haga clic aquí](vmsession.md#copy-files-with-new-pssession-and-copy-item) para crear una sesión persistente con New-PSSession.  
 Luego copie un archivo en la máquina virtual y desde ella mediante Copy-Item y desconecte con Remove-PSSession.
 
 ## Requisitos
@@ -280,6 +280,6 @@ Consulte los [fragmentos de código de PowerShell Direct](../develop/powershell_
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
