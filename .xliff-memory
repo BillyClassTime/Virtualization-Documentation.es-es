@@ -827,8 +827,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-11-05T00:08:37.4631764Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\2324054dcaf04999c572e04c30a373d2f5a98e9d.440a5fe9ad7391ff507947f58db8322c55646ea2.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\TOC.13173dbdc376543cb6eb74ef16484f39c0ef0fdb.es-es.xlf",
+      "LocXliffCommit": "4d72873930e64c060a281e37ee97e41974e8da57"
     },
     "virtualization\\windowscontainers\\management\\manage_serviceaccounts.md.0d4da5fca68d10fa43e3abbea75a56b38ca16ccb.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\management\\manage_serviceaccounts.md",
@@ -837,8 +837,8 @@
       "IsArchived": true,
       "ArchivedDateTime": "2016-11-05T00:08:37.4631764Z",
       "SkeletonFile": "ol-xliffcache\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\00a43f8d4d27327c61e318f3a915047106ad2aca.66b75dd6fb940ace66b629227ffa6d61a5de04c6.xml",
-      "LocXliff": null,
-      "LocXliffCommit": null
+      "LocXliff": "ol-handback\\Microsoft\\Virtualization-Documentation-Private.es-es\\live\\manage_serviceaccounts.54bcfc8aa29ac0c07540225468870ddb0ba3481f.es-es.xlf",
+      "LocXliffCommit": "4d72873930e64c060a281e37ee97e41974e8da57"
     },
     "virtualization\\windowscontainers\\docker\\manage_windows_dockerfile.md.f0a09709acca9c20d726fec017f505462e099fce.HT": {
       "SourceFilename": "virtualization\\windowscontainers\\docker\\manage_windows_dockerfile.md",
