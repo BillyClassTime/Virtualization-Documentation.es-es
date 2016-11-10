@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 90e32caabde1afafbd8170db77c6e84696395870
+ms.sourcegitcommit: 2ab9a4b09a2db72e5e2be71ced5d5400761a5ad8
+ms.openlocfilehash: b084bf179d9360e4a72e8e88b4fec80eafb2906c
 
 ---
 
@@ -26,7 +26,7 @@ Los contenedores de Windows Server son un método ligero de virtualización del 
 
 Puede pensar en un contenedor de Hyper-V como un contenedor de Windows Server que se ejecuta dentro de una partición de Hyper-V.
 
-Los contenedores de Hyper-V ofrecen una opción de implementación adicional entre el contenedor de Windows Server de gran eficiencia y alta densidad y la máquina virtual aislada de Hyper-V virtualizada por hardware. En entornos donde haya aplicaciones de diferentes límites de confianza en el mismo host, puede requerirse aislamiento adicional. Los contenedores de Hyper-V ofrecerán mayor aislamiento mediante una virtualización optimizada y el sistema operativo Windows Server que separa los contenedores entre sí y del sistema operativo host. Las dos opciones de implementación de contenedor usan las mismas API de administración, herramientas y formatos de imagen, de forma que los clientes pueden simplemente elegir en tiempo de implementación el modo de implementación que mejor se adapte sus requisitos.
+Los contenedores de Hyper-V ofrecen una opción de implementación adicional entre el contenedor de Windows Server de gran eficiencia y alta densidad y la máquina virtual aislada de Hyper-V virtualizada por hardware. En entornos donde se ejecuten aplicaciones de diferentes límites de confianza en el mismo host, puede requerirse aislamiento adicional. Los contenedores de Hyper-V ofrecerán mayor aislamiento mediante una virtualización optimizada y el sistema operativo Windows Server que separa los contenedores entre sí y del sistema operativo host. Ambas opciones de implementación de contenedor usan las mismas API de administración, herramientas y formatos de imagen. Durante la implementación, los clientes pueden elegir simplemente qué modo de implementación se ajusta mejor a sus requisitos.
 
 **¿Cuál es la diferencia entre los contenedores de Windows Server y Linux?**
 
@@ -35,7 +35,7 @@ Cuando un cliente utiliza contenedores de Windows Server, puede integrarlos con 
 
 **Como desarrollador, ¿tengo que volver a escribir la aplicación para cada tipo de contenedor?**
 
-No, las imágenes de contenedores de Windows son comunes para todos los contenedores de Windows Server y de Hyper-V. La elección del tipo de contenedor se realiza cuando se inicia el contenedor. Desde la perspectiva del desarrollador, los contenedores de Windows Server y Hyper-V son dos versiones de lo mismo.  Ofrecen la misma experiencia de desarrollo, programación y administración, son abiertos y extensibles e incluirán el mismo nivel de integración y compatibilidad a través de Docker.
+No, las imágenes de contenedores de Windows son comunes para todos los contenedores de Windows Server y de Hyper-V. La elección del tipo de contenedor se realiza cuando se inicia el contenedor. Desde la perspectiva del desarrollador, los contenedores de Windows Server y Hyper-V son dos versiones de lo mismo. Ofrecen la misma experiencia de desarrollo, programación y administración, son abiertos y extensibles e incluirán el mismo nivel de integración y compatibilidad a través de Docker.
 
 Un desarrollador puede crear una imagen de contenedor con un contenedor de Windows Server e implementarla como un contenedor de Hyper-V o viceversa, sin ningún cambio aparte de especificar la marca de tiempo de ejecución adecuada.
 
@@ -43,7 +43,7 @@ Los contenedores de Windows Server ofrecerán mayor densidad y rendimiento (por 
 
 **¿Son un complemento los contenedores de Hyper-V o Windows Server, o bien se integrarán dentro de Windows Server?**
 
-Las capacidades de contenedor se integrarán en Windows Server 2016. Permanezca atento para más información cuando se acerque la fecha de disponibilidad general.  
+Las capacidades de contenedor están integradas en Windows Server 2016.  
 
 **¿Cuál es la relación entre los contenedores de Windows Server y Drawbridge?**
 
@@ -79,6 +79,6 @@ Para obtener más información, consulte la entrada de blog [New Windows Server 
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 

@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 6603289599e7ca51558d54f35ab809528f53bcd7
+ms.sourcegitcommit: 31515396358c124212b53540af8a0dcdad3580e4
+ms.openlocfilehash: 20dcc6d263488673bf0a025058c3dee8d30168a2
 
 ---
 
@@ -24,7 +24,7 @@ El motor de Docker incluye herramientas para automatizar la creación de imágen
 
 Los componentes de Docker que controlan esta automatización son el archivo Dockerfile y el comando `docker build`.
 
-- **Dockerfile**: archivo de texto que contiene la instrucción necesaria para crear una nueva imagen del contenedor. Estas instrucciones incluyen la identificación de una imagen existente que se usará como base, los comandos que se ejecutarán durante el proceso de creación de la imagen y un comando que se ejecutará cuando se implementen instancias nuevas de la imagen del contenedor.
+- **Dockerfile**: archivo de texto que contiene las instrucciones necesarias para crear una nueva imagen del contenedor. Estas instrucciones incluyen la identificación de una imagen existente que se usará como base, los comandos que se ejecutarán durante el proceso de creación de la imagen y un comando que se ejecutará cuando se implementen instancias nuevas de la imagen del contenedor.
 - **Docker build**: comando del motor de Docker que consume un archivo Dockerfile y desencadena el proceso de creación de la imagen.
 
 En este documento se presenta el uso de un archivo Dockerfile con contenedores de Windows, se explica la sintaxis y se describen las instrucciones Dockerfile más usadas. 
@@ -43,7 +43,7 @@ En su forma más básica, un archivo Dockerfile puede ser muy simple. En el ejem
 # Sample Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
-FROM windowsservercore
+FROM microsoft/windowsservercore
 
 # Metadata indicating an image maintainer.
 MAINTAINER jshelton@contoso.com
@@ -51,7 +51,7 @@ MAINTAINER jshelton@contoso.com
 # Uses dism.exe to install the IIS role.
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 
-# Creates an html file and adds content to this file.
+# Creates an HTML file and adds content to this file.
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 
 # Sets a command or process that will run each time a container is run from the new image.
@@ -112,7 +112,7 @@ FROM windowsservercore
 RUN ["powershell", "New-Item", "c:/test"]
 ```
 
-Si se examina la imagen resultante, se observa que el comando que se ejecutó es `powershell new-item c:/test`.
+Si se examina la imagen resultante, se observa que el comando que se ejecutó es `powershell New-Item c:/test`.
 
 ```none
 docker history doc-exe-method
@@ -126,16 +126,16 @@ Por otro lado, en el ejemplo siguiente se ejecuta la misma operación, pero se u
 ```none
 FROM windowsservercore
 
-RUN powershell new-item c:\test
+RUN powershell New-Item c:\test
 ```
 
-Esto tiene como resultado una instrucción RUN de `cmd /S /C powershell new-item c:\test`. 
+Esto tiene como resultado una instrucción RUN de `cmd /S /C powershell New-Item c:\test`. 
 
 ```none
 docker history doc-shell-method
 
 IMAGE               CREATED             CREATED BY                              SIZE                COMMENT
-062a543374fc        19 seconds ago      cmd /S /C powershell new-item c:\test   30.76 MB
+062a543374fc        19 seconds ago      cmd /S /C powershell New-Item c:\test   30.76 MB
 ```
 
 **Consideraciones sobre Windows**
@@ -155,10 +155,10 @@ En este ejemplo se usa DISM para instalar IIS en la imagen del contenedor.
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 ```
 
-En este ejemplo se instala el paquete redistribuible de Visual Studio. Tenga en cuenta aquí que `start-process` y el parámetro `-wait` se utilizan para ejecutar el programa de instalación. Esto garantizará que la instalación se completará antes de pasar al siguiente paso en el Dockerfile.
+En este ejemplo se instala el paquete redistribuible de Visual Studio. Tenga en cuenta aquí que `Start-Process` y el parámetro `-Wait` se utilizan para ejecutar el programa de instalación. Esto garantizará que la instalación se completará antes de pasar al siguiente paso en el Dockerfile.
 
 ```none
-RUN start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
+RUN Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
 ``` 
 
 Para obtener información detallada sobre la instrucción RUN, consulte la [referencia sobre RUN en Docker.com]( https://docs.docker.com/engine/reference/builder/#run). 
@@ -266,7 +266,7 @@ Para obtener información detallada sobre la instrucción `ADD`, consulte la [re
 
 ### WORKDIR
 
-La instrucción `WORKDIR` establece un directorio de trabajo para otras instrucciones Dockerfile, como `RUN` y `CMD`, y también el directorio de trabajo para ejecutar instancias de la imagen del contenedor.
+La instrucción `WORKDIR` establece un directorio de trabajo para otras instrucciones de Dockerfile, como `RUN` y `CMD`, y también el directorio de trabajo para ejecutar instancias de la imagen del contenedor.
 
 **Formato**
 
@@ -481,6 +481,6 @@ windowsservercore   latest              6801d964fda5        4 months ago        
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO1-->
 
 
