@@ -15,6 +15,7 @@
 ## [Host de contenedor: Windows Server](deployment/deployment.md)
 ## [Host de contenedor: Nano Server](deployment/deployment_nano.md)
 ## [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
+## [Cuentas del servicio de Active Directory](management/manage_serviceaccounts.md)
 
 # Administración de Docker en Windows
 ## [Docker Engine en Windows](docker/configure_docker_daemon.md)
