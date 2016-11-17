@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: 34ab361ea415ab2d8d5133927beafc7911f1aaf1
+ms.sourcegitcommit: b7cd9b43f001fe8625b0c4ea8cc507c8f11de7ef
+ms.openlocfilehash: 1b57ad289368fb7d5f628e605cfc320748854c30
 
 ---
 
@@ -31,7 +31,9 @@ Este inicio rápido es específico de los contenedores de Hyper-V en Windows 10.
 
 ## 1. Instalar la característica de contenedor
 
-La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell con privilegios elevados.
+La característica de contenedor debe habilitarse antes de trabajar con contenedores de Windows. Para ello, ejecute el comando siguiente en una sesión de PowerShell **con privilegios elevados**.
+
+Si recibe un error que dice que `Enable-WindowsOptionalFeature` no existe, compruebe que está ejecutando PowerShell como administrador.
 
 ```none
 Enable-WindowsOptionalFeature -Online -FeatureName containers -All
@@ -167,6 +169,6 @@ Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en l
 
 
 
-<!--HONumber=Oct16_HO4-->
+<!--HONumber=Nov16_HO2-->
 
 
