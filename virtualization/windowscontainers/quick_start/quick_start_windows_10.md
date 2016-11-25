@@ -9,8 +9,8 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 translationtype: Human Translation
-ms.sourcegitcommit: b7cd9b43f001fe8625b0c4ea8cc507c8f11de7ef
-ms.openlocfilehash: 1b57ad289368fb7d5f628e605cfc320748854c30
+ms.sourcegitcommit: 9b99982abfbbda12758bb1c922ed1bd431ecca20
+ms.openlocfilehash: c9f3a7669ae82e0b3a91956336d67225687c715b
 
 ---
 
@@ -116,7 +116,9 @@ Para obtener información detallada sobre las imágenes de contenedor de Windows
 
 ## 4. Implementar el primer contenedor
 
-En este ejemplo simple, se va a crear e implementar una imagen de contenedor "Hola a todos". Para una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados.
+En este ejemplo simple, se va a crear e implementar una imagen de contenedor "Hola a todos". Para lograr una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados o en PowerShell.
+
+> Windows PowerShell ISE no funciona en sesiones interactivas con contenedores. Aunque el contenedor se ejecuta, parece que se cuelga.
 
 En primer lugar, inicie un contenedor con una sesión interactiva desde la imagen `nanoserver`. Una vez que se ha iniciado el contenedor, aparecerá un shell de comandos desde dentro del mismo.  
 
