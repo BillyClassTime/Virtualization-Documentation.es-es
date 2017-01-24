@@ -1,5 +1,4 @@
-# Acerca de los contenedores de Windows
-## [Introducción a los contenedores de Windows](about/about_overview.md)
+# [Acerca de los contenedores de Windows](about/index.md)
 
 # Inicio rápido de Windows Server
 ## [Paso 1: Conceptos](quick_start/quick_start.md)
@@ -42,6 +41,6 @@
 # [CLUF de la imagen de sistema operativo del contenedor](Images_EULA.md)
 
 
-<!--HONumber=Nov16_HO1-->
+<!--HONumber=Nov16_HO3-->
 
 
