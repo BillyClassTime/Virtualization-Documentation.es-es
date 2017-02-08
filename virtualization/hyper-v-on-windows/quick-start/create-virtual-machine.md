@@ -23,7 +23,7 @@ Antes de comenzar este ejercicio, necesitará un archivo .iso del sistema operat
 ## Crear una máquina virtual con el Administrador de Hyper-V
 En estos pasos se describe cómo se crea manualmente una máquina virtual y se implementa un sistema operativo en esta máquina virtual.
 
-1. En el Administrador de Hyper-V, haga clic en **Acción** > **Nueva** > ** Máquina Virtual** para que se abra el Asistente para nueva máquina virtual.
+1. En el Administrador de Hyper-V, haga clic en **Acción** > **Nueva** > **Máquina Virtual** para que se abra el Asistente para nueva máquina virtual.
 
 2. Revise el contenido de "Antes de empezar" y haga clic en **Siguiente**. 
 
