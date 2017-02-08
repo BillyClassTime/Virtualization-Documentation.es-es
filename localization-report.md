@@ -2429,8 +2429,8 @@
 * Handback File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/97a378209c1a03e1d2f24f0bd500aba03bed6193/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
 * Handback Datetime: 2017-02-08 11:31:51
 * Handback Name: 
-* Bilingual File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
-* Bilingual Datetime: 2017-01-24 13:22:10
+* Bilingual File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/97a378209c1a03e1d2f24f0bd500aba03bed6193/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
+* Bilingual Datetime: 2017-02-08 11:32:43
 * [Back to Top](#report-top)
 
 ##### <a name='c87e964aac32183eddf000d84d96ffa1122075f7120'></a> Source: [virtualization\hyper-v-on-windows\quick-start\enable-hyper-v.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/2cf6d04c4a8de0148a2f981d21bec72cff23f6e8/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)
