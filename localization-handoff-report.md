@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\manage-containers\swarm-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d08c7dd678d009e69fd0f25bf6a54c920071ea79/virtualization/windowscontainers/manage-containers/swarm-mode.md) | HandedOffSuccess | [Details](#63ff96f69964a8689332e9da78c048d04870e569299)
+ [virtualization\windowscontainers\manage-containers\swarm-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/493ea8d5ed16281d603ef46dee73c933fa431c96/virtualization/windowscontainers/manage-containers/swarm-mode.md) | HandedOffSuccess | [Details](#9ed584e09fc94c183675809abd18703ae28a16d2299)
 
 ## Item Details
-##### <a name='63ff96f69964a8689332e9da78c048d04870e569299'></a> Source: [virtualization\windowscontainers\manage-containers\swarm-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/d08c7dd678d009e69fd0f25bf6a54c920071ea79/virtualization/windowscontainers/manage-containers/swarm-mode.md)
+##### <a name='9ed584e09fc94c183675809abd18703ae28a16d2299'></a> Source: [virtualization\windowscontainers\manage-containers\swarm-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/493ea8d5ed16281d603ef46dee73c933fa431c96/virtualization/windowscontainers/manage-containers/swarm-mode.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [swarm-mode.c9f6182916115e0571bb233ed668a7a7b9ff8d55.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/9722fcc3b82daf008c9206347f3f5c8603e8b7b6/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/swarm-mode.c9f6182916115e0571bb233ed668a7a7b9ff8d55.es-es.xlf)
-* Handoff Datetime: 2017-02-10 02:35:00
+* Handoff File: [swarm-mode.c9f6182916115e0571bb233ed668a7a7b9ff8d55.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/1bd0bc8797c99fdfdb04cb8516af8d0c6145e772/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/swarm-mode.c9f6182916115e0571bb233ed668a7a7b9ff8d55.es-es.xlf)
+* Handoff Datetime: 2017-02-10 23:32:15
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
