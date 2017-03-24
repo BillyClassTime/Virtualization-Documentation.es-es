@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
 translationtype: Human Translation
-ms.sourcegitcommit: b721971f1ba0ab5369dc8b0917f57dfe187a618c
-ms.openlocfilehash: 81f84901bdbd9764db8d73b8e01527f49beeb774
+ms.sourcegitcommit: ff1ef85258a31a5c5a2a065b65019e39cab93125
+ms.openlocfilehash: b6c25285c3cee3a863bef40c34a1cf13b66b42fb
+ms.lasthandoff: 02/22/2017
 
 ---
 
@@ -38,15 +39,14 @@ Esta página contiene vínculos a los vídeos y blogs creados por miembros o la 
 
 [Containerize Windows workloads with Image2Docker](https://blog.docker.com/2016/10/containerize-windows-workloads-image2docker/) (Contenerización de cargas de trabajo de Windows con Image2Docker): Mano Marks
 
-[Usa Docker Compose and Service Discovery on Windows to scale-out your multi-service container application](https://blogs.technet.microsoft.com/virtualization/2016/10/18/use-docker-compose-and-service-discovery-on-windows-to-scale-out-your-multi-service-container-application/) (Uso del compositor de Docker y la detección de servicios en Windows para escalar horizontalmente la aplicación del contenedor multiservicio: Kallie Bracken y Jason Messer).
+[Use Docker Compose and Service Discovery on Windows to scale-out your multi-service container application](https://blogs.technet.microsoft.com/virtualization/2016/10/18/use-docker-compose-and-service-discovery-on-windows-to-scale-out-your-multi-service-container-application/) (Uso del compositor de Docker y la detección de servicios en Windows para escalar horizontalmente la aplicación del contenedor multiservicio): Kallie Bracken y Jason Messer)
 
-[Ejecución de Neo4j en contenedores de Windows](http://glennsarti.github.io/blog/neo4j-nano-containers) - Glenn Sarti
+[PowerShell Desired State Configuration in Windows Containers using Docker](http://dille.name/blog/2016/06/17/powershell-desired-state-configuration-psdsc-in-windows-containers-using-docker/) (La configuración deseada de estado de PowerShell en contenedores de Windows con Docker): Nicholas Dille
+
+[Running Neo4j in Windows Containers](http://glennsarti.github.io/blog/neo4j-nano-containers) (Ejecución de Neo4j en contenedores de Windows): Glenn Sarti
 
 ## Configuración y administración
 [How to protect a Windows 2016 Docker engine with TLS](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) (Cómo proteger un motor de Docker de Windows 2016 con TLS): Stefan Scherer
 
-
-
-<!--HONumber=Dec16_HO3-->
-
+[Windows #Container Performance of Layers](http://dille.name/blog/2017/01/13/windows-container-performance-of-layers/) (Rendimiento de las capas de contenedores de Windows): Nicholas Dille
 

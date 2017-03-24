@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
 translationtype: Human Translation
-ms.sourcegitcommit: 2cf6d04c4a8de0148a2f981d21bec72cff23f6e8
-ms.openlocfilehash: 4e758b9ca6b318930e397685097a7769a9600099
+ms.sourcegitcommit: 57c69e8d19a9b87e230b760eb86b7b6b701ff983
+ms.openlocfilehash: 235d804310cac38a4628bc2d931371d390e2d991
+ms.lasthandoff: 02/16/2017
 
 ---
 
@@ -24,10 +25,10 @@ Esta guía le orientará a lo largo de:
 * la confirmación de que la máquina virtual está conectada correctamente
 
 Requisitos:
-* Compilación 14295 o posterior de Windows
-* Que el rol de Hyper-V esté habilitado (instrucciones [aquí](../quick-start/enable-hyper-v.md))
+* Actualización de aniversario de Windows 10 o posterior
+* Hyper-V debe estar habilitado (instrucciones [aquí](../quick-start/enable-hyper-v.md))
 
-> **Nota:** Actualmente, Hyper-V solo permite crear una red NAT. Para obtener más detalles sobre la implementación de Windows NAT (WinNAT), sus capacidades y limitaciones, consulte la entrada del blog [Capacidades y limitaciones de WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/).
+> **Nota:** Actualmente, se puede crear una red NAT por cada host. Para obtener más detalles sobre la implementación de Windows NAT (WinNAT), sus capacidades y sus limitaciones, consulte la entrada del blog [WinNAT capabilities and limitations](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/) (Capacidades y limitaciones de WinNAT).
 
 ## Información general sobre NAT
 NAT proporciona a una máquina virtual acceso a los recursos de red con la dirección IP y un puerto del equipo host a través de un conmutador virtual de Hyper-V.
@@ -239,8 +240,8 @@ PS>    }
 PS> }
 PS> remove-netnat -Confirm:$false
 PS> Get-ContainerNetwork | Remove-ContainerNetwork
-PS> Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
-PS> Stop-Service docker
+PS>    Get-VmSwitch -Name nat | Remove-VmSwitch (_failure is expected_)
+PS>    Stop-Service docker
 PS> Set-Service docker -StartupType Disabled
 Reboot Host
 PS> Get-NetNat | Remove-NetNat
@@ -252,9 +253,4 @@ Consulte esta [guía de configuración para varias aplicaciones que usan la mism
 
 ## Referencias
 Obtenga más información sobre [redes NAT](https://en.wikipedia.org/wiki/Network_address_translation)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

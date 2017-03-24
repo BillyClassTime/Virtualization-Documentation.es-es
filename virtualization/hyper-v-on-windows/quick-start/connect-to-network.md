@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
 translationtype: Human Translation
-ms.sourcegitcommit: 2cf6d04c4a8de0148a2f981d21bec72cff23f6e8
-ms.openlocfilehash: 8cba7f02a0633b50d239a414d408cef81bea9c6b
+ms.sourcegitcommit: f6ff0ec825091ad30016be958ff7f55ff6a907ed
+ms.openlocfilehash: 67513f6ee7d990f4d9086dfd63fb719374377b1f
+ms.lasthandoff: 03/01/2017
 
 ---
 
@@ -30,27 +31,29 @@ Este ejercicio te guiará en el proceso de la creación de un conmutador virtual
 1. Abre el Administrador Hyper-V.  Una forma rápida de hacerlo es presionando el botón Windows y escribiendo a continuación "administrador Hyper-V".  
 Si la búsqueda no encuentra el administrador Hyper-V, significa que ni Hyper-V ni las herramientas de administración de Hyper-V están habilitadas.  Consulta las instrucciones para [habilitar Hyper-V](enable-hyper-v.md).
 
-2. En el Administrador Hyper-V, selecciona **Administrador de conmutadores virtuales...** desde el menú "Acciones" situado en la parte derecha.
+2. Selecciona el servidor en el panel izquierdo o haz clic en "Conectar al servidor..." en el panel derecho.
 
-3. En la sección "Conmutadores virtuales", selecciona **Nuevo conmutador de red virtual**.
+3. En el Administrador Hyper-V, selecciona **Administrador de conmutadores virtuales...** desde el menú "Acciones" situado en la parte derecha. 
 
-4. En "¿Qué tipo de conmutador virtual deseas crear?", selecciona **Externo**.
+4. En la sección "Conmutadores virtuales", selecciona **Nuevo conmutador de red virtual**.
 
-5. Seleccione el botón **Crear conmutador virtual**.
+5. En "¿Qué tipo de conmutador virtual deseas crear?", selecciona **Externo**.
 
-6. En "Propiedades del conmutador virtual", asigne un nombre al nuevo conmutador, por ejemplo **External VM Switch** (Conmutador externo de máquina virtual).
+6. Seleccione el botón **Crear conmutador virtual**.
 
-7. En "Tipo de conexión", asegúrese de que se haya seleccionado **Red externa**.
+7. En "Propiedades del conmutador virtual", asigne un nombre al nuevo conmutador, por ejemplo **External VM Switch** (Conmutador externo de máquina virtual).
 
-8. Seleccione la tarjeta de red física que se emparejará con el nuevo conmutador virtual. Esta es la tarjeta de red conectada físicamente a la red.  
+8. En "Tipo de conexión", asegúrese de que se haya seleccionado **Red externa**.
+
+9. Seleccione la tarjeta de red física que se emparejará con el nuevo conmutador virtual. Esta es la tarjeta de red conectada físicamente a la red.  
 
     ![](media/newSwitch_upd.png)
 
-9. Seleccione **Aplicar** para crear el conmutador virtual. En este punto probablemente verá el siguiente mensaje. Haga clic en **Sí** para continuar.
+10. Seleccione **Aplicar** para crear el conmutador virtual. En este punto probablemente verá el siguiente mensaje. Haga clic en **Sí** para continuar.
 
     ![](media/pen_changes_upd.png)  
 
-10. Seleccione **Aceptar** para cerrar la ventana del administrador de conmutadores virtuales.
+11. Seleccione **Aceptar** para cerrar la ventana del administrador de conmutadores virtuales.
 
 
 ### Crear un conmutador virtual con PowerShell
@@ -98,9 +101,4 @@ Si estás ejecutando Hyper-V de Windows 10 en un equipo portátil y cambias con 
 
 ## Siguiente paso: crear una máquina virtual
 [Crear una máquina virtual Windows](create-virtual-machine.md)
-
-
-
-<!--HONumber=Jan17_HO2-->
-
 

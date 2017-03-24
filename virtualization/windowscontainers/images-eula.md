@@ -9,21 +9,14 @@ Microsoft Corporation (o, según dónde viva, una de sus filiales) (a la que se 
 
 ## REQUISITOS DE LICENCIA ADICIONALES O DERECHOS DE USO 
 
-El uso del Complemento como se especifica en el párrafo anterior podría resultar en la creación o modificación de una imagen de contenedor ("Imagen de contenedor") que incluye algunos componentes del Complemento. Para mayor claridad, una Imagen de contenedor es independiente y distinta de una máquina virtual o de una imagen de aplicación virtual.  De acuerdo con estos términos de licencia, se le otorga un derecho restringido para redistribuir estos 
+El uso del Complemento como se especifica en el párrafo anterior podría resultar en la creación o modificación de una imagen de contenedor ("Imagen de contenedor") que incluye algunos componentes del Complemento. Para mayor claridad, una Imagen de contenedor es independiente y distinta de una máquina virtual o de una imagen de aplicación virtual.  En virtud de estos términos de licencia, te otorgamos un derecho restringido para redistribuir dichos componentes del Complemento en las siguientes condiciones:
 
-componentes del Complemento en las siguientes condiciones:
-    
-    - (i) puede usar los componentes del Complemento solo cuando se usan en y como parte de la Imagen de contenedor,
-    - (ii) puede usar esos componentes del complemento en la Imagen de contenedor siempre que tenga funcionalidad principal relevante en la Imagen de contenedor que sea materialmente independiente y distinta del Complemento; y 
-    - (iii) acepta incluir estos términos de licencia (o términos similares requeridos por nosotros o un proveedor de servicios de hosting) con la Imagen de contenedor para licenciar correctamente el posible uso de los componentes del Complemento por parte de los usuarios finales.
+  - (i) puede usar los componentes del Complemento solo cuando se usan en y como parte de la Imagen de contenedor,
+  - (ii) puede usar esos componentes del complemento en la Imagen de contenedor siempre que tenga funcionalidad principal relevante en la Imagen de contenedor que sea materialmente independiente y distinta del Complemento; y 
+  - (iii) acepta incluir estos términos de licencia (o términos similares requeridos por nosotros o un proveedor de servicios de hosting) con la Imagen de contenedor para licenciar correctamente el posible uso de los componentes del Complemento por parte de los usuarios finales.
 
 Nos reservamos todos los demás derechos no otorgados expresamente en este documento.
 
 Al usar este Complemento, acepta estos términos. Si no los acepta, no use este Complemento.
 
 Como parte de los términos de licencia adicionales para esta imagen de sistema operativo de contenedor para los contenedores de Windows, también está sujeto a los términos de licencia subyacentes de software del host de Windows Server, que se encuentran en: https://www.microsoft.com/es-es/useterms.  
-
-
-<!--HONumber=Sep16_HO4-->
-
-

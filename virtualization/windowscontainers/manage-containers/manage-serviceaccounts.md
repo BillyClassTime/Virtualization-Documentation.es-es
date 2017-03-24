@@ -9,8 +9,9 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
 translationtype: Human Translation
-ms.sourcegitcommit: 804008c172b80a4f354a92cd4d12a4e23e1d4328
-ms.openlocfilehash: 00a43f8d4d27327c61e318f3a915047106ad2aca
+ms.sourcegitcommit: 1a327806514f1e1b5d2d234b0aa4ce300e26456f
+ms.openlocfilehash: 0e692f7521e4a15e3e56d4b98f7ca15fe94ee167
+ms.lasthandoff: 01/26/2017
 
 ---
 
@@ -39,7 +40,6 @@ Actualmente, las cuentas de servicio administradas de grupo se usan para asegura
 
 Cuando se inicia el servicio, el host unido al dominio obtiene automáticamente los secretos de la gMSA de Active Directory y ejecuta el servicio usando esa cuenta. Dado que ese servicio se ejecuta como la gMSA, puede acceder a los recursos a los que tiene permitido acceder la gMSA.
 
-
 Los contenedores de Windows siguen un proceso similar:
 
 1. Crear una gMSA. De forma predeterminada, un administrador de dominio o un operador de la cuenta debe hacerlo. De lo contrario, puede delegar privilegios para crear y administrar gMSA a los administradores de los servicios que las utilizan. Consulte [Introducción a gMSA](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx)
@@ -65,9 +65,9 @@ Ejemplo:
 Server=sql.contoso.com;Database=MusicStore;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30
 ```
 
-En Microsoft SQL Server, cree un inicio de sesión con el nombre de dominio y gMSA, seguido por un signo $. Una vez creado el inicio de sesión, puede agregarlo a un usuario en una base de datos y concederle los permisos de acceso adecuados.
+En Microsoft SQL Server, cree un inicio de sesión con el nombre de dominio y gMSA, seguido por un signo $. Una vez creado el inicio de sesión, puede agregarse a un usuario en una base de datos y concederle los permisos de acceso adecuados.
 
-Ejemplo: 
+Por ejemplo: 
 
 ```sql
 CREATE LOGIN "DEMO\WebApplication1$"
@@ -84,8 +84,5 @@ EXEC sp_addrolemember 'db_datareader', 'WebApplication1'
 EXEC sp_addrolemember 'db_datawriter', 'WebApplication1'
 ```
 
-
-
-<!--HONumber=Nov16_HO1-->
-
+Para verlo en funcionamiento, echa un vistazo a la [demo grabada](https://youtu.be/cZHPz80I-3s?t=2672) disponible desde Microsoft Ignite 2016 en la sesión "Walk the Path to Containerization - transforming workloads into containers" (Recorre el camino para la creación de contenedores: transformar las cargas de trabajo en contenedores).
 

@@ -9,32 +9,31 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: f4e1102cc7338739e396dadba17150e41716ed93
+ms.sourcegitcommit: 59621ca2db190d5c13034752a08c291e3dc19daa
+ms.openlocfilehash: d68be61b1d462b70986df5cfd6df052b388cec1d
+ms.lasthandoff: 02/08/2017
 
 ---
 
 # Contenedores de Windows
 
-**Esto es contenido preliminar y está sujeto a cambios.** 
-
-Las aplicaciones impulsan la innovación en la era móvil y de la nube. Los contenedores y el ecosistema que se está desarrollando en torno a ellos ofrecerán a los desarrolladores de software lo necesario para crear la próxima generación de experiencias de aplicaciones.
-
-Vea una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
+**Este contenido es preliminar y está sujeto a cambios.** 
 
 ## Qué son los contenedores
 
+Vea una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
+
 Son un entorno operativo portátil, aislado y controlado por recursos.
 
-Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejecutarse sin afectar al resto del sistema y sin que el sistema afecte a la aplicación. Los contenedores son la siguiente evolución en el campo de la virtualización.
+Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejecutarse sin tener que tocar los recursos (memoria, disco, red, etc.) de otros contenedores ni del host.
 
-Si estuviera dentro de un contenedor, parecería que está dentro de una máquina virtual o un equipo físico recién instalados. Y, para [Docker](https://www.docker.com/), un contenedor de Windows Server se puede administrar de la misma forma que cualquier otro contenedor.
+Un contenedor tiene el aspecto y actúa como un equipo físico recién instalado o una máquina virtual. Un contenedor de Windows Server puede administrarse con [Docker](https://www.docker.com/) como cualquier otro contenedor.
 
 ## Tipos de contenedores de Windows
 
 Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
 
-**Contenedores de Windows Server**: ofrecen aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y todos los contenedores que se ejecutan en el host.
+**Contenedores de Windows Server**: ofrecen aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte un kernel con el host de contenedor y todos los contenedores que se ejecutan en dicho host.
 
 **Contenedores de Hyper-V**: amplían el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con los contenedores de Hyper-V.
 
@@ -86,10 +85,5 @@ src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-an
 ## Pruebe los contenedores de Windows Server
 
 [Introducción a los contenedores](../quick_start/quick_start.md)
-
-
-
-
-<!--HONumber=Oct16_HO4-->
 
 

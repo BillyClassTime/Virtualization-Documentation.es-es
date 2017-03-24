@@ -21,7 +21,9 @@
 ## [Dockerfiles en Windows](docker/manage_windows_dockerfile.md)
 ## [Optimizar Dockerfiles](docker/optimize_windows_dockerfile.md)
 ## [Red de contenedores](management/container_networking.md)
+## [Introducción al modo enjambre](manage-containers/swarm-mode.md)
 ## [Administrar Docker con PowerShell](https://github.com/Microsoft/Docker-PowerShell)
+## [Administración remota de un host de Windows Docker](management/manage_remotehost.md)
 
 # Ejemplos de contenedor
 ## [Marcos de aplicaciones](samples.md#Application-Frameworks)
@@ -39,8 +41,3 @@
 
 
 # [CLUF de la imagen de sistema operativo del contenedor](Images_EULA.md)
-
-
-<!--HONumber=Nov16_HO3-->
-
-

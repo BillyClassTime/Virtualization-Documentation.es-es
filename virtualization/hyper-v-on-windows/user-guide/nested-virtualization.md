@@ -9,8 +9,9 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
 translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: b0903a3e00b92bc60e26282dde072b66030ada09
+ms.sourcegitcommit: e714d4dc22c0049d3365d4a4f3c11d072f46a161
+ms.openlocfilehash: 7d16fcf22187ae3ace25fe1bedbc02f3c6b63eb8
+ms.lasthandoff: 02/14/2017
 
 ---
 
@@ -34,7 +35,7 @@ La virtualización anidada es una característica que le permite ejecutar Hyper-
 Set-VMProcessor -VMName <VMName> -ExposeVirtualizationExtensions $true
 ```
 3. Inicie la máquina virtual.
-4. Instale Hyper-V en la máquina virtual, como lo haría en un servidor físico. Para obtener más información sobre la instalación de Hyper-V, consulte [Instalar Hyper-V]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_install).
+4. Instale Hyper-V en la máquina virtual, como lo haría en un servidor físico. Para obtener más información sobre la instalación de Hyper-V, consulte [Instalar Hyper-V](../quick-start/enable-hyper-v.md).
 
 ## Deshabilitar la virtualización anidada
 Puede deshabilitar la virtualización anidada para una máquina virtual detenida mediante el siguiente comando de PowerShell:
@@ -76,9 +77,4 @@ Netsh interface ip add dnsserver “Ethernet” address=<my DNS server>
 
 ## Aplicaciones de virtualización de terceros
 Las aplicaciones de virtualización que no sean Hyper-V no se admiten en las máquinas virtuales de Hyper-V y suelen producir errores. Esto incluye cualquier software que requiera extensiones de virtualización de hardware.
-
-
-
-<!--HONumber=Oct16_HO4-->
-
 
