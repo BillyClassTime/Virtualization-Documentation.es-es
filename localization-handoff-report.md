@@ -1,41 +1,23 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 4
+ Total Files | 5
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyper-v-on-windows\quick-start\create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine.md) | HandedOffSuccess | [Details](#fc6228253c2ad5fe8a01db283f578abbfbee716c123)
- [virtualization\hyper-v-on-windows\quick-start\enable-hyper-v.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md) | HandedOffSuccess | [Details](#9e18e205fc0ca95902473e620d60337923287040124)
- [virtualization\hyper-v-on-windows\quick-start\quick-create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/quick-create-virtual-machine.md) | HandedOffSuccess | [Details](#8cfdc401fae56d20c7aae8fbda5b82cb6a96a993193)
- [virtualization\hyper-v-on-windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/TOC.md) | HandedOffSuccess | [Details](#61371588ef26153796df755dc0f40dd6856a488c210)
+ [virtualization\hyper-v-on-windows\quick-start\enable-hyper-v.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md) | HandedOffSuccess | [Details](#468b2047bbca94126e56be71c2d546a8c78820cb125)
+ [virtualization\hyper-v-on-windows\quick-start\quick-create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/quick-start/quick-create-virtual-machine.md) | HandedOffSuccess | [Details](#ba212628d6783022ae17e38383c61ada4428ad68194)
+ [virtualization\hyper-v-on-windows\reference\tlfs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/reference/tlfs.md) | HandedOffSuccess | [Details](#738957cc1fcf80d46f9b2ed5a66374a0250a309a210)
+ [virtualization\hyper-v-on-windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/TOC.md) | HandedOffSuccess | [Details](#720d15a919760233d90476fa522584b336eb4519211)
+ [virtualization\hyper-v-on-windows\user-guide\refactor-wmiv1-to-wmiv2.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/user-guide/refactor-wmiv1-to-wmiv2.md) | HandedOffSuccess | [Details](#0d46eb633757537dc611ace226c19dd06442e9d0236)
 
 ## Item Details
-##### <a name='fc6228253c2ad5fe8a01db283f578abbfbee716c123'></a> Source: [virtualization\hyper-v-on-windows\quick-start\create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine.md)
+##### <a name='468b2047bbca94126e56be71c2d546a8c78820cb125'></a> Source: [virtualization\hyper-v-on-windows\quick-start\enable-hyper-v.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a5e4987265d888e8db6947f819365314e2eaf7f3/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
-* Handoff Datetime: 2017-04-14 07:03:48
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\hyper-v-on-windows\quick-start\create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/6af6c6dc4e51682782719aa662745f43cbd4d8fe/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine.md)
-* Current Handback File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/97a378209c1a03e1d2f24f0bd500aba03bed6193/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
-* Current Handback Datetime: 2017-02-08 11:31:51
-* Bilingual File: [create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/97a378209c1a03e1d2f24f0bd500aba03bed6193/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/create-virtual-machine.5181bfa2ef9a8306988256d66854f35e6d51faf5.es-es.xlf)
-* Bilingual Datetime: 2017-02-08 11:32:43
-* [Back to Top](#report-top)
-
-##### <a name='9e18e205fc0ca95902473e620d60337923287040124'></a> Source: [virtualization\hyper-v-on-windows\quick-start\enable-hyper-v.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [enable-hyper-v.0da13d8a447b5ecf77ca9319671182fae670898e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a5e4987265d888e8db6947f819365314e2eaf7f3/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/enable-hyper-v.0da13d8a447b5ecf77ca9319671182fae670898e.es-es.xlf)
-* Handoff Datetime: 2017-04-14 07:03:48
+* Handoff File: [enable-hyper-v.0da13d8a447b5ecf77ca9319671182fae670898e.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb3996facd4199036298cd103214bcb62099d03f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/enable-hyper-v.0da13d8a447b5ecf77ca9319671182fae670898e.es-es.xlf)
+* Handoff Datetime: 2017-04-16 01:23:03
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -50,11 +32,11 @@
 * Bilingual Datetime: 2017-03-24 13:54:56
 * [Back to Top](#report-top)
 
-##### <a name='8cfdc401fae56d20c7aae8fbda5b82cb6a96a993193'></a> Source: [virtualization\hyper-v-on-windows\quick-start\quick-create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/quick-start/quick-create-virtual-machine.md)
+##### <a name='ba212628d6783022ae17e38383c61ada4428ad68194'></a> Source: [virtualization\hyper-v-on-windows\quick-start\quick-create-virtual-machine.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/quick-start/quick-create-virtual-machine.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [quick-create-virtual-machine.220431674ae7542a9335fd2eeee6c263009110d2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a5e4987265d888e8db6947f819365314e2eaf7f3/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/quick-create-virtual-machine.220431674ae7542a9335fd2eeee6c263009110d2.es-es.xlf)
-* Handoff Datetime: 2017-04-14 07:03:48
+* Handoff File: [quick-create-virtual-machine.220431674ae7542a9335fd2eeee6c263009110d2.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb3996facd4199036298cd103214bcb62099d03f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/quick-create-virtual-machine.220431674ae7542a9335fd2eeee6c263009110d2.es-es.xlf)
+* Handoff Datetime: 2017-04-16 01:23:03
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -64,11 +46,30 @@
 * Handback Name: 
 * [Back to Top](#report-top)
 
-##### <a name='61371588ef26153796df755dc0f40dd6856a488c210'></a> Source: [virtualization\hyper-v-on-windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95/virtualization/hyper-v-on-windows/TOC.md)
+##### <a name='738957cc1fcf80d46f9b2ed5a66374a0250a309a210'></a> Source: [virtualization\hyper-v-on-windows\reference\tlfs.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/reference/tlfs.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/a5e4987265d888e8db6947f819365314e2eaf7f3/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf)
-* Handoff Datetime: 2017-04-14 07:03:48
+* Handoff File: [tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb3996facd4199036298cd103214bcb62099d03f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf)
+* Handoff Datetime: 2017-04-16 01:23:03
+* Handoff Reason: Include
+* Handoff Name: 
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Handback Name: 
+* Current Target File: [virtualization\hyper-v-on-windows\reference\tlfs.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/351ab47a58f1241b85c8d59c3af99a54581ce15b/virtualization/hyper-v-on-windows/reference/tlfs.md)
+* Current Handback File: [tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf)
+* Current Handback Datetime: 2017-03-24 13:50:54
+* Bilingual File: [tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/tlfs.1bc1ee9abc2adf060143e30b11346b0456729304.es-es.xlf)
+* Bilingual Datetime: 2017-03-24 13:54:56
+* [Back to Top](#report-top)
+
+##### <a name='720d15a919760233d90476fa522584b336eb4519211'></a> Source: [virtualization\hyper-v-on-windows\TOC.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/TOC.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb3996facd4199036298cd103214bcb62099d03f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf)
+* Handoff Datetime: 2017-04-16 01:23:03
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -81,6 +82,20 @@
 * Current Handback Datetime: 2017-01-24 13:20:14
 * Bilingual File: [TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/TOC.31a2913ccfd49bd5aec82fa8274f4b81c18f1fd7.es-es.xlf)
 * Bilingual Datetime: 2017-01-24 13:22:10
+* [Back to Top](#report-top)
+
+##### <a name='0d46eb633757537dc611ace226c19dd06442e9d0236'></a> Source: [virtualization\hyper-v-on-windows\user-guide\refactor-wmiv1-to-wmiv2.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a7cbe8dc5ae827ac4d2799356a392dec85699c59/virtualization/hyper-v-on-windows/user-guide/refactor-wmiv1-to-wmiv2.md)
+* Status: HandedOffSuccess
+* Target File: 
+* Handoff File: [refactor-wmiv1-to-wmiv2.00c218523b0eae13d86068f9df91d6000b811dcd.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bb3996facd4199036298cd103214bcb62099d03f/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/refactor-wmiv1-to-wmiv2.00c218523b0eae13d86068f9df91d6000b811dcd.es-es.xlf)
+* Handoff Datetime: 2017-04-16 01:23:03
+* Handoff Reason: Include
+* Handoff Name: 
+* Archive File: 
+* Archive Datetime: 0001-01-01 00:00:00
+* Handback File: 
+* Handback Datetime: 0001-01-01 00:00:00
+* Handback Name: 
 * [Back to Top](#report-top)
 
 
