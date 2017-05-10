@@ -1,20 +1,19 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 2
+ Total Files | 1
 
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ca64c1aceccd97c6315b28ff814ec7ac91fba9da/virtualization/windowscontainers/manage-containers/container-networking.md) | HandedOffSuccess | [Details](#822557b49bb56f09880e0153b6e4d3f1c5daf436301)
- [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ca64c1aceccd97c6315b28ff814ec7ac91fba9da/virtualization/windowscontainers/troubleshooting.md) | HandedOffSuccess | [Details](#5230080386081bda8b54656d15f33b4986cfa6e3395)
+ [virtualization\hyper-v-on-windows\user-guide\refactor-wmiv1-to-wmiv2.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a424c11258e47f224e14c4349b852b9e37b7604f/virtualization/hyper-v-on-windows/user-guide/refactor-wmiv1-to-wmiv2.md) | HandedOffSuccess | [Details](#e2d6faabe77346199a5d292fcfd92cdfd63909b8236)
 
 ## Item Details
-##### <a name='822557b49bb56f09880e0153b6e4d3f1c5daf436301'></a> Source: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ca64c1aceccd97c6315b28ff814ec7ac91fba9da/virtualization/windowscontainers/manage-containers/container-networking.md)
+##### <a name='e2d6faabe77346199a5d292fcfd92cdfd63909b8236'></a> Source: [virtualization\hyper-v-on-windows\user-guide\refactor-wmiv1-to-wmiv2.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a424c11258e47f224e14c4349b852b9e37b7604f/virtualization/hyper-v-on-windows/user-guide/refactor-wmiv1-to-wmiv2.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/f1aeceabee714980031ee46df4be71ae904e34df/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf)
-* Handoff Datetime: 2017-05-09 17:48:21
+* Handoff File: [refactor-wmiv1-to-wmiv2.00c218523b0eae13d86068f9df91d6000b811dcd.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/bd5f8630dcdd4d3e5b059d72090c0ad88fb21fe5/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/refactor-wmiv1-to-wmiv2.00c218523b0eae13d86068f9df91d6000b811dcd.es-es.xlf)
+* Handoff Datetime: 2017-05-10 22:48:14
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -22,30 +21,6 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
-* Current Target File: [virtualization\windowscontainers\manage-containers\container-networking.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/351ab47a58f1241b85c8d59c3af99a54581ce15b/virtualization/windowscontainers/manage-containers/container-networking.md)
-* Current Handback File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf)
-* Current Handback Datetime: 2017-03-24 13:50:54
-* Bilingual File: [container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/container-networking.925e90f386932bf7a0a7f6b1b149c3456acbb560.es-es.xlf)
-* Bilingual Datetime: 2017-03-24 13:54:56
-* [Back to Top](#report-top)
-
-##### <a name='5230080386081bda8b54656d15f33b4986cfa6e3395'></a> Source: [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/ca64c1aceccd97c6315b28ff814ec7ac91fba9da/virtualization/windowscontainers/troubleshooting.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handoff/blob/f1aeceabee714980031ee46df4be71ae904e34df/ol-handoff/Microsoft/Virtualization-Documentation-Private.es-es/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf)
-* Handoff Datetime: 2017-05-09 17:48:21
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\windowscontainers\troubleshooting.md](https://github.com/Microsoft/Virtualization-Documentation-Private.es-es/blob/f2a4e20986a5d63d60d66622c5c1711e3727c682/virtualization/windowscontainers/troubleshooting.md)
-* Current Handback File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf)
-* Current Handback Datetime: 2017-01-24 13:20:14
-* Bilingual File: [troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf](https://github.com/Microsoft/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/troubleshooting.fa8e0bf8c3816ab8e7080b2e3807e89993373b17.es-es.xlf)
-* Bilingual Datetime: 2017-01-24 13:22:10
 * [Back to Top](#report-top)
 
 
