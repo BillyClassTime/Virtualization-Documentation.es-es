@@ -1,29 +1,26 @@
 ---
-title: "Implementar una máquina virtual de Windows en Hyper-V en Windows 10"
-description: "Implementar una máquina virtual de Windows en Hyper-V en Windows 10"
-keywords: Windows 10, Hyper-V
+title: "Crear una máquina virtual con Hyper-V"
+description: "Crear una máquina virtual con Hyper-V en Windows 10"
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
-ms.service: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 19889805c3e4d6d650306de1028e117bcb42ec71
-
+ms.openlocfilehash: 200ec68011628262950362620ae5b438f1b6b86c
+ms.sourcegitcommit: c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
+# <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Crear una máquina virtual con Hyper-V en Windows 10
 
-# Implementar una máquina virtual de Windows en Hyper-V en Windows 10
+Aprende a crear una máquina virtual y a instalar un sistema operativo en la nueva máquina virtual.  Necesitarás un archivo .iso para el sistema operativo que quieras ejecutar. Si es necesario, consigue una copia de evaluación de Windows 10 en el [TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/).
 
-Puede crear una máquina virtual e implementar un sistema operativo en ella de muchas maneras diferentes, por ejemplo, mediante Servicios de implementación de Windows, adjuntando una unidad de disco duro virtual preparada, o manualmente, mediante los medios de instalación. Este artículo le guía por el proceso de creación de una máquina virtual e implementación de un sistema operativo en la máquina virtual con los medios de instalación del sistema operativo.
+## <a name="create-a-virtual-machine-with-hyper-v-manager"></a>Crear una máquina virtual con el Administrador de Hyper-V
 
-Antes de comenzar este ejercicio, necesitará un archivo .iso del sistema operativo que quiera implementar. Si es necesario, obtenga una copia de evaluación de Windows 8.1 o Windows 10 de [TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/).
+1. Para abrir el administrador de Hyper-V, presiona la tecla de Windows y escribe "Administrador de Hyper-V" o busca **Administrador de Hyper-V** en tus aplicaciones.
 
-## Crear una máquina virtual con el Administrador de Hyper-V
-En estos pasos se describe cómo se crea manualmente una máquina virtual y se implementa un sistema operativo en esta máquina virtual.
-
-1. En el Administrador de Hyper-V, haga clic en **Acción** > **Nueva** > **Máquina Virtual** para que se abra el Asistente para nueva máquina virtual.
+2. En el Administrador de Hyper-V, haz clic en **Acción** > **Nueva** > **Máquina virtual** para que se abra el Asistente para nueva máquina virtual.
 
 2. Revise el contenido de "Antes de empezar" y haga clic en **Siguiente**. 
 
@@ -64,7 +61,7 @@ En estos pasos se describe cómo se crea manualmente una máquina virtual y se i
   
 10. Revise los detalles de la máquina virtual y haga clic en **Finalizar** para completar la creación de la máquina virtual.
 
-## Crear una máquina virtual con PowerShell
+## <a name="create-a-virtual-machine-with-powershell"></a>Crear una máquina virtual con PowerShell
 
 1. Abra PowerShell ISE como administrador.
 
@@ -90,7 +87,7 @@ En estos pasos se describe cómo se crea manualmente una máquina virtual y se i
   Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
   ```
   
-## Completar la implementación del sistema operativo
+## <a name="complete-the-operating-system-deployment"></a>Completar la implementación del sistema operativo
 
 Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y completar la instalación del sistema operativo.
 
@@ -104,11 +101,3 @@ Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y c
   ![](media/OSDeploy_upd.png) 
 
 > **Nota**: A menos que esté ejecutando una versión con licencia por volumen de Windows, necesitará una licencia independiente para la versión de Windows que se ejecuta en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
-
-## Paso siguiente: trabajar con PowerShell e Hyper-V
-[Hyper-V y Windows PowerShell](try-hyper-v-powershell.md)
-
-
-<!--HONumber=Jan17_HO2-->
-
-

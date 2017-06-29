@@ -1,36 +1,31 @@
 ---
-title: "Crea tus propios servicios de integración"
+title: "Cree sus propios servicios de integración"
 description: "Servicios de integración de Windows 10."
 keywords: windows 10, hyper-v, HVSocket, AF_HYPERV
 author: scooley
-ms.date: 05/02/2016
+ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
-ms.service: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-translationtype: Human Translation
-ms.sourcegitcommit: b6b63318ed71931c2b49039e57685414f869a945
-ms.openlocfilehash: 19e8cf269b0bef127fb06d2c99391107cd8683b1
-ms.lasthandoff: 02/16/2017
-
+ms.openlocfilehash: d50648efcaac40d6a60430b44c070717adf31b4d
+ms.sourcegitcommit: d5f30aa1bdfb34dd9e1909d73b5bd9f4153d6b46
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
+# <a name="make-your-own-integration-services"></a>Cree sus propios servicios de integración
 
-# Cree sus propios servicios de integración
-
-A partir de la Actualización de aniversario de Windows 10, cualquiera puede crear las aplicaciones que se comuniquen entre el host de Hyper-V y sus máquinas virtuales con sockets de Hyper-V: un socket de Windows con una nueva familia de direcciones y un punto de conexión especializado para las máquinas virtuales de destino.  Todas las comunicaciones mediante sockets de Hyper-V se ejecutan sin usar redes y todos los datos permanecen en la misma memoria física.   Las aplicaciones que usan sockets de Hyper-V son similares a los servicios de integración de Hyper-V.
+A partir de la Actualización de aniversario de Windows10, cualquiera puede crear las aplicaciones que se comuniquen entre el host de Hyper-V y sus máquinas virtuales con sockets de Hyper-V: un socket de Windows con una nueva familia de direcciones y un punto de conexión especializado para las máquinas virtuales de destino.  Todas las comunicaciones mediante sockets de Hyper-V se ejecutan sin usar redes y todos los datos permanecen en la misma memoria física.   Las aplicaciones que usan sockets de Hyper-V son similares a los servicios de integración de Hyper-V.
 
 Este documento explica paso a paso la creación de un programa simple basado en sockets de Hyper-V.
 
 **Sistemas operativos host admitidos**
-* Compatible con Windows 10
-* Windows Server 2016
-* Las versiones futuras (Server 2016 +)
+* Windows 10 y versiones posteriores
+* Windows Server 2016 y versiones posteriores
 
 **Sistemas operativos invitado admitidos**
-* Windows 10
-* Windows Server Technical Preview 4 y versiones posteriores
-* Las versiones futuras (Server 2016 +)
-* Invitados de Linux con servicios de integración de Linux (consulte [Máquinas virtuales de Linux y FreeBSD en Hyper-V](https://technet.microsoft.com/library/dn531030(ws.12).aspx))
+* Windows 10 y versiones posteriores
+* Windows Server 2016 y versiones posteriores
+* Invitados de Linux con servicios de integración de Linux (consulte [Supported Linux and FreeBSD virtual machines for Hyper-V on Windows](https://technet.microsoft.com/library/dn531030.aspx) [Máquinas virtuales de Linux y FreeBSD soportadas para Hyper-V en Windows])
 
 **Capacidades y limitaciones**  
 * Admite acciones de modo de usuario o modo kernel  
@@ -39,16 +34,16 @@ Este documento explica paso a paso la creación de un programa simple basado en 
 
 --------------
 
-## Introducción
+## <a name="getting-started"></a>Introducción
 
 Requisitos:
 * Compilador de C/C++.  Si no tienes ninguno, echa un vistazo a la [comunidad de Visual Studio](https://aka.ms/vs).
-* [SDK de Windows 10](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Preinstalado en Visual Studio 2015 con la actualización 3 y versiones posteriores.
+* [SDK de Windows10](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Preinstalado en Visual Studio2015 con la actualización 3 y versiones posteriores.
 * Un equipo con uno de los sistemas operativos host mencionados anteriormente y con al menos una máquina virtual. Esto es para probar la aplicación.
 
-> **Nota:** La API para los sockets de Hyper-V pasó a estar disponible públicamente en Windows 10 un poco después.  Las aplicaciones que usan HVSocket se ejecutarán en cualquier host e invitado con Windows 10, pero solo se pueden desarrollar con un Windows SDK posterior a la compilación 14290.  
+> **Nota:** La API para los sockets de Hyper-V pasó a estar disponible públicamente en Windows10 un poco después.  Las aplicaciones que usan HVSocket se ejecutarán en cualquier host e invitado con Windows10, pero solo se pueden desarrollar con un Windows SDK posterior a la compilación 14290.  
 
-## Registro de una nueva aplicación
+## <a name="register-a-new-application"></a>Registro de una nueva aplicación
 Para poder utilizar sockets de Hyper-V, la aplicación debe registrarse con el Registro del host de Hyper-V.
 
 Al registrar el servicio en el Registro, obtendrá:
@@ -99,7 +94,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 (New-Guid).Guid | clip.exe
 ```
 
-## Creación de un socket de Hyper-V
+## <a name="create-a-hyper-v-socket"></a>Creación de un socket de Hyper-V
 
 En el caso más básico, la definición de un socket requiere una familia de direcciones, un tipo de conexión y un protocolo.
 
@@ -127,7 +122,7 @@ SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
 ```
 
 
-## Enlace a un socket de Hyper-V
+## <a name="bind-to-a-hyper-v-socket"></a>Enlace a un socket de Hyper-V
 
 El enlace asocia un socket con la información de conexión.
 
@@ -166,7 +161,7 @@ En lugar de una IP o un nombre de host, los puntos de conexión AF_HYPERV depend
 
 Hay también un conjunto de caracteres comodín de VMID disponibles cuando no se trata de una conexión a una máquina virtual específica.
  
-### Caracteres comodín de VMID
+### <a name="vmid-wildcards"></a>Caracteres comodín de VMID
 
 | Nombre | GUID | Descripción |
 |:-----|:-----|:-----|
@@ -186,7 +181,7 @@ La escucha en este elemento VmId acepta conexiones desde:
 (Dentro de la máquina virtual: host contenedor / ningún contenedor): host de la máquina virtual.  
 (Fuera de la máquina virtual: host contenedor / ningún contenedor): no se admite.
 
-## Comandos de socket admitidos
+## <a name="supported-socket-commands"></a>Comandos de socket admitidos
 
 Socket()  
 Bind()  
@@ -195,7 +190,7 @@ Send()
 Listen()  
 Accept()  
 
-## Vínculos útiles
+## <a name="useful-links"></a>Vínculos útiles
 [API WinSock completa](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
 
 [Referencia de los servicios de integración de Hyper-V](../reference/integration-services.md)

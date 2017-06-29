@@ -8,19 +8,18 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
-translationtype: Human Translation
-ms.sourcegitcommit: b2950dca4b29e97eb951379645c118468a1fb403
-ms.openlocfilehash: eac2026cff552315a4cb256b595f1bd3317ee11c
-
+ms.openlocfilehash: adfeec41a3b97b620487b00679a973f97d334572
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Ejemplos de contenedores de Windows
+# <a name="windows-container-samples"></a>Ejemplos de contenedores de Windows
 
 Esta es una recopilación de ejemplos y muestras enviadas por el equipo de Windows y miembros de la comunidad.  Estos ejemplos se proporcionan tal cual, sin ningún tipo de garantía.  No dude en contribuir con muestras adicionales no mejorando los ejemplos actuales.
 
-# Categories
+# <a name="categories"></a>Categories
 
-## Marcos de aplicaciones
+## <a name="application-frameworks"></a>Marcos de aplicaciones
 [aspnet](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/aspnet)
 
 [iis](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/iis) 
@@ -39,7 +38,7 @@ Esta es una recopilación de ejemplos y muestras enviadas por el equipo de Windo
 
 [nginx](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/nginx)
 
-## Lenguajes de programación
+## <a name="programing-languages"></a>Lenguajes de programación
 [dotnet35](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/dotnet35)
 
 [golang](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/golang)
@@ -57,7 +56,7 @@ Esta es una recopilación de ejemplos y muestras enviadas por el equipo de Windo
 [server-jre-8u51-windows-x64](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/server-jre-8u51-windows-x64)
 
 
-## Bases de datos
+## <a name="databases"></a>Bases de datos
 [mongodb](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mongodb)
 
 [mysql](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mysql)
@@ -69,18 +68,12 @@ Esta es una recopilación de ejemplos y muestras enviadas por el equipo de Windo
 [sqlserver-express](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/sqlserver-express)
 
 
-## Infraestructura y herramientas de CI
+## <a name="infrastructure-and-ci-tools"></a>Infraestructura y herramientas de CI
 [PowerShellDSC_iis-10.0](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/PowerShellDSC_iis-10.0)
 
 
-## Solo por diversión
+## <a name="just-for-fun"></a>Solo por diversión
 [MineCraft](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/MineCraft) 
 
 
-## Otros
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-
+## <a name="other"></a>Otros

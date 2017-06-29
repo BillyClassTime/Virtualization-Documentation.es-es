@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-translationtype: Human Translation
-ms.sourcegitcommit: fe1e5d1f35e088581d44c43108c843347111eaef
-ms.openlocfilehash: 622c8f638a815e19a54aa75b6b5ea0688d966ae3
-
+ms.openlocfilehash: af819955c06b2db405f230cf3b7fee4c13e7c87c
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Historial de imágenes base de contenedor de Windows
+# <a name="windows-container-base-image-history"></a>Historial de imágenes base de contenedor de Windows
 
 Cada contenedor de Windows se crea sobre un sistema operativo base proporcionado por Microsoft. Si no estás seguro de qué versión de Windows se creó para un contenedor, puedes ejecutar `docker inspect <tag>` y hacer que coincidan las dos primeras filas de la tabla que se muestra a continuación.
 
@@ -75,10 +74,4 @@ Si quieres saber qué ha cambiado en cada versión, busca la Knowledge Base para
         sha256:dd33c5d8d8b3c230886132c328a7801547f13de1dac9a629e2739164a285b3ab</td>
     </tr>
 </table>
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

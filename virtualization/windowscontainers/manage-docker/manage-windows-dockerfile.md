@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 9dcac129e7c95fa416437061c426fee850db11b4
-
+ms.openlocfilehash: 0df4ef6a5116edd5b47283180ba6ba1d745cd06b
+ms.sourcegitcommit: e8d6b78103e8b0b086d4b6a1be40a1f8dcd8c225
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Dockerfile en Windows
+# <a name="dockerfile-on-windows"></a>Dockerfile en Windows
 
 El motor de Docker incluye herramientas para automatizar la creación de imágenes del contenedor. Aunque se pueden crear imágenes del contenedor manualmente mediante el comando `docker commit`, la adopción de un proceso automatizado de creación de imágenes ofrece numerosas ventajas, entre otras las siguientes:
 
@@ -33,9 +32,9 @@ A lo largo del documento se describirán los conceptos de imágenes del contened
 
 Para obtener información detallada sobre los archivos Dockerfile, consulta la [referencia sobre Dockerfile en docker.com]( https://docs.docker.com/engine/reference/builder/).
 
-## Introducción a Dockerfile
+## <a name="dockerfile-introduction"></a>Introducción a Dockerfile
 
-### Sintaxis básica
+### <a name="basic-syntax"></a>Sintaxis básica
 
 En su forma más básica, un archivo Dockerfile puede ser muy simple. En el ejemplo siguiente se crea una imagen, que incluye IIS, y un sitio de "hello world". Este ejemplo incluye comentarios (indicados con el símbolo `#`) que explican cada paso. En las secciones posteriores del artículo se ofrecerá más información sobre las reglas de sintaxis de Dockerfile y las instrucciones Dockerfile.
 
@@ -62,11 +61,11 @@ CMD [ "cmd" ]
 
 Para obtener más ejemplos de archivos Dockerfile para Windows, consulta el [Repositorio de Dockerfile para Windows] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples).
 
-## Instrucciones
+## <a name="instructions"></a>Instrucciones
 
 Las instrucciones Dockerfile proporcionan al motor de Docker los pasos necesarios para crear una imagen del contenedor. Estas instrucciones se ejecutan en orden y una a una. A continuación se detallan algunas instrucciones Dockerfile básicas. Para obtener una lista completa de instrucciones Dockerfile, consulte la [referencia sobre Dockerfile en Docker.com] (https://docs.docker.com/engine/reference/builder/).
 
-### FROM
+### <a name="from"></a>FROM
 
 La instrucción `FROM` establece la imagen del contenedor que se usará durante el proceso de creación de la imagen. Por ejemplo, cuando se usa la instrucción `FROM microsoft/windowsservercore`, la imagen resultante deriva de la imagen base del sistema operativo de Windows Server Core y tiene una dependencia en esta. Si la imagen especificada no está presente en el sistema donde se ejecuta el proceso de compilación de Docker, el motor de Docker intentará descargar la imagen de un Registro de imágenes público o privado.
 
@@ -86,7 +85,7 @@ FROM microsoft/windowsservercore
 
 Para obtener información detallada sobre la instrucción FROM, consulte la [referencia sobre FROM en Docker.com]( https://docs.docker.com/engine/reference/builder/#from).
 
-### RUN
+### <a name="run"></a>RUN
 
 La instrucción `RUN` especifica los comandos que se ejecutarán y se capturarán en la nueva imagen del contenedor. Estos comandos pueden incluir elementos como la instalación de software, la creación de archivos y directorios y la creación de la configuración del entorno.
 
@@ -160,12 +159,12 @@ RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 En este ejemplo se instala el paquete redistribuible de Visual Studio. Tenga en cuenta aquí que `Start-Process` y el parámetro `-Wait` se utilizan para ejecutar el programa de instalación. Esto garantizará que la instalación se completará antes de pasar al siguiente paso en el Dockerfile.
 
 ```none
-RUN Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
+RUN powershell.exe -Command Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
 ```
 
 Para obtener información detallada sobre la instrucción RUN, consulte la [referencia sobre RUN en Docker.com]( https://docs.docker.com/engine/reference/builder/#run).
 
-### COPIAR
+### <a name="copy"></a>COPIAR
 
 La instrucción `COPY` copia archivos y directorios en el sistema de archivos del contenedor. Los archivos y los directorios deben encontrarse en una ruta de acceso relacionada con el archivo Dockerfile.
 
@@ -212,7 +211,7 @@ COPY config* c:/temp/
 
 Para obtener información detallada sobre la instrucción `COPY`, consulte la [referencia sobre COPY en Docker.com]( https://docs.docker.com/engine/reference/builder/#copy).
 
-### AGREGAR
+### <a name="add"></a>AGREGAR
 
 La instrucción ADD es muy parecida a la instrucción COPY, pero incluye funcionalidades adicionales. Además de copiar archivos del host en la imagen del contenedor, la instrucción `ADD` también puede copiar archivos de una ubicación remota con una especificación de dirección URL.
 
@@ -266,7 +265,7 @@ ADD https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe /temp/python-3.5.1.
 
 Para obtener información detallada sobre la instrucción `ADD`, consulte la [referencia sobre ADD en Docker.com]( https://docs.docker.com/engine/reference/builder/#add).
 
-### WORKDIR
+### <a name="workdir"></a>WORKDIR
 
 La instrucción `WORKDIR` establece un directorio de trabajo para otras instrucciones de Dockerfile, como `RUN` y `CMD`, y también el directorio de trabajo para ejecutar instancias de la imagen del contenedor.
 
@@ -294,7 +293,7 @@ WORKDIR c:\\Apache24\\bin
 
 Para obtener información detallada sobre la instrucción `WORKDIR`, consulte la [referencia sobre WORKDIR en Docker.com]( https://docs.docker.com/engine/reference/builder/#workdir).
 
-### CMD
+### <a name="cmd"></a>CMD
 
 La instrucción `CMD` establece que el comando predeterminado se ejecutará al implementar una instancia de la imagen del contenedor. Por ejemplo, si el contenedor va a hospedar un servidor web NGINX, `CMD` puede incluir instrucciones para iniciar el servidor web, como `nginx.exe`. Si se especifican varias instrucciones `CMD` en un archivo Dockerfile, solo se evalúa la última.
 
@@ -333,7 +332,7 @@ CMD c:\Apache24\bin\httpd.exe -w
 
 Para obtener información detallada sobre la instrucción `CMD`, consulta la [referencia sobre CMD en Docker.com](https://docs.docker.com/engine/reference/builder/#cmd).
 
-## Carácter de escape
+## <a name="escape-character"></a>Carácter de escape
 
 En muchos casos, las instrucciones Dockerfile tendrán que abarcar varias líneas, para lo que se usa un carácter de escape. El carácter de escape predeterminado para Dockerfile es una barra diagonal inversa `\`. Dado que la barra diagonal inversa es un separador en las rutas de acceso de archivo en Windows, pueden surgir problemas. Para cambiar el carácter de escape predeterminado, se puede utilizar una directiva de analizador. Para más información al respecto, consulte el apartado sobre [directivas de analizador en Docker.com](https://docs.docker.com/engine/reference/builder/#parser-directives).
 
@@ -367,9 +366,9 @@ RUN powershell.exe -Command `
 
 Para más información sobre la directiva del analizador de escape, consulte el apartado sobre la [directiva del analizador de escape en Docker.com](https://docs.docker.com/engine/reference/builder/#escape).
 
-## PowerShell en Dockerfile
+## <a name="powershell-in-dockerfile"></a>PowerShell en Dockerfile
 
-### Comandos de PowerShell
+### <a name="powershell-commands"></a>Comandos de PowerShell
 
 Pueden ejecutarse comandos de PowerShell en un archivo Dockerfile mediante la operación `RUN`.
 
@@ -379,7 +378,7 @@ FROM microsoft/windowsservercore
 RUN powershell -command Expand-Archive -Path c:\apache.zip -DestinationPath c:\
 ```
 
-### Llamadas de REST
+### <a name="rest-calls"></a>Llamadas de REST
 
 PowerShell y el comando `Invoke-WebRequest` pueden resultar útiles al recopilar información o archivos de un servicio web. Por ejemplo, si estás creando una imagen que incluye Python, podrías usar el ejemplo siguiente. Considera configurar `$ProgressPreference` como `SilentlyContinue` para conseguir descargar más rápido.
 
@@ -410,7 +409,7 @@ RUN powershell.exe -Command \
 
 > WebClient no se admite actualmente en Nano Server.
 
-### Secuencias de comandos de PowerShell
+### <a name="powershell-scripts"></a>Secuencias de comandos de PowerShell
 
 En algunos casos, puede ser útil copiar un script en los contenedores que se usan durante el proceso de creación de la imagen y después ejecutarlo desde dentro del contenedor. Nota: Esto limitará el almacenamiento en caché de las capas de la imagen y reducirá la legibilidad del archivo Dockerfile.
 
@@ -422,7 +421,7 @@ ADD script.ps1 /windows/temp/script.ps1
 RUN powershell.exe -executionpolicy bypass c:\windows\temp\script.ps1
 ```
 
-## Compilación de Docker
+## <a name="docker-build"></a>Compilación de Docker
 
 Una vez que se ha creado un archivo Dockerfile y se ha guardado en el disco, se puede ejecutar `docker build` para crear la imagen. El comando `docker build` toma varios parámetros opcionales y una ruta de acceso al archivo Dockerfile. Para obtener documentación completa sobre la compilación de Docker, incluida una lista de todas las opciones de compilación, consulte la [referencia de compilación en Docker.com](https://docs.docker.com/engine/reference/commandline/build/#build).
 
@@ -476,14 +475,8 @@ iis                 latest              e2aafdfbe392        About a minute ago  
 windowsservercore   latest              6801d964fda5        4 months ago         0 B
 ```
 
-## Lecturas y referencias adicionales
+## <a name="further-reading--references"></a>Lecturas y referencias adicionales
 
 [Optimización de los archivos Dockerfile y la compilación de Docker para Windows] (optimize-windows-dockerfile.md)
 
 [Referencia sobre Dockerfile en Docker.com](https://docs.docker.com/engine/reference/builder/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

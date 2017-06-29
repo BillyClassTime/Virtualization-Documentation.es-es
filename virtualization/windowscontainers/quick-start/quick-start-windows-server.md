@@ -8,14 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-translationtype: Human Translation
-ms.sourcegitcommit: 76e041aac426604280208f616f7994181112215a
-ms.openlocfilehash: 766a99a74738fa41ef77410c70aefa7e664f014e
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: be51a89292f339c40b05bb48e0921777fd4a9801
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Contenedores de Windows en Windows Server
+# <a name="windows-containers-on-windows-server"></a>Contenedores de Windows en Windows Server
 
 Este ejercicio te guiará a través de la implementación básica y el uso de la característica de contenedores de Windows en Windows Server 2016. Durante este ejercicio, instalarás el rol de contenedor e implementarás un contenedor simple de Windows Server. Antes de comenzar este inicio rápido, familiarízate con la terminología y los conceptos básicos de los contenedores. Podrás encontrar esta información en la [Introducción a los contenedores](./index.md).
 
@@ -33,13 +31,13 @@ Si quiere implementar en Azure, esta [plantilla](https://github.com/Microsoft/Vi
 </a>
 
 
-## 1. Instalar Docker
+## <a name="1-install-docker"></a>1. Instalar Docker
 
-Para instalar Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/oneget/oneget). El proveedor permite la característica contenedores en tu equipo. También tendrás que instalar Docker en él y tendrás que reiniciarlo. Para trabajar con contenedores de Windows es necesario Docker. Este consta de motor y de cliente.
+Para instalar Docker, usaremos el [módulo de PowerShell de proveedor OneGet](https://github.com/oneget/oneget), que trabaja con proveedores para realizar la instalación, en este caso [MicrosoftDockerProvider](https://github.com/OneGet/MicrosoftDockerProvider). El proveedor habilita la característica de los contenedores en la máquina. También tendrás que instalar Docker en él y tendrás que reiniciarlo. Para trabajar con contenedores de Windows es necesario Docker. Este consta de motor y de cliente.
 
 Abre una sesión de PowerShell con privilegios elevados y ejecuta los comandos siguientes.
 
-En primer lugar, instala el proveedor de PackageManagement de Docker-Microsoft desde la Galería de PowerShell.
+En primer lugar, instala el proveedor PackageManagement de Docker-Microsoft desde la [Galería de PowerShell](https://www.powershellgallery.com/packages/DockerMsftProvider).
 
 ```none
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
@@ -56,7 +54,12 @@ Cuando PowerShell te pregunte si se debe confiar en el origen del paquete "Docke
 Restart-Computer -Force
 ```
 
-## 2. Instalar actualizaciones de Windows
+> Sugerencia: Si quieres actualizar Docker más adelante:
+>  - Comprueba la versión instalada con `Get-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - Busca la versión actual con `Find-Package -Name Docker -ProviderName DockerMsftProvider`
+>  - Cuando estés listo, actualiza con `Install-Package -Name Docker -ProviderName DockerMsftProvider -Update -Force`, seguido de `Start-Service Docker`
+
+## <a name="2-install-windows-updates"></a>2. Instala las actualizaciones de Windows
 
 Asegúrate de que el sistema de Windows Server está actualizado ejecutando:
 
@@ -84,7 +87,7 @@ Esto muestra un menú de configuración basado en texto, donde podrás elegir la
 
 Cuando se te solicite, elija la opción A para descargar todas las actualizaciones.
 
-## 3. Implementar el primer contenedor
+## <a name="3-deploy-your-first-container"></a>3. Implementar el primer contenedor
 
 Para este ejercicio, se descarga una imagen de ejemplo de .NET creada previamente desde el registro de Docker Hub y se implementa un contenedor simple que ejecuta una aplicación de .NET Hello World.  
 
@@ -144,9 +147,8 @@ OS: Microsoft Windows 10.0.14393
 
 Para obtener información más detallada sobre el comando Run de Docker, consulta [Docker Run Reference (Referencia de Run de Docker)]( https://docs.docker.com/engine/reference/run/) en Docker.com.
 
-## Pasos siguientes
+## <a name="next-steps"></a>Pasos siguientes
 
 [Imágenes de contenedores en Windows Server](./quick-start-images.md)
 
 [Contenedores de Windows en Windows 10](./quick-start-windows-10.md)
-

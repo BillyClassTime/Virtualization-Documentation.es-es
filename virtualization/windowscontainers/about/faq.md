@@ -8,15 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-translationtype: Human Translation
-ms.sourcegitcommit: 2ab9a4b09a2db72e5e2be71ced5d5400761a5ad8
-ms.openlocfilehash: b084bf179d9360e4a72e8e88b4fec80eafb2906c
-
+ms.openlocfilehash: c4afd536fda9d741adc00eaeb5595f05833cef11
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
+# <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
-# Preguntas más frecuentes
-
-## Acerca de los contenedores de Windows
+## <a name="about-windows-containers"></a>Acerca de los contenedores de Windows
 
 **¿Qué es un contenedor de Windows Server?**
 
@@ -54,7 +53,7 @@ Drawbridge fue uno de muchos proyectos de investigación que nos ayudaron a obte
 Tanto los contenedores de Windows Server como los de Hyper-V requieren Windows Server 2016. Estas tecnologías no funcionarán con versiones anteriores de Windows.
 
 
-## Administración de contenedores de Windows
+## <a name="windows-container-management"></a>Administración de contenedores de Windows
 
 **¿Los contenedores de Hyper-V también estarán disponibles para el ecosistema de Docker?**
 
@@ -62,7 +61,7 @@ Sí, los contenedores de Hyper-V ofrecerán el mismo nivel de integración y adm
 La plataforma Docker también simplificará enormemente y mejorará la experiencia de trabajo a través de nuestras opciones de contenedor. Una aplicación desarrollada con contenedores de Windows Server puede implementarse como un contenedor de Hyper-V sin cambios.
 
 
-## Ecosistema abierto de Microsoft
+## <a name="microsofts-open-ecosystem"></a>Ecosistema abierto de Microsoft
 
 **¿Microsoft participa en la iniciativa de contenedores abiertos (OCI, Open Container Initiative)?**
 
@@ -76,9 +75,3 @@ Nuestra asociación con Docker permite a los desarrolladores crear, administrar 
 Docker es dos cosas, el grupo de código abierto de proyectos y la empresa Docker. Consideramos que esta asociación incluye las dos. Parte del éxito de Docker es debido al vibrante ecosistema que se ha creado en torno a la tecnología de contenedores de Docker. Microsoft está contribuyendo al proyecto Docker, habilitando la compatibilidad con los contenedores de Windows Server y Hyper-V.  
 
 Para obtener más información, consulte la entrada de blog [New Windows Server containers and Azure support for Docker](http://azure.microsoft.com/blog/2014/10/15/new-windows-server-containers-and-azure-support-for-docker/?WT.mc_id=Blog_ServerCloud_Announce_TTD) (Nuevos contenedores de Windows Server y compatibilidad de Azure con Docker).
-
-
-
-<!--HONumber=Nov16_HO1-->
-
-

@@ -1,13 +1,13 @@
 
-# TÉRMINOS DE LICENCIA ADICIONALES DE SOFTWARE DE MICROSOFT
+# <a name="microsoft-software-supplemental-license-terms"></a>TÉRMINOS DE LICENCIA ADICIONALES DE SOFTWARE DE MICROSOFT
 
 Licencia: al solicitar y usar esta imagen de sistema operativo de contenedor para los contenedores de Windows, reconoce, comprende y da su consentimiento a los siguientes términos de licencia adicionales:
 
-## IMAGEN SE SISTEMA OPERATIVO DE CONTENEDOR 
+## <a name="container-os-image"></a>IMAGEN SE SISTEMA OPERATIVO DE CONTENEDOR 
 
 Microsoft Corporation (o, según dónde viva, una de sus filiales) (a la que se hace referencia como "nosotros", "nos" o "Microsoft") le otorga la licencia de este complemento de imagen de sistema operativo de contenedor ("Complemento"). Se le concede la licencia para usar este Complemento junto con el software de sistema operativo host subyacente ("Software del host") exclusivamente para ayudar a ejecutar la característica de contenedores en el Software del host.  Estos términos de licencia del Software del host se aplican al uso que usted realice del Complemento. No puede usarlo si no tiene una licencia para el Software del host. Puede usar este Complemento con cada copia con licencia válida del Software del host.
 
-## REQUISITOS DE LICENCIA ADICIONALES O DERECHOS DE USO 
+## <a name="additional-licensing-requirements-andor-use-rights"></a>REQUISITOS DE LICENCIA ADICIONALES O DERECHOS DE USO 
 
 El uso del Complemento como se especifica en el párrafo anterior podría resultar en la creación o modificación de una imagen de contenedor ("Imagen de contenedor") que incluye algunos componentes del Complemento. Para mayor claridad, una Imagen de contenedor es independiente y distinta de una máquina virtual o de una imagen de aplicación virtual.  En virtud de estos términos de licencia, te otorgamos un derecho restringido para redistribuir dichos componentes del Complemento en las siguientes condiciones:
 

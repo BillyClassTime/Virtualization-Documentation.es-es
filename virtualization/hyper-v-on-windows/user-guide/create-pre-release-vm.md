@@ -8,13 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 426c87cc-fa50-4b8d-934e-0b653d7dea7d
-translationtype: Human Translation
-ms.sourcegitcommit: ffdf89b0ae346197b9ae631ee5260e0565261c55
-ms.openlocfilehash: ea91ea0ffca5479cb0593ef9961625f7b7ab1f42
-
+ms.openlocfilehash: 8df30a00eaa2c98feeb4c80c302937c9dfc6d758
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Pruebe las características de la versión preliminar para Hyper-V
+# <a name="try-pre-release-features-for-hyper-v"></a>Pruebe las características de la versión preliminar para Hyper-V
 
 > Esto es contenido preliminar y está sujeto a cambios.  
   Las máquinas virtuales de versión preliminar están diseñadas únicamente para entornos de desarrollo o de prueba, ya que Microsoft no las admite.
@@ -29,7 +28,7 @@ Estas son algunas de las razones por las que solo están destinadas a entornos q
 * Las máquinas virtuales de versión preliminar no tienen una definición coherente entre compilaciones. Si actualiza el sistema operativo host, las máquinas virtuales de versión preliminar existentes podrían ser incompatibles con el host. Estas máquinas virtuales podrían no iniciarse, o en un principio podría parecer que funcionan pero más adelante presentar graves problemas de compatibilidad.
 * Si importa una máquina virtual de versión preliminar en un host con una compilación diferente, los resultados son imprevisibles. Puede mover una máquina virtual de versión preliminar a otro host. Pero se espera que este escenario funcione solamente si ambos hosts ejecutan la misma compilación.
 
-## Creación de una máquina virtual de versión preliminar
+## <a name="create-a-pre-release-virtual-machine"></a>Creación de una máquina virtual de versión preliminar
 
 Puede crear una máquina virtual de versión preliminar en hosts de Hyper-V que ejecutan Windows Server 2016 Technical Preview.
 
@@ -46,12 +45,6 @@ Otros ejemplos con los que puede usar la marca -Prerelease:
 
  Los ejemplos descritos en estos artículos funcionan con los hosts de Hyper-V que ejecutan Windows 10 o Windows Server 2016 Technical Preview. Pero, por el momento, solo puede usar la marca -Prerelease para crear una máquina virtual de versión preliminar en hosts de Hyper-V que ejecutan Windows Server 2016 Technical Preview.
 
-## Consulte también
+## <a name="see-also"></a>Consulte también
 -  [Virtualization Blog](https://blogs.technet.microsoft.com/virtualization/) (Blog de virtualización): obtenga información sobre las características de la versión preliminar que están disponibles y cómo probarlas.
 - [Supported virtual machine configuration versions](https://technet.microsoft.com/library/mt695898.aspx#BKMK_SupportedConfigVersions) (Versiones de configuración de máquina virtual admitidas): obtenga información sobre cómo comprobar la versión de configuración de la máquina virtual y qué versiones admite Microsoft.
-
-
-
-<!--HONumber=Oct16_HO4-->
-
-

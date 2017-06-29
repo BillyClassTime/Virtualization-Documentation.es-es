@@ -8,37 +8,35 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-translationtype: Human Translation
-ms.sourcegitcommit: 59621ca2db190d5c13034752a08c291e3dc19daa
-ms.openlocfilehash: d68be61b1d462b70986df5cfd6df052b388cec1d
-ms.lasthandoff: 02/08/2017
-
+ms.openlocfilehash: 1699bec6515608c722c28babd26719b27baa53c6
+ms.sourcegitcommit: b13a29758013a21215ee6e21e7e7ed7f58b62485
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Contenedores de Windows
+# <a name="windows-containers"></a>Contenedores de Windows
 
 **Este contenido es preliminar y está sujeto a cambios.** 
 
-## Qué son los contenedores
+## <a name="what-are-containers"></a>Qué son los contenedores
 
-Vea una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
+Mira una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
 
-Son un entorno operativo portátil, aislado y controlado por recursos.
+Los contenedores son un entorno operativo portátil, aislado y controlado por recursos.
 
 Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejecutarse sin tener que tocar los recursos (memoria, disco, red, etc.) de otros contenedores ni del host.
 
 Un contenedor tiene el aspecto y actúa como un equipo físico recién instalado o una máquina virtual. Un contenedor de Windows Server puede administrarse con [Docker](https://www.docker.com/) como cualquier otro contenedor.
 
-## Tipos de contenedores de Windows
+## <a name="windows-container-types"></a>Tipos de contenedores de Windows
 
 Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
 
-**Contenedores de Windows Server**: ofrecen aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte un kernel con el host de contenedor y todos los contenedores que se ejecutan en dicho host.
+**Contenedores de Windows Server**: Proporcionan aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y con todos los contenedores que se ejecutan en el host.  Estos contenedores no proporcionan un límite de seguridad hostil y no deben usarse para aislar un código que no sea de confianza.
 
-**Contenedores de Hyper-V**: amplían el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con los contenedores de Hyper-V.
+**Aislamiento de Hyper-V**: Amplía el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores que estén en el mismo host.  Estos contenedores se han diseñado para el hospedaje multiinquilino hostil con las mismas garantías de seguridad de una máquina virtual.
 
 
-## Conceptos básicos de los contenedores
+## <a name="container-fundamentals"></a>Conceptos básicos de los contenedores
 
 Al empezar a trabajar con contenedores, observará muchas similitudes entre un contenedor y una máquina virtual. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales.  
 
@@ -58,7 +56,7 @@ Los siguientes conceptos clave le resultarán útiles cuando empiece a crear y t
 
 <center>![](media/containerfund.png)</center>
 
-## Contenedores para desarrolladores
+## <a name="containers-for-developers"></a>Contenedores para desarrolladores
 
 Del escritorio de un desarrollador a una máquina de pruebas para un conjunto de equipos de producción, se puede crear una imagen de Docker que se implementará exactamente igual en cualquier entorno en segundos. Este artículo ha creado un gran ecosistema en crecimiento de aplicaciones empaquetadas en contenedores de Docker, con DockerHub, el registro de aplicaciones en contenedores públicos que mantiene Docker. Actualmente hay publicadas más de 180.000 aplicaciones en el repositorio público de la comunidad.  
 
@@ -70,20 +68,19 @@ Con los contenedores, los desarrolladores pueden crear una aplicación en cualqu
 
 Los contenedores ayudan a los desarrolladores a crear y distribuir aplicaciones de mayor calidad, más rápido.
 
-## Contenedores para los profesionales de TI ##
+## <a name="containers-for-it-professionals"></a>Contenedores para los profesionales de TI ##
 
 Los profesionales de TI pueden utilizar los contenedores para ofrecer entornos estandarizados para su desarrollo, sus controles de calidad y sus equipos de producción. Ya no tienen que preocuparse de los complicados pasos de instalación y configuración. Mediante el uso de contenedores, los administradores de sistemas abstraen las diferencias de las instalaciones de sistemas operativos y la infraestructura subyacente.
 
 Los contenedores ayudan a los administradores a crear una infraestructura que sea más fácil de actualizar y mantener.
 
-## Vídeo de introducción
+## <a name="video-overview"></a>Vídeo de introducción
 
 <iframe 
 src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
-## Pruebe los contenedores de Windows Server
+## <a name="try-windows-server-containers"></a>Pruebe los contenedores de Windows Server
 
 [Introducción a los contenedores](../quick_start/quick_start.md)
-
 

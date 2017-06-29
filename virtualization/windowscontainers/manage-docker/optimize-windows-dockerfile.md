@@ -8,18 +8,18 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: 2077f7cf0428e08ce915470ac4cc3b0ccc9c6369
-
+ms.openlocfilehash: 8b0cd6046f8b556f9dd5082c5ddf80af83814c1c
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-# Optimizar Dockerfiles de Windows
+# <a name="optimize-windows-dockerfiles"></a>Optimizar Dockerfiles de Windows
 
 Pueden usarse varios métodos para optimizar el proceso de compilación de Docker y las imágenes de Docker resultantes. En este documento se explica cómo funciona el proceso de compilación de Docker y se muestran varias tácticas que se pueden usar para una creación de imagen óptima con contenedores de Windows.
 
-## Compilación de Docker
+## <a name="docker-build"></a>Compilación de Docker
 
-### Capas de imagen
+### <a name="image-layers"></a>Capas de imagen
 
 Antes de examinar la optimización de las compilaciones de Docker, es importante comprender cómo funcionan las compilaciones de Docker. Durante el proceso de compilación de Docker se usa un Dockerfile y cada instrucción accionable se ejecuta, de una en una, en su propio contenedor temporal. El resultado es una nueva capa de imagen para cada instrucción accionable. 
 
@@ -50,13 +50,13 @@ Cada una de estas capas se puede asignar a una instrucción del Dockerfile. La c
 
 Se pueden escribir Dockerfiles para minimizar las capas de imagen, optimizar el rendimiento de la compilación y también optimizar aspectos estéticos como la legibilidad. En última instancia, hay muchas formas de realizar la misma tarea de compilación de la imagen. La comprensión de cómo afecta el formato de un Dockerfile al tiempo de compilación y a la imagen resultante mejora la experiencia de automatización. 
 
-## Optimizar el tamaño de la imagen
+## <a name="optimize-image-size"></a>Optimizar el tamaño de la imagen
 
 Al compilar imágenes de contenedor de Docker, el tamaño de la imagen puede ser un factor importante. Las imágenes de contenedor se mueven entre registros y host, se exportan e importan y, en última instancia, usan espacio. Se pueden usar varias tácticas durante el proceso de compilación de Docker para minimizar el tamaño de la imagen. En esta sección se detallan algunas de estas tácticas específicas de los contenedores de Windows. 
 
 Para obtener información adicional sobre los procedimientos recomendados de Dockerfile, consulte [Best practices for writing Dockerfiles (Procedimientos recomendados para escribir Dockerfiles)]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) en Docker.com.
 
-### Acciones relacionadas con grupos
+### <a name="group-related-actions"></a>Acciones relacionadas con grupos
 
 Dado que cada instrucción `RUN` crea una nueva capa en la imagen del contenedor, la agrupación de acciones en una instrucción `RUN` puede reducir el número de capas. Aunque la minimización de capas puede no afectar mucho al tamaño de la imagen, la agrupación de acciones relacionadas sí, lo que se verá en los ejemplos siguientes.
 
@@ -83,7 +83,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 957147160e8d        3 minutes ago       cmd /S /C powershell.exe -Command Invoke-WebR   125.7 MB
 ```
 
-Para comparar, aquí está la misma operación, aunque todos los pasos se ejecutan con la misma instrucción `RUN`. Observe que cada paso de la instrucción `RUN` está en una nueva línea del Dockerfile y se usa el carácter '\' para el ajuste de línea. 
+Para comparar, aquí está la misma operación, aunque todos los pasos se ejecutan con la misma instrucción `RUN`. Observe que cada paso de la instrucción `RUN` está en una nueva línea del Dockerfile y que se usa el carácter '\' para el ajuste de línea. 
 
 ```none
 FROM windowsservercore
@@ -104,7 +104,7 @@ IMAGE               CREATED             CREATED BY                              
 69e44f37c748        54 seconds ago      cmd /S /C powershell.exe -Command   $ErrorAct   216.3 MB                
 ```
 
-### Quitar archivos sobrantes
+### <a name="remove-excess-files"></a>Quitar archivos sobrantes
 
 Si un archivo, como un instalador, no es necesario después de haberse usado, quítelo para reducir el tamaño de la imagen. Esto debe hacerse en el mismo paso en el que se copia el archivo en la capa de imagen. Esto evita que el archivo se conserve en una capa de la imagen de nivel inferior.
 
@@ -120,9 +120,9 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-## Optimizar la velocidad de compilación
+## <a name="optimize-build-speed"></a>Optimizar la velocidad de compilación
 
-### Varias líneas
+### <a name="multiple-lines"></a>Varias líneas
 
 Al optimizar la velocidad de compilación de Docker, puede ser conveniente separar las operaciones en varias instrucciones individuales. Con varias operaciones `RUN` aumenta la eficacia del almacenamiento en caché. Dado que se crean capas individuales para cada instrucción `RUN`, si ya se ha ejecutado un paso idéntico en otra operación de compilación de Docker, se vuelve a usar esta operación almacenada en caché (capa de imagen). El resultado es que el tiempo de ejecución de la compilación de Docker se reduce.
 
@@ -197,7 +197,7 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 6801d964fda5        5 months ago
 ```
 
-### Clasificación de instrucciones
+### <a name="ordering-instructions"></a>Clasificación de instrucciones
 
 Un Dockerfile se procesa de arriba a abajo y cada instrucción se compara con las capas almacenadas en caché. Cuando se encuentra una instrucción sin una capa en caché, esta instrucción y todas las siguientes se procesan en nuevas capas de la imagen del contenedor. Por este motivo, es importante el orden en que se colocan las instrucciones. Coloque las instrucciones que se van a mantener constantes hacia la parte superior del Dockerfile. Coloque las que pueden cambiar hacia la parte inferior del Dockerfile. Al hacerlo, se reduce la probabilidad de que se niegue la caché existente.
 
@@ -248,9 +248,9 @@ c92cc95632fb        28 seconds ago      cmd /S /C mkdir test-4   5.644 MB
 6801d964fda5        5 months ago                                 0 B
 ```
 
-## Optimización estética
+## <a name="cosmetic-optimization"></a>Optimización estética
 
-### Mayúsculas y minúsculas de las instrucciones
+### <a name="instruction-case"></a>Mayúsculas y minúsculas de las instrucciones
 
 La instrucciones de Dockerfile no distinguen mayúsculas de minúsculas, aunque la convención es usar mayúsculas. Esto mejora la legibilidad al diferenciar entre la llamada y la operación de la instrucción. Los dos ejemplos siguientes muestran este concepto. 
 
@@ -273,7 +273,7 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-### Ajuste de línea
+### <a name="line-wrapping"></a>Ajuste de línea
 
 Las operaciones largas y complejas pueden dividirse en varias líneas con el carácter de barra diagonal inversa `\`. El Dockerfile siguiente instala el paquete redistribuible de Visual Studio, quita los archivos del instalador y luego crea un archivo de configuración. Estas tres operaciones se especifican en una sola línea.
 
@@ -294,14 +294,8 @@ RUN powershell -Command \
     New-Item c:\config.ini
 ```
 
-## Lecturas y referencias adicionales
+## <a name="further-reading--references"></a>Lecturas y referencias adicionales
 
 [Dockerfile en Windows] (manage-windows-dockerfile.md)
 
 [Procedimientos recomendados para escribir Dockerfiles en Docker.com](https://docs.docker.com/engine/reference/builder/)
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

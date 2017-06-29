@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-translationtype: Human Translation
-ms.sourcegitcommit: c65353d0b6dff233819dcc8f4f92eb186bf3b8fc
-ms.openlocfilehash: 9f28c35c6eaddd8bcf3883863b63251378f845a7
-
+ms.openlocfilehash: 5230080386081bda8b54656d15f33b4986cfa6e3
+ms.sourcegitcommit: ca64c1aceccd97c6315b28ff814ec7ac91fba9da
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 05/09/2017
 ---
-
-# Solución de problemas
+# <a name="troubleshooting"></a>Solución de problemas
 
 ¿Tienes problemas para configurar el equipo o para ejecutar un contenedor? Hemos creado un script de PowerShell para comprobar los problemas comunes. Pruébelo primero para ver lo que encuentra y compartir los resultados.
 
@@ -26,10 +26,10 @@ Puede ver una lista de todas las pruebas que se ejecutan junto con soluciones co
 Si eso no ayuda encontrar el origen del problema, publique la salida del script en el [Foro del contenedor](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers). Este es el mejor lugar para obtener ayuda de la comunidad, incluidos los desarrolladores e Insiders de Windows.
 
 
-## Buscar registros
+## <a name="finding-logs"></a>Buscar registros
 Hay varios servicios que se usan para administrar contenedores de Windows. En las secciones siguientes se muestra dónde obtener los registros de cada servicio.
 
-### Motor de Docker
+### <a name="docker-engine"></a>Motor de Docker
 El motor de Docker registra en el registro de eventos "Application" de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
 
 Por ejemplo, esto mostrará los registros del motor de Docker de los últimos 5 minutos, empezando por los más antiguos.
@@ -44,7 +44,7 @@ Esto también se podría canalizar fácilmente en un archivo CSV para que otra h
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.CSV
 ```
 
-#### Habilitar el registro de depuración
+#### <a name="enabling-debug-logging"></a>Habilitar el registro de depuración
 También puede habilitar el registro de depuración en el motor de Docker. Esto puede resultar útil para solucionar problemas si los registros normales no tienen información suficiente.
 
 En primer lugar, abra un símbolo del sistema con privilegios elevados, ejecute `sc.exe qc docker` para obtener la línea de comandos para el servicio Docker.
@@ -82,10 +82,35 @@ sc.exe stop docker
 sc.exe start docker
 ```
 
-Esto registrará mucha más información en el registro de eventos de aplicación, por lo que es mejor quitar la opción `-D` una vez que haya terminado de solucionar los problemas. Use los mismos pasos anteriores sin `-D` y reinicie el servicio para deshabilitar el registro de depuración.
+Esto registrará mucha más información en el registro de eventos de aplicación, por lo que es mejor quitar la opción `-D` una vez que haya terminado de solucionar los problemas. Usa los mismos pasos anteriores sin `-D` y reinicia el servicio para deshabilitar el registro de depuración.
+
+Una alternativa a lo anterior es ejecutar el daemon de Docker en modo de depuración desde el símbolo de PowerShell con privilegios elevados, capturando los resultados directamente en un archivo.
+```PowerShell
+sc.exe stop docker
+<path\to\>dockerd.exe -D > daemon.log 2>&1
+```
+
+#### <a name="obtaining-stack-dump-and-daemon-data"></a>Obtener los datos de volcado de pila y de daemon.
+
+Por lo general, estos solamente son útiles si los solicitan explícitamente el soporte técnico de Microsoft o los desarrolladores de Docker. Pueden usarse para ayudar a diagnosticar una situación donde parezca que Docker está bloqueado. 
+
+Descarga [docker signal.exe](https://github.com/jhowardmsft/docker-signal).
+
+Uso:
+```PowerShell
+Get-Process dockerd
+# Note the process ID in the `Id` column
+docker-signal -pid=<id>
+```
+
+Los archivos de salida se encontrarán en el directorio raíz de datos en el que se esté ejecutando Docker. El directorio predeterminado es `C:\ProgramData\Docker`. El directorio real puede confirmarse ejecutando `docker info -f "{{.DockerRootDir}}"`.
+
+Los archivos serán `goroutine-stacks-<timestamp>.log` y `daemon-data-<timestamp>.log`.
+
+Ten en cuenta que `daemon-data*.log` puede contener información personal y por lo general solo debe compartirse con personal de soporte técnico de confianza. `goroutine-stacks*.log` no contiene información personal.
 
 
-### Servicio de contenedor de host
+### <a name="host-container-service"></a>Servicio de contenedor de host
 El motor de Docker depende de un servicio de contenedor de host específico de Windows. Tiene registros independientes: 
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
@@ -98,9 +123,37 @@ Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 
 ```
 
+#### <a name="capturing-hcs-analyticdebug-logs"></a>Capturar registros de análisis y depuración de HCS
 
+Habilitar los registros de análisis y depuración para proceso de Hyper-V y guardarlos en `hcslog.evtx`.
 
+```PowerShell
+# Enable the analytic logs
+wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:true /q:true
+     
+# <reproduce your issue>
+     
+# Export to an evtx
+wevtutil.exe epl Microsoft-Windows-Hyper-V-Compute-Analytic <hcslog.evtx>
+     
+# Disable
+wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
+```
 
-<!--HONumber=Jan17_HO4-->
+#### <a name="capturing-hcs-verbose-tracing"></a>Capturar el rastreo detallado de HCS.
 
+Por lo general, estos solamente son útiles si lo solicita el soporte técnico de Microsoft. 
 
+Descarga [HcsTraceProfile.wprp](https://gist.github.com/jhowardmsft/71b37956df0b4248087c3849b97d8a71)
+
+```PowerShell
+# Enable tracing
+wpr.exe -start HcsTraceProfile.wprp!HcsArgon -filemode
+
+# <reproduce your issue>
+
+# Capture to HcsTrace.etl
+wpr.exe -stop HcsTrace.etl "some description"
+```
+
+Proporciona `HcsTrace.etl` a tu contacto de soporte técnico.

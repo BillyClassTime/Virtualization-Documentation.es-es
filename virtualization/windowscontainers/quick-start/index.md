@@ -8,17 +8,16 @@ ms.topic: article
 ms.prod: windows-contianers
 ms.service: windows-containers
 ms.assetid: 4878f5d2-014f-4f3c-9933-97f03348a147
-translationtype: Human Translation
-ms.sourcegitcommit: 54eff4bb74ac9f4dc870d6046654bf918eac9bb5
-ms.openlocfilehash: d91f53908610ca245b6c8b4c017baed7f044667e
-
+ms.openlocfilehash: 577618112339e274b3d25908afc5428bd1c36173
+ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.translationtype: HT
+ms.contentlocale: es-ES
 ---
-
-# Inicio rápido de contenedores de Windows
+# <a name="windows-containers-quick-start"></a>Inicio rápido de contenedores de Windows
 
 El inicio rápido de contenedores de Windows presenta la terminología del producto y los contenedores, guía a través de ejemplos sencillos de implementación de contenedores y además proporciona referencias de temas más avanzados. Si no está familiarizado con los contenedores o los contenedores de Windows, cada paso de este inicio rápido le proporcionará experiencias prácticas con la tecnología.
 
-## 1. Qué son los contenedores
+## <a name="1-what-are-containers"></a>1. Qué son los contenedores
 
 Son un entorno operativo portátil, aislado y controlado por recursos.
 
@@ -26,7 +25,7 @@ Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejec
 
 Si estuviera dentro de un contenedor, parecería que está dentro de una máquina virtual o un equipo físico recién instalados. Y, para [Docker](https://www.docker.com/), un contenedor de Windows se puede administrar de la misma forma que cualquier otro contenedor.
 
-## 2. Tipos de contenedores de Windows
+## <a name="2-windows-container-types"></a>2. Tipos de contenedores de Windows
 
 Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
 
@@ -34,7 +33,7 @@ Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiem
 
 **Contenedores de Hyper-V**: amplían el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores de Hyper-V.
 
-## 3. Conceptos básicos de los contenedores
+## <a name="3-container-fundamentals"></a>3. Conceptos básicos de los contenedores
 
 Al empezar a trabajar con contenedores, observará muchas similitudes entre un contenedor y una máquina virtual. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales. Los siguientes conceptos clave le resultarán útiles cuando empiece a crear y trabajar con contenedores de Windows. 
 
@@ -48,15 +47,9 @@ Al empezar a trabajar con contenedores, observará muchas similitudes entre un c
 
 **Dockerfile**: los Dockerfiles se usan para automatizar la creación de imágenes de contenedor.
 
-## Paso siguiente:
+## <a name="next-step"></a>Paso siguiente:
 
 [Inicio rápido de contenedores de Windows Server](quick-start-windows-server.md)  
 
 [Inicio rápido de contenedores de Windows 10](quick-start-windows-10.md)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 
