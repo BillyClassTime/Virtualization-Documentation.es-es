@@ -8,16 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 1699bec6515608c722c28babd26719b27baa53c6
-ms.sourcegitcommit: b13a29758013a21215ee6e21e7e7ed7f58b62485
+ms.openlocfilehash: a70564f565a69f15ef4d668ccab0aa3b18c758ae
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="windows-containers"></a>Contenedores de Windows
+# Contenedores de Windows
 
 **Este contenido es preliminar y está sujeto a cambios.** 
 
-## <a name="what-are-containers"></a>Qué son los contenedores
+## Qué son los contenedores
 
 Mira una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
 
@@ -27,16 +28,16 @@ Básicamente, un contenedor es un lugar aislado donde una aplicación puede ejec
 
 Un contenedor tiene el aspecto y actúa como un equipo físico recién instalado o una máquina virtual. Un contenedor de Windows Server puede administrarse con [Docker](https://www.docker.com/) como cualquier otro contenedor.
 
-## <a name="windows-container-types"></a>Tipos de contenedores de Windows
+## Tipos de contenedores de Windows
 
 Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
 
-**Contenedores de Windows Server**: Proporcionan aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y con todos los contenedores que se ejecutan en el host.  Estos contenedores no proporcionan un límite de seguridad hostil y no deben usarse para aislar un código que no sea de confianza.
+**Contenedores de Windows Server**: Proporcionan aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y con todos los contenedores que se ejecutan en el host.  Estos contenedores no proporcionan un límite de seguridad hostil y no deben usarse para aislar un código que no sea de confianza.  Estos contenedores comparten el espacio de kernel con el host y los demás contenedores en el mismo host, por lo que el kernel debe ser coherente, lo que significa una misma versión y configuración.
 
-**Aislamiento de Hyper-V**: Amplía el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores que estén en el mismo host.  Estos contenedores se han diseñado para el hospedaje multiinquilino hostil con las mismas garantías de seguridad de una máquina virtual.
+**Aislamiento de Hyper-V**: amplía el aislamiento que ofrecen los contenedores de Windows Server mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores que estén en el mismo host.  Estos contenedores se han diseñado para el hospedaje multiinquilino hostil con las mismas garantías de seguridad de una máquina virtual. Dado que estos contenedores no comparten el kernel con el host u otros contenedores del equipo host, pueden ejecutar kernels con distintas versiones y configuraciones (dentro de las versiones compatibles): por ejemplo, todos los contenedores de Windows en Windows 10 usan el aislamiento de Hyper-V para poder usar la versión y configuración del kernel de Windows Server.
 
 
-## <a name="container-fundamentals"></a>Conceptos básicos de los contenedores
+## Conceptos básicos de los contenedores
 
 Al empezar a trabajar con contenedores, observará muchas similitudes entre un contenedor y una máquina virtual. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales.  
 
@@ -56,7 +57,7 @@ Los siguientes conceptos clave le resultarán útiles cuando empiece a crear y t
 
 <center>![](media/containerfund.png)</center>
 
-## <a name="containers-for-developers"></a>Contenedores para desarrolladores
+## Contenedores para desarrolladores
 
 Del escritorio de un desarrollador a una máquina de pruebas para un conjunto de equipos de producción, se puede crear una imagen de Docker que se implementará exactamente igual en cualquier entorno en segundos. Este artículo ha creado un gran ecosistema en crecimiento de aplicaciones empaquetadas en contenedores de Docker, con DockerHub, el registro de aplicaciones en contenedores públicos que mantiene Docker. Actualmente hay publicadas más de 180.000 aplicaciones en el repositorio público de la comunidad.  
 
@@ -68,19 +69,19 @@ Con los contenedores, los desarrolladores pueden crear una aplicación en cualqu
 
 Los contenedores ayudan a los desarrolladores a crear y distribuir aplicaciones de mayor calidad, más rápido.
 
-## <a name="containers-for-it-professionals"></a>Contenedores para los profesionales de TI ##
+## Contenedores para los profesionales de TI ##
 
 Los profesionales de TI pueden utilizar los contenedores para ofrecer entornos estandarizados para su desarrollo, sus controles de calidad y sus equipos de producción. Ya no tienen que preocuparse de los complicados pasos de instalación y configuración. Mediante el uso de contenedores, los administradores de sistemas abstraen las diferencias de las instalaciones de sistemas operativos y la infraestructura subyacente.
 
 Los contenedores ayudan a los administradores a crear una infraestructura que sea más fácil de actualizar y mantener.
 
-## <a name="video-overview"></a>Vídeo de introducción
+## Vídeo de introducción
 
 <iframe 
 src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
 
-## <a name="try-windows-server-containers"></a>Pruebe los contenedores de Windows Server
+## Pruebe los contenedores de Windows Server
 
 [Introducción a los contenedores](../quick_start/quick_start.md)
 

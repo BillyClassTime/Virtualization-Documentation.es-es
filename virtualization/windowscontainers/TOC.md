@@ -9,10 +9,17 @@
 ## [Paso 1: Conceptos](quick_start/quick_start.md)
 ## [Paso 2: Primer contenedor](quick_start/quick_start_windows_10.md)
 
-# Implementar contenedores de Windows
+# Inicio rápido de Windows Insider
+## [Paso 1: uso de las imágenes de Insider](quick-start/Using-Insider-Container-Images.md)
+## [Paso 2: Compilar y ejecutar una aplicación.](quick-start/Nano-RS3-.NET-Core-and-PS.md)
+## [Paso 3: Problemas conocidos](quick-start/Insider-Known-Issues.md)
+
+# Implementar el contenedor de Windows
 ## [Requisitos del sistema](deployment/system_requirements.md)
+## [Aislamiento de Hyper-V](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/hyperv-container)
 ## [Host de contenedor: Windows Server](deployment/deployment.md)
 ## [Host de contenedor: Nano Server](deployment/deployment_nano.md)
+## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 ## [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Cuentas del servicio de Active Directory](management/manage_serviceaccounts.md)
 

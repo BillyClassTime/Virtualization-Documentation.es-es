@@ -1,4 +1,4 @@
-# <a name="windows-server-eula"></a>CLUF de Windows Server
+# CLUF de Windows Server
 
 TÉRMINOS DE LICENCIA DE MICROSOFT PARA UNA IMAGEN DE DISCO DURO VIRTUAL DEL SIGUIENTE SOFTWARE:  
 MICROSOFT WINDOWS SERVER 
@@ -54,10 +54,10 @@ Si cumple estos términos de licencia, obtendrá los derechos que se indican a c
 
   LA LICENCIA DE ESTE PRODUCTO SE CONCEDE EN CUMPLIMIENTO DE LAS LICENCIAS DE LA CARTERA DE PATENTES DE VÍDEO VISUAL AVC, VC-1, MPEG-4 PARTE 2 Y MPEG-2 PARA USO PERSONAL Y NO COMERCIAL POR PARTE DE UN CONSUMIDOR PARA (i) CODIFICAR VÍDEO EN CUMPLIMIENTO CON LOS ESTÁNDARES ANTERIORES (“ESTÁNDARES DE VÍDEO”) Y/O (ii) DESCODIFICAR VÍDEO AVC, VC-1, MPEG-4 PARTE 2 Y MPEG-2 QUE HAYA SIDO CODIFICADO POR UN CONSUMIDOR EJERCIENDO UNA ACTIVIDAD PERSONAL NO COMERCIAL Y/U OBTENIDO DE UN PROVEEDOR DE VÍDEO CON LICENCIA PARA PROPORCIONAR DICHO VÍDEO. NO SE CONCEDE NINGUNA OTRA LICENCIA PARA NINGÚN OTRO USO, NI SE DEBE PRESUPONER SU CONCESIÓN. SE PUEDE OBTENER INFORMACIÓN ADICIONAL DE MPEG LA, L.L.C. CONSULTE WWW.MPEGLA.COM.
   
-10.    **ADOBE FLASH PLAYER** El software puede incluir una versión de Adobe Flash Player. Usted acepta que el uso que hace de Adobe Flash Player se rige por los términos de licencia de Adobe Systems Incorporated, que se encuentran en go.microsoft.com/fwlink/?LinkID=248532. Adobe y Flash son marcas o marcas registradas de Adobe Systems Incorporated en Estados Unidos y/u otros países.
+10. **ADOBE FLASH PLAYER** El software puede incluir una versión de Adobe Flash Player. Usted acepta que el uso que hace de Adobe Flash Player se rige por los términos de licencia de Adobe Systems Incorporated, que se encuentran en go.microsoft.com/fwlink/?LinkID=248532. Adobe y Flash son marcas o marcas registradas de Adobe Systems Incorporated en Estados Unidos y/u otros países.
   
-11.    **ALCANCE DE LA LICENCIA.**
-  El software se cede bajo licencia y no es objeto de venta. Este contrato solo le otorga algunos derechos de uso del software. Microsoft se reserva todos los demás derechos. A menos que la legislación aplicable le otorgue más derechos a pesar de esta limitación, solo podrá utilizar el software tal como se permite expresamente en este contrato. Al hacerlo, deberá ajustarse a las limitaciones técnicas del software que solo permiten usarlo de determinadas formas. No podrá:
+11. **ALCANCE DE LA LICENCIA.**
+  El software se cede bajo licencia y no es objeto de venta. Este contrato solo le otorga algunos derechos de uso del software. Microsoft se reserva todos los demás derechos. A menos que la legislación aplicable le otorgue más derechos a pesar de esta limitación, solo podrá utilizar el software tal como se permite expresamente en este contrato. Al hacerlo, deberá ajustarse a las limitaciones técnicas del software que solo permiten utilizarlo de determinadas formas. No podrá:
   * divulgar a terceros los resultados de pruebas comparativas del software salvo que se trate de Microsoft .NET Framework (consulte términos diferentes descritos anteriormente), sin la aprobación previa por escrito de Microsoft;
   * eludir las limitaciones técnicas del software;
   * utilizar técnicas de ingeniería inversa, descompilar o desensamblar el software, excepto y únicamente en la medida en que lo permita expresamente la legislación aplicable, a pesar de esta limitación;
@@ -67,26 +67,26 @@ Si cumple estos términos de licencia, obtendrá los derechos que se indican a c
   * transmitir el software o este contrato a terceros; o
   * utilizar el software para prestar servicios de hosting de software comercial.
   
-12.    **RESTRICCIONES A LA EXPORTACIÓN.**
-  Es software está sujeto a la legislación y a la normativa sobre exportación de los Estados Unidos. Debe cumplir todas las leyes y reglamentos, nacionales e internacionales, en materia de exportación que se apliquen al software. Dichas leyes incluyen limitaciones en cuanto a destino, usuarios finales y uso final. Para obtener más información, consulte www.microsoft.com/exporting.
+12. **RESTRICCIONES A LA EXPORTACIÓN.**
+  El software está sujeto a las leyes y a los reglamentos en materia de exportación de Estados Unidos. Debe cumplir todas las leyes y reglamentos, nacionales e internacionales, en materia de exportación que se apliquen al software. Dichas leyes incluyen limitaciones en cuanto a destino, usuarios finales y uso final. Para obtener más información, consulte www.microsoft.com/exporting.
   
-13.    **SERVICIOS DE SOPORTE TÉCNICO.**
+13. **SERVICIOS DE SOPORTE TÉCNICO.**
   Debido a que este software se presenta “tal cual”, Microsoft no puede prestar servicios de soporte técnico para el mismo.
   
-14.    **CONTRATO COMPLETO.**
+14. **CONTRATO COMPLETO.**
   Este contrato y los términos aplicables a complementos, actualizaciones, servicios basados en Internet y servicios de soporte técnico que utilice constituyen el contrato completo respecto al software y a los servicios de soporte técnico.
   
-15.    **LEGISLACIÓN APLICABLE.**  
+15. **LEGISLACIÓN APLICABLE.**  
   a.  Estados Unidos. Si adquirió el software en los Estados Unidos, la interpretación de este contrato se regirá por la legislación del Estado de Washington, que se aplicará a las reclamaciones por incumplimiento del mismo, con independencia de conflictos de principios legales. Para el resto de reclamaciones, será aplicable la legislación de su estado de residencia, incluidas las reclamaciones en virtud de las leyes estatales en materia de protección del consumidor, competencia desleal y responsabilidad extracontractual.  
   b.  Fuera de los Estados Unidos. Si adquirió el software en otro país, se aplicará la legislación de dicho país.
   
-16.    **EFECTOS LEGALES.**
-  En este contrato se describen determinados derechos legales. Puede tener otros derechos conforme a las leyes de su país. También puede tener derechos respecto a la parte de la que adquirió el software. Si las leyes de su país no lo permiten, este contrato no modifica los derechos que le concedan las leyes de su país.
+16. **EFECTOS LEGALES.**
+  En este contrato se describen determinados derechos legales. Es posible que disponga de otros derechos en virtud de la legislación de su país. Asimismo, pueden asistirle determinados derechos con respecto a la parte de la que adquirió el software. Si las leyes de su país no lo permiten, este contrato no modifica los derechos que le concedan las leyes de su país.
   
-17.    **AVISO DE DECLINACIÓN DE RESPONSABILIDADES DE GARANTÍA. EL SOFTWARE SE CEDE BAJO LICENCIA "TAL CUAL". USTED ASUME EL RIESGO DE SU USO. MICROSOFT NO OTORGA NINGUNA GARANTÍA NI CONDICIÓN EXPRESAS. ES POSIBLE QUE LA LEGISLACIÓN LOCAL LE OTORGUE DERECHOS DE CONSUMIDOR O GARANTÍAS LEGALES ADICIONALES QUE ESTE CONTRATO NO PUEDA MODIFICAR. EN LA MEDIDA EN QUE ASÍ LO PERMITA LA LEGISLACIÓN LOCAL, MICROSOFT EXCLUYE LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR Y AUSENCIA DE INFRACCIÓN.
+17. **AVISO DE DECLINACIÓN DE RESPONSABILIDADES DE GARANTÍA. EL SOFTWARE SE CEDE BAJO LICENCIA "TAL CUAL". USTED ASUME EL RIESGO DE SU USO. MICROSOFT NO OTORGA NINGUNA GARANTÍA NI CONDICIÓN EXPRESAS. ES POSIBLE QUE LA LEGISLACIÓN LOCAL LE OTORGUE DERECHOS DE CONSUMIDOR O GARANTÍAS LEGALES ADICIONALES QUE ESTE CONTRATO NO PUEDA MODIFICAR. EN LA MEDIDA EN QUE ASÍ LO PERMITA LA LEGISLACIÓN LOCAL, MICROSOFT EXCLUYE LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR Y AUSENCIA DE INFRACCIÓN.
 PARA AUSTRALIA: DE ACUERDO CON LA LEY AUSTRALIANA DE PROTECCIÓN DEL CONSUMIDOR, EL USUARIO CUENTA CON GARANTÍAS LEGALES, Y NADA DE LO QUE SE INCLUYE EN ESTOS TÉRMINOS PRETENDE AFECTAR A DICHOS DERECHOS.**
 
-18.    **LIMITACIÓN Y EXCLUSIÓN DE RECURSOS E INDEMNIZACIONES. PUEDE RECUPERAR DE MICROSOFT Y SUS PROVEEDORES SOLO LOS DAÑOS DIRECTOS HASTA LA CANTIDAD DE 5 DÓLARES ESTADOUNIDENSES. NO PUEDE RECUPERAR NINGÚN OTRO DAÑO, INCLUIDOS LOS CONSECUENTES, POR PÉRDIDA DE BENEFICIOS, ESPECIALES, INDIRECTOS O INCIDENTALES.**  
+18. **LIMITACIÓN Y EXCLUSIÓN DE RECURSOS E INDEMNIZACIONES. PUEDE RECUPERAR DE MICROSOFT Y SUS PROVEEDORES SOLO LOS DAÑOS DIRECTOS HASTA LA CANTIDAD DE 5 DÓLARES ESTADOUNIDENSES. NO PUEDE RECUPERAR NINGÚN OTRO DAÑO, INCLUIDOS LOS CONSECUENTES, POR PÉRDIDA DE BENEFICIOS, ESPECIALES, INDIRECTOS O INCIDENTALES.**  
 
   Esta limitación se aplica a
   * cualquier tema relacionado con el software, servicios, contenido (incluido el código) en sitios de Internet de terceros o programas de terceros; y

@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 0cc1b621-1a92-4512-8716-956d7a8fe495
-ms.openlocfilehash: 75d19646dd41a4f73dfb9cdd09808b61fba8e4ab
-ms.sourcegitcommit: 1c7e94089646f3db31e033f0909a10ce5077d05e
+ms.openlocfilehash: 1ab2a9b823c5c903bd08b476f5caef65ec6e3207
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="remote-management-of-a-windows-docker-host"></a>Administración remota de un host de Windows Docker
+# Administración remota de un host de Windows Docker
 
 Incluso aunque falte `docker-machine`, es posible crear un host de Docker accesible remotamente en una VM de Windows Server 2016.
 
@@ -39,8 +40,8 @@ ker\client\key.pem ps
 ```
 
 
-## <a name="troubleshooting"></a>Solución de problemas
-### <a name="try-connecting-without-tls-to-determine-your-nsg-firewall-settings-are-correct"></a>Intenta conectarte sin TLS para determinar si la configuración del firewall de NSG es correcta
+## Solución de problemas
+### Intenta conectarte sin TLS para determinar si la configuración del firewall de NSG es correcta
 Los errores de conectividad normalmente se manifiestan en errores como los siguientes:
 ```
 error during connect: Get https://wsdockerhost.southcentralus.cloudapp.azure.com:2376/v1.25/version: dial tcp 13.85.27.177:2376: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
@@ -59,14 +60,14 @@ Conéctate al host remoto con una línea de comandos similar a esta:
 docker -H tcp://wsdockerhost.southcentralus.cloudapp.azure.com:2376 --tlsverify=0 version
 ```
 
-### <a name="cert-problems"></a>Problemas de certificado
+### Problemas de certificado
 Si se accede al host de Docker con un certificado que no se haya creado para la dirección IP o el nombre DNS, se producirá un error:
 ```
 error during connect: Get https://w.x.y.c.z:2376/v1.25/containers/json: x509: certificate is valid for 127.0.0.1, a.b.c.d, not w.x.y.z
 ```
 Asegúrate de que w.x.y.z es el nombre de DNS para la dirección IP pública del host y que el nombre de DNS coincide con el [nombre común](https://www.ssl.com/faqs/common-name/) del certificado, que era la variable de entorno `SERVER_NAME` o una de las direcciones IP de la variable `IP_ADDRESSES` suministrada a dockertls
 
-### <a name="cryptox509-warning"></a>Advertencia crypto/x509
+### Advertencia crypto/x509
 Puede que recibas una advertencia. 
 ```
 level=warning msg="Unable to use system certificate pool: crypto/x509: system root pool is not available on Windows"

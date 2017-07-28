@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 355daae1b673f0b05f08d0706664967a825de6f7
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 6add396bea629d5438cde5892458f6c8405bf644
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="container-images-on-windows-server"></a>Imágenes de contenedores en Windows Server
+# Imágenes de contenedores en Windows Server
 
 En el anterior inicio rápido de Windows Server, se ha creado un contenedor de Windows a partir de un ejemplo de .NET Core creado previamente. En este ejercicio, se detallará la creación de imágenes de contenedor personalizadas de forma manual, se automatizará la creación de imágenes de contenedor mediante un Dockerfile y se almacenarán imágenes de contenedor en el registro público de Docker Hub.
 
@@ -25,7 +26,7 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 - Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulte [Windows Containers on Windows Server (Contenedores de Windows en Windows Server)](./quick-start-windows-server.md).
 - Un identificador de Docker, que se usará para insertar una imagen de contenedor en Docker Hub. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
-## <a name="1-container-image---manual"></a>1. Imagen de contenedor (manual)
+## 1. Imagen de contenedor (manual)
 
 Para una mejor experiencia, realice este ejercicio desde un shell de comandos (cmd.exe) de Windows.
 
@@ -98,7 +99,7 @@ windowsservercore   latest              dbfee88ee9fd        8 weeks ago         
 
 Ahora se puede implementar esta imagen. El contenedor resultante incluirá todas las modificaciones capturadas.
 
-## <a name="2-container-image---dockerfile"></a>2. Imagen de contenedor (Dockerfile)
+## 2. Imagen de contenedor (Dockerfile)
 
 En el ejercicio anterior, se creó un contenedor de forma manual, se modificó y después se capturó en una nueva imagen de contenedor. Docker incluye un método para automatizar este proceso mediante un Dockerfile. Este ejercicio tendrá resultados prácticamente idénticos al anterior; solo que esta vez el proceso estará automatizado. Para este ejercicio, se requiere un identificador de Docker. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud]( https://cloud.docker.com/).
 
@@ -168,7 +169,7 @@ Quite el contenedor.
 docker rm -f <container name>
 ```
 
-## <a name="3-docker-push"></a>3. Inserción de Docker
+## 3. Inserción de Docker
 
 Las imágenes de contenedor de Docker se pueden almacenar en un registro de contenedor. Una vez que se almacena una imagen en un registro, se puede recuperar para su uso posterior en varios hosts de contenedor. Docker proporciona un registro público para almacenar imágenes de contenedor en [Docker Hub](https://hub.docker.com/).
 
@@ -215,6 +216,6 @@ Por último, la extracción de Docker se puede usar para devolver la imagen al h
 docker pull <user>/iis-dockerfile
 ```
 
-## <a name="next-steps"></a>Pasos siguientes
+## Pasos siguientes
 
 [Contenedores de Windows en Windows 10](./quick-start-windows-10.md)

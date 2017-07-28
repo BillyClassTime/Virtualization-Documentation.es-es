@@ -8,16 +8,17 @@ ms.topic: article
 ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 731ed95a-ce13-4c6e-a450-49563bdc498c
-ms.openlocfilehash: b5fe1a2e4c59007fbbb679c9050e28a5e076b08f
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: d4fd2dbaf362ac3ad52667743177a203174b397d
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="contribute-to-the-docs"></a>Contribuir a los documentos
+# Contribuir a los documentos
 
 > **Nota**: Para contribuir, debe tener una cuenta de [GitHub](https://www.github.com).
 
-## <a name="edit-an-existing-doc"></a>Editar un documento existente
+## Editar un documento existente
 
 1. Busque al documento que quiere editar.  
 
@@ -58,12 +59,12 @@ ms.contentlocale: es-ES
 
 7. Crear una [solicitud de incorporación de cambios](contribute-to-docs.md#pull-requests)  
 
-## <a name="pull-requests"></a>Solicitudes de incorporación de cambios
+## Solicitudes de incorporación de cambios
 
 La mayoría de los cambios se confirmarán a través de una solicitud de incorporación de cambios.  Una solicitud de incorporación de cambios es una manera de revisar un conjunto de cambios con varios revisores que cambian y comentan el contenido actual.
 
 
-## <a name="fork-the-repo-and-edit-locally"></a>Bifurcar el repositorio y editar localmente
+## Bifurcar el repositorio y editar localmente
 
 Para el trabajo con documentos a largo plazo, clone el repositorio localmente y trabaje en su equipo.
 
@@ -84,7 +85,7 @@ El proceso se divide en tres secciones:
   * Tutorial de VSCode para Git con algunas características útiles
   * Realización de la primera confirmación
 
-### <a name="set-up-git"></a>Configuración de Git
+### Configuración de Git
 
 1. Instale Git (en Windows) desde [aquí](https://git-for-windows.github.io/).
 
@@ -178,7 +179,7 @@ El proceso se divide en tres secciones:
   }
   ```
 
-### <a name="validate-and-stash-credentials"></a>Validación y guardado provisional de las credenciales
+### Validación y guardado provisional de las credenciales
 
   Para validar que el repositorio se ha configurado correctamente, intente extraer contenido nuevo.
 
@@ -187,7 +188,7 @@ El proceso se divide en tres secciones:
   ```
 
 
-### <a name="set-up-markdown-editing-environment"></a>Configuración del entorno de edición de Markdown
+### Configuración del entorno de edición de Markdown
 
 1. Descargue VSCode.
 

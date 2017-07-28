@@ -8,16 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: b01c1112ed119908bdabfa0eeee16f4ba11a47f6
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 12c7c713468618a9fedc82ec5a1c488f57edcfd7
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="container-host-deployment---windows-server"></a>Implementación de host de contenedor - Windows Server
+# Implementación de host de contenedor - Windows Server
 
 La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). En este documento se describe la implementación de un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual.
 
-## <a name="install-docker"></a>Instalar Docker
+## Instalar Docker
 
 Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. 
 
@@ -43,7 +44,7 @@ Cuando finalice la instalación, reinicia el equipo.
 Restart-Computer -Force
 ```
 
-## <a name="install-base-container-images"></a>Instalar imágenes base del contenedor
+## Instalar imágenes base del contenedor
 
 Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo del contenedor. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
@@ -61,11 +62,11 @@ docker pull microsoft/nanoserver
 
 > Lea el CLUF de la imagen de sistema operativo de contenedores de Windows que se encuentra aquí: [CLUF](../images-eula.md).
 
-## <a name="hyper-v-container-host"></a>Host de contenedor de Hyper-V
+## Host de contenedor de Hyper-V
 
 Para ejecutar contenedores de Hyper-V, es necesario el rol de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea [Virtualización anidada]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
-### <a name="nested-virtualization"></a>Virtualización anidada
+### Virtualización anidada
 
 El script siguiente configurará la virtualización anidada para el host de contenedor. Este script se ejecuta en el equipo de Hyper-V primario. Asegúrese de que la máquina virtual del host de contenedor está desactivada cuando ejecute este script.
 
@@ -83,7 +84,7 @@ Set-VMMemory $vm -DynamicMemoryEnabled $false
 Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
 
-### <a name="enable-the-hyper-v-role"></a>Habilitación del rol de Hyper-V
+### Habilitación del rol de Hyper-V
 
 Para habilitar la característica de Hyper-V mediante PowerShell, ejecute el siguiente comando en una sesión de PowerShell con privilegios elevados.
 

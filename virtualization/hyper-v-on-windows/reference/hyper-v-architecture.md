@@ -1,4 +1,4 @@
-# <a name="hyper-v-architecture"></a>Arquitectura de Hyper-V
+# Arquitectura de Hyper-V
 
 Hyper-V es una tecnología de virtualización basada en el hipervisor para determinadas versiones x64 de Windows.  El hipervisor es fundamental para la virtualización.  Se trata de la plataforma de virtualización específica de procesador que permite que varios sistemas operativos aislados compartan una misma plataforma de hardware.  
 
@@ -14,7 +14,7 @@ El siguiente diagrama ofrece una descripción general de alto nivel de la arquit
 
 ![](./media/hv_architecture.png)
 
-## <a name="glossary"></a>Glosario
+## Glosario
 * **APIC**: Controladora programable avanzada de interrupciones. Un dispositivo que permite asignar niveles de prioridad a sus salidas de interrupción.
 * **Partición secundaria** : Una partición que hospeda un sistema operativo invitado. Todos los accesos a la memoria física y a los dispositivos realizados por una partición secundaria se proporcionan mediante el bus de máquina virtual (VMBus) o el hipervisor.
 * **Hiperllamada**: Interfaz para la comunicación con el hipervisor. La interfaz de hiperllamadas aloja el acceso a las optimizaciones proporcionadas por el hipervisor.

@@ -8,15 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
-ms.openlocfilehash: b074692369719f32acf04714f539f03fb521e85d
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: b6c25285c3cee3a863bef40c34a1cf13b66b42fb
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="community-videos-and-blogs"></a>Blogs y vídeos de la comunidad
+# Blogs y vídeos de la comunidad
 Esta página contiene vínculos a los vídeos y blogs creados por miembros o la comunidad del contenedor.  Si sabes de un recurso útil, o has creado uno, envía un PR para agregarlo a esta lista.
 
-## <a name="getting-started"></a>Introducción
+## Introducción
 [Run Linux and Windows Containers on Windows 10](https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/) (Ejecución de contenedores de Linux y Windows en Windows 10): Stefan Scherer
 
 [Build and run your first Docker Windows Server container](https://blog.docker.com/2016/09/build-your-first-docker-windows-server-container/) (Compilación y ejecución del primer contenedor de Windows Server con Docker): Michael Friis
@@ -24,7 +25,7 @@ Esta página contiene vínculos a los vídeos y blogs creados por miembros o la 
 [Run IIS + ASP.NET on Windows 10 with Docker](http://blog.alexellis.io/run-iis-asp-net-on-windows-10-with-docker/) (Ejecución de IIS + ASP.NET en Windows 10 con Docker): Alex Ellis
 
 
-## <a name="building-and-examples"></a>Compilaciones y ejemplos
+## Compilaciones y ejemplos
 [An Overview of .NET and Containers](http://blog.alexellis.io/docker-dotnet-containers/) (Información general de .NET y contenedores): Alex Ellis
 
 [Docker with Microsoft SQL 2016 + ASP.NET](http://blog.alexellis.io/docker-does-sql2016-aspnet/) (Docker con Microsoft SQL 2016 + ASP.NET: Alex Ellis
@@ -43,7 +44,7 @@ Esta página contiene vínculos a los vídeos y blogs creados por miembros o la 
 
 [Running Neo4j in Windows Containers](http://glennsarti.github.io/blog/neo4j-nano-containers) (Ejecución de Neo4j en contenedores de Windows): Glenn Sarti
 
-## <a name="configuration-and-managment"></a>Configuración y administración
+## Configuración y administración
 [How to protect a Windows 2016 Docker engine with TLS](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) (Cómo proteger un motor de Docker de Windows 2016 con TLS): Stefan Scherer
 
 [Windows #Container Performance of Layers](http://dille.name/blog/2017/01/13/windows-container-performance-of-layers/) (Rendimiento de las capas de contenedores de Windows): Nicholas Dille

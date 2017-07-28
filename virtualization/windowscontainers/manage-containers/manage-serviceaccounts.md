@@ -8,26 +8,27 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: e864242e69a84d7636241ea2a772722add5b8b7c
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 0e692f7521e4a15e3e56d4b98f7ca15fe94ee167
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="active-directory-service-accounts-for-windows-containers"></a>Cuentas de servicio de Active Directory para contenedores de Windows
+# Cuentas de servicio de Active Directory para contenedores de Windows
 
 Puede que los usuarios y otros servicios necesiten realizar conexiones autenticadas a sus aplicaciones y servicios para poder mantener los datos seguros y prevenir el uso sin autorización. Los dominios de Windows Active Directory (AD) admiten la autenticación de contraseña y certificado de forma nativa. Al compilar la aplicación o servicio en un host unido a un dominio de Windows, utiliza la identidad del host de forma predeterminada si se ejecuta como sistema local o servicio de red. De lo contrario, puede configurar otra cuenta de AD para la autenticación en su lugar.
 
 Aunque los contenedores de Windows no pueden estar unidos al dominio, puede aprovechar las identidades de dominio de Active Directory del mismo modo que cuando un dispositivo está unido a un dominio Kerberos. Con los controladores de dominio de Windows Server 2012 R2, se publicó una nueva cuenta de dominio que se denomina cuenta de servicio administrada de grupo (gMSA), diseñada para que la compartiesen los servicios. Mediante el uso de cuentas de servicio administradas de grupo (gMSA), los propios contenedores de Windows y los servicios que hospedan pueden configurarse para utilizar una gMSA específica como su identidad de dominio. Los servicios que se ejecuten como sistema local o servicio de red utilizarán la identidad de contenedor de Windows del mismo modo que usan la identidad del host unido al dominio hoy en día. No hay ninguna contraseña ni clave privada de certificado almacenada en la imagen de contenedor que se pueda exponer sin darse cuenta y el contenedor puede volver a implementarse en entornos de desarrollo, prueba y producción sin volver a generarse para cambiar las contraseñas almacenadas o certificados. 
 
 
-# <a name="glossary--references"></a>Glosario y referencias
+# Glosario y referencias
 - [Active Directory](http://social.technet.microsoft.com/wiki/contents/articles/1026.active-directory-services-overview.aspx) es un servicio utilizado para la detección, búsqueda y replicación de la información de cuenta de servicio, equipo y usuario de Windows. 
   - [Los servicios de dominio de Active Directory](https://technet.microsoft.com/en-us/library/dd448614.aspx) proporcionan un dominio de Windows Active Directory usado para autenticar equipos y usuarios. 
   - Los dispositivos están _unidos al dominio_ cuando son miembros del dominio de Active Directory. “Unido a dominio” es un estado de dispositivo que no solo proporciona una identidad de equipo de dominio al dispositivo, sino que activa varios servicios de unión al dominio.
   - Las [cuentas de servicio administradas de grupo](https://technet.microsoft.com/en-us/library/jj128431(v=ws.11).aspx), abreviado normalmente como gMSA, son un tipo de cuenta de Active Directory que facilita servicios seguros mediante Active Directory sin compartir una contraseña. Varias máquinas o contenedores comparten la misma gMSA según sea necesario para autenticar las conexiones entre los servicios.
 - Módulo de PowerShell _CredentialSpec_: este módulo se utiliza para configurar cuentas de servicio administradas de grupo para su uso con contenedores. Los pasos de ejemplo y el módulo de script están disponibles en [windows-server-container-tools](https://github.com/Microsoft/Virtualization-Documentation/tree/live/windows-server-container-tools) vea ServiceAccount.
 
-# <a name="how-it-works"></a>Cómo funciona
+# Cómo funciona
 
 Actualmente, las cuentas de servicio administradas de grupo se usan para asegurar conexiones entre un equipo o servicio y otro. Estos son los pasos generales a seguir:
 
@@ -51,10 +52,10 @@ Cuando se inicia el contenedor, aparecerán los servicios instalados que se ejec
 ![Diagrama: cuentas de servicio](media/serviceaccount_diagram.png)
 
 
-# <a name="example-uses"></a>Usos de ejemplo
+# Usos de ejemplo
 
 
-## <a name="sql-connection-strings"></a>Cadenas de conexión de SQL
+## Cadenas de conexión de SQL
 Cuando un servicio se ejecuta como sistema local o servicio de red en un contenedor, puede usar la autenticación integrada de Windows para conectarse a Microsoft SQL Server.
 
 Ejemplo:

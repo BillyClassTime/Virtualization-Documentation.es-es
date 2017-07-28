@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 2e2289bbb7801824c13e5ba4cb17d51beb26fbfa
-ms.sourcegitcommit: b55d4d31a5706e2f65f4c4a029c2f55a76711253
+ms.openlocfilehash: c98ab9c32dfcd6e9b3a0258d0282b28d78726f6a
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="hyper-v-integration-services"></a>Servicios de integración de Hyper-V
+# Servicios de integración de Hyper-V
 
 Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades, mientras que otros pueden ser bastante importantes para la capacidad de la máquina virtual de funcionar correctamente.
 
@@ -23,7 +24,7 @@ Este artículo es una referencia para cada servicio de integración disponible e
 * [Administración de los servicios de integración](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services)
 
 
-## <a name="quick-reference"></a>Referencia rápida
+## Referencia rápida
 
 | Nombre | Nombre del servicio de Windows | Nombre del demonio de Linux |  Descripción | Efecto en la máquina virtual cuando se deshabilita |
 |:---------|:---------|:---------|:---------|:---------|
@@ -36,7 +37,7 @@ Este artículo es una referencia para cada servicio de integración disponible e
 | [Servicio directo de PowerShell de Hyper-V](#hyper-v-powershell-direct-service) | vmicvmsession | no está disponible | Proporciona una forma de administrar la máquina virtual con PowerShell sin una conexión de red. | Bajo |  
 
 
-## <a name="hyper-v-heartbeat-service"></a>Servicio de latido de Hyper-V
+## Servicio de latido de Hyper-V
 
 **Nombre del servicio de Windows:** vmicheartbeat  
 **Nombre del demonio de Linux:** hv_utils  
@@ -48,7 +49,7 @@ El servicio de latido permite responder a cuestiones básicas como "¿Se inició
 
 Cuando Hyper-V informa de que el estado de una máquina virtual es "Running" (vea el siguiente ejemplo), significa que Hyper-V tiene reservados recursos para una máquina virtual, y no que hay un sistema operativo instalado o en funcionamiento.  Ahí es donde el servicio de latido resulta útil.  El servicio de latido indica a Hyper-V que el sistema operativo de la máquina virtual se ha iniciado.  
 
-### <a name="check-heartbeat-with-powershell"></a>Comprobar el latido con PowerShell
+### Comprobar el latido con PowerShell
 
 Ejecute [Get-VM](https://technet.microsoft.com/en-us/library/hh848479.aspx) como administrador para ver el latido de una máquina virtual:
 ``` PowerShell
@@ -66,7 +67,7 @@ El campo `Status` viene determinado por el servicio de latido.
 
 
 
-## <a name="hyper-v-guest-shutdown-service"></a>Servicio de cierre de invitado de Hyper-V
+## Servicio de cierre de invitado de Hyper-V
 
 **Nombre del servicio de Windows:** vmicshutdown  
 **Nombre del demonio de Linux:** hv_utils  
@@ -75,7 +76,7 @@ El campo `Status` viene determinado por el servicio de latido.
 **Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se producirán como desconexiones de hardware, lo que podría causar pérdidas o daños en los datos.  
 
 
-## <a name="hyper-v-time-synchronization-service"></a>Servicio de sincronización de hora de Hyper-V
+## Servicio de sincronización de hora de Hyper-V
 
 **Nombre del servicio de Windows:** vmictimesync  
 **Nombre del demonio de Linux:** hv_utils  
@@ -84,7 +85,7 @@ El campo `Status` viene determinado por el servicio de latido.
 **Efecto:** **Alto** cuando está deshabilitado, el reloj de la máquina virtual se desviará de forma errática.  
 
 
-## <a name="hyper-v-data-exchange-service-kvp"></a>Servicio de intercambio de datos de Hyper-V (KVP)
+## Servicio de intercambio de datos de Hyper-V (KVP)
 
 **Nombre del servicio de Windows:** vmickvpexchange  
 **Nombre del demonio de Linux:** hv_kvp_daemon  
@@ -103,7 +104,7 @@ El servicio de intercambio de datos es una herramienta excelente para conservar 
 * [Utilizar pares clave-valor para compartir información entre el host y el invitado en Hyper-V](https://technet.microsoft.com/en-us/library/dn798287.aspx).  
 
 
-## <a name="hyper-v-volume-shadow-copy-requestor"></a>Solicitante de instantáneas de volumen de Hyper-V
+## Solicitante de instantáneas de volumen de Hyper-V
 
 **Nombre del servicio de Windows:** vmicvss  
 **Nombre del demonio de Linux:** hv_vss_daemon  
@@ -116,7 +117,7 @@ El servicio de integración Solicitante de instantáneas de volumen es necesario
 Encontrará más información sobre las instantáneas de volumen [aquí](https://msdn.microsoft.com/en-us/library/dd405549.aspx).
 
 
-## <a name="hyper-v-guest-service-interface"></a>Interfaz de servicio de invitado de Hyper-V
+## Interfaz de servicio de invitado de Hyper-V
 
 **Nombre del servicio de Windows:** vmicguestinterface  
 **Nombre del demonio de Linux:** hv_fcopy_daemon  
@@ -128,7 +129,7 @@ Encontrará más información sobre las instantáneas de volumen [aquí](https:/
 Deshabilitada de forma predeterminada.  Vea [Copiar archivos con New-PSSession y Copy-Item](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item). 
 
 
-## <a name="hyper-v-powershell-direct-service"></a>Servicio directo de PowerShell de Hyper-V
+## Servicio directo de PowerShell de Hyper-V
 
 **Nombre del servicio de Windows:** vmicvmsession  
 **Nombre del demonio de Linux:** no disponible  

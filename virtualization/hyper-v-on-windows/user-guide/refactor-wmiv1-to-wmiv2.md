@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: b13a3594-d168-448b-b0a1-7d77153759a8
 ms.openlocfilehash: e2d6faabe77346199a5d292fcfd92cdfd63909b8
-ms.sourcegitcommit: a424c11258e47f224e14c4349b852b9e37b7604f
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="move-from-hyper-v-wmi-v1-to-wmi-v2"></a>Migración de Hyper-V de WMI v1 a WMI v2
+# Migración de Hyper-V de WMI v1 a WMI v2
 
 Instrumental de administración de Windows (WMI) es la interfaz de administración subyacente del administrador de Hyper-V y de los cmdlets de PowerShell de Hyper-V.  Aunque la mayoría usa los cmdlets de PowerShell o el administrador de Hyper-V, a veces los desarrolladores necesitaban WMI directamente.  
 
@@ -23,7 +23,7 @@ Han existido dos espacios de nombres WMI de Hyper-V (o versiones de la API de WM
 
 Este documento contiene referencias a recursos para convertir el código que se comunica con el espacio de nombres WMI antiguo al nuevo.  Inicialmente, este artículo servirá como repositorio de información sobre API y código o scripts de ejemplo que pueden usarse para ayudar a migrar todos los programas o scripts que usan las API de WMI de Hyper-V desde el espacio de nombres v1 al espacio de nombres v2.
 
-## <a name="msdn-samples"></a>Ejemplos de MSDN
+## Ejemplos de MSDN
 
 [Ejemplo de migración de máquina virtual de Hyper-V](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-virtual-machine-aef356ee)  
 [Ejemplo de canal de fibra virtual de Hyper-V](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-virtual-Fiber-35d27dcd)  
@@ -38,7 +38,7 @@ Este documento contiene referencias a recursos para convertir el código que se 
 [Ejemplo de grupos de recursos de Hyper-V](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-resource-pool-df906d95)  
 [Ejemplo de instantáneas de recuperación de Hyper-V](http://code.msdn.microsoft.com/windowsdesktop/Hyper-V-recovery-snapshot-ea72320c)  
 
-## <a name="samples-from-blogs"></a>Ejemplos de blogs
+## Ejemplos de blogs
 
 [Agregar un adaptador de red a una máquina virtual con el espacio de nombres WMI V2 de Hyper-V](http://blogs.msdn.com/b/taylorb/archive/2013/07/15/adding-a-network-adapter-to-a-vm-using-the-hyper-v-wmi-v2-namespace.aspx)  
 [Conectar un adaptador de red de máquina virtual a un conmutador con el espacio de nombres WMI V2 de Hyper-V](http://blogs.msdn.com/b/taylorb/archive/2013/07/15/connecting-a-vm-network-adapter-to-a-switch-using-the-hyper-v-wmi-v2-namespace.aspx)  

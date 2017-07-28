@@ -8,12 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: 88c452117299d855073668d33e4323243d93e9d1
-ms.sourcegitcommit: fa56cb152977de952ec1e493005dfc0e62538b4f
+ms.openlocfilehash: 7957e48291ab2d29f3687c595c760d838dab60b8
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="hyper-v-containers"></a>Contenedores de Hyper-V
+# Contenedores de Hyper-V
 
 **Esto es contenido preliminar y está sujeto a cambios.** 
 
@@ -23,9 +24,9 @@ La tecnología de contenedor de Windows incluye dos tipos distintos de contenedo
 
 **Contenedores de Hyper-V**: varias instancias de contenedor pueden ejecutarse simultáneamente en un host; pero cada contenedor se ejecuta dentro de una máquina virtual especial. Esto proporciona aislamiento de nivel de kernel entre cada contenedor de Hyper-V y el host de contenedor.
 
-## <a name="hyper-v-container"></a>Contenedor de Hyper-V
+## Contenedor de Hyper-V
 
-### <a name="create-container"></a>Crear contenedor
+### Crear contenedor
 
 La administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Al crear un contenedor de Hyper-V con Docker, se usa el parámetro `--isolation=hyperv`.
 
@@ -33,7 +34,7 @@ La administración de contenedores de Hyper-V con Docker es casi idéntica a la 
 docker run -it --isolation=hyperv microsoft/nanoserver cmd
 ```
 
-### <a name="isolation-explanation"></a>Explicación del aislamiento
+### Explicación del aislamiento
 
 En este ejemplo se diferencian las funcionalidades de aislamiento entre contenedores de Hyper-V y Windows Server. 
 

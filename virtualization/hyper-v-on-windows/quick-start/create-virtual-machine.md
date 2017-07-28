@@ -7,16 +7,17 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
-ms.openlocfilehash: 200ec68011628262950362620ae5b438f1b6b86c
-ms.sourcegitcommit: c8e6bf83ee873fe19b522ba9e416ecf5d29f4c95
+ms.openlocfilehash: fc6228253c2ad5fe8a01db283f578abbfbee716c
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Crear una máquina virtual con Hyper-V en Windows 10
+# Crear una máquina virtual con Hyper-V en Windows 10
 
 Aprende a crear una máquina virtual y a instalar un sistema operativo en la nueva máquina virtual.  Necesitarás un archivo .iso para el sistema operativo que quieras ejecutar. Si es necesario, consigue una copia de evaluación de Windows 10 en el [TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/).
 
-## <a name="create-a-virtual-machine-with-hyper-v-manager"></a>Crear una máquina virtual con el Administrador de Hyper-V
+## Crear una máquina virtual con el Administrador de Hyper-V
 
 1. Para abrir el administrador de Hyper-V, presiona la tecla de Windows y escribe "Administrador de Hyper-V" o busca **Administrador de Hyper-V** en tus aplicaciones.
 
@@ -61,7 +62,7 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
   
 10. Revise los detalles de la máquina virtual y haga clic en **Finalizar** para completar la creación de la máquina virtual.
 
-## <a name="create-a-virtual-machine-with-powershell"></a>Crear una máquina virtual con PowerShell
+## Crear una máquina virtual con PowerShell
 
 1. Abra PowerShell ISE como administrador.
 
@@ -87,7 +88,7 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
   Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
   ```
   
-## <a name="complete-the-operating-system-deployment"></a>Completar la implementación del sistema operativo
+## Completar la implementación del sistema operativo
 
 Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y completar la instalación del sistema operativo.
 

@@ -9,12 +9,13 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 9cafd6cb-dbbe-4b91-b26c-dee1c18fd8c2
 redirect_url: https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services
-ms.openlocfilehash: 83bcc4c2f47e2a3921be257f45a3a0e22dcba89a
-ms.sourcegitcommit: fd6c5ec419aae425af7ce6c6a44d59c98f62502a
+ms.openlocfilehash: 374ce6f8c4aede7190916675698551eb667458f9
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="managing-hyper-v-integration-services"></a>Administración de los servicios de integración de Hyper-V
+# Administración de los servicios de integración de Hyper-V
 
 Los servicios de integración (también denominados componentes de integración) son servicios que permiten que la máquina virtual se comunique con el host de Hyper-V. Muchos de estos servicios son comodidades (por ejemplo, la copia de archivos de invitado), mientras que otros pueden ser bastante importantes para la capacidad de la máquina virtual de funcionar correctamente (la sincronización de la hora).
 
@@ -22,7 +23,7 @@ En este artículo se detalla cómo administrar los servicios de integración con
 
 Para más información sobre cada uno de los servicios de integración individuales, consulte [Integration Services](../reference/integration-services.md) (Servicios de integración).
 
-## <a name="enable-or-disable-integration-services-using-hyper-v-manager"></a>Habilitar o deshabilitar los servicios de integración con el administrador de Hyper-V
+## Habilitar o deshabilitar los servicios de integración con el administrador de Hyper-V
 
 1. Seleccione una máquina virtual y abra la configuración.
   
@@ -32,7 +33,7 @@ Para más información sobre cada uno de los servicios de integración individua
 
 REG QUERY "HKLM\Software\Microsoft\Virtual Machine\Auto" /v IntegrationServicesVersion
 
-## <a name="enable-or-disable-integration-services-using-powershell"></a>Habilitar o deshabilitar los servicios de integración mediante PowerShell
+## Habilitar o deshabilitar los servicios de integración mediante PowerShell
 
 Los servicios de integración también se pueden habilitar y deshabilitar con PowerShell mediante la ejecución de [`Enable-VMIntegrationService`](https://technet.microsoft.com/en-us/library/hh848500.aspx) y [`Disable-VMIntegrationService`](https://technet.microsoft.com/en-us/library/hh848488.aspx).
 
@@ -73,7 +74,7 @@ En este ejemplo, se habilitará y luego deshabilitará el servicio de integraci�
 Los servicios de integración se han diseñado de forma que deben habilitarse tanto en el host como en el invitado para poder funcionar.  Aunque todos los servicios de integración están habilitados de forma predeterminada en los sistemas operativos invitados de Windows, pueden deshabilitarse.  Vea cómo en la sección siguiente.
 
 
-## <a name="manage-integration-services-from-guest-os-windows"></a>Administrar los servicios de integración de sistema operativo invitado (Windows)
+## Administrar los servicios de integración de sistema operativo invitado (Windows)
 
 > **Nota:** La deshabilitación de los servicios de integración puede afectar gravemente a la capacidad del host para administrar máquinas virtuales.  Los servicios de integración deben habilitarse en el host y en el invitado para funcionar.
 
@@ -110,7 +111,7 @@ Por ejemplo, para deshabilitar PowerShell Direct, puede ejecutar `Stop-Service -
 
 De forma predeterminada, todos los servicios de integración están habilitados en el sistema operativo invitado.
 
-## <a name="manage-integration-services-from-guest-os-linux"></a>Administrar servicios de integración del sistema operativo invitado (Linux)
+## Administrar servicios de integración del sistema operativo invitado (Linux)
 
 Los servicios de integración de Linux normalmente se ofrecen a través del kernel de Linux.
 
@@ -191,7 +192,7 @@ sudo hv_kvp_daemon
 Ahora, si vuelve a ejecutar `ps -ef | hv`, descubrirá un proceso de `hv_kvp_daemon` con un nuevo Id. de proceso.
 
 
-## <a name="integration-service-maintenance"></a>Mantenimiento del servicio de integración
+## Mantenimiento del servicio de integración
 
 El mantenimiento del servicio de integración de Windows 10 ocurre de forma predeterminada, siempre y cuando las máquinas virtuales puedan recibir actualizaciones importantes de Windows Update.  
 
@@ -245,7 +246,7 @@ Si los servicios de integración se mantienen actualizados, se obtendrá el mejo
 | Invitados Linux | administrador de paquetes | Los componentes de integración de Linux están integrados en la distribución, pero puede que haya actualizaciones opcionales. ** |
 
 
-**Para las máquinas virtuales que se ejecutan en hosts de Windows 8:**
+**Para máquinas virtuales que se ejecuten en hosts de Windows 8:**
 
 | SO invitado | Mecanismo de actualización | Notas |
 |:---------|:---------|:---------|

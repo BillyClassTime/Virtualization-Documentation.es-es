@@ -8,16 +8,17 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: a06a92bce8f985e463a4b33a09a71d21e264a036
-ms.sourcegitcommit: bb171f4a858fefe33dd0748b500a018fd0382ea6
+ms.openlocfilehash: 27808eddb624bdfc61d971d46be609a49c051664
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="building-a-container-ecosystem"></a>Creación de un ecosistema de contenedor
+# Creación de un ecosistema de contenedor
 
 Para entender por qué es tan importante la creación de un ecosistema de contenedor, primero se explicará Docker.
 
-## <a name="dockers-appeal"></a>La importancia de Docker
+## La importancia de Docker
 
 El concepto de contenedores (aislamiento de espacio de nombres y gobernanza de recursos) ha estado presente durante mucho tiempo, en la época de BSD Jails, Solaris Zones y el mecanismo básico de UNIX chroot (cambiar raíz).   Lo que Docker ha hecho es ofrecer un conjunto común de herramientas, un modelo de empaquetado y un mecanismo de implementación.  Con ello, Docker ha simplificado en gran medida la inclusión en contenedores y la distribución de aplicaciones.  Esas aplicaciones pueden entonces ejecutarse en cualquier lugar de cualquier host de Linux, una capacidad que ofrecemos también en Windows.
 
@@ -30,7 +31,7 @@ Docker ofrece una base estupenda para el desarrollo.
 Hablemos ahora de ese ecosistema de aplicaciones y de cómo puede basarse en los conceptos de Docker para crear un flujo de trabajo de desarrollo e implementación que se adapte a sus necesidades.
 
 
-## <a name="components-in-a-container-ecosystem"></a>Componentes de un ecosistema de contenedores
+## Componentes de un ecosistema de contenedores
 
 Los contenedores de Windows son un componente clave de un ecosistema de grandes contenedores. Estamos trabajando en el sector para ofrecer opciones a los desarrolladores en cada nivel de la pila de soluciones.
 

@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cfab87efeb04f701f405739d53e6028f841712ce
-ms.sourcegitcommit: ca64c1aceccd97c6315b28ff814ec7ac91fba9da
+ms.openlocfilehash: 084ce01473bd3d639cc839dee3d1a49cfc3efa17
+ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 07/21/2017
 ---
-# <a name="windows-container-networking"></a>Red de contenedores de Windows
+# Red de contenedores de Windows
 > ***Consulta [Docker Container Networking](https://docs.docker.com/engine/userguide/networking/) (Redes de contenedores de Docker) para conocer los comandos, las opciones y sintaxis generales para las redes de Docker.*** Con excepción de los casos descritos en este documento, todos los comandos de red de Docker se admiten en Windows con la misma sintaxis que en Linux. De todas formas, ten en cuenta que las pilas de red de Windows y Linux son diferentes y, por tanto, encontrarás que algunos comandos de red de Linux (por ejemplo, ifconfig) no se admiten en Windows.
 
-## <a name="basic-networking-architecture"></a>Arquitectura de red básica
+## Arquitectura de red básica
 Este tema proporciona una visión general del modo en que Docker crea y administra redes en Windows. Los contenedores de Windows funcionan de forma similar a las máquinas virtuales en lo que respecta a las redes. Cada contenedor tiene un adaptador de red virtual (vNIC) que se conecta a un conmutador virtual Hyper-V (vSwitch). Windows admite cinco controladores de red o modos diferentes que pueden crearse mediante Docker: *nat*, *overlay*, *transparent*, *l2bridge* y *l2tunnel*. En función de la infraestructura de red física y de los requisitos de red de un solo host o de varios hosts, debes elegir el controlador de red que mejor se adapte a tus necesidades.
 
 <figure>
@@ -41,7 +41,7 @@ La primera vez que se ejecuta Docker Engine, crea una red NAT predeterminada, 'n
 La red 'nat' es la red predeterminada para los contenedores que se ejecutan en Windows. Los contenedores que se ejecuten en Windows sin marcas ni argumentos para implementar configuraciones de red específicas se adjuntarán a la red de 'nat' predeterminada y se les asignará automáticamente una dirección IP desde el intervalo de IP de prefijo interno de la red 'nat'. El prefijo IP interno de predeterminado usado para 'nat' es 172.16.0.0/16. 
 
 
-## <a name="windows-container-network-drivers"></a>Controladores de red de contenedores Windows  
+## Controladores de red de contenedores Windows  
 
 Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, los usuarios pueden definir redes de contenedores personalizadas. Pueden crearse redes definidas por el usuario mediante la CLI de Docker, con el comando [`docker network create -d <NETWORK DRIVER TYPE> <NAME>`](https://docs.docker.com/engine/reference/commandline/network_create/). En Windows, están disponibles los siguientes tipos de controladores de red:
 
@@ -53,7 +53,7 @@ Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, 
 - **overlay** - __Novedad.__  Cuando Docker Engine se ejecuta en [modo enjambre](./swarm-mode.md), los contenedores conectados a una red de superposición ('overlay') pueden comunicarse con otros contenedores conectados a la misma red entre varios hosts de contenedor. Cada red superpuesta que se crea en un clúster enjambre se crea con su propia subred IP, definida por un prefijo de IP privado. El controlador de red overlay usa encapsulación VXLAN.
 > Requiere Windows Server 2016 con [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217) o Windows 10 Creators Update. 
 
-- **l2bridge**: Los contenedores conectados a una red que se haya creado con el controlador 'l2bridge' estarán en la misma subred IP que el host del contenedor. Las direcciones IP deben asignarse estáticamente desde el mismo prefijo que el host del contenedor. Todos los puntos de conexión de contenedor del host tendrán la misma dirección MAC debido a la operación de traducción de direcciones de capa 2 (reescritura de MAC) en la entrada y la salida.
+- **l2bridge**: los contenedores conectados a una red que se haya creado con el controlador 'l2bridge' estarán en la misma subred IP que el host del contenedor. Las direcciones IP deben asignarse estáticamente desde el mismo prefijo que el host del contenedor. Todos los puntos de conexión de contenedor del host tendrán la misma dirección MAC debido a la operación de traducción de direcciones de capa 2 (reescritura de MAC) en la entrada y la salida.
 > Requiere Windows Server 2016 o Windows 10 Creators Update.
 
 - **l2tunnel** - _Este controlador solo se debe usar en una pila de Microsoft Cloud._
@@ -62,23 +62,23 @@ Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, 
 
 > Windows 10 Creators Update ha introducido la compatibilidad de plataformas para agregar un nuevo punto de conexión de contenedor a un contenedor en ejecución (es decir, el "agregado en caliente"). Se activará de un extremo a otro pendiente de una [solicitud de extracción de Docker pendiente](https://github.com/docker/libnetwork/pull/1661)
 
-## <a name="network-topologies-and-ipam"></a>Topologías de red e IPAM
+## Topologías de red e IPAM
 En la tabla siguiente se muestra cómo se proporciona conectividad de red para las conexiones internas (de contenedor a contenedor) y externas para cada controlador de red.
 
 <figure>
   <img src="media/network-modes-table.png">
 </figure>
 
-### <a name="ipam"></a>IPAM 
+### IPAM 
 Las direcciones IP se asignan de forma diferente para cada controlador de red. Windows usa el servicio de red de host (HNS) para proporcionar IPAM para el controlador nat y funciona con el modo enjambre de Docker (KVS interno) para proporcionar IPAM para la superposición. Todos los demás controladores de red usan IPAM externo.
 
 <figure>
   <img src="media/ipam.png">
 </figure>
 
-# <a name="details-on-windows-container-networking"></a>Información sobre las redes de contenedores de Windows
+# Información sobre las redes de contenedores de Windows
 
-## <a name="isolation-namespace-with-network-compartments"></a>Aislamiento (espacio de nombres) con compartimentos de red
+## Aislamiento (espacio de nombres) con compartimentos de red
 Cada punto de conexión de contenedor se coloca en su propio __compartimento de red__, que equivale a un espacio de nombres de red en Linux. El vNIC del host de administración y la pila de red de host se sitúan en el compartimento de red predeterminado. Para aplicar el aislamiento de red entre contenedores del mismo host, se crea un compartimento de red para cada Windows Server y cada contenedor de Hyper-V en el que esté instalado el adaptador de red para el contenedor. Los contenedores de Windows Server usan una vNIC de host para conectarse al conmutador virtual. Los contenedores de Hyper-V usan una NIC de máquina virtual sintética (no expuesta a la máquina virtual de utilidad) para conectarse al conmutador virtual. 
 
 <figure>
@@ -89,7 +89,7 @@ Cada punto de conexión de contenedor se coloca en su propio __compartimento de 
 Get-NetCompartment
 ```
 
-## <a name="windows-firewall-security"></a>Seguridad del Firewall de Windows
+## Seguridad del Firewall de Windows
 
 El Firewall de Windows se usa para reforzar la seguridad de red a través de las ACL de puerto.
 
@@ -99,7 +99,7 @@ El Firewall de Windows se usa para reforzar la seguridad de red a través de las
   <img src="media/windows-firewall-containers.png">
 </figure>
 
-## <a name="container-network-management-with-host-network-service"></a>Administración de redes de contenedores con el servicio de red de host
+## Administración de redes de contenedores con el servicio de red de host
 
 La siguiente imagen muestra cómo colaboran el servicio de red de host (HNS) y el servicio de proceso de host (HCS) para crear contenedores y conectar puntos de conexión a una red. 
 
@@ -107,10 +107,10 @@ La siguiente imagen muestra cómo colaboran el servicio de red de host (HNS) y e
   <img src="media/HNS-Management-Stack.png">
 </figure>
 
-# <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
+# Opciones de red avanzadas en Windows
 Se admiten varias opciones de controladores de red para aprovechar las características y funcionalidades específicas de Windows. 
 
-## <a name="switch-embedded-teaming-with-docker-networks"></a>Switch Embedded Teaming con redes de Docker
+## Switch Embedded Teaming con redes de Docker
 
 > Se aplica a todos los controladores de red. 
 
@@ -120,7 +120,7 @@ Puedes aprovechar [Switch Embedded Teaming](https://technet.microsoft.com/en-us/
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2", "Ethernet 3" TeamedNet
 ```
 
-## <a name="set-the-vlan-id-for-a-network"></a>Establecer el ID de VLAN para una red
+## Establecer el ID de VLAN para una red
 
 > Se aplica a los controladores de red transparent y l2bridge 
 
@@ -133,7 +133,7 @@ Cuando se establece el identificador de VLAN de una red, se establece el aislami
 
 > Asegúrate de que el adaptador de red de host (físico) está en modo de tronco para permitir que todo el tráfico etiquetado lo procese el vSwitch con el puerto vNIC (punto de conexión de contenedor) en el modo de acceso de la VLAN correcta.
 
-## <a name="specify-the-name-of-a-network-to-the-hns-service"></a>Especificar el nombre de una red con el servicio HNS
+## Especificar el nombre de una red con el servicio HNS
 
 > Se aplica a todos los controladores de red. 
 
@@ -143,7 +143,7 @@ Normalmente, cuando se crea un contenedor de red mediante `docker network create
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.networkname=MyTransparentNetwork MyTransparentNetwork
 ```
 
-## <a name="bind-a-network-to-a-specific-network-interface"></a>Enlazar una red con una interfaz de red específica
+## Enlazar una red con una interfaz de red específica
 
 > Se aplica a todos los controladores de red excepto 'nat'  
 
@@ -168,7 +168,7 @@ Use the option, `-o com.docker.network.windowsshim.dnssuffix=<DNS SUFFIX>` to sp
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnssuffix=abc.com -o com.docker.network.windowsshim.dnsservers=4.4.4.4,8.8.8.8 MyTransparentNetwork
 ```
 
-## <a name="vfp"></a>VFP
+## VFP
 
 La extensión de plataforma de filtrado virtual (VFP) es un conmutador virtual de Hyper-V que reenvía la extensión usada para imponer el uso de la directiva de red y manipular los paquetes. Por ejemplo, VFP lo usan el controlador de red 'overlay' para realizar la encapsulación VXLAN y el controlador 'l2bridge' para realizar reescritura de MAC en la entrada y la salida. La extensión VFP solo está presente en Windows Server 2016 y Windows 10 Creators Update. Para comprobar si se ejecuta correctamente, un usuario debe ejecutar dos comandos:
 
@@ -179,10 +179,10 @@ Get-Service vfpext
 Get-VMSwitchExtension  -VMSwitchName <vSwitch Name> -Name "Microsoft Azure VFP Switch Extension"
 ```
 
-## <a name="tips--insights"></a>Sugerencias e información útil
+## Sugerencias e información útil
 A continuación hay una lista de sugerencias e información útil inspiradas por preguntas frecuentes sobre redes de contenedores de Windows que recibimos de la comunidad...
 
-#### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>HNS requiere que IPv6 esté habilitado en los equipos host de contenedor 
+#### HNS requiere que IPv6 esté habilitado en los equipos host de contenedor 
 Como parte de [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217), HNS requiere que IPv6 esté habilitado en los hosts del contenedor de Windows. Si te encuentras un error como el siguiente, es posible que IPv6 está deshabilitado en el equipo host.
 ```
 docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11b92d488e8c5b53ab5e4331fd80636d encountered an error during CreateContainer: failure in a Windows system call: Element not found.
@@ -193,15 +193,15 @@ Estamos trabajando en cambios en la plataforma para detectar y evitar automátic
 C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters  /v DisabledComponents  /f
 ```
 
-#### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition-instead-of-hns-internal-vswitch"></a>Las máquinas virtuales de Linux Moby usan el conmutador DockerNAT con Docker para Windows (un producto de [Docker CE](https://www.docker.com/community-edition)) en lugar del vSwitch interno de HNS 
+#### Las máquinas virtuales de Linux Moby usan el conmutador DockerNAT con Docker para Windows (un producto de [Docker CE](https://www.docker.com/community-edition)) en lugar del vSwitch interno de HNS 
 Docker para Windows (el controlador de Windows para el motor de Docker CE) en Windows 10 usará un vSwitch interno llamado 'DockerNAT' para conectar máquinas virtuales de Linux Moby al host de contenedor. Los desarrolladores que usen máquinas virtuales de Linux Moby en Windows tener en cuenta que los hosts utilizan el vSwitch DockerNAT en lugar del vSwitch creado por el servicio HNS (que es el conmutador predeterminado usado para los contenedores de Windows). 
 
-#### <a name="to-use-dhcp-for-ip-assignment-on-a-virtual-container-host-enable-macaddressspoofing"></a>Para usar DHCP para la asignación de direcciones IP en un host de contenedor virtual, habilita MACAddressSpoofing 
+#### Para usar DHCP para la asignación de direcciones IP en un host de contenedor virtual, habilita MACAddressSpoofing 
 Si el host de contenedor está virtualizado y quieres usar DHCP para la asignación de direcciones IP, debes habilitar MACAddressSpoofing en el adaptador de red de las máquinas virtuales. En caso contrario, el host de Hyper-V bloqueará el tráfico de red procedente de los contenedores que estén en la máquina virtual y posean varias direcciones MAC. Puedes habilitar MACAddressSpoofing con este comando de PowerShell:
 ```none
 PS C:\> Get-VMNetworkAdapter -VMName ContainerHostVM | Set-VMNetworkAdapter -MacAddressSpoofing On
 ```
-#### <a name="creating-multiple-transparent-networks-on-a-single-container-host"></a>Creación de varias redes transparentes en un solo host de contenedor
+#### Creación de varias redes transparentes en un solo host de contenedor
 Si quieres crear más de una red transparente, debes especificar con qué adaptador de red (virtual) se debe enlazar el conmutador virtual externo de Hyper-V. Para especificar la interfaz de una red, usa la sintaxis siguiente:
 ```
 # General syntax:
@@ -211,7 +211,7 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.inte
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" myTransparent2
 ```
 
-#### <a name="remember-to-specify---subnet-and---gateway-when-using-static-ip-assignment"></a>Recuerda especificar *--subnet* y *--gateway* al usar la asignación de IP estática
+#### Recuerda especificar *--subnet* y *--gateway* al usar la asignación de IP estática
 Cuando se usa la asignación de IP estática, es necesario asegurarse antes de que se especifican los parámetros *--subnet* y *--gateway* al crear la red. La dirección IP de la puerta de enlace y la subred debe ser la misma que la configuración de red del host de contenedor; es decir, la red física. Por ejemplo, así se puede crear una red transparente y luego ejecutar un punto de conexión en dicha red usando la asignación de IP estática:
 
 ```
@@ -222,17 +222,17 @@ C:\> docker network create -d transparent --subnet=10.123.174.0/23 --gateway=10.
 C:\> docker run -it --network=MyTransparentNet --ip=10.123.174.105 windowsservercore cmd
 ```
 
-#### <a name="dhcp-ip-assignment-not-supported-with-l2bridge-networks"></a>La asignación de IP de DHCP no se admite con las redes L2Bridge
+#### La asignación de IP de DHCP no se admite con las redes L2Bridge
 Con las redes de contenedor creadas usando el controlador l2bridge solo se admite la asignación de IP estática. Como se indica anteriormente, recuerda que tienes que usar los parámetros *--subnet* y *--gateway* para crear una red que esté configurada para la asignación de IP estática.
 
-#### <a name="networks-that-leverage-external-vswitch-must-each-have-their-own-network-adapter"></a>Las redes que aprovechan un vSwitch externo deben tener su propio adaptador de red
+#### Las redes que aprovechan un vSwitch externo deben tener su propio adaptador de red
 Ten en cuenta que si se crean varias redes que usan un vSwitch externo para la conectividad (por ejemplo, Transparent, L2 Bridge, L2 Transparent) en el mismo host de contenedor, cada una de ellas requiere su propio adaptador de red. 
 
-#### <a name="ip-assignment-on-stopped-vs-running-containers"></a>Asignación de IP en contenedores detenidos y contenedores en ejecución
+#### Asignación de IP en contenedores detenidos y contenedores en ejecución
 La asignación de dirección IP estática se lleva a cabo directamente en el adaptador de red del contenedor y solo debe realizarse cuando el contenedor se encuentre en estado detenido. En Windows Server 2016 no se admiten ni el "agregado en caliente" de los adaptadores de red de contenedor ni los cambios en la pila de red mientras se esté ejecutando el contenedor.
 > Nota: Este comportamiento cambiará en Windows 10 Creators Update, ya que la plataforma ahora sí admite el "agregado en caliente". Esta funcionalidad activará E2E después que esta [solicitud de extracción de Docker pendiente](https://github.com/docker/libnetwork/pull/1661) se combine
 
-#### <a name="existing-vswitch-not-visible-to-docker-can-block-transparent-network-creation"></a>Un VSwitch existente (que no sea visible para Docker) puede bloquear la creación de una red transparente
+#### Un VSwitch existente (que no sea visible para Docker) puede bloquear la creación de una red transparente
 Si se produce un error al crear una red transparente, es posible que haya un vSwitch externo en el sistema que Docker no haya detectado de forma automática y, por tanto, que impida que la red transparente se enlace con el adaptador de red externo del host de contenedor. 
 
 Al crear una red transparente, Docker crea un vSwitch externo para la red y después intenta enlazar el conmutador a un adaptador de red (externo); el adaptador podría ser un adaptador de red de máquina virtual o el adaptador de red físico. Si ya ha creado un vSwitch en el host de contenedor *y está visible para Docker*, el motor de Docker de Windows usará ese conmutador en lugar de crear uno nuevo. En cambio, si el vSwitch que se ha creado fuera de banda (es decir, se ha creado en el host de contenedor mediante el Administrador de Hyper-V o PowerShell) aún no está visible para Docker, el motor de Docker de Windows intentará crear un vSwitch nuevo y después no podrá conectar el nuevo conmutador con el adaptador de red externo del host de contenedor (porque el adaptador de red ya estará conectado al conmutador que se ha creado fuera de banda).
@@ -250,7 +250,7 @@ PS C:\> restart-service docker
 * Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). La opción "-o" se describe con más detalle más adelante, en la sección [Red transparente](https://msdn.microsoft.com/virtualization/windowscontainers/management/container_networking#transparent-network) de este documento.
 
 
-## <a name="unsupported-features-and-network-options"></a>Características y opciones de red no compatibles 
+## Características y opciones de red no compatibles 
 
 Las siguientes opciones de red no se admiten en Windows y no pueden pasarse a ``docker run``:
  * Vinculación de contenedor (por ejemplo, ``--link``): _La alternativa es depender de la detección de servicios._
@@ -270,11 +270,11 @@ Las siguientes opciones de red no se admiten en los servicios de Docker
 * Cifrado del plano de datos (por ejemplo, ``--opt encrypted``) 
 
 
-## <a name="windows-server-2016-work-arounds"></a>Soluciones para Windows Server 2016 
+## Soluciones para Windows Server 2016 
 
 Aunque seguimos agregando nuevas características y desarrollo de controladores, algunas de estas características no se incorporarán respectivamente a las plataformas anteriores. En su lugar, la mejor solución es "subirse al tren" y obtener las actualizaciones más recientes para Windows 10 y Windows Server.  La sección siguiente indica algunas soluciones e inconvenientes referentes a Windows Server 2016 y a versiones anteriores de Windows 10 (es decir, antes de la versión 1704, Creators Update)
 
-### <a name="multiple-nat-networks-on-ws2016-container-host"></a>Varias redes NAT en un host de contenedor WS2016
+### Varias redes NAT en un host de contenedor WS2016
 
 Las particiones de las nuevas redes NAT deben crearse en el prefijo de red NAT interno más grande. El prefijo puede encontrarse ejecutando el siguiente comando de PowerShell y al hacer referencia al campo "InternalIPInterfaceAddressPrefix".
 
@@ -294,7 +294,7 @@ Las redes recién creadas se pueden mostrar mediante:
 C:\> docker network ls
 ```
 
-### <a name="docker-compose"></a>Docker Compose
+### Docker Compose
 
 [Docker Compose](https://docs.docker.com/compose/overview/) puede usarse para definir y configurar redes de contenedor junto con los contenedores y servicios que usarán esas redes. La clave de Compose "networks" se usa como clave de nivel superior en la definición de las redes a las que se conectarán los contenedores. Por ejemplo, la siguiente sintaxis define la red NAT preexistente creada por Docker como la red "default" (predeterminada) para todos los contenedores y servicios definidos en un archivo determinado de Compose.
 
@@ -321,7 +321,7 @@ networks:
 
 Para obtener más información sobre la definición y configuración de redes de contenedor mediante Docker Compose, consulte la [referencia del archivo de Compose](https://docs.docker.com/compose/compose-file/).
 
-### <a name="service-discovery"></a>Detección de servicios
+### Detección de servicios
 La detección de servicios solo se admite para determinados controladores de red de Windows.
 
 |  | Detección de servicios locales  | Detección de servicios globales |
