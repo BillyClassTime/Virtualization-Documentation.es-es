@@ -1,33 +1,11 @@
 # <a name='report-top'></a> Localization Handoff Report
 
 ## Summary
- Total Files | 1
+ Total Files | 0
 
 ## File List
- Source File | Status | Details 
- ----------- | ------ | ------- 
- [virtualization\hyper-v-on-windows\about\supported-guest-os.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/63e890ad2caae3ce55503af81c6c5ff0d1e630f6/virtualization/hyper-v-on-windows/about/supported-guest-os.md) | HandedOffSuccess | [Details](#ac1ec3740cfa75acd8c005df3f67531c693cd914110)
 
 ## Item Details
-##### <a name='ac1ec3740cfa75acd8c005df3f67531c693cd914110'></a> Source: [virtualization\hyper-v-on-windows\about\supported-guest-os.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/63e890ad2caae3ce55503af81c6c5ff0d1e630f6/virtualization/hyper-v-on-windows/about/supported-guest-os.md)
-* Status: HandedOffSuccess
-* Target File: 
-* Handoff File: [supported-guest-os.bb959c20ec9b6ee9dc1f4b9e0d1abaad551c0a11.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/0a57d03ea7650b368ab55d8f224c8cb9ded73717/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/supported-guest-os.bb959c20ec9b6ee9dc1f4b9e0d1abaad551c0a11.es-es.xlf)
-* Handoff Datetime: 2017-08-17 20:24:33
-* Handoff Reason: Include
-* Handoff Name: 
-* Archive File: 
-* Archive Datetime: 0001-01-01 00:00:00
-* Handback File: 
-* Handback Datetime: 0001-01-01 00:00:00
-* Handback Name: 
-* Current Target File: [virtualization\hyperv_on_windows\about\supported_guest_os.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/0c8dd09e0b31fcce1f45d10a2070a4c8298e1884/virtualization/hyperv_on_windows/about/supported_guest_os.md)
-* Current Handback File: [supported_guest_os.d1ae8a9dd710f94e6f72759af7a880d39bf8c9bf.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/fc3bd3839320df82cda5cbaed6c9c91dd65a3b80/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/supported_guest_os.d1ae8a9dd710f94e6f72759af7a880d39bf8c9bf.es-es.xlf)
-* Current Handback Datetime: 2016-11-03 03:45:10
-* Bilingual File: [supported_guest_os.d1ae8a9dd710f94e6f72759af7a880d39bf8c9bf.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/fc3bd3839320df82cda5cbaed6c9c91dd65a3b80/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/supported_guest_os.d1ae8a9dd710f94e6f72759af7a880d39bf8c9bf.es-es.xlf)
-* Bilingual Datetime: 2016-11-03 03:47:00
-* [Back to Top](#report-top)
-
 
 ## Error Details
 
