@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyper-v-on-windows\user-guide\nested-virtualization.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/6eddc44b18109df52a02c01ce2661db621882e7d/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md) | HandedOffSuccess | [Details](#fb790611ea994c68f3e3a3b0404a297c595f0646235)
+ [virtualization\hyper-v-on-windows\user-guide\setup-nat-network.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/842ca978202612dc14b0b074fe21fef0458f401a/virtualization/hyper-v-on-windows/user-guide/setup-nat-network.md) | HandedOffSuccess | [Details](#d1ddd25973a24c5915842580bb734db78236fb0e238)
 
 ## Item Details
-##### <a name='fb790611ea994c68f3e3a3b0404a297c595f0646235'></a> Source: [virtualization\hyper-v-on-windows\user-guide\nested-virtualization.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/6eddc44b18109df52a02c01ce2661db621882e7d/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md)
+##### <a name='d1ddd25973a24c5915842580bb734db78236fb0e238'></a> Source: [virtualization\hyper-v-on-windows\user-guide\setup-nat-network.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/842ca978202612dc14b0b074fe21fef0458f401a/virtualization/hyper-v-on-windows/user-guide/setup-nat-network.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/e77b14a0e7c5c08008f14fc26936c46b3b66d319/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf)
-* Handoff Datetime: 2017-08-29 17:16:47
+* Handoff File: [setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/ed59feb9c5a60c107c5bb512f197f47554a27980/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf)
+* Handoff Datetime: 2017-08-29 18:16:21
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,10 +21,10 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
-* Current Target File: [virtualization\hyper-v-on-windows\user-guide\nested-virtualization.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/351ab47a58f1241b85c8d59c3af99a54581ce15b/virtualization/hyper-v-on-windows/user-guide/nested-virtualization.md)
-* Current Handback File: [nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf)
+* Current Target File: [virtualization\hyper-v-on-windows\user-guide\setup-nat-network.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/351ab47a58f1241b85c8d59c3af99a54581ce15b/virtualization/hyper-v-on-windows/user-guide/setup-nat-network.md)
+* Current Handback File: [setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf)
 * Current Handback Datetime: 2017-03-24 13:50:54
-* Bilingual File: [nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/nested-virtualization.b6c03a13724acb15bc74c70fdf9c4b440a2b28d4.es-es.xlf)
+* Bilingual File: [setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/setup-nat-network.569fba8d30bc800503603312f9faf0554f426411.es-es.xlf)
 * Bilingual Datetime: 2017-03-24 13:54:56
 * [Back to Top](#report-top)
 
