@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "842ca978202612dc14b0b074fe21fef0458f401a",
+  "LastProcessedCommit": "2bf156c38833ff31a3f377c1eca85e4928e94d80",
   "LastTranslatedCommit": "351ab47a58f1241b85c8d59c3af99a54581ce15b",
   "LastConfigHash": "c2c732afb7c3f4c37d58d495724fd755011bf7a0",
   "Items": {
@@ -21156,6 +21156,21 @@
       "HandoffFileCommit": "ed59feb9c5a60c107c5bb512f197f47554a27980",
       "HandoffDateTime": "2017-08-29T18:16:21.7714705Z",
       "HandoffXliffHash": "88c7740e9d64583b1d61b46ce2268560ef04cb36",
+      "HandoffPriority": ""
+    },
+    "3aca2300ce0a53b6bb038fa37605ffe62bf2326d": {
+      "FileHash": "3aca2300ce0a53b6bb038fa37605ffe62bf2326d",
+      "SourceFileCommit": "2bf156c38833ff31a3f377c1eca85e4928e94d80",
+      "SourceFilePath": "virtualization\\windowscontainers\\quick-start\\Nano-RS3-.NET-Core-and-PS.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\windowscontainers\\quick-start\\Nano-RS3-.NET-Core-and-PS.md"
+      ],
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.es-es\\live\\Nano-RS3-.NET-Core-and-PS.e5ea4a76ace3f6471b80af88b95435b052b8d445.es-es.xlf",
+      "HandoffFileCommit": "084cbbde37aa5f6329de771011d33659e9ab8613",
+      "HandoffDateTime": "2017-08-30T01:16:52.6508361Z",
+      "HandoffXliffHash": "918aeb2a9a0677b893210ec8a80dbaa5b1ba3f66",
       "HandoffPriority": ""
     }
   }
