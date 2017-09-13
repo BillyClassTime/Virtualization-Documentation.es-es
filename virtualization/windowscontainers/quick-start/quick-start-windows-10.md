@@ -1,55 +1,55 @@
 ---
-title: Contenedor de Windows en Windows 10
-description: "Inicio rápido de implementación de contenedores"
-keywords: docker, contenedores
+title: Windows Container on Windows 10
+description: Container deployment quick start
+keywords: docker, containers
 author: enderb-ms
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 66bb1ba56fde13d76392ddb4a1f8e6855201e7a3
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 2c5742ba11f830762a337f31ebcd1ae700cb3905
+ms.sourcegitcommit: 015f8c438cd1e1331e5388280facce4b9ec939ac
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 ---
-# Contenedores de Windows en Windows 10
+# Windows Containers on Windows 10
 
-Este ejercicio te guiará a través de la implementación básica y el uso de la característica de contenedor de Windows en Windows 10 Professional o Enterprise (Anniversary Edition). Una vez finalizado, habrás instalado Docker para Windows y ejecutarás un contenedor simple. Antes de comenzar este inicio rápido, familiarízate con la terminología y los conceptos básicos de los contenedores. Esta información se encuentra en la [Introducción a los contenedores](./index.md).
+The exercise will walk through basic deployment and use of the Windows container feature on Windows 10 Professional or Enterprise (Anniversary Edition). After completion, you will have installed Docker for Windows and run a simple container. Si necesitas familiarizarte con los contenedores, encontrarás esta información en [Acerca de los contenedores](../about/index.md).
 
-Esta introducción es específica para Windows 10. En la tabla de contenido del lado izquierdo de esta página encontrarás documentación adicional de inicio rápido.
+Este inicio rápido es específico de Windows10. Additional quick start documentation can be found in the table of contents on the left hand side of this page.
 
-***Aislamiento de Hyper-V:*** los contenedores de Windows Server requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores la misma versión y configuración de kernel que se usará en producción, pudiendo encontrarse más detalles sobre esto en la página [Acerca del contenedor de Windows](../about/index.md).
+***Hyper-V isolation:*** Windows Server Containers require Hyper-V isolation on Windows 10 in order to provide developers with the same kernel version and configuration that will be used in production, more about this can be found on the [About Windows container](../about/index.md) page.
 
-**Requisitos previos:**
+**Prerequisites:**
 
-- Un sistema de equipo físico que ejecuta Windows 10 Anniversary Edition o Creators Update (Professional o Enterprise).   
-- Este inicio rápido se puede ejecutar en una máquina virtual de Windows 10, pero tendrá que estar habilitada la virtualización anidada. Puedes encontrar más información en la [guía de virtualización anidada](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
+- One physical computer system running Windows 10 Anniversary Edition or Creators Update (Professional or Enterprise).   
+- This quick start can be run on a Windows 10 virtual machine but nested virtualization will need to be enabled. More information can be found in the [Nested Virtualization Guide](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
-> Debe instalar las actualizaciones críticas para que funcionen los contenedores de Windows.
-> Para comprobar la versión del SO, ejecute `winver.exe` y compare la versión que se muestra con el [Historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history).
-> Asegúrese de tener la versión 14393.222 o posterior antes de continuar.
+> You must install critical updates for Windows Containers to work.
+> To check your OS version, run `winver.exe`, and compare the version shown to [Windows 10 update history](https://support.microsoft.com/en-us/help/12387/windows-10-update-history).
+> Make sure you have 14393.222 or later before continuing.
 
-## 1. Instalar Docker para Windows
+## 1. Install Docker for Windows
 
-[Descarga Docker para Windows](https://download.docker.com/win/stable/InstallDocker.msi) y ejecuta el programa de instalación. Se encuentran disponibles [instrucciones de instalación detalladas](https://docs.docker.com/docker-for-windows/install) en la documentación de Docker (en inglés).
+[Download Docker for Windows](https://download.docker.com/win/stable/InstallDocker.msi) and run the installer. [Detailed installation instructions](https://docs.docker.com/docker-for-windows/install) are available in the Docker documentation.
 
-## 2. Cambia a contenedores de Windows
+## 2. Switch to Windows containers
 
-Después de la instalación, Docker para Windows ejecuta contenedores de Linux de forma predeterminada. Cambia a contenedores de Windows mediante el menú de bandeja de Docker o ejecutando el siguiente comando en un símbolo del sistema de PowerShell: `& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon`.
+After installation Docker for Windows defaults to running Linux containers. Switch to Windows containers using either the Docker tray-menu or by running the following command in a PowerShell prompt `& $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon`.
 
 ![](./media/docker-for-win-switch.png)
 
-## 3. Instala imágenes base del contenedor
+## 3. Install Base Container Images
 
-Los contenedores de Windows se crean a partir de imágenes base. El comando siguientes extraerá la imagen base de Nano Server.
+Windows containers are built from base images. The following command will pull the Nano Server base image.
 
 ```none
 docker pull microsoft/nanoserver
 ```
 
-Una vez extraída, si se ejecuta `docker images`, se devolverá una lista de las imágenes instaladas, en este caso la imagen de Nano Server.
+Once the image is pulled, running `docker images` will return a list of installed images, in this case the Nano Server image.
 
 ```none
 docker images
@@ -58,59 +58,59 @@ REPOSITORY             TAG                 IMAGE ID            CREATED          
 microsoft/nanoserver   latest              105d76d0f40e        4 days ago          652 MB
 ```
 
-> Lee el CLUF de la imagen del sistema operativo de contenedores de Windows que se encuentra aquí: [CLUF](../images-eula.md).
+> Please read the Windows Containers OS Image EULA which can be found here – [EULA](../images-eula.md).
 
-## 4. Ejecuta el primer contenedor
+## 4. Run Your First Container
 
-En este ejemplo simple, se va a crear e implementar una imagen de contenedor "Hola a todos". Para lograr una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados o en PowerShell.
+For this simple example a ‘Hello World’ container image will be created and deployed. For the best experience run these commands in an elevated Windows CMD shell or PowerShell.
 
-> Windows PowerShell ISE no funciona en sesiones interactivas con contenedores. Aunque el contenedor se ejecuta, parece que se cuelga.
+> Windows PowerShell ISE does not work for interactive sessions with containers. Even though the container is running, it will appear to hang.
 
-En primer lugar, inicie un contenedor con una sesión interactiva desde la imagen `nanoserver`. Una vez que se ha iniciado el contenedor, aparecerá un shell de comandos desde dentro del mismo.  
+First, start a container with an interactive session from the `nanoserver` image. Once the container has started, you will be presented with a command shell from within the container.  
 
 ```none
 docker run -it microsoft/nanoserver cmd
 ```
 
-Dentro del contenedor se creará un script sencillo de "Hola a todos".
+Inside the container we will create a simple ‘Hello World’ script.
 
 ```none
 powershell.exe Add-Content C:\helloworld.ps1 'Write-Host "Hello World"'
 ```   
 
-Una vez completado, salga del contenedor.
+When completed, exit the container.
 
 ```none
 exit
 ```
 
-Ahora creará una nueva imagen de contenedor a partir del contenedor modificado. Para ver una lista de contenedores ejecute lo siguiente y anote el identificador de contenedor.
+You will now create a new container image from the modified container. To see a list of containers run the following and take note of the container id.
 
 ```none
 docker ps -a
 ```
 
-Ejecute el siguiente comando para crear la nueva imagen de "Hola a todos". Reemplace <containerid> con el identificador del contenedor.
+Run the following command to create the new ‘HelloWorld’ image. Replace <containerid> with the id of your container.
 
 ```none
 docker commit <containerid> helloworld
 ```
 
-Una vez finalizado, tendrá una imagen personalizada que contiene el script de hola a todos. Esto puede verse con el comando siguiente.
+When completed, you now have a custom image that contains the hello world script. This can be seen with the following command.
 
 ```none
 docker images
 ```
 
-Finalmente, para quitar el contenedor, use el comando `docker run`.
+Finally, to run the container, use the `docker run` command.
 
 ```none
 docker run --rm helloworld powershell c:\helloworld.ps1
 ```
 
-El resultado de este comando `docker run` es que se crea un contenedor de Hyper-V a partir de la imagen de "Hola a todos", a continuación se ejecuta un script "Hola a todos" de ejemplo (el resultado se muestra en el shell) y luego el contenedor se detiene y se quita.
-Los siguientes inicios rápidos de Windows 10 y contenedores profundizarán en la creación e implementación de aplicaciones en contenedores en Windows 10.
+The outcome of the `docker run` command is that a Hyper-V container was created from the 'HelloWorld' image, a sample 'Hello World' script was then executed (output echoed to the shell), and then the container stopped and removed.
+Subsequent Windows 10 and container quick starts will dig into creating and deploying applications in containers on Windows 10.
 
 ## Pasos siguientes
 
-[Contenedores de Windows en Windows Server](./quick-start-windows-server.md)
+Continúa en el siguiente tutorial para ver un ejemplo de [cómo crear una aplicación de ejemplo](./building-sample-app.md)
