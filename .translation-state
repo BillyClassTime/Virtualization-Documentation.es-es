@@ -1,5 +1,5 @@
 {
-  "LastProcessedCommit": "af8bd16aad6bb189a5eef72af6134f6cfdce10cd",
+  "LastProcessedCommit": "35f4fe0a1d4c7ece5353013ac667d02337eea141",
   "LastTranslatedCommit": "351ab47a58f1241b85c8d59c3af99a54581ce15b",
   "LastConfigHash": "8a1020b7136b784cdc0f8c9eca877ab77b2a9c5f",
   "Items": {
@@ -21391,6 +21391,22 @@
       "HandoffFileCommit": "043c08a11ecc6a7d2bdc41475c31f4a92e630b09",
       "HandoffDateTime": "2017-10-26T20:36:25.6187846Z",
       "HandoffXliffHash": "a7c71a6a9d52c5733a1d2e51758428367ce92cde",
+      "HandoffPriority": ""
+    },
+    "a473190abf73674a37c814137656f9325412c122": {
+      "FileHash": "a473190abf73674a37c814137656f9325412c122",
+      "SourceFileCommit": "35f4fe0a1d4c7ece5353013ac667d02337eea141",
+      "SourceFilePath": "virtualization\\hyper-v-on-windows\\user-guide\\enhanced-session-mode.md",
+      "HandoffReason": 1,
+      "FilePathList": [
+        "virtualization\\hyper-v-on-windows\\user-guide\\enhanced-session-mode.md"
+      ],
+      "HasMetadata": true,
+      "TranslationType": 1,
+      "HandoffFilePath": "ol-handoff\\MicrosoftDocs\\Virtualization-Documentation-Private.es-es\\live\\enhanced-session-mode.a5a194c0db3af8a2b6a015055a9586d1fff7339e.es-es.xlf",
+      "HandoffFileCommit": "9a3855baa9b2c6806323e74010c0191bed71429d",
+      "HandoffDateTime": "2017-10-26T21:35:59.104428Z",
+      "HandoffXliffHash": "4c9b2ec4a092398df5476475b8ae5279f04ca25a",
       "HandoffPriority": ""
     }
   }
