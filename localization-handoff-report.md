@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\hyper-v-on-windows\user-guide\enhanced-session-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3ec9917c456875f68180323eb9e0470d5115325a/virtualization/hyper-v-on-windows/user-guide/enhanced-session-mode.md) | HandedOffSuccess | [Details](#52d51fca03f454a311a123f20e5aeda9376fdc3d211)
+ [virtualization\windowscontainers\about\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/b578961db242f08261798d1b498b091b8c405924/virtualization/windowscontainers/about/index.md) | HandedOffSuccess | [Details](#b916b8bb2e09dfc78414785ad0d0252b5abec619266)
 
 ## Item Details
-##### <a name='52d51fca03f454a311a123f20e5aeda9376fdc3d211'></a> Source: [virtualization\hyper-v-on-windows\user-guide\enhanced-session-mode.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/3ec9917c456875f68180323eb9e0470d5115325a/virtualization/hyper-v-on-windows/user-guide/enhanced-session-mode.md)
+##### <a name='b916b8bb2e09dfc78414785ad0d0252b5abec619266'></a> Source: [virtualization\windowscontainers\about\index.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/b578961db242f08261798d1b498b091b8c405924/virtualization/windowscontainers/about/index.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [enhanced-session-mode.a5a194c0db3af8a2b6a015055a9586d1fff7339e.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/11d2b58efcbb4bf72361b5b0deb7c683b12d97bb/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/enhanced-session-mode.a5a194c0db3af8a2b6a015055a9586d1fff7339e.es-es.xlf)
-* Handoff Datetime: 2017-10-27 00:37:02
+* Handoff File: [index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/958ed5e26eca121b8ee490000409b5a117bf4f92/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf)
+* Handoff Datetime: 2017-10-27 18:37:16
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,6 +21,11 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
+* Current Target File: [virtualization\windowscontainers\about\index.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/351ab47a58f1241b85c8d59c3af99a54581ce15b/virtualization/windowscontainers/about/index.md)
+* Current Handback File: [index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf)
+* Current Handback Datetime: 2017-03-24 13:50:54
+* Bilingual File: [index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/14186829d7cd7b470ae19602d508f9333985ee49/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/index.01108708edf157e95b96d0e38c23011bed66c123.es-es.xlf)
+* Bilingual Datetime: 2017-03-24 13:54:56
 * [Back to Top](#report-top)
 
 
