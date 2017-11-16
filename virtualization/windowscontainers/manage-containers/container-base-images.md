@@ -8,15 +8,15 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 622c8f638a815e19a54aa75b6b5ea0688d966ae3
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 1c506016175a8be2608e10063a788d55aa792ce4
+ms.sourcegitcommit: 8ce23ca36f3dbae96a09f73d8c2f235943f8cd47
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 10/17/2017
 ---
-# Historial de imágenes base de contenedor de Windows
+# <a name="windows-container-base-image-history"></a>Historial de imágenes base de contenedor de Windows
 
-Cada contenedor de Windows se crea sobre un sistema operativo base proporcionado por Microsoft. Si no estás seguro de qué versión de Windows se creó para un contenedor, puedes ejecutar `docker inspect <tag>` y hacer que coincidan las dos primeras filas de la tabla que se muestra a continuación.
+Cada contenedor de Windows se crea sobre un sistema operativo base proporcionado por Microsoft. Si no estás seguro de para qué versión de Windows se creó un contenedor, puedes ejecutar `docker inspect <tag>` y hacer que coincidan las dos primeras filas de la tabla que se muestra a continuación.
 
 Por ejemplo, `docker inspect microsoft/windowsservercore:10.0.14393.447` mostraría
 
@@ -30,10 +30,18 @@ Por ejemplo, `docker inspect microsoft/windowsservercore:10.0.14393.447` mostrar
     ]
 }
 ```
-Que son las dos capas en la imagen proporcionada por Microsoft.
+
+Que son las dos capas en la imagen proporcionada por Microsoft. La primera es constante y representa la versión original de Windows Server y la segunda cambia en función de la última actualización acumulativa incluida.
 
 Si quieres saber qué ha cambiado en cada versión, busca la Knowledge Base para esa versión en [historial de actualizaciones de Windows 10 y Windows Server 2016](https://support.microsoft.com/en-us/help/12387/windows-10-update-history)
 
+
+## <a name="tools-to-simplify-this-process"></a>Herramientas para simplificar el proceso
+
+Stefan Scherer ha creado una herramienta que puede leer el manifiesto de la imagen y determinar la versión sin necesidad de descargar el contenedor completo. Consulta su [blog](https://stefanscherer.github.io/winspector/) y el repositorio de [GitHub](https://github.com/StefanScherer/winspector) para obtener más información.
+
+
+## <a name="image-versions"></a>Versiones de imagen
 
 <table>
     <tr>

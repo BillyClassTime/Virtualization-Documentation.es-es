@@ -7,20 +7,20 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: 468b2047bbca94126e56be71c2d546a8c78820cb
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 85f6b30544fc433c9d768c2167024d097a9cef25
+ms.sourcegitcommit: a3c9101a05d730d4173720d224bd8df8e9a56739
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 10/10/2017
 ---
-# Instalar Hyper-V en Windows 10
+# <a name="install-hyper-v-on-windows-10"></a>Instalar Hyper-V en Windows 10
 
 Habilitar Hyper-V para crear máquinas virtuales en Windows 10.  
 Hyper-V puede habilitarse de muchas maneras, incluido el uso del panel de control de Windows 10, PowerShell (mi favorita) o la herramienta de Administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada una de las opciones.
 
 > **Nota:** Hyper-V está integrado en Windows como una característica opcional: no hay ninguna descarga de Hyper-V ni un componente instalable. 
 
-## Comprobación de los requisitos
+## <a name="check-requirements"></a>Comprobación de los requisitos
 
 * Windows 10 Enterprise, Professional, o Education
 * Procesador de 64 bits con traducción de direcciones de segundo nivel (SLAT).
@@ -33,10 +33,10 @@ Puedes actualizar Windows 10 Home Edition a Windows 10 Professional abriendo **C
 Para más información y solución de problemas, consulta [Requisitos de sistema de Hyper-V en Windows 10](../reference/hyper-v-requirements.md).
 
 
-## Instalar Hyper-V 
+## <a name="install-hyper-v"></a>Instalar Hyper-V 
 Hyper-V está integrado en Windows como una característica opcional: no hay ninguna descarga de Hyper-V ni un componente instalable.  Hay varias maneras de habilitar el rol de Hyper-V integrado.
 
-### Habilitar Hyper-V usando PowerShell
+### <a name="enable-hyper-v-using-powershell"></a>Habilitar Hyper-V usando PowerShell
 
 1. Abre una consola de PowerShell como administrador.
 
@@ -49,7 +49,7 @@ Hyper-V está integrado en Windows como una característica opcional: no hay nin
 
 Cuando la instalación se haya completado, deberás reiniciar el equipo.  
 
-### Habilitar Hyper-V con CMD y DISM
+### <a name="enable-hyper-v-with-cmd-and-dism"></a>Habilitar Hyper-V con CMD y DISM
 
 La herramienta Administración y mantenimiento de imágenes de implementación (DISM) ayuda a configurar Windows y las imágenes de Windows.  Entre sus muchas aplicaciones, DISM puede habilitar características de Windows mientras se ejecuta el sistema operativo.  
 
@@ -64,13 +64,13 @@ Para habilitar el rol de Hyper-V mediante DISM:
 
 Para más información sobre DISM, consulta [Referencia técnica de DISM](https://technet.microsoft.com/en-us/library/hh824821.aspx).
 
-### Habilitar manualmente el rol de Hyper-V
+### <a name="manually-enable-the-hyper-v-role"></a>Habilitar manualmente el rol de Hyper-V
 
-1. Haga clic con el botón derecho en el botón de Windows y seleccione "Programas y características".
+1. Haz clic con el botón derecho en el botón Windows y selecciona "Programas y características".
 
-2. Seleccione **Activar o desactivar las características de Windows**.
+2. Selecciona **Activar o desactivar las características de Windows**.
 
-3. Seleccione **Hyper-V** y haga clic en **Aceptar**.  
+3. Selecciona **Hyper-V** y haz clic en **Aceptar**.  
 
 ![](media/enable_role_upd.png)
 
@@ -79,5 +79,5 @@ Cuando la instalación se complete, se te pedirá confirmación para reiniciar e
 ![](media/restart_upd.png)
 
 
-## Crear máquinas virtuales
+## <a name="make-virtual-machines"></a>Crear máquinas virtuales
 [Crea tu primera máquina virtual](quick-create-virtual-machine.md)

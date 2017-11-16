@@ -7,13 +7,13 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 2ba3e6409fc60022a55d21c187bfcaefd962908b
-ms.sourcegitcommit: 4f5b9f70804bf6282af8bef603cc343c524c3102
+ms.openlocfilehash: b9f20e6b3f071b9c71a387fce9640b244e9a95b5
+ms.sourcegitcommit: fa9ec91b14c612df03c5b7bb094eb1fabf421715
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 10/11/2017
 ---
-# Crear una aplicación de ejemplo
+# <a name="build-a-sample-app"></a>Crear una aplicación de ejemplo
 
 En este ejercicio obtendrás instrucciones sobre cómo tomar una aplicación de ejemplo ASP.net y convertirla para que se ejecute en un contenedor. Si necesitas aprender cómo empezar a trabajar con los contenedores en Windows10, visita [Inicio rápido de Windows10](./quick-start-windows-10.md).
 
@@ -21,7 +21,7 @@ Este inicio rápido es específico de Windows10. En la tabla de contenido del la
 
 Si no tienes el control de código fuente de Git instalado en tu equipo, puedes obtenerlo aquí: [Git](https://git-scm.com/download)
 
-## Introducción
+## <a name="getting-started"></a>Introducción
 
 Este proyecto de ejemplo se ha configurado con [VSCode](https://code.visualstudio.com/). También utilizaremos PowerShell. Vamos a obtener el código de demostración de GitHub. Puedes clonar el repositorio con git o descargar el proyecto directamente en [SampleASPContainerApp](https://github.com/cwilhit/SampleASPContainerApp).
 
@@ -36,7 +36,7 @@ Ahora nos dirigiremos al directorio del proyecto y crearemos el Dockerfile. Un [
 New-Item C:/Your/Proj/Location/Dockerfile -type file
 ```
 
-## Escribir en nuestro Dockerfile
+## <a name="writing-our-dockerfile"></a>Escribir en nuestro Dockerfile
 
 Ahora vamos a abrir ese Dockerfile que hemos creado en la carpeta raíz del proyecto (con el editor de texto que prefieras) y le agregaremos lógica. Después lo desglosaremos línea por línea y explicaremos lo que está ocurriendo.
 
@@ -94,7 +94,7 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 Ahora hemos realizado correctamente lo que se denomina una _compilación multietapa_. Hemos usado el contenedor temporal para compilar nuestra imagen y luego hemos movido el archivo dll publicado a otro contenedor para minimizar la huella de la aplicación del resultado final. Queremos que este contenedor tenga el mínimo absoluto necesario de dependencias para ejecutarse; si hubiéramos seguido usando nuestra primera imagen, hubiera venido incluida con otras capas (para compilar aplicaciones ASP.NET) que no eran de vital importancia y, por tanto, el tamaño de la imagen habría aumentado.
 
-## Ejecutar la aplicación
+## <a name="running-the-app"></a>Ejecutar la aplicación
 
 Ahora que se ha escrito en el dockerfile, lo único que queda por hacer es indicar al docker que compile nuestra aplicación y luego ejecute el contenedor. Especificamos el puerto en el que se publicará y después proporcionamos al contenedor una etiqueta denominada "myapp". En PowerShell, ejecuta estos comandos:
 
@@ -106,7 +106,7 @@ docker run -d -p 5000:80 --name myapp myasp
 Para ver nuestra aplicación en ejecución, debemos visitar la dirección en la que se está ejecutando. Vamos a obtener la dirección IP mediante la ejecución de este comando.
 
 ```Powershell
- docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myapp
+ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" myasp
 ```
 
 Al ejecutar este comando, se obtendrá la dirección IP del contenedor en ejecución. Aquí te mostramos un ejemplo de lo que verás.
@@ -121,7 +121,7 @@ Escribe esta dirección IP en el navegador web que quieras y aparecerá la aplic
 
 Si haces clic en "MvcMovie" en la barra de navegación, te llevará a una página web donde puedes escribir, editar y eliminar entradas de películas.
 
-## Pasos siguientes
+## <a name="next-steps"></a>Pasos siguientes
 
 Hemos tomado una aplicación web ASP.NET, la hemos configurado y la hemos compilado correctamente con Docker y, además, la hemos implementado en un contenedor en ejecución. Sin embargo, hay más pasos adicionales que puedes realizar. Podrías desglosar la aplicación web en más componentes: un contenedor que ejecuta la API web, un contenedor que ejecuta el front-end y un contenedor que ejecuta SQLServer.
 
