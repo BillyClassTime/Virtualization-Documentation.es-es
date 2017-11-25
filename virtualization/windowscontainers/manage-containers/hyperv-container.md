@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: 7957e48291ab2d29f3687c595c760d838dab60b8
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: ea131dfede51ee36f7dc703511357612430ccca9
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Contenedores de Hyper-V
+# <a name="hyper-v-containers"></a>Contenedores de Hyper-V
 
 **Esto es contenido preliminar y está sujeto a cambios.** 
 
@@ -24,29 +24,29 @@ La tecnología de contenedor de Windows incluye dos tipos distintos de contenedo
 
 **Contenedores de Hyper-V**: varias instancias de contenedor pueden ejecutarse simultáneamente en un host; pero cada contenedor se ejecuta dentro de una máquina virtual especial. Esto proporciona aislamiento de nivel de kernel entre cada contenedor de Hyper-V y el host de contenedor.
 
-## Contenedor de Hyper-V
+## <a name="hyper-v-container"></a>Contenedor de Hyper-V
 
-### Crear contenedor
+### <a name="create-container"></a>Crear contenedor
 
 La administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Al crear un contenedor de Hyper-V con Docker, se usa el parámetro `--isolation=hyperv`.
 
-```none
+```
 docker run -it --isolation=hyperv microsoft/nanoserver cmd
 ```
 
-### Explicación del aislamiento
+### <a name="isolation-explanation"></a>Explicación del aislamiento
 
 En este ejemplo se diferencian las funcionalidades de aislamiento entre contenedores de Hyper-V y Windows Server. 
 
 En este caso, se implementa un contenedor de Windows Server que hospedará un proceso de ping de ejecución prolongada.
 
-```none
+```
 docker run -d microsoft/windowsservercore ping localhost -t
 ```
 
 Mediante el comando `docker top`, el proceso de ping se devuelve tal como se muestra dentro del contenedor. El proceso de este ejemplo tiene el identificador 3964.
 
-```none
+```
 docker top 1f8bf89026c8f66921a55e773bac1c60174bb6bab52ef427c6c8dbc8698f9d7a
 
 3964 ping
@@ -54,7 +54,7 @@ docker top 1f8bf89026c8f66921a55e773bac1c60174bb6bab52ef427c6c8dbc8698f9d7a
 
 En el host de contenedor, puede usarse el comando `get-process` para devolver los procesos de ping que se están ejecutando en el host. En este ejemplo hay uno, y el identificador del proceso coincide con el del contenedor. Se trata del mismo proceso visible en el contenedor y en el host.
 
-```none
+```
 get-process -Name ping
 
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
@@ -64,13 +64,13 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 
 Por otro lado, en este ejemplo se inicia un contenedor de Hyper-V que también tiene un proceso de ping. 
 
-```none
+```
 docker run -d --isolation=hyperv microsoft/nanoserver ping -t localhost
 ```
 
 Del mismo modo, puede usarse `docker top` para devolver los procesos que se están ejecutando en el contenedor.
 
-```none
+```
 docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 
 1732 ping
@@ -78,7 +78,7 @@ docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 
 Pero cuando se busca el proceso de host de contenedor, no se encuentra ningún proceso de ping y se produce un error.
 
-```none
+```
 get-process -Name ping
 
 get-process : Cannot find a process with the name "ping". Verify the process name and call the cmdlet again.
@@ -91,7 +91,7 @@ At line:1 char:1
 
 Por último, en el host, puede verse el proceso `vmwp`, que es la máquina virtual que encapsula el contenedor en ejecución y que protege los procesos en ejecución del sistema operativo host.
 
-```none
+```
 get-process -Name vmwp
 
 Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName

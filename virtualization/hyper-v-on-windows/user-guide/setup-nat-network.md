@@ -1,48 +1,48 @@
 ---
-title: Set up a NAT network
-description: Set up a NAT network
-keywords: windows 10, hyper-v
+title: Configurar una red NAT
+description: Configurar una red NAT
+keywords: Windows 10, Hyper-V
 author: jmesser81
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: d1ddd25973a24c5915842580bb734db78236fb0e
-ms.sourcegitcommit: 842ca978202612dc14b0b074fe21fef0458f401a
+ms.openlocfilehash: dd11b3a78307d4c39a3c383120a04e91c8d0f70f
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Set up a NAT network
+# <a name="set-up-a-nat-network"></a>Configurar una red NAT
 
-Windows 10 Hyper-V allows native network address translation (NAT) for a virtual network.
+Windows 10 Hyper-V permite la traducción de direcciones de red (NAT) nativa de una red virtual.
 
-This guide will walk you through:
-* creating a NAT network
-* connecting an existing virtual machine to your new network
-* confirming that the virtual machine is connected correctly
+Esta guía le orientará a lo largo de:
+* la creación de una red NAT
+* la conexión de una máquina virtual existente a la nueva red
+* la confirmación de que la máquina virtual está conectada correctamente
 
-Requirements:
-* Windows 10 Anniversary Update or later
-* Hyper-V is enabled (instructions [here](../quick-start/enable-hyper-v.md))
+Requisitos:
+* Actualización de aniversario de Windows10 o posterior
+* Hyper-V debe estar habilitado (instrucciones [aquí](../quick-start/enable-hyper-v.md))
 
-> **Note:**  Currently, you are limited to one NAT network per host. For additional details on the Windows NAT (WinNAT) implementation, capabilities, and limitations, please reference the [WinNAT capabilities and limitations blog](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)
+> **Nota:** Actualmente, hay una limitación de una red NAT por cada host. Para obtener más detalles sobre la implementación de Windows NAT (WinNAT), sus capacidades y sus limitaciones, consulta el [blog de capacidades y limitaciones de WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)
 
-## NAT Overview
-NAT gives a virtual machine access to network resources using the host computer's IP address and a port through an internal Hyper-V Virtual Switch.
+## <a name="nat-overview"></a>Información general sobre NAT
+NAT proporciona a una máquina virtual acceso a los recursos de red con la dirección IP y un puerto del equipo host a través de un conmutador virtual de Hyper-V.
 
-Network Address Translation (NAT) is a networking mode designed to conserve IP addresses by mapping an external IP address and port to a much larger set of internal IP addresses.  Basically, a NAT uses a flow table to route traffic from an external (host) IP Address and port number to the correct internal IP address associated with an endpoint on the network (virtual machine, computer, container, etc.)
+La traducción de direcciones de red (NAT) es un modo de red diseñado para conservar las direcciones IP mediante la asignación de una dirección IP externa y un puerto a un conjunto mucho mayor de direcciones IP internas.  Básicamente, una red NAT usa una tabla de flujo para enrutar el tráfico de una dirección IP (host) externa y un número de puerto a la dirección IP interna correcta asociada a un punto de conexión de la red (máquina virtual, equipo, contenedor, etc.).
 
-Additionally, NAT allows multiple virtual machines to host applications that require identical (internal) communication ports by mapping these to unique external ports.
+Además, NAT permite que varias máquinas virtuales hospeden aplicaciones que necesitan puertos de comunicación idénticos (internos) asignándolos a puertos externos únicos.
 
-For all of these reasons, NAT networking is very common for container technology (see [Container Networking](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/management/container_networking)).
+Por todas estas razones, la red NAT es muy común para la tecnología de contenedores (consulte [Container Networking (Red de contenedores)](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/management/container_networking)).
 
 
-## Create a NAT virtual network
-Let's walk through setting up a new NAT network.
+## <a name="create-a-nat-virtual-network"></a>Creación de una red virtual NAT
+Pasemos a la configuración de una nueva red NAT.
 
-1.  Open a PowerShell console as Administrator.  
+1.  Abra una consola de PowerShell como administrador.  
 
 2. Crea un conmutador interno.
 
@@ -54,7 +54,7 @@ Let's walk through setting up a new NAT network.
 
     Puedes encontrar el índice de interfaz si ejecutas `Get-NetAdapter`
 
-    Your output should look something like this:
+    El resultado debe ser similar al siguiente:
 
     ```
     PS C:\> Get-NetAdapter
@@ -71,21 +71,21 @@ Let's walk through setting up a new NAT network.
 
 4. Configura la puerta de enlace NAT con [New-NetIPAddress](https://technet.microsoft.com/en-us/library/hh826150.aspx).  
 
-  Here is the generic command:
+  Este es el comando genérico:
   ``` PowerShell
   New-NetIPAddress -IPAddress <NAT Gateway IP> -PrefixLength <NAT Subnet Prefix Length> -InterfaceIndex <ifIndex>
   ```
 
-  In order to configure the gateway, you'll need a bit of information about your network:  
-  * **IPAddress** -- NAT Gateway IP specifies the IPv4 or IPv6 address to use as the NAT gateway IP.  
-    The generic form will be a.b.c.1 (e.g. 172.16.0.1).  While the final position doesn’t have to be .1, it usually is (based on prefix length)
+  Para configurar la puerta de enlace, necesitará un poco de información sobre la red:  
+  * **IPAddress**: la dirección IP de puerta de enlace NAT especifica la dirección IPv4 o IPv6 que se usará como dirección IP de puerta de enlace NAT.  
+    El formato genérico será a.b.c.1 (por ejemplo, 172.16.0.1).  Aunque la posición final no tiene que ser .1, normalmente lo es (según la longitud del prefijo)
 
-    A common gateway IP is 192.168.0.1  
+    Una dirección IP de puerta de enlace común es 192.168.0.1  
 
-  * **PrefixLength** --  NAT Subnet Prefix Length defines the NAT local subnet size (subnet mask).
-    The subnet prefix length will be an integer value between 0 and 32.
+  * **PrefixLength**: la longitud del prefijo de subred NAT define el tamaño de la subred local NAT (máscara de subred).
+    La longitud del prefijo de subred será un valor entero entre 0 y 32.
 
-    0 would map the entire internet, 32 would only allow one mapped IP.  Common values range from 24 to 12 depending on how many IPs need to be attached to the NAT.
+    0 asignaría todo Internet, 32 solo permitiría una dirección IP asignada.  Los valores comunes oscilan entre 24 y 12, según el número de direcciones IP que haya que asociar a NAT.
 
     Un valor PrefixLength común es 24, es decir, una máscara de subred 255.255.255.0
 
@@ -97,47 +97,47 @@ Let's walk through setting up a new NAT network.
   New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex 24
   ```
 
-5. Configure the NAT network using [New-NetNat](https://technet.microsoft.com/en-us/library/dn283361(v=wps.630).aspx).  
+5. Configure la red NAT con [New-NetNat](https://technet.microsoft.com/en-us/library/dn283361(v=wps.630).aspx).  
 
-  Here is the generic command:
+  Este es el comando genérico:
 
   ``` PowerShell
   New-NetNat -Name <NATOutsideName> -InternalIPInterfaceAddressPrefix <NAT subnet prefix>
   ```
 
-  In order to configure the gateway, you'll need to provide information about the network and NAT Gateway:  
-  * **Name** -- NATOutsideName describes the name of the NAT network.  You'll use this to remove the NAT network.
+  Para configurar la puerta de enlace, debe proporcionar información sobre la red y la puerta de enlace NAT:  
+  * **Name**: NATOutsideName describe el nombre de la red NAT.  Se usará para quitar la red NAT.
 
-  * **InternalIPInterfaceAddressPrefix** -- NAT subnet prefix describes both the NAT Gateway IP prefix from above as well as the NAT Subnet Prefix Length from above.
+  * **InternalIPInterfaceAddressPrefix**: el prefijo de subred NAT describe el prefijo IP de puerta de enlace NAT anterior, así como la longitud del prefijo de subred NAT de arriba.
 
-    The generic form will be a.b.c.0/NAT Subnet Prefix Length
+    El formato genérico será a.b.c.0/longitud de prefijo de subred NAT
 
-    From the above, for this example, we'll use 192.168.0.0/24
+    De los anteriores, vamos a usar 192.168.0.0/24 para este ejemplo
 
-  For our example, run the following to setup the NAT network:
+  En nuestro ejemplo, ejecute lo siguiente para configurar la red NAT:
 
   ``` PowerShell
   New-NetNat -Name MyNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24
   ```
 
-Congratulations!  You now have a virtual NAT network!  To add a virtual machine, to the NAT network follow [these instructions](#connect-a-virtual-machine).
+Enhorabuena.  Ahora tiene una red virtual NAT.  Para agregar una máquina virtual a la red NAT, siga [estas instrucciones](#connect-a-virtual-machine).
 
-## Connect a virtual machine
+## <a name="connect-a-virtual-machine"></a>Conectar una máquina virtual
 
-To connect a virtual machine to your new NAT network, connect the internal switch you created in the first step of the [NAT Network Setup](#create-a-nat-virtual-network) section to your virtual machine using the VM Settings menu.
+Para conectar una máquina virtual a la nueva red NAT, conecte el conmutador interno que creó en el primer paso de la sección [Configuración de red NAT](#create-a-nat-virtual-network) a la máquina virtual mediante el menú de configuración de máquina virtual.
 
-Since WinNAT by itself does not allocate and assign IP addresses to an endpoint (e.g. VM), you will need to do this manually from within the VM itself - i.e. set IP address within range of NAT internal prefix, set default gateway IP address, set DNS server information. The only caveat to this is when the endpoint is attached to a container. In this case, the Host Network Service (HNS) allocates and uses the Host Compute Service (HCS) to assign the IP address, gateway IP, and DNS info to the container directly.
+Como WinNAT por sí mismo no asigna direcciones IP a un punto de conexión (por ejemplo, una máquina virtual), debe hacerlo manualmente desde la propia máquina virtual; es decir, establecer la dirección de IP dentro del intervalo del prefijo interno de NAT, establecer la dirección IP de puerta de enlace predeterminada y establecer la información del servidor DNS. El único inconveniente es cuando el punto de conexión está asociado a un contenedor. En este caso, el servicio de red de host (HNP) asigna y utiliza el servicio de proceso de host (HCS) para asignar la dirección IP, la IP de puerta de enlace y la información de DNS directamente en el contenedor.
 
 
-## Configuration Example: Attaching VMs and Containers to a NAT network
+## <a name="configuration-example-attaching-vms-and-containers-to-a-nat-network"></a>Ejemplo de configuración: conexión de máquinas virtuales y contenedores a una red NAT
 
-_If you need to attach multiple VMs and containers to a single NAT, you will need to ensure that the NAT internal subnet prefix is large enough to encompass the IP ranges being assigned by different applications or services (e.g. Docker for Windows and Windows Container – HNS). This will require either application-level assignment of IPs and network configuration or manual configuration which must be done by an admin and guaranteed not to re-use existing IP assignments on the same host._
+_Si necesita conectar varias máquinas virtuales y contenedores a una única red NAT, debe asegurarse de que el prefijo de subred interna NAT es lo suficientemente grande como para abarcar los intervalos IP que se asignan mediante distintas aplicaciones o servicios (por ejemplo, Docker para Windows y Windows Container - SNP). Esto requiere una asignación de nivel de aplicación de direcciones IP y de configuración de red o una configuración manual que debe realizarla un administrador y no se garantiza que se vuelvan a usar las asignaciones de IP existentes en el mismo host._
 
-### Docker for Windows (Linux VM) and Windows Containers
-The solution below will allow both Docker for Windows (Linux VM running Linux containers) and Windows Containers to share the same WinNAT instance using separate internal vSwitches. Connectivity between both Linux and Windows containers will work.
+### <a name="docker-for-windows-linux-vm-and-windows-containers"></a>Docker para Windows (máquina virtual Linux) y contenedores de Windows
+La siguiente solución permitirá tanto a Docker para Windows (máquina virtual Linux que ejecuta contenedores Linux) como a los contenedores Windows compartir la misma instancia de WinNAT con conmutadores virtuales internos independientes. La conectividad entre contenedores Linux y Windows funcionará.
 
-User has connected VMs to a NAT network through an internal vSwitch named “VMNAT” and now wants to install Windows Container feature with docker engine
-```none
+El usuario ha conectado máquinas virtuales a una red NAT a través de un conmutador virtual interno denominado "VMNAT" y ahora quiere instalar la característica de contenedor de Windows con el motor de Docker.
+```
 PS C:\> Get-NetNat “VMNAT”| Remove-NetNat (this will remove the NAT but keep the internal vSwitch).
 Install Windows Container Feature
 DO NOT START Docker Service (daemon)
@@ -147,10 +147,10 @@ PS C:\> Get-NetNat | Remove-NetNAT (again, this will remove the NAT but keep the
 PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
 PS C:\> Start-Service docker
 ```
-Docker/HNS will assign IPs to Windows containers from the <container prefix> Admin will assign IPs to VMs from the difference set of the <shared prefix> and <container prefix>
+Docker/HNS asignará direcciones IP a los contenedores de Windows desde el <container prefix> El administrador asignará direcciones IP a las máquinas virtuales desde el conjunto de diferencias del <shared prefix> y <container prefix>
 
-User has installed Windows Container feature with docker engine running and now wants to connect VMs to the NAT network
-```none
+El usuario ha instalado la característica de contenedor de Windows con el motor de Docker en ejecución y ahora quiere conectar máquinas virtuales a la red NAT.
+```
 PS C:\> Stop-Service docker
 PS C:\> Get-ContainerNetwork | Remove-ContainerNetwork -force
 PS C:\> Get-NetNat | Remove-NetNat (this will remove the NAT but keep the internal vSwitch)
@@ -161,74 +161,74 @@ PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared pre
 PS C:\> New-VirtualSwitch -Type internal (attach VMs to this new vSwitch)
 PS C:\> Start-Service docker
 ```
-Docker/HNS will assign IPs to Windows containers from the <container prefix> Admin will assign IPs to VMs from the difference set of the <shared prefix> and <container prefix>
+Docker/HNS asignará direcciones IP a los contenedores de Windows desde el <container prefix> El administrador asignará direcciones IP a las máquinas virtuales desde el conjunto de diferencias del <shared prefix> y <container prefix>
 
-In the end, you should have two internal VM switches and one NetNat shared between them.
+Al final, debe tener dos conmutadores internos de máquina virtual y una red NAT compartida entre ellos.
 
-## Multiple Applications using the same NAT
+## <a name="multiple-applications-using-the-same-nat"></a>Varias aplicaciones que usan la misma NAT
 
-Some scenarios require multiple applications or services to use the same NAT. In this case, the following workflow must be followed so that multiple applications / services can use a larger NAT internal subnet prefix
+Algunos escenarios exigen que varias aplicaciones o servicios usen la misma NAT. En este caso, debe seguir el siguiente flujo de trabajo para que varias aplicaciones o servicios puedan usar un prefijo de subred interna NAT mayor
 
-**_We will detail the Docker 4 Windows - Docker Beta - Linux VM co-existing with the Windows Container feature on the same host as an example. This workflow is subject to change_**
+**_Detallaremos la coexistencia de Docker 4 Windows - Docker Beta - Linux VM con la característica de contenedor de Windows en el mismo host como ejemplo. Este flujo de trabajo está sujeto a cambios_**
 
 1. C:\> net stop docker
 2. Stop Docker4Windows MobyLinux VM
 3. PS C:\> Get-ContainerNetwork | Remove-ContainerNetwork -force
 4. PS C:\> Get-NetNat | Remove-NetNat  
-   *Removes any previously existing container networks (i.e. deletes vSwitch, deletes NetNat, cleans up)*  
+   *Quita las redes de contenedor existentes (es decir, elimina vSwitch, elimina NetNat y limpia)*  
 
-5. New-ContainerNetwork -Name nat -Mode NAT –subnetprefix 10.0.76.0/24 (this subnet will be used for Windows containers feature) *Creates internal vSwitch named nat*  
-   *Creates NAT network named “nat” with IP prefix 10.0.76.0/24*  
+5. New-ContainerNetwork -Name nat -Mode NAT –subnetprefix 10.0.76.0/24 (esta subred se usará para la característica de contenedores de Windows) *Crea un vSwitch interno denominado nat*  
+   *Crea una red NAT denominada "nat" con un prefijo IP 10.0.76.0/24*  
 
 6. Remove-NetNAT  
-   *Removes both DockerNAT and nat NAT networks (keeps internal vSwitches)*  
+   *Quita DockerNAT y las redes NAT nat (mantiene los vSwitches internos)*  
 
-7. New-NetNat -Name DockerNAT -InternalIPInterfaceAddressPrefix 10.0.0.0/17 (this will create a larger NAT network for both D4W and containers to share)  
-   *Creates NAT network named DockerNAT with larger prefix 10.0.0.0/17*  
+7. New-NetNat -Name DockerNAT -InternalIPInterfaceAddressPrefix 10.0.0.0/17 (esto creará una red NAT más grande para que la compartan D4W y los contenedores)  
+   *Crea una red NAT denominada DockerNAT con un prefijo mayor 10.0.0.0/17*  
 
-8. Run Docker4Windows (MobyLinux.ps1)  
-   *Creates internal vSwitch DockerNAT*  
-   *Creates NAT network named “DockerNAT” with IP prefix 10.0.75.0/24*  
+8. Ejecute Docker4Windows (MobyLinux.ps1)  
+   *Crea el vSwitch interno DockerNAT*  
+   *Crea una red NAT denominada "DockerNAT" con un prefijo IP 10.0.75.0/24*  
 
 9. Net start docker  
-   *Docker will use the user-defined NAT network as the default to connect Windows containers*  
+   *Docker usará la red NAT definida por el usuario como valor predeterminado para conectar contenedores de Windows*  
 
-In the end, you should have two internal vSwitches – one named DockerNAT and the other named nat. You will only have one NAT network (10.0.0.0/17) confirmed by running Get-NetNat. IP addresses for Windows containers will be assigned by the Windows Host Network Service (HNS) from the 10.0.76.0/24 subnet. Based on the existing MobyLinux.ps1 script, IP addresses for Docker 4 Windows will be assigned from the 10.0.75.0/24 subnet.
+Al final, debería tener dos vSwitches internos: uno denominado DockerNAT y el otro nat. Si ejecuta Get-NetNat, solo tendrá una red NAT (10.0.0.0/17) confirmada. Las direcciones IP de los contenedores de Windows serán asignadas por el servicio de red de host (HNS) de Windows desde la subred 10.0.76.0/24. Según el script MobyLinux.ps1 existente, las direcciones IP de Docker 4 Windows se asignarán desde la subred 10.0.75.0/24.
 
 
-## Troubleshooting
+## <a name="troubleshooting"></a>Solucionar problemas
 
-### Multiple NAT networks are not supported  
-This guide assumes that there are no other NATs on the host. However, applications or services will require the use of a NAT and may create one as part of setup. Since Windows (WinNAT) only supports one internal NAT subnet prefix, trying to create multiple NATs will place the system into an unknown state.
+### <a name="multiple-nat-networks-are-not-supported"></a>No se admiten varias redes NAT  
+En esta guía se da por supuesto que no hay otras redes NAT en el host. Sin embargo, las aplicaciones o los servicios requerirán el uso de una NAT y podrían crear una como parte de la instalación. Puesto que Windows (WinNAT) solo admite un prefijo de subred interno NAT, si intenta crear varias NAT, dejará al sistema en un estado desconocido.
 
-To see if this may be the problem, make sure you only have one NAT:
+Para comprobar si es este el problema, asegúrese de que solo tiene una NAT:
 ``` PowerShell
 Get-NetNat
 ```
 
-If a NAT already exists, delete it
+Si ya existe una NAT, elimínela.
 ``` PowerShell
 Get-NetNat | Remove-NetNat
 ```
-Make sure you only have one “internal” vmSwitch for the application or feature (e.g. Windows containers). Record the name of the vSwitch
+Asegúrese de que solo tiene un conmutador de máquina virtual "interno" para la aplicación o característica (por ejemplo, contenedores Windows). Registro del nombre del conmutador virtual
 ``` PowerShell
 Get-VMSwitch
 ```
 
-Check to see if there are private IP addresses (e.g. NAT default Gateway IP Address – usually *.1) from the old NAT still assigned to an adapter
+Compruebe si hay direcciones IP privadas (por ejemplo, dirección IP de puerta de enlace predeterminada NAT, normalmente *.1) de la antigua NAT todavía asignadas a un adaptador.
 ``` PowerShell
 Get-NetIPAddress -InterfaceAlias "vEthernet (<name of vSwitch>)"
 ```
 
-If an old private IP address is in use, please delete it
+Si alguna dirección IP privada antigua está en uso, elimínela
 ``` PowerShell
 Remove-NetIPAddress -InterfaceAlias "vEthernet (<name of vSwitch>)" -IPAddress <IPAddress>
 ```
 
-**Removing Multiple NATs**  
-We have seen reports of multiple NAT networks created inadvertently. This is due to a bug in recent builds (including Windows Server 2016 Technical Preview 5 and Windows 10 Insider Preview builds). If you see multiple NAT networks, after running docker network ls or Get-ContainerNetwork, please perform the following from an elevated PowerShell:
+**Eliminar varias redes NAT**  
+Hemos visto informes de varias redes NAT creadas inadvertidamente. Esto es debido a un error en las compilaciones recientes (incluidas las compilaciones de Windows Server 2016 Technical Preview 5 y Windows 10 Insider Preview). Si ve varias redes NAT, después de la ejecución de docker network ls o de Get-ContainerNetwork, lleve a cabo lo siguiente desde un PowerShell con privilegios elevados:
 
-```none
+```
 PS> $KeyPath = "HKLM:\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\SwitchList"
 PS> $keys = get-childitem $KeyPath
 PS> foreach($key in $keys)
@@ -250,7 +250,7 @@ PS> Set-Service docker -StartupType automaticac
 PS> Start-Service docker 
 ```
 
-See this [setup guide for multiple applications using the same NAT](#multiple-applications-using-the-same-nat) to rebuild your NAT environment, if necessary. 
+Consulte esta [guía de configuración para varias aplicaciones que usan la misma NAT](#multiple-applications-using-the-same-nat) para volver a generar el entorno de NAT, si es necesario. 
 
-## References
-Read more about [NAT networks](https://en.wikipedia.org/wiki/Network_address_translation)
+## <a name="references"></a>Referencias
+Obtenga más información sobre [redes NAT](https://en.wikipedia.org/wiki/Network_address_translation)

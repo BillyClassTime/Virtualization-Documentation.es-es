@@ -8,13 +8,13 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: 8c5e89cd3afcb109fd3eda2da7bcd1b2c7f48b88
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.openlocfilehash: 206be6db413dd4fccef891b57ad4fcf73dd21d00
+ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 11/08/2017
 ---
-# Dockerfile en Windows
+# <a name="dockerfile-on-windows"></a>Dockerfile en Windows
 
 El motor de Docker incluye herramientas para automatizar la creación de imágenes del contenedor. Aunque se pueden crear imágenes del contenedor manualmente mediante el comando `docker commit`, la adopción de un proceso automatizado de creación de imágenes ofrece numerosas ventajas, entre otras las siguientes:
 
@@ -33,15 +33,15 @@ A lo largo del documento se describirán los conceptos de imágenes del contened
 
 Para obtener información detallada sobre los archivos Dockerfile, consulta la [referencia sobre Dockerfile en docker.com]( https://docs.docker.com/engine/reference/builder/).
 
-## Introducción a Dockerfile
+## <a name="dockerfile-introduction"></a>Introducción a Dockerfile
 
-### Sintaxis básica
+### <a name="basic-syntax"></a>Sintaxis básica
 
 En su forma más básica, un archivo Dockerfile puede ser muy simple. En el ejemplo siguiente se crea una imagen, que incluye IIS, y un sitio de "hello world". Este ejemplo incluye comentarios (indicados con el símbolo `#`) que explican cada paso. En las secciones posteriores del artículo se ofrecerá más información sobre las reglas de sintaxis de Dockerfile y las instrucciones Dockerfile.
 
 > Ten en cuenta que el Dockerfile debe crearse sin extensión. Para hacer eso en Windows, tan solo tienes que crear el archivo con el editor que desees y, a continuación, guárdalo usando el nombre "Dockerfile", incluyendo las comillas.
 
-```none
+```
 # Sample Dockerfile
 
 # Indicates that the windowsservercore image will be used as the base image.
@@ -62,11 +62,11 @@ CMD [ "cmd" ]
 
 Para obtener más ejemplos de archivos Dockerfile para Windows, consulta el [Repositorio de Dockerfile para Windows] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples).
 
-## Instrucciones
+## <a name="instructions"></a>Instrucciones
 
 Las instrucciones Dockerfile proporcionan al motor de Docker los pasos necesarios para crear una imagen del contenedor. Estas instrucciones se ejecutan en orden y una a una. A continuación se detallan algunas instrucciones Dockerfile básicas. Para obtener una lista completa de instrucciones Dockerfile, consulte la [referencia sobre Dockerfile en Docker.com] (https://docs.docker.com/engine/reference/builder/).
 
-### FROM
+### <a name="from"></a>FROM
 
 La instrucción `FROM` establece la imagen del contenedor que se usará durante el proceso de creación de la imagen. Por ejemplo, cuando se usa la instrucción `FROM microsoft/windowsservercore`, la imagen resultante deriva de la imagen base del sistema operativo de Windows Server Core y tiene una dependencia en esta. Si la imagen especificada no está presente en el sistema donde se ejecuta el proceso de compilación de Docker, el motor de Docker intentará descargar la imagen de un Registro de imágenes público o privado.
 
@@ -86,7 +86,7 @@ FROM microsoft/windowsservercore
 
 Para obtener información detallada sobre la instrucción FROM, consulte la [referencia sobre FROM en Docker.com]( https://docs.docker.com/engine/reference/builder/#from).
 
-### RUN
+### <a name="run"></a>RUN
 
 La instrucción `RUN` especifica los comandos que se ejecutarán y se capturarán en la nueva imagen del contenedor. Estos comandos pueden incluir elementos como la instalación de software, la creación de archivos y directorios y la creación de la configuración del entorno.
 
@@ -94,7 +94,7 @@ La instrucción `RUN` especifica los comandos que se ejecutarán y se capturará
 
 La instrucción RUN tiene el formato siguiente:
 
-```none
+```
 # exec form
 
 RUN ["<executable", "<param 1>", "<param 2>"]
@@ -108,7 +108,7 @@ La diferencia entre exec form y shell form es la manera en que se ejecuta la ins
 
 En el ejemplo siguiente se usa el método exec form.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN ["powershell", "New-Item", "c:/test"]
@@ -116,7 +116,7 @@ RUN ["powershell", "New-Item", "c:/test"]
 
 Si se examina la imagen resultante, se observa que el comando que se ejecutó es `powershell New-Item c:/test`.
 
-```none
+```
 docker history doc-exe-method
 
 IMAGE               CREATED             CREATED BY                    SIZE                COMMENT
@@ -125,7 +125,7 @@ b3452b13e472        2 minutes ago       powershell New-Item c:/test   30.76 MB
 
 Por otro lado, en el ejemplo siguiente se ejecuta la misma operación, pero se usa shell form.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell New-Item c:\test
@@ -133,7 +133,7 @@ RUN powershell New-Item c:\test
 
 Esto tiene como resultado una instrucción RUN de `cmd /S /C powershell New-Item c:\test`.
 
-```none
+```
 docker history doc-shell-method
 
 IMAGE               CREATED             CREATED BY                              SIZE                COMMENT
@@ -144,7 +144,7 @@ IMAGE               CREATED             CREATED BY                              
 
 En Windows, cuando se usa la instrucción `RUN` con el formato exec, las barras diagonales inversas deben llevar un símbolo de escape.
 
-```none
+```
 RUN ["powershell", "New-Item", "c:\\test"]
 ```
 
@@ -153,19 +153,19 @@ Si el programa de destino es Windows Installer, se necesita un paso más para po
 **Ejemplos**
 
 En este ejemplo se usa DISM para instalar IIS en la imagen del contenedor.
-```none
+```
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 ```
 
 En este ejemplo se instala el paquete redistribuible de Visual Studio. Tenga en cuenta aquí que `Start-Process` y el parámetro `-Wait` se utilizan para ejecutar el programa de instalación. Esto garantizará que la instalación se completará antes de pasar al siguiente paso en el Dockerfile.
 
-```none
+```
 RUN powershell.exe -Command Start-Process c:\vcredist_x86.exe -ArgumentList '/quiet' -Wait
 ```
 
 Para obtener información detallada sobre la instrucción RUN, consulte la [referencia sobre RUN en Docker.com]( https://docs.docker.com/engine/reference/builder/#run).
 
-### COPIAR
+### <a name="copy"></a>COPIAR
 
 La instrucción `COPY` copia archivos y directorios en el sistema de archivos del contenedor. Los archivos y los directorios deben encontrarse en una ruta de acceso relacionada con el archivo Dockerfile.
 
@@ -173,13 +173,13 @@ La instrucción `COPY` copia archivos y directorios en el sistema de archivos de
 
 La instrucción `COPY` tiene el formato siguiente:
 
-```none
+```
 COPY <source> <destination>
 ```
 
 Si el origen o el destino incluyen espacios en blanco, escriba la ruta de acceso entre corchetes y comillas dobles.
 
-```none
+```
 COPY ["<source>", "<destination>"]
 ```
 
@@ -187,32 +187,32 @@ COPY ["<source>", "<destination>"]
 
 En Windows, el formato de destino debe usar barras diagonales. Por ejemplo, las siguientes son instrucciones `COPY` válidas.
 
-```none
+```
 COPY test1.txt /temp/
 COPY test1.txt c:/temp/
 ```
 
 Pero la siguiente no funcionará.
 
-```none
+```
 COPY test1.txt c:\temp\
 ```
 
 **Ejemplos**
 
 En este ejemplo se agrega el contenido del directorio de origen a un directorio denominado `sqllite` en la imagen del contenedor.
-```none
+```
 COPY source /sqlite/
 ```
 
 En este ejemplo se agregan todos los archivos que comienzan por "config" al directorio `c:\temp` de la imagen del contenedor.
-```none
+```
 COPY config* c:/temp/
 ```
 
 Para obtener información detallada sobre la instrucción `COPY`, consulte la [referencia sobre COPY en Docker.com]( https://docs.docker.com/engine/reference/builder/#copy).
 
-### AGREGAR
+### <a name="add"></a>AGREGAR
 
 La instrucción ADD es muy parecida a la instrucción COPY, pero incluye funcionalidades adicionales. Además de copiar archivos del host en la imagen del contenedor, la instrucción `ADD` también puede copiar archivos de una ubicación remota con una especificación de dirección URL.
 
@@ -220,13 +220,13 @@ La instrucción ADD es muy parecida a la instrucción COPY, pero incluye funcion
 
 La instrucción `ADD` tiene el formato siguiente:
 
-```none
+```
 ADD <source> <destination>
 ```
 
 Si el origen o el destino incluyen espacios en blanco, escriba la ruta de acceso entre corchetes y comillas dobles.
 
-```none
+```
 ADD ["<source>", "<destination>"]
 ```
 
@@ -234,14 +234,14 @@ ADD ["<source>", "<destination>"]
 
 En Windows, el formato de destino debe usar barras diagonales. Por ejemplo, las siguientes son instrucciones `ADD` válidas.
 
-```none
+```
 ADD test1.txt /temp/
 ADD test1.txt c:/temp/
 ```
 
 Pero la siguiente no funcionará.
 
-```none
+```
 ADD test1.txt c:\temp\
 ```
 
@@ -250,23 +250,23 @@ Además, en Linux, la instrucción `ADD` expandirá los paquetes comprimidos al 
 **Ejemplos**
 
 En este ejemplo se agrega el contenido del directorio de origen a un directorio denominado `sqllite` en la imagen del contenedor.
-```none
+```
 ADD source /sqlite/
 ```
 
 En este ejemplo se agregan todos los archivos que comienzan por "config" al directorio `c:\temp` de la imagen del contenedor.
-```none
+```
 ADD config* c:/temp/
 ```
 
 En este ejemplo se descargará Python para Windows en el directorio `c:\temp` de la imagen del contenedor.
-```none
+```
 ADD https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe /temp/python-3.5.1.exe
 ```
 
 Para obtener información detallada sobre la instrucción `ADD`, consulte la [referencia sobre ADD en Docker.com]( https://docs.docker.com/engine/reference/builder/#add).
 
-### WORKDIR
+### <a name="workdir"></a>WORKDIR
 
 La instrucción `WORKDIR` establece un directorio de trabajo para otras instrucciones de Dockerfile, como `RUN` y `CMD`, y también el directorio de trabajo para ejecutar instancias de la imagen del contenedor.
 
@@ -274,7 +274,7 @@ La instrucción `WORKDIR` establece un directorio de trabajo para otras instrucc
 
 La instrucción `WORKDIR` tiene el formato siguiente:
 
-```none
+```
 WORKDIR <path to working directory>
 ```
 
@@ -282,19 +282,19 @@ WORKDIR <path to working directory>
 
 En Windows, si el directorio de trabajo incluye una barra diagonal inversa, debe llevar un símbolo de escape.
 
-```none
+```
 WORKDIR c:\\windows
 ```
 
 **Ejemplos**
 
-```none
+```
 WORKDIR c:\\Apache24\\bin
 ```
 
 Para obtener información detallada sobre la instrucción `WORKDIR`, consulte la [referencia sobre WORKDIR en Docker.com]( https://docs.docker.com/engine/reference/builder/#workdir).
 
-### CMD
+### <a name="cmd"></a>CMD
 
 La instrucción `CMD` establece que el comando predeterminado se ejecutará al implementar una instancia de la imagen del contenedor. Por ejemplo, si el contenedor va a hospedar un servidor web NGINX, `CMD` puede incluir instrucciones para iniciar el servidor web, como `nginx.exe`. Si se especifican varias instrucciones `CMD` en un archivo Dockerfile, solo se evalúa la última.
 
@@ -302,7 +302,7 @@ La instrucción `CMD` establece que el comando predeterminado se ejecutará al i
 
 La instrucción `CMD` tiene el formato siguiente:
 
-```none
+```
 # exec form
 
 CMD ["<executable", "<param>"]
@@ -316,7 +316,7 @@ CMD <command>
 
 En Windows, las rutas de acceso de archivo que se especifican en la instrucción `CMD` deben usar barras diagonales o incluir barras diagonales inversas de escape `\\`. Por ejemplo, las siguientes son instrucciones `CMD` válidas.
 
-```none
+```
 # exec form
 
 CMD ["c:\\Apache24\\bin\\httpd.exe", "-w"]
@@ -327,19 +327,19 @@ CMD c:\\Apache24\\bin\\httpd.exe -w
 ```
 Pero la siguiente no funcionará.
 
-```none
+```
 CMD c:\Apache24\bin\httpd.exe -w
 ```
 
 Para obtener información detallada sobre la instrucción `CMD`, consulta la [referencia sobre CMD en Docker.com](https://docs.docker.com/engine/reference/builder/#cmd).
 
-## Carácter de escape
+## <a name="escape-character"></a>Carácter de escape
 
 En muchos casos, las instrucciones Dockerfile tendrán que abarcar varias líneas, para lo que se usa un carácter de escape. El carácter de escape predeterminado para Dockerfile es una barra diagonal inversa `\`. Dado que la barra diagonal inversa es un separador en las rutas de acceso de archivo en Windows, pueden surgir problemas. Para cambiar el carácter de escape predeterminado, se puede utilizar una directiva de analizador. Para más información al respecto, consulte el apartado sobre [directivas de analizador en Docker.com](https://docs.docker.com/engine/reference/builder/#parser-directives).
 
 En el ejemplo siguiente se muestra una instrucción RUN individual que abarca varias líneas en la que se usa el carácter de escape predeterminado.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -353,7 +353,7 @@ Para modificar el carácter de escape, coloque una directiva del analizador de e
 
 > Tenga en cuenta que solo hay dos valores que puedan utilizarse como caracteres de escape, `\` y `` ` ``.
 
-```none
+```
 # escape=`
 
 FROM microsoft/windowsservercore
@@ -367,23 +367,23 @@ RUN powershell.exe -Command `
 
 Para más información sobre la directiva del analizador de escape, consulte el apartado sobre la [directiva del analizador de escape en Docker.com](https://docs.docker.com/engine/reference/builder/#escape).
 
-## PowerShell en Dockerfile
+## <a name="powershell-in-dockerfile"></a>PowerShell en Dockerfile
 
-### Comandos de PowerShell
+### <a name="powershell-commands"></a>Comandos de PowerShell
 
 Pueden ejecutarse comandos de PowerShell en un archivo Dockerfile mediante la operación `RUN`.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell -command Expand-Archive -Path c:\apache.zip -DestinationPath c:\
 ```
 
-### Llamadas de REST
+### <a name="rest-calls"></a>Llamadas de REST
 
 PowerShell y el comando `Invoke-WebRequest` pueden resultar útiles al recopilar información o archivos de un servicio web. Por ejemplo, si estás creando una imagen que incluye Python, podrías usar el ejemplo siguiente. Considera configurar `$ProgressPreference` como `SilentlyContinue` para conseguir descargar más rápido.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -398,7 +398,7 @@ RUN powershell.exe -Command \
 
 Otra opción para usar PowerShell para descargar archivos durante el proceso de creación de la imagen es usar la biblioteca .NET WebClient. Esto puede aumentar el rendimiento de descarga. En el ejemplo siguiente se descarga el software de Python mediante la biblioteca WebClient.
 
-```none
+```
 FROM microsoft/windowsservercore
 
 RUN powershell.exe -Command \
@@ -410,7 +410,7 @@ RUN powershell.exe -Command \
 
 > WebClient no se admite actualmente en Nano Server.
 
-### Secuencias de comandos de PowerShell
+### <a name="powershell-scripts"></a>Secuencias de comandos de PowerShell
 
 En algunos casos, puede ser útil copiar un script en los contenedores que se usan durante el proceso de creación de la imagen y después ejecutarlo desde dentro del contenedor. Nota: Esto limitará el almacenamiento en caché de las capas de la imagen y reducirá la legibilidad del archivo Dockerfile.
 
@@ -422,22 +422,22 @@ ADD script.ps1 /windows/temp/script.ps1
 RUN powershell.exe -executionpolicy bypass c:\windows\temp\script.ps1
 ```
 
-## Compilación de Docker
+## <a name="docker-build"></a>Compilación de Docker
 
 Una vez que se ha creado un archivo Dockerfile y se ha guardado en el disco, se puede ejecutar `docker build` para crear la imagen. El comando `docker build` toma varios parámetros opcionales y una ruta de acceso al archivo Dockerfile. Para obtener documentación completa sobre la compilación de Docker, incluida una lista de todas las opciones de compilación, consulte la [referencia de compilación en Docker.com](https://docs.docker.com/engine/reference/commandline/build/#build).
 
-```none
+```
 Docker build [OPTIONS] PATH
 ```
 Por ejemplo, el comando siguiente creará una imagen denominada "iis".
 
-```none
+```
 docker build -t iis .
 ```
 
 Cuando se inicie el proceso de compilación, la salida indicará el estado y devolverá los errores que se produzcan.
 
-```none
+```
 C:\> docker build -t iis .
 
 Sending build context to Docker daemon 2.048 kB
@@ -468,7 +468,7 @@ Successfully built e2aafdfbe392
 
 El resultado es una nueva imagen del contenedor, en este ejemplo denominada "iis".
 
-```none
+```
 docker images
 
 REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
@@ -476,7 +476,7 @@ iis                 latest              e2aafdfbe392        About a minute ago  
 windowsservercore   latest              6801d964fda5        4 months ago         0 B
 ```
 
-## Lecturas y referencias adicionales
+## <a name="further-reading--references"></a>Lecturas y referencias adicionales
 
 [Optimización de los archivos Dockerfile y la compilación de Docker para Windows] (optimize-windows-dockerfile.md)
 
