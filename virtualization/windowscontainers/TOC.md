@@ -30,6 +30,7 @@
 ## [Introducción al modo enjambre](manage-containers/swarm-mode.md)
 ## [Administrar Docker con PowerShell](https://github.com/Microsoft/Docker-PowerShell)
 ## [Administración remota de un host de Windows Docker](management/manage_remotehost.md)
+## [Controles de recursos](manage-containers/resource-controls.md)
 
 # Ejemplos de contenedor
 ## [Marcos de aplicaciones](samples.md#Application-Frameworks)
