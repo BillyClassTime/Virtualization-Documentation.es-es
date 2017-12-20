@@ -6,14 +6,14 @@
 ## File List
  Source File | Status | Details 
  ----------- | ------ | ------- 
- [virtualization\windowscontainers\manage-docker\configure-docker-daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a3479a4d8372a637fb641cd7d5003f1d8a37b741/virtualization/windowscontainers/manage-docker/configure-docker-daemon.md) | HandedOffSuccess | [Details](#5b187853be0ebb28bcede43bfca7e4042a23dfce374)
+ [virtualization\windowscontainers\deploy-containers\system-requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/51bd1d09d0304e7d13e9650db43cf67764c02fc4/virtualization/windowscontainers/deploy-containers/system-requirements.md) | HandedOffSuccess | [Details](#4c352672db32a37fb1dbc25818817f38b2d284c9331)
 
 ## Item Details
-##### <a name='5b187853be0ebb28bcede43bfca7e4042a23dfce374'></a> Source: [virtualization\windowscontainers\manage-docker\configure-docker-daemon.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/a3479a4d8372a637fb641cd7d5003f1d8a37b741/virtualization/windowscontainers/manage-docker/configure-docker-daemon.md)
+##### <a name='4c352672db32a37fb1dbc25818817f38b2d284c9331'></a> Source: [virtualization\windowscontainers\deploy-containers\system-requirements.md](https://github.com/Microsoft/Virtualization-Documentation-Private/blob/51bd1d09d0304e7d13e9650db43cf67764c02fc4/virtualization/windowscontainers/deploy-containers/system-requirements.md)
 * Status: HandedOffSuccess
 * Target File: 
-* Handoff File: [configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/c45650f6ceb0baf29b4cff772d480402f262145e/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf)
-* Handoff Datetime: 2017-12-19 20:28:08
+* Handoff File: [system-requirements.7dbcfcd7846f5274542c2b3889e0b8cfd203b0b7.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handoff/blob/987f1eba5bb15c9e2330c25ea00f29918a9e32f5/ol-handoff/MicrosoftDocs/Virtualization-Documentation-Private.es-es/live/system-requirements.7dbcfcd7846f5274542c2b3889e0b8cfd203b0b7.es-es.xlf)
+* Handoff Datetime: 2017-12-20 18:28:41
 * Handoff Reason: Include
 * Handoff Name: 
 * Archive File: 
@@ -21,11 +21,11 @@
 * Handback File: 
 * Handback Datetime: 0001-01-01 00:00:00
 * Handback Name: 
-* Current Target File: [virtualization\windowscontainers\manage-docker\configure-docker-daemon.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/f2a4e20986a5d63d60d66622c5c1711e3727c682/virtualization/windowscontainers/manage-docker/configure-docker-daemon.md)
-* Current Handback File: [configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf)
-* Current Handback Datetime: 2017-01-24 13:20:14
-* Bilingual File: [configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/1ee88256307e4c38bdf3fbf87839432770c5bf77/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/configure-docker-daemon.55065b4526dd1a03f5fa5c56a6fd8c7868f6dbaa.es-es.xlf)
-* Bilingual Datetime: 2017-01-24 13:22:10
+* Current Target File: [virtualization\windowscontainers\deployment\system_requirements.md](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.es-es/blob/0c8dd09e0b31fcce1f45d10a2070a4c8298e1884/virtualization/windowscontainers/deployment/system_requirements.md)
+* Current Handback File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/fc3bd3839320df82cda5cbaed6c9c91dd65a3b80/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.es-es.xlf)
+* Current Handback Datetime: 2016-11-03 03:45:10
+* Bilingual File: [system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.es-es.xlf](https://github.com/MicrosoftDocs/Virtualization-Documentation-Private.handback/blob/fc3bd3839320df82cda5cbaed6c9c91dd65a3b80/ol-handback/Microsoft/Virtualization-Documentation-Private.es-es/live/system_requirements.579a5475e3bd1d3d3fd9d5b53488ab4ae55a4423.es-es.xlf)
+* Bilingual Datetime: 2016-11-03 03:47:00
 * [Back to Top](#report-top)
 
 
