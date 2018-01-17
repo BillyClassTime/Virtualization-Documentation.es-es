@@ -3,11 +3,11 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: "Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows"
 keywords: "metadatos, contenedores, versión"
 author: patricklang
-ms.openlocfilehash: ed9d88e1e861651426e560a4531fd4added2134a
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: e3e9d0ba52f7dddfa2f40a9d243467ab474b459e
+ms.sourcegitcommit: 7b58ed1779d8475abe5b9e8e69f764972882063d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedores de Windows
 
@@ -19,23 +19,29 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 
 <table>
     <tr>
-    <th>Versión del SO de contenedor</th>
-    <th span='2'>Versión del SO de host</th>
+    <th style="background-color:#BBDEFB">Versión del SO de contenedor</th>
+    <th span='4' style="background-color:#DCEDC8">Versión del SO de host</th>
     </tr>
     <tr>
         <td/>
-        <td><b>Windows Server 2016 / Windows 10, versiones 1609 y 1703</b><br/>Compilaciones: 14393.*</td>
-        <td><b>Windows Server versión 1709 / Windows 10 Fall Creators Update</b><br/>Compilaciones: 16299.*</td>
+        <td style="background-color:#F1F8E9"><b>WindowsServer2016</b><br/>Compilaciones: 14393.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows10 1609, 1703</b><br/>Compilaciones: 14393.*, 15063.*</td>
+        <td style="background-color:#F1F8E9"><b>WindowsServer, versión1709</b><br/>Compilaciones: 16299.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows10FallCreatorsUpdate</b><br/>Compilaciones: 16299.*</td>
     </tr>
     <tr>
-        <td><b>Windows Server 2016 / Windows 10, versiones 1609 y 1703</b><br/>Compilaciones: 14393.*</td>
-        <td>Compatible. `process` o aislamiento de `hyperv`</td>
-        <td>Compatible. `hyperv` aislamiento de</td>
+        <td style="background-color:#E3F2FD"><b>WindowsServer2016</b><br/>Compilaciones: 14393.*</td>
+        <td>Admite<br/> `process` o aislamiento de `hyperv`</td>
+        <td>Admite<br/> Solo aislamiento de `hyperv`</td>
+        <td>Admite<br/> Solo aislamiento de `hyperv`</td>
+        <td>Admite<br/> Solo aislamiento de `hyperv`</td>
     </tr>
     <tr>
-        <td><b>Windows Server versión 1709 / Windows 10 Fall Creators Update</b><br/>Compilaciones: 16299.*</td>
-        <td>No compatible</td>
-        <td>Compatible. `process` o aislamiento de `hyperv`</td>
+        <td style="background-color:#E3F2FD"><b>WindowsServer, versión1709</b><br/>Compilaciones: 16299.*</td>
+        <td>No se admite</td>
+        <td>No se admite</td>
+        <td>Admite<br/> `process` o aislamiento de `hyperv`</td>
+        <td>Admite<br/> Solo aislamiento de `hyperv`</td>
     </tr>
 </table>               
 
@@ -89,7 +95,7 @@ FROM microsoft/nanoserver:10.0.14393.1770
 
 En la actualidad, Docker Swarm no tiene un modo integrado para hacer coincidir la versión de Windows que usa un contenedor con un host que tenga la misma versión. Si el servicio se actualiza para usar un contenedor más reciente, se ejecutará correctamente.
 
-Si quieres ejecutar varias versiones de Windows durante algún tiempo, hay dos enfoques que se pueden usar.  Configurar los hosts de Windows para usen siempre el aislamiento de Hyper-V o usar restricciones de etiqueta.
+Si necesitas ejecutar varias versiones de Windows durante algún tiempo, hay dos enfoques que se pueden usar.  Configurar los hosts de Windows para usen siempre el aislamiento de Hyper-V o usar restricciones de etiqueta.
 
 ### <a name="finding-a-service-that-wont-start"></a>Encontrar un servicio que no se inicia
 
