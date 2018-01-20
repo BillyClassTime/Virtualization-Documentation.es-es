@@ -14,18 +14,6 @@ El siguiente diagrama ofrece una descripción general de alto nivel de la arquit
 
 ![](./media/hv_architecture.png)
 
-## <a name="support-for-third-party-virtualization-stacks"></a>Compatibilidad con las pilas de virtualización de terceros
-
-Además, Hyper-V tiene una API de modo de usuario extendida de aplicaciones y pilas de virtualización de terceros para crear y administrar las particiones en el nivel del hipervisor, configurar las asignaciones de memoria para la partición y crear y controlar la ejecución de procesadores virtuales.
-
-> Ejemplo: Un cliente como QEMU puede ejecutarse en el hipervisor mientras se mantiene su administración, configuración, protocolos de hosts e invitados y controladores compatibles con invitados. Todo ello mientras se ejecuta junto a una partición administrada por Hyper-V sin superposición.
-
-El siguiente diagrama ofrece una descripción general de alto nivel de la arquitectura de terceros.
-
-![](./media/hv_platform_architecture_simplified.png)
-> Para obtener más información, consulta: [API de plataforma de hipervisor de Windows](./hypervisor-platform.md)
-**Nota: Estas API aún no están disponibles públicamente y se incluirán en una futura versión de Windows.**
-
 ## <a name="glossary"></a>Glosario
 * **APIC**: Controladora programable avanzada de interrupciones. Un dispositivo que permite asignar niveles de prioridad a sus salidas de interrupción.
 * **Partición secundaria** : Una partición que hospeda un sistema operativo invitado. Todos los accesos a la memoria física y a los dispositivos realizados por una partición secundaria se proporcionan mediante el bus de máquina virtual (VMBus) o el hipervisor.

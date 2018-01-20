@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: d5b8e888b62495c98c0691dc0d62deecf7c1eb6e
-ms.sourcegitcommit: 6eefb890f090a6464119630bfbdc2794e6c3a3df
+ms.openlocfilehash: 82c8ba6b09b6d1bfde7217eeaf16cfb7967d4f62
+ms.sourcegitcommit: 59541f11d481d8df341597bd73ce7fac14f442ee
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>Ejecución de Hyper-V en una máquina virtual con la virtualización anidada
 
@@ -98,6 +98,8 @@ En el diagrama siguiente se muestra Hyper-V sin anidamiento.  El hipervisor de H
 ![](./media/HVNoNesting.png)
 
 En cambio, en el diagrama siguiente se muestra Hyper-V con la virtualización anidada habilitada. En este caso, Hyper-V expone las extensiones de virtualización de hardware a sus máquinas virtuales. Con el anidamiento habilitado, una máquina virtual invitada puede instalar su propio hipervisor y ejecutar su propia máquina virtual invitada.
+
+![](./media/HVNesting.png)
 
 ## <a name="3rd-party-virtualization-apps"></a>Aplicaciones de virtualización de terceros
 

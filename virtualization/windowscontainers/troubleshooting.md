@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 44693b413dd8043fbec68835eafe6754615fa449
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 4d4b8a533aa5517c5850967f0b92c97da5190296
+ms.sourcegitcommit: 4042339cfd8a4440a5aba2b6f28968a52ab066fa
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="troubleshooting"></a>Solución de problemas
 
@@ -29,7 +29,7 @@ Si eso no ayuda encontrar el origen del problema, publique la salida del script 
 ## <a name="finding-logs"></a>Buscar registros
 Hay varios servicios que se usan para administrar contenedores de Windows. En las secciones siguientes se muestra dónde obtener los registros de cada servicio.
 
-### <a name="docker-engine"></a>Motor de Docker
+# <a name="docker-engine"></a>Motor de Docker
 El motor de Docker registra en el registro de eventos "Application" de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
 
 Por ejemplo, esto mostrará los registros del motor de Docker de los últimos 5 minutos, empezando por los más antiguos.
@@ -44,7 +44,7 @@ Esto también se podría canalizar fácilmente en un archivo CSV para que otra h
 Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-30)  | Sort-Object Time | Export-CSV ~/last30minutes.CSV
 ```
 
-#### <a name="enabling-debug-logging"></a>Habilitar el registro de depuración
+## <a name="enabling-debug-logging"></a>Habilitar el registro de depuración
 También puede habilitar el registro de depuración en el motor de Docker. Esto puede resultar útil para solucionar problemas si los registros normales no tienen información suficiente.
 
 En primer lugar, abra un símbolo del sistema con privilegios elevados, ejecute `sc.exe qc docker` para obtener la línea de comandos para el servicio Docker.
@@ -90,7 +90,7 @@ sc.exe stop docker
 <path\to\>dockerd.exe -D > daemon.log 2>&1
 ```
 
-#### <a name="obtaining-stack-dump-and-daemon-data"></a>Obtener los datos de volcado de pila y de daemon.
+## <a name="obtaining-stack-dump-and-daemon-data"></a>Obtener los datos de volcado de pila y de daemon.
 
 Por lo general, estos solamente son útiles si los solicitan explícitamente el soporte técnico de Microsoft o los desarrolladores de Docker. Pueden usarse para ayudar a diagnosticar una situación donde parezca que Docker está bloqueado. 
 
@@ -110,7 +110,7 @@ Los archivos serán `goroutine-stacks-<timestamp>.log` y `daemon-data-<timestamp
 Ten en cuenta que `daemon-data*.log` puede contener información personal y por lo general solo debe compartirse con personal de soporte técnico de confianza. `goroutine-stacks*.log` no contiene información personal.
 
 
-### <a name="host-compute-service"></a>Servicio de proceso de host
+# <a name="host-compute-service"></a>Servicio de proceso de host
 El motor de Docker depende de un servicio de contenedor de host específico de Windows. Tiene registros independientes: 
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
@@ -123,7 +123,7 @@ Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 
 ```
 
-#### <a name="capturing-hcs-analyticdebug-logs"></a>Capturar registros de análisis y depuración de HCS
+## <a name="capturing-hcs-analyticdebug-logs"></a>Capturar registros de análisis y depuración de HCS
 
 Habilitar los registros de análisis y depuración para proceso de Hyper-V y guardarlos en `hcslog.evtx`.
 
@@ -140,7 +140,7 @@ wevtutil.exe epl Microsoft-Windows-Hyper-V-Compute-Analytic <hcslog.evtx>
 wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 ```
 
-#### <a name="capturing-hcs-verbose-tracing"></a>Capturar el rastreo detallado de HCS.
+## <a name="capturing-hcs-verbose-tracing"></a>Capturar el rastreo detallado de HCS.
 
 Por lo general, estos solamente son útiles si lo solicita el soporte técnico de Microsoft. 
 

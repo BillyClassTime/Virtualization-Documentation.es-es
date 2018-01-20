@@ -7,11 +7,11 @@ ms.topic: get-started-article
 ms.prod: containers
 description: "Crear un maestro de clúster de Kubernetes desde cero."
 keywords: kubernetes, 1.9, maestro, linux
-ms.openlocfilehash: 8fa8b0a6b97d9909d0b1e670b37a0a541901a08d
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
+ms.openlocfilehash: d5251b1a2dc06bef396820e324fb240eed04acc8
+ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="kubernetes-master--from-scratch"></a>Maestro de Kubernetes desde cero #
 Esta página te guiará a través de una implementación manual de un maestro de Kubernetes de principio a fin.
@@ -49,10 +49,10 @@ mv * ~/kube/
 > [!Note]  
 > Para incluir las revisiones o usar el código de Kubernetes de vanguardia en lugar de descargar archivos binarios integrados previamente, consulta [esta página](./compiling-kubernetes-binaries.md).
 
-Descarga e instala los archivos binarios oficiales de Linux en la [línea principal de Kubernetes](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.0-beta.1) e instálalos de la siguiente manera:
+Descarga e instala los archivos binarios oficiales de Linux en la [línea principal de Kubernetes](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1) e instálalos de la siguiente manera:
 
 ```bash
-wget -O kubernetes.tar.gz https://github.com/kubernetes/kubernetes/releases/download/v1.9.0-beta.1/kubernetes.tar.gz
+wget -O kubernetes.tar.gz https://github.com/kubernetes/kubernetes/releases/download/v1.9.1/kubernetes.tar.gz
 tar -vxzf kubernetes.tar.gz 
 cd kubernetes/cluster 
 # follow the prompts from this command, the defaults are generally fine:
