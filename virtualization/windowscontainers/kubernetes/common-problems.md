@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1.9, linux, compilar
-ms.openlocfilehash: 73b44ffd12fba58ac4ef38352c012061a6817945
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
+ms.openlocfilehash: 4fb7ac312b08c63564beb0f40889ff6a050c7166
+ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -38,7 +38,7 @@ Asegúrate de que los scripts tienen permisos ejecutables:
 chmod +x [script name]
 ```
 
-Además, algunos scripts deben ejecutarse con privilegios de administrador (como `kubelet`) y deben llevar el prefijo `sudo`.
+Además, algunos scripts deben ejecutarse con privilegios de superusuario (como `kubelet`) y deben llevar el prefijo `sudo`.
 
 
 ### <a name="cannot-connect-to-the-api-server-at-httpsaddressport"></a>No se puede conectar con el servidor de API en `https://[address]:[port]`. ###
@@ -59,10 +59,33 @@ Pueden existir restricciones adicionales en la red o hosts que evitan determinad
 
 ## <a name="common-windows-errors"></a>Errores comunes de Windows ##
 
+### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>Los pods dejan de resolver correctamente consultas DNS después de un tiempo en vivo ###
+Este es un problema conocido de la pila de redes que afecta a algunas configuraciones; se está realizando un seguimiento rápido de este problema a través del servicio de mantenimiento de Windows.
 
-### <a name="my-windows-pods-cannot-access-the-linux-master-or-vice-versa"></a>Mis pods de Windows no tienen acceso al maestro de Linux o viceversa. ###
+
+### <a name="my-kubernetes-pods-are-stuck-at-containercreating"></a>Mis pods de Kubernetes están bloqueados en "ContainerCreating" ###
+Este problema puede tener varias causas, pero una de las más comunes es que la imagen de pausa se ha configurado de forma incorrecta. Se trata de un síntoma de alto nivel del siguiente problema.
+
+
+### <a name="when-deploying-docker-containers-keep-restarting"></a>Al realizar la implementación, los contenedores de Docker siguen reiniciándose ###
+Comprueba que la imagen de pausa sea compatible con la versión del sistema operativo. Las [instrucciones](./getting-started-kubernetes-windows.md) dan por hecho que la versión tanto del sistema operativo como de los contenedores es la versión 1709. Si tienes una versión posterior de Windows, como por ejemplo, una compilación de Insider, tendrás que ajustar las imágenes según corresponda. Consulta el [Repositorio de Docker](https://hub.docker.com/u/microsoft/) de Microsoft para obtener información sobre las imágenes. De todos modos, el Dockerfile de imagen de pausa y el servicio de muestra esperarán que la imagen se etiquete como `microsoft/windowsservercore:latest`.
+
+
+### <a name="my-windows-pods-cannot-access-the-linux-master-or-vice-versa"></a>Mis pods de Windows no tienen acceso al maestro de Linux o viceversa ###
 Si estás usando una máquina virtual de Hyper-V, asegúrate de que la suplantación de identidad de MAC está habilitada en los adaptadores de red.
 
 
-### <a name="my-windows-node-cannot-access-my-services-using-the-service-ip"></a>El nodo de Windows no puede acceder a mis servicios mediante la dirección IP de servicio. ###
-Se trata de una limitación conocida de la actual pila de redes de Windows.
+### <a name="my-windows-node-cannot-access-my-services-using-the-service-ip"></a>El nodo de Windows no puede acceder a mis servicios mediante la dirección IP de servicio ###
+Se trata de una limitación conocida de la actual pila de redes de Windows. Solo los pods pueden hacer referencia a la dirección IP de servicio.
+
+
+### <a name="no-network-adapter-is-found-when-starting-kubelet"></a>No se encuentra ningún adaptador de red al iniciar Kubelet ###
+La pila de redes de Windows necesita un adaptador virtual para que funcionen las redes de Kubernetes. Si los siguientes comandos no devuelven ningún resultado (en un shell de administrador), se ha producido un error en la creación de la red virtual, un requisito previo necesario para que funcione Kubelet:
+
+```powershell
+Get-HnsNetwork | ? Name -Like "l2bridge"
+Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
+```
+
+Consulta el resultado del script `start-kubelet.ps1` para comprobar si hay errores durante la creación de la red virtual.
+

@@ -8,11 +8,11 @@ ms.prod: containers
 description: "Unir un nodo de Windows a un clúster de Kubernetes con v1.9 beta."
 keywords: "kubernetes, 1.9, windows, introducción"
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: d88ab46dc0046256ebed9c6696a99104a7197fad
-ms.sourcegitcommit: ad5f6344230c7c4977adf3769fb7b01a5eca7bb9
+ms.openlocfilehash: f1b832f8a21c034582e157342acf7826fb7b6ea3
+ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="kubernetes-on-windows"></a>Kubernetes en Windows #
 Con la versión más reciente de Kubernetes 1.9 y WindowsServer [versión 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709#networking), los usuarios pueden sacar partido de las características más recientes de las redes de Windows:
@@ -57,7 +57,7 @@ Independientemente de si has seguido [nuestras instrucciones](./creating-a-linux
 
 ## <a name="preparing-a-windows-node"></a>Preparar un nodo de Windows ##
 > [!Note]  
-> Todos los fragmentos de código en las secciones de Windows son para ejecutarse en PowerShell con privilegios elevados.
+> Todos los fragmentos de código en las secciones de Windows son para ejecutarse en PowerShell _con privilegios elevados_.
 
 Kubernetes usa [Docker](https://www.docker.com/) como su orquestador de contenedores, por lo que necesitamos para instalarlo. Puedes seguir las [instrucciones oficiales de MSDN](virtualization/windowscontainers/manage-docker/configure-docker-daemon.md#install-docker), las [instrucciones de Docker](https://store.docker.com/editions/enterprise/docker-ee-server-windows), o probar estos pasos:
 
@@ -85,13 +85,13 @@ Ahora que `docker` está instalado, debemos preparar una imagen de "pausa" que K
 
 ```powershell
 docker pull microsoft/windowsservercore:1709
-docker tag $(docker images -q) microsoft/windowsservercore:latest
+docker tag microsoft/windowsservercore:1709 microsoft/windowsservercore:latest
 cd C:/k/
 docker build -t kubeletwin/pause .
 ```
 
 > [!Note]  
-> La etiquetamos como `:latest` porque eso es lo que espera el servicio de muestra que implementaremos más adelante.
+> Se etiqueta como `:latest` porque el servicio de muestra que se implementará más adelante depende de ella, aunque podría no _ser_ la última imagen de WindowsServerCore disponible. Es importante tener cuidado y no usar imágenes de contenedor en conflicto; no contar con la etiqueta esperada puede provocar un `docker pull` de una imagen de contenedor incompatible, lo que puede provocar [problemas de implementación](./common-problems.md#when-deploying-docker-containers-keep-restarting). 
 
 
 ### <a name="downloading-binaries"></a>Descargar archivos binarios ###
@@ -101,10 +101,7 @@ Entretanto mientras se produce `pull`, descarga los siguientes archivos binarios
   - `kubelet.exe`
   - `kube-proxy.exe`
 
-Puedes descargarlos en los vínculos del archivo `CHANGELOG.md` de la última versión 1.9. En el momento de la redacción de este documento, la versión es [1.9.0-beta.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.0-beta.1), y los archivos binarios de Windows están [aquí](https://dl.k8s.io/v1.9.0-beta.1/kubernetes-node-windows-amd64.tar.gz). Usa una herramienta como [7-Zip](http://www.7-zip.org/) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
-
-> [!Warning]  
-> En el momento de la redacción de este documento, `kube-proxy.exe` requiere un Kubernetes pendiente [solicitud de incorporación de cambios](https://github.com/kubernetes/kubernetes/pull/56529) para funcionar correctamente. Es posible que tengas que [crear los archivos binarios manualmente](./compiling-kubernetes-binaries.md) para que esto funcione.
+Puedes descargarlos en los vínculos del archivo `CHANGELOG.md` de la última versión 1.9. En el momento de la redacción de este documento, la versión es [1.9.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1), y los archivos binarios de Windows están [aquí](https://storage.googleapis.com/kubernetes-release/release/v1.9.1/kubernetes-node-windows-amd64.tar.gz). Usa una herramienta como [7-Zip](http://www.7-zip.org/) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
 
 
 ### <a name="joining-the-cluster"></a>Unir el clúster ###
@@ -153,4 +150,4 @@ Si todo ha funcionado correctamente, podrás validar que es posible para:
   - `curl` el *nombre de servicio* con el [sufijo DNS predeterminado](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services) de Kubernetes, lo que demuestra la funcionalidad DNS.
 
 > [!Warning]  
-> Los nodos de Windows no podrán obtener acceso a la dirección IP de servicio. Se trata de una [limitación conocida](./common-problems.md#common-windows-errors).
+> Los nodos de Windows no podrán obtener acceso a la dirección IP de servicio. Se trata de una [limitación conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip).

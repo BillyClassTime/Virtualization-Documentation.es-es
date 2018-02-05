@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 86d0b2f3ae86f99680e03e2bb8ad2712c6c70c16
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: df9ca8a4bcd6bf959e221593ea69d5ed624cdae1
+ms.sourcegitcommit: 6beac5753c9f65bb6352df8c829c2e62e24bd2e2
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="active-directory-service-accounts-for-windows-containers"></a>Cuentas de servicio de Active Directory para contenedores de Windows
 
@@ -46,6 +46,9 @@ Los contenedores de Windows siguen un proceso similar:
 3. Permitir el acceso a gMSA en el otro servicio, como recursos compartidos de un archivo o base de datos
 4. Usar el módulo de PowerShell CredentialSpec desde [windows-server-container-tools](https://github.com/Microsoft/Virtualization-Documentation/tree/live/windows-server-container-tools) para almacenar la configuración necesaria para utilizar la gMSA
 5. Iniciar el contenedor con una opción adicional `--security-opt "credentialspec=..."`
+
+[!NOTE]
+Es posible que tengas que permitir la traducción SID/nombre anónima en el host del contenedor tal y como se describe [aquí](https://docs.microsoft.com/en-us/windows/device-security/security-policy-settings/network-access-allow-anonymous-sidname-translation) ya que, de lo contrario, se podría producir un error en las cuentas que no pueden traducirse a SID.
 
 Cuando se inicia el contenedor, aparecerán los servicios instalados que se ejecutan como sistema local o servicio de red ejecutándose como la gMSA. Esto es similar a cómo funcionan esas cuentas en hosts unidos a dominios, excepto que se utiliza una gMSA en lugar de una cuenta de equipo. 
 

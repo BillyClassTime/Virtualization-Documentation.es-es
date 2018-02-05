@@ -7,11 +7,11 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: ecc11468bbd5aad2638da3c4f733e4d5068f0056
-ms.sourcegitcommit: 77a6195318732fa16e7d5be727bdb88f52f6db46
+ms.openlocfilehash: 88d094202c49cf725e9d608a0810e7d9f8a1e271
+ms.sourcegitcommit: 7fc79235cbee052e07366b8a6aa7e035a5e3434f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -51,7 +51,7 @@ Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Win
 <td><center>Server Core/Nano Server</center></td>
 </tr>
 <tr valign="top">
-<td><center>NanoServer*</center></td>
+<td><center>Nano Server<a href="#warn-1">*</a></center></td>
 <td><center> Nano Server</center></td>
 <td><center>Server Core / Nano Server</center></td>
 </tr>
@@ -62,10 +62,13 @@ Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Win
 </tr>
 </tbody>
 </table>
-* A partir de WindowsServer, versión1709, NanoServer ya no está disponible como host de contenedor.
+
+> [!Warning]  
+> <span id="warn-1">A partir de WindowsServer, versión1709, NanoServer ya no está disponible como host de contenedor.</span>
+
 
 ### <a name="memory-requirments"></a>Requisitos de memoria
-Se pueden configurar restricciones en la memoria disponible a través de los contenedores [controles de recursos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls) o mediante la sobrecarga de un host de contenedor.  La cantidad mínima de la memoria necesaria para iniciar un contenedor y ejecutar comandos básicos (ipconfig, dir, etc.) se enumera a continuación.  Ten en cuenta que estos valores no tienen en cuenta el uso compartido de recursos entre los contenedores o los requisitos de la aplicación que se ejecuta en el contenedor.
+Se pueden configurar restricciones en la memoria disponible a través de los contenedores [controles de recursos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls) o mediante la sobrecarga de un host de contenedor.  La cantidad mínima de la memoria necesaria para iniciar un contenedor y ejecutar comandos básicos (ipconfig, dir, etc.) se enumera a continuación.  __Ten en cuenta que estos valores no tienen en cuenta el uso compartido de recursos entre los contenedores o los requisitos de la aplicación que se ejecuta en el contenedor.  Por ejemplo, un host con 512MB de memoria libre puede ejecutar varios contenedores de ServerCore en el aislamiento de Hyper-V porque estos contenedores comparten recursos.__
 
 #### <a name="windows-server-2016"></a>WindowsServer2016
 | Imagen base  | Contenedor de WindowsServer | Aislamiento de Hyper-V    |
@@ -89,51 +92,5 @@ Se pueden configurar restricciones en la memoria disponible a través de los con
 - Se quitó PowerShell
 - Se quitó WMI
 
-Estas son las principales diferencias, es decir, no es una lista exhaustiva. Hay otros componentes que no se han mencionado que tampoco se encuentran. Ten en cuenta que siempre se pueden agregar capas sobre NanoServer según estimes oportuno. Para ver un ejemplo de esto, echa un vistazo al [Dockerfile de .NET Core Nano Server](https://github.com/dotnet/dotnet-docker/blob/master/2.0/sdk/nanoserver/amd64/Dockerfile).
+Estas son las principales diferencias, es decir, no es una lista exhaustiva. Hay otros componentes que no se han mencionado que tampoco se encuentran. Ten en cuenta que siempre se pueden agregar capas sobre NanoServer según estimes oportuno. Para ver un ejemplo de esto, echa un vistazo al [Dockerfile de .NETCoreNanoServer](https://github.com/dotnet/dotnet-docker/blob/master/2.0/sdk/nanoserver/amd64/Dockerfile).
 
-## <a name="matching-container-host-version-with-container-image-versions"></a>Coincidencia de la versión del host de contenedor con las versiones de la imagen de contenedor
-### <a name="windows-server-containers"></a>Contenedores de Windows Server
-Dado que los contenedores de Windows Server y el host subyacente comparten un solo kernel, la imagen base del contenedor debe coincidir con la del host.  Si las versiones son diferentes, el contenedor puede iniciarse, pero no se garantiza una funcionalidad completa. El sistema operativo Windows tiene cuatro niveles de control de versiones: Principal, Secundario, Compilación y Revisión (por ejemplo, 10.0.14393.103). El número de compilación (es decir, 14393) únicamente cambia cuando se publican nuevas versiones del sistema operativo, como por ejemplo, versión 1709, 1803, fall creators update, etc. El número de revisión (es decir, 103) se actualiza a medida que se aplican las actualizaciones de Windows.
-#### <a name="build-number-new-release-of-windows"></a>Número de compilación (nueva versión de Windows)
-Si el número de compilación entre el host del contenedor y la imagen del contenedor es diferente, se bloquea el inicio de los contenedores de WindowsServer, por ejemplo 10.0.14393.* (Windows Server 2016) y 10.0.16299.* (Windows Server versión 1709).  
-#### <a name="revision-number-patching"></a>Número de revisión (aplicación de revisiones)
-Si el número de revisión entre el host del contenedor y la imagen del contenedor es diferente, _no_ se bloquea el inicio de los contenedores de WindowsServer, por ejemplo, 10.0.14393.1914 (WindowsServer2016 con KB4051033) y 10.0.14393.1944 (WindowsServer2016 con KB4053579).  
-En el caso de hosts/imágenes basadas en WindowsServer2016: la revisión de la imagen del contenedor debe coincidir con el host para estar en una configuración compatible.  A partir de WindowsServer versión 1709, esto ya no se aplica, y la imagen del contenedor y del host no necesita tener revisiones que coincidan.  Como siempre, se recomienda mantener los sistemas actualizados con las últimas revisiones y actualizaciones.
-#### <a name="practical-application"></a>Aplicación práctica
-Ejemplo 1: El host del contenedor ejecuta WindowsServer2016 con KB4041691.  Cualquier contenedor de WindowsServer implementado a este host debe basarse en las imágenes base del contenedor 10.0.14393.1770.  Si se aplica KB4053579 al host, las imágenes del contenedor deben actualizarse al mismo tiempo para seguir recibiendo soporte técnico.
-Ejemplo 2: El host del contenedor ejecuta WindowsServer, versión 1709 con KB4043961.  Cualquier contenedor de WindowsServer implementado en este host debe basarse en una imagen base de contenedor de WindowsServer versión 1709 (10.0.16299), pero no necesita coincidir con el KB del host.  Si se aplica KB4054517 al host, las imágenes del contenedor no necesitan actualizarse, sin embargo, deben actualizarse para hacer frente a cualquier problema de seguridad.
-#### <a name="querying-version"></a>Consultar versiones
-Método 1: Incluido en la versión 1709, el comando ver y el símbolo del sistema cmd ahora deben devolver los detalles de revisión.
-```
-Microsoft Windows [Version 10.0.16299.125]
-(c) 2017 Microsoft Corporation. All rights reserved.
-
-C:\>ver
-
-Microsoft Windows [Version 10.0.16299.125] 
-```
-Método 2: Consultar la siguiente clave de registro: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion. Por ejemplo:
-```
-C:\>reg query "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion" /v BuildLabEx
-```
-O bien
-```
-Windows PowerShell
-Copyright (C) 2016 Microsoft Corporation. All rights reserved.
-
-PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\').BuildLabEx
-14393.321.amd64fre.rs1_release_inmarket.161004-2338
-```
-
-Para comprobar qué versión usa la imagen base, revise las etiquetas de Docker Hub o la tabla hash de la imagen proporcionada en la descripción de la imagen.  En la página [Historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history) se muestra cuándo se lanzó cada compilación y revisión.
-
-### <a name="hyper-v-isolation-for-containers"></a>Aislamiento de Hyper-V para contenedores
-Los contenedores de Windows pueden ejecutarse con o sin aislamiento de Hyper-V.  El aislamiento de Hyper-V crea un límite seguro alrededor del contenedor con una VM optimizada.  A diferencia de los contenedores estándar de Windows, que comparten el kernel entre los contenedores y el host, cada contenedor de Hyper-V aislado tiene su propia instancia del kernel de Windows.  Por este motivo, puede tener diferentes versiones del sistema operativo en el host y la imagen del contenedor (consulta la matriz de compatibilidad que viene a continuación).  
-
-Para ejecutar un contenedor con aislamiento de Hyper-V, solo tienes que agregar la etiqueta "--isolation=hyper-v" al comando de ejecución de docker.
-
-### <a name="compatibility-matrix"></a>Matriz de compatibilidad
-Las compilaciones de Windows Server posteriores a 2016 GA (10.0.14393.206) pueden ejecutar las imágenes de Windows Server 2016 GA, tanto de Windows Server Core como de Nano Server, en una configuración compatible, independientemente del número de revisión.
-Un host de Windows Server, versión 1709 también puede ejecutar contenedores basados en WindowsServer2016, sin embargo, la inversión no es compatible.
-
-Es importante comprender que, para tener la funcionalidad completa, la confiabilidad y las garantías de seguridad que proporcionan las actualizaciones de Windows, es necesario mantener las versiones más recientes en todos los sistemas.  

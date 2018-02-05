@@ -3,11 +3,11 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: "Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows"
 keywords: "metadatos, contenedores, versión"
 author: patricklang
-ms.openlocfilehash: e3e9d0ba52f7dddfa2f40a9d243467ab474b459e
-ms.sourcegitcommit: 7b58ed1779d8475abe5b9e8e69f764972882063d
+ms.openlocfilehash: 5c82c715bca6260e776946d538b942b74b7f1bc1
+ms.sourcegitcommit: 7fc79235cbee052e07366b8a6aa7e035a5e3434f
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedores de Windows
 
@@ -45,6 +45,46 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
     </tr>
 </table>               
 
+## <a name="matching-container-host-version-with-container-image-versions"></a>Coincidencia de la versión del host de contenedor con las versiones de la imagen de contenedor
+### <a name="windows-server-containers"></a>Contenedores de Windows Server
+Dado que los contenedores de Windows Server y el host subyacente comparten un solo kernel, la imagen base del contenedor debe coincidir con la del host.  Si las versiones son diferentes, el contenedor puede iniciarse, pero no se garantiza una funcionalidad completa. El sistema operativo Windows tiene cuatro niveles de control de versiones: Principal, Secundario, Compilación y Revisión (por ejemplo, 10.0.14393.103). El número de compilación (es decir, 14393) únicamente cambia cuando se publican nuevas versiones del sistema operativo, como por ejemplo, versión 1709, 1803, fall creators update, etc. El número de revisión (es decir, 103) se actualiza a medida que se aplican las actualizaciones de Windows.
+#### <a name="build-number-new-release-of-windows"></a>Número de compilación (nueva versión de Windows)
+Si el número de compilación entre el host del contenedor y la imagen del contenedor es diferente, se bloquea el inicio de los contenedores de WindowsServer, por ejemplo 10.0.14393.* (Windows Server 2016) y 10.0.16299.* (Windows Server versión 1709).  
+#### <a name="revision-number-patching"></a>Número de revisión (aplicación de revisiones)
+Si el número de revisión entre el host del contenedor y la imagen del contenedor es diferente, _no_ se bloquea el inicio de los contenedores de WindowsServer, por ejemplo, 10.0.14393.1914 (WindowsServer2016 con KB4051033) y 10.0.14393.1944 (WindowsServer2016 con KB4053579).  
+En el caso de hosts/imágenes basadas en WindowsServer2016: la revisión de la imagen del contenedor debe coincidir con el host para estar en una configuración compatible.  A partir de WindowsServer versión 1709, esto ya no se aplica, y la imagen del contenedor y del host no necesita tener revisiones que coincidan.  Como siempre, se recomienda mantener los sistemas actualizados con las últimas revisiones y actualizaciones.
+#### <a name="practical-application"></a>Aplicación práctica
+Ejemplo 1: El host del contenedor ejecuta WindowsServer2016 con KB4041691.  Cualquier contenedor de WindowsServer implementado a este host debe basarse en las imágenes base del contenedor 10.0.14393.1770.  Si se aplica KB4053579 al host, las imágenes del contenedor deben actualizarse al mismo tiempo para seguir recibiendo soporte técnico.
+Ejemplo 2: El host del contenedor ejecuta WindowsServer, versión 1709 con KB4043961.  Cualquier contenedor de WindowsServer implementado en este host debe basarse en una imagen base de contenedor de WindowsServer versión 1709 (10.0.16299), pero no necesita coincidir con el KB del host.  Si se aplica KB4054517 al host, las imágenes del contenedor no necesitan actualizarse, sin embargo, deben actualizarse para hacer frente a cualquier problema de seguridad.
+#### <a name="querying-version"></a>Consultar versiones
+Método 1: Incluido en la versión 1709, el comando `ver` y el símbolo del sistema cmd ahora deben devolver los detalles de revisión.
+```
+Microsoft Windows [Version 10.0.16299.125]
+(c) 2017 Microsoft Corporation. All rights reserved.
+
+C:\>ver
+
+Microsoft Windows [Version 10.0.16299.125] 
+```
+Método 2: Consultar la siguiente clave de registro: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion. Por ejemplo:
+```
+C:\>reg query "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion" /v BuildLabEx
+```
+O bien
+```
+Windows PowerShell
+Copyright (C) 2016 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\').BuildLabEx
+14393.321.amd64fre.rs1_release_inmarket.161004-2338
+```
+
+Para comprobar qué versión usa la imagen base, revise las etiquetas de Docker Hub o la tabla hash de la imagen proporcionada en la descripción de la imagen.  En la página [Historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history) se muestra cuándo se lanzó cada compilación y revisión.
+
+### <a name="hyper-v-isolation-for-containers"></a>Aislamiento de Hyper-V para contenedores
+Los contenedores de Windows pueden ejecutarse con o sin aislamiento de Hyper-V.  El aislamiento de Hyper-V crea un límite seguro alrededor del contenedor con una VM optimizada.  A diferencia de los contenedores estándar de Windows, que comparten el kernel entre los contenedores y el host, cada contenedor de Hyper-V aislado tiene su propia instancia del kernel de Windows.  Por este motivo, puede tener diferentes versiones del sistema operativo en el host y la imagen del contenedor (consulta la matriz de compatibilidad que viene a continuación).  
+
+Para ejecutar un contenedor con aislamiento de Hyper-V, solo tienes que agregar la etiqueta `--isolation=hyperv` al comando de ejecución de docker.
 
 ## <a name="errors-from-mismatched-versions"></a>Errores de las versiones que no coinciden
 
