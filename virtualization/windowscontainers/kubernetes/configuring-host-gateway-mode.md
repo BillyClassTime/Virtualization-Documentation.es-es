@@ -6,7 +6,7 @@ Una de las opciones disponibles para redes Kubernetes es el *modo host-gateway*,
 Para ello, usamos `iptables`. Sustituye (o establece) la variable `$CLUSTER_PREFIX` con la subred abreviada que todos los pods usarán:
 
 ```bash
-$CLUSTER_PREFIX="192.168"
+CLUSTER_PREFIX="192.168"
 sudo iptables -t nat -F
 sudo iptables -t nat -A POSTROUTING ! -d $CLUSTER_PREFIX.0.0/16 \
               -m addrtype ! --dst-type LOCAL -j MASQUERADE
@@ -22,7 +22,7 @@ sudo route add -net $CLUSTER_PREFIX.0.0 netmask 255.255.0.0 dev eth0
 Por último, tenemos que agregar la puerta de enlace de salto siguiente **por nodo**. Por ejemplo, si el primer nodo es un nodo de Windows en `192.168.1.0/16`:
 
 ```bash
-sudo route add -net $CLUSTER.1.0 netmask 255.255.255.0 gw $CLUSTER.1.2 dev eth0
+sudo route add -net $CLUSTER_PREFIX.1.0 netmask 255.255.255.0 gw $CLUSTER_PREFIX.1.2 dev eth0
 ```
 
 Se debe agregar una ruta similar *para* cada nodo del clúster, *en* cada nodo del clúster.
@@ -35,7 +35,6 @@ Se debe agregar una ruta similar *para* cada nodo del clúster, *en* cada nodo d
 
 ## <a name="configuring-static-routes--windows"></a>Configurar rutas estáticas | Windows ##
 Para ello, usamos `New-NetRoute`. Hay un script automatizado disponible, `AddRoutes.ps1`, en [este repositorio](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/AddRoutes.ps1). Tendrás que conocer la dirección IP del *maestro de Linux*y la puerta de enlace predeterminada del adoptador *externo* del nodo de Windows (no la puerta de enlace de pod). En ese caso:
-
 
 ```powershell
 $url = "https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/windows/AddRoutes.ps1"
