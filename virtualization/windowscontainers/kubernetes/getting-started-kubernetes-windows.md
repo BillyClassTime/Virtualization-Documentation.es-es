@@ -8,11 +8,11 @@ ms.prod: containers
 description: "Unir un nodo de Windows a un clúster de Kubernetes con v1.9 beta."
 keywords: "kubernetes, 1.9, windows, introducción"
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: f1b832f8a21c034582e157342acf7826fb7b6ea3
-ms.sourcegitcommit: b0e21468f880a902df63ea6bc589dfcff1530d6e
+ms.openlocfilehash: 0ccd7dae8da0841c98bec5cdf7345100d1b51107
+ms.sourcegitcommit: 2e8f1fd06d46562e56c9e6d70e50745b8b234372
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="kubernetes-on-windows"></a>Kubernetes en Windows #
 Con la versión más reciente de Kubernetes 1.9 y WindowsServer [versión 1709](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1709#networking), los usuarios pueden sacar partido de las características más recientes de las redes de Windows:
@@ -36,19 +36,11 @@ Esta página sirve como guía para empezar a unir un nuevo nodo de Windows a un 
 Al final de esta guía, habremos:
 
 > [!div class="checklist"]  
-> * Preparado nuestra [topología de red](#network-topology).  
 > * Configurado un nodo de [maestro de Linux](#preparing-the-linux-master).  
 > * Unido un [nodo de trabajo de Windows](#preparing-a-windows-node) a él.  
+> * Preparado nuestra [topología de red](#network-topology).  
 > * Implementado un [servicio de Windows de ejemplo](#running-a-sample-service).  
 > * Solucionado [errores y problemas comunes](./common-problems.md).  
-
-
-## <a name="network-topology"></a>Topología de red ##
-Hay varias maneras de hacer enrutable la [subred de clúster](#cluster-subnet-def) virtual. Se puede hacer lo siguiente:
-
-  - Configurar el [modo host-gateway](./configuring-host-gateway-mode.md), configurar rutas estáticas de siguiente salto entre nodos para habilitar la comunicación de pod a pod.
-  - Configurar un conmutador Top of Rack (ToR) para enrutar a la subred.
-  - Usar un complemento de superposición de terceros, tales como [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) (el soporte técnico de Windows para Flannel está en la versión beta).
 
 
 ## <a name="preparing-the-linux-master"></a>Preparar el maestro de Linux ##
@@ -59,12 +51,18 @@ Independientemente de si has seguido [nuestras instrucciones](./creating-a-linux
 > [!Note]  
 > Todos los fragmentos de código en las secciones de Windows son para ejecutarse en PowerShell _con privilegios elevados_.
 
-Kubernetes usa [Docker](https://www.docker.com/) como su orquestador de contenedores, por lo que necesitamos para instalarlo. Puedes seguir las [instrucciones oficiales de MSDN](virtualization/windowscontainers/manage-docker/configure-docker-daemon.md#install-docker), las [instrucciones de Docker](https://store.docker.com/editions/enterprise/docker-ee-server-windows), o probar estos pasos:
+Kubernetes usa [Docker](https://www.docker.com/) como su orquestador de contenedores, por lo que necesitamos para instalarlo. Puedes seguir las [instrucciones oficiales de MSDN](../manage-docker/configure-docker-daemon.md#install-docker), las [instrucciones de Docker](https://store.docker.com/editions/enterprise/docker-ee-server-windows), o probar estos pasos:
 
 ```powershell
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
 Install-Package -Name Docker -ProviderName DockerMsftProvider
 Restart-Computer -Force
+```
+
+Si estás conectado a un servidor proxy, deben definirse las siguientes variables de entorno de PowerShell:
+```powershell
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://proxy.example.com:80/", [EnvironmentVariableTarget]::Machine)
+[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://proxy.example.com:443/", [EnvironmentVariableTarget]::Machine)
 ```
 
 Hay una colección de scripts en [este repositorio de Microsoft](https://github.com/Microsoft/SDN) que nos ayudará a unir este nodo al clúster. Puedes descargar el archivo ZIP directamente [aquí](https://github.com/Microsoft/SDN/archive/master.zip). Lo único que necesitamos es la carpeta `Kubernetes/windows`, cuyo contenido debe moverse a `C:\k\`:
@@ -78,6 +76,14 @@ rm -recurse -force master,master.zip
 ```
 
 Copia el archivo de certificado [que se ha identificado anteriormente](#preparing-the-linux-master) a este nuevo directorio `C:\k`.
+
+
+## <a name="network-topology"></a>Topología de red ##
+Hay varias maneras de hacer enrutable la [subred de clúster](#cluster-subnet-def) virtual. Se puede hacer lo siguiente:
+
+  - Configurar el [modo host-gateway](./configuring-host-gateway-mode.md), configurar rutas estáticas de siguiente salto entre nodos para habilitar la comunicación de pod a pod.
+  - Configurar un conmutador Top of Rack (ToR) para enrutar a la subred.
+  - Usar un complemento de superposición de terceros, como por ejemplo, [Flannel](https://coreos.com/flannel/docs/latest/kubernetes.html) (el soporte técnico de Windows para Flannel está en la versión beta).
 
 
 ### <a name="creating-the-pause-image"></a>Crear la imagen de "Pausa" ###
@@ -103,8 +109,49 @@ Entretanto mientras se produce `pull`, descarga los siguientes archivos binarios
 
 Puedes descargarlos en los vínculos del archivo `CHANGELOG.md` de la última versión 1.9. En el momento de la redacción de este documento, la versión es [1.9.1](https://github.com/kubernetes/kubernetes/releases/tag/v1.9.1), y los archivos binarios de Windows están [aquí](https://storage.googleapis.com/kubernetes-release/release/v1.9.1/kubernetes-node-windows-amd64.tar.gz). Usa una herramienta como [7-Zip](http://www.7-zip.org/) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
 
+Para que el comando `kubectl` esté disponible fuera del directorio `C:\k\`, modifica la variable de entorno de `PATH`:
+
+```powershell
+$env:Path += ";C:\k"
+```
+
+Si quieres establecer este cambio de forma permanente, modifica la variable en el destino de la máquina:
+
+```powershell
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";C:\k", [EnvironmentVariableTarget]::Machine)
+```
 
 ### <a name="joining-the-cluster"></a>Unir el clúster ###
+Comprueba que la configuración del clúster es válida mediante:
+
+```powershell
+kubectl version
+```
+
+Si recibes un error de conexión,
+
+```
+Unable to connect to the server: dial tcp [::1]:8080: connectex: No connection could be made because the target machine actively refused it.
+```
+
+comprueba si la configuración se ha detectado correctamente:
+
+```powershell
+kubectl config view
+```
+
+Para cambiar la ubicación donde `kubectl` busca el archivo de configuración, puedes pasar el parámetro `--kubeconfig` o modificar la variable de entorno `KUBECONFIG`. Por ejemplo, si la configuración se encuentra en `C:\k\config`:
+
+```powershell
+$env:KUBECONFIG="C:\k\config"
+```
+
+Para establecer esta configuración de forma permanente para el ámbito del usuario actual:
+
+```powershell
+[Environment]::SetEnvironmentVariable("KUBECONFIG", "C:\k\config", [EnvironmentVariableTarget]::User)
+```
+
 El nodo ya está preparado para unirse al clúster. En dos ventanas diferentes y *con privilegios elevados* de PowerShell, ejecuta estos scripts (en este orden). El parámetro `-ClusterCidr` del primer script es la [subred de clúster](#cluster-subnet-def); configurada aquí, es `192.168.0.0/16`.
 
 ```powershell
@@ -122,7 +169,7 @@ Hay algunas pruebas básicas que validarán una configuración de red correcta:
 
   - **Subred de Pod a conectividad de nodo**: los pings entre la interfaz de pod virtual y los nodos. Busca la dirección de puerta de enlace en `route -n` y `ipconfig` en Windows y Linux, respectivamente, busca la interfaz `cbr0`.
 
-Si alguna de estas pruebas básicas no funcionan, prueba la [página de solución de problemas](./common-problems.md#network-connectivity) para solucionar problemas comunes.
+Si alguna de estas pruebas básicas no funcionan, prueba la [página de solución de problemas](./common-problems.md#common-networking-errors) para solucionar problemas comunes.
 
 
 ## <a name="running-a-sample-service"></a>Ejecutar un servicio de muestra ##
@@ -140,7 +187,7 @@ watch kubectl get pods -o wide
 Esto creará una implementación y un servicio; visualiza los pods indefinidamente para realizar un seguimiento de su estado; tan solo presiona `Ctrl+C` para salir del comando `watch` cuando hayas finalizado.
 
 
-Si todo ha funcionado correctamente, podrás validar que es posible para:
+Si todo ha funcionado correctamente, será posible:
 
   - ver 4 contenedores en un comando `docker ps` en el lado de Windows
   - `curl` en las IP de *pod* del puerto 80 del maestro de Linux que obtiene una respuesta del servidor web; esto demuestra el nodo adecuado a la comunicación de pod de la red.
@@ -150,4 +197,4 @@ Si todo ha funcionado correctamente, podrás validar que es posible para:
   - `curl` el *nombre de servicio* con el [sufijo DNS predeterminado](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services) de Kubernetes, lo que demuestra la funcionalidad DNS.
 
 > [!Warning]  
-> Los nodos de Windows no podrán obtener acceso a la dirección IP de servicio. Se trata de una [limitación conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip).
+> Los nodos de Windows no podrán obtener acceso a la dirección IP de servicio. Se trata de una [limitación de plataforma conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip) que se ofrecerá.

@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: df9ca8a4bcd6bf959e221593ea69d5ed624cdae1
-ms.sourcegitcommit: 6beac5753c9f65bb6352df8c829c2e62e24bd2e2
+ms.openlocfilehash: 1ad04198c74f4566bd37b4ba884034aa5cd7c7ef
+ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="active-directory-service-accounts-for-windows-containers"></a>Cuentas de servicio de Active Directory para contenedores de Windows
 
@@ -49,6 +49,15 @@ Los contenedores de Windows siguen un proceso similar:
 
 [!NOTE]
 Es posible que tengas que permitir la traducción SID/nombre anónima en el host del contenedor tal y como se describe [aquí](https://docs.microsoft.com/en-us/windows/device-security/security-policy-settings/network-access-allow-anonymous-sidname-translation) ya que, de lo contrario, se podría producir un error en las cuentas que no pueden traducirse a SID.
+
+Sin embargo, antes de explorar la necesidad de permitir traducción SID/nombre anónima, asegúrate de que se toman las siguientes acciones:
+
+1. El nombre de la cuenta gMSA debe coincidir con el nombre del servicio (por ejemplo, "myapp").
+2. Incluye el argumento -h para especificar el nombre de host que el contenedor debe usar cuando se inicie. 
+```
+docker run --security-opt "credentialspec=file://myapp.json" -d -p 80:80 -h myapp.mydomain.local <imagename>
+```
+3. El Nombre de entidad de seguridad de servicio (SPN) que se usa al crear la cuenta gMSA debe coincidir con el argumento -h que se usa cuando el contenedor se ejecuta. Si no añadiste SPN a la gMSA durante su creación, pueden añadirse a las propiedades de la cuenta posteriormente.
 
 Cuando se inicia el contenedor, aparecerán los servicios instalados que se ejecutan como sistema local o servicio de red ejecutándose como la gMSA. Esto es similar a cómo funcionan esas cuentas en hosts unidos a dominios, excepto que se utiliza una gMSA en lugar de una cuenta de equipo. 
 

@@ -25,12 +25,12 @@ Se puede hacer el seguimiento del trabajo en curso del proyecto Moby en [GitHub]
 
 Todas las aplicaciones siguientes requieren la asignación de volumen, lo que tiene algunas limitaciones que se describen en la sección [Enlazar montajes](#Bind-mounts). No se iniciarán ni se ejecutarán correctamente.
 
-- Mysql
-- Postgress
-- Wordpress
+- MySQL
+- PostgreSQL
+- WordPress
 - Jenkins
-- Mariadb
-- Rabbitmq
+- MariaDB
+- RabbitMQ
 
 
 ### <a name="bind-mounts"></a>Enlazar montajes
