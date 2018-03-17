@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: 73112b3d1b86b5c72cb6352faaaac3ae95b0957e
-ms.sourcegitcommit: 456485f36ed2d412cd708aed671d5a917b934bbe
+ms.openlocfilehash: 5704f0fc9a70f2995404981f2daf0a8b736da312
+ms.sourcegitcommit: b7f37f3d385042ca8455b3e7d1fa887ac26989de
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="windows-containers-on-windows-server"></a>Contenedores de Windows en Windows Server
 
@@ -28,7 +28,7 @@ Un equipo (físico o virtual) con Windows Server 2016. Si usa Windows Server 201
 
 Si quiere implementar en Azure, esta [plantilla](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template) le facilitará la tarea.<br/>
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2FVirtualization-Documentation%2Flive%2Fwindows-server-container-tools%2Fcontainers-azure-template%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 
