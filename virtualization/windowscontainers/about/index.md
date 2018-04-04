@@ -1,6 +1,6 @@
 ---
 title: Acerca de los contenedores de Windows
-description: "Obtenga información sobre los contenedores de Windows."
+description: Obtenga información sobre los contenedores de Windows.
 keywords: docker, contenedores
 author: taylorb-microsoft
 ms.date: 05/02/2016
@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 37782c4d2491b9b1963a326204e30a6f484b5ec9
-ms.sourcegitcommit: 6eefb890f090a6464119630bfbdc2794e6c3a3df
+ms.openlocfilehash: 6dbc14ae192f40872a2d62253d1a0cf5658f4c04
+ms.sourcegitcommit: 7fdb0c5069605471bee351c4445a82e31c2930bd
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="windows-containers"></a>Contenedores de Windows
 
@@ -90,7 +90,27 @@ Los contenedores ayudan a los desarrolladores a crear y distribuir aplicaciones 
 
 Los profesionales de TI pueden utilizar los contenedores para ofrecer entornos estandarizados para su desarrollo, sus controles de calidad y sus equipos de producción. Ya no tienen que preocuparse de los complicados pasos de instalación y configuración. Mediante el uso de contenedores, los administradores de sistemas abstraen las diferencias de las instalaciones de sistemas operativos y la infraestructura subyacente.
 
-Los contenedores ayudan a los administradores a crear una infraestructura que sea más fácil de actualizar y mantener.
+Los contenedores ayudan a los administradores a crear una infraestructura que es más fácil de actualizar y mantener.
+
+## <a name="container-orchestrators"></a>Orquestadores de contenedor
+Debido a su tamaño pequeño y a la orientación de la aplicación, los contenedores son ideales para entornos de entrega ágiles y arquitecturas basadas en microservicios. Sin embargo, cuando usas contenedores y microservicios, puedes tener fácilmente cientos o miles de componentes en tu entorno.  Es posible que puedas administrar manualmente unas docenas de máquinas virtuales o servidores físicos, pero no existe forma de administrar un entorno de contenedores de escala de producción sin automatización.  La tarea de automatizar y administrar un gran número de contenedores y cómo interactúan se conoce como orquestación. 
+
+La definición estándar de la orquestación incluye las siguientes tareas:
+
+- Programación: dada una imagen de contenedor y una solicitud de recursos, se busca una máquina adecuada en la que ejecutar el contenedor.
+Afinidad/Antiafinidad: se especifica que un conjunto de contenedores debe ejecutarse cerca entre sí (para mejorar el rendimiento) o lo suficientemente alejado (para ofrecer disponibilidad).
+- Supervisión de estado: se buscan errores en el contenedor y se reprograman automáticamente.
+- Conmutación por error: se realiza un seguimiento de lo que se ejecuta en cada máquina y se vuelven a programar contenedores de máquinas con errores a nodos en buen estado.
+- Escalado: se agregan o quitan instancias de contenedor para que coincidan con la demanda, ya sea de forma manual o automática.
+- Redes: se proporciona una red superpuesta para coordinar contenedores para que se comuniquen a través de varios equipos host.
+- Detección de servicios: se habilitan contenedores para que puedan localizarse entre sí automáticamente, incluso cuando se muevan entre equipos host y cambien las direcciones IP.
+- Actualizaciones de aplicación coordinadas: se administran las actualizaciones del contenedor para evitar tiempos de inactividad de la aplicación y permitir la reversión si algo va mal.
+
+Azure ofrece dos orquestadores de contenedor: Azure Container Service (AKS) y Service Fabric.
+
+[Azure Container Service (AKS)](/azure/aks/) hace que sea muy fácil crear, configurar y administrar un clúster de máquinas virtuales preconfiguradas para ejecutarse en aplicaciones en contenedores. Esto te permite aprovechar tus aptitudes o recurrir a la experiencia de la comunidad, un grupo grande y en continuo crecimiento, para implementar y administrar aplicaciones basadas en contenedores en Microsoft Azure. Al usar AKS, puedes sacar provecho de las características de nivel empresarial de Azure, al mismo tiempo que mantienes la portabilidad de la aplicación a través de Kubernetes y el formato de imagen de Docker.
+
+[Azure Service Fabric](/azure/service-fabric/) es una plataforma de sistemas distribuidos que facilita el proceso de empaquetar, implementar y administrar microservicios y contenedores escalables y de confianza. Service Fabric aborda los desafíos importantes del desarrollo y la administración de aplicaciones nativas en la nube. Los desarrolladores y los administradores pueden evitar problemas complejos de infraestructura y centrarse en la implementación de cargas de trabajo críticas y exigentes que son escalables, de confianza y fáciles de administrar. Service Fabric representa la plataforma de última generación para crear y administrar estas aplicaciones de escalado en la nube, de nivel 1 y de clase empresarial que se ejecutan en contenedores.
 
 ## <a name="video-overview"></a>Vídeo de introducción
 
