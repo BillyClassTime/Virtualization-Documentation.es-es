@@ -7,11 +7,11 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: ff9b24ccc802b228b649c2330333cbe008350aec
-ms.sourcegitcommit: ea6edc5bac5705a19d48ffdf1ba676c940c2eb67
+ms.openlocfilehash: e1fe969c70aa61b62eb9212b7faa23d37d17b565
+ms.sourcegitcommit: 8b331cb67dfe609fcbfc3de06edbf51fe8562c6c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/20/2018
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -91,6 +91,7 @@ Se pueden configurar restricciones en la memoria disponible a través de los con
 - No se incluye .NETCore (aunque puedes usar la [imagen de .NETCoreNanoServer](https://hub.docker.com/r/microsoft/dotnet/))
 - Se quitó PowerShell
 - Se quitó WMI
+- A partir de Windows Server versión 1709, las aplicaciones se ejecutan en un contexto de usuario, por lo que se producirán errores en los comandos que requieran privilegios de administrador. Puedes especificar la cuenta de administrador de contenedor de la cuenta mediante la marca --user (es decir, docker run --user ContainerAdministrator). Sin embargo, en el futuro nuestra intención es quitar por completo las cuentas de administrador de NanoServer.
 
 Estas son las principales diferencias, es decir, no es una lista exhaustiva. Hay otros componentes que no se han mencionado que tampoco se encuentran. Ten en cuenta que siempre se pueden agregar capas sobre NanoServer según estimes oportuno. Para ver un ejemplo de esto, echa un vistazo al [Dockerfile de .NETCoreNanoServer](https://github.com/dotnet/dotnet-docker/blob/master/2.0/sdk/nanoserver/amd64/Dockerfile).
 

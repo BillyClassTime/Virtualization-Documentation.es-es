@@ -8,11 +8,11 @@ ms.prod: containers
 description: Unir un nodo de Windows a un clúster de Kubernetes con v1.9 beta.
 keywords: kubernetes, 1.9, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 124895e93cbaee50c66b6b5a7cc2c71c144dad67
-ms.sourcegitcommit: 6e3c3b2ff125f949c03a342c3709a6e57c5f736c
+ms.openlocfilehash: 6309ca8c0fd50e1b8e926776bef6dfe82bb815f0
+ms.sourcegitcommit: ee86ee093b884c79039a8ff417822c6e3517b92d
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="kubernetes-on-windows"></a>Kubernetes en Windows #
 
@@ -24,6 +24,9 @@ Con la versión más reciente de Kubernetes 1.9 y WindowsServer [versión 1709](
 
 
 Esta página sirve como guía para empezar a unir un nuevo nodo de Windows a un clúster existente basado en Linux. Para comenzar completamente desde cero, consulta [esta página](./creating-a-linux-master.md) &mdash; uno de los numerosos recursos disponibles para la implementación de un clúster de Kubernetes &mdash; para configurar un maestro desde cero y de la misma forma que lo hicimos.
+
+> [!TIP] 
+> Si quieres implementar un clúster en Azure, la herramienta ACS-Engine de código abierto facilita esta tarea. Hay un [tutorial](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/windows.md) paso a paso disponible.
 
 <a name="definitions"></a> Estas son definiciones de algunos términos a los que se hacen referencia en esta guía:
 
@@ -189,12 +192,24 @@ Esto creará una implementación y un servicio. A continuación, puedes visualiz
 
 Si todo ha funcionado correctamente, podrás:
 
-  - ver cuatro contenedores en un comando `docker ps` en el lado de Windows.
+  - ver 4 contenedores en un comando `docker ps` en el nodo de Windows.
+  - ver 2 pods en un comando `kubectl get pods` desde el maestro de Linux
   - `curl` en las IP de *pod* del puerto 80 del maestro de Linux que obtiene una respuesta del servidor web; esto demuestra el nodo adecuado a la comunicación de pod de la red.
-  - `curl` en la IP de *nodo* del puerto 4444 que obtiene una respuesta del servidor web; esto demuestra la asignación correcta de puerto de host a contenedor.
-  - ping *entre pods* (incluidos entre hosts, si tienes más de un nodo de Windows) a través de `docker exec`; esto demuestra la comunicación adecuada de pod a pod
+  - hacer ping *entre pods* (incluidos entre hosts, si tienes más de un nodo de Windows) a través de `docker exec`; esto demuestra la comunicación adecuada de pod a pod
   - `curl` la *IP de servicio* virtual (que se muestra en `kubectl get services`) del maestro de Linux y de pods individuales.
   - `curl` el *nombre de servicio* con el [sufijo DNS predeterminado](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services) de Kubernetes, lo que demuestra la funcionalidad DNS.
 
-> [!WARNING]  
-> Los nodos de Windows no pueden acceder a la dirección IP de servicio. Se trata de una [limitación de plataforma conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip) que se ofrecerá.
+> [!Warning]  
+> Los nodos de Windows no podrán obtener acceso a la dirección IP de servicio. Se trata de una [limitación de plataforma conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip) que se mejorará en la próxima actualización a Windows Server.
+
+
+### <a name="port-mapping"></a>Asignación de puertos ### 
+También es posible tener acceso a servicios hospedados en pods a través de sus respectivos nodos mediante la asignación de un puerto en el nodo. Hay [otra muestra YAML disponible](https://github.com/Microsoft/SDN/blob/master/Kubernetes/PortMapping.yaml) con una asignación de puerto 4444 en el nodo para el puerto 80 en el pod para demostrar esta característica. Para implementarlo, sigue los mismos pasos que antes:
+
+```bash
+wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/PortMapping.yaml -O win-webserver-port-mapped.yaml
+kubectl apply -f win-webserver-port-mapped.yaml
+watch kubectl get pods -o wide
+```
+
+Ahora debería ser posible la acción `curl` en el IP del *nodo* del puerto 4444 y recibir una respuesta del servidor web. Ten en cuenta que esto limita el escalado a un solo pod por nodo ya que debe aplicar una asignación uno a uno.

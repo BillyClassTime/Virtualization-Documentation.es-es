@@ -34,10 +34,10 @@ Se debe agregar una ruta similar *para* cada nodo del clúster, *en* cada nodo d
 
 
 ## <a name="configuring-static-routes--windows"></a>Configurar rutas estáticas | Windows ##
-Para ello, usamos `New-NetRoute`. Hay un script automatizado disponible, `AddRoutes.ps1`, en [este repositorio](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/AddRoutes.ps1). Tendrás que conocer la dirección IP del *maestro de Linux*y la puerta de enlace predeterminada del adoptador *externo* del nodo de Windows (no la puerta de enlace de pod). En ese caso:
+Para ello, usamos `New-NetRoute`. Hay un script automatizado disponible, `AddRoutes.ps1`, en [este repositorio](https://github.com/Microsoft/SDN/blob/master/Kubernetes/windows/AddRoutes.ps1). Tendrás que conocer la dirección IP del *maestro de Linux*:
 
 ```powershell
 $url = "https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/windows/AddRoutes.ps1"
-wget $url -o AddRoutes.ps1
-./AddRoutes.ps1 -MasterIp 10.1.2.3 -Gateway 10.1.3.1
+Invoke-WebRequest $url -o AddRoutes.ps1
+./AddRoutes.ps1 -MasterIp 10.1.2.3
 ```
