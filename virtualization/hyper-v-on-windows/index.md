@@ -9,12 +9,12 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
 ms.openlocfilehash: a070164812b7dca39070d5f78411a017457f8573
-ms.sourcegitcommit: 65de5708bec89f01ef7b7d2df2a87656b53c3145
+ms.sourcegitcommit: 94e8ae4be1b0d3d13fca06e0775dd2aab895a12c
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 05/07/2018
 ---
-# Hyper-V en Windows 10 
+# <a name="hyper-v-on-windows-10"></a>Hyper-V en Windows 10 
 
 Muchas versiones de Windows 10 incluyen la tecnología de virtualización Hyper-V. Hyper-V permite ejecutar equipos virtualizados encima de un host físico. Estos sistemas virtualizados se pueden usar y administrar como si fueran equipos físicos; sin embargo, existen en un entorno virtualizado y aislado. Un software especial denominado hipervisor administra el acceso entre los sistemas virtuales y los recursos del hardware físico. La virtualización permite una rápida implementación de equipos, una forma de restaurar rápidamente los sistemas a un estado correcto conocido previamente y la capacidad de migrar sistemas entre hosts físicos.
 
