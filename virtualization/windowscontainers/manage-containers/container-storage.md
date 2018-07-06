@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: ba30c436ddd61ec71b2c98d1a8cb24f97863d872
-ms.sourcegitcommit: 6c8c70c8231943dda3c5af38e5530ea3dd91fc82
+ms.openlocfilehash: 9dde3b2d7be10a8d3d393f8426976dfc5bdacfab
+ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "1934539"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "2082906"
 ---
 # <a name="overview"></a>Introducción
 
@@ -22,7 +22,7 @@ Se trata de todos los archivos que están integrados en el contenedor. Cada vez 
 
 ### <a name="where-layers-are-stored-and-how-to-change-it"></a>Dónde se almacenan las capas y cómo cambiarlo
 
-En una instalación predeterminada, las capas se almacenan en `C:\ProgramData\docker` y se distribuyen en los directorios "image" y "windowsfilter". Puedes cambiar la ubicación donde se almacenan las capas con la configuración `docker-root`, tal y como se indica en la documentación de [Docker Engine en Windows](../manage-docker/configure_docker_daemon.md).
+En una instalación predeterminada, las capas se almacenan en `C:\ProgramData\docker` y se distribuyen en los directorios "image" y "windowsfilter". Puedes cambiar la ubicación donde se almacenan las capas con la configuración `docker-root`, tal y como se indica en la documentación de [Docker Engine en Windows](../manage-docker/configure-docker-daemon.md).
 
 > [!NOTE]
 > NTFS solo es compatible con el almacenamiento en capas. ReFS no es compatible.
