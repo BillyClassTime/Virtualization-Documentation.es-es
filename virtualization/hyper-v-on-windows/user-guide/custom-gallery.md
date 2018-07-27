@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: 3a8af73c1cf7b2eb640be0dcaf77601ed5e96ce5
-ms.sourcegitcommit: 7c3af076eb8bad98e1c3de0af63dacd842efcfa3
+ms.openlocfilehash: 2235201a56a238cbd5a75b0a6cae64cdb26108a2
+ms.sourcegitcommit: edc153ffef01094c2324a0da2f9a301b31015a58
 ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "1844367"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "1928382"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>Crear una galería de máquinas virtuales personalizada
 
@@ -21,9 +21,9 @@ ms.locfileid: "1844367"
 
 En la actualización Fall Creators Update, Creación rápida se ha ampliado para incluir una galería de máquinas virtuales.
 
-![Galería de VM de Creación rápida con imágenes personalizadas](media/vmgallery.png)
+![Creación rápida de galerías de VM con imágenes personalizadas](media/vmgallery.png)
 
-Aunque hay un conjunto de imágenes proporcionadas por Microsoft y los partners de Microsoft, la Galería también puede incluir tus propias imágenes.
+Aunque existe un conjunto de imágenes proporcionadas por Microsoft y los partners de Microsoft, la galería también puede incluir tus propias imágenes.
 
 Este artículo trata sobre:
 
@@ -103,7 +103,7 @@ Imágenes:
 
 Y, por supuesto, la máquina virtual (.iso o .vhdx).
 
-La plantilla JSON siguiente tiene elementos de comienzo y el esquema de la galería.  Si estás editando en VSCode, proporcionará automáticamente IntelliSense.
+La plantilla JSON siguiente tiene elementos de comienzo y el esquema de la galería.  Si la editas en VSCode, proporcionará automáticamente IntelliSense.
 
 [!code-json[main](../../../hyperv-tools/vmgallery/vm-gallery-template.json)]
 
@@ -135,6 +135,6 @@ La galería de máquinas virtuales proporciona informes de errores en el Visor d
 
 ## <a name="resources"></a>Recursos
 
-Hay una serie de scripts y aplicaciones auxiliares en github [vínculo](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery).
+Hay una serie de scripts y aplicaciones auxiliares de galerías en GitHub [vínculo](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/live/hyperv-tools/vmgallery).
 
 Consulta un ejemplo de entrada de galería [aquí](https://go.microsoft.com/fwlink/?linkid=851584).  Este es el archivo JSON que define la galería en el equipo.
