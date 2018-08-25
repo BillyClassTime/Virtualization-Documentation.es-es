@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 0ade6677a8cd07f21cd00d019f167685e0ba5e7e
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: 0d43176a07b0ba23f6a893c1b3dcfa1ffddc423d
+ms.sourcegitcommit: db508decd9bf6c0dce9952e1a86bf80f00d025eb
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1876163"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "2315658"
 ---
 # <a name="windows-container-networking"></a>Redes de contenedores de Windows
 > ***DESCARGO DE RESPONSABILIDAD: Consulta [Redes de contenedores de Docker](https://docs.docker.com/engine/userguide/networking/) para conocer los comandos, las opciones y la sintaxis generales de las redes de Docker.*** Con excepción de los casos descritos en este [a continuación](#unsupported-features-and-network-options), todos los comandos de red de Docker se admiten en Windows con la misma sintaxis que en Linux. De todas formas, ten en cuenta que las pilas de red de Windows y Linux son diferentes y, por tanto, encontrarás que algunos comandos de red de Linux (por ejemplo, ifconfig) no se admiten en Windows.
@@ -68,7 +68,11 @@ El servicio de redes de host (HNS) y el servicio de cálculo de host (HCS) traba
 
 
  ## <a name="unsupported-features-and-network-options"></a>Funciones y opciones de red no compatibles
- Las siguientes opciones de red **NO** con compatibles actualmente en Windows:
+ Las siguientes opciones de redes actualmente están **no** compatible con Windows:
+   * Comunicación de contenedor cifradas a través de IPsec.
+   * Compatibilidad con el proxy HTTP para contenedores.  Puede realizarse el seguimiento de un PR preliminar para esto [aquí](https://github.com/Microsoft/hcsshim/pull/163).
+   * Asociar los extremos a la ejecución de los contenedores de Hyper-V (agregado en caliente).
+   * La red de la infraestructura de Azure virtualizados a través del controlador de red transparente.
 
  | Comando        | Opción no compatible   |
  | ---------------|:--------------------:|
