@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 3fb36008d9304e6fbdd318c55e012ff3f096d58b
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: bb3681a83991b3d4e24348b686146616d4a88c4f
+ms.sourcegitcommit: db508decd9bf6c0dce9952e1a86bf80f00d025eb
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1876164"
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "2315668"
 ---
 # <a name="windows-container-network-drivers"></a>Controladores de red de contenedores Windows  
 
@@ -23,22 +23,23 @@ Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, 
   > Las redes NAT múltiples se admiten si se tiene instalada al actualización Windows 10 Creators Update.
 
 - **transparent**: los contenedores conectados a una red que se haya creado con el controlador 'transparente' se conectarán directamente a la red física, a través de un conmutador Hyper-V *externo*. Las direcciones IP de la red física se pueden asignar de manera estática (requiere la opción ``--subnet`` especificada por el usuario) o dinámica mediante un servidor DHCP externo. 
+  > Nota: debido a la debajo de requisito, conectar los hosts de contenedor a través de una red transparente no es compatible con las máquinas virtuales de Azure.
+  
+  > Requiere: Cuando se usa este modo en un escenario de virtualización (host contenedor es una máquina virtual) _se requiere la suplantación de direcciones MAC_.
 
 - **overlay**: cuando el motor docker se ejecuta en [modo enjambre](../manage-containers/swarm-mode.md), los contenedores conectados a una red de superposición ('overlay') pueden comunicarse con otros contenedores conectados a la misma red en varios hosts de contenedor. Cada red superpuesta que se crea en un clúster de enjambre se crea con su propia subred IP, definida por un prefijo de IP privado. El controlador de red de superposición usa encapsulado VXLAN. **Puede usarse con Kubernetes al usar los planos de control de red apropiados (Flannel o OVN).**
-  > Nota: asegúrate de que el entorno cumpla estos *necesarios* [requisitos previos](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks) para crear redes de superposición.
+  > Requiere: Asegúrese de que su entorno cumple estos [requisitos previos](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks) *necesarios* para la creación de redes de superposición.
 
-  > Nota: requiere Windows Server 2016 con [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217), Windows 10 Creators Update o una versión posterior.
+  > Requiere: Requiere Windows Server 2016 con [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217), los creadores de actualización de Windows 10 o una versión posterior.
 
 - **l2bridge**: los contenedores conectados a una red creada con el controlador 'l2bridge' estarán en la misma subred IP que el host de contenedor y estarán conectados a la red física a través de un conmutador Hyper-V *externo*. Las direcciones IP deben asignarse estáticamente desde el mismo prefijo que el host del contenedor. Todos los puntos de conexión de contenedor del host tendrán la misma dirección MAC que el host debido a la operación de traducción de direcciones de capa 2 (reescritura de MAC) en la entrada y la salida.
-  > Nota: cuando este modo se usa en un escenario de virtualización (el host contenedor es una VM), _se requiere suplantación de direcciones MAC_.
+  > Requiere: Cuando se usa este modo en un escenario de virtualización (host contenedor es una máquina virtual) _se requiere la suplantación de direcciones MAC_.
   
-  > Nota: requiere Windows Server 2016, Windows 10 Creators Update o una versión posterior.
+  > Requiere: Requiere Windows Server 2016, los creadores de actualización de Windows 10 o una versión posterior.
 
 - **l2tunnel**: similar a l2bridge; sin embargo _este controlador solo se debe usar en una pila de Microsoft Cloud_. Los paquetes que provienen de un contenedor se envían al host de virtualización, donde se aplica la directiva SDN.
 
 > Para obtener información sobre cómo conectar puntos de conexión de contenedor a una red virtual de inquilino existente con la pila de redes definidas por software (SDN) de Microsoft, consulte el tema [Asociar contenedores a una red virtual](https://technet.microsoft.com/en-us/windows-server-docs/networking/sdn/manage/connect-container-endpoints-to-a-tenant-virtual-network).
-
-> Windows 10 Creators Update (o posterior) ya dispone de compatibilidad de plataformas para agregar un nuevo punto de conexión de contenedor a un contenedor en ejecución (es decir, 'agregado en caliente').
 
 
 ## <a name="network-topologies-and-ipam"></a>Topologías de red e IPAM
