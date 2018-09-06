@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: 9dde3b2d7be10a8d3d393f8426976dfc5bdacfab
-ms.sourcegitcommit: 9653a3f7451011426f8af934431bb14dbcb30a62
-ms.translationtype: HT
+ms.openlocfilehash: 7d22a149da21a3367b82f2920c189ae9a4b1c173
+ms.sourcegitcommit: 2c22506a7fdbbbe5ab4138281fc9256a98b51efd
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "2082906"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "3386050"
 ---
 # <a name="overview"></a>Introducción
 
@@ -101,13 +101,18 @@ En Windows Server, versión 1709, una nueva característica denominada "Asignaci
 
 ##### <a name="configuration-steps"></a>Pasos de configuración
 
-1. En el host del contenedor, asigna globalmente el recurso compartido remoto de SMB: $creds = Get-Credential New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G: Este comando usará las credenciales para autenticar con el servidor SMB remoto. Después asigna la ruta de acceso de recurso compartido remoto a la letra de unidad G: (puede ser cualquier otra letra de unidad disponible). Los contenedores creados en este host del contenedor ahora pueden tener sus volúmenes de datos asignados a una ruta de acceso en la unidad G:.
+1. En el host de contenedor, asigna globalmente el recurso compartido SMB remoto:
+    ```
+    $creds = Get-Credential
+    New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+    ```
+    Este comando usará las credenciales para autenticar con el servidor SMB remoto. Después asigna la ruta de acceso de recurso compartido remoto a la letra de unidad G: (puede ser cualquier otra letra de unidad disponible). Los contenedores creados en este host del contenedor ahora pueden tener sus volúmenes de datos asignados a una ruta de acceso en la unidad G:.
 
-> Nota: Al usar la asignación global de SMB para contenedores, todos los usuarios en el host del contenedor pueden acceder al recurso compartido remoto. Cualquier aplicación que se ejecuta en el host del contenedor también tendrá acceso al recurso compartido remoto asignado.
+    > Nota: Al usar la asignación global de SMB para contenedores, todos los usuarios en el host del contenedor pueden acceder al recurso compartido remoto. Cualquier aplicación que se ejecuta en el host del contenedor también tendrá acceso al recurso compartido remoto asignado.
 
 2. Crea contenedores con volúmenes de datos asignados al docker de recurso compartido de SMB globalmente montado, ejecuta: name demo - v g:\ContainerData:G:\AppData1 Microsoft/windowsservercore:1709 cmd.exe
 
-Dentro del contenedor, G:\AppData1 se asignará al directorio de "ContainerData" del recurso compartido remoto. Todos los datos almacenados en el recurso compartido remoto asignado globalmente estarán disponibles para aplicaciones dentro del contenedor. Varios contenedores pueden obtener acceso de lectura y escritura a estos datos compartidos con el mismo comando.
+    Dentro del contenedor, G:\AppData1 se asignará al directorio de "ContainerData" del recurso compartido remoto. Todos los datos almacenados en el recurso compartido remoto asignado globalmente estarán disponibles para aplicaciones dentro del contenedor. Varios contenedores pueden obtener acceso de lectura y escritura a estos datos compartidos con el mismo comando.
 
 Esta compatibilidad de asignación global de SMB es una característica de cliente de SMB que puede funcionar en la parte superior de cualquier servidor SMB compatible, entre los que se incluyen:
 
