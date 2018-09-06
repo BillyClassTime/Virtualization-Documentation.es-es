@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: 4f42ee1c368638b521c33278c97f9ef1e7fdb8d0
-ms.sourcegitcommit: 2b5d806fc978e60fb71ce33ef491d4cfd6fc4456
+ms.openlocfilehash: a32d66251d8d9dddcd8abb1b64600459c903e317
+ms.sourcegitcommit: 2c22506a7fdbbbe5ab4138281fc9256a98b51efd
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "2596063"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "3386060"
 ---
 # <a name="dockerfile-on-windows"></a>Dockerfile en Windows
 
@@ -49,7 +49,7 @@ En su forma más básica, un archivo Dockerfile puede ser muy simple. En el ejem
 FROM microsoft/windowsservercore
 
 # Metadata indicating an image maintainer.
-MAINTAINER jshelton@contoso.com
+LABEL maintainer="jshelton@contoso.com"
 
 # Uses dism.exe to install the IIS role.
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
@@ -61,11 +61,11 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-Para obtener ejemplos adicionales de Dockerfiles para Windows, consulte el [Dockerfile para Windows repositorio] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples).
+Para obtener más ejemplos de archivos Dockerfile para Windows, consulta el [Dockerfile repositorio para Windows] (https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples).
 
 ## <a name="instructions"></a>Instrucciones
 
-Las instrucciones Dockerfile proporcionan al motor de Docker los pasos necesarios para crear una imagen del contenedor. Estas instrucciones se ejecutan en orden y una a una. A continuación se detallan algunas instrucciones Dockerfile básicas. Para obtener una lista completa de Dockerfile instrucciones, vea [Dockerfile referencia en Docker.com] (https://docs.docker.com/engine/reference/builder/).
+Las instrucciones Dockerfile proporcionan al motor de Docker los pasos necesarios para crear una imagen del contenedor. Estas instrucciones se ejecutan en orden y una a una. A continuación se detallan algunas instrucciones Dockerfile básicas. Para obtener una lista completa de instrucciones de Dockerfile, consulte la [referencia sobre Dockerfile en Docker.com] (https://docs.docker.com/engine/reference/builder/).
 
 ### <a name="from"></a>FROM
 
