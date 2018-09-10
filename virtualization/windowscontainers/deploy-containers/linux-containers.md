@@ -2,7 +2,7 @@
 
 Esta característica usa [Aislamiento de Hyper-V](../manage-containers/hyperv-container.md) para ejecutar un kernel de Linux con suficiente sistema operativo para admitir contenedores. Los cambios en Hyper-V y Windows para crear esto comenzaron en la actualización _Windows 10 Fall Creators Update_ y _Windows Server, versión 1709_, pero para lograrlo también debimos trabajar con el código abierto [proyecto Moby](https://www.github.com/moby/moby) que se usa para crear la tecnología de Docker, así como el kernel de Linux. 
 
-[!VIDEO https://sec.ch9.ms/ch9/1e5a/08ff93f2-987e-4f8d-8036-2570dcac1e5a/LinuxContainer.mp4]
+[Vídeo de contenedores de Linux](https://sec.ch9.ms/ch9/1e5a/08ff93f2-987e-4f8d-8036-2570dcac1e5a/LinuxContainer.mp4)
 
 Para probar esto, necesitas lo siguiente:
 
