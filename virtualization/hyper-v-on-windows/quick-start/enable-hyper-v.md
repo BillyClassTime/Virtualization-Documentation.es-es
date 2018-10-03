@@ -7,12 +7,12 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: 39499afc93b3329810db30cd32544a41ad138583
-ms.sourcegitcommit: 64c8d5d6f068d385b94db4637259bb3852666efe
-ms.translationtype: HT
+ms.openlocfilehash: dd4021c653d98a3bd7a338d9f502a572830f344d
+ms.sourcegitcommit: 5e5644bff6dba70e384db6c80787b3bbe7adb93c
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "1797661"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4303931"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Instalar Hyper-V en Windows 10
 
@@ -23,14 +23,14 @@ Hyper-V puede habilitarse de muchas maneras, incluido el uso del panel de contro
 
 ## <a name="check-requirements"></a>Comprobación de los requisitos
 
-* Windows 10 Enterprise, Professional, o Education
+* Windows 10 Enterprise, Pro o Education
 * Procesador de 64 bits con traducción de direcciones de segundo nivel (SLAT).
 * Compatibilidad de CPU con la extensión del modo monitor de la máquina virtual (VT-c en CPU de Intel).
 * Mínimo de 4 GB de memoria.
 
 El rol de Hyper-V **no** se puede instalar en Windows 10 Home.
 
-Puedes actualizar Windows 10 Home Edition a Windows 10 Professional abriendo **Configuración** > **Actualización y seguridad** > **Activación**.
+Puedes actualizar Windows 10 Home edition a Windows 10 Pro abriendo **configuración** > **actualización y seguridad** > **activación**.
 
 Para más información y solución de problemas, consulta [Requisitos de sistema de Hyper-V en Windows 10](../reference/hyper-v-requirements.md).
 
