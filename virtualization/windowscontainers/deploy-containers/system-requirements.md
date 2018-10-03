@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 71719fcbb6021bd26a464339a8caa9c4cb5698b9
-ms.sourcegitcommit: 2b5d806fc978e60fb71ce33ef491d4cfd6fc4456
-ms.translationtype: HT
+ms.openlocfilehash: 8ff9373bd943c360079679a7e41256c24aa21aa8
+ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "2596053"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "4340873"
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -20,7 +20,7 @@ En esta guía se enumeran los requisitos de un host de contenedor de Windows.
 
 ## <a name="os-requirements"></a>Requisitos de sistema operativo
 
-- La característica de contenedores de Windows solo está disponible en la compilación 1709 de Windows Server 2016 (Core y con experiencia de escritorio) y en Windows 10 Professional y Enterprise (Anniversary Edition).
+- La característica de contenedor de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Windows 10 Professional y Enterprise (Anniversary Edition) y versiones posteriores.
 - El rol de Hyper-V debe instalarse antes de ejecutar los contenedores de Hyper-V.
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\. Esta restricción no se aplica si solo se van a implementar contenedores de Hyper-V.
 
@@ -29,7 +29,7 @@ En esta guía se enumeran los requisitos de un host de contenedor de Windows.
 Si un host de contenedor de Windows se va a ejecutar desde una máquina virtual de Hyper-V y también van a hospedar contenedores de Hyper-V, será necesario habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
 
 - Al menos 4 GB de RAM disponibles para el host de Hyper-V virtualizado.
-- Windows Server 2016 (compilación 1709), Windows Server 2016 o Windows 10 en el sistema host, y Windows Server (Full o Core) en la máquina virtual.
+- Windows Server 2019, versión 1803, Windows Server versión 1709, Windows Server 2016 o Windows 10 en el sistema host y Windows Server (Full Core) en la máquina virtual de Windows Server.
 - Un procesador con Intel VT-x (actualmente, esta característica solo está disponible para los procesadores Intel).
 - La máquina virtual del host de contenedor también necesitará al menos dos procesadores virtuales.
 
@@ -47,7 +47,7 @@ Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Win
 </thead>
 <tbody>
 <tr valign="top">
-<td><center>Windows Server 2016 (Standard o Datacenter)</center></td>
+<td><center>Windows Server 2016 / 2019 (Standard o Datacenter)</center></td>
 <td><center>Server Core/Nano Server</center></td>
 <td><center>Server Core/Nano Server</center></td>
 </tr>
