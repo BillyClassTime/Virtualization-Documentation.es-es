@@ -2,18 +2,18 @@
 title: Contenedor de Windows en Windows 10
 description: Inicio rápido de implementación de contenedores
 keywords: docker, contenedores
-author: enderb-ms
+author: taylorb-microsoft
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 02a8013fb5e6c294aaef77ae2afd349cc6431d96
-ms.sourcegitcommit: 97698dc0ed94779ac80039288d01875fb71d6b2e
+ms.openlocfilehash: aa69739697e9e2c668aaf5026c6f5ddc69d43c4d
+ms.sourcegitcommit: f6f53fd0da65ac44d16fb793c5aa1af56c14d90e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "4349764"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "5428997"
 ---
 # <a name="windows-containers-on-windows-10"></a>Contenedores de Windows en Windows 10
 
@@ -31,7 +31,7 @@ Este inicio rápido es específico de Windows10. En la tabla de contenido del la
 > Debe instalar las actualizaciones críticas para que funcionen los contenedores de Windows.
 > Para comprobar la versión del SO, ejecute `winver.exe` y compare la versión que se muestra con el [Historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history).
 
-> Asegúrese de tener la versión 14393.222 o posterior antes de continuar.  Esta versión se corresponde con Windows 10 versión 1607, por lo que cualquier versión anterior 1607 debe ser totalmente compatibles.
+> Asegúrese de tener la versión 14393.222 o posterior antes de continuar.  Esta versión se corresponde con Windows 10 versión 1607, por lo que cualquier versión anteriormente 1607 debe ser totalmente compatibles.
 
 ## <a name="1-install-docker-for-windows"></a>1. Instalar Docker para Windows
 
