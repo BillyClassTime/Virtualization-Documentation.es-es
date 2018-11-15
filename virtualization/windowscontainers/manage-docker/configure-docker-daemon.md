@@ -8,27 +8,27 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: ab8a8b6543d58e71b3ac673c8a9e811698dbb578
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: 3b592620f4667450c2454f8760b7f3c844c7e2ab
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1875916"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948054"
 ---
 # <a name="docker-engine-on-windows"></a>Docker Engine en Windows
 
-El cliente y el motor de Docker no se incluyen con Windows y deberán instalarse y configurarse por separado. Además, el motor de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. En este documento se detallará cómo instalar y configurar el motor de Docker. Además, se proporcionarán algunos ejemplos de configuraciones frecuentes.
+El motor de Docker y el cliente no se incluyen con Windows y que esté instalado y configurado de forma individual. Además, el motor de Docker puede aceptar varias configuraciones personalizadas. Algunos ejemplos incluyen la configuración de cómo acepta el demonio las solicitudes entrantes, las opciones de red predeterminadas y la configuración de registro y depuración. En Windows, estas configuraciones pueden especificarse en un archivo de configuración o mediante el Administrador de control de servicios de Windows. Este documento describe cómo instalar y configurar el motor de Docker y también proporciona algunos ejemplos de configuraciones frecuentes.
 
 
 ## <a name="install-docker"></a>Instalar Docker
-Para trabajar con contenedores de Windows es necesario Docker. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La forma más fácil de instalar todo está en las guías de inicio rápido. Le ayudará a configurar todo y a poner en ejecución su primer contenedor. 
+Para trabajar con contenedores de Windows es necesario Docker. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La forma más fácil de instalar todo está en las guías de inicio rápido. Ayudan a obtener todo lo que permite configurar y ejecuta tu primer contenedor. 
 
 * [Contenedores de Windows en Windows Server 2016](../quick-start/quick-start-windows-server.md)
 * [Contenedores de Windows en Windows 10](../quick-start/quick-start-windows-10.md)
 
 Para instalaciones con script, consulta [Usar un script para instalar Docker EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee).
 
-Tendrán que instalarse imágenes de contenedor antes de poder usar Docker. Para obtener más información, consulta [Guía de inicio de la rápido para usar imágenes](../quick-start/quick-start-images.md).
+Antes de que se puede usar Docker que instalarse imágenes de contenedor. Para obtener más información, consulta [Guía de inicio de la rápido para usar imágenes](../quick-start/quick-start-images.md).
 
 ## <a name="configure-docker-with-configuration-file"></a>Configurar Docker con el archivo de configuración
 
@@ -81,7 +81,7 @@ Solo se necesitan agregar los cambios de configuración deseados al archivo de c
 Del mismo modo, este ejemplo configura el demonio de Docker para mantener las imágenes y los contenedores en una ruta alternativa. Si no se especifica, el valor predeterminado es c:\programdata\docker.
 
 ```
-{    
+{    
     "data-root": "d:\\docker"
 }
 ```

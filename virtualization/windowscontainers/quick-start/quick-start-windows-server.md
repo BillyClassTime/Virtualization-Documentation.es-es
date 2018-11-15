@@ -2,28 +2,28 @@
 title: Contenedores de Windows en Windows Server
 description: Inicio rápido de implementación de contenedores
 keywords: docker, contenedores
-author: enderb-ms
+author: cwilhit
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: 7d526aa64d478516a3f66acaf62b62b45282e5af
-ms.sourcegitcommit: 3d72f15651da378908f134916cd5c9d2064f8f95
-ms.translationtype: HT
+ms.openlocfilehash: ed60470f18f644fcc4fe741d02e6f6e39af48368
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "2256938"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6947994"
 ---
 # <a name="windows-containers-on-windows-server"></a>Contenedores de Windows en Windows Server
 
-Este ejercicio te guiará a través de la implementación básica y el uso de la característica de contenedores de Windows en Windows Server 2016. Durante este ejercicio, instalarás el rol de contenedor e implementarás un contenedor simple de Windows Server. Si necesitas familiarizarte con los contenedores, encontrarás esta información en [Acerca de los contenedores](../about/index.md).
+En este ejercicio te guiará a través de la implementación básica y el uso de la característica de contenedor de Windows en Windows Server 2019. Durante este ejercicio, instalarás el rol de contenedor e implementarás un contenedor simple de Windows Server. Si necesitas familiarizarte con los contenedores, encontrarás esta información en [Acerca de los contenedores](../about/index.md).
 
-Este inicio rápido es específico de los contenedores de WindowsServer en WindowsServer2016. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido, incluyendo contenedores en Windows 10.
+Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2019. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido, incluyendo contenedores en Windows 10.
 
 **Requisitos previos:**
 
-Un equipo (físico o virtual) con Windows Server 2016. Si usa Windows Server 2016 TP5, actualice a [Windows Server 2016 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 ).
+Un equipo (físico o virtual) con Windows Server 2019. Si estás usando Windows Server 2019 Insider Preview, actualiza a [Windows Server 2019 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 ).
 
 > Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
 
@@ -96,13 +96,13 @@ Para este ejercicio, se descarga una imagen de ejemplo de .NET creada previament
 Usa `docker run` para implementar el contenedor de .Net. También se descargará la imagen de contenedor, que puede tardar unos minutos.
 
 ```console
-docker run microsoft/dotnet-samples:dotnetapp-nanoserver
+docker run microsoft/dotnet-samples:dotnetapp-nanoserver-1809
 ```
 
 El contenedor se iniciará, imprimirá el mensaje "hello world" y después se cerrará.
 
 ```console
-         Dotnet-bot: Welcome to using .NET Core!
+         Hello from .NET Core!
     __________________
                       \
                        \
@@ -143,8 +143,8 @@ El contenedor se iniciará, imprimirá el mensaje "hello world" y después se ce
 
 
 **Environment**
-Platform: .NET Core 2.0
-OS: Microsoft Windows 10.0.14393
+Platform: .NET Core
+OS: Microsoft Windows 10.0.17763
 ```
 
 Para obtener información más detallada sobre el comando Run de Docker, consulta [Docker Run Reference (Referencia de Run de Docker)]( https://docs.docker.com/engine/reference/run/) en Docker.com.

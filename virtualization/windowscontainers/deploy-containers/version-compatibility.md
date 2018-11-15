@@ -2,13 +2,13 @@
 title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
-author: patricklang
-ms.openlocfilehash: 8657c03ad71685b0f01532894781c44d76e1b0bc
-ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+author: taylorb-microsoft
+ms.openlocfilehash: c744da429ed8116363437d3117ae1432d7a94f8d
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "4340883"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948084"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedores de Windows
 
@@ -29,10 +29,10 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
         <td style="background-color:#F1F8E9"><b>Windows10 1609, 1703</b><br/>Compilaciones: 14393.*, 15063.*</td>
         <td style="background-color:#F1F8E9"><b>WindowsServer, versión1709</b><br/>Compilaciones: 16299.*</td>
         <td style="background-color:#F1F8E9"><b>Windows10FallCreatorsUpdate</b><br/>Compilaciones: 16299.*</td>
-        <td style="background-color:#F1F8E9"><b>Windows Server versión 1803</b><br/>Las compilaciones 17134.*</td>
-        <td style="background-color:#F1F8E9"><b>Windows 10 versión 1803</b><br/>Las compilaciones 17134.*</td>
-        <td style="background-color:#F1F8E9"><b>Windows Server 2019</b><br/>Las compilaciones 17763.*</td>
-        <td style="background-color:#F1F8E9"><b>Windows 10 versión 1809</b><br/>Las compilaciones 17763.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server versión 1803</b><br/>Compilaciones 17134.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 versión 1803</b><br/>Compilaciones 17134.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows Server 2019</b><br/>Compilaciones 17763.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10 versión 1809</b><br/>Compilaciones 17763.*</td>
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>WindowsServer2016</b><br/>Compilaciones: 14393.*</td>
@@ -57,7 +57,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
         <td>Admite<br/> Solo aislamiento de `hyperv`</td>
     </tr>
     <tr>
-        <td style="background-color:#E3F2FD"><b>Windows Server versión 1803</b><br/>Las compilaciones 17134.*</td>
+        <td style="background-color:#E3F2FD"><b>Windows Server versión 1803</b><br/>Compilaciones 17134.*</td>
         <td>No se admite</td>
         <td>No se admite</td>
         <td>No se admite</td>
@@ -68,7 +68,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
         <td>Admite<br/> Solo aislamiento de `hyperv`</td>
     </tr>
     <tr>
-        <td style="background-color:#E3F2FD"><b>Windows Server 2019</b><br/>Las compilaciones 17763.*</td>
+        <td style="background-color:#E3F2FD"><b>Windows Server 2019</b><br/>Compilaciones 17763.*</td>
         <td>No se admite</td>
         <td>No se admite</td>
         <td>No se admite</td>

@@ -2,18 +2,18 @@
 title: Implementación de contenedores de Windows en Windows Server
 description: Implementación de contenedores de Windows en Windows Server
 keywords: docker, contenedores
-author: enderb-ms
+author: taylorb-microsoft
 ms.date: 09/26/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 701112cac9c3f6d647fe5fb70309350fd0d07161
-ms.sourcegitcommit: d69ed13d505e96f514f456cdae0f93dab4fd3746
+ms.openlocfilehash: 0d982996a1aabd434df04551f30725a21b31d500
+ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "4340853"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "6948014"
 ---
 # <a name="container-host-deployment---windows-server"></a>Implementación de host de contenedor - Windows Server
 
@@ -45,12 +45,12 @@ Cuando la instalación se haya completado, reinicia el equipo.
 Restart-Computer -Force
 ```
 
-## <a name="install-a-specific-version-of-docker"></a>Instala una versión específica de Docker
+## <a name="install-a-specific-version-of-docker"></a>Instalar una versión específica de Docker
 
 Actualmente hay dos canales disponibles para Docker EE para Windows Server:
 
 * `17.06` -Usa esta versión si estás usando Docker Enterprise Edition (motor de Docker, UCP, DTR). `17.06` es el valor predeterminado.
-* `18.03` -Usa esta versión si estás ejecutando motor de Docker EE por sí solo.
+* `18.03` -Usa esta versión si estás ejecutando el motor de Docker EE por sí solo.
 
 Para instalar una versión específica, usa el `RequiredVersion` marca:
 
@@ -76,7 +76,7 @@ Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -Re
 
 Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo del contenedor. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
-Con el lanzamiento de Windows Server 2019, imágenes de contenedor provenir de Microsoft se mueven a una nueva configuración del registro llamado el registro de contenedor de Microsoft. Las imágenes de contenedor que Microsoft publicadas deben seguir detectarse a través de Docker Hub. Para nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, deberían ser similar para acceder a ellas desde el MCR. Para las imágenes de contenedor publicadas antes de Windows Server 2019 más antiguas, deben seguir acceder a ellas desde el registro de Docker.
+Con el lanzamiento de Windows Server 2019, imágenes de contenedor provenir de Microsoft están cambiando a una nueva configuración del registro llamado el registro de contenedor de Microsoft. Las imágenes de contenedor que Microsoft publicadas deben seguir detectarse a través de Docker Hub. Si hay nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, deberían ser similar para acceder a ellas desde el MCR. Para las imágenes de contenedor publicadas antes de Windows Server 2019 más antiguos, deben seguir acceder a ellas desde el registro de Docker.
 
 ### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 y versiones posterior
 
