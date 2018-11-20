@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 477c6079d6e90a206386d1810bdb1449e087a4be
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 7db0135e5d5079d3b8cce815d051ecd6a7cb896b
+ms.sourcegitcommit: 614e3ca3e6f4373b999a501a2829adbaa61de4c4
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948094"
+ms.lasthandoff: 11/19/2018
+ms.locfileid: "7277539"
 ---
 # <a name="linux-containers-on-windows"></a>Contenedores de Linux en Windows
 
@@ -49,11 +49,11 @@ Para ver si estás ejecutando con VM de Moby, comprueba el Administrador de Hype
 
 Para probar LCOW, sigue las instrucciones de contenedores de Linux en [esta guía de introducción de get](../quick-start/quick-start-windows-10.md)
 
-Los contenedores de Linux con aislamiento de Hyper-V se ejecuta cada contenedor de Linux (LCOW) en una VM optimizada de Linux con suficiente sistema operativo para ejecutar contenedores.  A diferencia del enfoque de VM de Moby, cada LCOW tiene su propio kernel y es propio espacio aislado de máquina virtual.  Se también administran por Docker en Windows directamente.
+Los contenedores de Linux con aislamiento de Hyper-V ejecutan cada contenedor de Linux (LCOW) en una VM optimizada de Linux con suficiente sistema operativo para ejecutar contenedores.  A diferencia del enfoque de VM de Moby, cada LCOW tiene su propio kernel y su propio espacio aislado de la máquina virtual.  Se también administran por Docker en Windows directamente.
 
 ![Contenedores de Linux con aislamiento de Hyper-V (LCOW)](media/lcow-approach.png)
 
-Realizar un vistazo cómo administración de contenedor es diferente entre el enfoque de VM de Moby y LCOW, en el LCOW administración de contenedores de modelo permanece en Windows y la administración de cada LCOW se produce a través de GRPC y containerd.  Esto significa que los contenedores de Linux distro usan para LCOW puede tener un mucho menor inventario.  Derecha ahora estamos usando LinuxKit para usan los contenedores distro optimizadas pero compilación similar altamente optimizadas las distribuciones de Linux (borrar Linux), así como otros proyectos como Kata.
+Realizar un vistazo cómo administración de contenedor es diferente entre el enfoque de VM de Moby y LCOW, en el LCOW administración de contenedores de modelo permanece en Windows y la administración de cada LCOW se produce a través de GRPC y containerd.  Esto significa que los contenedores de Linux distro usan para LCOW puede tener un mucho menor inventario.  Derecha ahora estamos usando LinuxKit para usan los contenedores distro optimizado, pero otros proyectos como Kata similar altamente optimizadas las distribuciones de Linux (borrar Linux), así como a crear.
 
 Este es un vistazo cada LCOW:
 
@@ -123,6 +123,6 @@ Derecha ahora, te recomendamos LCOW a personas que:
 
 ## <a name="other-options-we-considered"></a>Otras opciones consideramos
 
-Cuando estábamos buscando en formas de ejecutar contenedores de Linux en Windows, consideramos WSL.  En última instancia, elegimos basada en una virtualización enfoque para que los contenedores de Linux en Windows son coherentes con los contenedores de Linux en Linux.  Uso de Hyper-V también hace que LCOW más seguro.  Se puede volver a evaluar en el futuro, pero por ahora, LCOW seguirán usando Hyper-V.
+Cuando estábamos buscando en formas de ejecutar contenedores de Linux en Windows, consideramos WSL. En última instancia, elegimos un enfoque basada en virtualización para que los contenedores de Linux en Windows son coherentes con los contenedores de Linux en Linux. Uso de Hyper-V también hace que LCOW más seguro. Se puede volver a evaluar en el futuro, pero por ahora, LCOW seguirán usando Hyper-V.
 
-Si tienes ideas, envía comentarios a través de github o UserVoice.  Agradecemos especialmente comentarios sobre la experiencia específica que te gustaría ver.
+Si tienes ideas, envía comentarios a través de GitHub o UserVoice.  Agradecemos especialmente comentarios sobre la experiencia específica que te gustaría ver.
