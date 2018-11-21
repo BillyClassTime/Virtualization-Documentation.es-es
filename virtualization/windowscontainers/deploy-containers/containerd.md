@@ -1,5 +1,5 @@
 ---
-title: Creación de la pila de contenedor
+title: Plataforma de contenedor de Windows
 description: Más información sobre el nuevo contenedor bloques de creación disponibles en Windows.
 keywords: LCOW, los contenedores de linux, docker, contenedores, containerd, cri, runhcs, runc
 author: scooley
@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 970de62c9a0011fa09d6741b2665479efd394313
-ms.sourcegitcommit: 166aa2430ea47d7774392e65a9875501f86dd5ed
+ms.openlocfilehash: 5811ea0761567c3a7db036358b24d1a3e7c51baf
+ms.sourcegitcommit: fdaf666973fca37d8c428e0247454dd47c01f1c3
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 11/20/2018
-ms.locfileid: "7460581"
+ms.locfileid: "7460604"
 ---
 # <a name="container-platform-tools-on-windows"></a>Herramientas de la plataforma de contenedor en Windows
 
@@ -106,7 +106,9 @@ Para obtener un vistazo más profundo a la HCS, mira [presentación de DockerCon
 
 ## <a name="containerdcri"></a>containerd/cri
 
-> ! Soporte técnico de nota CRI solo está disponible en Windows Server 2019 1809 10 y versiones posteriores.
+> [!IMPORTANT]
+> Soporte técnico CRI solo está disponible en Windows Server 2019 1809 10 y versiones posteriores.  Estamos desarrollando activamente aún containerd para Windows.
+> Desarrollo o prueba solamente.
 
 Mientras que las especificaciones OCI define un contenedor único, [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (interfaz de tiempo de ejecución de contenedor) describe los contenedores como workload(s) en un espacio aislado compartido llama un pod de entorno.  Pods pueden contener uno o más cargas de trabajo de contenedor.  Pods permiten orquestadores de contenedor como Kubernetes y Service Fabric malla controlan agrupados cargas de trabajo que deben estar en el mismo host con algunos recursos compartidos como la memoria y vNETs.
 
