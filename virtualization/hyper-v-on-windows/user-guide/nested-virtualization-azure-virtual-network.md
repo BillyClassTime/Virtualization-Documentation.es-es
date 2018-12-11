@@ -2,20 +2,20 @@
 title: Configurar máquinas virtuales anidadas para comunicarse directamente con los recursos de una red Virtual de Azure
 description: Virtualización anidada
 keywords: Windows 10, hyper-v, Azure
-author: johncslack
+author: mrajess
 ms.date: 12/10/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: f316f4c576eae6dd7c14de367e42012a3c724eac
-ms.sourcegitcommit: a9ab01b718b065124829b05868955f40e9020071
+ms.openlocfilehash: abe6f0da68ff90af0b2b5e675f70f106d42ca81c
+ms.sourcegitcommit: 8db42caaace760b7eeb1367b631b38e7904a9f26
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 12/11/2018
-ms.locfileid: "8917737"
+ms.locfileid: "8962313"
 ---
-# <a name="configuring-nested-vms-to-communicate-directly-with-resources-in-an-azure-virtual-network"></a>Configurar máquinas virtuales anidadas para comunicarse directamente con los recursos de una red Virtual de Azure
+# <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Configurar máquinas virtuales anidadas para comunicarse con los recursos de una red Virtual de Azure
 
 Las instrucciones original en implementar y configurar las máquinas virtuales anidadas dentro de Azure se necesitan tener acceso a estas máquinas virtuales a través de un conmutador NAT. Esto presenta varias limitaciones:
 
@@ -45,7 +45,7 @@ Esta guía hace que las siguientes suposiciones sobre el entorno de destino:
 
 * En segundo plano: Anidada máquinas virtuales no reciben DHCP desde el VNet que su host está conectado a, incluso si estableces una interna o un conmutador externo. 
   * Esto significa que el host de Hyper-V debe proporcionar DHCP.
-* Se asignará un bloque de direcciones IP para su uso JUST por el host de Hyper-V.  El host de Hyper-V no es consciente de la concesiones asignadas actualmente en el VNet, por lo que para evitar una situación en la que el host asigna una dirección IP ya existentes debemos asignar un bloque de direcciones IP para su uso solo por el host de Hyper-V. Esto nos permitirá evitar una situación IP duplicada. 
+* Se asignará un bloque de direcciones IP para su uso JUST por el host de Hyper-V.  El host de Hyper-V no es consciente de la concesiones asignadas actualmente en el VNet, por lo que para evitar una situación en la que el host asigna una dirección IP ya existentes debemos asignar un bloque de direcciones IP para su uso solo por el host de Hyper-V. Esto nos permitirá evitar una situación IP duplicada.
   * El bloque de direcciones IP elegimos se corresponde a una subred dentro de la VNet que el host de Hyper-V se encuentra en.
   * El motivo por el que queremos que corresponden a una subred existente es controlar anuncios de BGP vuelve a través de la ExpressRoute. Si se compone solo un intervalo IP para el host de Hyper-V usar, a continuación, tenemos que crear una serie de rutas estáticas para permitir que los clientes de forma local para comunicarse con las máquinas virtuales anidadas. Esto significa que no es un requisito de disco duro que podría constituyen un intervalo de IP para las máquinas virtuales anidadas y, a continuación, crear todas las rutas necesarias para dirigir a los clientes en el host de Hyper-V para ese intervalo.
 * Vamos a crear un conmutador interno dentro de Hyper-V y, a continuación, se asignará la interfaz recién creada una dirección IP dentro de un intervalo que se apartan de DHCP. Esta dirección IP se convertirá en la puerta de enlace predeterminada para nuestras las máquinas virtuales anidadas y se pueden usar para la ruta entre el conmutador interno y la NIC del host que está conectado a nuestro VNet.
