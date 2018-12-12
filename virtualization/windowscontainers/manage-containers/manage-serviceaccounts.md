@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 27317dbf5ba5386a3bd555c53c781aac2fc110a7
-ms.sourcegitcommit: edc153ffef01094c2324a0da2f9a301b31015a58
-ms.translationtype: HT
+ms.openlocfilehash: d92d14fd10e07e159ff2023b4dd6ade8b11ca2e5
+ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "1912672"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "6121595"
 ---
 # <a name="active-directory-service-accounts-for-windows-containers"></a>Cuentas de servicio de Active Directory para contenedores de Windows
 
@@ -48,8 +48,8 @@ Los contenedores de Windows siguen un proceso similar:
 4. Usar el módulo de PowerShell CredentialSpec desde [windows-server-container-tools](https://github.com/Microsoft/Virtualization-Documentation/tree/live/windows-server-container-tools) para almacenar la configuración necesaria para utilizar la gMSA
 5. Iniciar el contenedor con una opción adicional `--security-opt "credentialspec=..."`
 
-[!NOTE]
-Es posible que tengas que permitir la traducción SID/nombre anónima en el host del contenedor tal y como se describe [aquí](https://docs.microsoft.com/en-us/windows/device-security/security-policy-settings/network-access-allow-anonymous-sidname-translation) ya que, de lo contrario, se podría producir un error en las cuentas que no pueden traducirse a SID.
+> [!NOTE]
+> Es posible que tengas que permitir la traducción SID/nombre anónima en el host del contenedor tal y como se describe [aquí](https://docs.microsoft.com/en-us/windows/device-security/security-policy-settings/network-access-allow-anonymous-sidname-translation) ya que, de lo contrario, se podría producir un error en las cuentas que no pueden traducirse a SID.
 
 Sin embargo, antes de explorar la necesidad de permitir traducción SID/nombre anónima, asegúrate de que se toman las siguientes acciones:
 
