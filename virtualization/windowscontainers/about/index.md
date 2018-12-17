@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 5dcc2af869ba0433b1d755f6d70f5dae6e18cdc5
-ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.openlocfilehash: ade690dbfed2fd154ee94955f3104c47dae40045
+ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "6121615"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "8972069"
 ---
 # <a name="windows-containers"></a>Contenedores de Windows
 
@@ -21,11 +21,11 @@ ms.locfileid: "6121615"
 
 Los contenedores son una forma de encapsular una aplicación en su propio espacio aislado. Una vez que la aplicación esté en su contenedor, no tendrá conocimiento de otras aplicaciones o procesos que existan fuera de su espacio. Todo lo que necesita la aplicación para ejecutarse correctamente también se encuentra dentro de este contenedor.  Independientemente de la ubicación a la que se pueda mover el espacio, la aplicación siempre se encontrará satisfecha porque incluye todo lo que necesita para ejecutarse.
 
-Imagina una cocina. Empaquetamos todos los electrodomésticos y mobiliario, cacerolas y sartenes, jabón para vajilla y toallas de mano. Este es nuestro contenedor
+Imagina una cocina. Empaquetamos todos los electrodomésticos y mobiliario, cacerolas y sartenes, jabón para vajilla y toallas de mano. Este es nuestro contenedor.
 
 <center style="margin: 25px">![](media/box1.png)</center>
 
-Ahora podemos tomar este contenedor y colocarlo en el apartamento que queramos, y tendremos la misma cocina. Todo lo que tenemos que hacer es conectar la electricidad y el agua y estamos listos para empezar a cocinar (porque tenemos todos los electrodomésticos que necesitamos)
+Ahora podemos tomar este contenedor y colocarlo en el apartamento que queramos, y tendremos la misma cocina. Todo lo que debemos hacer es conectar la electricidad y agua a ella y, a continuación, estamos listos para empezar a cocinar (porque tenemos todos los electrodomésticos que necesitamos).
 
 <center style="margin: 25px">![](media/apartment.png)</center>
 
@@ -37,7 +37,7 @@ Mira una breve introducción: [Windows-based containers: Modern app development 
 
 Los contenedores son un entorno de ejecución portátil, aislado y controlado por recursos que se ejecuta en una máquina host o virtual. Una aplicación o proceso que se ejecuta en un contenedor incluye todos los archivos de configuración y dependencias necesarios, por tanto, tiene la sensación de que no hay otros procesos en ejecución fuera del contenedor.
 
-El host del contenedor aprovisiona un conjunto de recursos para el contenedor y este solo usará estos recursos. Lo respecta el contenedor, no existen otros recursos fuera de lo que se le ha asignado y, por tanto, el contenedor no puede acceder a recursos que pueden haber aprovisionado para un contenedor vecino.
+El host del contenedor aprovisiona un conjunto de recursos para el contenedor y este solo usará estos recursos. Lo respecta el contenedor, no existen otros recursos fuera de lo que se le ha asignado y, por tanto, el contenedor no puede acceder a los recursos que pueden haber aprovisionado un contenedor vecino.
 
 Los siguientes conceptos clave te resultarán útiles cuando empieces a crear y trabajar con contenedores de Windows.
 
