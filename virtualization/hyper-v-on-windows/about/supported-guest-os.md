@@ -7,12 +7,12 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
-ms.openlocfilehash: 9b19a82c94fbe9af9f141d4845a8ed1045a10302
-ms.sourcegitcommit: 94e8ae4be1b0d3d13fca06e0775dd2aab895a12c
-ms.translationtype: HT
+ms.openlocfilehash: c14027e6ba1b0cd475ec1543205b315240662f2c
+ms.sourcegitcommit: af70dedc4224f4b7faac65743ef6a89c64e19ffd
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "1840997"
+ms.lasthandoff: 12/17/2018
+ms.locfileid: "8972102"
 ---
 # <a name="supported-windows-guests"></a>Invitados de Windows admitidos
 
@@ -42,6 +42,7 @@ Para poder recibir soporte técnico, todos los sistemas operativos (cliente y ho
 | Windows Vista con Service Pack2 (SP2) | 2 | Ediciones Business, Enterprise y Ultimate, incluidas las ediciones N y KN. |
 | - | | |
 | [Canal semianual de WindowsServer](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview) | 64 | |
+| Windows Server 2019 | 64 | |
 | WindowsServer2016 | 64 | |
 | WindowsServer2012R2 | 64 | |
 | Windows Server 2012 | 64 | |
