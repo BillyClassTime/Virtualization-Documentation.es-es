@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: ade690dbfed2fd154ee94955f3104c47dae40045
-ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
+ms.openlocfilehash: 16cf281193ced00ea1b0e2d96291de7f44822284
+ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "8972069"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "8973615"
 ---
-# <a name="windows-containers"></a>Contenedores de Windows
+# <a name="containers-on-windows"></a>Contenedores en Windows
 
 ## <a name="what-are-containers"></a>Qué son los contenedores
 
@@ -31,7 +31,9 @@ Ahora podemos tomar este contenedor y colocarlo en el apartamento que queramos, 
 
 De forma muy similar, los contenedores se parecen a esta cocina. Es posible que haya diferentes tipos de habitaciones, así como un gran número de los mismos tipos de habitaciones. Lo importante es que los contenedores incluyan todo lo que necesitan.
 
-Mira una breve introducción: [Windows-based containers: Modern app development with enterprise-grade control](https://youtu.be/Ryx3o0rD5lY) (Contenedores basados en Windows: desarrollo de aplicaciones modernas con control de nivel empresarial).
+Vea una breve introducción a continuación:
+<iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 ## <a name="container-fundamentals"></a>Conceptos básicos de los contenedores
 

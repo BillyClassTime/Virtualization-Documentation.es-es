@@ -1,6 +1,6 @@
 ---
-title: Documentación acerca de los contenedores de Windows
-description: Documentación acerca de los contenedores de Windows
+title: Contenedores en la documentación de Windows
+description: documentación para ejecutar los contenedores en Windows
 keywords: docker, contenedores
 author: cwilhit
 ms.date: 05/02/2016
@@ -8,14 +8,14 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 2b887d8ae92d5134014ea71235237cc446a7816f
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 84e3f318069961853248bcc30abadcd68642649c
+ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6947954"
+ms.lasthandoff: 12/18/2018
+ms.locfileid: "8973625"
 ---
-# <a name="windows-containers-documentation"></a>Documentación acerca de los contenedores de Windows
+# <a name="containers-on-windows-documentation"></a>Contenedores en la documentación de Windows
 
 Los contenedores de Windows proporcionan una virtualización a nivel de sistema operativo que permite ejecutar varias aplicaciones aisladas en un solo sistema. En este conjunto de documentación encontrarás detalles técnicos, guías de implementación y guías de inicio rápido referentes a las operaciones de administración.
 
@@ -34,7 +34,7 @@ Obtén información sobre los contenedores y luego empieza a usarlos.<br /><br /
 <tr>
 <td ><center>![](media/1.png)</center></td>
 <td>**Implementación**<br /><br />
-Descubre cómo implementar contenedores de Windows en Windows Server 2016.<br /><br />
+Aprende a implementar contenedores de Windows en Windows Server 2019<br /><br />
 <ul>
 <li>[Requisitos del sistema](deploy-containers/system-requirements.md)<br /><br /></li>
 <li>[Implementar un host de contenedor](deploy-containers/deploy-containers-on-server.md)<br /><br /></li>
