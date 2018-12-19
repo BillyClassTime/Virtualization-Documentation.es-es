@@ -8,22 +8,22 @@ ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: e88f2951abef72bdd938c23a068cc912e31628cb
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: fec8b08d5bd86102d21ce93b726dc0b931413441
+ms.sourcegitcommit: 69228f28723f366c6b2933c7701077c8df74b32b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948074"
+ms.lasthandoff: 12/19/2018
+ms.locfileid: "8976751"
 ---
 # <a name="building-a-container-ecosystem"></a>Creación de un ecosistema de contenedor
 
 Para entender por qué es tan importante la creación de un ecosistema de contenedor, primero se explicará Docker.
 
-## <a name="dockers-appeal"></a>La importancia de Docker
+## <a name="docker"></a>Docker
 
-El concepto de contenedores (aislamiento de espacio de nombres y gobernanza de recursos) ha estado presente durante mucho tiempo, en la época de BSD Jails, Solaris Zones y el mecanismo básico de UNIX chroot (cambiar raíz).   Lo que Docker ha hecho es ofrecer un conjunto común de herramientas, un modelo de empaquetado y un mecanismo de implementación.  Con ello, Docker ha simplificado en gran medida la inclusión en contenedores y la distribución de aplicaciones.  Esas aplicaciones pueden entonces ejecutarse en cualquier lugar de cualquier host de Linux, una capacidad que ofrecemos también en Windows.
+El concepto de contenedores (aislamiento de espacio de nombres y gobernanza de recursos) ha estado presente durante mucho tiempo, en la época de BSD Jails, Solaris Zones y el mecanismo básico de UNIX chroot (cambiar raíz).   Lo que Docker ha hecho es ofrecer un conjunto común de herramientas, un modelo de empaquetado y un mecanismo de implementación.  Al hacerlo, Docker simplificado la inclusión en contenedores y la distribución de aplicaciones.  Esas aplicaciones pueden entonces ejecutarse en cualquier lugar de cualquier host de Linux, una capacidad que ofrecemos también en Windows.
 
-Esta tecnología ubicua no solo simplifica la administración al ofrecer los mismos comandos de administración para cualquier host, sino que también crea una oportunidad única para las operaciones de desarrollo continuas.
+Tecnología de implementación y modelo de empaquetado ubicua simplifica la administración al ofrecer los mismos comandos de administración para cualquier host y crea una oportunidad única para DevOps sin interrupciones.
 
 Del escritorio de un desarrollador a una máquina de pruebas para un conjunto de equipos de producción, se puede crear una imagen de Docker que se implementará exactamente igual en cualquier entorno en segundos. Este artículo ha creado un ecosistema grande y en crecimiento de aplicaciones empaquetadas en contenedores de Docker, con DockerHub, el registro público de aplicaciones en contenedores que mantiene Docker.
 
