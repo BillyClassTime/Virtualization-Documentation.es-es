@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: e736199221f06c572f89e8dafac55ce114bf7481
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 478305ff2298a0392935f9857febc445c1199b83
+ms.sourcegitcommit: 5300274fd7b88c6cf5e37b2f4c02779efaa3a613
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948024"
+ms.lasthandoff: 01/08/2019
+ms.locfileid: "8996049"
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -35,7 +35,7 @@ Si un host de contenedor de Windows se va a ejecutar desde una máquina virtual 
 
 ## <a name="supported-base-images"></a>Imágenes base compatibles
 
-Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Windows Server Core y Nano Server. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
+Los contenedores de Windows se ofrecen con cuatro imágenes base de contenedor: Windows Server Core, Nano Server, Windows y IoT Core. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
 
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
@@ -48,18 +48,23 @@ Los contenedores de Windows se ofrecen con dos imágenes base de contenedor, Win
 <tbody>
 <tr valign="top">
 <td><center>Windows Server 2016 / 2019 (Standard o Datacenter)</center></td>
-<td><center>Server Core/Nano Server</center></td>
-<td><center>Server Core/Nano Server</center></td>
+<td><center>Server Core, Nano Server, Windows</center></td>
+<td><center>Server Core, Nano Server, Windows</center></td>
 </tr>
 <tr valign="top">
 <td><center>Nano Server<a href="#warn-1">*</a></center></td>
 <td><center> Nano Server</center></td>
-<td><center>Server Core / Nano Server</center></td>
+<td><center>Server Core, Nano Server, Windows</center></td>
 </tr>
 <tr valign="top">
 <td><center>Windows 10 Pro / Enterprise</center></td>
 <td><center>No disponible</center></td>
-<td><center>ServerCore/NanoServer</center></td>
+<td><center>Server Core, Nano Server, Windows</center></td>
+</tr>
+<tr valign="top">
+<td><center>IoT Core</center></td>
+<td><center>IoT Core</center></td>
+<td><center>No disponible</center></td>
 </tr>
 </tbody>
 </table>
@@ -84,9 +89,16 @@ Se pueden configurar restricciones en la memoria disponible a través de los con
 | ServerCore | 45MB                     | Archivo de paginación 360MB + 1GB |
 
 
-### <a name="nano-server-vs-windows-server-core"></a>Comparación de NanoServer y WindowsServerCore
+### <a name="base-image-differences"></a>Diferencias de la imagen base
 
-¿Cómo se elige entre WindowsServerCore y NanoServer? Aunque tienes la libertad de crear lo que quieras, si crees que tu aplicación necesita compatibilidad completa con .NETFramework, debes usar [WindowsServerCore](https://hub.docker.com/r/microsoft/windowsservercore/). Por otra parte, si la aplicación se crea para la nube y usa .NETCore, debes usar [NanoServer](https://hub.docker.com/r/microsoft/nanoserver/). Esto se debe a que NanoServer se creó con la intención de tener una huella del menor tamaño posible, por lo tanto, se quitaron varias bibliotecas que no eran esenciales. Es importante tener esto en cuenta si tienes pensado crear la aplicación sobre NanoServer:
+¿Cómo se elige la imagen base de derecha a desarrollarla? Aunque tienes la libertad de crear lo que quieras, estas son las directrices generales de cada imagen:
+
+- [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): si la aplicación necesita completo de .NET framework, se trata de la imagen mejor usar.
+- [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): para las aplicaciones que requieren solo .NET Core, Nano Server proporcionará una mucho más finos imagen.
+- [Windows](https://hub.docker.com/_/microsoft-windowsfamily-windows): es posible depende de la aplicación en un componente o .dll que falta en Server Core o imágenes de Nano Server, como las bibliotecas de GDI. Esta imagen conlleva el conjunto completo de dependencia de Windows.
+- [IoT Core](https://hub.docker.com/_/microsoft-windows-iotcore): esta imagen está diseñado específicamente para [aplicaciones de IoT](https://developer.microsoft.com/en-us/windows/iot). Debes usar esta imagen de contenedor cuando el destino es un host de IoT Core.
+
+Para la mayoría de los usuarios, Windows Server Core o Nano Server será la imagen más adecuada para usar. A continuación son algunas cosas a tener en cuenta si tienes pensado crear la aplicación sobre Nano Server:
 
 - Se quitó la pila de servicio
 - No se incluye .NETCore (aunque puedes usar la [imagen de .NETCoreNanoServer](https://hub.docker.com/r/microsoft/dotnet/))
