@@ -8,12 +8,12 @@ ms.prod: containers
 description: Unir un nodo de Windows a un clúster de Kubernetes con v1.12.
 keywords: kubernetes, 1.12, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 8051270cac6178bad9adf9a8ef9e2324932f7d01
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.openlocfilehash: 764d440837118801226c0bf37f92ffb0d7bdb9e5
+ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6179096"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001621"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Unirse a nodos de servidor de Windows a un clúster #
 Una vez que tengas [un nodo de maestro de Kubernetes de instalación](./creating-a-linux-master.md) y [selecciona la solución de red deseado](./network-topologies.md), estás preparado para unirse a nodos de Windows Server para formar un clúster. Esto requiere [preparación en los nodos de Windows](#preparing-a-windows-node) antes de unir.
@@ -23,7 +23,7 @@ Una vez que tengas [un nodo de maestro de Kubernetes de instalación](./creating
 > Todos los fragmentos de código en las secciones de Windows son para ejecutarse en PowerShell _con privilegios elevados_.
 
 ### <a name="install-docker-requires-reboot"></a>Instalar a Docker (requiere reiniciar) ###
-Kubernetes usa [Docker](https://www.docker.com/) como su motor de contenedor, por lo que necesitamos instalarlo. Puedes seguir las [instrucciones oficiales de Docs](../manage-docker/configure-docker-daemon.md#install-docker), las [instrucciones de Docker](https://store.docker.com/editions/enterprise/docker-ee-server-windows) o probar estos pasos:
+Kubernetes usa [Docker](https://www.docker.com/) como motor de contenedor, por lo que necesitamos instalarlo. Puedes seguir las [instrucciones oficiales de Docs](../manage-docker/configure-docker-daemon.md#install-docker), las [instrucciones de Docker](https://store.docker.com/editions/enterprise/docker-ee-server-windows) o probar estos pasos:
 
 ```powershell
 Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
@@ -41,7 +41,7 @@ Si tras el reinicio se muestra el error siguiente:
 
 ![texto](media/docker-svc-error.png)
 
-A continuación, iniciar manualmente el servicio de docker:
+A continuación, iniciar manualmente el servicio docker:
 
 ```powershell
 Start-Service docker
@@ -61,14 +61,14 @@ Ahora que `docker` está instalado, debes preparar una imagen de "pausa" que Kub
  Extraiga la imagen de la versión específica de Windows. Por ejemplo, si estás ejecutando Windows Server 2019:
 
  ```powershell
-docker pull microsoft/nanoserver:1803
+docker pull mcr.microsoft.com/windows/nanoserver:1809
  ```
 
 #### <a name="tag-the-image"></a>Etiqueta de la imagen ####
-Busca los Dockerfiles usará más adelante en esta guía la `:latest` etiqueta de la imagen. Etiqueta de la imagen de nanoserver extraída solo como sigue:
+Busca los Dockerfiles usará más adelante en esta guía la `:latest` etiqueta de la imagen. Etiqueta de la imagen de nanoserver extraída simplemente como sigue:
 
 ```powershell
-docker tag microsoft/nanoserver:1803 microsoft/nanoserver:latest
+docker tag mcr.microsoft.com/windows/nanoserver:1809 microsoft/nanoserver:latest
 ```
 
 #### <a name="run-the-container"></a>Ejecutar el contenedor ####
@@ -98,11 +98,11 @@ Copia el archivo de certificado de Kubernetes (`$HOME/.kube/config`) [del maestr
 
 #### <a name="download-kubernetes-binaries"></a>Descargar archivos binarios de Kubernetes ####
 Para poder ejecutar Kubernetes, primero debes descargar la `kubectl`, `kubelet`, y `kube-proxy` archivos binarios. Puedes descargarlos en los vínculos del `CHANGELOG.md` archivo de las [versiones más recientes](https://github.com/kubernetes/kubernetes/releases/).
- - Por ejemplo, estos son los [archivos binarios de nodo de v1.12](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.12.md#node-binaries).
+ - Por ejemplo, estos son los [archivos binarios de nodo v1.12](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.12.md#node-binaries).
  - Usar una herramienta como [7-Zip](http://www.7-zip.org/) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
 
 #### <a name="optional-setup-kubectl-on-windows"></a>(Opcional) El programa de instalación kubectl en Windows ####
-Si desea controlar el clúster de Windows, puede hacerlo mediante la `kubectl` comando. Primero, realizar `kubectl` disponible fuera de la `C:\k\` directorio, modificar el `PATH` variable de entorno:
+Si desea controlar el clúster de Windows, puede hacerlo mediante la `kubectl` comando. Primero, realizar `kubectl` esté disponible fuera de la `C:\k\` directorio, modificar la `PATH` variable de entorno:
 
 ```powershell
 $env:Path += ";C:\k"
@@ -164,7 +164,7 @@ Además, debes asegurarte de que es correcta en la subred de clúster (p. ej., v
 - [NET conf.json](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/net-conf.json)
 
 
-Suponiendo que [preparado el nodo de Windows](#preparing-a-windows-node)y su `c:\k` directory busca al siguiente, estás listo para unir el nodo.
+Suponiendo que [preparado el nodo de Windows](#preparing-a-windows-node)y su `c:\k` directory al siguiente aspecto, estás listo para unir el nodo.
 
 ![texto](./media/flannel-directory.png)
 
@@ -176,6 +176,7 @@ Para simplificar el proceso de unirse a un nodo de Windows, solo necesitas ejecu
 
 ```powershell
 cd c:\k
+chcp 65001
 .\start.ps1 -ManagementIP <Windows Node IP> -ClusterCIDR <Cluster CIDR> -ServiceCIDR <Service CIDR> -KubeDnsServiceIP <Kube-dns Service IP> 
 ```
 
@@ -192,17 +193,17 @@ Después de ejecutar este debe ser capaz de:
 > [!NOTE]
 > Puedes omitir esta sección si has elegido Flannel como tu red solución [anteriormente](./network-topologies.md#flannel-in-host-gateway-mode).
 
-Para ello, debes seguir las instrucciones para [configurar los contenedores de Windows Server en Kubernetes para la topología de enrutamiento de L3 en dirección ascendente](https://kubernetes.io/docs/getting-started-guides/windows/#for-1-upstream-l3-routing-topology-and-2-host-gateway-topology). Esto incluye asegurándote de que configurar el enrutador en dirección ascendente como prefijo el pod CIDR asignadas a un nodo se asigna a su dirección IP de nodo correspondiente.
+Para ello, debes seguir las instrucciones para [configurar los contenedores de Windows Server en Kubernetes para la topología de enrutamiento de L3 en dirección ascendente](https://kubernetes.io/docs/getting-started-guides/windows/#for-1-upstream-l3-routing-topology-and-2-host-gateway-topology). Esto incluye asegurándote de que configurar el enrutador en dirección ascendente como prefijo en el pod CIDR asignadas a un nodo se asigna a su dirección IP de nodo correspondiente.
 
 Suponiendo que el nuevo nodo aparece como "Listo para" por `kubectl get nodes`, kubelet + kube proxy se está ejecutando y has configurado el enrutador ToR en dirección ascendente, estás listo para los pasos siguientes.
 
 ## <a name="next-steps"></a>Pasos siguientes ##
-En esta sección, hemos visto cómo unir los trabajadores de Windows a nuestro clúster de Kubernetes. Ahora estás listo para el paso 5:
+En esta sección, hemos visto cómo unir los trabajadores de Windows a nuestro clúster de Kubernetes. Ahora ya estás listo para paso 5:
 
 > [!div class="nextstepaction"]
 > [Unirse a los trabajadores de Linux](./joining-linux-workers.md)
 
-Como alternativa, si no tienes los trabajadores de Linux dudes en avanza al paso 6:
+Como alternativa, si no tienes ninguna trabajadores de Linux no dude en avanza al paso 6:
 
 > [!div class="nextstepaction"]
 > [Implementación de recursos de Kubernetes](./deploying-resources.md)

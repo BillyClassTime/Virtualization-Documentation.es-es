@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 5da18c7c1e2fc6882d5879070e91d36d0c0a475a
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 0350e62deef06402991f505dd263db7fd506cba1
+ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973667"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001591"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
@@ -23,7 +23,7 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Asegúrese de que cumples los requisitos siguientes:
+Asegúrese de que se cumplen los requisitos siguientes:
 
 - Un equipo (físico o virtual) con Windows Server 2016.
 - Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulte [Windows Containers on Windows Server (Contenedores de Windows en Windows Server)](./quick-start-windows-server.md).
@@ -129,6 +129,8 @@ Una vez iniciada la sesión, se puede insertar la imagen de contenedor en Docker
 ```console
 docker push <user>/iis-dockerfile
 ```
+
+Como Docker inserte cada capa hasta Docker Hub, docker omitirá capas que ya existen en Docker Hub o en otros registros (capas externas).  Por ejemplo, las versiones recientes de Windows Server Core que se hospedan en el registro de contenedor de Microsoft, o las capas de un registro corporativa privada, ¿se omite y no se inserta en Docker Hub.
 
 La imagen de contenedor ya se puede descargar desde Docker Hub en cualquier host de contenedor de Windows mediante `docker pull`. Para este tutorial, se eliminará la imagen existente y después se extraerá de Docker Hub. 
 
