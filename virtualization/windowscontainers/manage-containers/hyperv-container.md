@@ -1,6 +1,6 @@
 ---
 title: Contenedores de Hyper-V
-description: Explicación de las diferencias entre los contenedores de Hyper-V contenedores de proceso cuales.
+description: Explicación de las diferencias entre los contenedores de Hyper-V de contenedores de proceso cuales.
 keywords: docker, contenedores
 author: scooley
 ms.date: 09/13/2018
@@ -8,20 +8,20 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: e1a5b80773128af0ba0095d5201e4fa123a1741c
-ms.sourcegitcommit: 99da24a8c075e0096eabd09a29007a65e3ea35b7
+ms.openlocfilehash: caaf4186f43c69dfbc35d04dd8909876ed082906
+ms.sourcegitcommit: 4336d7617c30d26a987ad3450b048e17404c365d
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/04/2018
-ms.locfileid: "6022183"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001004"
 ---
 # <a name="hyper-v-containers"></a>Contenedores de Hyper-V
 
 **Esto es contenido preliminar y está sujeto a cambios.** 
 
-La tecnología de contenedor de Windows incluye dos tipos diferentes de contenedores, contenedores de Windows Server (contenedores de proceso) y contenedores de Hyper-V. Los dos tipos de contenedores se crean, se administran y funcionan de forma idéntica. También generan y usan las mismas imágenes del contenedor. La diferencia entre ellos es el nivel de aislamiento creado entre el contenedor, el sistema operativo host y todos los demás contenedores que se ejecutan en ese host.
+La tecnología de contenedor de Windows incluye dos tipos diferentes de contenedores, contenedores de Windows Server (contenedores de proceso) y Hyper-V. Los dos tipos de contenedores se crean, se administran y funcionan de forma idéntica. También generan y usan las mismas imágenes del contenedor. La diferencia entre ellos es el nivel de aislamiento creado entre el contenedor, el sistema operativo host y todos los demás contenedores que se ejecutan en ese host.
 
-**Contenedores de Windows Server**: Varias instancias de contenedor pueden ejecutarse simultáneamente en un host con aislamiento proporcionado a través de tecnologías de espacio de nombres, control de recursos y aislamiento de proceso.  Los contenedores de Windows Server comparten el mismo kernel con el host, así como entre sí.  Esto es aproximadamente el mismo como el comportamiento de los contenedores que se ejecutan en Linux.
+**Contenedores de Windows Server**: Varias instancias de contenedor pueden ejecutarse simultáneamente en un host con aislamiento proporcionado a través de tecnologías de espacio de nombres, control de recursos y aislamiento de proceso.  Los contenedores de Windows Server comparten el mismo kernel con el host, así como entre sí.  Esto es aproximadamente el mismo como el comportamiento de los contenedores puede ejecutarse en Linux.
 
 **Los contenedores de Hyper-V** : varias instancias de contenedor pueden ejecutarse simultáneamente en un host, sin embargo, cada contenedor se ejecuta dentro de una máquina virtual especial. Esto proporciona aislamiento de nivel de kernel entre cada contenedor de Hyper-V y el host de contenedor.
 
@@ -32,7 +32,7 @@ La tecnología de contenedor de Windows incluye dos tipos diferentes de contened
 Administración de contenedores de Hyper-V con Docker es casi idéntica a la administración de contenedores de Windows Server. Para crear un contenedor de Hyper-V con Docker, usa el `--isolation` parámetro para establecer `--isolation=hyperv`.
 
 ``` cmd
-docker run -it --isolation=hyperv microsoft/nanoserver cmd
+docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
 ```
 
 ### <a name="isolation-explanation"></a>Explicación del aislamiento
@@ -42,7 +42,7 @@ En este ejemplo se muestra las diferencias de las funcionalidades de aislamiento
 En este caso, se implementa un contenedor de Windows Server que hospedará un proceso de ping de ejecución prolongada.
 
 ``` cmd
-docker run -d microsoft/windowsservercore ping localhost -t
+docker run -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
 ```
 
 Mediante el comando `docker top`, el proceso de ping se devuelve tal como se muestra dentro del contenedor. El proceso de este ejemplo tiene el identificador 3964.
@@ -66,7 +66,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
 Por otro lado, en este ejemplo se inicia un contenedor de Hyper-V que también tiene un proceso de ping. 
 
 ```
-docker run -d --isolation=hyperv microsoft/nanoserver ping -t localhost
+docker run -d --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 ping -t localhost
 ```
 
 Del mismo modo, puede usarse `docker top` para devolver los procesos que se están ejecutando en el contenedor.

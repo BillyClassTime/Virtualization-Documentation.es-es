@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 42e1a0bf58ada40a8f135861646d5c9429e0d5db
-ms.sourcegitcommit: a5f8f99bf8f512a9058b72f1f617f77ecf488c71
+ms.openlocfilehash: 36ef6df0b9736d88fec627e4cb56df023f1a7708
+ms.sourcegitcommit: 4336d7617c30d26a987ad3450b048e17404c365d
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8974017"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "9001014"
 ---
 # <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
@@ -38,29 +38,29 @@ Los contenedores de Windows Server ofrecerán mayor densidad y rendimiento (por 
 
 ### <a name="what-are-the-prerequisites-for-running-containers-on-windows"></a>¿Cuáles son los requisitos previos para ejecutar los contenedores en Windows?
 
-Los contenedores se introdujeron en la plataforma a partir de Windows Server 2016. Debes estar ejecutando Windows Server 2016 o Windows 10 Anniversary update (versión 1607) o posterior para utilizar los contenedores.
+Los contenedores se introdujeron en la plataforma a partir de Windows Server 2016. Debes estar ejecutando Windows Server 2016 o Windows 10 Anniversary update (versión 1607) o posterior para usar contenedores.
 
 ### <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10-enterprise-or-professional"></a>¿Puedo ejecutar contenedores de Windows en el modo de aislamiento de proceso en Windows 10 Enterprise o Professional?
 
-A partir de Windows, 10 de octubre de 2018 Update, que ya no impide un usuario se ejecuten un contenedor de Windows con aislamiento de procesos. Debes solicitar directamente para el aislamiento de procesos mediante el uso de la `--isolation=process` marca al ejecutar los contenedores a través de `docker run`.
+A partir de Windows, 10 de octubre de 2018 Update, que ya no impide un usuario ejecuta un contenedor de Windows con aislamiento de procesos. Debes solicitar directamente para el aislamiento de procesos mediante el uso de la `--isolation=process` marca al ejecutar los contenedores a través de `docker run`.
 
-Si esto es algo que te interesan, debes Asegúrese de que el host se está ejecutando Windows 10, compilación 17763 + y tiene una versión de docker con motor 18.09 o más reciente.
+Si esto es algo que te interesan, debes Compruebe el host se está ejecutando Windows 10, compilación 17763 + y tiene una versión de docker con motor 18.09 o más reciente.
 
 > [!WARNING]
-> Esta característica solo está pensada para desarrollo y pruebas. Se debe seguir usando Windows Server que el host para las implementaciones de producción.
+> Esta característica solo está pensada para desarrollo y pruebas. Se debe seguir usando Windows Server que el host para entornos de producción.
 >
-> Mediante el uso de esta característica, también debes asegurarte de que coincidan con las etiquetas de versión de host y el contenedor, de lo contrario el contenedor puede no iniciarse o se puede mostrar un comportamiento definido.
+> Al usar esta característica, también debes asegurarte de que coincidan con las etiquetas de versión de host y el contenedor, de lo contrario el contenedor puede no iniciarse o puede presentar un comportamiento no definido.
 
 ## <a name="windows-container-management"></a>Administración de contenedores de Windows
 
 ### <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>¿Cómo hacer Mis imágenes de contenedor disponibles en máquinas han?
 
-Las imágenes base del contenedor de Windows contienen artefactos cuya distribución está restringida por la licencia. Cuando se basan en estas imágenes e inserción ellos en un registro público o privado, verás que nunca se inserta el nivel de base. En su lugar, usamos el concepto de una capa externo que apunte a la capa de base real que se encuentran en el almacenamiento de nube de Azure.
+Las imágenes base del contenedor de Windows contienen artefactos cuya distribución está restringida por la licencia. Al compilar en estas imágenes e insertarlos en un registro público o privado, verás que nunca se inserta el nivel de base. En su lugar, usamos el concepto de una capa externa que apunta a la capa de base real que se encuentran en el almacenamiento de nube de Azure.
 
-Esto puede presentar un problema cuando tienes una máquina han que puede _solo_ las imágenes de extracción de la dirección de _tu_ registro de contenedor privada. Intenta seguir la capa externa para obtener la imagen base en este caso daría un error. Para invalidar el comportamiento de capa externa, puedes usar el `--allow-nondistributable-artifacts` marca en el demonio de Docker.
+Esto puede suponer un problema cuando tienes una máquina han que puede _solo_ las imágenes de extracción desde la dirección de seguridad _del_ registro de contenedor privada. Intenta seguir la capa externa para obtener la imagen base en este caso daría un error. Para invalidar el comportamiento de capa externa, puedes usar el `--allow-nondistributable-artifacts` marca en el demonio de Docker.
 
 > [!IMPORTANT]
-> Uso de esta marca no impedirá su obligación de cumplir con los términos de la licencia de imagen base del contenedor de Windows. no debe registrar el contenido de Windows para la redistribución de terceros público o 3. Se permite el uso de tu propio entorno.
+> Uso de esta marca no impedirá su obligación de cumplir con los términos de la licencia de imagen base del contenedor de Windows. no debe registrar el contenido de Windows para la redistribución de terceros público o 3. Se permite el uso dentro de su propio entorno.
 
 ## <a name="microsofts-open-ecosystem"></a>Ecosistema abierto de Microsoft
 
@@ -68,4 +68,5 @@ Esto puede presentar un problema cuando tienes una máquina han que puede _solo_
 
 Para garantizar que el formato de empaquetado permanece universal, Docker organizó recientemente la Open Container Initiative (OCI), con el objetivo de garantizar que el empaquetado de contenedores permanece como un formato abierto y guiado por una fundación, con Microsoft como uno de los miembros fundadores.
 
-> ! [SUGERENCIA] ¿Tienes una recomendación para un complemento a las preguntas más frecuentes? Te animamos a un nuevo problema de comentarios debajo o abrir un PR contra estos documentos con las recomendaciones!
+> [!TIP]
+> ¿Tiene una recomendación para un complemento a las preguntas más frecuentes? Te animamos a un nuevo problema de comentarios debajo o abrir un PR contra estos documentos con las recomendaciones!

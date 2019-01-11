@@ -33,7 +33,7 @@
 ## Kubernetes en Windows 
 ### [Introducción](kubernetes/getting-started-kubernetes-windows.md)
 ### [Crear un maestro de Kubernetes](kubernetes/creating-a-linux-master.md)
-### [Elección de una solución de red](kubernetes/network-topologies.md)
+### [Elegir una solución de red](kubernetes/network-topologies.md)
 ### [Unirse a los trabajadores de Windows](kubernetes/joining-windows-workers.md)
 ### [Unirse a los trabajadores de Linux](kubernetes/joining-linux-workers.md)
 ### [Implementación de recursos de Kubernetes](kubernetes/deploying-resources.md)
@@ -54,6 +54,7 @@
 ## [Requisitos del sistema](deploy-containers/system-requirements.md)
 ## [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
 ## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
+## [Dispositivos de hardware de contenedores](deploy-containers/hardware-devices-in-containers.md)
 ## [Herramientas de la plataforma de contenedor](deploy-containers/containerd.md)
 ## [Cuentas del servicio de Active Directory](manage-containers/manage-serviceaccounts.md)
 ## [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
