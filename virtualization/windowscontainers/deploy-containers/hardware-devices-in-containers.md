@@ -3,12 +3,12 @@ title: Dispositivos en contenedores en Windows
 description: ¿Qué soporte técnico de dispositivo existe para contenedores en Windows
 keywords: docker, contenedores, los dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: b300c9a4262c30da3f6fdf2c4aeedab76b167417
-ms.sourcegitcommit: 4336d7617c30d26a987ad3450b048e17404c365d
+ms.openlocfilehash: f70388bf3724af7cb92f20e2053aa4ddb1f953a3
+ms.sourcegitcommit: 5cbaef0806db21d7bbcc99964837f10f4207a51f
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001051"
+ms.locfileid: "9001757"
 ---
 # <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores en Windows
 
@@ -43,7 +43,7 @@ Esto significa que **no** va a asignar el dispositivo de host. En su lugar, el h
 
 ## <a name="what-devices-are-supported"></a>¿Qué son compatibles con dispositivos
 
-Hoy en día, se admiten los siguientes dispositivos (y sus clas de interfaz de dispositivo GUID):
+Los siguientes dispositivos (y el GUID de clase de la interfaz de dispositivo) son compatibles actualmente:
   
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
