@@ -3,12 +3,12 @@ title: Dispositivos en contenedores en Windows
 description: ¿Qué soporte técnico de dispositivo existe para contenedores en Windows
 keywords: docker, contenedores, los dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: f70388bf3724af7cb92f20e2053aa4ddb1f953a3
-ms.sourcegitcommit: 5cbaef0806db21d7bbcc99964837f10f4207a51f
+ms.openlocfilehash: 6397a5050ee0c7cb4b62dc935af4975d9ab6b3db
+ms.sourcegitcommit: 1b6a244c3604e48c42c851e580e3b59e2384c91a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001757"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "9014522"
 ---
 # <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores en Windows
 
@@ -17,9 +17,9 @@ De manera predeterminada, los contenedores de Windows se otorga acceso mínimo p
 ## <a name="requirements"></a>Requisitos
 
 - Debes estar ejecutando Windows Server 2019 o posterior o Windows 10 Pro/Enterprise con la de octubre de 2018 Update
-- Debes estar ejecutando Docker versión 18.09 o posterior.
 - La versión de la imagen de contenedor debe ser 1809 o posterior.
 - Los contenedores deben ser contenedores de Windows que se ejecutan en el modo de aislamiento de proceso.
+- Aunque la funcionalidad de dispositivos de Windows existe en el demonio de Docker, no existe aún en el cliente de Docker (consulta esta [solicitud de extracción](https://github.com/docker/cli/pull/1606) para realizar un seguimiento). En el interrim, debes [crear tus propio ejecutables de docker](https://github.com/moby/moby/blob/master/docs/contributing/software-req-win.md) desde el origen de moby como solución alternativa. Si no estás familiarizado hacerlo, te recomendamos que esperar para probar esta funcionalidad hasta que se combina PR vinculado anteriormente.
 
 ## <a name="run-a-container-with-a-device"></a>Ejecutar un contenedor con un dispositivo
 
