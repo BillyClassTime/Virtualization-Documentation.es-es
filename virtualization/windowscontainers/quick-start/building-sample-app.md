@@ -7,12 +7,12 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 20328cb47d106dad153738628fc282d63371a3ab
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 970f039e97ce0628c7a7f78c417017fc95570f82
+ms.sourcegitcommit: 51da93c4548c5df7a9f01e54d46d81b338c874cf
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973605"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "9031169"
 ---
 # <a name="build-a-sample-app"></a>Crear una aplicación de ejemplo
 
