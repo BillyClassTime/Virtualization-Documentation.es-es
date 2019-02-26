@@ -8,24 +8,24 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 0350e62deef06402991f505dd263db7fd506cba1
-ms.sourcegitcommit: 1aef193cf56dd0870139b5b8f901a8d9808ebdcd
+ms.openlocfilehash: a28b9ced2c9669b65bfa02bd02c1061226dcea7e
+ms.sourcegitcommit: f172d14ef1ebfb5a9df1b3529e0722d9103e0eba
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "9001591"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "9112922"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
-En el anterior inicio rápido de Windows Server, se ha creado un contenedor de Windows a partir de un ejemplo de .NET Core creado previamente. En este ejercicio, se detallará la automatización de la creación de imágenes de contenedor mediante un Dockerfile y se almacenarán imágenes de contenedor en el registro público de Docker Hub.
+En el anterior inicio rápido de Windows Server, se ha creado un contenedor de Windows a partir de un ejemplo de .NET Core creado previamente. En este ejercicio se muestra cómo crear tu propia imagen de contenedor desde un Dockerfile y almacenar la imagen de contenedor en el registro público de Docker Hub.
 
-Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2016 y usará la imagen base del contenedor de Windows Server Core. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
+Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2019 o Windows Server 2016 y usará la imagen base del contenedor de Windows Server Core. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 Asegúrese de que se cumplen los requisitos siguientes:
 
-- Un equipo (físico o virtual) con Windows Server 2016.
+- Sistema de un equipo (físico o virtual) ejecutando Windows Server 2019 o Windows Server 2016.
 - Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulte [Windows Containers on Windows Server (Contenedores de Windows en Windows Server)](./quick-start-windows-server.md).
 - Un identificador de Docker, que se usará para insertar una imagen de contenedor en Docker Hub. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
