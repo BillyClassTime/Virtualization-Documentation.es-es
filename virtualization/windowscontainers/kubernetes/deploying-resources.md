@@ -1,22 +1,22 @@
 ---
-title: Unirse a nodos Linux
+title: Unirse a nodos de Linux
 author: daschott
 ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: Implementación de Kubernetes resoureces en un clúster de Kubernetes de sistemas operativos combinados.
-keywords: kubernetes, 1.12, windows, introducción
+keywords: kubernetes, 1.13, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 608cda1494d03da59e8a875910c8eedd04ba11dc
-ms.sourcegitcommit: 8e9252856869135196fd054e3cb417562f851b51
+ms.openlocfilehash: 7d2f1dd789a96a3ee4898ef196f872e574d6321f
+ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "6179088"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9120483"
 ---
 # <a name="deploying-kubernetes-resources"></a>Implementación de recursos de Kubernetes #
-Si que tienes un clúster de Kubernetes que consta de patrón de al menos 1 y 1 trabajador, estás listo para implementar los recursos de Kubernetes.
+Si que tienes un clúster de Kubernetes que consta de al menos 1 maestro y 1 trabajadores, estás listo para implementar los recursos de Kubernetes.
 > [!TIP] 
 > ¿Qué recursos de Kubernetes se admiten actualmente en Windows curiosidad? Consulte [admite oficialmente las características](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features) y [Kubernetes en la guía básica de Windows](https://trello.com/b/rjTqrwjl/windows-k8s-roadmap) para obtener más detalles.
 
@@ -31,7 +31,7 @@ kubectl get nodes
 
 Si todo parece correcto, puedes descargar y ejecutar el servicio de siguiente:
 > [!Important] 
-> Antes de `kubectl apply`, realizar seguro a doble-check o modificar la `microsoft/windowsservercore` imagen en el archivo de ejemplo para [una imagen de contenedor que es ejecutable por los nodos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions).
+> Antes de `kubectl apply`, realizar seguro a doble-check o modificar la `microsoft/windowsservercore` imagen en el archivo de ejemplo para [una imagen de contenedor es runnable por los nodos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions)!
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/l2bridge/manifests/simpleweb.yml -O win-webserver.yaml
@@ -39,11 +39,11 @@ kubectl apply -f win-webserver.yaml
 watch kubectl get pods -o wide
 ```
 
-Esto creará una implementación y un servicio. El último comando inspección consulta los pods indefinidamente para realizar un seguimiento de su estado; Simplemente presiona `Ctrl+C` para salir de la `watch` comando cuando hecho finalizado.
+Esto creará una implementación y un servicio. El último comando inspección consultas los pods indefinidamente para realizar un seguimiento de su estado; Simplemente presiona `Ctrl+C` para salir de la `watch` comando cuando hecho finalizado.
 
 Si todo ha funcionado correctamente, podrás:
 
-  - Ver 2 contenedores por pod en `docker ps` comando en el nodo de Windows
+  - Ver 2 contenedores por pod bajo `docker ps` comando en el nodo de Windows
   - ver 2 pods en un comando `kubectl get pods` desde el maestro de Linux
   - `curl` en las IP de *pod* del puerto 80 del maestro de Linux que obtiene una respuesta del servidor web; esto demuestra el nodo adecuado a la comunicación de pod de la red.
   - hacer ping *entre pods* (incluidos entre hosts, si tienes más de un nodo de Windows) a través de `docker exec`; esto demuestra la comunicación adecuada de pod a pod
@@ -72,3 +72,7 @@ En esta sección, hemos visto cómo programar los recursos de Kubernetes en nodo
 
 > [!div class="nextstepaction"]
 > [Solución de problemas](./common-problems.md)
+
+De lo contrario, también puede interesarte en marcha componentes de Kubernetes como servicios de Windows:
+> [!div class="nextstepaction"]
+> [Servicios de Windows](./kube-windows-services.md)
