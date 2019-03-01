@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 3b592620f4667450c2454f8760b7f3c844c7e2ab
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: bbc405fc2a490cfe5082be112fde724707e24785
+ms.sourcegitcommit: 21d93e5febd9b1b47ae1aa59d08086e6ec1691e0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948054"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "9121057"
 ---
 # <a name="docker-engine-on-windows"></a>Docker Engine en Windows
 
@@ -23,12 +23,12 @@ El motor de Docker y el cliente no se incluyen con Windows y que esté instalado
 ## <a name="install-docker"></a>Instalar Docker
 Para trabajar con contenedores de Windows es necesario Docker. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La forma más fácil de instalar todo está en las guías de inicio rápido. Ayudan a obtener todo lo que permite configurar y ejecuta tu primer contenedor. 
 
-* [Contenedores de Windows en Windows Server 2016](../quick-start/quick-start-windows-server.md)
+* [Contenedores de Windows en Windows Server 2019](../quick-start/quick-start-windows-server.md)
 * [Contenedores de Windows en Windows 10](../quick-start/quick-start-windows-10.md)
 
 Para instalaciones con script, consulta [Usar un script para instalar Docker EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee).
 
-Antes de que se puede usar Docker que instalarse imágenes de contenedor. Para obtener más información, consulta [Guía de inicio de la rápido para usar imágenes](../quick-start/quick-start-images.md).
+Antes de que se puede usar Docker que se puede instalar imágenes de contenedor. Para obtener más información, consulta [Guía de inicio de la rápido para usar imágenes](../quick-start/quick-start-images.md).
 
 ## <a name="configure-docker-with-configuration-file"></a>Configurar Docker con el archivo de configuración
 
