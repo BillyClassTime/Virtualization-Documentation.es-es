@@ -3,17 +3,17 @@ title: Cuentas de servicio administradas de grupo para contenedores de Windows
 description: Cuentas de servicio administradas de grupo para contenedores de Windows
 keywords: docker, contenedores, active directory, gmsa
 author: rpsqrd
-ms.date: 03/21/2019
+ms.date: 03/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 5f80d245984b0cf5c4503971a74cc8bbcca0c19c
-ms.sourcegitcommit: f53b8b3dc695cdf22106095b15698542140ae088
+ms.openlocfilehash: 17c4089c98a74ea5937bac5d0eb4d4f1749aecf7
+ms.sourcegitcommit: b8afbfb63c33a491d7bad44d8d5962e6a60cb566
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 03/22/2019
-ms.locfileid: "9257412"
+ms.locfileid: "9257451"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Cuentas de servicio administradas de grupo para contenedores de Windows
 
@@ -288,14 +288,14 @@ Cached Tickets: (2)
 [...]
 ```
 
-Para abrir PowerShell o a otra aplicación de consola como la cuenta de gMSA, puede solicitar el contenedor se ejecute en la cuenta de la cuenta en lugar de ContainerAdministrator normal (o ContainerUser para NanoServer) del sistema:
+Para abrir PowerShell o a otra aplicación de consola como la cuenta de gMSA, puede solicitar el contenedor se ejecute en la cuenta de la cuenta en lugar de ContainerAdministrator normal (o ContainerUser para NanoServer) de servicio de red:
 
 ```powershell
 # NOTE: you can only run as SYSTEM on Windows Server 1709 and later
-docker run --security-opt "credentialspec=file://contoso_webapp01.json" --hostname webapp01 --user "NT AUTHORITY\SYSTEM" -it mcr.microsoft.com/windows/servercore:ltsc2019 powershell
+docker run --security-opt "credentialspec=file://contoso_webapp01.json" --hostname webapp01 --user "NT AUTHORITY\NETWORK SERVICE" -it mcr.microsoft.com/windows/servercore:ltsc2019 powershell
 ```
 
-Cuando ejecutas como sistema, puedes probar la autenticación de red como la gMSA al intentar conectarse a SYSVOL en un controlador de dominio:
+Cuando ejecutas como servicio de red, puedes probar la autenticación de red como la gMSA al intentar conectarse a SYSVOL en un controlador de dominio:
 
 ```
 # This command should succeed if you're successfully running as the gMSA
