@@ -1,20 +1,15 @@
 ---
 title: Acerca de los contenedores de Windows
 description: Obtenga información sobre los contenedores de Windows.
-keywords: docker, contenedores
+keywords: 'docker, contenedores'
 author: taylorb-microsoft
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 16cf281193ced00ea1b0e2d96291de7f44822284
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
-ms.translationtype: MT
-ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973615"
 ---
+
 # <a name="containers-on-windows"></a>Contenedores en Windows
 
 ## <a name="what-are-containers"></a>Qué son los contenedores
@@ -23,11 +18,11 @@ Los contenedores son una forma de encapsular una aplicación en su propio espaci
 
 Imagina una cocina. Empaquetamos todos los electrodomésticos y mobiliario, cacerolas y sartenes, jabón para vajilla y toallas de mano. Este es nuestro contenedor.
 
-<center style="margin: 25px">![](media/box1.png)</center>
+![Analogía de cocina](media/box1.png)
 
 Ahora podemos tomar este contenedor y colocarlo en el apartamento que queramos, y tendremos la misma cocina. Todo lo que debemos hacer es conectar la electricidad y agua a ella y, a continuación, estamos listos para empezar a cocinar (porque tenemos todos los electrodomésticos que necesitamos).
 
-<center style="margin: 25px">![](media/apartment.png)</center>
+![Analogía apartamento](media/apartment.png)
 
 De forma muy similar, los contenedores se parecen a esta cocina. Es posible que haya diferentes tipos de habitaciones, así como un gran número de los mismos tipos de habitaciones. Lo importante es que los contenedores incluyan todo lo que necesitan.
 
@@ -37,7 +32,7 @@ Vea una breve introducción a continuación:
 
 ## <a name="container-fundamentals"></a>Conceptos básicos de los contenedores
 
-Los contenedores son un entorno de ejecución portátil, aislado y controlado por recursos que se ejecuta en una máquina host o virtual. Una aplicación o proceso que se ejecuta en un contenedor incluye todos los archivos de configuración y dependencias necesarios, por tanto, tiene la sensación de que no hay otros procesos en ejecución fuera del contenedor.
+Los contenedores son un entorno de ejecución portátil, aislado y controlado por recursos que se ejecuta en una máquina host o virtual. Una aplicación o proceso que se ejecuta en un contenedor se empaqueta con todas las dependencias necesarias y los archivos de configuración; ha dado la ilusión de que no hay otros procesos que se ejecutan fuera del contenedor.
 
 El host del contenedor aprovisiona un conjunto de recursos para el contenedor y este solo usará estos recursos. Lo respecta el contenedor, no existen otros recursos fuera de lo que se le ha asignado y, por tanto, el contenedor no puede acceder a los recursos que pueden haber aprovisionado un contenedor vecino.
 
@@ -53,7 +48,7 @@ Los siguientes conceptos clave te resultarán útiles cuando empieces a crear y 
 
 **Repositorio de contenedor:** cada vez que se crea una imagen de contenedor, esta y sus dependencias se almacenan en un repositorio local. Estas imágenes se pueden reutilizar muchas veces en el host de contenedor. Las imágenes de contenedor también pueden almacenarse en un registro público o privado, como DockerHub, de forma que se puedan usar en varios hosts de contenedor diferentes.
 
-<center>![](media/containerfund.png)</center>
+![Conceptos básicos de contenedor](media/containerfund.png)
 
 Para alguien familiarizado con las máquinas virtuales, puede parecer que los contenedores son increíblemente similares. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales.
 
@@ -73,7 +68,7 @@ La ejecución de un contenedor en Windows con o sin aislamiento de Hyper-V es un
 
 A medida que lees sobre los contenedores, inevitablemente aparecerá Docker en tu lectura. Docker es el contenedor mediante el que se empaquetan y entregan las imágenes de contenedor. Este proceso automatizado genera imágenes (plantillas) que pueden ejecutarse en cualquier lugar (en entornos locales, en la nube o en un equipo personal) como contenedor.
 
-<center>![](media/docker.png)</center>
+![Contenedores de Docker](media/docker.png)
 
 Al igual que cualquier otro contenedor, un contenedor de WindowsServer puede administrarse con [Docker](https://www.docker.com).
 
@@ -101,7 +96,7 @@ Debido a su tamaño pequeño y a la orientación de la aplicación, los contened
 La definición estándar de la orquestación incluye las siguientes tareas:
 
 - Programación: dada una imagen de contenedor y una solicitud de recursos, se busca una máquina adecuada en la que ejecutar el contenedor.
-Afinidad/Antiafinidad: se especifica que un conjunto de contenedores debe ejecutarse cerca entre sí (para mejorar el rendimiento) o lo suficientemente alejado (para ofrecer disponibilidad).
+- Afinidad/Antiafinidad: se especifica que un conjunto de contenedores debe ejecutarse cerca entre sí (para mejorar el rendimiento) o lo suficientemente alejado (para ofrecer disponibilidad).
 - Supervisión de estado: se buscan errores en el contenedor y se reprograman automáticamente.
 - Conmutación por error: se realiza un seguimiento de lo que se ejecuta en cada máquina y se vuelven a programar contenedores de máquinas con errores a nodos en buen estado.
 - Escalado: se agregan o quitan instancias de contenedor para que coincidan con la demanda, ya sea de forma manual o automática.
