@@ -57,7 +57,7 @@
 ## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 ## [Dispositivos de hardware de contenedores](deploy-containers/hardware-devices-in-containers.md)
 ## [Herramientas de la plataforma de contenedor](deploy-containers/containerd.md)
-## [Cuentas del servicio de Active Directory](manage-containers/manage-serviceaccounts.md)
+## [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)
 ## [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Contenedores de Linux en Windows](deploy-containers/linux-containers.md)
 
