@@ -3,17 +3,17 @@ title: Cuentas de servicio administradas de grupo para contenedores de Windows
 description: Cuentas de servicio administradas de grupo para contenedores de Windows
 keywords: docker, contenedores, active directory, gmsa
 author: rpsqrd
-ms.date: 03/22/2019
+ms.date: 03/25/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 17c4089c98a74ea5937bac5d0eb4d4f1749aecf7
-ms.sourcegitcommit: b8afbfb63c33a491d7bad44d8d5962e6a60cb566
+ms.openlocfilehash: 20daa81a571fde23b91e24e9713e37d225870ec0
+ms.sourcegitcommit: 1dec99a5b295e8a08022ae3dec128c7c7818ad15
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "9257451"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9262358"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Cuentas de servicio administradas de grupo para contenedores de Windows
 
@@ -342,8 +342,8 @@ Vea el [ejemplo enjambre de Docker](https://docs.docker.com/engine/reference/com
 
 ### <a name="using-gmsa-with-kubernetes"></a>Uso de gMSA con Kubernetes
 
-Soporte técnico para la programación de los contenedores de Windows con gmsa las en Kubernetes está en alfa soporte a partir de Kubernetes 1.14.
-Comprueba las [La cuentas de servicio administradas de Windows grupo a para explorar de identidad de contenedor](https://github.com/kubernetes/enhancements/blob/master/keps/sig-windows/20181221-windows-group-managed-service-accounts-for-container-identity.md) para la información más reciente acerca de esta característica y obtener información sobre cómo probarlo en la distribución de Kubernetes.
+Soporte técnico para la programación de los contenedores de Windows con gmsa las en Kubernetes está disponible como una característica de alfa en 1.14 de Kubernetes.
+Ver [gMSA de configurar para pods de Windows y los contenedores](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa) de la información más reciente acerca de esta característica y la información sobre cómo probarlo en la distribución de Kubernetes.
 
 ## <a name="example-uses"></a>Usos de ejemplo
 
