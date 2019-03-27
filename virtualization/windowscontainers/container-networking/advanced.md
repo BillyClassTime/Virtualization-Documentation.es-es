@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 017ff7868d10ed58f749c0ef8824dd32586afb2c
-ms.sourcegitcommit: ec186664e76d413d3bf75f2056d5acb556f4205d
-ms.translationtype: HT
+ms.openlocfilehash: cf5173a98032820e1ad72e99e9b6e874dedbed83
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
+ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "1876165"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263522"
 ---
 # <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
 Se admiten varias opciones de controladores de red para aprovechar las características y funcionalidades específicas de Windows. 
@@ -92,13 +92,13 @@ docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11
 Estamos trabajando en cambios en la plataforma para detectar y evitar automáticamente este problema. Actualmente, puede usarse la siguiente solución alternativa para garantizar que IPv6 está habilitado en el equipo host:
 
 ```
-C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters  /v DisabledComponents  /f
+C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters  /v DisabledComponents  /f
 ```
 
 
 #### <a name="linux-containers-on-windows"></a>Contenedores de Linux en Windows
 
-**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información.
+**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información. Aquí es cómo [empezar a trabajar](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux).
 > NOTA: LCOW está haciendo que la VM Linux de Moby esté quedando obsoleta y utilizará el vSwitch interno predeterminado SNP "nat".
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Las VM Linux de Moby usan el conmutador DockerNAT con Docker para Windows (un producto de [Docker CE](https://www.docker.com/community-edition))

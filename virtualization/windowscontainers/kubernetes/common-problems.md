@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1.12, linux, compilar
-ms.openlocfilehash: 30bb0c064c96ff4bd0b6e1c078221b2d9170d4e7
-ms.sourcegitcommit: 817a629f762a4a5d4bcff58302f2bc2408bf8be1
+ms.openlocfilehash: 1c5a5ec90b828a4f2430508f02cb9b9afb1c4d53
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "9149925"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263512"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -44,8 +44,29 @@ Para obtener más información, consulta a oficial [nssm uso](https://nssm.cc/us
 
 ## <a name="common-networking-errors"></a>Errores comunes de redes ##
 
-### <a name="my-windows-pods-do-not-have-network-connectivity"></a>Mis pods de Windows no tienen conectividad de red ###
-Si estás usando las máquinas virtuales, asegúrate de que la suplantación de identidad de MAC está habilitado en todos los adaptadores de red de máquina virtual. Consulta [el anti-spoofing protección](./getting-started-kubernetes-windows.md#disable-anti-spoofing-protection) para obtener más detalles.
+### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>Veo errores como "no se pudo hnsCall en Win32: el disco incorrecto está en la unidad." ###
+Este error puede producirse al realizar modificaciones personalizadas en objetos de SNP o realizar una instalación nueva actualización de Windows que presentan cambios SNP sin destruir objetos SNP antiguos. Indica que un objeto de SNP que se ha creado previamente antes de una actualización no es compatible con la versión de SNP instalada actualmente.
+
+En Windows Server 2019 (y a continuación), los usuarios pueden eliminar objetos de SNP eliminando el archivo HNS.data 
+```
+Stop-Service HNS
+rm C:\ProgramData\Microsoft\Windows\HNS\HNS.data
+Start-Service HNS
+```
+
+Los usuarios deben poder eliminar directamente los puntos de conexión de SNP incompatibles o redes:
+```
+hnsdiag list endpoints
+hnsdiag delete endpoints <id>
+hnsdiag list networks 
+hnsdiag delete networks <id>
+Restart-Service HNS
+```
+
+Los usuarios de Windows Server, versión 1903 puede ir a la siguiente ubicación del registro y eliminar cualquier NIC comenzando por el nombre de red (por ejemplo, `vxlan0` o `cbr0`):
+```
+\\Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\NicList
+```
 
 
 ### <a name="my-windows-pods-cannot-ping-external-resources"></a>Mis pods de Windows no pueden hacer ping a recursos externos ###
@@ -87,6 +108,20 @@ PS C:> C:\flannel\flanneld.exe --kubeconfig-file=c:\k\config --iface=<Windows_Wo
 ```
 
 También hay un [PR](https://github.com/coreos/flannel/pull/1042) que resuelve este problema revisados actualmente.
+
+
+### <a name="on-flannel-host-gw-my-windows-pods-do-not-have-network-connectivity"></a>En Flannel (host gw), Mis pods de Windows no tienen conectividad de red ###
+Si desea utilizar l2bridge para redes (también conocido como [flannel host-gateway](./network-topologies.md#flannel-in-host-gateway-mode)), debes asegurarte de suplantación de direcciones MAC está habilitada para el host de contenedor de Windows (invitados) de las máquinas virtuales. Para lograr esto, debes ejecutar lo siguiente como administrador en el equipo que hospeda las máquinas virtuales (ejemplo de Hyper-V):
+
+```powershell
+Get-VMNetworkAdapter -VMName "<name>" | Set-VMNetworkAdapter -MacAddressSpoofing On
+```
+
+> [!TIP]
+> Si estás usando un producto basado en VMware para satisfacer sus necesidades de virtualización, busque en habilitar el [modo promiscuo](https://kb.vmware.com/s/article/1004099) para el requisito de suplantación de identidad de MAC.
+
+>[!TIP]
+> Si vas a implementar Kubernetes en Azure o máquinas virtuales de IaaS de otros proveedores de nube tú mismo, también puedes usar [las redes de superposición](./network-topologies.md#flannel-in-vxlan-mode) en su lugar.
 
 ### <a name="my-windows-pods-cannot-launch-because-of-missing-runflannelsubnetenv"></a>Mis pods de Windows no se pueden iniciar porque falta /run/flannel/subnet.env ###
 Esto indica que Flannel no se inicia correctamente. Puedes intentar reiniciar flanneld.exe o puedes copiar manualmente los archivos a través de `/run/flannel/subnet.env` en el maestro de Kubernetes para `C:\run\flannel\subnet.env` en el nodo de trabajo de Windows y modificar el `FLANNEL_SUBNET` fila a un número diferente. Por ejemplo, si se desea nodo subred 10.244.4.1/24:

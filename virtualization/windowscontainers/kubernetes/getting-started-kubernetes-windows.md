@@ -8,18 +8,18 @@ ms.prod: containers
 description: Unir un nodo de Windows a un clúster de Kubernetes con v1.13.
 keywords: kubernetes, 1.13, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 2edc940d4132870a6f7d6714bb50faef201136ba
-ms.sourcegitcommit: 817a629f762a4a5d4bcff58302f2bc2408bf8be1
+ms.openlocfilehash: df3185db086e8e38143fe60d90db864038980603
+ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "9149915"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "9263492"
 ---
 # <a name="kubernetes-on-windows"></a>Kubernetes en Windows #
-Esta página sirve como una visión general para comenzar a trabajar con Kubernetes en Windows mediante la combinación de nodos de Windows a un clúster basado en Linux. Con el lanzamiento de 1.13 de Kubernetes en Windows Server [versión 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes), los usuarios pueden sacar provecho de las [características más recientes](https://kubernetes.io/docs/getting-started-guides/windows/#supported-features) en Kubernetes en Windows beta:
+Esta página sirve como una visión general para comenzar a trabajar con Kubernetes en Windows mediante la combinación de nodos de Windows a un clúster basado en Linux. Con el lanzamiento de 1.14 de Kubernetes en Windows Server [versión 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes), los usuarios pueden sacar provecho de las siguientes características de Kubernetes en Windows:
 
   - **redes de superposición**: usar Flannel en modo de vxlan para configurar una red virtual de superposición
-    - requiere cualquier Windows Server 2019 con KB4482887 instalado o compilación de [Windows Server vNext Insider Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/) 18317 +
+    - requiere cualquier Windows Server 2019 con [KB4489899](https://support.microsoft.com/en-us/help/4489899) instalado o compilación de [Windows Server vNext Insider Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/) 18317 +
     - requiere Kubernetes v1.14 (o superior) con `WinOverlay` puerta de característica habilitada
     - requiere Flannel v0.11.0 (o anterior)
   - **administración de red simplificada**: usar Flannel en modo host-gateway para la administración de ruta automático entre los nodos
