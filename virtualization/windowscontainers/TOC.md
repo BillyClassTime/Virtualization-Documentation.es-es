@@ -56,6 +56,7 @@
 ## [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
 ## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 ## [Servicios de impresión](deploy-containers/print-spooler.md)
+## [Aceleración de GPU](deploy-containers/gpu-acceleration.md)
 ## [Dispositivos de hardware de contenedores](deploy-containers/hardware-devices-in-containers.md)
 ## [Herramientas de la plataforma de contenedor](deploy-containers/containerd.md)
 ## [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)

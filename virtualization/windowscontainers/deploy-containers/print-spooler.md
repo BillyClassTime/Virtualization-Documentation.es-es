@@ -3,19 +3,19 @@ title: Administrador de trabajos de impresión en contenedores de Windows
 description: Se explica el comportamiento de trabajo actual para el servicio de cola de impresión en contenedores de Windows
 keywords: docker, contenedores, impresoras, Administrador de trabajos
 author: cwilhit
-ms.openlocfilehash: 45176e651ee2ef9b6daea9919004601734084083
-ms.sourcegitcommit: 04c372c87c832f73a1aa120b0ff6c2c2b9c8c1b1
+ms.openlocfilehash: 48130bc6a826a45dfa49d0a3b4600d227f34704e
+ms.sourcegitcommit: 3c81b0efd1ac2c4c93d58f16edae1044c9a5ad55
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "9257990"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "9284579"
 ---
 # <a name="print-spooler-in-windows-containers"></a>Administrador de trabajos de impresión en contenedores de Windows
 
-Las aplicaciones con una dependencia en los servicios de impresión pueden ser en contenedores correctamente con contenedores de Windows. No pueden estar en contenedores de aplicaciones que tienen una dependencia en instalar controladores de impresora en el host; instalación de controladores desde dentro de un contenedor no se admite, ya que podría perder estado de contenedor en el host. Existen requisitos especiales que se deben cumplir para poder habilitar correctamente la funcionalidad de servicio de impresora. Esta guía explica cómo configurar la implementación de forma adecuada.
+Las aplicaciones con una dependencia en los servicios de impresión pueden ser en contenedores correctamente con contenedores de Windows. Existen requisitos especiales que se deben cumplir para poder habilitar correctamente la funcionalidad de servicio de impresora. Esta guía explica cómo configurar la implementación de forma adecuada.
 
 > [!IMPORTANT]
-> Mientras que obtiene acceso a la impresión de servicios correctamente en contenedores funciona, funcionalidad está limitada, de forma. Algunas acciones relacionadas con la impresión no funcionen. Abra tus comentarios a continuación si ese es el caso.
+> Mientras que obtiene acceso a la impresión de servicios correctamente en contenedores funciona, funcionalidad está limitada, de forma. Algunas acciones relacionadas con la impresión no funcionen. Por ejemplo, las aplicaciones que tienen una dependencia en instalar controladores de impresora en el host no pueden ser en contenedores porque **no se admite la instalación de controladores desde dentro de un contenedor**. Abre tus comentarios a continuación si te encuentras con una función no admitida de impresión que quieres que se admiten en contenedores.
 
 ## <a name="setup"></a>Programa de instalación
 
