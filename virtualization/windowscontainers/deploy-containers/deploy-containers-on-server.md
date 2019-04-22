@@ -8,24 +8,24 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 0d982996a1aabd434df04551f30725a21b31d500
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.openlocfilehash: 35f35b490ce5aa80068578d78a6427ace7352b73
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948014"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380169"
 ---
-# <a name="container-host-deployment---windows-server"></a>Implementación de host de contenedor - Windows Server
+# <a name="container-host-deployment-windows-server"></a>Implementación de host de contenedor: Windows Server
 
 La implementación de un host de contenedor de Windows implica pasos distintos, según el sistema operativo y el tipo de sistema host (físico o virtual). En este documento se describe la implementación de un host de contenedor de Windows para Windows Server 2016 o Windows Server Core 2016, en un sistema físico o virtual.
 
 ## <a name="install-docker"></a>Instalar Docker
 
-Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente. 
+Para trabajar con contenedores de Windows es necesario Docker. Docker consta de motor y cliente.
 
-Para instalar Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/OneGet/MicrosoftDockerProvider). El proveedor habilitará la característica de contenedores en la máquina e instalará Docker, lo que requerirá un reinicio. 
+Para instalar a Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/OneGet/MicrosoftDockerProvider). El proveedor habilitará la característica de contenedores en la máquina e instalará a Docker, lo que requerirá un reinicio.
 
-Abre una sesión de PowerShell con privilegios elevados y ejecuta los comandos siguientes.
+Abre una sesión de PowerShell con privilegios elevados y ejecuta los siguientes cmdlets.
 
 Instala el módulo OneGet de PowerShell.
 
@@ -58,7 +58,7 @@ Para instalar una versión específica, usa el `RequiredVersion` marca:
 Install-Package -Name docker -ProviderName DockerMsftProvider -Force -RequiredVersion 18.03
 ```
 
-Instalación de versiones específicas de Docker EE puede requerir una actualización de módulos de DockerMsftProvider previamente instalados. Para actualizar:
+Instalar versiones específicas de Docker EE puede requerir una actualización de módulos de DockerMsftProvider previamente instalados. Para actualizar:
 
 ```PowerShell
 Update-Module DockerMsftProvider
@@ -74,9 +74,9 @@ Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -Re
 
 ## <a name="install-base-container-images"></a>Instalar imágenes base del contenedor
 
-Para trabajar con contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo del contenedor. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
+Antes de trabajar con los contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo del contenedor. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
-Con el lanzamiento de Windows Server 2019, imágenes de contenedor provenir de Microsoft están cambiando a una nueva configuración del registro llamado el registro de contenedor de Microsoft. Las imágenes de contenedor que Microsoft publicadas deben seguir detectarse a través de Docker Hub. Si hay nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, deberían ser similar para acceder a ellas desde el MCR. Para las imágenes de contenedor publicadas antes de Windows Server 2019 más antiguos, deben seguir acceder a ellas desde el registro de Docker.
+Con el lanzamiento de Windows Server 2019, imágenes de contenedor provenir de Microsoft se mueven a una nueva configuración del registro llamado el registro de contenedor de Microsoft. Las imágenes de contenedor que Microsoft publicadas deben seguir detectarse a través de Docker Hub. Si hay nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, deberían ser similar para acceder a ellas desde el MCR. Para las imágenes de contenedor anteriores publicadas antes de Windows Server 2019, deben seguir acceder a ellas desde el registro de Docker.
 
 ### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 y versiones posterior
 
@@ -106,11 +106,11 @@ Para instalar la imagen base de Nano Server, ejecute lo siguiente:
 docker pull microsoft/nanoserver
 ```
 
-> Lea el CLUF de la imagen de sistema operativo de contenedores de Windows que se encuentra aquí: [CLUF](../images-eula.md).
+> Lee el CLUF, que se encuentra aquí: [CLUF](../images-eula.md)de la imagen de sistema operativo de contenedores de Windows.
 
-## <a name="hyper-v-container-host"></a>Host de contenedor de Hyper-V
+## <a name="hyper-v-isolation-host"></a>Host de aislamiento de Hyper-V
 
-Para ejecutar contenedores de Hyper-V, es necesario el rol de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea [Virtualización anidada]( https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
+Debe tener el rol de Hyper-V para ejecutar el aislamiento de Hyper-V. Si el propio host de contenedor de Windows es una máquina virtual de Hyper-V, debe habilitarse la virtualización anidada antes de instalar el rol de Hyper-V. Para obtener más información sobre la virtualización anidada, vea [Virtualización anidada](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/user_guide/nesting).
 
 ### <a name="nested-virtualization"></a>Virtualización anidada
 
@@ -132,7 +132,7 @@ Get-VMNetworkAdapter -VMName $vm | Set-VMNetworkAdapter -MacAddressSpoofing On
 
 ### <a name="enable-the-hyper-v-role"></a>Habilitación del rol de Hyper-V
 
-Para habilitar la característica de Hyper-V mediante PowerShell, ejecute el siguiente comando en una sesión de PowerShell con privilegios elevados.
+Para habilitar la característica de Hyper-V mediante PowerShell, ejecute el siguiente cmdlet en una sesión de PowerShell con privilegios elevados.
 
 ```PowerShell
 Install-WindowsFeature hyper-v

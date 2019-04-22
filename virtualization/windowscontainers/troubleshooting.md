@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: d67b38b04cf781ab5cba8e0142831f71b65aa974
-ms.sourcegitcommit: 8ab1fccfc680911493c769157a6cfe7cbcf17bde
+ms.openlocfilehash: 4fac4d6e091fdf25e9683adca438302ca3beebfb
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "8972059"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380349"
 ---
 # <a name="troubleshooting"></a>Solución de problemas
 
@@ -28,7 +28,7 @@ Si eso no ayuda encontrar el origen del problema, publique la salida del script 
 
 
 ## <a name="finding-logs"></a>Buscar registros
-Hay varios servicios que se usan para administrar contenedores de Windows. En las secciones siguientes se muestra dónde obtener los registros de cada servicio.
+Hay varios servicios que se usan para administrar los contenedores de Windows. En las secciones siguientes se muestra dónde obtener los registros de cada servicio.
 
 # <a name="docker-engine"></a>Motor de Docker
 El motor de Docker registra en el registro de eventos "Application" de Windows, en lugar de en un archivo. Estos registros se pueden leer, ordenar y filtrar muy fácilmente con Windows PowerShell.
@@ -93,7 +93,7 @@ sc.exe stop docker
 
 ## <a name="obtaining-stack-dump"></a>Obtener el volcado de pila.
 
-Por lo general, esto solo es útil si se solicitan explícitamente el soporte técnico de Microsoft o los desarrolladores de docker. Se puede usar para ayudar a diagnosticar una situación donde parezca docker está bloqueado. 
+Por lo general, esto solo es útil si se solicitan explícitamente el soporte técnico de Microsoft o los desarrolladores de docker. Se puede usarse para ayudar a diagnosticar una situación donde parezca docker está bloqueado. 
 
 Descarga [docker signal.exe](https://github.com/jhowardmsft/docker-signal).
 
@@ -104,7 +104,7 @@ Get-Process dockerd
 docker-signal -pid=<id>
 ```
 
-El archivo de salida se encuentra en la raíz de los datos se está ejecutando docker de directorio. El directorio predeterminado es `C:\ProgramData\Docker`. El directorio real puede confirmarse ejecutando `docker info -f "{{.DockerRootDir}}"`.
+El archivo de salida se encuentra en la raíz de datos se está ejecutando docker de directorio. El directorio predeterminado es `C:\ProgramData\Docker`. El directorio real puede confirmarse ejecutando `docker info -f "{{.DockerRootDir}}"`.
 
 El archivo será `goroutine-stacks-<timestamp>.log`.
 

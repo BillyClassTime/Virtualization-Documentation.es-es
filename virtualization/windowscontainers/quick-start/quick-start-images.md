@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: a28b9ced2c9669b65bfa02bd02c1061226dcea7e
-ms.sourcegitcommit: f172d14ef1ebfb5a9df1b3529e0722d9103e0eba
+ms.openlocfilehash: 41fa89dcaba38d43d39681240a1a108c9250ba78
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "9112922"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380439"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
@@ -26,7 +26,7 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 Asegúrese de que se cumplen los requisitos siguientes:
 
 - Sistema de un equipo (físico o virtual) ejecutando Windows Server 2019 o Windows Server 2016.
-- Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulte [Windows Containers on Windows Server (Contenedores de Windows en Windows Server)](./quick-start-windows-server.md).
+- Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulta [los contenedores de Windows en Windows Server](./quick-start-windows-server.md).
 - Un identificador de Docker, que se usará para insertar una imagen de contenedor en Docker Hub. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
 ## <a name="container-image---dockerfile"></a>Imagen de contenedor (dockerfile)

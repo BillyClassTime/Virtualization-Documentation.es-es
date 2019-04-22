@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: dc500a7b6c0f8f078820407e6ed80ca5868bf4f3
-ms.sourcegitcommit: 95cec99aa8e817d3e3cb2163bd62a32d9e8f7181
+ms.openlocfilehash: 07f5929505226a50a161b4ae7df5669c2ad89d83
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "8973655"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380429"
 ---
 # <a name="windows-containers-on-windows-10"></a>Contenedores de Windows en Windows 10
 
@@ -21,7 +21,7 @@ ms.locfileid: "8973655"
 > - [Contenedores de Linux en Windows](quick-start-windows-10-linux.md)
 > - [Contenedores de Windows en Windows](quick-start-windows-10.md)
 
-Este ejercicio a través de crear y ejecutar contenedores de Windows en Windows 10.
+Este ejercicio a través de la creación y ejecución de contenedores de Windows en Windows 10.
 
 En este inicio rápido llevará a cabo:
 
@@ -31,14 +31,14 @@ En este inicio rápido llevará a cabo:
 Este inicio rápido es específico de Windows10. En la tabla de contenido en el lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Asegúrese de que cumples los requisitos siguientes:
-- Un sistema de equipo físico que ejecuta Windows 10 Professional o Enterprise con actualización de aniversario (versión 1607) o una versión posterior. 
+Asegúrese de que se cumplen los requisitos siguientes:
+- Un sistema de equipo físico que ejecuta Windows 10 Professional o Enterprise con actualización de aniversario (versión 1607) o posterior. 
 - Asegúrese de que [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
 
-***Aislamiento de Hyper-V:*** Contenedores de Windows Server requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores con la misma versión de kernel y configuración que se usará en producción, más acerca de Hyper-V aislamiento puede encontrarse en la página de [contenedor acerca de Windows](../about/index.md) .
+***Aislamiento de Hyper-V:*** Contenedores de Windows Server requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores con la misma versión de kernel y configuración que se usará en producción, más acerca de Hyper-V aislamiento puede encontrarse en la página [contenedora acerca de Windows](../about/index.md) .
 
 > [!NOTE]
-> En la versión de Windows de actualización de octubre de 2018, ya no se impide a los usuarios se ejecuten un contenedor de Windows en el modo de aislamiento de procesos en Windows 10 Enterprise o Professional para fines de desarrollo o prueba. Consulta las [preguntas más frecuentes](../about/faq.md) para obtener más información.
+> En la versión de Windows de actualización de octubre de 2018, ya no se impide a los usuarios ejecuten un contenedor de Windows en el modo de aislamiento de procesos en Windows 10 Enterprise o Professional para fines de desarrollo o prueba. Consulta las [preguntas más frecuentes](../about/faq.md) para obtener más información.
 
 ## <a name="install-docker-for-windows"></a>Instalar a Docker para Windows
 
@@ -72,7 +72,7 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 ```
 
 > [!IMPORTANT]
-> Lee el [CLUF](../images-eula.md)de imagen de sistema operativo de contenedores de Windows.
+> Lee el [CLUF](../images-eula.md)de la imagen de sistema operativo de contenedores de Windows.
 
 ## <a name="run-your-first-windows-container"></a>Ejecutar el primer contenedor de Windows
 
@@ -122,9 +122,9 @@ Finalmente, para quitar el contenedor, use el comando `docker run`.
 docker run --rm helloworld cmd.exe /s /c type Hello.txt
 ```
 
-El resultado de la `docker run` comando es que se creó un contenedor de Hyper-V desde la imagen de "Hola a todos", se ha iniciado en el contenedor y ejecuta una lectura de nuestro archivo (salida Hola al shell) y, a continuación, el contenedor detiene y se quita una instancia de cmd.
+El resultado de la `docker run` comando es que se creó un contenedor que se ejecutan en el aislamiento de Hyper-V desde la imagen de "Hola a todos", una instancia de cmd se ha iniciado en el contenedor y ejecuta una lectura de nuestro archivo (salida Hola al shell) y, a continuación, en el contenedor detiene y se quita.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Obtén información sobre cómo crear una aplicación de ejemplo](./building-sample-app.md)
+> [Obtén información sobre cómo crear una aplicación de muestra](./building-sample-app.md)

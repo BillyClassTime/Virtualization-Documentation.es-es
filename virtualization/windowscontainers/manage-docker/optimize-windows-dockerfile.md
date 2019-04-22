@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: aad0c1f2fa7aea564b7348d662df46256a82abc4
-ms.sourcegitcommit: f376676c7864ae19fcb1649006ce6b60c6218634
+ms.openlocfilehash: 5d9e95d2263c9603712054376bfa9e7190feb1b0
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "8989454"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380409"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Optimizar Dockerfiles de Windows
 
-Pueden usarse varios métodos para optimizar el proceso de compilación de Docker y las imágenes de Docker resultantes. En este documento se explica cómo funciona el proceso de compilación de Docker y se muestran varias tácticas que se pueden usar para una creación de imagen óptima con contenedores de Windows.
+Pueden usarse varios métodos para optimizar el proceso de compilación de Docker y las imágenes de Docker resultantes. Crea este documento se describe cómo funciona el proceso de compilación de Docker y muestra varias tácticas que pueden usarse para imagen óptima con contenedores de Windows.
 
 ## <a name="docker-build"></a>Compilación de Docker
 
@@ -54,9 +54,9 @@ Se pueden escribir Dockerfiles para minimizar las capas de imagen, optimizar el 
 
 ## <a name="optimize-image-size"></a>Optimizar el tamaño de la imagen
 
-Al compilar imágenes de contenedor de Docker, el tamaño de la imagen puede ser un factor importante. Las imágenes de contenedor se mueven entre registros y host, se exportan e importan y, en última instancia, usan espacio. Se pueden usar varias tácticas durante el proceso de compilación de Docker para minimizar el tamaño de la imagen. En esta sección se detallan algunas de estas tácticas específicas de los contenedores de Windows. 
+Al compilar imágenes de contenedor de Docker, el tamaño de la imagen puede ser un factor importante. Las imágenes de contenedor se mueven entre registros y host, se exportan e importan y, en última instancia, usan espacio. Se pueden usar varias tácticas durante el proceso de compilación de Docker para minimizar el tamaño de la imagen. En esta sección se detalla algunas de estas tácticas específicas de los contenedores de Windows.
 
-Para obtener información adicional sobre los procedimientos recomendados de Dockerfile, consulte [Best practices for writing Dockerfiles (Procedimientos recomendados para escribir Dockerfiles)]( https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) en Docker.com.
+Para obtener información adicional sobre los procedimientos recomendados de Dockerfile, consulte [Best practices for writing Dockerfiles (Procedimientos recomendados para escribir Dockerfiles)](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) en Docker.com.
 
 ### <a name="group-related-actions"></a>Acciones relacionadas con grupos
 

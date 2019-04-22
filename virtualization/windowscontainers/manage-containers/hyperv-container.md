@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: db0f8c45c1cdb6617e4c347251284509e2a7d3bc
-ms.sourcegitcommit: 914e0dd1168daf1d2b0f22bd011035016cc08baf
+ms.openlocfilehash: 4ab473c1752c377955bb23bdf6c9ef83a3336aa8
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "9099343"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380129"
 ---
 # <a name="hyper-v-isolation"></a>Aislamiento de Hyper-V
 
@@ -35,9 +35,9 @@ docker run -it --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 cmd
 
 ### <a name="isolation-explanation"></a>Explicación del aislamiento
 
-En este ejemplo se muestra las diferencias de las funcionalidades de aislamiento entre contenedores de Hyper-V y Windows Server. 
+En este ejemplo se muestra las diferencias de las funcionalidades de aislamiento entre el aislamiento de Hyper-V y Windows Server.
 
-Aquí, un proceso de contenedor aislado se está implementando y que hospedará un proceso de ping de ejecución prolongada.
+Aquí, un proceso de contenedor aislado se está implementando y que hospedará un proceso de ping de ejecución larga.
 
 ``` cmd
 docker run -d mcr.microsoft.com/windows/servercore:1809 ping localhost -t
@@ -61,7 +61,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
      67       5      820       3836 ...71     0.03   3964   3 PING
 ```
 
-Por otro lado, en este ejemplo se inicia un contenedor aislado de Hyper-V, así como un proceso de ping. 
+Por otro lado, en este ejemplo se inicia un contenedor aislado de Hyper-V, así como un proceso de ping.
 
 ```
 docker run -d --isolation=hyperv mcr.microsoft.com/windows/nanoserver:1809 ping -t localhost

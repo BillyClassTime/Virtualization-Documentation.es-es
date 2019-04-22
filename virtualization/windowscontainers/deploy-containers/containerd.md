@@ -8,39 +8,38 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 5811ea0761567c3a7db036358b24d1a3e7c51baf
-ms.sourcegitcommit: fdaf666973fca37d8c428e0247454dd47c01f1c3
+ms.openlocfilehash: 9f38775d56a95d96bef42b3a33c2571cc5fb2ca0
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "7460604"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380189"
 ---
 # <a name="container-platform-tools-on-windows"></a>Herramientas de la plataforma de contenedor en Windows
 
-¡La plataforma de contenedor de Windows está en expansión!  Docker es la primera parte del viaje de contenedor, ahora estamos creando otras herramientas de la plataforma de contenedor.
+¡La plataforma de contenedor de Windows está en expansión! Docker es la primera parte del viaje de contenedor, ahora estamos creando otras herramientas de la plataforma de contenedor.
 
-1. [containerd/cri](https://github.com/containerd/cri) - nuevo en Windows Server 2019 o Windows 10 1809.
-1. [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) - un equivalente de host de contenedor de Windows para runc.
-1. [hcs](https://docs.microsoft.com/virtualization/api/) - el servicio de contenedor de Host + correcciones útiles para que sea más fácil de usar.
+* [containerd/cri](https://github.com/containerd/cri) - nuevo en Windows Server 2019 y Windows 10 1809.
+* [runhcs](https://github.com/Microsoft/hcsshim/tree/master/cmd/runhcs) - un equivalente de host de contenedor de Windows para runc.
+* [hcs](https://docs.microsoft.com/virtualization/api/) - el servicio de cálculo de Host + correcciones útiles para que sea más fácil de usar.
+  * [hcsshim](https://github.com/microsoft/hcsshim)
+  * [dotnet-computevirtualization](https://github.com/microsoft/dotnet-computevirtualization)
 
-    * [hcsshim](https://github.com/microsoft/hcsshim)
-    * [computevirtualization de dotnet](https://github.com/microsoft/dotnet-computevirtualization)
-
-En este artículo se habla sobre la plataforma de contenedor de Windows y Linux, así como de cada herramienta de plataforma de contenedor.
+En este artículo se habla sobre la plataforma de contenedor de Windows y Linux, así como cada herramienta de plataforma de contenedor.
 
 ## <a name="windows-and-linux-container-platform"></a>Plataforma de contenedor de Windows y Linux
 
-En entornos de Linux, herramientas de administración de contenedor como Docker se basan en un conjunto de herramientas de contenedor, [runc](https://github.com/opencontainers/runc) y [containerd](https://containerd.io/)más detallado.
+En entornos de Linux, herramientas de administración de contenedor como Docker se basan en un conjunto más detallado de herramientas de contenedor: [runc](https://github.com/opencontainers/runc) y [containerd](https://containerd.io/).
 
 ![Arquitectura de docker en Linux](media/docker-on-linux.png)
 
 `runc` es una herramienta de línea de comandos de Linux para crear y ejecutar contenedores de acuerdo con la [especificación de OCI contenedor en tiempo de ejecución](https://github.com/opencontainers/runtime-spec).
 
-`containerd` es un demonio que administra el ciclo de vida del contenedor de descarga y el desempaquetado la imagen de contenedor a través de la ejecución de contenedor y supervisión.
+`containerd` es un demonio que administra el ciclo de vida del contenedor descarguen y desempaquetar la imagen de contenedor en ejecución de contenedor y supervisión.
 
-En Windows, tomamos un enfoque diferente.  Cuando te empezar a trabajar con Docker para admitir los contenedores de Windows, hemos creado directamente en el HCS (servicio de cálculo de Host).  [Esta entrada de blog](https://blogs.technet.microsoft.com/virtualization/2017/01/27/introducing-the-host-compute-service-hcs/) está lleno de información acerca de por qué se ha creado el HCS y por qué tomamos este enfoque para contenedores inicialmente.
+En Windows, tomamos un enfoque diferente.  Cuando empezamos a trabajar con Docker para admitir los contenedores de Windows, hemos creado directamente en el HCS (servicio de cálculo de Host).  [Esta entrada de blog](https://blogs.technet.microsoft.com/virtualization/2017/01/27/introducing-the-host-compute-service-hcs/) está lleno de información acerca de por qué se ha creado el HCS y por qué tomamos este enfoque para contenedores inicialmente.
 
-![Inicial de la arquitectura del motor de Docker en Windows](media/hcs.png)
+![Arquitectura del motor de Docker inicial en Windows](media/hcs.png)
 
 En este punto, Docker aún llama directamente en el HCS. En el futuro, sin embargo, las herramientas de administración de contenedor expansión para incluir los contenedores de Windows y las ventanas de host de contenedor puede llamar a containerd y runhcs la manera llaman en containerd y runc en Linux.
 
@@ -53,8 +52,8 @@ Diferencias funcionales entre runc y runhcs incluyen:
 * `runhcs` se ejecuta en Windows.  Se comunica con el [HCS](containerd.md#hcs) para crear y administrar contenedores.
 * `runhcs` puede ejecutar una variedad de tipos diferentes de contenedores.
 
-  * Windows y Linux [contenedores de Hyper-V](../manage-containers/hyperv-container.md)
-  * Windows procesa los contenedores (imagen de contenedor debe coincidir con el host de contenedor)
+  * Windows y Linux [aislamiento de Hyper-V](../manage-containers/hyperv-container.md)
+  * Windows procesar contenedores (imagen de contenedor debe coincidir con el host de contenedor)
 
 **Uso:**
 
@@ -69,8 +68,8 @@ Al igual que con runc, los contenedores se configuran mediante paquetes. Recopil
 
 El archivo de especificación de OCI, "config.json", debe tener dos campos para ejecutarse correctamente:
 
-1. Una ruta de acceso al espacio de memoria virtual del contenedor
-1. Una ruta de acceso al directorio de nivel del contenedor
+* Una ruta de acceso al espacio de memoria virtual del contenedor
+* Una ruta de acceso al directorio de nivel del contenedor
 
 Comandos de contenedor disponibles en runhcs incluyen:
 
@@ -79,18 +78,18 @@ Comandos de contenedor disponibles en runhcs incluyen:
   * **crear** , crear un contenedor
 
 * Herramientas para administrar los procesos que se ejecutan en un contenedor:
-  * **Inicio** se ejecuta el proceso de definido por el usuario en un contenedor creado
+  * **Inicio** se ejecuta el proceso definido por el usuario en un contenedor creado
   * un nuevo proceso dentro del contenedor se ejecuta el **método exec**
-  * **Pausar** pausa suspende todos los procesos dentro del contenedor
+  * **Pausar** pause suspende todos los procesos dentro del contenedor
   * **Reanudar** reanuda todos los procesos que se han pausado anteriormente
   * **PS** ps muestra los procesos que se ejecutan dentro de un contenedor
 
 * Herramientas para administrar el estado de un contenedor
   * **estado** envía el estado de un contenedor
   * **Kill** envía la señal especificada (valor predeterminado: SIGTERM) al proceso de inicialización del contenedor
-  * **Delete** elimina todos los recursos mantenidos por el contenedor suelen usado con los contenedores desasociados
+  * **Delete** elimina todos los recursos mantenidos por el contenedor suelen usado con contenedores desasociados
 
-El único comando que podría tener en cuenta varios contenedor es la **lista**.  Enumera los contenedores de ejecución (o en pausa) iniciados por runhcs con la raíz determinada.
+El único comando que podría considerarse varios contenedor es la **lista**.  Enumera los contenedores en pausa o en ejecución iniciados por runhcs con la raíz determinada.
 
 ### <a name="hcs"></a>HCS
 
@@ -98,7 +97,7 @@ Tenemos dos contenedores disponibles en GitHub para interactuar con el HCS. Dado
 
 * [hcsshim](https://github.com/microsoft/hcsshim) - HCSShim se escriben en Ir y es la base de runhcs.
 Obtener la última versión de AppVeyor o crearla tú mismo.
-* [computevirtualization de dotnet](https://github.com/microsoft/dotnet-computevirtualization) -dotnet-computevirtualization es un contenedor de C# para la HCS.
+* [computevirtualization de dotnet](https://github.com/microsoft/dotnet-computevirtualization) -dotnet-computevirtualization es un contenedor de C# para el HCS.
 
 Si quieres usar el HCS (directamente o a través de un contenedor), o que quieras realizar un contenedor óxido/Haskell/InsertYourLanguage el HCS, deje un comentario.
 
@@ -107,10 +106,10 @@ Para obtener un vistazo más profundo a la HCS, mira [presentación de DockerCon
 ## <a name="containerdcri"></a>containerd/cri
 
 > [!IMPORTANT]
-> Soporte técnico CRI solo está disponible en Windows Server 2019 1809 10 y versiones posteriores.  Estamos desarrollando activamente aún containerd para Windows.
+> Soporte técnico CRI solo está disponible en Windows Server 2019 10 1809 y posteriores.  Estamos desarrollando activamente aún containerd para Windows.
 > Desarrollo o prueba solamente.
 
-Mientras que las especificaciones OCI define un contenedor único, [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (interfaz de tiempo de ejecución de contenedor) describe los contenedores como workload(s) en un espacio aislado compartido llama un pod de entorno.  Pods pueden contener uno o más cargas de trabajo de contenedor.  Pods permiten orquestadores de contenedor como Kubernetes y Service Fabric malla controlan agrupados cargas de trabajo que deben estar en el mismo host con algunos recursos compartidos como la memoria y vNETs.
+Mientras que las especificaciones OCI define un contenedor único, [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (interfaz de tiempo de ejecución de contenedor) describe los contenedores como workload(s) en un espacio aislado compartido llama un pod de entorno.  Pods pueden contener uno o más cargas de trabajo de contenedor.  Pods permiten orquestadores de contenedor como Kubernetes y Service Fabric malla controlan las cargas de trabajo agrupados que deben estar en el mismo host con algunos recursos compartidos como la memoria y vNETs.
 
 Vínculos a la especificación de CRI:
 
@@ -119,4 +118,4 @@ Vínculos a la especificación de CRI:
 
 ![Entornos de contenedor en función de Containerd](media/containerd-platform.png)
 
-Mientras runHCS y containerd pueden administrar en un sistema de Windows Server 2016 o posterior, compatibilidad con Pods (grupos de contenedores) requiere cambios importantes a las herramientas de contenedor de Windows.  Soporte técnico CRI está disponible en Windows Server 2019 o Windows 10 1809 y posteriores.
+Mientras runHCS y containerd pueden administrar en un sistema de Windows Server 2016 o posterior, compatibilidad con Pods (grupos de contenedores) requiere cambios importantes a las herramientas de contenedor de Windows.  Soporte técnico CRI está disponible en Windows Server 2019 y Windows 10 1809 y posteriores.

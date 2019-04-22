@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: bbc405fc2a490cfe5082be112fde724707e24785
-ms.sourcegitcommit: 21d93e5febd9b1b47ae1aa59d08086e6ec1691e0
+ms.openlocfilehash: 24de3d332ae4634f7dca945c1df9182cc1310089
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9121057"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380339"
 ---
 # <a name="docker-engine-on-windows"></a>Docker Engine en Windows
 

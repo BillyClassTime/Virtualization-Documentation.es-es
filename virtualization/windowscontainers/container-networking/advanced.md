@@ -8,21 +8,22 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cf5173a98032820e1ad72e99e9b6e874dedbed83
-ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
+ms.openlocfilehash: 001f1abaeefaf34e12b0f7e3323bf32140080d05
+ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "9263522"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "9380009"
 ---
 # <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
+
 Se admiten varias opciones de controladores de red para aprovechar las características y funcionalidades específicas de Windows. 
 
 ## <a name="switch-embedded-teaming-with-docker-networks"></a>Switch Embedded Teaming con redes de Docker
 
-> Se aplica a todos los controladores de red. 
+> Se aplica a todos los controladores de red.
 
-Puedes aprovechar [Switch Embedded Teaming](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set) al crear redes de host de contenedor para que las use Docker si especifica varios adaptadores de red (separados por comas) con la opción `-o com.docker.network.windowsshim.interface`. 
+Puedes aprovechar [Switch Embedded Teaming](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set) al crear redes de host de contenedor para que las use Docker si especifica varios adaptadores de red (separados por comas) con la opción `-o com.docker.network.windowsshim.interface`.
 
 ```
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2", "Ethernet 3" TeamedNet
@@ -30,7 +31,7 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.inte
 
 ## <a name="set-the-vlan-id-for-a-network"></a>Establecer el ID de VLAN para una red
 
-> Se aplica a los controladores de red transparent y l2bridge 
+> Se aplica a los controladores de red transparent y l2bridge
 
 Para establecer un ID de VLAN una red, usa la opción `-o com.docker.network.windowsshim.vlanid=<VLAN ID>` para el comando `docker network create`. Por ejemplo, es posible usar el siguiente comando para crear una red transparente con un ID de VLAN de 11:
 
