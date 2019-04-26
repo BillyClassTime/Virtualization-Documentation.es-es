@@ -1,6 +1,6 @@
 # Introducción
 ## [Acerca de](about/index.md)
-## [Preguntas frecuentes](about/faq.md)
+## [Preguntas más frecuentes](about/faq.md)
 
 # Guías de inicio rápidos
 ## Inicio rápido de Windows10

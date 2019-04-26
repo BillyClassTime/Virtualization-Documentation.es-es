@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 6473c323c675fc59360dd982a14895a93743098a
-ms.sourcegitcommit: a5ff22c205149dac4fc05325ef3232089826f1ef
+ms.openlocfilehash: e3d260bd65b6f81bc4ea9c305937f2784192d28a
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "9380049"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576416"
 ---
 # <a name="containers-on-windows"></a>Contenedores en Windows
 
@@ -50,7 +50,7 @@ Los siguientes conceptos clave le resultarán útiles cuando empezar a crear y t
 
 **Imagen del sistema operativo de contenedor:** los contenedores se implementan a partir de imágenes. La imagen del sistema operativo de contenedor es la primera capa de potencialmente muchas capas de imagen que componen un contenedor. Esta imagen ofrece el entorno del sistema operativo. Una imagen de sistema operativo del contenedor es inmutable. Es decir, no se puede modificar.
 
-**Repositorio de contenedor:** cada vez que se crea una imagen de contenedor, esta y sus dependencias se almacenan en un repositorio local. Estas imágenes se pueden reutilizar muchas veces en el host de contenedor. Las imágenes de contenedor también pueden almacenarse en un registro público o privado, como DockerHub, de forma que se puedan usar en varios hosts de contenedor diferentes.
+**Repositorio de contenedor:** cada vez que se crea una imagen de contenedor, esta y sus dependencias se almacenan en un repositorio local. Estas imágenes se pueden reutilizar muchas veces en el host de contenedor. Las imágenes de contenedor también pueden almacenarse en un registro público o privado, como Docker Hub, por lo que pueden usarse en varios hosts de contenedor diferentes.
 
 ![Conceptos básicos de contenedor](media/containerfund.png)
 
@@ -109,9 +109,9 @@ La definición estándar de la orquestación incluye las siguientes tareas:
 - Detección de servicios: se habilitan contenedores para que puedan localizarse entre sí automáticamente, incluso cuando se muevan entre equipos host y cambien las direcciones IP.
 - Actualizaciones de aplicación coordinadas: se administran las actualizaciones del contenedor para evitar tiempos de inactividad de la aplicación y permitir la reversión si algo va mal.
 
-Azure ofrece dos orquestadores de contenedor: Azure Container Service (AKS) y Service Fabric.
+Azure ofrece dos orquestadores de contenedor: Azure Kubernetes Service (AKS) y Service Fabric.
 
-[Azure Container Service (AKS)](/azure/aks/) hace que sea muy fácil crear, configurar y administrar un clúster de máquinas virtuales preconfiguradas para ejecutarse en aplicaciones en contenedores. Esto te permite aprovechar tus aptitudes o recurrir a la experiencia de la comunidad, un grupo grande y en continuo crecimiento, para implementar y administrar aplicaciones basadas en contenedores en Microsoft Azure. Al usar AKS, puedes sacar provecho de las características de nivel empresarial de Azure, al mismo tiempo que mantienes la portabilidad de la aplicación a través de Kubernetes y el formato de imagen de Docker.
+[Azure Kubernetes Service (AKS)](/azure/aks/) hace que sea más sencillo crear, configurar y administrar un clúster de máquinas virtuales preconfiguradas para ejecutarse en aplicaciones. Esto te permite aprovechar tus aptitudes o recurrir a la experiencia de la comunidad, un grupo grande y en continuo crecimiento, para implementar y administrar aplicaciones basadas en contenedores en Microsoft Azure. Al usar AKS, puedes sacar provecho de las características de nivel empresarial de Azure, al mismo tiempo que mantienes la portabilidad de la aplicación a través de Kubernetes y el formato de imagen de Docker.
 
 [Azure Service Fabric](/azure/service-fabric/) es una plataforma de sistemas distribuidos que facilita el proceso de empaquetar, implementar y administrar microservicios y contenedores escalables y de confianza. Service Fabric aborda los desafíos importantes del desarrollo y la administración de aplicaciones nativas en la nube. Los desarrolladores y los administradores pueden evitar problemas complejos de infraestructura y centrarse en la implementación de cargas de trabajo críticas y exigentes que son escalables, de confianza y fáciles de administrar. Service Fabric representa la plataforma de última generación para crear y administrar estas aplicaciones de escalado en la nube, de nivel 1 y de clase empresarial que se ejecutan en contenedores.
 

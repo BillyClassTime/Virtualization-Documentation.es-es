@@ -4,11 +4,11 @@ description: ¿Qué soporte técnico de dispositivo existe para contenedores en 
 keywords: docker, contenedores, los dispositivos, hardware
 author: cwilhit
 ms.openlocfilehash: 18ae4ab229a677c63c3e17d684a3c3193df49c5e
-ms.sourcegitcommit: 3c81b0efd1ac2c4c93d58f16edae1044c9a5ad55
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "9284599"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576686"
 ---
 # <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores en Windows
 

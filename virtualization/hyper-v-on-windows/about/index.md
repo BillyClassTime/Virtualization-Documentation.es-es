@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
 ms.openlocfilehash: d71c5d2ae3c8ff78e36cc54686b10b1dc745e0c3
-ms.sourcegitcommit: 5e5644bff6dba70e384db6c80787b3bbe7adb93c
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "4303911"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576356"
 ---
 # <a name="introduction-to-hyper-v-on-windows-10"></a>Introducción a Hyper-V en Windows 10
 
@@ -36,9 +36,9 @@ La virtualización permite:
 
 ## <a name="system-requirements"></a>Requisitos del sistema
 
-Hyper-V está disponible en las versiones de 64 bits de Windows 10 Pro, Enterprise y Education. No está disponible en la edición de la página principal.
+Hyper-V está disponible en las versiones de 64 bits de Windows 10 Pro, Enterprise y Education. No está disponible en la edición de casa.
 
-> Puedes actualizar Windows 10 Home edition a Windows 10 Pro abriendo **configuración** > **actualización y seguridad** > **activación**. Aquí puedes visitar store y comprar una actualización.
+> Actualizar Windows 10 Home edition a Windows 10 Pro abriendo **configuración** > **actualización y seguridad** > **activación**. Aquí puedes visitar store y comprar una actualización.
 
 La mayoría de los equipos ejecutarán Hyper-V; sin embargo, cada máquina virtual es un sistema operativo totalmente distinto.  Por lo general, puedes ejecutar una o más máquinas virtuales en un equipo con 4GB de RAM, pero necesitarás más recursos para otras máquinas virtuales o para instalar y ejecutar software que requiere muchos recursos, como juegos, programas de edición de vídeo o software de diseño de ingeniería.
 

@@ -9,11 +9,11 @@ description: Implementación de Kubernetes resoureces en un clúster de Kubernet
 keywords: kubernetes, 1.13, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
 ms.openlocfilehash: 7d2f1dd789a96a3ee4898ef196f872e574d6321f
-ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9120483"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574906"
 ---
 # <a name="deploying-kubernetes-resources"></a>Implementación de recursos de Kubernetes #
 Si que tienes un clúster de Kubernetes que consta de al menos 1 maestro y 1 trabajadores, estás listo para implementar los recursos de Kubernetes.
