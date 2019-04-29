@@ -9,11 +9,11 @@ description: Unir un nodo de Windows a un clúster de Kubernetes con v1.13.
 keywords: kubernetes, 1.13, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
 ms.openlocfilehash: ed0f13bd429e88f05469f91c3fc691bf0188b0a2
-ms.sourcegitcommit: 41318edba7459a9f9eeb182bf8519aac0996a7f1
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9120573"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578246"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Unirse a nodos de servidor de Windows a un clúster #
 Una vez que tengas [un nodo de maestro de Kubernetes de instalación](./creating-a-linux-master.md) y [selecciona la solución de red deseado](./network-topologies.md), estás preparado para unirse a nodos de Windows Server para formar un clúster. Esto requiere [preparación en los nodos de Windows](#preparing-a-windows-node) antes de unir.

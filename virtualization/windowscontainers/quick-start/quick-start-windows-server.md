@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: e3b2a4dc-9082-4de3-9c95-5d516c03482b
-ms.openlocfilehash: b58bdd79da1c644281ebd9e79c16587d9fc156f4
-ms.sourcegitcommit: 21d93e5febd9b1b47ae1aa59d08086e6ec1691e0
+ms.openlocfilehash: fd2de24a4c8c03817978a53b340e2a77285c69ad
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "9121047"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9576716"
 ---
 # <a name="windows-containers-on-windows-server"></a>Contenedores de Windows en Windows Server
 
@@ -34,7 +34,7 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 Asegúrese de que se cumplen los requisitos siguientes:
 - Un equipo (físico o virtual) con Windows Server 2019. Si estás usando Windows Server 2019 Insider Preview, actualice a [Windows Server 2019 Evaluation](https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2019 ).
 
-> Las actualizaciones críticas son necesarias para que la característica Windows Container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
+> Las actualizaciones críticas son necesarias para la característica Windows container funcione. Instale todas las actualizaciones antes de realizar los pasos que se indican en este tutorial.
 
 Si quiere implementar en Azure, esta [plantilla](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-server-container-tools/containers-azure-template) le facilitará la tarea.
 

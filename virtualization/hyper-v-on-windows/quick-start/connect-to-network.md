@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
 ms.openlocfilehash: 2079898ee4a3bd7d15e3cbbaea40486d1682a44a
-ms.sourcegitcommit: 4090d158dd3573ea90799de5b014c131a206b000
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "6121565"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578296"
 ---
 # <a name="create-a-virtual-network"></a>Crear una red virtual
 
@@ -97,10 +97,10 @@ Para configurar una red NAT y conectarla a una máquina virtual, sigue el [Guía
 
 ### <a name="the-two-switch-approach"></a>El enfoque de dos conmutadores
 
-Si estás ejecutando Hyper-V de Windows 10 en un equipo portátil y cambias con frecuencia de redes inalámbricas y una red con cable, puedes crear un conmutador virtual para tarjetas de red inalámbrica y ethernet.  Dependiendo de cómo el equipo portátil se conecta a la red, puedes cambiar las máquinas virtuales entre estos conmutadores. Las máquinas virtuales no cambie entre con cable e inalámbricas automáticamente. 
+Si estás ejecutando Hyper-V de Windows 10 en un equipo portátil y cambias con frecuencia de redes inalámbricas y una red con cable, quieres crear un conmutador virtual para tarjetas de red inalámbrica y ethernet.  Dependiendo de cómo el equipo portátil se conecta a la red, puedes cambiar las máquinas virtuales entre estos conmutadores. Las máquinas virtuales no cambie entre cableadas e inalámbricas automáticamente. 
 
 >[!IMPORTANT]
->El enfoque de dos conmutadores no admite el vSwitch externo a través de la tarjeta inalámbrica y debe usarse solo con fines de prueba.
+>El enfoque de dos conmutadores no admite vSwitch externo a través de la tarjeta inalámbrica y debe usarse solo con fines de prueba.
 
 ## <a name="next-step---create-a-virtual-machine"></a>Siguiente paso: crear una máquina virtual
 [Crear una máquina virtual Windows](create-virtual-machine.md)

@@ -4,11 +4,11 @@ description: Cómo puede Windows ejecutar compilaciones y contenedores en varias
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
 ms.openlocfilehash: c744da429ed8116363437d3117ae1432d7a94f8d
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948084"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9574956"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedores de Windows
 
@@ -32,7 +32,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
         <td style="background-color:#F1F8E9"><b>Windows Server versión 1803</b><br/>Compilaciones 17134.*</td>
         <td style="background-color:#F1F8E9"><b>Windows 10 versión 1803</b><br/>Compilaciones 17134.*</td>
         <td style="background-color:#F1F8E9"><b>Windows Server 2019</b><br/>Compilaciones 17763.*</td>
-        <td style="background-color:#F1F8E9"><b>Windows 10 versión 1809</b><br/>Compilaciones 17763.*</td>
+        <td style="background-color:#F1F8E9"><b>Windows 10, versión 1809</b><br/>Compilaciones 17763.*</td>
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>WindowsServer2016</b><br/>Compilaciones: 14393.*</td>
@@ -47,7 +47,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
     </tr>
     <tr>
         <td style="background-color:#E3F2FD"><b>WindowsServer, versión1709</b><br/>Compilaciones: 16299.*</td>
-        <td>No se admite</td>
+        <td>No compatible</td>
         <td>No se admite</td>
         <td>Admite<br/> `process` o aislamiento de `hyperv`</td>
         <td>Admite<br/> Solo aislamiento de `hyperv`</td>

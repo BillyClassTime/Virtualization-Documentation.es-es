@@ -7,12 +7,12 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 5975f43859368334cab31b6d0eb37f084e9c03ca
-ms.sourcegitcommit: 51da93c4548c5df7a9f01e54d46d81b338c874cf
+ms.openlocfilehash: 970e92def02e5386d38a2e72d5ef921aa8321fdf
+ms.sourcegitcommit: 08cc38955faad26f075b912a64b8ffb6b36f190c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "9031179"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9578688"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Crear una máquina virtual con Hyper-V
 
@@ -22,13 +22,13 @@ Hemos desarrollado nuevas herramientas para la creación de máquinas virtuales 
 
 Elige el sistema operativo para el conjunto correcto de instrucciones:
 
-* [Windows 10 Fall Creators Update y posteriores](quick-create-virtual-machine.md#windows-10-fall-creators-update)
-* [Windows 10 Creators Update](quick-create-virtual-machine.md#windows-10-creators-update)
-* [Actualización de aniversario de Windows 10 y anteriores](quick-create-virtual-machine.md#before-windows-10-creators-update)
+* [Windows 10 Fall Creators Update (v1709) y versiones posteriores](quick-create-virtual-machine.md#windows-10-fall-creators-update-windows-10-version-1709)
+* [Windows 10 Creators Update (v1703)](quick-create-virtual-machine.md#windows-10-creators-update-windows-10-version-1703)
+* [Actualización de aniversario de Windows 10 (v1607) y versiones anteriores](quick-create-virtual-machine.md#before-windows-10-creators-update-windows-10-version-1607-and-earlier)
 
 Empecemos.
 
-## <a name="windows-10-fall-creators-update"></a>Windows10FallCreatorsUpdate
+## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (versión 1709 de Windows 10)
 
 En la actualización Fall Creators Update, Creación rápida se ha ampliado para incluir una galería de máquinas virtuales que se puede iniciar independientemente del administrador de Hyper-V.
 
@@ -53,7 +53,7 @@ Para crear una nueva máquina virtual en la actualización Fall Creators Update:
 
 Eso es todo.  Creación rápida se encargará del resto.
 
-## <a name="windows-10-creators-update"></a>Windows 10 Creators Update
+## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 Creators Update (Windows 10 versión 1703)
 
 ![Captura de pantalla de la interfaz de usuario de creación rápida](media/quickcreatesteps_inked.jpg)
 
@@ -81,7 +81,7 @@ La máquina virtual debe ser algo parecido a esto:
 
 > **Nota**: a menos que estés ejecutando una versión con licencia por volumen de Windows, necesitarás una licencia independiente para la ejecución de Windows en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
 
-## <a name="before-windows-10-creators-update"></a>Antes de la actualización Windows 10 Creators Update
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Antes de Windows 10 Creators Update (versión 1607 y versiones anterior de Windows 10)
 
 Si no ejecutas Windows 10 Creators Update o una versión posterior, sigue estas instrucciones usando en su lugar el Asistente para crear una nueva máquina virtual:
 

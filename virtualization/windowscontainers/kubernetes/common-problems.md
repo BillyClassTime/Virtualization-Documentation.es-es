@@ -8,11 +8,11 @@ ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1.12, linux, compilar
 ms.openlocfilehash: 1c5a5ec90b828a4f2430508f02cb9b9afb1c4d53
-ms.sourcegitcommit: 1715411ac2768159cd9c9f14484a1cad5e7f2a5f
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "9263512"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9577086"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.

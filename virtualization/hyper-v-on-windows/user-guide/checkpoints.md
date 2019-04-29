@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 ms.openlocfilehash: 7ed9c5e3c3067bd8ddfa8005f4d9307c76dce4cd
-ms.sourcegitcommit: 4412583b77f3bb4b2ff834c7d3f1bdabac7aafee
+ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "6948034"
+ms.lasthandoff: 04/26/2019
+ms.locfileid: "9575406"
 ---
 # <a name="using-checkpoints-to-revert-virtual-machines-to-a-previous-state"></a>Uso de puntos de control para revertir máquinas virtuales a un estado anterior
 
@@ -21,7 +21,7 @@ Una de las grandes ventajas de la virtualización es la capacidad de guardar fá
 
 Hyper-V de Windows 10 incluye dos tipos de puntos de control:
 
-* **Puntos de control estándar**: toman una instantánea de la máquina virtual y el estado de memoria de máquina virtual en el momento en que se inicia el punto de control. Una instantánea no es una copia de seguridad completa y puede causar problemas de coherencia de datos con los sistemas que replican datos entre distintos nodos, como Active Directory.  Solo Hyper-V ofrece puntos de control estándar (anteriormente denominados instantáneas) antes de Windows 10.
+* **Puntos de control estándar**: toman una instantánea de la máquina virtual y el estado de la memoria de máquina virtual en el momento en que se inicia el punto de control. Una instantánea no es una copia de seguridad completa y puede causar problemas de coherencia de datos con los sistemas que replican datos entre distintos nodos, como Active Directory.  Solo Hyper-V ofrece puntos de control estándar (anteriormente denominados instantáneas) antes de Windows 10.
 
 * **Puntos de control de producción**: usa el servicio de instantáneas de volumen o la congelación del sistema de archivos en una máquina virtual Linux para crear una copia de seguridad coherente de datos de la máquina virtual. No se crea ninguna instantánea del estado de memoria de la máquina virtual.
 
@@ -42,7 +42,7 @@ Los puntos de control de producción se seleccionan de forma predeterminada, per
 <br />
 ![](media/checkpoint_upd.png)
 
-**Con PowerShell**
+**Uso de PowerShell**
 
 Los siguientes comandos se pueden ejecutar para cambiar el punto de control con PowerShell. 
 
@@ -72,7 +72,7 @@ Para crear un punto de control:
 2. Haga clic con el botón derecho en el nombre de la máquina virtual y luego haga clic en **Punto de control**.
 3. Cuando se complete el proceso, el punto de control aparecerá en **Puntos de control** en el **Administrador de Hyper-V**.
 
-**Con PowerShell**
+**Uso de PowerShell**
 
 Cree un punto de control con el comando **CheckPoint-VM**.  
 
@@ -101,7 +101,7 @@ Si quiere revertir la máquina virtual a un momento concreto anterior, puede apl
   
   Seleccione cualquier opción Aplicar para crear el punto de control.
 
-**Con PowerShell**
+**Uso de PowerShell**
 
 5. Para ver una lista de los puntos de control de una máquina virtual, use el comando **Get-VMCheckpoint**.
 
@@ -155,7 +155,7 @@ Para eliminar correctamente un punto de control:
 2.  En la sección de **puntos de control** , haz clic en el punto de control que quieras eliminar y haga clic en eliminar. También puede eliminar un punto de control y todos los puntos de control posteriores. Para ello, haz clic con el botón derecho en el punto de control más antiguo que quieras eliminar y después haz clic en ****Eliminar punto de control** Subárbol**.
 3.  Es posible que se te pida confirmación para eliminar el punto de control. Confirme que se trata del punto de control correcto y luego haga clic en **Eliminar**. 
  
-**Con PowerShell**
+**Uso de PowerShell**
 ```powershell
 Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 ```

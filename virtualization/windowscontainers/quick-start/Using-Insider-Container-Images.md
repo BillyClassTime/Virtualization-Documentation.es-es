@@ -11,7 +11,7 @@ Este inicio rápido es específico de los contenedores de WindowsServer en el pr
 - Un sistema del equipo (físico o virtual) que ejecute la última versión de Windows Server desde el programa Windows Insider y/o la compilación más reciente de Windows 10 del programa Windows Insider.
 
 > [!IMPORTANT]
-> Debes usar una compilación de Windows Server desde el programa Windows Server Insider Preview o una compilación de Windows 10 desde el programa Windows Insider Preview para usar la imagen base que se describe a continuación. Si no estás utilizando una de estas compilaciones, el uso de estas imágenes base dará como resultado errores al iniciar un contenedor.
+> Debes usar una compilación de Windows Server desde el programa Windows Server Insider Preview o una compilación de Windows 10 desde el programa Windows Insider Preview para utilizar la imagen base que se describe a continuación. Si no estás utilizando una de estas compilaciones, el uso de estas imágenes base dará como resultado errores al iniciar un contenedor.
 
 ## <a name="install-docker-enterprise-edition-ee"></a>Instalar DockerEnterpriseEdition (EE)
 
@@ -70,7 +70,7 @@ docker pull mcr.microsoft.com/windows/servercore/insider
 ```
 
 > [!IMPORTANT]
-> Lee el [CLUF](../EULA.md ) de imagen de sistema operativo de contenedores de Windows y los [Términos de uso](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
+> Lee los contenedores de Windows del sistema operativo [CLUF](../EULA.md ) de la imagen y los [Términos de uso](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
