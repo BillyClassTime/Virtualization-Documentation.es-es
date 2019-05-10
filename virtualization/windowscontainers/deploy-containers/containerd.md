@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: f8bfd60af18731537c2ce02ca7abdb081f3c7369
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 74e22702aa4be30055b3f4f48c7fac926d793095
+ms.sourcegitcommit: 03e9203e9769997d8be3f66dc7935a3e5c0a83e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
 ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620763"
+ms.locfileid: "9621613"
 ---
 # <a name="container-platform-tools-on-windows"></a>Herramientas de la plataforma de contenedor en Windows
 
@@ -117,7 +117,7 @@ containerd/cri permite la siguiente matriz de compatibilidad para pods:
 |:-------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | <ul><li>Windows Server 2019/1809</ul></li><ul><li>Windows 10 1809</ul></li> | Linux | `hyperv` | Sí, admite true pods de varios contenedores. |
 |  | Windows Server 2019/1809 | `process`* o `hyperv` | Sí, admite true pods de varios contenedores si cada contenedor de carga de trabajo del sistema operativo coincide con la utilidad del sistema operativo de máquina virtual. |
-|  | WindowsServer2016</br>WindowsServer1709</br>1803 de Windows Server | `hyperv` | Parcial, admite pod espacios aislados que pueden admitir un contenedor de aislamiento de proceso único por VM de utilidad si el sistema operativo de contenedor coincide con la utilidad del sistema operativo de máquina virtual. |
+|  | Windows Server 2016,</br>Windows Server 1709,</br>1803 de Windows Server | `hyperv` | Parcial, admite pod espacios aislados que pueden admitir un contenedor de aislamiento de proceso único por VM de utilidad si el sistema operativo de contenedor coincide con la utilidad del sistema operativo de máquina virtual. |
 
 Hosts \*Windows 10 solo admiten el aislamiento de Hyper-V
 

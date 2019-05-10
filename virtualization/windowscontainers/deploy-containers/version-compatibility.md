@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 9e20a28f62ec4bb9456307acb7768e1123a57188
-ms.sourcegitcommit: 03e9203e9769997d8be3f66dc7935a3e5c0a83e1
+ms.openlocfilehash: 64b6b400e12060b86594b90474fdedd73dfef45e
+ms.sourcegitcommit: 561eaf94c0c0698d43228ebfcd316a7fcd835a59
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621633"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "9622790"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedor de Windows
 
@@ -116,7 +116,7 @@ docker: Error response from daemon: container b81ed896222eb87906ccab1c3dd2fc4932
 
 Hay tres maneras puede resolver el error:
 
-- Volver a compilar el contenedor en función de la versión correcta de `microsoft/nanoserver` o `microsoft/windowsservercore`
+- Volver a compilar el contenedor en función de la versión correcta de `mcr.microsoft.com/windows/nanoserver` o `mcr.microsoft.com/windows/servercore`
 - Si el host es más recientes, ejecutar **docker run--aislamiento = hyperv …**
 - Prueba a ejecutar el contenedor en otro host con la misma versión de Windows
 

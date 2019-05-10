@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 97e5c598613c806e9f26687951999438fba72a8c
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 492e3b0ba3b1abe1109de3f6091f5b60831036df
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620883"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622980"
 ---
 # <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
 
@@ -41,6 +41,22 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.vlan
 Cuando se establece el identificador de VLAN de una red, se establece el aislamiento de VLAN para los puntos de conexión de contenedor que se adjuntarán a esa red.
 
 > Asegúrate de que el adaptador de red de host (físico) está en modo de tronco para permitir que todo el tráfico etiquetado lo procese el vSwitch con el puerto vNIC (punto de conexión de contenedor) en el modo de acceso de la VLAN correcta.
+
+## <a name="specify-outboundnat-policy-for-a-network"></a>Especificar la directiva de OutboundNAT de una red
+
+> Se aplica a las redes l2bridge
+
+Por lo general, cuando creas un `l2bridge` red de contenedor mediante `docker network create`, los puntos de conexión de contenedor no tienen una directiva de SNP OutboundNAT aplicada, lo que provoca que los contenedores que no se puede alcanzar el exterior. Si vas a crear una red, puedes usar la `-o com.docker.network.windowsshim.enable_outboundnat=<true|false>` opción para aplicar la directiva de OutboundNAT HNS para dar acceso a los contenedores hacia el exterior:
+
+```
+C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true MyL2BridgeNetwork
+```
+
+Si hay un conjunto de destinos (por ejemplo, un contenedor a conectividad es necesario) para que no queremos NAT'ing que se produzca, necesitamos especificar una ExceptionList:
+
+```
+C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true -o com.docker.network.windowsshim.outboundnat_exceptions=10.244.10.0/24
+```
 
 ## <a name="specify-the-name-of-a-network-to-the-hns-service"></a>Especificar el nombre de una red con el servicio SNP
 

@@ -5,15 +5,15 @@ ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Unir un nodo de Windows a un clúster de Kubernetes con v1.13.
-keywords: kubernetes, 1.13, windows, introducción
+description: Unir un nodo de Windows a un clúster de Kubernetes con v1.14.
+keywords: kubernetes, 1.14, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: fec18baa58ae6aa7d637be575548a1823a551207
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: c1781a6ce48ebaa8433f5649a34ac79b852beae6
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620993"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622970"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>Unirse a nodos de servidor de Windows a un clúster #
 Una vez que tengas [un nodo de maestro de Kubernetes de instalación](./creating-a-linux-master.md) y [selecciona la solución de red deseado](./network-topologies.md), estás preparado para unirse a nodos de Windows Server para formar un clúster. Esto requiere [preparación en los nodos de Windows](#preparing-a-windows-node) antes de unir.
@@ -101,8 +101,8 @@ Copia el archivo de certificado de Kubernetes (`$HOME/.kube/config`) [del maestr
 
 #### <a name="download-kubernetes-binaries"></a>Descargar archivos binarios de Kubernetes ####
 Para poder ejecutar Kubernetes, primero debes descargar la `kubectl`, `kubelet`, y `kube-proxy` archivos binarios. Puedes descargarlos en los vínculos del `CHANGELOG.md` archivo de las [versiones más recientes](https://github.com/kubernetes/kubernetes/releases/).
- - Por ejemplo, estos son los [archivos binarios de nodo v1.13](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md#node-binaries).
- - Usar una herramienta como [Archivo de expandir](https://docs.microsoft.com/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
+ - Por ejemplo, estos son los [archivos binarios de nodo v1.14](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md#node-binaries).
+ - Usar una herramienta como [Archivo de expandir](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) para extraer el archivo y colocar los archivos binarios en `C:\k\`.
 
 #### <a name="optional-setup-kubectl-on-windows"></a>(Opcional) El programa de instalación kubectl en Windows ####
 Si desea controlar el clúster de Windows, puede hacerlo mediante la `kubectl` comando. Primero, realizar `kubectl` esté disponible fuera de la `C:\k\` directorio, modificar la `PATH` variable de entorno:
@@ -186,7 +186,7 @@ La dirección IP asignada al nodo de Windows. Puedes usar `ipconfig` encontrar e
 El modo de red `l2bridge` (flannel gw de host) o `overlay` (flannel vxlan) elegido como una [solución de red](./network-topologies.md).
 
 > [!Important] 
-> `overlay` modo de red (flannel vxlan) requiere los archivos binarios de Kubernetes v1.14 o posterior.
+> `overlay` modo de red (flannel vxlan) requiere los archivos binarios de Kubernetes v1.14 (o superior) y [KB4489899](https://support.microsoft.com/help/4489899).
 
 |  |  | 
 |---------|---------|
