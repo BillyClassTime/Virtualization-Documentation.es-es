@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: f9b54dbc9fc7c79bdb9b9aa106d5811401c365f3
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 357fc101b2b0e4d6ccdf53a948ab8d91d19a1522
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578636"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621573"
 ---
 # <a name="linux-containers-on-windows-10"></a>Contenedores de Linux en Windows 10
 
@@ -34,7 +34,7 @@ Este inicio rápido es específico de Windows10. En la tabla de contenido en el 
 
 Asegúrese de que se cumplen los requisitos siguientes:
 - Un sistema de equipo físico que ejecuta Windows 10 Professional o Enterprise con Fall Creators Update (versión 1709) o posterior
-- Asegúrese de que [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
+- Asegúrese de que [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
 
 ***Aislamiento de Hyper-V:*** Los contenedores de Linux en Windows requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores la el kernel de Linux adecuado para ejecutar el contenedor. Más acerca de Hyper-V aislamiento puede encontrarse en la página de [los contenedores de Windows sobre](../about/index.md) .
 

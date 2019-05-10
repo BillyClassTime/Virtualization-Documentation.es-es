@@ -7,12 +7,12 @@ ms.date: 06/25/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: eb2b827c-4a6c-4327-9354-50d14fee7ed8
-ms.openlocfilehash: d71c5d2ae3c8ff78e36cc54686b10b1dc745e0c3
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 14e0f57ca0c952239847e493740048e14889e6d7
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576356"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620723"
 ---
 # <a name="introduction-to-hyper-v-on-windows-10"></a>Introducción a Hyper-V en Windows 10
 
@@ -42,7 +42,7 @@ Hyper-V está disponible en las versiones de 64 bits de Windows 10 Pro, Enterpri
 
 La mayoría de los equipos ejecutarán Hyper-V; sin embargo, cada máquina virtual es un sistema operativo totalmente distinto.  Por lo general, puedes ejecutar una o más máquinas virtuales en un equipo con 4GB de RAM, pero necesitarás más recursos para otras máquinas virtuales o para instalar y ejecutar software que requiere muchos recursos, como juegos, programas de edición de vídeo o software de diseño de ingeniería.
 
-Para obtener más información acerca de los requisitos del sistema de Hyper-V y sobre cómo comprobar que Hyper-V se ejecuta en un equipo, consulta la [Referencia de requisitos de Hyper-V](..\reference\hyper-v-requirements.md).
+Para obtener más información acerca de los requisitos del sistema de Hyper-V y sobre cómo comprobar que Hyper-V se ejecuta en un equipo, consulta la [Referencia de requisitos de Hyper-V](../reference/hyper-v-requirements.md).
 
 ## <a name="operating-systems-you-can-run-in-a-virtual-machine"></a>Sistemas operativos que se pueden ejecutar en una máquina virtual
 
@@ -50,7 +50,7 @@ Hyper-V en Windows admite muchos sistemas operativos diferentes en las máquinas
 
 Como recordatorio, debe tener una licencia válida de los sistemas operativos que use en las VM.
 
-Para obtener información sobre los sistemas operativos que se admiten como invitados en Hyper-V en Windows, consulta [Sistemas operativos invitados de Windows admitidos](supported-guest-os.md) y [Supported Linux Guest Operating Systems](https://technet.microsoft.com/library/dn531030.aspx) (Sistemas operativos invitados de Linux admitidos).
+Para obtener información sobre los sistemas operativos que se admiten como invitados en Hyper-V en Windows, consulta [Sistemas operativos invitados de Windows admitidos](supported-guest-os.md) y [Supported Linux Guest Operating Systems](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows) (Sistemas operativos invitados de Linux admitidos).
 
 ## <a name="differences-between-hyper-v-on-windows-and-hyper-v-on-windows-server"></a>Diferencias entre Hyper-V en Windows y Hyper-V en Windows Server
 
@@ -79,4 +79,4 @@ Además, si ha habilitado Hyper-V, dichas aplicaciones de alta precisión sensib
 
 ## <a name="next-step"></a>Paso siguiente
 
-[Instalar Hyper-V en Windows 10](..\quick-start\enable-hyper-v.md)
+[Instalar Hyper-V en Windows 10](../quick-start/enable-hyper-v.md)

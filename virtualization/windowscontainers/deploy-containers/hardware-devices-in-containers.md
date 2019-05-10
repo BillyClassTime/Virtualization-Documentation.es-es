@@ -3,12 +3,12 @@ title: Dispositivos en contenedores en Windows
 description: ¿Qué soporte técnico de dispositivo existe para contenedores en Windows
 keywords: docker, contenedores, los dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: 18ae4ab229a677c63c3e17d684a3c3193df49c5e
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: f32ba3de347bcf968088d2f3f20f22f82166d652
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576686"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621563"
 ---
 # <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores en Windows
 
@@ -33,7 +33,7 @@ Para iniciar un contenedor con un dispositivo, utilice el siguiente comando:
 docker run --isolation=process --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-Debes reemplazar el `{interface class guid}` con una apropiada [GUID de clase de interfaz de dispositivo](https://docs.microsoft.com/en-us/windows-hardware/drivers/install/overview-of-device-interface-classes), que se puede encontrar en la sección siguiente.
+Debes reemplazar el `{interface class guid}` con una apropiada [GUID de clase de interfaz de dispositivo](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes), que se puede encontrar en la sección siguiente.
 
 Para iniciar un contenedor con varios dispositivos, usa el siguiente comando y encadenar múltiples `--device` argumentos:
 

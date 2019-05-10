@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: 18ab4d1d87c22f70fe09aae5222a7d125ac9c974
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 2771989b7745605fb3ce4f95e162ae8b03180b0f
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578676"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621583"
 ---
 # <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Configurar máquinas virtuales anidadas para comunicarse con los recursos de una red virtual de Azure
 
@@ -26,7 +26,7 @@ Este documento le guiará a través de una implementación mediante el cual se u
 
 Antes de comenzar a esta guía, consulta:
 
-1. Leer la [guía se proporciona aquí](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nested-virtualization) en la virtualización anidada.
+1. Leer la [guía se proporciona aquí](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) en la virtualización anidada.
 2. Leer todo el artículo antes de la implementación.
 
 ## <a name="high-level-overview-of-what-were-doing-and-why"></a>Introducción de nivel alto de lo que hacemos y por qué
@@ -108,7 +108,7 @@ Se por alto la los valores de configuración que estén hasta preferencias perso
 1. Instalar el rol DHCP: `Install-WindowsFeature DHCP -IncludeManagementTools`
 2. Crear el ámbito DHCP: `Add-DhcpServerV4Scope -Name "Nested VMs" -StartRange 10.0.2.2 -EndRange 10.0.2.254 -SubnetMask 255.255.255.0`
 3. Configurar las opciones de DNS y puerta de enlace predeterminada para el ámbito: `Set-DhcpServerV4OptionValue -DnsServer 168.63.129.16 -Router 10.0.2.1`
-    * Asegúrate de entrada de un servidor DNS válido si quieres que la resolución de nombres para que funcione. En este caso uso [recursiva DNS de Azure](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+    * Asegúrate de entrada de un servidor DNS válido si quieres que la resolución de nombres para que funcione. En este caso uso [recursiva DNS de Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
 
 ## <a name="installing-remote-access"></a>Instalación de acceso remoto
 
@@ -145,7 +145,7 @@ Se por alto la los valores de configuración que estén hasta preferencias perso
 
 ## <a name="creating-a-route-table-within-azure"></a>Creación de una tabla de ruta en Azure
 
-Consulta [este artículo](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal) para obtener un más sobre cómo crear y administrar las rutas dentro de Azure de lectura de profundidad.
+Consulta [este artículo](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal) para obtener un más sobre cómo crear y administrar las rutas dentro de Azure de lectura de profundidad.
 
 1. Ve a https://portal.azure.com.
 2. En la esquina superior izquierda selecciona "Crear un recurso".

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 84974f093cc80f8a216518bab051e13397e89b6e
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 762b82f3714651ffb488f682581680c9526404a8
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577436"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621213"
 ---
 # <a name="hyper-v-integration-services"></a>Servicios de integración de Hyper-V
 
@@ -22,7 +22,7 @@ Los servicios de integración (también denominados componentes de integración)
 Este artículo es una referencia para cada servicio de integración disponible en Windows.  También sirve como punto de partida para cualquier información relacionada con servicios de integración específicos o su historial.
 
 **Guías de usuario:**  
-* [Administración de los servicios de integración](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/manage/manage-Hyper-V-integration-services)
+* [Administración de los servicios de integración](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/Manage-Hyper-V-integration-services)
 
 
 ## <a name="quick-reference"></a>Referencia rápida
@@ -52,7 +52,7 @@ Cuando Hyper-V informa de que el estado de una máquina virtual es "Running" (ve
 
 ### <a name="check-heartbeat-with-powershell"></a>Comprobar el latido con PowerShell
 
-Ejecute [Get-VM](https://technet.microsoft.com/en-us/library/hh848479.aspx) como administrador para ver el latido de una máquina virtual:
+Ejecute [Get-VM](https://docs.microsoft.com/powershell/module/hyper-v/get-vm?view=win10-ps) como administrador para ver el latido de una máquina virtual:
 ``` PowerShell
 Get-VM -VMName $VMName | select Name, State, Status
 ```
@@ -102,7 +102,7 @@ El servicio de intercambio de datos es una herramienta excelente para conservar 
 
 
 **Guías de usuario:**  
-* [Utilizar pares clave-valor para compartir información entre el host y el invitado en Hyper-V](https://technet.microsoft.com/en-us/library/dn798287.aspx).  
+* [Utilizar pares clave-valor para compartir información entre el host y el invitado en Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn798287(v=ws.11)).  
 
 
 ## <a name="hyper-v-volume-shadow-copy-requestor"></a>Solicitante de instantáneas de volumen de Hyper-V
@@ -113,9 +113,9 @@ El servicio de intercambio de datos es una herramienta excelente para conservar 
 **Incluido en:** Windows Server 2012, Windows 8  
 **Efecto:** cuando está deshabilitado, no se puede hacer una copia de seguridad de la máquina virtual mientras se esté ejecutando (con VSS).  
 
-El servicio de integración Solicitante de instantáneas de volumen es necesario en el Servicio de instantáneas de volumen ([VSS](https://msdn.microsoft.com/en-us/library/aa384589.aspx)).  El Servicio de instantáneas de volumen (VSS) captura y copia imágenes para la copia de seguridad en los sistemas en ejecución, especialmente los servidores, sin degradar innecesariamente el rendimiento y la estabilidad de los servicios que estos prestan.  Este servicio de integración hace esto posible al coordinar las cargas de trabajo de la máquina virtual con el proceso de copia de seguridad del host.
+El servicio de integración Solicitante de instantáneas de volumen es necesario en el Servicio de instantáneas de volumen ([VSS](https://docs.microsoft.com/windows/desktop/VSS/overview-of-processing-a-backup-under-vss)).  El Servicio de instantáneas de volumen (VSS) captura y copia imágenes para la copia de seguridad en los sistemas en ejecución, especialmente los servidores, sin degradar innecesariamente el rendimiento y la estabilidad de los servicios que estos prestan.  Este servicio de integración hace esto posible al coordinar las cargas de trabajo de la máquina virtual con el proceso de copia de seguridad del host.
 
-Encontrará más información sobre las instantáneas de volumen [aquí](https://msdn.microsoft.com/en-us/library/dd405549.aspx).
+Encontrará más información sobre las instantáneas de volumen [aquí](https://docs.microsoft.com/previous-versions/windows/desktop/virtual/backing-up-and-restoring-virtual-machines).
 
 
 ## <a name="hyper-v-guest-service-interface"></a>Interfaz de servicio de invitado de Hyper-V
@@ -124,7 +124,7 @@ Encontrará más información sobre las instantáneas de volumen [aquí](https:/
 **Nombre del demonio de Linux:** hv_fcopy_daemon  
 **Descripción:** proporciona una interfaz para que el host de Hyper-V copie archivos bidireccionalmente en o desde la máquina virtual.  
 **Incluido en:** Windows Server 2012 R2, Windows 8.1  
-**Efecto:** cuando está deshabilitado, el host no puede copiar archivos en y desde el invitado con `Copy-VMFile`.  Obtenga más información sobre el [cmdlet Copy-VMFile](https://technet.microsoft.com/library/dn464282.aspx).  
+**Efecto:** cuando está deshabilitado, el host no puede copiar archivos en y desde el invitado con `Copy-VMFile`.  Obtenga más información sobre el [cmdlet Copy-VMFile](https://docs.microsoft.com/powershell/module/hyper-v/copy-vmfile?view=win10-ps).  
 
 **Notas:**  
 Deshabilitada de forma predeterminada.  Vea [Copiar archivos con New-PSSession y Copy-Item](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item). 

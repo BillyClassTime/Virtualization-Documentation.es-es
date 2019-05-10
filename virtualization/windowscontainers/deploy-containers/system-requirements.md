@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 942676be30760cbe1701d75f7d2fbca9539ce03b
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 19943e45df7847e83010ca31c01c6cb5b18d41cf
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577066"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621503"
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -37,44 +37,19 @@ Si un host de contenedor de Windows se ejecutarán desde una máquina virtual de
 
 Los contenedores de Windows se ofrecen con cuatro imágenes base de contenedor: Windows Server Core, Nano Server, Windows y IoT Core. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
 
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
-<thead>
-<tr valign="top">
-<th><center>Sistema operativo host</center></th>
-<th><center>Contenedor de Windows Server</center></th>
-<th><center>Aislamiento de Hyper-V</center></th>
-</tr>
-</thead>
-<tbody>
-<tr valign="top">
-<td><center>Windows Server 2016 / 2019 (Standard o Datacenter)</center></td>
-<td><center>Server Core, Nano Server, Windows</center></td>
-<td><center>Server Core, Nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Nano Server<a href="#warn-1">*</a></center></td>
-<td><center> Nano Server</center></td>
-<td><center>Server Core, Nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Windows 10 Pro / Enterprise</center></td>
-<td><center>No disponible</center></td>
-<td><center>Server Core, Nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>IoT Core</center></td>
-<td><center>IoT Core</center></td>
-<td><center>No disponible</center></td>
-</tr>
-</tbody>
-</table>
+|Sistema operativo del host|Contenedor de Windows|Aislamiento de Hyper-V|
+|---------------------|-----------------|-----------------|
+|Windows Server 2016 o Windows Server 2019 (Standard o Datacenter)|Server Core, Nano Server, Windows|Server Core, Nano Server, Windows|
+|Nano Server|Nano Server|Server Core, Nano Server, Windows|
+|Windows 10 Pro o Windows 10 Enterprise|No disponible|Server Core, Nano Server, Windows|
+|IoT Core|IoT Core|No disponible|
 
 > [!WARNING]  
 > A partir de Windows Server versión 1709, Nano Server ya no está disponible como host de contenedor.
 
 ### <a name="memory-requirements"></a>Requisitos de memoria
 
-Se pueden configurar restricciones en la memoria disponible a través de los contenedores [controles de recursos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/resource-controls) o mediante la sobrecarga de un host de contenedor.  La cantidad mínima de memoria necesaria para iniciar un contenedor y ejecutar comandos básicos (ipconfig, dir etc.) se enumeran a continuación.
+Se pueden configurar restricciones en la memoria disponible a través de los contenedores [controles de recursos](https://docs.microsoft.com/virtualization/windowscontainers/manage-containers/resource-controls) o mediante la sobrecarga de un host de contenedor.  La cantidad mínima de memoria necesaria para iniciar un contenedor y ejecutar comandos básicos (ipconfig, dir etc.) se enumeran a continuación.
 
 >[!NOTE]
 >Estos valores no tienen en cuenta el uso compartido entre los contenedores o los requisitos de la aplicación se ejecuta en el contenedor de recursos.  Por ejemplo, un host con 512MB de memoria libre puede ejecutar varios contenedores de ServerCore en el aislamiento de Hyper-V porque estos contenedores comparten recursos.
@@ -100,7 +75,7 @@ Se pueden configurar restricciones en la memoria disponible a través de los con
 - [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): si la aplicación necesita completo de .NET framework, se trata de la imagen mejor usar.
 - [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): para las aplicaciones que requieren solo .NET Core, Nano Server proporcionará una mucho más finos imagen.
 - [Windows](https://hub.docker.com/_/microsoft-windowsfamily-windows): es posible depende de la aplicación en un componente o .dll que falta en Server Core o imágenes de Nano Server, como las bibliotecas de GDI. Esta imagen conlleva el conjunto completo de dependencia de Windows.
-- [IoT Core](https://hub.docker.com/_/microsoft-windows-iotcore): esta imagen está diseñado específicamente para [aplicaciones de IoT](https://developer.microsoft.com/en-us/windows/iot). Debes usar esta imagen de contenedor cuando el destino es un host de IoT Core.
+- [IoT Core](https://hub.docker.com/_/microsoft-windows-iotcore): esta imagen está diseñado específicamente para [aplicaciones de IoT](https://developer.microsoft.com/windows/iot). Debes usar esta imagen de contenedor cuando el destino es un host de IoT Core.
 
 Para la mayoría de los usuarios, Windows Server Core o Nano Server será la imagen más adecuada para usar. Los siguientes son cosas que debes tener en cuenta si tienes pensado crear la aplicación sobre Nano Server:
 

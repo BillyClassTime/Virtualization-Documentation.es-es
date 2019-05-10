@@ -6,13 +6,13 @@ ms.date: 11/02/2018
 ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
-keywords: kubernetes, 1.12, linux, compilar
-ms.openlocfilehash: 1c5a5ec90b828a4f2430508f02cb9b9afb1c4d53
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+keywords: kubernetes, 1.14, linux, compilar
+ms.openlocfilehash: fbb5b8474323a7d418de972bffbb9e005c94cb85
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577086"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9623000"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -124,13 +124,18 @@ Get-VMNetworkAdapter -VMName "<name>" | Set-VMNetworkAdapter -MacAddressSpoofing
 > Si vas a implementar Kubernetes en Azure o máquinas virtuales de IaaS de otros proveedores de nube tú mismo, también puedes usar [las redes de superposición](./network-topologies.md#flannel-in-vxlan-mode) en su lugar.
 
 ### <a name="my-windows-pods-cannot-launch-because-of-missing-runflannelsubnetenv"></a>Mis pods de Windows no se pueden iniciar porque falta /run/flannel/subnet.env ###
-Esto indica que Flannel no se inicia correctamente. Puedes intentar reiniciar flanneld.exe o puedes copiar manualmente los archivos a través de `/run/flannel/subnet.env` en el maestro de Kubernetes para `C:\run\flannel\subnet.env` en el nodo de trabajo de Windows y modificar el `FLANNEL_SUBNET` fila a un número diferente. Por ejemplo, si se desea nodo subred 10.244.4.1/24:
+Esto indica que Flannel no se inicia correctamente. Puedes intentar reiniciar flanneld.exe o puedes copiar manualmente los archivos a través de `/run/flannel/subnet.env` en el maestro de Kubernetes para `C:\run\flannel\subnet.env` en el nodo de trabajo de Windows y modificar el `FLANNEL_SUBNET` fila a la subred que se ha asignado. Por ejemplo, si se ha asignado nodo subred 10.244.4.1/24:
 ```
 FLANNEL_NETWORK=10.244.0.0/16
 FLANNEL_SUBNET=10.244.4.1/24
 FLANNEL_MTU=1500
 FLANNEL_IPMASQ=true
 ```
+Es más seguro permitir flanneld.exe generar este archivo para TI.
+
+### <a name="pod-to-pod-connectivity-between-hosts-is-broken-on-my-kubernetes-cluster-running-on-vsphere"></a>Conectividad de pod a pod entre hosts se divide en mi clúster de Kubernetes que se ejecutan en vSphere 
+Dado que vSphere y Flannel reserva puerto 4789 (puerto VXLAN predeterminado) para las redes de superposición, los paquetes pueden acabar se interceptar. Si vSphere se usa para las redes de superposición, debe configurarse para usar un puerto diferente para liberar 4789.  
+
 
 ### <a name="my-endpointsips-are-leaking"></a>Se pierdan mi IPs de puntos de conexión ###
 Existen 2 problemas detectados que pueden provocar la pérdida de los puntos de conexión. 

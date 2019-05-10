@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 354469199f3c7e886760e8a391edccde067986af
-ms.sourcegitcommit: c48dcfe43f73b96e0ebd661164b6dd164c775bfa
+ms.openlocfilehash: a04d356415e7bed84980747edc927cc1eaa1e7c1
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "9610295"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621093"
 ---
 # <a name="docker-engine-on-windows"></a>Docker Engine en Windows
 
@@ -220,7 +220,7 @@ También puedes eliminar las características opcionales de Windows asociadas a 
 Esto incluye la característica "Contenedores", que se habilita automáticamente en Windows 10 o Windows Server 2016 cuando se instala Docker. También puede incluir la característica "Hyper-V", que se habilita automáticamente en Windows 10 cuando Docker está instalado, pero debe estar habilitado de forma explícita en Windows Server 2016.
 
 >[!IMPORTANT]
->[Característica el Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) es una característica de virtualización general que habilita mucho más que solo contenedores. Antes de deshabilitar la característica Hyper-V, asegúrate de que no existen otros componentes virtualizados en el sistema que requieren Hyper-V.
+>[Característica el Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/) es una característica de virtualización general que habilita mucho más que solo contenedores. Antes de deshabilitar la característica Hyper-V, asegúrate de que no existen otros componentes virtualizados en el sistema que requieren Hyper-V.
 
 Para quitar las características de Windows en Windows 10:
 

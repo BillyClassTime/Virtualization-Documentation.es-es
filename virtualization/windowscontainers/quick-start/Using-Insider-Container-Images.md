@@ -70,7 +70,7 @@ docker pull mcr.microsoft.com/windows/servercore/insider
 ```
 
 > [!IMPORTANT]
-> Lee los contenedores de Windows del sistema operativo [CLUF](../EULA.md ) de la imagen y los [Términos de uso](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
+> Lee los contenedores de Windows del sistema operativo [CLUF](../EULA.md ) de la imagen y los [Términos de uso](https://www.microsoft.com/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

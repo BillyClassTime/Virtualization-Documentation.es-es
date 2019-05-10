@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 426c87cc-fa50-4b8d-934e-0b653d7dea7d
-ms.openlocfilehash: ea91ea0ffca5479cb0593ef9961625f7b7ab1f42
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 8f1c1b96fe88f46a24b8ebb46d4f387c9717f6ba
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577426"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620713"
 ---
 # <a name="try-pre-release-features-for-hyper-v"></a>Pruebe las características de la versión preliminar para Hyper-V
 
@@ -36,17 +36,17 @@ Puede crear una máquina virtual de versión preliminar en hosts de Hyper-V que 
 
 1. En el Escritorio de Windows, haga clic en el botón Inicio y escriba cualquier parte del nombre **Windows PowerShell**.
 2. Haga clic con el botón derecho en **Windows PowerShell** y seleccione **Ejecutar como administrador**.
-3. Use el cmdlet [New-VM](https://technet.microsoft.com/library/hh848537.aspx) con la marca -Prerelease para crear la máquina virtual de versión preliminar. Por ejemplo, ejecute el comando siguiente, donde VM Name es el nombre de la máquina virtual que quiere crear.
+3. Use el cmdlet [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) con la marca -Prerelease para crear la máquina virtual de versión preliminar. Por ejemplo, ejecute el comando siguiente, donde VM Name es el nombre de la máquina virtual que quiere crear.
 
 ``` PowerShell
 New-VM -Name <VM Name> -Prerelease
 ```
 Otros ejemplos con los que puede usar la marca -Prerelease:
- - Para crear una máquina virtual que use un disco duro virtual existente o un disco duro nuevo, vea los ejemplos de PowerShell de [Create a virtual machine in Hyper-V on Windows Server 2016 Technical Preview](https://technet.microsoft.com/library/mt126140.aspx#BKMK_PowerShell) (Crear una máquina virtual de Hyper-V en Windows Server 2016 Technical Preview).
- - Para crear un disco duro virtual nuevo que se inicie con una imagen de sistema operativo, vea el ejemplo de PowerShell de [Implementar una máquina virtual de Windows en Hyper-V en Windows 10](https://msdn.microsoft.com/en-us/virtualization/hyperv_on_windows/quick_start/walkthrough_create_vm).
+ - Para crear una máquina virtual que use un disco duro virtual existente o un disco duro nuevo, vea los ejemplos de PowerShell de [Create a virtual machine in Hyper-V on Windows Server 2016 Technical Preview](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/Create-a-virtual-machine-in-Hyper-V#BKMK_PowerShell) (Crear una máquina virtual de Hyper-V en Windows Server 2016 Technical Preview).
+ - Para crear un disco duro virtual nuevo que se inicie con una imagen de sistema operativo, vea el ejemplo de PowerShell de [Implementar una máquina virtual de Windows en Hyper-V en Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine).
 
  Los ejemplos descritos en estos artículos funcionan con los hosts de Hyper-V que ejecutan Windows 10 o Windows Server 2016 Technical Preview. Pero, por el momento, solo puede usar la marca -Prerelease para crear una máquina virtual de versión preliminar en hosts de Hyper-V que ejecutan Windows Server 2016 Technical Preview.
 
 ## <a name="see-also"></a>Consulte también
--  [Virtualization Blog](https://blogs.technet.microsoft.com/virtualization/) (Blog de virtualización): obtenga información sobre las características de la versión preliminar que están disponibles y cómo probarlas.
-- [Supported virtual machine configuration versions](https://technet.microsoft.com/library/mt695898.aspx#BKMK_SupportedConfigVersions) (Versiones de configuración de máquina virtual admitidas): obtenga información sobre cómo comprobar la versión de configuración de la máquina virtual y qué versiones admite Microsoft.
+-  [Virtualization Blog](https://techcommunity.microsoft.com/t5/Virtualization/bg-p/Virtualization) (Blog de virtualización): obtenga información sobre las características de la versión preliminar que están disponibles y cómo probarlas.
+- [Supported virtual machine configuration versions](https://docs.microsoft.com/windows-server/virtualization/hyper-v/deploy/Upgrade-virtual-machine-version-in-Hyper-V-on-Windows-or-Windows-Server#BKMK_SupportedConfigVersions) (Versiones de configuración de máquina virtual admitidas): obtenga información sobre cómo comprobar la versión de configuración de la máquina virtual y qué versiones admite Microsoft.

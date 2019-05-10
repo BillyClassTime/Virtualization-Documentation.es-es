@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: e2b3c05a35896d51b1fbd1bf3f276791e4e08493
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 358b58da0fc51c03766198e4b25b8b043b2a5029
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577126"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622910"
 ---
 # <a name="windows-container-network-drivers"></a>Controladores de red de contenedores de Windows  
 
@@ -34,17 +34,18 @@ Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, 
 - **overlay**: cuando el motor docker se ejecuta en [modo enjambre](../manage-containers/swarm-mode.md), los contenedores conectados a una red de superposición ('overlay') pueden comunicarse con otros contenedores conectados a la misma red en varios hosts de contenedor. Cada red superpuesta que se crea en un clúster de enjambre se crea con su propia subred IP, definida por un prefijo de IP privado. El controlador de red de superposición usa encapsulado VXLAN. **Puede usarse con Kubernetes al usar los planos de control de red apropiados (Flannel o OVN).**
   > Requiere: Asegúrate de que el entorno cumpla estos [requisitos previos](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks) necesarios para crear redes superpuestas.
 
-  > Requiere: Requiere Windows Server 2016 con [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217), Windows 10 Creators Update o una versión posterior.
+  > Requiere: Requiere Windows Server 2016 con [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217), Windows 10 Creators Update o una versión posterior.
 
   >[!NOTE]
   >En Windows Server 2019 ejecuta Docker EE 18.03 y anteriormente, redes superpuestas creadas por Docker Swarm sacar provecho de las reglas de VFP NAT para la conectividad de salida. Esto significa quese determinado contenedor recibe 1 dirección IP. Esto también significa que basado en ICMP herramientas como `ping` o `Test-NetConnection` debe configurarse con sus opciones de TCP/UDP en situaciones de depuración.
 
 - **l2bridge**: los contenedores conectados a una red creada con el controlador 'l2bridge' estarán en la misma subred IP que el host de contenedor y estarán conectados a la red física a través de un conmutador Hyper-V *externo*. Las direcciones IP deben asignarse estáticamente desde el mismo prefijo que el host del contenedor. Todos los puntos de conexión de contenedor del host tendrán la misma dirección MAC que el host debido a la operación de traducción de direcciones de capa 2 (reescritura de MAC) en la entrada y la salida.
-  > Requiere: Cuando este modo se usa en un escenario de virtualización (el host de contenedor es una máquina virtual) _se requiere suplantación de direcciones MAC_.
-  
   > Requiere: Requiere Windows Server 2016, Windows 10 Creators Update o una versión posterior.
 
-- **l2tunnel** - Similar a l2bridge, pero _este controlador solo debe usarse en una pila de nube de Microsoft, como Azure_. Los paquetes que provienen de un contenedor se envían al host de virtualización, donde se aplica la directiva SDN.
+  > Requiere: [Directiva de OutboundNAT](./advanced.md#specify-outboundnat-policy-for-a-network) para conectividad externa.
+
+- **l2tunnel**: similar a l2bridge; sin embargo _este controlador solo se debe usar en una pila de Microsoft Cloud_. Los paquetes que provienen de un contenedor se envían al host de virtualización, donde se aplica la directiva SDN.
+
 
 ## <a name="network-topologies-and-ipam"></a>Topologías de red e IPAM
 

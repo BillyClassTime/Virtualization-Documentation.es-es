@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 001f1abaeefaf34e12b0f7e3323bf32140080d05
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 97e5c598613c806e9f26687951999438fba72a8c
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575086"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620883"
 ---
 # <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
 
@@ -23,7 +23,7 @@ Se admiten varias opciones de controladores de red para aprovechar las caracter�
 
 > Se aplica a todos los controladores de red.
 
-Puedes aprovechar [Switch Embedded Teaming](https://technet.microsoft.com/en-us/windows-server-docs/networking/technologies/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set) al crear redes de host de contenedor para que las use Docker si especifica varios adaptadores de red (separados por comas) con la opción `-o com.docker.network.windowsshim.interface`.
+Puedes aprovechar [Switch Embedded Teaming](https://docs.microsoft.com/windows-server/virtualization/hyper-v-virtual-switch/RDMA-and-Switch-Embedded-Teaming#a-namebkmksswitchembeddedaswitch-embedded-teaming-set) al crear redes de host de contenedor para que las use Docker si especifica varios adaptadores de red (separados por comas) con la opción `-o com.docker.network.windowsshim.interface`.
 
 ```
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2", "Ethernet 3" TeamedNet
@@ -80,13 +80,13 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnss
 
 ## <a name="vfp"></a>VFP
 
-Consulta [este artículo](https://www.microsoft.com/en-us/research/project/azure-virtual-filtering-platform/) para obtener más información.
+Consulta [este artículo](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/) para obtener más información.
 
 ## <a name="tips--insights"></a>Sugerencias y detalles
 A continuación hay una lista de sugerencias e información útil inspiradas por preguntas frecuentes sobre redes de contenedores de Windows que recibimos de la comunidad...
 
 #### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>SNP requiere que IPv6 esté habilitado en los equipos host de contenedor 
-Como parte de [KB4015217](https://support.microsoft.com/en-us/help/4015217/windows-10-update-kb4015217), SNP requiere que IPv6 esté habilitado en los hosts del contenedor de Windows. Si te encuentras un error como el siguiente, es posible que IPv6 está deshabilitado en el equipo host.
+Como parte de [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217), SNP requiere que IPv6 esté habilitado en los hosts del contenedor de Windows. Si te encuentras un error como el siguiente, es posible que IPv6 está deshabilitado en el equipo host.
 ```
 docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11b92d488e8c5b53ab5e4331fd80636d encountered an error during CreateContainer: failure in a Windows system call: Element not found.
 ```
@@ -99,7 +99,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Contenedores de Linux en Windows
 
-**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información. Aquí es cómo [empezar a trabajar](https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux).
+**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información. Aquí es cómo [empezar a trabajar](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux).
 > NOTA: LCOW está haciendo que la VM Linux de Moby esté quedando obsoleta y utilizará el vSwitch interno predeterminado SNP "nat".
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Las VM Linux de Moby usan el conmutador DockerNAT con Docker para Windows (un producto de [Docker CE](https://www.docker.com/community-edition))
@@ -163,7 +163,7 @@ Hay tres formas de resolver este problema:
 PS C:\> restart-service hns
 PS C:\> restart-service docker
 ```
-* Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). La opción '-o' se describe con más detalle más adelante, en la sección [Red transparente](https://msdn.microsoft.com/virtualization/windowscontainers/management/container_networking#transparent-network) de este documento.
+* Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). El '-o ' opción se describirá con más detalle en la sección de [creación de varias redes transparentes en un host de contenedor único](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host) de este documento.
 
 
 ## <a name="windows-server-2016-work-arounds"></a>Soluciones para Windows Server 2016 

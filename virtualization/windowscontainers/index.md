@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: cc869cfaf1c433fbfdc351e9120a0e43c02967ee
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 9ee2a0adad762aa3cee53f3b44210976259b693f
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574846"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620703"
 ---
 # <a name="containers-on-windows-documentation"></a>Contenedores en la documentación de Windows
 
@@ -30,7 +30,7 @@ Aprende a implementar contenedores de Windows en Windows Server 2019
 
 * [Requisitos del sistema](deploy-containers/system-requirements.md)
 * [Implementar un host de contenedor](deploy-containers/deploy-containers-on-server.md)
-* [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
+* [Optimización de antivirus](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 
 ## <a name="docker-on-windows"></a>Docker en Windows
 Obtén información acerca de cómo administrar Docker en Windows.
@@ -45,7 +45,7 @@ Obtén información acerca de cómo administrar Docker en Windows.
 
 ## <a name="community"></a>Comunidad
 Interactúe con la comunidad, pruebe los ejemplos que le ofrecemos y busque recursos adicionales.
-* [Foro acerca de los contenedores](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+* [Foro acerca de los contenedores](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
 * [Blogs y vídeos de la comunidad](communitylinks.md)
-* [Ejemplos de contenedor](https://docs.microsoft.com/en-us/virtualization/windowscontainers/samples)
+* [Ejemplos de contenedor](https://docs.microsoft.com/virtualization/windowscontainers/samples)
 * [UserVoice](https://windowsserver.uservoice.com/forums/304624-containers)

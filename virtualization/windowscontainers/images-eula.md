@@ -19,4 +19,4 @@ Nos reservamos todos los demás derechos no otorgados expresamente en este docum
 
 Al usar este Complemento, acepta estos términos. Si no los acepta, no use este Complemento.
 
-Como parte de los términos de licencia adicionales para esta imagen de sistema operativo de contenedor para contenedores de Windows, también está sujetos a los subyacente Windows Server host software términos de licencia, que se encuentran en: https://www.microsoft.com/en-us/useterms.  
+Como parte de los términos de licencia adicionales para esta imagen de sistema operativo de contenedor para contenedores de Windows, también está sujetos a los subyacente Windows Server host software términos de licencia, que se encuentran en: https://www.microsoft.com/useterms.  

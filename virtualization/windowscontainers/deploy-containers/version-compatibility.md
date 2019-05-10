@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 76549bbfbaf374acb79f1be4280949aecf4e87f0
-ms.sourcegitcommit: c48dcfe43f73b96e0ebd661164b6dd164c775bfa
+ms.openlocfilehash: 9e20a28f62ec4bb9456307acb7768e1123a57188
+ms.sourcegitcommit: 03e9203e9769997d8be3f66dc7935a3e5c0a83e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "9610285"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621633"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad con versiones de contenedor de Windows
 
@@ -98,7 +98,7 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 14393.321.amd64fre.rs1_release_inmarket.161004-2338
 ```
 
-Para comprobar qué versión usa la imagen base, revise las etiquetas de Docker hub o la tabla de hash de la imagen proporcionada en la descripción de la imagen. La página [historial de actualizaciones de Windows 10](https://support.microsoft.com/en-us/help/12387/windows-10-update-history) muestra cuándo se lanzó cada compilación y revisión.
+Para comprobar qué versión usa la imagen base, revise las etiquetas de Docker hub o la tabla de hash de la imagen proporcionada en la descripción de la imagen. La página [historial de actualizaciones de Windows 10](https://support.microsoft.com/help/12387/windows-10-update-history) muestra cuándo se lanzó cada compilación y revisión.
 
 ### <a name="hyper-v-isolation-for-containers"></a>Aislamiento de Hyper-V para contenedores
 
@@ -123,33 +123,33 @@ Hay tres maneras puede resolver el error:
 ## <a name="choose-which-container-os-version-to-use"></a>Elige la versión del sistema operativo de contenedor
 
 >[!NOTE]
->La etiqueta "más reciente" se actualizará junto con Windows Server 2016, el [producto de canal de mantenimiento a largo plazo](https://docs.microsoft.com/en-us/windows-server/get-started/semi-annual-channel-overview)de actual. Las siguientes instrucciones son para las imágenes de contenedor que coinciden con la versión 1709 de Windows Server.
+>A partir de 16 de abril de 2019, la etiqueta "más reciente" ya no se publica o se mantiene para las [imágenes de contenedor del sistema operativo base de Windows](https://hub.docker.com/_/microsoft-windows-base-os-images). Por favor, declara una etiqueta específica cuando extraer o haga referencia a imágenes desde estos repositorios.
 
-Debe saber qué versión debe utilizar para el contenedor. Por ejemplo, si estás usando Windows Server versión 1709 y quieres tener las últimas revisiones de él, debes usar la etiqueta `1709` al especificar qué versión de las imágenes de contenedor base del sistema operativo quieres, de este modo:
+Debe saber qué versión debe utilizar para el contenedor. Por ejemplo, si deseas Windows Server, versión 1809 como el contenedor del sistema operativo y quieres tener las últimas revisiones de él, debes usar la etiqueta `1809` al especificar qué versión de las imágenes de contenedor base del sistema operativo quieres, de este modo:
 
 ``` dockerfile
-FROM microsoft/windowsservercore:1709
+FROM mcr.microsoft.com/windows/nanoserver:1809
 ...
 ```
 
-Sin embargo, si quieres una revisión específica de Windows Server versión 1709, puedes especificar el número de KB en la etiqueta. Por ejemplo, para obtener un servidor Nano imagen de contenedor de base del sistema operativo de Windows Server versión 1709, con el KB4043961 aplicado, se especificaría este modo:
+Sin embargo, si quieres una revisión específica de Windows Server, versión 1809, puedes especificar el número de KB en la etiqueta. Por ejemplo, para obtener un servidor Nano imagen de contenedor de base del sistema operativo de Windows Server, versión 1809 con el KB4493509 aplicado, se especificaría este modo:
 
 ``` dockerfile
-FROM microsoft/nanoserver:1709_KB4043961
-...
-```
-
-Si necesitas la imagen de contenedor de Nano Server base del sistema operativo de Windows Server 2016, puedes seguir obtener la versión más reciente de esas imágenes de contenedor base del sistema operativo mediante la etiqueta "más reciente":
-
-``` dockerfile
-FROM microsoft/nanoserver
+FROM mcr.microsoft.com/windows/nanoserver:1809-KB4493509
 ...
 ```
 
 También puedes especificar las revisiones exactas que necesitas con el esquema que hemos usado anteriormente, especificando la versión del sistema operativo en la etiqueta:
 
 ``` dockerfile
-FROM microsoft/nanoserver:10.0.14393.1770
+FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.437
+...
+```
+
+Las imágenes base de Server Core en función de Windows Server 2019 y Windows Server 2016 son que versiones de [Canal de mantenimiento a largo plazo (LTSC)](https://docs.microsoft.com/en-us/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . Si por ejemplo desea Windows Server 2019 como contenedor de la imagen de Server Core del sistema operativo y quieres tener las últimas revisiones de él, puedes especificar LTSC las versiones de este modo:
+
+``` dockerfile
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 ...
 ```
 

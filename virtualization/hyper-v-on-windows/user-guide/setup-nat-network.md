@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: 0c365b9351ee09c946e1711f3a3a5e82eb71c785
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: ea6fb4471cf337ff17bb1f936caea192bccaf404
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9577316"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621163"
 ---
 # <a name="set-up-a-nat-network"></a>Configurar una red NAT
 
@@ -28,7 +28,7 @@ Requisitos:
 * Actualización de aniversario de Windows10 o posterior
 * Hyper-V debe estar habilitado (instrucciones [aquí](../quick-start/enable-hyper-v.md))
 
-> **Nota:** Actualmente, hay una limitación de una red NAT por cada host. Para obtener más detalles sobre la implementación de Windows NAT (WinNAT), sus capacidades y sus limitaciones, consulta el [blog de capacidades y limitaciones de WinNAT](https://blogs.technet.microsoft.com/virtualization/2016/05/25/windows-nat-winnat-capabilities-and-limitations/)
+> **Nota:** Actualmente, hay una limitación de una red NAT por cada host. Para obtener más detalles sobre la implementación de Windows NAT (WinNAT), sus capacidades y sus limitaciones, consulta el [blog de capacidades y limitaciones de WinNAT](https://techcommunity.microsoft.com/t5/Virtualization/Windows-NAT-WinNAT-Capabilities-and-limitations/ba-p/382303)
 
 ## <a name="nat-overview"></a>Información general sobre NAT
 NAT proporciona a una máquina virtual acceso a los recursos de red con la dirección IP y un puerto del equipo host a través de un conmutador virtual de Hyper-V.
@@ -37,7 +37,7 @@ La traducción de direcciones de red (NAT) es un modo de red diseñado para cons
 
 Además, NAT permite que varias máquinas virtuales hospeden aplicaciones que necesitan puertos de comunicación idénticos (internos) asignándolos a puertos externos únicos.
 
-Por todas estas razones, la red NAT es muy común para la tecnología de contenedores (consulte [Container Networking (Red de contenedores)](https://msdn.microsoft.com/en-us/virtualization/windowscontainers/management/container_networking)).
+Por todas estas razones, la red NAT es muy común para la tecnología de contenedores (consulte [Container Networking (Red de contenedores)](https://docs.microsoft.com/virtualization/windowscontainers/container-networking/architecture)).
 
 
 ## <a name="create-a-nat-virtual-network"></a>Creación de una red virtual NAT

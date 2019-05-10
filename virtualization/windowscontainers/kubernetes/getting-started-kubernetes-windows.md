@@ -5,27 +5,27 @@ ms.author: gekudray
 ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Unir un nodo de Windows a un clúster de Kubernetes con v1.13.
-keywords: kubernetes, 1.13, windows, introducción
+description: Unir un nodo de Windows a un clúster de Kubernetes con v1.14.
+keywords: kubernetes, 1.14, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 7c3a0111b3d19ae1b513a84665f870bba24ae33d
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: c380f5dc10430a94959718a5ce92f311603db733
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576995"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622930"
 ---
 # <a name="kubernetes-on-windows"></a>Kubernetes en Windows
 
-Esta página sirve como una visión general para comenzar a trabajar con Kubernetes en Windows mediante la combinación de nodos de Windows a un clúster basado en Linux. Con el lanzamiento de 1.14 de Kubernetes en Windows Server [versión 1809](https://docs.microsoft.com/en-us/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes), los usuarios pueden sacar provecho de las siguientes características de Kubernetes en Windows:
+Esta página sirve como una visión general para comenzar a trabajar con Kubernetes en Windows mediante la combinación de nodos de Windows a un clúster basado en Linux. Con el lanzamiento de 1.14 de Kubernetes en Windows Server [versión 1809](https://docs.microsoft.com/windows-server/get-started/whats-new-in-windows-server-1809#container-networking-with-kubernetes), los usuarios pueden sacar provecho de las siguientes características de Kubernetes en Windows:
 
 - **redes de superposición**: usar Flannel en modo de vxlan para configurar una red virtual de superposición
-    - requiere cualquier Windows Server 2019 con [KB4489899](https://support.microsoft.com/en-us/help/4489899) instalado o compilación de [Windows Server vNext Insider Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/) 18317 +
+    - requiere cualquier Windows Server 2019 con [KB4489899](https://support.microsoft.com/help/4489899) instalado o compilación de [Windows Server vNext Insider Preview](https://blogs.windows.com/windowsexperience/tag/windows-insider-program/) 18317 +
     - requiere Kubernetes v1.14 (o superior) con `WinOverlay` puerta de característica habilitada
     - requiere Flannel v0.11.0 (o anterior)
 - **administración de red simplificada**: usar Flannel en modo host-gateway para la administración de ruta automático entre los nodos.
-- **mejoras de escalabilidad**: disfrute tiempos de inicio más rápido y confiable contenedor gracias a [las vNICs sin dispositivos para contenedores de Windows Server](https://blogs.technet.microsoft.com/networking/2018/04/27/network-start-up-and-performance-improvements-in-windows-10-spring-creators-update-and-windows-server-version-1803/).
-- **Aislamiento de Hyper-V (alfa)**: organizar el [aislamiento de Hyper-V](https://kubernetes.io/docs/getting-started-guides/windows/#hyper-v-containers) con aislamiento de modo kernel para mejorar la seguridad. Para obtener más información, [tipos de contenedores de Windows](https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/#windows-container-types).
+- **mejoras de escalabilidad**: disfrute tiempos de inicio más rápido y confiable contenedor gracias a [las vNICs sin dispositivos para contenedores de Windows Server](https://techcommunity.microsoft.com/t5/Networking-Blog/Network-start-up-and-performance-improvements-in-Windows-10/ba-p/339716).
+- **Aislamiento de Hyper-V (alfa)**: organizar el [aislamiento de Hyper-V](https://kubernetes.io/docs/getting-started-guides/windows/#hyper-v-containers) con aislamiento de modo kernel para mejorar la seguridad. Para obtener más información, [tipos de contenedores de Windows](https://docs.microsoft.com/virtualization/windowscontainers/about/#windows-container-types).
     - requiere Kubernetes v1.10 (o superior) con `HyperVContainer` puerta de característica habilitada.
 - **complementos de almacenamiento**: usar el [complemento de almacenamiento FlexVolume](https://github.com/Microsoft/K8s-Storage-Plugins) con soporte de iSCSI y SMB para contenedores de Windows.
 

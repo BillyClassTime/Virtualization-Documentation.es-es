@@ -2,7 +2,7 @@
 
 La imagen de contenedor base del sistema operativo de Nano Server de esta versión ha quitado .NET Core y PowerShell, aunque .NET Core y PowerShell se admiten como un contenedor de capas de complementos en la parte superior del contenedor de base de Nano Server.  
 
-Si el contenedor debe ejecutar código nativo o marcos abiertos como Node.js, Python, Ruby, etc., será suficiente el contenedor de base de Nano Server.  Un aspecto es que puede que no se ejecute determinado código nativo como resultado del [ahorro de superficie](https://docs.microsoft.com/en-us/windows-server/get-started/nano-in-semi-annual-channel) en esta versión, en comparación con la de Windows Server 2016. Si observas algún problema de regresión, comunícanoslo en los [foros](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers). 
+Si el contenedor debe ejecutar código nativo o marcos abiertos como Node.js, Python, Ruby, etc., será suficiente el contenedor de base de Nano Server.  Un aspecto es que puede que no se ejecute determinado código nativo como resultado del [ahorro de superficie](https://docs.microsoft.com/windows-server/get-started/nano-in-semi-annual-channel) en esta versión, en comparación con la de Windows Server 2016. Si observas algún problema de regresión, comunícanoslo en los [foros](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers). 
 
 Para crear el contenedor desde un Dockerfile, usa la compilación docker y, para ejecutarlo, ejecuta docker.  El comando siguiente descargará la imagen base del sistema operativo del contenedor de Nano Server, lo que puede llevar unos minutos, e imprimirá un mensaje "¡Hello World!" en la consola del host.
 
@@ -10,7 +10,7 @@ Para crear el contenedor desde un Dockerfile, usa la compilación docker y, para
 docker run microsoft/nanoserver-insider cmd /c echo Hello World!
 ```
 
-Puedes crear aplicaciones más complicadas usando [Dockerfiles en Windows](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile), con una sintaxis de Dockerfile como FROM, RUN, COPY, ADD, CMD, etc. Aunque no podrás ejecutar determinados comandos fuera de esta imagen base, ahora ya podrás crear imágenes de contenedor que solo contengan las cosas que necesitas para que funcione la aplicación.
+Puedes crear aplicaciones más complicadas usando [Dockerfiles en Windows](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile), con una sintaxis de Dockerfile como FROM, RUN, COPY, ADD, CMD, etc. Aunque no podrás ejecutar determinados comandos fuera de esta imagen base, ahora ya podrás crear imágenes de contenedor que solo contengan las cosas que necesitas para que funcione la aplicación.
 
 Como resultado de que .NET Core y PowerShell no están disponibles en la imagen base del sistema operativo del contenedor de Nano Server, una de las dificultades es crear un contenedor con el contenido comprimido en formato zip. Con la característica [compilación multietapa](https://docs.docker.com/engine/userguide/eng-image/multistage-build/), disponible en Docker 17.05, puedes aprovechar el PowerShell de otro contenedor para descomprimir el contenido y copiarlo en el contenedor de Nano. Este enfoque puede usarse para crear un contenedor .NET Core y un contenedor de PowerShell. 
 

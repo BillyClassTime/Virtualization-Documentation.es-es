@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: 7d22a149da21a3367b82f2920c189ae9a4b1c173
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 87b9c364bfdec2b445bb06caf0e9fd4d849119d4
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574876"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620873"
 ---
 # <a name="overview"></a>Introducción
 
@@ -53,7 +53,7 @@ Archivo de configuración de Docker
   ]
 ```
 > Ten en cuenta que este método funciona para la compilación docker.
-Consulta el documento [configurar docker](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.
+Consulta el documento [configurar docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.
 
 
 ## <a name="persistent-volumes"></a>Volúmenes persistentes

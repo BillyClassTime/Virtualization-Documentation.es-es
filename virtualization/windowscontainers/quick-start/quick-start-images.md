@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 41fa89dcaba38d43d39681240a1a108c9250ba78
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: db360bdd2b62667ab017549b3c179d11278abc19
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575176"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620803"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
@@ -31,7 +31,7 @@ Asegúrese de que se cumplen los requisitos siguientes:
 
 ## <a name="container-image---dockerfile"></a>Imagen de contenedor (dockerfile)
 
-Aunque se puede crear manualmente un contenedor, modificar y luego capturarse en una imagen nueva de contenedor, Docker incluye un método para automatizar este proceso con un Dockerfile. Para este ejercicio, se requiere un identificador de Docker. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud]( https://cloud.docker.com/).
+Aunque se puede crear manualmente un contenedor, modificar y luego capturarse en una imagen nueva de contenedor, Docker incluye un método para automatizar este proceso con un Dockerfile. Para este ejercicio, se requiere un identificador de Docker. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
 En el host de contenedor, cree un directorio `c:\build` y, en este directorio, cree un archivo denominado `Dockerfile`. Nota: El archivo no debe tener una extensión de archivo.
 

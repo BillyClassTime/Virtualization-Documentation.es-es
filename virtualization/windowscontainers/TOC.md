@@ -47,7 +47,7 @@
 ### [Introducción al modo enjambre](manage-containers/swarm-mode.md)
 
 # Comunidad y soporte técnico
-## [Foro del contenedor](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowscontainers)
+## [Foro del contenedor](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
 ## [Blogs y vídeos de la Comunidad](communitylinks.md)
 ## [Solución de problemas](troubleshooting.md)
 
@@ -60,7 +60,7 @@
 ## [Dispositivos de hardware de contenedores](deploy-containers/hardware-devices-in-containers.md)
 ## [Herramientas de la plataforma de contenedor](deploy-containers/containerd.md)
 ## [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)
-## [Optimización de antivirus](https://msdn.microsoft.com/en-us/windows/hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
+## [Optimización de antivirus](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Contenedores de Linux en Windows](deploy-containers/linux-containers.md)
 
 # [Ejemplos de contenedor](samples.md)

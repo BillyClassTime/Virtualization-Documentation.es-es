@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 1c0a3fd25a5572604db59e0c68d8b4a3d84b00e9
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: b39ec17ac04995e8e1ce8795b5721df7a291e31c
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576316"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620823"
 ---
 # <a name="network-isolation-and-security"></a>Aislamiento de red y seguridad
 
@@ -29,7 +29,7 @@ Get-NetCompartment
 
 ## <a name="network-security"></a>Seguridad de red
 
-Dependiendo de qué contenedor y controlador de red se use, se aplican las ACL de puerto mediante una combinación del Firewall de Windows y [VFP](https://www.microsoft.com/en-us/research/project/azure-virtual-filtering-platform/).
+Dependiendo de qué contenedor y controlador de red se use, se aplican las ACL de puerto mediante una combinación del Firewall de Windows y [VFP](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/).
 
 ### <a name="windows-server-containers"></a>Contenedores de Windows Server
 

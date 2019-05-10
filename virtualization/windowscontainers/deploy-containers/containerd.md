@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 9f38775d56a95d96bef42b3a33c2571cc5fb2ca0
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: f8bfd60af18731537c2ce02ca7abdb081f3c7369
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578386"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620763"
 ---
 # <a name="container-platform-tools-on-windows"></a>Herramientas de la plataforma de contenedor en Windows
 
@@ -37,7 +37,7 @@ En entornos de Linux, herramientas de administración de contenedor como Docker 
 
 `containerd` es un demonio que administra el ciclo de vida del contenedor descarguen y desempaquetar la imagen de contenedor en ejecución de contenedor y supervisión.
 
-En Windows, tomamos un enfoque diferente.  Cuando empezamos a trabajar con Docker para admitir los contenedores de Windows, hemos creado directamente en el HCS (servicio de cálculo de Host).  [Esta entrada de blog](https://blogs.technet.microsoft.com/virtualization/2017/01/27/introducing-the-host-compute-service-hcs/) está lleno de información acerca de por qué se ha creado el HCS y por qué tomamos este enfoque para contenedores inicialmente.
+En Windows, tomamos un enfoque diferente.  Cuando empezamos a trabajar con Docker para admitir los contenedores de Windows, hemos creado directamente en el HCS (servicio de cálculo de Host).  [Esta entrada de blog](https://techcommunity.microsoft.com/t5/Containers/Introducing-the-Host-Compute-Service-HCS/ba-p/382332) está lleno de información acerca de por qué se ha creado el HCS y por qué tomamos este enfoque para contenedores inicialmente.
 
 ![Arquitectura del motor de Docker inicial en Windows](media/hcs.png)
 
@@ -110,6 +110,16 @@ Para obtener un vistazo más profundo a la HCS, mira [presentación de DockerCon
 > Desarrollo o prueba solamente.
 
 Mientras que las especificaciones OCI define un contenedor único, [CRI](https://github.com/kubernetes/kubernetes/blob/master/pkg/kubelet/apis/cri/runtime/v1alpha2/api.proto) (interfaz de tiempo de ejecución de contenedor) describe los contenedores como workload(s) en un espacio aislado compartido llama un pod de entorno.  Pods pueden contener uno o más cargas de trabajo de contenedor.  Pods permiten orquestadores de contenedor como Kubernetes y Service Fabric malla controlan las cargas de trabajo agrupados que deben estar en el mismo host con algunos recursos compartidos como la memoria y vNETs.
+
+containerd/cri permite la siguiente matriz de compatibilidad para pods:
+
+| Sistema operativo del host | Contenedor del sistema operativo | Aislamiento de | ¿Soporte técnico de pod? |
+|:-------------------------------------------------------------------------|:-----------------------------------------------------------------------------|:---------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| <ul><li>Windows Server 2019/1809</ul></li><ul><li>Windows 10 1809</ul></li> | Linux | `hyperv` | Sí, admite true pods de varios contenedores. |
+|  | Windows Server 2019/1809 | `process`* o `hyperv` | Sí, admite true pods de varios contenedores si cada contenedor de carga de trabajo del sistema operativo coincide con la utilidad del sistema operativo de máquina virtual. |
+|  | WindowsServer2016</br>WindowsServer1709</br>1803 de Windows Server | `hyperv` | Parcial, admite pod espacios aislados que pueden admitir un contenedor de aislamiento de proceso único por VM de utilidad si el sistema operativo de contenedor coincide con la utilidad del sistema operativo de máquina virtual. |
+
+Hosts \*Windows 10 solo admiten el aislamiento de Hyper-V
 
 Vínculos a la especificación de CRI:
 

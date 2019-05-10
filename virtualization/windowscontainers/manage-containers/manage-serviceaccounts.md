@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: a2fc3b74a7be109caf078553e471d1c3743f217a
-ms.sourcegitcommit: c48dcfe43f73b96e0ebd661164b6dd164c775bfa
+ms.openlocfilehash: d4a59f351cad36219e8289f9d58b55250c99fc6e
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "9610315"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620903"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Grupo contenedores administran las cuentas de servicio para Windows
 
@@ -21,7 +21,7 @@ Redes basadas en Windows usan habitualmente Active Directory (AD) para facilitar
 
 Aunque los contenedores de Windows no pueden estar unidos a un dominio, pueden seguir usando las identidades de dominio de Active Directory para admitir los distintos escenarios de autenticación.
 
-Para lograr esto, puedes configurar para ejecutarse con una [cuenta de servicio administrada de grupo](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (gMSA), que es un tipo especial de cuenta de servicio que se introdujo en Windows Server 2012 diseñado para permitir que varios equipos para compartir una identidad sin necesidad de un contenedor de Windows Para conocer su contraseña.
+Para lograr esto, puedes configurar para ejecutarse con una [cuenta de servicio administrada de grupo](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (gMSA), que es un tipo especial de cuenta de servicio que se introdujo en Windows Server 2012 diseñado para permitir que varios equipos para compartir una identidad sin necesidad de un contenedor de Windows Para conocer su contraseña.
 
 Cuando se ejecuta un contenedor con una gMSA, el host de contenedor recupera la contraseña de la gMSA de un controlador de dominio de Active Directory y le da a la instancia de contenedor. El contenedor usará las credenciales de gMSA siempre que su cuenta de equipo (SYSTEM) necesita tener acceso a los recursos de red.
 
@@ -31,9 +31,9 @@ En este artículo se explica cómo empezar a usar cuentas de servicio administra
 
 Para ejecutar un contenedor de Windows con una cuenta de servicio administrada de grupo, necesitarás lo siguiente:
 
-- Un dominio de Active Directory con al menos un controlador de dominio que ejecute Windows Server 2012 o posterior. No hay dominio o bosque funcional nivel requisitos para usar gmsa las, pero solo pueden ser las contraseñas gMSA distribuidas por los controladores de dominio que ejecute Windows Server 2012 o posterior. Para obtener más información, consulta [los requisitos de Active Directory para gmsa las](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
+- Un dominio de Active Directory con al menos un controlador de dominio que ejecute Windows Server 2012 o posterior. No hay dominio o bosque funcional nivel requisitos para usar gmsa las, pero solo pueden ser las contraseñas gMSA distribuidas por los controladores de dominio que ejecute Windows Server 2012 o posterior. Para obtener más información, consulta [los requisitos de Active Directory para gmsa las](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req).
 - Permiso para crear una cuenta de gMSA. Para crear una cuenta de gMSA, tendrás que ser un administrador de dominio o usar una cuenta que se ha delegado en el permiso de *crear objetos de msDS-GroupManagedServiceAccount* .
-- Acceso a internet para descargar el módulo de CredentialSpec PowerShell. Si estás trabajando en un entorno desconectado, puedes [Guardar el módulo](https://docs.microsoft.com/en-us/powershell/module/powershellget/save-module?view=powershell-5.1) en un equipo con internet acceder y copiarla en el host de máquina o contenedor de desarrollo.
+- Acceso a internet para descargar el módulo de CredentialSpec PowerShell. Si estás trabajando en un entorno desconectado, puedes [Guardar el módulo](https://docs.microsoft.com/powershell/module/powershellget/save-module?view=powershell-5.1) en un equipo con internet acceder y copiarla en el host de máquina o contenedor de desarrollo.
 
 ## <a name="one-time-preparation-of-active-directory"></a>Preparación de un solo uso de Active Directory
 
@@ -93,7 +93,7 @@ Una vez que hayas decidido en el nombre de la gMSA, ejecute los siguientes cmdle
 
 > [!TIP]
 > Tendrás que usar una cuenta que pertenece al grupo de seguridad de **Administradores de dominio** o se ha delegado el permiso de **crear objetos de msDS-GroupManagedServiceAccount** para ejecutar los siguientes comandos.
-> El cmdlet [New-ADServiceAccount](https://docs.microsoft.com/en-us/powershell/module/addsadministration/new-adserviceaccount?view=win10-ps) es parte de las herramientas de PowerShell de anuncios de [Herramientas de administración remota del servidor](https://aka.ms/rsat).
+> El cmdlet [New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/new-adserviceaccount?view=win10-ps) es parte de las herramientas de PowerShell de anuncios de [Herramientas de administración remota del servidor](https://aka.ms/rsat).
 
 ```powershell
 # Replace 'WebApp01' and 'contoso.com' with your own gMSA and domain names, respectively
@@ -122,7 +122,7 @@ Cada host de contenedor que se ejecutará un contenedor de Windows con una gMSA 
 2. Asegúrate de que el host que pertenece al grupo de seguridad controlar el acceso a la contraseña de gMSA.
 3. Por lo que obtiene su pertenencia a grupos nuevos, reinicie el equipo.
 4. Configurar [Docker escritorio para Windows 10](https://docs.docker.com/docker-for-windows/install/) o [Docker para Windows Server](https://docs.docker.com/install/windows/docker-ee/).
-5. (Recomendado) Comprueba que el host puede utilizar la cuenta gMSA mediante la ejecución de [Prueba ADServiceAccount](https://docs.microsoft.com/en-us/powershell/module/activedirectory/test-adserviceaccount). Si el comando devuelve **False**, consulte la sección de [solución de problemas](#troubleshooting) de los pasos de diagnóstico.
+5. (Recomendado) Comprueba que el host puede utilizar la cuenta gMSA mediante la ejecución de [Prueba ADServiceAccount](https://docs.microsoft.com/powershell/module/activedirectory/test-adserviceaccount). Si el comando devuelve **False**, consulte la sección de [solución de problemas](#troubleshooting) de los pasos de diagnóstico.
 
     ```powershell
     # To install the AD module on Windows Server, run Install-WindowsFeature RSAT-AD-PowerShell
@@ -310,7 +310,7 @@ Cuando estás orquestar contenedores con gmsa las, asegúrate de que:
 
 Service Fabric admite la ejecución de contenedores de Windows con una gMSA cuando se especifica la ubicación de especificación de credenciales en el manifiesto de la aplicación. Tendrás que crear el archivo de especificación de credenciales y colocar en el subdirectorio **CredentialSpecs** del directorio de datos de Docker en cada host para que pueda localizarla Service Fabric. Puedes ejecutar el cmdlet **Get-CredentialSpec** , parte del [módulo de CredentialSpec PowerShell](https://aka.ms/credspec), para comprobar si la especificación de credenciales se encuentra en la ubicación correcta.
 
-Consulta [Inicio rápido: implementar contenedores de Windows en Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-quickstart-containers) y [Configurar gMSA para contenedores de Windows que se ejecutan en Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-setup-gmsa-for-windows-containers) para obtener más información sobre cómo configurar la aplicación.
+Consulta [Inicio rápido: implementar contenedores de Windows en Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers) y [Configurar gMSA para contenedores de Windows que se ejecutan en Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-setup-gmsa-for-windows-containers) para obtener más información sobre cómo configurar la aplicación.
 
 ### <a name="how-to-use-gmsa-with-docker-swarm"></a>Cómo usar gMSA con Docker Swarm
 
@@ -390,7 +390,7 @@ Si ha encontrado errores al ejecutar un contenedor con una gMSA, las instruccion
 #### <a name="make-sure-the-host-can-use-the-gmsa"></a>Asegúrese de que el host puede utilizar la gMSA
 
 1. Comprueba que la host es dominio unido y puede contactar con el controlador de dominio.
-2. Instalar las herramientas de PowerShell de anuncios desde RSAT y ejecutar [ADServiceAccount de prueba](https://docs.microsoft.com/en-us/powershell/module/activedirectory/test-adserviceaccount) para ver si el equipo tiene acceso para recuperar la gMSA. Si el cmdlet devolverá **False**, el equipo no tiene acceso a la contraseña de gMSA.
+2. Instalar las herramientas de PowerShell de anuncios desde RSAT y ejecutar [ADServiceAccount de prueba](https://docs.microsoft.com/powershell/module/activedirectory/test-adserviceaccount) para ver si el equipo tiene acceso para recuperar la gMSA. Si el cmdlet devolverá **False**, el equipo no tiene acceso a la contraseña de gMSA.
 
     ```powershell
     # To install the AD module on Windows Server, run Install-WindowsFeature RSAT-AD-PowerShell
@@ -480,4 +480,4 @@ Si ha encontrado errores al ejecutar un contenedor con una gMSA, las instruccion
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-- [Introducción a cuentas de servicio administradas de grupo](https://docs.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
+- [Introducción a cuentas de servicio administradas de grupo](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)

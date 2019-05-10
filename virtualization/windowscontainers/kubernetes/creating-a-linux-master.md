@@ -6,17 +6,17 @@ ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: Crear un clúster maestro Kubernetes.
-keywords: kubernetes, 1,13, maestro, linux
-ms.openlocfilehash: 8a3fb073616d115ab84e6cc36f0fb6cedbcf1f7d
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+keywords: kubernetes, 1,14, maestro, linux
+ms.openlocfilehash: b1ec23b039ce6f5c42859452ecf3a8a5b35e006c
+ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578256"
+ms.lasthandoff: 05/10/2019
+ms.locfileid: "9622960"
 ---
 # <a name="creating-a-kubernetes-master"></a>Crear un maestro de Kubernetes #
 > [!NOTE]
-> Esta guía se ha validado en v1.13 de Kubernetes. Dada la volatilidad de Kubernetes a la versión, esta sección puede asumir que no contienen true para todas las versiones futuras. Encontrará documentación oficial para inicializar los patrones de Kubernetes con kubeadm [aquí](https://kubernetes.io/docs/setup/independent/install-kubeadm/). Simplemente habilita además de eso [sección de programación de sistemas operativos combinados](#enable-mixed-os-scheduling) .
+> Esta guía se ha validado en v1.14 de Kubernetes. Dada la volatilidad de Kubernetes a la versión, esta sección puede asumir que no contienen true para todas las versiones futuras. Encontrará documentación oficial para inicializar los patrones de Kubernetes con kubeadm [aquí](https://kubernetes.io/docs/setup/independent/install-kubeadm/). Simplemente habilita además de eso [sección de programación de sistemas operativos combinados](#enable-mixed-os-scheduling) .
 
 > [!NOTE]  
 > Se necesita una máquina Linux recientemente actualizada a lo largo de; Maestro de Kubernetes recursos como [kube dns](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/), [Programador de kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/)y [kube apiserver](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/) no se han trasladado a Windows aún. 

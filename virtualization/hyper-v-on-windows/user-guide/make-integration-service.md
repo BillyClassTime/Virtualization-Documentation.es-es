@@ -7,12 +7,12 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: 966ca3ff267e03e8c380391281c8dde723e4b1dd
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: f33f6deb977ff96da0b70a7e14bf4896af0307eb
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575336"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620653"
 ---
 # <a name="make-your-own-integration-services"></a>Cree sus propios servicios de integración
 
@@ -27,7 +27,7 @@ Este documento explica paso a paso la creación de un programa simple basado en 
 **Sistemas operativos invitado admitidos**
 * Windows 10 y versiones posteriores
 * Windows Server 2016 y versiones posteriores
-* Invitados de Linux con servicios de integración de Linux (consulte [Supported Linux and FreeBSD virtual machines for Hyper-V on Windows](https://technet.microsoft.com/library/dn531030.aspx) [Máquinas virtuales de Linux y FreeBSD soportadas para Hyper-V en Windows])
+* Invitados de Linux con servicios de integración de Linux (consulte [Supported Linux and FreeBSD virtual machines for Hyper-V on Windows](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows) [Máquinas virtuales de Linux y FreeBSD soportadas para Hyper-V en Windows])
 > **Nota:** Un invitado Linux compatible debe ser compatible con kernel en:
 > ```bash
 > CONFIG_VSOCKET=y
@@ -117,9 +117,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 
 En el caso más básico, la definición de un socket requiere una familia de direcciones, un tipo de conexión y un protocolo.
 
-Esta es una sencilla [definición de socket](
-https://msdn.microsoft.com/en-us/library/windows/desktop/ms740506(v=vs.85).aspx
-)
+Esta es una sencilla [definición de socket](https://docs.microsoft.com/windows/desktop/api/winsock2/nf-winsock2-socket)
 
 ``` C
 // Windows
@@ -152,7 +150,7 @@ int sock = socket(AF_VSOCK, SOCK_STREAM, 0);
 
 El enlace asocia un socket con la información de conexión.
 
-La definición de función está copiada a continuación para su comodidad. Puede obtener más información sobre los enlaces [aquí](https://msdn.microsoft.com/en-us/library/windows/desktop/ms737550.aspx).
+La definición de función está copiada a continuación para su comodidad. Puede obtener más información sobre los enlaces [aquí](https://docs.microsoft.com/windows/desktop/api/winsock/nf-winsock-bind).
 
 ``` C
 // Windows
@@ -202,7 +200,7 @@ En lugar de una IP o un nombre de host, los puntos de conexión AF_HYPERV depend
   ```PowerShell
   (Get-VM -Name $VMName).Id
   ```
-* Id. de servicio (GUID), [descrito anteriormente](#RegisterANewApplication), con el cual se registra la aplicación en el Registro del host de Hyper-V.
+* Id. de servicio (GUID), [descrito anteriormente](#register-a-new-application), con el cual se registra la aplicación en el Registro del host de Hyper-V.
 
 Hay también un conjunto de caracteres comodín de VMID disponibles cuando no se trata de una conexión a una máquina virtual específica.
 
@@ -229,6 +227,6 @@ Escuchar este VmId acepta la conexión de: (contenedores Inside): host del conte
 Socket() Bind() Connect() Send() Listen() Accept()
 
 ## <a name="useful-links"></a>Vínculos útiles
-[API WinSock completa](https://msdn.microsoft.com/en-us/library/windows/desktop/ms741394.aspx)
+[API WinSock completa](https://docs.microsoft.com/windows/desktop/WinSock/winsock-functions)
 
 [Referencia de los servicios de integración de Hyper-V](../reference/integration-services.md)

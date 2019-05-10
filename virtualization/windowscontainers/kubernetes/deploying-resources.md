@@ -8,12 +8,12 @@ ms.prod: containers
 description: Implementación de Kubernetes resoureces en un clúster de Kubernetes de sistemas operativos combinados.
 keywords: kubernetes, 1.13, windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 7d2f1dd789a96a3ee4898ef196f872e574d6321f
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 380eeb536b9642210c49bc91edf680b695d54a90
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574906"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9621043"
 ---
 # <a name="deploying-kubernetes-resources"></a>Implementación de recursos de Kubernetes #
 Si que tienes un clúster de Kubernetes que consta de al menos 1 maestro y 1 trabajadores, estás listo para implementar los recursos de Kubernetes.
@@ -31,7 +31,7 @@ kubectl get nodes
 
 Si todo parece correcto, puedes descargar y ejecutar el servicio de siguiente:
 > [!Important] 
-> Antes de `kubectl apply`, realizar seguro a doble-check o modificar la `microsoft/windowsservercore` imagen en el archivo de ejemplo para [una imagen de contenedor es runnable por los nodos](https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions)!
+> Antes de `kubectl apply`, realizar seguro a doble-check o modificar la `microsoft/windowsservercore` imagen en el archivo de ejemplo para [una imagen de contenedor es runnable por los nodos](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#choosing-container-os-versions)!
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/l2bridge/manifests/simpleweb.yml -O win-webserver.yaml

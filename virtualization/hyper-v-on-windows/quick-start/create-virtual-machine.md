@@ -7,16 +7,16 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
-ms.openlocfilehash: 4ded2de1447db467359b028d19482a76e2c484fc
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 7882e89368bb88390c2efa93c3f2a8f04bb7a37a
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576386"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620783"
 ---
 # <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Crear una máquina virtual con Hyper-V en Windows 10
 
-Aprende a crear una máquina virtual y a instalar un sistema operativo en la nueva máquina virtual.  Necesitarás un archivo .iso para el sistema operativo que quieras ejecutar. Si es necesario, consigue una copia de evaluación de Windows 10 en el [TechNet Evaluation Center](http://www.microsoft.com/en-us/evalcenter/).
+Aprende a crear una máquina virtual y a instalar un sistema operativo en la nueva máquina virtual.  Necesitarás un archivo .iso para el sistema operativo que quieras ejecutar. Si es necesario, consigue una copia de evaluación de Windows 10 en el [TechNet Evaluation Center](http://www.microsoft.com/evalcenter/).
 
 ## <a name="create-a-virtual-machine-with-hyper-v-manager"></a>Crear una máquina virtual con el Administrador de Hyper-V
 
@@ -35,17 +35,17 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
 
 1. Seleccione una generación para el equipo y haga clic en **Siguiente**.  
 
-  Las máquinas virtuales de generación 2 se introdujeron con Windows Server 2012 R2 y ofrecen un modelo de hardware virtual simplificado y algunas funciones adicionales. Solo se puede instalar un sistema operativo de 64 bits en una máquina virtual de generación 2. Para más información sobre las máquinas virtuales de generación 2, consulte [Información general acerca de las máquinas virtuales de generación 2](https://technet.microsoft.com/en-us/library/dn282285.aspx).
+  Las máquinas virtuales de generación 2 se introdujeron con Windows Server 2012 R2 y ofrecen un modelo de hardware virtual simplificado y algunas funciones adicionales. Solo se puede instalar un sistema operativo de 64 bits en una máquina virtual de generación 2. Para más información sobre las máquinas virtuales de generación 2, consulte [Información general acerca de las máquinas virtuales de generación 2](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn282285(v=ws.11)>).
   
-  > Si la nueva máquina virtual está configurada como generación 2 y va a ejecutar una distribución de Linux, tendrá que deshabilitar el arranque seguro. Para más información, consulte [Arranque seguro](https://technet.microsoft.com/en-us/library/dn486875.aspx).
+  > Si la nueva máquina virtual está configurada como generación 2 y va a ejecutar una distribución de Linux, tendrá que deshabilitar el arranque seguro. Para más información, consulte [Arranque seguro](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-8.1-and-8/dn486875(v=ws.11)>).
 
-1. Seleccione **2048** MB como valor de **Memoria de inicio** y deje seleccionada la opción **Usar la memoria dinámica**. Haga clic en el botón **Siguiente**.
+2. Seleccione **2048** MB como valor de **Memoria de inicio** y deje seleccionada la opción **Usar la memoria dinámica**. Haga clic en el botón **Siguiente**.
 
-  La memoria se comparte entre un host de Hyper-V y la máquina virtual que se ejecuta en el host. El número de máquinas virtuales que se puede ejecutar en un único host depende en parte de la memoria disponible. Una máquina virtual también se puede configurar para utilizar memoria dinámica. Cuando está habilitada, la memoria dinámica reclama la memoria no utilizada de la máquina virtual en ejecución. Esto permite que varias máquinas virtuales se ejecuten en el host. Para más información sobre la memoria dinámica, consulte [Introducción a la memoria dinámica de Hyper-V](https://technet.microsoft.com/en-us/library/hh831766.aspx).
+  La memoria se comparte entre un host de Hyper-V y la máquina virtual que se ejecuta en el host. El número de máquinas virtuales que se puede ejecutar en un único host depende en parte de la memoria disponible. Una máquina virtual también se puede configurar para utilizar memoria dinámica. Cuando está habilitada, la memoria dinámica reclama la memoria no utilizada de la máquina virtual en ejecución. Esto permite que varias máquinas virtuales se ejecuten en el host. Para más información sobre la memoria dinámica, consulte [Introducción a la memoria dinámica de Hyper-V](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831766(v=ws.11)).
 
-1. En el Asistente para configurar funciones de red, seleccione un conmutador virtual para la máquina virtual y haga clic en **Siguiente**. Para más información, consulte [Crear un conmutador virtual](connect-to-network.md).
+3. En el Asistente para configurar funciones de red, seleccione un conmutador virtual para la máquina virtual y haga clic en **Siguiente**. Para más información, consulte [Crear un conmutador virtual](connect-to-network.md).
 
-1. Asigne un nombre a la unidad de disco duro virtual, seleccione una ubicación o mantenga el valor predeterminado y, por último, especifique un tamaño. Haga clic en **Siguiente** cuando esté listo.
+4. Asigne un nombre a la unidad de disco duro virtual, seleccione una ubicación o mantenga el valor predeterminado y, por último, especifique un tamaño. Haga clic en **Siguiente** cuando esté listo.
 
   Una unidad de disco duro virtual ofrece almacenamiento para una máquina virtual, de forma similar a una unidad de disco duro físico. Una unidad de disco duro virtual es necesaria para que pueda instalar un sistema operativo en la máquina virtual.
   

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 07f5929505226a50a161b4ae7df5669c2ad89d83
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: be6be81e995dce8ebd757c73793f474f4b0909bf
+ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9575526"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "9620743"
 ---
 # <a name="windows-containers-on-windows-10"></a>Contenedores de Windows en Windows 10
 
@@ -33,7 +33,7 @@ Este inicio rápido es específico de Windows10. En la tabla de contenido en el 
 ## <a name="prerequisites"></a>Requisitos previos
 Asegúrese de que se cumplen los requisitos siguientes:
 - Un sistema de equipo físico que ejecuta Windows 10 Professional o Enterprise con actualización de aniversario (versión 1607) o posterior. 
-- Asegúrese de que [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
+- Asegúrese de que [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
 
 ***Aislamiento de Hyper-V:*** Contenedores de Windows Server requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores con la misma versión de kernel y configuración que se usará en producción, más acerca de Hyper-V aislamiento puede encontrarse en la página [contenedora acerca de Windows](../about/index.md) .
 
