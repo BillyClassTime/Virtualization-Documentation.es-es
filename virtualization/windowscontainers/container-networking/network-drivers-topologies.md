@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 358b58da0fc51c03766198e4b25b8b043b2a5029
-ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
+ms.openlocfilehash: 40e877c8999574f21ecb9586c3f2bc012607177f
+ms.sourcegitcommit: 40b929dbc72aa308d8e46765ac61616a35b31791
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "9622910"
+ms.lasthandoff: 05/14/2019
+ms.locfileid: "9634394"
 ---
 # <a name="windows-container-network-drivers"></a>Controladores de red de contenedores de Windows  
 
@@ -22,8 +22,10 @@ Además de aprovechar la red 'nat' predeterminada creada por Docker en Windows, 
 - **nat**: los contenedores conectados a una red que se haya creado con el controlador 'nat' se conectarán a un conmutador Hyper-V *interno* y recibirán una dirección IP desde el prefijo de IP (``--subnet``) especificado por el usuario. Se admite la asignación o el enrutamiento de puertos desde el host del contenedor a los puntos de conexión del contenedor.
   
   >[!NOTE]
-  >Si tienes instalado Windows 10 Creators Update, se admiten varias redes NAT.
+  > Redes NAT creadas en Windows Server 2019 (o superior) ya no se conservan después del reinicio.
 
+  > Si tienes instalado Windows 10 Creators Update (o posterior), se admiten varias redes NAT.
+  
 - **transparent**: los contenedores conectados a una red que se haya creado con el controlador 'transparente' se conectarán directamente a la red física, a través de un conmutador Hyper-V *externo*. Las direcciones IP de la red física se pueden asignar de manera estática (requiere la opción ``--subnet`` especificada por el usuario) o dinámica mediante un servidor DHCP externo.
   
   >[!NOTE]
