@@ -3,12 +3,12 @@ title: Aceleración de GPU en contenedores de Windows
 description: ¿Qué nivel de aceleración de GPU existe en contenedores de Windows
 keywords: docker, contenedores, los dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: 281241e07e4bc184e73c4e74a117b44253a775be
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 066f97b859b133a03e24df5db95cafe405ea3110
+ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578660"
+ms.lasthandoff: 05/16/2019
+ms.locfileid: "9657373"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Aceleración de GPU en contenedores de Windows
 
@@ -17,7 +17,7 @@ Para muchas cargas de trabajo en contenedores, los recursos de proceso de CPU pr
 GPU ya son una herramienta común para muchas cargas de trabajo populares, de simulación de formación de aprendizaje de máquina y inferencia y representación tradicional. Los contenedores de Windows admiten la aceleración de GPU para DirectX y todos los marcos integrados en la parte superior.
 
 > [!IMPORTANT]
-> Esta característica requiere una versión de Docker que admita la `--device` opción de línea de comandos para contenedores de Windows. Se ha programado el soporte de Docker formal para la próxima versión de 19.03 motor de Docker EE. Hasta entonces, el [origen en dirección ascendente](https://master.dockerproject.org/) de Docker contiene los bits necesarios.
+> Esta característica requiere una versión de Docker que admita la `--device` opción de línea de comandos para contenedores de Windows. Esta compatibilidad actualmente solo está disponible en la `Docker Desktop for Windows Edge` de lanzamiento. Puedes descargar la versión de borde de Docker [aquí](https://docs.docker.com/docker-for-windows/edge-release-notes/).
 
 ## <a name="requirements"></a>Requisitos
 
