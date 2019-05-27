@@ -1,46 +1,34 @@
 ---
-title: Ecosistema de contenedor
-description: Creación de un ecosistema de contenedor.
+title: Acerca de los ecosistemas de contenedor de construcción
+description: Una breve descripción general sobre cómo crear ecosistemas de contenedor.
 keywords: metadatos, contenedores
 author: PatrickLang
-ms.date: 04/20/2016
+ms.date: 05/22/2019
 ms.topic: about-article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: c30b28d867a23537699bce99fafa2748d3747fa9
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: a1abc73d706458fbb8b8d3244072b025e433afd6
+ms.sourcegitcommit: daf1d2b5879c382404fc4d59f1c35c88650e20f7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576106"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "9674720"
 ---
-# <a name="building-a-container-ecosystem"></a>Creación de un ecosistema de contenedor
+# <a name="about-building-container-ecosystems"></a>Acerca de los ecosistemas de contenedor de construcción
 
-Para entender por qué es tan importante la creación de un ecosistema de contenedor, primero se explicará Docker.
+Para comprender por qué crear un ecosistema de contenedor es tan importante, primero hablemos de sus componentes.
 
-## <a name="docker"></a>Docker
+## <a name="components-of-a-container-ecosystem"></a>Componentes de un ecosistema de contenedor
 
-El concepto de contenedores (aislamiento de espacio de nombres y gobernanza de recursos) ha estado presente durante mucho tiempo, en la época de BSD Jails, Solaris Zones y el mecanismo básico de UNIX chroot (cambiar raíz).   Lo que Docker ha hecho es ofrecer un conjunto común de herramientas, un modelo de empaquetado y un mecanismo de implementación.  Al hacerlo, Docker simplifica la inclusión en contenedores y la distribución de aplicaciones.  Esas aplicaciones pueden entonces ejecutarse en cualquier lugar de cualquier host de Linux, una capacidad que ofrecemos también en Windows.
+Los contenedores de Windows son un componente clave de un ecosistema de contenedor de gran tamaño. Estamos trabajando en el sector para ofrecer opciones a los desarrolladores en cada nivel de la pila de soluciones.
 
-La tecnología de modelo y la implementación de empaquetado ubicua simplifica la administración al ofrecer los mismos comandos de administración para cualquier host y crea una oportunidad única para DevOps transparente.
-
-Del escritorio de un desarrollador a una máquina de pruebas para un conjunto de equipos de producción, se puede crear una imagen de Docker que se implementará exactamente igual en cualquier entorno en segundos. Este artículo ha creado un ecosistema grande y en crecimiento de aplicaciones empaquetadas en contenedores de Docker, con DockerHub, el registro público de aplicaciones en contenedores que mantiene Docker.
-
-Docker ofrece una base estupenda para el desarrollo.
-
-Hablemos ahora de ese ecosistema de aplicaciones y de cómo puede basarse en los conceptos de Docker para crear un flujo de trabajo de desarrollo e implementación que se adapte a sus necesidades.
-
-## <a name="components-in-a-container-ecosystem"></a>Componentes de un ecosistema de contenedores
-
-Los contenedores de Windows son un componente clave de un ecosistema de grandes contenedores. Estamos trabajando en el sector para ofrecer opciones a los desarrolladores en cada nivel de la pila de soluciones.
-
-El ecosistema de contenedores ofrece maneras de administrar contenedores, compartirlos y desarrollar aplicaciones que se ejecutan en ellos.
+El ecosistema contenedor proporciona formas de administrar, compartir y desarrollar aplicaciones que se ejecutan en contenedores.
 
 ![](media/containerEcosystem.png)
 
-Microsoft quiere impulsar las opciones de los desarrolladores y la productividad a medida que crean estas aplicaciones de última generación.  Nuestro objetivo es aumentar la productividad del desarrollador, que supone permitir que las aplicaciones tengan como destino cualquier nube de Microsoft, sin tener que modificar, reescribir o volver a configurar el código.
+Microsoft quiere impulsar las opciones de los desarrolladores y la productividad a medida que crean estas aplicaciones de última generación. Nuestro objetivo es alimentar la productividad de los programadores, lo que significa permitir que las aplicaciones se dirijan a cualquier nube de Microsoft sin necesidad de modificar, reescribir o volver a configurar el código.
 
-Microsoft tiene un gran compromiso con ser abierto y contribuir al ecosistema.  Colaboramos activamente con la llegada simultánea de ecosistemas de varios desarrolladores de interés, como Windows y Linux, para impulsar la innovación.
+Microsoft se compromete a ser abierto y respetuoso con el sistema. Activamente, apoyamos la combinación de varios ecosistemas de desarrollador de interés, como Windows y Linux, para impulsar la innovación.
 
-Durante los próximos meses, ofreceremos más información sobre las asociaciones adicionales de este ecosistema en desarrollo.
+En los próximos meses, proporcionaremos más información sobre socios adicionales en este ecosistema de desarrollo.

@@ -3,125 +3,86 @@ title: Acerca de los contenedores de Windows
 description: Obtenga información sobre los contenedores de Windows.
 keywords: docker, contenedores
 author: taylorb-microsoft
-ms.date: 05/02/2016
+ms.date: 05/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: bf503971ee8b4c0bbe6b9812b2f4965560ff466c
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 80514884b4c95657f63cf585ece6aa8c8b23cc44
+ms.sourcegitcommit: daf1d2b5879c382404fc4d59f1c35c88650e20f7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620863"
+ms.lasthandoff: 05/23/2019
+ms.locfileid: "9674730"
 ---
-# <a name="containers-on-windows"></a>Contenedores en Windows
+# <a name="about-windows-containers"></a>Acerca de los contenedores de Windows
 
-## <a name="what-are-containers"></a>¿Cuáles son los contenedores
+Imagina una cocina. Dentro de este espacio hay todo lo que necesitas para comer una comida: el horno, las pan, la lavabo, etc. Este es nuestro contenedor.
 
-Los contenedores son una forma de encapsular una aplicación en su propio espacio aislado. Una vez que la aplicación esté en su contenedor, no tendrá conocimiento de otras aplicaciones o procesos que existan fuera de su espacio. Todo lo que necesita la aplicación para ejecutarse correctamente también se encuentra dentro de este contenedor.  Independientemente de la ubicación a la que se pueda mover el espacio, la aplicación siempre se encontrará satisfecha porque incluye todo lo que necesita para ejecutarse.
+![Ilustración de una cocina completada con un papel tapiz amarillo dentro de un cuadro negro.](media/box1.png)
 
-Imagina una cocina. Empaquetamos todos los electrodomésticos y mobiliario, cacerolas y sartenes, jabón para vajilla y toallas de mano. Este es nuestro contenedor.
+Ahora imagínese colocar esta cocina dentro de un edificio tan fácilmente como deslizar un libro en una estantería. Puesto que todo lo que la cocina necesita funcionar ya es así, todo lo que necesitamos para comenzar a cocina es conectar la electricidad y la fontanería.
 
-![Analogía de cocina](media/box1.png)
+![Una construcción de apartamentos formada por dos pilas de cuadros negros. Cuatro de estas casillas son los mismos cuadros amarillos que se usan en el ejemplo de la cocina y se colocan en lugares aleatorios en el edificio, mientras que el resto son las salas de espera de color o están vacías o están atenuadas.](media/apartment.png)
 
-Ahora podemos tomar este contenedor y colocarlo en el apartamento que queramos, y tendremos la misma cocina. Todo lo que debemos hacer es conectar la electricidad y agua a ella y, a continuación, estamos listos para empezar a cocinar (porque tenemos todos los electrodomésticos que necesitamos).
+¿Por qué detener? Puede personalizar su edificio de la manera que más le guste; rellenarlo con muchos tipos de salas, rellenarlo con habitaciones idénticas o tener una mezcla de ambos.
 
-![Analogía apartamento](media/apartment.png)
+Los contenedores actúan como este salón ejecutando una aplicación como en nuestra cocina. Un contenedor coloca una aplicación y todo lo que la aplicación necesita para ejecutarse en su propio cuadro aislado. Como resultado, la aplicación aislada no tiene conocimiento alguno de las demás aplicaciones o procesos que existen fuera de su contenedor. Dado que el contenedor tiene todo lo que la aplicación necesita ejecutar, el contenedor se puede mover a cualquier parte, usando solo los recursos de su host, sin tocar ningún recurso suministrado para otros contenedores.
 
-De forma muy similar, los contenedores se parecen a esta cocina. Es posible que haya diferentes tipos de habitaciones, así como un gran número de los mismos tipos de habitaciones. Lo importante es que los contenedores incluyan todo lo que necesitan.
+En el siguiente vídeo encontrará más información sobre lo que los contenedores de Windows pueden hacer por usted, así como la colaboración de Microsoft con el acoplador para crear un entorno sin fricción para el desarrollo de contenedores de código abierto:
 
-Vea una breve introducción a continuación:
 <iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## <a name="container-fundamentals"></a>Conceptos básicos de contenedor
+## <a name="container-fundamentals"></a>Aspectos básicos de los contenedores
 
-Los contenedores son un entorno de ejecución portátil, aislado y controlado por recursos que se ejecuta en una máquina host o virtual. Una aplicación o proceso que se ejecuta en un contenedor se empaqueta con todas las dependencias necesarias y los archivos de configuración; ha dado la ilusión de que no hay otros procesos que se ejecutan fuera del contenedor.
+Vamos a conocer algunos términos que le resultarán útiles a la vez que comienza a trabajar con contenedores de Windows:
 
-El host del contenedor aprovisiona un conjunto de recursos para el contenedor y este solo usará estos recursos. Lo respecta el contenedor, no existen otros recursos fuera de lo que se le ha asignado y, por tanto, el contenedor no puede acceder a los recursos que pueden haber aprovisionado un contenedor vecino.
+- Host de contenedor: un sistema de equipo físico o virtual configurado con la característica contenedor de Windows. El host contenedor ejecutará uno o varios contenedores de Windows.
+- Espacio aislado: la capa que captura todos los cambios que realice en el contenedor mientras se está ejecutando (como las modificaciones del sistema de archivos, las modificaciones del registro o las instalaciones de software).
+- Imagen base: primera capa de las capas de imagen de un contenedor que proporciona el entorno del sistema operativo del contenedor. No se puede modificar una imagen base.
+- Imagen de contenedor: plantilla de solo lectura de instrucciones para crear un contenedor. Las imágenes se pueden basar en un entorno de sistema operativo básico y sin modificar, pero también se pueden crear desde el recinto de un contenedor modificado. Estas imágenes modificadas supercapan sus cambios en la parte superior de la capa de la imagen base, y estas capas se pueden copiar y volver a aplicar a otras imágenes base para crear una nueva imagen con los mismos cambios.
+- Repositorio de contenedores: el repositorio local que almacena la imagen de contenedor y sus dependencias cada vez que se crea una imagen nueva. Puede reutilizar las imágenes almacenadas tantas veces como desee en el host contenedor. También puede almacenar las imágenes de contenedor en un registro público o privado, como un concentrador acoplador, para que se puedan usar en muchos hosts de contenedor diferentes.
+- Contenedor Orchestrator: un proceso que automatiza y administra un gran número de contenedores y cómo interactúan entre sí. Para obtener más información, consulte [acerca de los Windows Container orchestrators](overview-container-orchestrators.md).
+- Dock: proceso automatizado que empaqueta y entrega imágenes de contenedor. Para obtener más información, vea la [información general](docker-overview.md)del acoplador, el [motor del acoplador en Windows](../manage-docker/configure-docker-daemon.md) o visite el [sitio web](https://www.docker.com)del acoplador.
 
-Los siguientes conceptos clave le resultarán útiles cuando empezar a crear y trabajar con contenedores de Windows.
+![Diagrama de flujo que muestra cómo se crean los contenedores. Las imágenes de la aplicación y la base se usan para crear un espacio aislado y una nueva imagen de la aplicación, que se superponer en la parte superior de la imagen base para crear un nuevo contenedor.](media/containerfund.png)
 
-**Host de contenedor:** Físico o Virtual sistema de equipo configurado con la característica de contenedor de Windows. El host de contenedor ejecutará uno o varios contenedores de Windows.
+Alguien que está familiarizado con máquinas virtuales puede pensar que los contenedores y las máquinas virtuales parecen ser similares. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede tener acceso a él a través de una red, de forma similar a un sistema informático físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales. Para obtener más información sobre estos conceptos, lea el [blog](https://azure.microsoft.com/blog/containers-docker-windows-and-trends/) de Mark Russinovich en el que se explican las diferencias de forma más detallada.
 
-**Imagen de contenedor:** a medida que se realicen modificaciones en un registro o un sistema de archivos de contenedores, como durante la instalación de software, se capturan en un espacio aislado. En muchos casos, querrás capturar este estado de forma que se puedan crear nuevos contenedores que heredan estos cambios. Precisamente eso es una imagen: cuando se ha detenido el contenedor, puede descartar ese espacio aislado o puede convertirlo en una nueva imagen de contenedor. Por ejemplo, imaginemos que ha implementado un contenedor a partir de la imagen del sistema operativo de Windows Server Core. Después instala MySQL en este contenedor. La creación de una nueva imagen de este contenedor actuaría como una versión que se puede implementar del contenedor. Esta imagen solo contendría los cambios realizados (MySQL), aunque funcionaría como una capa encima de la imagen del sistema operativo del contenedor.
+### <a name="windows-container-types"></a>Tipos de contenedor de Windows
 
-**Espacio aislado:** cuando se haya iniciado un contenedor, todas las acciones de escritura como las modificaciones del sistema de archivos, las modificaciones del Registro o las instalaciones de software se capturan en esta capa de "espacio aislado".
+Otra cosa que debe saber es que hay dos tipos de contenedores diferentes, también conocidos como runtimes.
 
-**Imagen del sistema operativo de contenedor:** los contenedores se implementan a partir de imágenes. La imagen del sistema operativo de contenedor es la primera capa de potencialmente muchas capas de imagen que componen un contenedor. Esta imagen ofrece el entorno del sistema operativo. Una imagen de sistema operativo del contenedor es inmutable. Es decir, no se puede modificar.
+Los contenedores de Windows Server proporcionan aislamiento de aplicaciones mediante procesos y tecnología de aislamiento de espacios de nombres, motivo por el que estos contenedores también se conocen como contenedores aislados por proceso. Un contenedor de Windows Server comparte el kernel con el host de contenedor y todos los contenedores que se ejecutan en el host. Estos contenedores aislados de proceso no proporcionan un límite de seguridad hostil y no se deben usar para aislar el código que no es de confianza. Dado el espacio de kernel compartido, estos contenedores requieren la misma configuración y versión de kernel.
 
-**Repositorio de contenedor:** cada vez que se crea una imagen de contenedor, esta y sus dependencias se almacenan en un repositorio local. Estas imágenes se pueden reutilizar muchas veces en el host de contenedor. Las imágenes de contenedor también pueden almacenarse en un registro público o privado, como Docker Hub, por lo que pueden usarse en varios hosts de contenedor diferentes.
+El aislamiento de Hyper-V se expande en el aislamiento proporcionado por los contenedores de Windows Server ejecutando cada contenedor en una máquina virtual muy optimizada. En esta configuración, el host del contenedor no comparte su núcleo con otros contenedores en el mismo host. Estos contenedores se han diseñado para el hospedaje multiinquilino hostil con las mismas garantías de seguridad de una máquina virtual. Dado que estos contenedores no comparten el núcleo con el host u otros contenedores en el host, pueden ejecutar núcleos con diferentes versiones y configuraciones (dentro de las versiones compatibles). Por ejemplo, todos los contenedores de Windows en Windows 10 usan el aislamiento de Hyper-V para usar la configuración y la versión del kernel de Windows Server.
 
-![Conceptos básicos de contenedor](media/containerfund.png)
+Ejecutar un contenedor en Windows con o sin el aislamiento Hyper-V es una decisión en tiempo de ejecución. Inicialmente, puede crear el contenedor con el aislamiento de Hyper-V y, posteriormente, en tiempo de ejecución, elegir ejecutarlo como un contenedor de Windows Server.
 
-Para alguien familiarizado con las máquinas virtuales, puede parecer que los contenedores son increíblemente similares. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales.
+## <a name="container-users"></a>Usuarios del contenedor
 
-Mark Russinovich, experto de MicrosoftAzure, tiene [una estupenda entrada de blog](https://azure.microsoft.com/blog/containers-docker-windows-and-trends/) en la que explica las diferencias.
+### <a name="containers-for-developers"></a>Contenedores para desarrolladores
 
-## <a name="windows-container-types"></a>Tipos de contenedores de Windows
+Los contenedores ayudan a los desarrolladores a crear y enviar aplicaciones de mayor calidad más rápidamente. Los programadores pueden crear una imagen de acoplador que se implementará de manera idéntica en todos los entornos en segundos. Hay un gran sistema de aplicaciones en crecimiento masivo en contenedores de Dock. DockerHub, un registro de aplicaciones de contenedor público mantenido por Dock, ha publicado más de 180.000 aplicaciones en el repositorio de la comunidad pública, y ese número sigue creciendo.
 
-Los contenedores de Windows incluyen dos tipos diferentes de contenedores o tiempos de ejecución.
+Cuando un desarrollador containerizes una aplicación, solo la aplicación y los componentes que necesita ejecutar se combinan en una imagen. Los contenedores se crean después a partir de esta imagen según sea necesario. También puede utilizar una imagen como una línea de base para crear otra imagen, con lo que la creación de imágenes será aún más rápida. Varios contenedores pueden compartir la misma imagen, lo que significa que los contenedores se inician muy rápidamente y utilizan menos recursos. Por ejemplo, un desarrollador puede usar contenedores para girar componentes de aplicaciones ligeros y portátiles, también conocidos como microservicios, para aplicaciones distribuidas y escalar rápidamente cada servicio por separado.
 
-**Contenedores de Windows Server**: Proporcionan aislamiento de aplicaciones mediante tecnología de aislamiento de procesos y espacios de nombres. Un contenedor de Windows Server comparte el kernel con el host de contenedor y con todos los contenedores que se ejecutan en el host. Estos contenedores no proporcionan un límite de seguridad hostil y no deben usarse para aislar un código que no sea de confianza. Dado el espacio de kernel compartido, estos contenedores requieren la misma configuración y versión de kernel.
+Los contenedores son portátiles y versátiles, pueden escribirse en cualquier idioma y son compatibles con cualquier equipo que ejecute Windows Server 2016. Los programadores pueden crear y probar un contenedor de forma local en su equipo portátil o de escritorio y, a continuación, implementar esa misma imagen de contenedor en la nube privada de su empresa, en la nube pública o en el proveedor de servicios. La agilidad natural de los contenedores es compatible con los patrones de desarrollo de aplicaciones modernos en entornos de nube virtualizados a gran escala.
 
-**Aislamiento de Hyper-V**: amplía el aislamiento que ofrecen los contenedores de WindowsServer mediante la ejecución de cada contenedor en una máquina virtual altamente optimizada. En esta configuración, el kernel del host de contenedor no se comparte con otros contenedores que estén en el mismo host. Estos contenedores se han diseñado para el hospedaje multiinquilino hostil con las mismas garantías de seguridad de una máquina virtual. Dado que estos contenedores no comparten el kernel con el host u otros contenedores del equipo host, pueden ejecutar kernels con distintas versiones y configuraciones (dentro de las versiones compatibles): por ejemplo, todos los contenedores de Windows en Windows10 usan el aislamiento de Hyper-V para poder usar la versión y configuración del kernel de WindowsServer.
+### <a name="containers-for-it-professionals"></a>Contenedores para profesionales de ti
 
-La ejecución de un contenedor en Windows con o sin aislamiento de Hyper-V es una decisión que ha de tomarse en el tiempo de ejecución. Puedes optar por crear inicialmente el contenedor con aislamiento de Hyper-V y más adelante, en el tiempo de ejecución, seleccionarlo para ejecutarlo en lugar de un contenedor de WindowsServer.
+Los contenedores ayudan a los administradores a crear una infraestructura más fácil de actualizar y mantener. Los profesionales de TI pueden usar contenedores para proporcionar entornos estandarizados para los equipos de desarrollo, QA y producción. Ya no tienen que preocuparse por los procedimientos complejos de instalación y configuración. Mediante el uso de contenedores, los administradores de sistemas abstraen las diferencias entre las instalaciones del sistema operativo y la infraestructura subyacente.
 
-## <a name="what-is-docker"></a>¿Qué es Docker?
+## <a name="containers-101-video-presentation"></a>Presentación de vídeo de contenedores 101
 
-A medida que lees sobre los contenedores, inevitablemente aparecerá Docker en tu lectura. Docker es el contenedor mediante el que se empaquetan y entregan las imágenes de contenedor. Este proceso automatizado genera imágenes (plantillas) que pueden ejecutarse en cualquier lugar (en entornos locales, en la nube o en un equipo personal) como contenedor.
-
-![Contenedores de Docker](media/docker.png)
-
-Al igual que cualquier otro contenedor, un contenedor de Windows Server puede administrarse con [Docker](https://www.docker.com).
-
-## <a name="containers-for-developers"></a>Contenedores para desarrolladores
-
-Del escritorio de un desarrollador a una máquina de pruebas para un conjunto de máquinas de producción, se puede crear una imagen de Docker que se implementará exactamente igual en cualquier entorno en segundos. Este artículo ha creado un gran ecosistema en crecimiento de aplicaciones empaquetadas en contenedores de Docker, con DockerHub, el registro de aplicaciones en contenedores públicos que mantiene Docker. Actualmente hay publicadas más de 180000 aplicaciones en el repositorio público de la comunidad.
-
-Cuando incluya una aplicación en un contenedor, solamente la aplicación y los componentes necesarios para ejecutarla se combinan en una "imagen". Los contenedores se crean después a partir de esta imagen según sea necesario. También puede utilizar una imagen como una línea de base para crear otra imagen, con lo que la creación de imágenes será aún más rápida. Varios contenedores pueden compartir la misma imagen, lo que significa que los contenedores se inician con mucha rapidez y utilizan menos recursos. Por ejemplo, puede utilizar los contenedores para poner en marcha componentes de aplicaciones portátiles y ligeros (o "microservicios") para aplicaciones distribuidas y escalar rápidamente cada servicio por separado.
-
-Como el contenedor tiene todo que lo necesario para ejecutar la aplicación, son muy portátiles y se pueden ejecutar en cualquier equipo que tenga Windows Server 2016. Puede crear y probar contenedores localmente y luego implementar esa misma imagen de contenedor en la nube privada, la nube pública o el proveedor de servicios de su empresa. La agilidad natural de los contenedores admite patrones de desarrollo de aplicaciones modernas en entornos de nube, virtualizados y a gran escala.
-
-Con los contenedores, los desarrolladores pueden crear una aplicación en cualquier lenguaje. Estas aplicaciones son totalmente portátiles y pueden ejecutarse en cualquier lugar (portátil, equipo de escritorio, servidor, nube privada, nube pública o proveedor de servicios) sin cambios de código.  
-
-Los contenedores ayudan a los desarrolladores a crear y distribuir aplicaciones de mayor calidad, más rápido.
-
-## <a name="containers-for-it-professionals"></a>Contenedores para los profesionales de TI
-
-Los profesionales de TI pueden utilizar los contenedores para ofrecer entornos estandarizados para su desarrollo, sus controles de calidad y sus equipos de producción. Ya no tienen que preocuparse de los complicados pasos de instalación y configuración. Mediante el uso de contenedores, los administradores de sistemas abstraen las diferencias de las instalaciones de sistemas operativos y la infraestructura subyacente.
-
-Los contenedores ayudan a los administradores a crear una infraestructura que es más fácil de actualizar y mantener.
-
-## <a name="container-orchestrators"></a>Orquestadores de contenedor
-
-Debido a su tamaño pequeño y a la orientación de la aplicación, los contenedores son ideales para entornos de entrega ágiles y arquitecturas basadas en microservicios. Sin embargo, cuando usas contenedores y microservicios, puedes tener fácilmente cientos o miles de componentes en tu entorno.  Es posible que puedas administrar manualmente unas docenas de máquinas virtuales o servidores físicos, pero no existe forma de administrar un entorno de contenedores de escala de producción sin automatización.  La tarea de automatizar y administrar un gran número de contenedores y cómo interactúan se conoce como orquestación. 
-
-La definición estándar de la orquestación incluye las siguientes tareas:
-
-- Programación: dada una imagen de contenedor y una solicitud de recursos, se busca una máquina adecuada en la que ejecutar el contenedor.
-- Afinidad/Antiafinidad: se especifica que un conjunto de contenedores debe ejecutarse cerca entre sí (para mejorar el rendimiento) o lo suficientemente alejado (para ofrecer disponibilidad).
-- Supervisión de estado: se buscan errores en el contenedor y se reprograman automáticamente.
-- Conmutación por error: se realiza un seguimiento de lo que se ejecuta en cada máquina y se vuelven a programar contenedores de máquinas con errores a nodos en buen estado.
-- Escalado: se agregan o quitan instancias de contenedor para que coincidan con la demanda, ya sea de forma manual o automática.
-- Redes: se proporciona una red superpuesta para coordinar contenedores para que se comuniquen a través de varios equipos host.
-- Detección de servicios: se habilitan contenedores para que puedan localizarse entre sí automáticamente, incluso cuando se muevan entre equipos host y cambien las direcciones IP.
-- Actualizaciones de aplicación coordinadas: se administran las actualizaciones del contenedor para evitar tiempos de inactividad de la aplicación y permitir la reversión si algo va mal.
-
-Azure ofrece dos orquestadores de contenedor: Azure Kubernetes Service (AKS) y Service Fabric.
-
-[Azure Kubernetes Service (AKS)](/azure/aks/) hace que sea más sencillo crear, configurar y administrar un clúster de máquinas virtuales preconfiguradas para ejecutarse en aplicaciones. Esto te permite aprovechar tus aptitudes o recurrir a la experiencia de la comunidad, un grupo grande y en continuo crecimiento, para implementar y administrar aplicaciones basadas en contenedores en Microsoft Azure. Al usar AKS, puedes sacar provecho de las características de nivel empresarial de Azure, al mismo tiempo que mantienes la portabilidad de la aplicación a través de Kubernetes y el formato de imagen de Docker.
-
-[Azure Service Fabric](/azure/service-fabric/) es una plataforma de sistemas distribuidos que facilita el proceso de empaquetar, implementar y administrar microservicios y contenedores escalables y de confianza. Service Fabric aborda los desafíos importantes del desarrollo y la administración de aplicaciones nativas en la nube. Los desarrolladores y los administradores pueden evitar problemas complejos de infraestructura y centrarse en la implementación de cargas de trabajo críticas y exigentes que son escalables, de confianza y fáciles de administrar. Service Fabric representa la plataforma de última generación para crear y administrar estas aplicaciones de escalado en la nube, de nivel 1 y de clase empresarial que se ejecutan en contenedores.
-
-## <a name="video-overview"></a>Vídeo de introducción
+La siguiente presentación de vídeo le proporcionará una información general más detallada sobre el historial y la implementación de contenedores de Windows.
 
 <iframe src="https://channel9.msdn.com/Blogs/containers/Containers-101-with-Microsoft-and-Docker/player" width="800" height="450" allowFullScreen="true" frameBorder="0" scrolling="no"></iframe>
 
-## <a name="try-windows-server-containers"></a>Pruebe los contenedores de Windows Server
+## <a name="try-windows-server-containers"></a>Usar contenedores de Windows Server
 
-¿Estás listo para comenzar a sacar partido de la increíble potencia de los contenedores? Consulta la siguiente documentación para comenzar a implementar tu primer contenedor: <br/>
-Para los usuarios de WindowsServer, dirígete aquí: [Inicio rápido de WindowsServer](../quick-start/quick-start-windows-server.md) <br/>
-Para los usuarios de Windows10, dirígete aquí: [Inicio rápido de Windows10](../quick-start/quick-start-windows-10.md)
+¿Estás listo para comenzar a sacar partido de la increíble potencia de los contenedores? Los artículos siguientes le ayudarán a empezar:
 
+Para configurar un contenedor en Windows Server, vea el [tutorial rápido de Windows Server](../quick-start/quick-start-windows-server.md).
+
+Para configurar un contenedor en Windows 10, consulta el [Inicio rápido de Windows 10](../quick-start/quick-start-windows-10.md).
