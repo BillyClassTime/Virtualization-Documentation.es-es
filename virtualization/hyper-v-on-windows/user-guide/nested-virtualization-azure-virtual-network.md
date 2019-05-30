@@ -1,63 +1,63 @@
 ---
-title: Configurar máquinas virtuales anidadas para comunicarse directamente con los recursos de una red Virtual de Azure
+title: Configuración de máquinas virtuales anidadas para comunicarse directamente con recursos en una red virtual de Azure
 description: Virtualización anidada
-keywords: Windows 10, hyper-v, Azure
+keywords: Windows 10, Hyper-v, Azure
 author: mrajess
 ms.date: 12/10/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: 2771989b7745605fb3ce4f95e162ae8b03180b0f
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 2f1c6a124ba4f2f9d199d3cc5bb38c9082f72b3d
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621583"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9681145"
 ---
-# <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Configurar máquinas virtuales anidadas para comunicarse con los recursos de una red virtual de Azure
+# <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Configurar máquinas virtuales anidadas para comunicarse con recursos en una red virtual de Azure
 
-Las instrucciones original en implementar y configurar las máquinas virtuales anidadas dentro de Azure se necesitan tener acceso a estas máquinas virtuales a través de un conmutador NAT. Esto presenta varias limitaciones:
+La orientación original sobre la implementación y la configuración de máquinas virtuales anidadas dentro de Azure requieren que usted acceda a estas máquinas virtuales a través de un conmutador NAT. Esto presenta varias limitaciones:
 
-1. Máquinas virtuales anidadas no pueden acceder a los recursos locales o dentro de una red Virtual de Azure.
-2. Recursos locales o recursos de Azure pueden acceder únicamente a las máquinas virtuales anidadas a través de una red NAT, lo que significa que los invitados varios no comparten el mismo puerto.
+1. Las máquinas virtuales anidadas no pueden tener acceso a recursos locales o dentro de una red virtual de Azure.
+2. Los recursos locales o los recursos de Azure solo pueden acceder a las máquinas virtuales anidadas a través de un NAT, lo que significa que varios invitados no pueden compartir el mismo puerto.
 
-Este documento le guiará a través de una implementación mediante el cual se usarán RRAS, usuario define las rutas, una subred dedicada a NAT saliente para permitir el acceso de invitado internet y un espacio de direcciones "flotante" para permitir máquinas virtuales anidadas se comportan y se comunique como cualquier otra máquina virtual implementar directamente en un VNet dentro de Azure.
+Este documento le guiará a través de una implementación en la que usamos RRAS, rutas definidas por el usuario, una subred dedicada al NAT saliente para permitir el acceso de Internet invitado y un espacio de direcciones "flotante" que permita que las VM anidadas se comporten y se comuniquen como cualquier otra máquina virtual se implementa directamente en una VNet dentro de Azure.
 
-Antes de comenzar a esta guía, consulta:
+Antes de comenzar esta guía, haga lo siguiente:
 
-1. Leer la [guía se proporciona aquí](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) en la virtualización anidada.
-2. Leer todo el artículo antes de la implementación.
+1. Lea las [instrucciones proporcionadas aquí](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) en la virtualización anidada.
+2. Lea este artículo completo antes de la implementación.
 
-## <a name="high-level-overview-of-what-were-doing-and-why"></a>Introducción de nivel alto de lo que hacemos y por qué
-* Vamos a crear una máquina virtual con anidamiento que tiene dos NIC. 
-* Una que NIC se usará para proporcionar nuestro máquinas virtuales anidadas con acceso a internet a través de NAT y la otra NIC se usará para enrutar el tráfico desde nuestro conmutador interno a recursos externos para que el hipervisor. Cada NIC tendrá que estar en un dominio de enrutamiento diferente, lo que significa una subred diferente.
-* Esto significa que necesitaremos una red Virtual con en un mínimo de tres subredes. Una para NAT, uno para el enrutamiento de LAN y uno que no se usa, pero es "reservado" para nuestras las máquinas virtuales anidadas. Los nombres se usan para las subredes en este documento son, "NAT", "Hyper-V-LAN" y "Ghosted".
-* El tamaño de estas subredes es tu criterio, pero hay algunas consideraciones. El tamaño de las subredes "Ghosted" determina el número de direcciones IP que tienes para las máquinas virtuales anidadas. Además, el tamaño de las subredes "NAT" y "Hyper-V-LAN" determina el número de direcciones IP que tienes para hipervisores. Por lo tanto, puede hacer que técnicamente subredes realmente pequeñas aquí si solo se han pensando en tener una o dos hipervisores.
-* En segundo plano: Anidada máquinas virtuales no reciben DHCP desde el VNet que su host está conectado a incluso si estableces una interna o un conmutador externo. 
+## <a name="high-level-overview-of-what-were-doing-and-why"></a>Información general de lo que estamos haciendo y por qué.
+* Crearemos una VM con capacidad de anidamiento que tenga dos NICs. 
+* Se usará una NIC para proporcionar nuestras máquinas virtuales anidadas con acceso a Internet a través de NAT y la otra NIC se usará para enrutar el tráfico de nuestro conmutador interno a los recursos externos al hipervisor. Cada NIC tendrá que estar en un dominio de enrutamiento diferente, lo que significa una subred diferente.
+* Esto significa que necesitaremos una red virtual con al menos tres subredes. Una para NAT, una para enrutamiento LAN y otra que no se usan, pero que está "reservada" para nuestras máquinas virtuales anidadas. Los nombres que usamos para las subredes de este documento son "NAT", "Hyper-V-LAN" y "fantasma".
+* El tamaño de estas subredes está a su discreción, pero hay algunas consideraciones. El tamaño de las subredes "fantasma" determina el número de direcciones IP que tiene para sus VM anidadas. Además, el tamaño de las subredes "NAT" y "Hyper-V-LAN" determina el número de direcciones IP que tiene para los hipervisores. Por lo tanto, podrías hacer que las subredes sean realmente pequeñas aquí si solo planeabas tener uno o dos hipervisores.
+* Contexto: las máquinas virtuales anidadas no recibirán DHCP de la VNet a la que su host está conectado aunque configure un conmutador interno o externo. 
   * Esto significa que el host de Hyper-V debe proporcionar DHCP.
-* El host de Hyper-V no es consciente de las concesiones asignadas actualmente en el VNet, por lo que para evitar una situación en la que el host asigna una dirección IP ya existentes debemos asignar un bloque de direcciones IP para su uso solo por el host de Hyper-V. Esto nos permitirá evitar una situación IP duplicada.
-  * Corresponde a una subred dentro de la misma VNet que tu Hyper-V se encuentra en el bloque de direcciones IP elegimos.
-  * Es el motivo por el que queremos que corresponden a una subred existente controlar los anuncios de BGP volver a través de un ExpressRoute. Si se compone solo un intervalo IP para el host de Hyper-V usar, a continuación, tenemos que crear una serie de rutas estáticas para permitir que los clientes de forma local para comunicarse con las máquinas virtuales anidadas. Esto significa que no es un requisito de disco duro que podría constituyen un intervalo de IP para las máquinas virtuales anidadas y, a continuación, crear todas las rutas necesarias para dirigir a los clientes al host de Hyper-V para ese intervalo.
-* Vamos a crear un conmutador interno dentro de Hyper-V y, a continuación, se asignará la interfaz recién creada una dirección IP dentro de un intervalo que se apartan de DHCP. Esta dirección IP se convertirá en la puerta de enlace predeterminada para nuestras las máquinas virtuales anidadas y se pueden usadas para la ruta entre el conmutador interno y la NIC del host que está conectado a nuestro VNet.
-* Se instalará el rol de enrutamiento y acceso remoto en el host, que se activará la host en un enrutador.  Esto es necesario para permitir la comunicación entre los recursos externos en el host y nuestras máquinas virtuales anidadas.
-* Informaremos otros recursos cómo tener acceso a estas máquinas virtuales anidadas. Esto se necesitan que creamos una tabla de rutas definida por el usuario que contiene una ruta estática para el intervalo de IP que se encuentran en las máquinas virtuales anidadas. Esta ruta estática apuntará a la dirección IP de Hyper-V.
-* A continuación, coloque este UDR en la subred de puerta de enlace para que procede local de los clientes sepan cómo llegar a nuestro máquinas virtuales anidadas.
-* También se coloca este UDR en cualquier otra subred dentro de Azure, que requiere conectividad a las máquinas virtuales anidadas.
-* Para varios hosts de Hyper-V podría crear subredes "flotantes" adicionales y agregar una ruta estática adicional a la UDR.
-* Cuando se retira un host de Hyper-V se se delete/reutilizar nuestro subred "flotante" y quitar esa ruta estática de nuestro UDR o si este es el último host de Hyper-V, quitar por completo el UDR.
+* El host de Hyper-V no reconoce las concesiones actualmente asignadas en la VNet, por lo que, para evitar una situación en la que el host asigna una IP ya existente, debemos asignar un bloque de IPs para que lo use solo el host de Hyper-V. Esto nos permitirá evitar un escenario de IP duplicado.
+  * El bloque de IPs que elijas corresponderá a una subred dentro de la misma VNet en la que se encuentra su Hyper-V.
+  * El motivo por el que deseamos que corresponda a una subred existente es realizar la administración de los anuncios BGP a través de ExpressRoute. Si acabamos de crear un intervalo IP para que el host Hyper-V lo usara, deberíamos crear una serie de rutas estáticas para permitir que los clientes locales se comuniquen con las máquinas virtuales anidadas. Esto significa que esto no es un requisito difícil, ya que puede hacer un intervalo IP para las máquinas virtuales anidadas y, a continuación, crear todas las rutas necesarias para dirigir a los clientes al host de Hyper-V para ese intervalo.
+* Crearemos un conmutador interno dentro de Hyper-V y, a continuación, asignaremos a la interfaz recién creada una dirección IP dentro de un rango que describimos para DHCP. Esta dirección IP se convertirá en la puerta de enlace predeterminada de nuestras máquinas virtuales anidadas y se usará para la ruta entre el conmutador interno y la NIC del host que está conectado a nuestra red virtual.
+* Instalaremos el rol de enrutamiento y acceso remoto en el host, lo que hará que nuestro host se convierta en un enrutador.  Esto es necesario para permitir la comunicación entre recursos externos al host y a nuestras máquinas virtuales anidadas.
+* Le indicaremos a otros recursos cómo obtener acceso a estas máquinas virtuales anidadas. Esto obliga a crear una tabla de rutas definida por el usuario que contenga una ruta estática para el intervalo IP en el que residen las máquinas virtuales anidadas. Esta ruta estática apuntará a la dirección IP de Hyper-V.
+* A continuación, colocarás este UDR en la subred de la puerta de enlace para que los clientes provenientes de instalaciones locales sepan llegar a nuestras máquinas virtuales anidadas.
+* También colocarás esta UDR en cualquier otra subred dentro de Azure que requiera conectividad a las máquinas virtuales anidadas.
+* Para varios hosts de Hyper-V, crearía subredes "flotantes" adicionales y agregaría una ruta estática adicional a la UDR.
+* Al retirar un host de Hyper-V, eliminará o volverá a utilizar nuestra subred "flotante" y quitará la ruta estática de nuestro UDR, o si este es el último host de Hyper-V, quite la UDR por completo.
 
-## <a name="creating-the-host"></a>Crear la host
+## <a name="creating-the-host"></a>Crear el host
 
-Se por alto la los valores de configuración que estén hasta preferencias personales, como el nombre de máquina virtual, grupo de recursos, etcetera..
+Mostraré los valores de configuración que tengan una preferencia personal, como el nombre de la VM, el grupo de recursos, etc.
 
-1. Ve a portal.azure.com
-2. Haz clic en "Crear un recurso" en la parte superior izquierda
-3. Selecciona "Ventana de la máquina virtual del servidor 2016" en la columna Popular
-4. En la pestaña "Aspectos básicos" asegúrate de seleccionar un tamaño de máquina virtual que es capaz de virtualización anidada
-5. Mover a la pestaña "Redes"
-6. Crear una nueva red Virtual con la siguiente configuración
-    * Espacio de direcciones de VNet: 10.0.0.0/22
+1. Vaya a portal.azure.com
+2. Haga clic en "crear un recurso" en la esquina superior izquierda
+3. Seleccione "Windows Server 2016 VM" de la columna popular
+4. En la pestaña "conceptos básicos" Asegúrate de seleccionar un tamaño de VM capaz de virtualizar la virtualización.
+5. Ir a la pestaña "funciones de red"
+6. Crear una nueva red virtual con la siguiente configuración
+    * Espacio de direcciones de red virtual: 10.0.0.0/22
     * Subred 1
         * Nombre: NAT
         * Espacio de direcciones: 10.0.0.0/24
@@ -68,72 +68,72 @@ Se por alto la los valores de configuración que estén hasta preferencias perso
         * Nombre: fantasma
         * Espacio de direcciones: 10.0.2.0/24
     * Subred 4
-        * Nombre: Las VM de Azure
+        * Nombre: Azure-VMs
         * Espacio de direcciones: 10.0.3.0/24
-7. Asegúrate de que hayas seleccionado la subred NAT para la máquina virtual
-8. Ve a "revisión + crear" y selecciona "Crear"
+7. Asegúrese de haber seleccionado la subred NAT para la VM
+8. Ve a "revisar + crear" y selecciona "crear".
 
 ## <a name="create-the-second-network-interface"></a>Crear la segunda interfaz de red
-1. Después de la máquina virtual ha terminado de examinar a ella en el Portal Azure de aprovisionamiento
-2. Detener la máquina virtual
-3. Una vez detenido ir a la "Red" en configuración
-4. "Adjuntar la interfaz de red"
-5. "Crear la interfaz de red"
-6. Asigna un nombre (no importa lo asignarle el nombre, pero Asegúrate de recordar)
-7. Selecciona "Hyper-V-LAN" de la subred
-8. Asegúrate de que seleccionar el host reside en el mismo grupo de recursos
-9. "Crear"
-10. Esto te llevará de regreso a la pantalla anterior, asegúrate de seleccionar la interfaz de red recién creado y selecciona "Aceptar"
-11. Vuelve al panel de "introducción a" y vuelve a iniciar la máquina virtual cuando se haya completado la acción anterior
-12. Ve a la segunda tarjeta que acabamos de crear, puedes encontrarla en el grupo de recursos seleccionado anteriormente
-13. Ve a "Configuraciones IP" y alternar "Reenvío de IP" en "Enabled" y, a continuación, guardar el cambio
+1. Una vez que la VM haya terminado de provisionar, búsquelo en el portal de Azure
+2. Detener la VM
+3. Una vez que se ha detenido, ve a "redes" en configuración
+4. "Adjuntar interfaz de red"
+5. "Crear interfaz de red"
+6. Dele un nombre (no importa lo que te asignes, pero asegúrate de recordarlo).
+7. Seleccione "Hyper-V-LAN" para la subred
+8. Asegúrese de seleccionar el mismo grupo de recursos en el que reside su host
+9. Crée
+10. Esto le llevará a la pantalla anterior, asegúrese de seleccionar la interfaz de red que acaba de crear y seleccionar "Aceptar".
+11. Vuelva al panel "Descripción general" y vuelva a iniciar la VM una vez completada la acción anterior
+12. Vaya a la segunda NIC que acabamos de crear, puede encontrarla en el grupo de recursos que seleccionó anteriormente
+13. Vaya a "configuraciones de IP" y alterne "reenvío de IP" a "habilitado" y, después, guarde el cambio.
 
-## <a name="setting-up-hyper-v"></a>Configurar Hyper-V
-1. Control remoto en el host
-2. Abre un símbolo del sistema con privilegios elevados de PowerShell
-3. Ejecuta el siguiente comando `Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart`
+## <a name="setting-up-hyper-v"></a>Configuración de Hyper-V
+1. Remoto en su host
+2. Abrir un símbolo del sistema de PowerShell con privilegios elevados
+3. Ejecute el siguiente comando: `Install-WindowsFeature -Name Hyper-V -IncludeManagementTools -Restart`
 4. Esto reiniciará el host
-5. Volver a conectar con el host para continuar con el resto de la configuración
+5. Vuelva a conectar con el host para continuar con el resto de la configuración
 
-## <a name="creating-our-virtual-switch"></a>Creación de nuestro conmutador virtual
+## <a name="creating-our-virtual-switch"></a>Creación de nuestro Switch virtual
 
-1. Abre PowerShell en modo administrativo.
-2. Crear un conmutador interno: `New-VMSwitch -Name "NestedSwitch" -SwitchType Internal`
-3. Asignar una dirección IP de la interfaz recién creada: `New-NetIPAddress –IPAddress 10.0.2.1 -PrefixLength 24 -InterfaceAlias "vEthernet (NestedSwitch)"`
+1. Abra PowerShell en el modo administrativo.
+2. Crear un modificador interno: `New-VMSwitch -Name "NestedSwitch" -SwitchType Internal`
+3. Asignar la interfaz recién creada a IP: `New-NetIPAddress –IPAddress 10.0.2.1 -PrefixLength 24 -InterfaceAlias "vEthernet (NestedSwitch)"`
 
 ## <a name="install-and-configure-dhcp"></a>Instalar y configurar DHCP
 
-*Muchas personas piensan este componente cuando este está tratando primero para que funcione la virtualización anidada. A diferencia de en local donde la VM de invitado recibirán DHCP desde la red que se encuentra el host, máquinas virtuales anidadas en Azure deben proporcionarse DHCP a través de la host que se ejecuten en. O necesitas asignar una dirección IP estática para cada máquina virtual anidada, que no es escalable.*
+*Muchas personas pierden este componente cuando intentan obtener una virtualización anidada en primer lugar. A diferencia de las instalaciones locales en las que las VM de invitado recibirán DHCP de la red en la que se encuentra su host, se debe proporcionar la VM anidada en Azure a través del host en el que se ejecutan. O bien, debe asignar estáticamente una dirección IP a cada VM anidada, que no es escalable.*
 
-1. Instalar el rol DHCP: `Install-WindowsFeature DHCP -IncludeManagementTools`
+1. Instale el rol DHCP: `Install-WindowsFeature DHCP -IncludeManagementTools`
 2. Crear el ámbito DHCP: `Add-DhcpServerV4Scope -Name "Nested VMs" -StartRange 10.0.2.2 -EndRange 10.0.2.254 -SubnetMask 255.255.255.0`
-3. Configurar las opciones de DNS y puerta de enlace predeterminada para el ámbito: `Set-DhcpServerV4OptionValue -DnsServer 168.63.129.16 -Router 10.0.2.1`
-    * Asegúrate de entrada de un servidor DNS válido si quieres que la resolución de nombres para que funcione. En este caso uso [recursiva DNS de Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
+3. Configure las opciones de la puerta de enlace DNS y predeterminada para el ámbito: `Set-DhcpServerV4OptionValue -DnsServer 168.63.129.16 -Router 10.0.2.1`
+    * Asegúrese de introducir un servidor DNS válido si quiere que la resolución de nombres funcione. En este caso, uso el [DNS recursivo de Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances).
 
 ## <a name="installing-remote-access"></a>Instalación de acceso remoto
 
-1. Abre el administrador del servidor y selecciona "Agregar roles y características".
-2. Selecciona "Siguiente" hasta que llegues a "Roles de servidor".
-3. Compruebe "Acceso remoto" y haz clic en "Siguiente" hasta que llegues a servicios de rol de"".
-4. Comprobar "Enrutamiento", selecciona "Agregar características" y, a continuación, selecciona "Siguiente" y, a continuación, "Install". Completa al asistente y espere a completar la instalación.
+1. Abra el administrador del servidor y seleccione Agregar roles y características.
+2. Seleccione "siguiente" hasta que llegue a "roles de servidor".
+3. Active "acceso remoto" y haga clic en "siguiente" hasta que llegue a "servicios de rol".
+4. Active "Routing", seleccione "Add features" y, a continuación, seleccione "Next" (instalar). Complete el asistente y espere a que se complete la instalación.
 
 ## <a name="configuring-remote-access"></a>Configurar el acceso remoto
 
-1. Abre el administrador del servidor y selecciona "Herramientas" y, a continuación, selecciona "Enrutamiento y acceso remoto".
-2. En el lado derecho del panel de administración de enrutamiento y acceso remoto se vea un icono con el nombre de los servidores junto a ella, haz clic en este y selecciona "Configurar y habilitar enrutamiento y acceso remoto".
-3. En el Asistente para seleccionar "Siguiente", busque el botón radial "Configuración personalizada" y, a continuación, selecciona "Siguiente".
-4. Comprobar "NAT" y "Enrutamiento de LAN" y, a continuación, selecciona "siguiente" y, a continuación, "fin". Si se solicita al iniciar el servicio, a continuación, hacerlo.
-5. Ahora, navega hasta el nodo de "IPv4" y expandirla para que el nodo de "NAT" se pone a disposición.
-6. Haga clic con el botón secundario del mouse en "NAT", selecciona "Nueva interfaz …" y selecciona "Ethernet", este debe ser la primera NIC con la dirección IP de "10.0.0.4"
-7. Ahora, debemos crear rutas estáticas para forzar el tráfico de LAN un vistazo a la NIC segundo. Para ello, ve al nodo "Rutas estáticas" en "IPv4".
-8. Una vez que haya vamos a crear las siguientes rutas.
-    * Ruta de 1
+1. Abra el administrador del servidor y seleccione "herramientas" y, a continuación, seleccione "enrutamiento y acceso remoto".
+2. En el lado izquierdo del panel de administración de enrutamiento y acceso remoto verá un icono con el nombre de su servidor junto a él, haga clic con el botón secundario en esta opción y seleccione "configurar y Habilitar enrutamiento y acceso remoto".
+3. En el asistente, seleccione "siguiente", busque "configuración personalizada" en el botón radial y, después, seleccione "siguiente".
+4. Active "NAT" y "enrutamiento de LAN" y, a continuación, seleccione "siguiente" y, después, "finalizar". Si le pide que inicie el servicio, hágalo.
+5. Ahora, navegue hasta el nodo "IPv4" y expándalo para que el nodo "NAT" esté disponible.
+6. Haga clic con el botón secundario en "NAT", seleccione "nueva interfaz...". y selecciona "Ethernet", esta es tu primer NIC con el IP de "10.0.0.4"
+7. Ahora necesitamos crear algunas rutas estáticas para forzar el tráfico LAN a la segunda NIC. Para ello, vaya al nodo "rutas estáticas" en "IPv4".
+8. Una vez que hayamos creado las siguientes rutas.
+    * Ruta 1
         * Interfaz: Ethernet
         * Destino: 10.0.0.0
         * Máscara de red: 255.255.255.0
         * Puerta de enlace: 10.0.0.1
         * Métrica: 256
-        * Nota: Ponemos esto aquí para permitir que la NIC principal responder al tráfico destinado a lo fuera de su propia interfaz. Si no tenemos esto aquí la siguiente ruta provocaría tráfico destinado a NIC 1 alejar la NIC 2. Esto crearía una ruta asimétrica. 10.0.0.1 es la dirección IP que Azure se asigna a la subred NAT. Azure utiliza la primera dirección IP disponible en un intervalo como la puerta de enlace predeterminada. Por lo tanto, si tuviera que han usado 192.168.0.0/24 para la subred NAT, la puerta de enlace sería 192.168.0.1. En la ruta más específica el enrutamiento se reemplazan wins, lo que significa que esta ruta la siguiente ruta.
+        * Nota: Aquí incluimos esta opción para permitir que la NIC principal responda a su propia interfaz. Si no hemos tenido esto aquí, la siguiente ruta podría causar que el tráfico para NIC 1 salga a NIC 2. Esto crearía una ruta asimétrica. 10.0.0.1 es la dirección IP que Azure asigna a la subred NAT. Azure usa la primera IP disponible en un rango como puerta de enlace predeterminada. Por tanto, si hubiera usado 192.168.0.0/24 para tu subred NAT, la puerta de enlace sería 192.168.0.1. En el enrutamiento, la ruta más específica gana, lo que significa que esta ruta sustituye a la siguiente ruta.
 
     * Ruta 2
         * Interfaz: Ethernet 2
@@ -141,88 +141,88 @@ Se por alto la los valores de configuración que estén hasta preferencias perso
         * Máscara de red: 255.255.252.0
         * Puerta de enlace: 10.0.1.1
         * Métrica: 256
-        * Nota: Se trata de un problema en todas las rutas de tráfico destinado a nuestro VNet de Azure. Forzará el tráfico de un vistazo a la NIC segundo. Tendrás que agregar rutas adicionales para otros intervalos a que quieres que las máquinas virtuales anidadas para tener acceso. Por tanto, si estás red local es 172.16.0.0/22, a continuación, puede que desee tener otra ruta de acceso para enviar que el tráfico de un vistazo a la segunda NIC de nuestro hipervisor.
+        * Nota: esta es una ruta de captura para tráfico dirigido a nuestra VNet de Azure. Forzará el tráfico de la segunda NIC. Tendrá que agregar rutas adicionales para otros rangos a los que desee que tengan acceso las VM anidadas. Por lo tanto, si usted es una red local es 172.16.0.0/22, quiere tener otra ruta para enviar ese tráfico a la segunda NIC de nuestro hipervisor.
 
-## <a name="creating-a-route-table-within-azure"></a>Creación de una tabla de ruta en Azure
+## <a name="creating-a-route-table-within-azure"></a>Crear una tabla de rutas en Azure
 
-Consulta [este artículo](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal) para obtener un más sobre cómo crear y administrar las rutas dentro de Azure de lectura de profundidad.
+Consulte [este artículo](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal) para obtener más información sobre la creación y la administración de rutas dentro de Azure.
 
-1. Ve a https://portal.azure.com.
-2. En la esquina superior izquierda selecciona "Crear un recurso".
-3. En el campo de búsqueda, escribe "Tabla de enrutamiento" y presione ENTRAR.
-4. El resultado superior se ser tabla de enrutamiento, seleccione esta opción y, a continuación, selecciona "Crear"
-5. Nombre de la tabla de enrutamiento, en mi caso llamado "Rutas-de-anidados-máquinas virtuales".
-6. Asegúrate de que seleccionar la mismo suscripción que los hosts de Hyper-V residen en.
-7. Crear un nuevo grupo de recursos o seleccione uno existente y se puede estar seguro que la misma región que el host de Hyper-V se encuentra en la región de en que crear la tabla de enrutamiento.
-8. Selecciona "Crear".
+1. Vaya a https://portal.azure.com.
+2. En la esquina superior izquierda, seleccione "crear un recurso".
+3. En el campo de búsqueda, escriba "tabla de enrutamiento" y presione Entrar.
+4. El resultado superior será tabla de rutas, seleccione esta y, a continuación, seleccione "crear".
+5. Asigne un nombre a la tabla de rutas, en el caso mi nombre "Routes-for-Nested-VM".
+6. Asegúrese de seleccionar la misma suscripción en la que residen los hosts de Hyper-V.
+7. Cree un nuevo grupo de recursos o seleccione uno existente y asegúrese de que la región en la que se crea la tabla de enrutamiento es la misma región en la que se encuentra el host de Hyper-V.
+8. Seleccione "crear".
 
-## <a name="configuring-the-route-table"></a>Configuración de la tabla de enrutamiento
+## <a name="configuring-the-route-table"></a>Configurar la tabla de rutas
 
-1. Ve a la tabla de enrutamiento que acabamos de crear. Puedes hacerlo si buscas el nombre de la tabla de enrutamiento de la barra de búsqueda en la parte superior central del portal.
-2. Una vez que hayas seleccionado la tabla de enrutamiento vaya a "Rutas" desde dentro de la hoja.
-3. Selecciona "Agregar".
-4. Asigne un nombre a la ruta, ha funcionado con "Máquinas virtuales de anidadas".
-5. Dirección de prefijo entrada el intervalo de IP para nuestra subred "flotante". En este caso sería 10.0.2.0/24.
-6. Para "Siguiente salto tipo" selecciona "Dispositivo Virtual" y, a continuación, escribe la dirección IP de dirección para Hyper-V hospeda segunda tarjeta de red, lo que sería 10.0.1.4 y, a continuación, selecciona "Aceptar".
-7. Ahora desde dentro de la selección de la hoja "Subredes", se trata de justo debajo de "Rutas".
-8. Selecciona a "Asociar,", a continuación, selecciona nuestra VNet "Anidadas divertida" y, a continuación, selecciona la subred "VM de Azure" y, a continuación, selecciona "Aceptar".
-9. Hacer este mismo proceso para la subred que el host de Hyper-V reside en, así como para cualquier otras subredes que necesitan acceder a las máquinas virtuales anidadas. Si conectado 
+1. Vaya a la tabla de rutas que acabamos de crear. Para ello, busque el nombre de la tabla de enrutamiento en la barra de búsqueda de la parte central superior del portal.
+2. Una vez que haya seleccionado la tabla de rutas, vaya a "rutas" desde el blade.
+3. Seleccione "agregar".
+4. Asigne un nombre a su ruta, fui con "máquinas virtuales anidadas".
+5. Para el prefijo de dirección, escribe el intervalo IP de nuestra subred "flotante". En este caso sería 10.0.2.0/24.
+6. En "tipo de próximo salto", seleccione "dispositivo virtual" y, a continuación, escriba la dirección IP del segundo NIC de hosts de Hyper-V, que sería 10.0.1.4 y, a continuación, seleccione "Aceptar".
+7. Ahora desde dentro del Blade selecciona "subredes", que estará directamente debajo de "rutas".
+8. Seleccione "Associate" (asociarse), seleccione nuestra VNet "Nested-Fun" (la que se va a anidar), seleccione la subred "Azure-VMs" y, después, seleccione "Aceptar".
+9. Realice este mismo procedimiento para la subred en la que se encuentra el host de Hyper-V y también para cualquier otra subsubred que necesite obtener acceso a las máquinas virtuales anidadas. Si está conectado 
 
-# <a name="end-state-configuration-reference"></a>Referencia de configuración de estado final
-El entorno en esta guía tiene las configuraciones que aparecen. En esta sección es adecuada para usarse como una referencia.
+# <a name="end-state-configuration-reference"></a>Referencia de configuración del estado final
+El entorno de esta guía tiene las siguientes configuraciones. Esta sección es inteded para usar como referencia.
 
-1. Información de red Virtual de Azure.
-    * Configuración de nivel alto VNet.
-        * Nombre: Anidados-diversión
+1. Información de la red virtual de Azure.
+    * Configuración de alto nivel de VNet.
+        * Nombre: diversión
         * Espacio de direcciones: 10.0.0.0/22
-        * Nota: Esto se se compone de cuatro subredes. Además, no se establecen estos intervalos definitivo. No dudes en el entorno de direcciones como quiera. 
+        * Nota: esta estará constituida por cuatro subredes. Además, estos rangos no se establecen en piedra. Si lo desea, no dude en abordar su entorno. 
 
-    * Primera alto nivel configuración de subred.
+    * Configuración de alto nivel de subred.
         * Nombre: NAT
         * Espacio de direcciones: 10.0.0.0/24
-        * Nota: Esto es donde nuestro Hyper-V hospeda NIC principal reside. Este se usará para controlar NAT saliente para las máquinas virtuales anidadas. Será la puerta de enlace a internet para las máquinas virtuales anidadas.
+        * Nota: aquí es donde residen los hosts de la NIC principal. Esto se usará para controlar NAT saliente para las VM anidadas. Será la puerta de enlace a Internet de las máquinas virtuales anidadas.
 
-    * Subred alto nivel configuración del segundo.
+    * Configuración de alto nivel de subred de la segunda.
         * Nombre: Hyper-V-LAN
         * Espacio de direcciones: 10.0.1.0/24
-        * Nota: La host de Hyper-V tendrá una segunda NIC que se usará para controlar el enrutamiento entre los recursos de internet que no sea externos al host de Hyper-V y máquinas virtuales anidadas.
+        * Nota: nuestro host de Hyper-V tendrá una segunda NIC que se usará para controlar el enrutamiento entre la VM anidada y los recursos que no son de Internet externos al host de Hyper-V.
 
-    * Tercera alto nivel configuración de subred.
+    * Configuración de alto nivel de subred de terceros.
         * Nombre: fantasma
         * Espacio de direcciones: 10.0.2.0/24
-        * Nota: Se trata de una subred "flotante". El espacio de direcciones será usado por nuestro máquinas virtuales anidadas y existe para controlar los anuncios de rutas a local. No hay máquinas virtuales realmente se implementarán en la subred.
+        * Nota: esta será una subred "flotante". Nuestras máquinas virtuales anidadas usarán el espacio de direcciones y existirá para administrar los anuncios de ruta de regreso a local. En realidad, no se implementarán máquinas virtuales en esta subred.
 
-    * La cuarta subred de configuración nivel alto.
-        * Nombre: Las VM de Azure
+    * La cuarta configuración de nivel de subred.
+        * Nombre: Azure-VMs
         * Espacio de direcciones: 10.0.3.0/24
-        * Nota: Subred que contenga VM de Azure.
+        * Nota: subred que contiene máquinas virtuales de Azure.
 
-1. Nuestro host de Hyper-V tiene el debajo de configuraciones de la NIC.
+1. Nuestro host de Hyper-V tiene las siguientes configuraciones de NIC.
     * NIC principal 
         * Dirección IP: 10.0.0.4
-        * La máscara de subred: 255.255.255.0
+        * Máscara de subred: 255.255.255.0
         * Puerta de enlace predeterminada: 10.0.0.1
-        * DNS: Configurado para DHCP
-        * Habilitada el reenvío de IP: No
+        * DNS: configurado para DHCP
+        * Reenvío IP habilitado: no
 
-    * NIC secundario
+    * NIC secundaria
         * Dirección IP: 10.0.1.4
-        * La máscara de subred: 255.255.255.0
-        * Puerta de enlace predeterminada: vacía
-        * DNS: Configurado para DHCP
-        * Habilitada el reenvío de IP: Sí
+        * Máscara de subred: 255.255.255.0
+        * Puerta de enlace predeterminada: Empty
+        * DNS: configurado para DHCP
+        * Reenvío IP habilitado: sí
 
-    * Hyper-V creada NIC para el conmutador Virtual
+    * La NIC creada con Hyper-V para el conmutador virtual interno
         * Dirección IP: 10.0.2.1
-        * La máscara de subred: 255.255.255.0
-        * Puerta de enlace predeterminada: vacía
+        * Máscara de subred: 255.255.255.0
+        * Puerta de enlace predeterminada: Empty
 
-3. La tabla de rutas tendrá una única regla.
-    * Regla de 1
-        * Nombre: Anidados-máquinas virtuales
+3. Nuestra tabla de rutas tendrá una sola regla.
+    * Regla 1
+        * Nombre: máquinas virtuales anidadas
         * Destino: 10.0.2.0/24
-        * Siguiente salto: Dispositivo Virtual-10.0.1.4
+        * Próximo salto: dispositivo virtual-10.0.1.4
 
 ## <a name="conclusion"></a>Conclusión
 
-Ahora debe ser capaz de implementar una máquina virtual (incluso una VM de 32 bits!) del host de Hyper-V y hacer que sea accesible desde locales y en Azure.
+Ahora debe poder implementar una máquina virtual (incluso una VM de 32 bits) en el host de Hyper-V y hacer que sea accesible desde local y dentro de Azure.

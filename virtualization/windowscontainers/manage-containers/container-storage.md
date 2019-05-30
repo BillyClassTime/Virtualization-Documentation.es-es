@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: 87b9c364bfdec2b445bb06caf0e9fd4d849119d4
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 20179f09260b6ae5de802c2372958356f8de3aee
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620873"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9680945"
 ---
 # <a name="overview"></a>Introducción
 
@@ -101,7 +101,7 @@ En Windows Server, versión 1709, una nueva característica denominada "Asignaci
 
 ##### <a name="configuration-steps"></a>Pasos de configuración
 
-1. En el host de contenedor, asigna globalmente el recurso compartido SMB remoto:
+1. En el host contenedor, asigne globalmente el recurso compartido SMB remoto:
     ```
     $creds = Get-Credential
     New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
@@ -135,3 +135,6 @@ Pasos de ejemplo:
 3. Escribir algunos archivos en c:\data en el contenedor y luego detener el contenedor
 4. `docker run -v unwound:c:\data microsoft/windowsservercore` - Iniciar un nuevo contenedor
 5. Ejecutar `dir c:\data` en el contenedor nuevo: los archivos siguen estando ahí
+
+> [!NOTE]
+> Windows Server convertirá los nombres de ruta de destino (la ruta dentro del contenedor) a minúsculas. `-v unwound:c:\MyData`i. e `-v unwound:/app/MyData` o en los contenedores de Linux, dará como resultado un directorio dentro del contenedor de `c:\mydata`, o `/app/mydata` en los contenedores de Linux, que se asignará (y se creará, si no existe).
