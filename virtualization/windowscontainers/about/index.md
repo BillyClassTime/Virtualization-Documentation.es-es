@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 80514884b4c95657f63cf585ece6aa8c8b23cc44
-ms.sourcegitcommit: daf1d2b5879c382404fc4d59f1c35c88650e20f7
+ms.openlocfilehash: fc50938d87aa49c3c57bf3b1172e69a6125ed96a
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "9674730"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9680955"
 ---
 # <a name="about-windows-containers"></a>Acerca de los contenedores de Windows
 
@@ -25,17 +25,44 @@ Ahora imagínese colocar esta cocina dentro de un edificio tan fácilmente como 
 
 ![Una construcción de apartamentos formada por dos pilas de cuadros negros. Cuatro de estas casillas son los mismos cuadros amarillos que se usan en el ejemplo de la cocina y se colocan en lugares aleatorios en el edificio, mientras que el resto son las salas de espera de color o están vacías o están atenuadas.](media/apartment.png)
 
-¿Por qué detener? Puede personalizar su edificio de la manera que más le guste; rellenarlo con muchos tipos de salas, rellenarlo con habitaciones idénticas o tener una mezcla de ambos.
+<<<<<<<, ¿por qué detener? Puede personalizar su edificio de la manera que más le guste; rellenarlo con muchos tipos de salas, rellenarlo con habitaciones idénticas o tener una mezcla de ambos.
+=======
+![](media/box1.png)
+>>>>>>> origen o maestra
 
 Los contenedores actúan como este salón ejecutando una aplicación como en nuestra cocina. Un contenedor coloca una aplicación y todo lo que la aplicación necesita para ejecutarse en su propio cuadro aislado. Como resultado, la aplicación aislada no tiene conocimiento alguno de las demás aplicaciones o procesos que existen fuera de su contenedor. Dado que el contenedor tiene todo lo que la aplicación necesita ejecutar, el contenedor se puede mover a cualquier parte, usando solo los recursos de su host, sin tocar ningún recurso suministrado para otros contenedores.
 
-En el siguiente vídeo encontrará más información sobre lo que los contenedores de Windows pueden hacer por usted, así como la colaboración de Microsoft con el acoplador para crear un entorno sin fricción para el desarrollo de contenedores de código abierto:
+CABEZA de <<<<<<< en el siguiente vídeo encontrará más información sobre lo que pueden hacer los contenedores de Windows, así como la colaboración de Microsoft con el acoplador para crear un entorno sin dificultades para el desarrollo de contenedores de código abierto: = = = = = = =
+![](media/apartment.png)
+>>>>>>> origen o maestra
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/Ryx3o0rD5lY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## <a name="container-fundamentals"></a>Aspectos básicos de los contenedores
 
-Vamos a conocer algunos términos que le resultarán útiles a la vez que comienza a trabajar con contenedores de Windows:
+<<<<<<< HEAD vamos a conocer algunos términos que le resultarán útiles a la vez que comienza a trabajar con contenedores de Windows: = = = = = = =
+## <a name="container-fundamentals"></a>Conceptos básicos de los contenedores
+
+Los contenedores son un entorno de ejecución portátil, aislado y controlado por recursos que se ejecuta en una máquina host o virtual. Una aplicación o proceso que se ejecuta en un contenedor incluye todos los archivos de configuración y dependencias necesarios, por tanto, tiene la sensación de que no hay otros procesos en ejecución fuera del contenedor.
+
+El host del contenedor aprovisiona un conjunto de recursos para el contenedor y este solo usará estos recursos. En lo que respecta al contenedor, no existen otros recursos fuera de lo que se ha proporcionado y, por lo tanto, el contenedor no puede tocar los recursos que pueden haberse suministrado para un contenedor vecino.
+
+Los siguientes conceptos clave te resultarán útiles cuando empieces a crear y trabajar con contenedores de Windows.
+
+**Host de contenedor:** equipo físico o virtual configurado con la característica de contenedor de Windows. El host de contenedor ejecutará uno o varios contenedores de Windows.
+
+**Imagen de contenedor:** a medida que se realicen modificaciones en un registro o un sistema de archivos de contenedores, como durante la instalación de software, se capturan en un espacio aislado. En muchos casos, querrás capturar este estado de forma que se puedan crear nuevos contenedores que heredan estos cambios. Precisamente eso es una imagen: cuando se ha detenido el contenedor, puede descartar ese espacio aislado o puede convertirlo en una nueva imagen de contenedor. Por ejemplo, imaginemos que ha implementado un contenedor a partir de la imagen del sistema operativo de Windows Server Core. Después instala MySQL en este contenedor. La creación de una nueva imagen de este contenedor actuaría como una versión que se puede implementar del contenedor. Esta imagen solo contendría los cambios realizados (MySQL), aunque funcionaría como una capa encima de la imagen del sistema operativo del contenedor.
+
+**Espacio aislado:** cuando se haya iniciado un contenedor, todas las acciones de escritura como las modificaciones del sistema de archivos, las modificaciones del Registro o las instalaciones de software se capturan en esta capa de "espacio aislado".
+
+**Imagen del sistema operativo de contenedor:** los contenedores se implementan a partir de imágenes. La imagen del sistema operativo de contenedor es la primera capa de potencialmente muchas capas de imagen que componen un contenedor. Esta imagen ofrece el entorno del sistema operativo. Una imagen de sistema operativo del contenedor es inmutable. Es decir, no se puede modificar.
+
+**Repositorio de contenedor:** cada vez que se crea una imagen de contenedor, esta y sus dependencias se almacenan en un repositorio local. Estas imágenes se pueden reutilizar muchas veces en el host de contenedor. Las imágenes de contenedor también pueden almacenarse en un registro público o privado, como DockerHub, de forma que se puedan usar en varios hosts de contenedor diferentes.
+
+![](media/containerfund.png)
+
+Para alguien familiarizado con las máquinas virtuales, puede parecer que los contenedores son increíblemente similares. Un contenedor ejecuta un sistema operativo, tiene un sistema de archivos y se puede acceder a él a través de una red, como si fuese un equipo físico o virtual. Dicho esto, la tecnología y los conceptos relacionados con los contenedores son muy diferentes de las máquinas virtuales.
+>>>>>>> origen o maestra
 
 - Host de contenedor: un sistema de equipo físico o virtual configurado con la característica contenedor de Windows. El host contenedor ejecutará uno o varios contenedores de Windows.
 - Espacio aislado: la capa que captura todos los cambios que realice en el contenedor mientras se está ejecutando (como las modificaciones del sistema de archivos, las modificaciones del registro o las instalaciones de software).
@@ -59,7 +86,11 @@ El aislamiento de Hyper-V se expande en el aislamiento proporcionado por los con
 
 Ejecutar un contenedor en Windows con o sin el aislamiento Hyper-V es una decisión en tiempo de ejecución. Inicialmente, puede crear el contenedor con el aislamiento de Hyper-V y, posteriormente, en tiempo de ejecución, elegir ejecutarlo como un contenedor de Windows Server.
 
+<<<<<<< ENCABEZADO
 ## <a name="container-users"></a>Usuarios del contenedor
+=======
+![](media/docker.png)
+>>>>>>> origen o maestra
 
 ### <a name="containers-for-developers"></a>Contenedores para desarrolladores
 

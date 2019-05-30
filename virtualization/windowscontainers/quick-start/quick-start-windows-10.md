@@ -1,19 +1,19 @@
 ---
-title: Contenedores de Linux en Windows 10 y Windows
+title: Contenedores de Windows y Linux en Windows 10
 description: Inicio rápido de implementación de contenedores
-keywords: docker, contenedores, LCOW
+keywords: acoplador, contenedores, LCOW
 author: taylorb-microsoft
 ms.date: 11/8/2018
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: be6be81e995dce8ebd757c73793f474f4b0909bf
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: ae311ecccdfbfc30b1079330a8eb02c1ce3ac94b
+ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620743"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9680975"
 ---
 # <a name="windows-containers-on-windows-10"></a>Contenedores de Windows en Windows 10
 
@@ -21,32 +21,32 @@ ms.locfileid: "9620743"
 > - [Contenedores de Linux en Windows](quick-start-windows-10-linux.md)
 > - [Contenedores de Windows en Windows](quick-start-windows-10.md)
 
-Este ejercicio a través de la creación y ejecución de contenedores de Windows en Windows 10.
+El ejercicio recorrerá la creación y la ejecución de contenedores de Windows en Windows 10.
 
-En este inicio rápido llevará a cabo:
+En este inicio rápido, podrás realizar lo siguiente:
 
-1. Instalar Docker para Windows
-2. Ejecutar un contenedor simple de Windows
+1. Instalar el escritorio del acoplador
+2. Ejecutar un contenedor de Windows simple
 
-Este inicio rápido es específico de Windows10. En la tabla de contenido en el lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
+Este inicio rápido es específico de Windows10. Puede encontrar documentación adicional de inicio rápido en la tabla de contenido, en la parte izquierda de esta página.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Asegúrese de que se cumplen los requisitos siguientes:
-- Un sistema de equipo físico que ejecuta Windows 10 Professional o Enterprise con actualización de aniversario (versión 1607) o posterior. 
-- Asegúrese de que [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
+Asegúrate de cumplir los siguientes requisitos:
+- Un sistema informático físico que ejecute Windows 10 Professional o Enterprise con la actualización de aniversario (versión 1607) o posterior. 
+- Asegúrese [de que Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
 
-***Aislamiento de Hyper-V:*** Contenedores de Windows Server requieren aislamiento de Hyper-V en Windows 10 para ofrecer a los desarrolladores con la misma versión de kernel y configuración que se usará en producción, más acerca de Hyper-V aislamiento puede encontrarse en la página [contenedora acerca de Windows](../about/index.md) .
+***Aislamiento de Hyper-V:*** Los contenedores de Windows Server requieren el aislamiento de Hyper-V en Windows 10 para proporcionar a los programadores la misma versión y configuración del núcleo que se usarán en la producción, encontrará más información sobre el aislamiento de Hyper-V en la página [acerca del contenedor de Windows](../about/index.md) .
 
 > [!NOTE]
-> En la versión de Windows de actualización de octubre de 2018, ya no se impide a los usuarios ejecuten un contenedor de Windows en el modo de aislamiento de procesos en Windows 10 Enterprise o Professional para fines de desarrollo o prueba. Consulta las [preguntas más frecuentes](../about/faq.md) para obtener más información.
+> En el lanzamiento de la actualización 2018 de octubre de Windows, ya no se permite que los usuarios ejecuten un contenedor de Windows en modo de aislamiento de procesos en Windows 10 Enterprise o Professional para fines de desarrollo y pruebas. Consulte las [preguntas más frecuentes](../about/faq.md) para obtener más información.
 
-## <a name="install-docker-for-windows"></a>Instalar a Docker para Windows
+## <a name="install-docker-desktop"></a>Instalar el escritorio del acoplador
 
-Descarga [Docker para Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows) y ejecuta el programa de instalación (se le pedirá que inicie sesión. Crear una cuenta si no tienes uno ya). Se encuentran disponibles [instrucciones de instalación detalladas](https://docs.docker.com/docker-for-windows/install) en la documentación de Docker (en inglés).
+Descarga el [escritorio](https://store.docker.com/editions/community/docker-ce-desktop-windows) del acoplador y ejecuta el instalador (se te pedirá que inicies sesión. Crear una cuenta si aún no la tiene. Se encuentran disponibles [instrucciones de instalación detalladas](https://docs.docker.com/docker-for-windows/install) en la documentación de Docker (en inglés).
 
-## <a name="switch-to-windows-containers"></a>Cambiar a Windows contenedores
+## <a name="switch-to-windows-containers"></a>Cambiar a contenedores de Windows
 
-Después de la instalación, Docker para Windows ejecuta contenedores de Linux de forma predeterminada. Cambiar a contenedores de Windows mediante el menú de bandeja de Docker o ejecutando el siguiente comando en un PowerShell símbolo del sistema:
+Después de instalar el acoplador de escritorio, se usa de forma predeterminada los contenedores de Linux. Cambie a contenedores de Windows mediante la bandeja del Dock-menú o ejecutando el siguiente comando en un símbolo del sistema de PowerShell:
 
 ```console
 & $Env:ProgramFiles\Docker\Docker\DockerCli.exe -SwitchDaemon .
@@ -72,11 +72,11 @@ microsoft/nanoserver   latest              105d76d0f40e        4 days ago       
 ```
 
 > [!IMPORTANT]
-> Lee el [CLUF](../images-eula.md)de la imagen de sistema operativo de contenedores de Windows.
+> Lea el [CLUF](../images-eula.md)de la imagen del sistema de contenedores de Windows.
 
 ## <a name="run-your-first-windows-container"></a>Ejecutar el primer contenedor de Windows
 
-Para este ejemplo simple, se crear e implementar una imagen de contenedor "Hello World". Para lograr una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados o en PowerShell.
+Para este sencillo ejemplo, se creará e implementará una imagen de contenedor de "Hola a todos". Para lograr una mejor experiencia ejecute estos comandos en un shell de CMD de Windows con privilegios elevados o en PowerShell.
 
 > Windows PowerShell ISE no funciona en sesiones interactivas con contenedores. Aunque el contenedor se ejecuta, parece que se cuelga.
 
@@ -86,7 +86,7 @@ En primer lugar, inicie un contenedor con una sesión interactiva desde la image
 docker run -it mcr.microsoft.com/windows/nanoserver:1809 cmd.exe
 ```
 
-Dentro del contenedor se creará un archivo de texto sencillo de "Hello World".
+Dentro del contenedor, crearemos un simple archivo de texto "Hola a todos".
 
 ```cmd
 echo "Hello World!" > Hello.txt
@@ -122,9 +122,9 @@ Finalmente, para quitar el contenedor, use el comando `docker run`.
 docker run --rm helloworld cmd.exe /s /c type Hello.txt
 ```
 
-El resultado de la `docker run` comando es que se creó un contenedor que se ejecutan en el aislamiento de Hyper-V desde la imagen de "Hola a todos", una instancia de cmd se ha iniciado en el contenedor y ejecuta una lectura de nuestro archivo (salida Hola al shell) y, a continuación, en el contenedor detiene y se quita.
+El resultado del `docker run` comando es que un contenedor que se ejecuta con el aislamiento de Hyper-V se creó a partir de la imagen ' HelloWorld ', una instancia de CMD se inició en el contenedor y ejecutó una lectura de nuestro archivo (salida demostrada en el shell) y, a continuación, el contenedor detenido y eliminado.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 > [!div class="nextstepaction"]
-> [Obtén información sobre cómo crear una aplicación de muestra](./building-sample-app.md)
+> [Más información sobre cómo crear una aplicación de ejemplo](./building-sample-app.md)

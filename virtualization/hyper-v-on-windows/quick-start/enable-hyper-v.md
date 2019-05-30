@@ -7,17 +7,17 @@ ms.date: 02/15/2019
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: a710f8d60f9d82be7fe02b950a9782b94f3ae6e4
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: e1b6b55b2e17ac4f0883078748d75f6d4b9fcafa
+ms.sourcegitcommit: 3c06d6b5cebeacc4c0185dca5c20680ad67655bd
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620733"
+ms.lasthandoff: 05/28/2019
+ms.locfileid: "9681906"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Instalar Hyper-V en Windows 10
 
 Habilitar Hyper-V para crear máquinas virtuales en Windows 10.  
-Hyper-V puede habilitarse de muchas maneras, incluido el uso del panel de control de Windows 10, PowerShell (mi favorita) o la herramienta de Administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada una de las opciones.
+Hyper-V se puede habilitar de varias maneras, entre las que se incluyen el panel de control de Windows 10, PowerShell o el uso de la herramienta de administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada una de las opciones.
 
 > **Nota:**  Hyper-V está integrado en Windows como función opcional: no existen descargas de Hyper-V.
 
@@ -25,12 +25,12 @@ Hyper-V puede habilitarse de muchas maneras, incluido el uso del panel de contro
 
 * Windows 10 Enterprise, Pro o Education
 * Procesador de 64 bits con traducción de direcciones de segundo nivel (SLAT).
-* Compatibilidad de CPU para la extensión del modo Monitor de máquina virtual (VT-c en CPU de Intel).
+* Compatibilidad de CPU para la extensión de modo de monitor de VM (VT-c en CPU Intel).
 * Mínimo de 4 GB de memoria.
 
 El rol de Hyper-V **no** se puede instalar en Windows 10 Home.
 
-Actualizar Windows 10 Home edition a Windows 10 Pro abriendo **configuración** > **actualización y seguridad** > **activación**.
+Actualice de Windows 10 Home Edition a Windows 10 Pro abriendo la actualización de la **configuración** > **y** > la**activación**de seguridad.
 
 Para más información y solución de problemas, consulta [Requisitos de sistema de Hyper-V en Windows 10](../reference/hyper-v-requirements.md).
 
@@ -70,7 +70,7 @@ Para más información sobre DISM, consulta [Referencia técnica de DISM](<https
 
 1. Haz clic con el botón derecho en el botón Windows y selecciona ‘Aplicaciones y funciones’.
 
-2. Selecciona los **programas y características** de la derecha en la configuración relacionada. 
+2. En la sección configuración relacionada **, seleccione programas y características** en la parte derecha. 
 
 3. Selecciona **Activar o desactivar las características de Windows**.
 
