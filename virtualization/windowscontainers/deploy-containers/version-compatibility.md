@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 23258d9181bb3c89cc59de3ba534cc6643c170f4
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 4d01fb1d11ee9e8a5fa4271699a5a7c59c27409d
+ms.sourcegitcommit: 71e46750813a996cecc445181974a79b95affc8c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681015"
+ms.lasthandoff: 05/31/2019
+ms.locfileid: "9685350"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
@@ -18,34 +18,51 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 
 |Versión del SO de contenedor|Versión del SO de host|Compatibilidad|
 |---|---|---|
-|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer2016<br>Compilaciones: 14393.* |Compatibilidad `process` o `hyperv` aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer, versión1709<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Compatibilidad `process` o `hyperv` aislamiento|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1809<br>Compilaciones 17763. * |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server 2019<br>Compilaciones 17763. * |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1803<br>Compilaciones 17134. * |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1803<br>Compilaciones 17134. * |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
+|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows Server 2019<br>Compilaciones 17763. * |Compatibilidad `process` o `hyperv` aislamiento|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1803<br>Compilaciones 17134. * |No se admite|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1803<br>Compilaciones 17134. * |No se admite|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
+|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
+|Windows Server 2019<br>Compilaciones 17763. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1803<br>Compilaciones 17134. * |Compatibilidad `process` o `hyperv` aislamiento|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
+|Windows Server, versión 1803<br>Compilaciones 17134. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1709<br>Compilaciones: 16299.* |Compatibilidad `process` o `hyperv` aislamiento|
+|Windows Server, versión 1709<br>Compilaciones: 16299.* |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
+|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
+|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
 |WindowsServer2016<br>Compilaciones: 14393.* |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
 |WindowsServer2016<br>Compilaciones: 14393.* |Windows Server versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
 |WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1709<br>Compilaciones: 16299.* |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1803<br>Compilaciones 17134. * |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite
-|Windows Server 2019<br>Compilaciones 17763. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server 2019<br>Compilaciones 17763. * |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
+|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer, versión1709<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
+|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer2016<br>Compilaciones: 14393.* |Compatibilidad `process` o `hyperv` aislamiento|
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>Versión de host de contenedor coincidente con versiones de imagen de contenedor
 
@@ -122,14 +139,10 @@ Hay tres formas de resolver este error:
 
 ## <a name="choose-which-container-os-version-to-use"></a>Elegir la versión del sistema operativo de contenedor que se va a usar
 
-<<<<<<< ENCABEZADO
 >[!NOTE]
 >A partir del 16 de abril de 2019, la etiqueta "última" ya no se publica ni se mantiene para las [imágenes del contenedor del sistema operativo Windows base](https://hub.docker.com/_/microsoft-windows-base-os-images). Declara una etiqueta específica al extraer o hacer referencia a las imágenes de estas Repos.
 
-<a name="you-must-know-which-version-you-need-to-use-for-your-container-for-example-if-you-want-windows-server-version-1809-as-your-container-os-and-want-to-have-the-latest-patches-for-it-you-should-use-the-tag-1809-when-specifying-which-version-of-the-base-os-container-images-you-want-like-so"></a>Debe saber qué versión necesita usar para su contenedor. Por ejemplo, si quiere que la versión 1809 de Windows Server sea su sistema operativo de contenedor y desee tener las revisiones más recientes para él, debe `1809` usar la etiqueta al especificar la versión de las imágenes del contenedor de sistema operativo que desea, por ejemplo:
-=======
-Es importante asegurarte de que sabes qué versión del sistema operativo de contenedor necesitarás para tus objetivos. Si usas Windows Server versión 1709 y quieres tener las últimas revisiones de dicha versión, debes usar la etiqueta "1709" cuando indiques qué versión de las imágenes base de contenedor del sistema operativo quieres, de este modo:
->>>>>>> origen o maestra
+Debe saber qué versión necesita usar para su contenedor. Por ejemplo, si quiere que la versión 1809 de Windows Server sea su sistema operativo de contenedor y desee tener las revisiones más recientes para él, debe `1809` usar la etiqueta al especificar la versión de las imágenes del contenedor de sistema operativo que desea, por ejemplo:
 
 ``` dockerfile
 FROM mcr.microsoft.com/windows/nanoserver:1809
