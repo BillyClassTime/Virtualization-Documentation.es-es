@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 91031f9394cb3fcb1af6c4813f8805ad6f79bf8c
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 926e5cd64053b5ea795bb2c75a231700aed443ca
+ms.sourcegitcommit: f6457ee0635864e8e8bb07da43a6f76388ee3cd1
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681105"
+ms.lasthandoff: 06/05/2019
+ms.locfileid: "9734659"
 ---
 # <a name="linux-containers-on-windows-10"></a>Contenedores de Linux en Windows 10
 
@@ -32,13 +32,9 @@ Este inicio rápido es específico de Windows10. Puede encontrar documentación 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Asegúrate de cumplir los siguientes requisitos: <<<<<<< HEAD
-- Un sistema informático físico con Windows 10 Professional o Enterprise con Windows otoño Update (versión 1709) o posterior
-- Asegúrese [de que Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
-=======
+Asegúrate de cumplir los siguientes requisitos:
 - Un sistema informático físico con Windows 10 Professional, Windows 10 Enterprise o Windows Server 2019 versión 1809 o posterior
-- Asegúrese [de que Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
->>>>>>> origen o maestra
+- Asegúrese [de que Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) está habilitado.
 
 ***Aislamiento de Hyper-V:*** Los contenedores de Linux en Windows requieren el aislamiento de Hyper-V en Windows 10 para proporcionar a los desarrolladores el kernel de Linux adecuado para ejecutar el contenedor. Encontrará más información sobre el aislamiento de Hyper-V en la página [acerca de los contenedores de Windows](../about/index.md) .
 
@@ -48,7 +44,7 @@ Descarga el [escritorio](https://store.docker.com/editions/community/docker-ce-d
 
 > Si ya tiene instalado un acoplador, asegúrese de que tiene la versión 18,02 o posterior para admitir LCOW. Comprobar ejecutando `docker -v` o comprobando *acerca*del acoplador.
 
-> La opción ' características experimentales ' del *demonio de configuración del acoplador >* debe estar activada para poder ejecutar contenedores LCOW.
+> La opción ' características experimentales ' de la *configuración del acoplador > daemon* debe activarse para ejecutar contenedores de LCOW.
 
 ## <a name="run-your-first-lcow-container"></a>Ejecutar el primer contenedor LCOW
 
