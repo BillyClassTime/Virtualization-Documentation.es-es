@@ -57,6 +57,7 @@
 # Referencia
 ## [Requisitos del sistema](deploy-containers/system-requirements.md)
 ## [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
+## [Ciclos de vida de mantenimiento de imágenes básicos](deploy-containers/base-image-lifecycle.md)
 ## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 ## [Servicios de impresora](deploy-containers/print-spooler.md)
 ## [Aceleración de GPU](deploy-containers/gpu-acceleration.md)
