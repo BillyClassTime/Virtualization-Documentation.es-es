@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: 20179f09260b6ae5de802c2372958356f8de3aee
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: bddfb3a3510a6af674be73349a7e422434c1e0f4
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9680945"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882978"
 ---
 # <a name="overview"></a>Introducción
 
@@ -40,7 +40,7 @@ No debes modificar los archivos de los directorios de capa: se administran cuida
 Ejecutar contenedores puede usar la mayoría de las operaciones de NTFS a excepción de las transacciones. Esto incluye la configuración de ACL y todas las ACL se comprueban dentro del contenedor. Si quieres ejecutar procesos como varios usuarios dentro de un contenedor, puedes crear usuarios en tu `Dockerfile` con `RUN net user /create ...`, establece las ACL de archivos y luego configura procesos para ejecutar con dicho usuario con la [Directiva de USUARIO de Dockerfile](https://docs.docker.com/engine/reference/builder/#user).
 
 
-##  <a name="image-size"></a>Tamaño de la imagen
+## <a name="image-size"></a>Tamaño de la imagen
 Un patrón común para las aplicaciones Windows es consultar la cantidad de espacio de disco libre antes de instalar o crear nuevos archivos o como un desencadenador para limpiar los archivos temporales.  Con el objetivo de maximizar la compatibilidad de aplicaciones, la unidad C: de un contenedor de Windows representa un tamaño de espacio libre virtual de 20GB.  Es posible que algunos usuarios quieran anular este valor predeterminado y configurar el espacio libre a un valor inferior o mayor; esto puede lograrse mediante la opción "size" de la configuración "storage-opt".
 
 ### <a name="examples"></a>Ejemplos

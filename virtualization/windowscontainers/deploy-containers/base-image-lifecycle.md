@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: c26f4b225287fbc25566e36376eb8cd604d45a68
-ms.sourcegitcommit: 9cd1aa792a417e71192c7aa39e409ae6ca0bc710
+ms.openlocfilehash: d3a8240dbba8af3c74ce5d185620e129d103ef81
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "9788558"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883188"
 ---
 # <a name="base-image-servicing-lifecycles"></a>Ciclos de vida de mantenimiento de imágenes básicos
 
@@ -35,4 +35,4 @@ En la siguiente tabla se enumeran los distintos tipos de imagen base, su canal d
 |ServerCore                      |A largo plazo        |1607   |14393   |15/10/2016  |11/01/2022                 |11/1/2027           |
 |Nano Server                      |Semestral      |1607   |14393   |15/10/2016  |10/09/2018                 |N/D                  |
 
-Para obtener información sobre los requisitos de servicio y otra información adicional, consulte las [preguntas más frecuentes](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)sobre la versión de Windows Lifecycle, la información de la [versión de Windows](https://docs.microsoft.com/en-us/windows-server/get-started/windows-server-release-info)y el repositorio del concentrador de acoplamiento de [imágenes de sistema operativo Windows base](https://hub.docker.com/_/microsoft-windows-base-os-images).
+Para obtener información sobre los requisitos de servicio y otra información adicional, consulte las [preguntas más frecuentes](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)sobre la versión de Windows Lifecycle, la información de la [versión de Windows](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)y el repositorio del concentrador de acoplamiento de [imágenes de sistema operativo Windows base](https://hub.docker.com/_/microsoft-windows-base-os-images).

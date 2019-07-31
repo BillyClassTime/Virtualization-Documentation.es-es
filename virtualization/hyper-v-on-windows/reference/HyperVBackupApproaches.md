@@ -16,9 +16,9 @@ Al crear copias de seguridad de máquina virtual con WMI de Hyper-V, hay tres m�
 Los programadores pueden exportar los datos de copia de seguridad a través de las interfaces WMI de Hyper-V (como se usa en el ejemplo anterior).  Hyper-V compilará los cambios en una unidad de disco duro virtual y copiará el archivo en la ubicación solicitada.  Este método es fácil de usar, funciona en todos los escenarios y es remoto.  Sin embargo, la unidad de disco duro virtual generada a menudo crea una gran cantidad de datos para transferir a través de la red.
 ### <a name="win32-apis"></a>API de Win32
 Los programadores pueden usar las API SetVirtualDiskInformation, GetVirtualDiskInformation y QueryChangesVirtualDisk en el conjunto de API de disco duro virtual Win32 https://docs.microsoft.com/windows/desktop/api/_vhd/ , tal y como se explica aquí: tenga en cuenta que para usar estas API, WMI debe usarse para crear referencias puntos de las máquinas virtuales asociadas.  Estas API de Win32 permiten un acceso eficaz a los datos de la máquina virtual de la que se ha realizado una copia de seguridad.  Las API de Win32 tienen varias limitaciones:
-*   Solo se puede tener acceso a ellos de forma local.
-*   No se admite la lectura de datos desde archivos de disco duro virtual compartido
-*   Devuelven direcciones de datos que son relativas a la estructura interna del disco duro virtual
+* Solo se puede tener acceso a ellos de forma local.
+* No se admite la lectura de datos desde archivos de disco duro virtual compartido
+* Devuelven direcciones de datos que son relativas a la estructura interna del disco duro virtual
 
 ### <a name="remote-shared-virtual-disk-protocol"></a>Protocolo de disco virtual compartido remoto
 Por último, si un desarrollador necesita obtener acceso eficazmente a la información de los datos de copia de seguridad de un archivo de disco duro virtual compartido, tendrá que usar el protocolo de disco virtual compartido remoto.  Este protocolo se documenta [aquí](https://docs.microsoft.com/openspecs/windows_protocols/ms-rsvd/c865c326-47d6-4a91-a62d-0e8f26007d15).

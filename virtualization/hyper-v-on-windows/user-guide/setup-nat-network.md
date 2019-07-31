@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1f8a691c-ca75-42da-8ad8-a35611ad70ec
-ms.openlocfilehash: ea6fb4471cf337ff17bb1f936caea192bccaf404
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: e69775c15359645f3659c9bee3562733415228d5
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621163"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882888"
 ---
 # <a name="set-up-a-nat-network"></a>Configurar una red NAT
 
@@ -148,7 +148,7 @@ PS C:\> Get-NetNat | Remove-NetNAT (again, this will remove the NAT but keep the
 PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared prefix>
 PS C:\> Start-Service docker
 ```
-Docker/SNP asignará direcciones IP a los contenedores de Windows y administrador asignará direcciones IP a las máquinas virtuales del conjunto de diferencia de las dos.
+Docker/SNP asignará direcciones IP a contenedores de Windows y el administrador asignará direcciones IP a máquinas virtuales desde el conjunto de diferencias de las dos.
 
 El usuario ha instalado la característica de contenedor de Windows con el motor de Docker en ejecución y ahora quiere conectar máquinas virtuales a la red NAT.
 ```
@@ -162,7 +162,7 @@ PS C:\> New-NetNat -Name SharedNAT -InternalIPInterfaceAddressPrefix <shared pre
 PS C:\> New-VirtualSwitch -Type internal (attach VMs to this new vSwitch)
 PS C:\> Start-Service docker
 ```
-Docker/SNP asignará direcciones IP a los contenedores de Windows y administrador asignará direcciones IP a las máquinas virtuales del conjunto de diferencia de las dos.
+Docker/SNP asignará direcciones IP a contenedores de Windows y el administrador asignará direcciones IP a máquinas virtuales desde el conjunto de diferencias de las dos.
 
 Al final, debe tener dos conmutadores internos de máquina virtual y una red NAT compartida entre ellos.
 

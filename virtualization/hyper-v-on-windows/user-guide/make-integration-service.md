@@ -7,12 +7,12 @@ ms.date: 04/07/2017
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
-ms.openlocfilehash: b0bbca7bcb4c8c05c50ca68965637a6162a0ab85
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 89a36ee87bce1da18852f0ebff248e239165eb7d
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681005"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883018"
 ---
 # <a name="make-your-own-integration-services"></a>Cree sus propios servicios de integración
 
@@ -91,9 +91,9 @@ La entrada del Registro tendrá este aspecto:
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
     999E53D4-3D5C-4C3E-8779-BED06EC056E1\
-        ElementName REG_SZ  VM Session Service
+        ElementName    REG_SZ    VM Session Service
     YourGUID\
-        ElementName REG_SZ  Your Service Friendly Name
+        ElementName    REG_SZ    Your Service Friendly Name
 ```
 
 > **Nota:** el GUID de servicio de invitado Linux utiliza el protocolo VSOCK qué direcciona a través de un `svm_cid` y `svm_port` en lugar de un guid. Para superar esta incoherencia con Windows, se usa el GUID bien conocido como plantilla de servicio en el host que traduce a un puerto en el invitado. Para personalizar el GUID de servicio, simplemente cambia el primer valor "00000000" al número de puerto deseado. Por ejemplo: "00000ac9" es el puerto 2761.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 77eadf9c1f842ab679b23813cbdd305c2f2de7e9
-ms.sourcegitcommit: a5ee3e35eb272c77dd61f5e5384aab26a26fab76
+ms.openlocfilehash: b908a35f63b2f25da3fb19c0f96b55fe3e513350
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 06/12/2019
-ms.locfileid: "9770240"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883178"
 ---
 # <a name="group-managed-service-accounts-for-windows-containers"></a>Cuentas de servicio administradas de grupo para contenedores de Windows
 
@@ -103,7 +103,7 @@ Una vez que haya decidido el nombre de la gMSA, ejecute los siguientes cmdlets d
 # To install the AD module on older versions of Windows 10, see https://aka.ms/rsat
 
 # Create the security group
-New-ADGroup -Name "WebApp01 Authorized Hosts" -SamAccountName "WebApp01Hosts" -Scope DomainLocal
+New-ADGroup -Name "WebApp01 Authorized Hosts" -SamAccountName "WebApp01Hosts" -GroupScope DomainLocal
 
 # Create the gMSA
 New-ADServiceAccount -Name "WebApp01" -DnsHostName "WebApp01.contoso.com" -ServicePrincipalNames "host/WebApp01", "host/WebApp01.contoso.com" -PrincipalsAllowedToRetrieveManagedPassword "WebApp01Hosts"
@@ -470,7 +470,7 @@ Si está usando una directiva de Firewall estricta en el contenedor o la red hos
 | TCP 636 | SSL DE LDAP |
 
 Es posible que tenga que permitir el acceso a puertos adicionales en función del tipo de tráfico que el contenedor envía a un controlador de dominio.
-Consulte [requisitos de puertos de Active Directory y servicios de dominio de Active](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) Directory para obtener una lista completa de los puertos usados por Active Directory.
+Consulte [requisitos de puertos de Active Directory y servicios de dominio de Active](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers) Directory para obtener una lista completa de los puertos usados por Active Directory.
 
 #### <a name="check-the-container"></a>Comprobar el contenedor
 

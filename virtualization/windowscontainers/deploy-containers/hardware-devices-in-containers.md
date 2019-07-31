@@ -1,53 +1,50 @@
 ---
-title: Dispositivos en contenedores en Windows
-description: ¿Qué soporte técnico de dispositivo existe para contenedores en Windows
-keywords: docker, contenedores, los dispositivos, hardware
+title: Dispositivos en contenedores de Windows
+description: ¿Qué compatibilidad con dispositivos hay en los contenedores de Windows?
+keywords: acoplador, contenedores, dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: feff730ed21c439312cda65c7b5ccc1a6cf5ae86
-ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
+ms.openlocfilehash: ee9c5da5ef87dceb3374977670da2ea50ea87382
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "9657363"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883168"
 ---
-# <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores en Windows
+# <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores de Windows
 
-De manera predeterminada, los contenedores de Windows se otorga acceso mínimo para dispositivos de host, al igual que los contenedores de Linux. Hay determinadas cargas de trabajo que resulta útil, o incluso imperativo--para acceder y comunicarse con dispositivos de hardware de host. Esta guía trata los dispositivos que son compatibles con los contenedores y cómo empezar a trabajar.
-
-> [!IMPORTANT]
-> Esta característica requiere una versión de Docker que admita la `--device` opción de línea de comandos para contenedores de Windows. Se ha programado el soporte de Docker formal para la próxima versión de 19.03 motor de Docker EE. Hasta entonces, el [origen en dirección ascendente](https://master.dockerproject.org/) de Docker contiene los bits necesarios.
+De forma predeterminada, los contenedores de Windows reciben un acceso mínimo a los dispositivos de hospedaje, como los contenedores de Linux. Hay ciertas cargas de trabajo en las que es beneficioso, o incluso imperativo, tener acceso a dispositivos de hardware de hospedaje y comunicarse con ellos. Esta guía cubre qué dispositivos son compatibles con los contenedores y cómo comenzar.
 
 ## <a name="requirements"></a>Requisitos
 
-Para que funcione esta característica, el entorno debe cumplir los siguientes requisitos:
-- El host de contenedor debe ejecutar Windows Server 2019 o Windows 10, versión 1809 o posterior.
-- La versión de la imagen base de contenedor debe ser 1809 o posterior.
-- Los contenedores deben ser contenedores de Windows que se ejecutan en el modo de aislamiento de proceso.
-- El host de contenedor debe ejecutar motor de Docker 19.03 o posterior.
+Para que esta característica funcione, su entorno debe cumplir con los siguientes requisitos:
+- El host contenedor debe ejecutar Windows Server 2019 o Windows 10, versión 1809 o posterior.
+- La versión de la imagen base del contenedor debe ser 1809 o posterior.
+- Los contenedores deben ser contenedores de Windows que se ejecuten en modo de aislamiento de procesos.
+- El host contenedor debe ejecutar el motor de acoplamiento 19,03 o una versión posterior.
 
 ## <a name="run-a-container-with-a-device"></a>Ejecutar un contenedor con un dispositivo
 
-Para iniciar un contenedor con un dispositivo, utilice el siguiente comando:
+Para iniciar un contenedor con un dispositivo, use el siguiente comando:
 
 ```shell
 docker run --isolation=process --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-Debes reemplazar el `{interface class guid}` con una apropiada [GUID de clase de interfaz de dispositivo](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes), que se puede encontrar en la sección siguiente.
+Debe reemplazar el `{interface class guid}` por un GUID de [clase de interfaz de dispositivo](https://docs.microsoft.com/windows-hardware/drivers/install/overview-of-device-interface-classes)adecuado, que se encuentra en la sección siguiente.
 
-Para iniciar un contenedor con varios dispositivos, usa el siguiente comando y encadenar múltiples `--device` argumentos:
+Para iniciar un contenedor con varios dispositivos, use el comando siguiente y la cadena juntos `--device` con varios argumentos:
 
 ```shell
 docker run --isolation=process --device="class/{interface class GUID}" --device="class/{interface class GUID}" mcr.microsoft.com/windows/servercore:1809
 ```
 
-En Windows, todos los dispositivos declaran una lista de las clases de interfaz que implementan. Mediante la aprobación de este comando para Docker, garantiza que todos los dispositivos que se identifican como la implementación de la clase solicitada se se asocia en el contenedor.
+En Windows, todos los dispositivos declaran una lista de clases de interfaz que implementan. Al pasar este comando a Docker, se asegurará de que todos los dispositivos que identifiquen como implementación de la clase solicitada se sondearán en el contenedor.
 
-Esto significa que **no** va a asignar el dispositivo de host. En su lugar, el host es compartir con el contenedor. De igual modo, puesto que especifica un GUID de clase, _todos los_ dispositivos que implementan dicho GUID se compartirán con el contenedor.
+Esto significa que **no** va a asignar el dispositivo fuera del host. En su lugar, el host la está compartiendo con el contenedor. Del mismo modo, dado que está especificando un GUID de clase, _todos los_ dispositivos que implementan ese GUID se compartirán con el contenedor.
 
-## <a name="what-devices-are-supported"></a>¿Qué son compatibles con dispositivos
+## <a name="what-devices-are-supported"></a>¿Qué dispositivos son compatibles?
 
-Los siguientes dispositivos (y el GUID de clase de la interfaz de dispositivo) son compatibles actualmente:
+Hoy se admiten los siguientes dispositivos (y sus GUID de clase de interfaz de dispositivo):
   
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
@@ -62,7 +59,7 @@ Los siguientes dispositivos (y el GUID de clase de la interfaz de dispositivo) s
 <td><center>916EF1CB-8426-468D-A6F7-9AE8076881B3</center></td>
 </tr>
 <tr valign="top">
-<td><center>Bus i2c</center></td>
+<td><center>Bus I2C</center></td>
 <td><center>A11EE3C6-8421-4202-A3E7-B91FF90188E4</center></td>
 </tr>
 <tr valign="top">
@@ -70,23 +67,23 @@ Los siguientes dispositivos (y el GUID de clase de la interfaz de dispositivo) s
 <td><center>86E0D1E0-8089-11D0-9CE4-08003E301F73</center></td>
 </tr>
 <tr valign="top">
-<td><center>Bus SPI</center></td>
+<td><center>SPI bus</center></td>
 <td><center>DCDE6AF9-6610-4285-828F-CAAF78C424CC</center></td>
 </tr>
 <tr valign="top">
-<td><center>Aceleración de GPU de DirectX</center></td>
-<td><center>Consulta <a href="https://docs.microsoft.com/en-us/virtualization/windowscontainers/deploy-containers/gpu-acceleration">la aceleración de GPU</a> documentos</center></td>
+<td><center>Aceleración de la GPU DirectX</center></td>
+<td><center>Ver documentos de <a href="https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/gpu-acceleration">aceleración por GPU</a></center></td>
 </tr>
 </tbody>
 </table>
 
 > [!TIP]
-> Los dispositivos mostrados anteriormente son los dispositivos _solo_ admitidos actualmente en los contenedores de Windows. Intenta pasar cualquier otro GUID de clase dará como resultado el contenedor no pueda iniciarse.
+> Los dispositivos mencionados anteriormente son los _únicos_ dispositivos admitidos actualmente en los contenedores de Windows. Intentar pasar cualquier otro GUID de clase provocará que el contenedor no se inicie.
 
-## <a name="hyper-v-isolated-windows-container-support"></a>Soporte técnico de contenedor de Hyper-V-aislada Windows
+## <a name="hyper-v-isolated-windows-container-support"></a>Compatibilidad con Hyper-V de contenedor de Windows aislado
 
-Asignación del dispositivo y el dispositivo de uso compartido de cargas de trabajo en contenedores de Windows aislado Hyper-V no se admite actualmente.
+La asignación de dispositivos y el uso compartido de dispositivos para cargas de trabajo en contenedores de Windows aislados no es compatible hoy.
 
-## <a name="hyper-v-isolated-linux-container-support"></a>Soporte de contenedor de Hyper-V-aislada Linux
+## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-V-compatibilidad con contenedores de Linux aislados
 
-Asignación del dispositivo y el dispositivo de uso compartido de cargas de trabajo en contenedores de Linux aislada Hyper-V no se admite actualmente.
+La asignación de dispositivos y el uso compartido de dispositivos para cargas de trabajo en contenedores Linux aislados de Hyper-V no es compatible hoy.

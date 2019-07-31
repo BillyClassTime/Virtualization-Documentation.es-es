@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 4d01fb1d11ee9e8a5fa4271699a5a7c59c27409d
-ms.sourcegitcommit: 71e46750813a996cecc445181974a79b95affc8c
+ms.openlocfilehash: 019dafe855e0fba696db4618a862ec086d435005
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "9685350"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882998"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
@@ -16,53 +16,85 @@ La actualización de aniversario de Windows Server 2016 y Windows 10 (ambas vers
 
 Dado que hemos mejorado las características de los contenedores de Windows, tuvimos que hacer algunos cambios que pueden afectar a la compatibilidad. Los contenedores más antiguos se ejecutarán de la misma en hosts más recientes con el [aislamiento de Hyper-V](../manage-containers/hyperv-container.md)y usarán la misma versión de kernel (la más antigua). Sin embargo, si desea ejecutar un contenedor basado en una compilación de Windows más reciente, solo se puede ejecutar en la compilación de host más reciente.
 
-|Versión del SO de contenedor|Versión del SO de host|Compatibilidad|
-|---|---|---|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1809<br>Compilaciones 17763. * |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server 2019<br>Compilaciones 17763. * |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows 10, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
-|Windows Server 2019, versión 1903<br>Compilaciones 18362. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server 2019<br>Compilaciones 17763. * |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows 10, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1803<br>Compilaciones 17134. * |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
-|Windows Server 2019<br>Compilaciones 17763. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1803<br>Compilaciones 17134. * |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |Windows Server, versión 1709<br>Compilaciones: 16299.* |No se admite|
-|Windows Server, versión 1803<br>Compilaciones 17134. * |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |Windows Server, versión 1709<br>Compilaciones: 16299.* |Compatibilidad `process` o `hyperv` aislamiento|
-|Windows Server, versión 1709<br>Compilaciones: 16299.* |WindowsServer2016<br>Compilaciones: 14393.* |No se admite|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1903<br>Compilaciones 18362. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1809<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server 2019<br>Compilaciones 17763. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows10FallCreatorsUpdate<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows Server versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |Windows 10, versión 1803<br>Compilaciones 17134. * |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer, versión1709<br>Compilaciones: 16299.* |Solo admite `hyperv` el aislamiento|
-|WindowsServer2016<br>Compilaciones: 14393.* |WindowsServer2016<br>Compilaciones: 14393.* |Compatibilidad `process` o `hyperv` aislamiento|
+## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server, versión 1903 compatibilidad del sistema operativo de host
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|Sí|Sí|
+|Windows Server 2019|Sí|No|
+|Windows Server, versión 1803|Sí|No|
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-server-2019-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server 2019
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|Sí|Sí|
+|Windows Server, versión 1803|Sí|No|
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server, versión 1803 compatibilidad del sistema operativo de host
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|Sí|Sí|
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server, versión 1709 compatibilidad del sistema operativo de host
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|No|No|
+|Windows Server, versión 1709|Sí|Sí|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10, versión 1903 host compatibilidad del sistema operativo
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|No|No|
+|Windows Server, versión 1709|No|No|
+|WindowsServer2016|Sí|Sí|
+
+## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10, versión 1809 host compatibilidad del sistema operativo
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|Sí|No|
+|Windows Server, versión 1803|Sí|No|
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10, versión 1803 host compatibilidad del sistema operativo
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Serve, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|Sí|No||
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
+
+## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 Fall Creators Update host Compatibility Compatibility
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|No|No|
+|Windows Server, versión 1709|Sí|No|
+|WindowsServer2016|Sí|No|
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>Versión de host de contenedor coincidente con versiones de imagen de contenedor
 
@@ -163,7 +195,7 @@ FROM mcr.microsoft.com/windows/nanoserver:10.0.17763.437
 ...
 ```
 
-Las imágenes básicas de Server Core basadas en Windows Server 2019 y Windows Server 2016 son versiones de [canal de mantenimiento a largo plazo (LTSC)](https://docs.microsoft.com/en-us/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . Si, por ejemplo, desea que Windows Server 2019 como el sistema operativo de contenedor de la imagen de Server Core y desee tener las revisiones más recientes para él, puede especificar las versiones de LTSC como:
+Las imágenes básicas de Server Core basadas en Windows Server 2019 y Windows Server 2016 son versiones de [canal de mantenimiento a largo plazo (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . Si, por ejemplo, desea que Windows Server 2019 como el sistema operativo de contenedor de la imagen de Server Core y desee tener las revisiones más recientes para él, puede especificar las versiones de LTSC como:
 
 ``` dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019

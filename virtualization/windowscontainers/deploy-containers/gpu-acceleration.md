@@ -1,52 +1,49 @@
 ---
 title: Aceleración de GPU en contenedores de Windows
-description: ¿Qué nivel de aceleración de GPU existe en contenedores de Windows
-keywords: docker, contenedores, los dispositivos, hardware
+description: Qué nivel de aceleración de la GPU existe en contenedores de Windows
+keywords: acoplador, contenedores, dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: 066f97b859b133a03e24df5db95cafe405ea3110
-ms.sourcegitcommit: 2b456022ee666863ef53082580ac1d432de86939
+ms.openlocfilehash: 6e5010efee10f9b488cbeb57b14bc86f30c1e766
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "9657373"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9883278"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Aceleración de GPU en contenedores de Windows
 
-Para muchas cargas de trabajo en contenedores, los recursos de proceso de CPU proporcionan un rendimiento suficiente. Sin embargo, para algunos tipos de carga de trabajo, la potencia de cálculo masivos en paralelo ofrecida por GPU (unidades de procesamiento de gráficos) puede acelerar las operaciones órdenes de magnitud, llevar los costos y mejora el rendimiento enormemente.
+Para muchas cargas de trabajo de contenedor, los recursos de cálculo de CPU proporcionan el rendimiento suficiente. Sin embargo, para una determinada clase de carga de trabajo, la potencia de cómputo altamente paralela ofrecida por las GPU (unidades de procesamiento de gráficos) puede acelerar la operación por orden de magnitud, lo que hace que el rendimiento se mejore enormemente.
 
-GPU ya son una herramienta común para muchas cargas de trabajo populares, de simulación de formación de aprendizaje de máquina y inferencia y representación tradicional. Los contenedores de Windows admiten la aceleración de GPU para DirectX y todos los marcos integrados en la parte superior.
-
-> [!IMPORTANT]
-> Esta característica requiere una versión de Docker que admita la `--device` opción de línea de comandos para contenedores de Windows. Esta compatibilidad actualmente solo está disponible en la `Docker Desktop for Windows Edge` de lanzamiento. Puedes descargar la versión de borde de Docker [aquí](https://docs.docker.com/docker-for-windows/edge-release-notes/).
+Las GPU ya son una herramienta común para muchas cargas de trabajo populares, desde la representación y la simulación tradicionales hasta la inferencia de aprendizaje y formación de equipos. Los contenedores de Windows son compatibles con la aceleración GPU para DirectX y todos los marcos creados sobre él.
 
 ## <a name="requirements"></a>Requisitos
 
-Para que funcione esta característica, el entorno debe cumplir los siguientes requisitos:
+Para que esta característica funcione, su entorno debe cumplir con los siguientes requisitos:
 
-- El host de contenedor debe ejecutar Windows Server 2019 o Windows 10, versión 1809 o posterior.
-- La imagen base del contenedor debe ser [mcr.microsoft.com/windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows) o posterior. Imágenes de contenedor de Windows Server Core y Nano Server no se admiten actualmente.
-- El host de contenedor debe ejecutar motor de Docker 19.03 o posterior.
-- El host de contenedor debe tener una versión de los controladores de pantalla ejecución de GPU WDDM 2.5 o posterior.
+- El host contenedor debe ejecutar Windows Server 2019 o Windows 10, versión 1809 o posterior.
+- La imagen base del contenedor debe ser [MCR.Microsoft.com/Windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows) o posterior. Actualmente no se admiten las imágenes de contenedor de Windows Server Core y nano Server.
+- El host contenedor debe ejecutar el motor de acoplamiento 19,03 o una versión posterior.
+- El host contenedor debe tener una GPU que ejecute los drivers de pantalla versión WDDM 2,5 o posterior.
 
-Para comprobar la versión WDDM de los controladores de pantalla, ejecutar la herramienta de diagnóstico de DirectX (dxdiag.exe) en el host de contenedor. En la pestaña de "Mostrar" de la herramienta, busca en la sección "Controladores" como se indica a continuación.
+Para comprobar la versión WDDM de los controladores de pantalla, ejecute la herramienta de diagnóstico de DirectX (Dxdiag. exe) en el host contenedor. En la ficha "Mostrar" de la herramienta, mire la sección "drivers", como se indica a continuación.
 
 ![Dxdiag](media/dxdiag.png)
 
-## <a name="run-a-container-with-gpu-acceleration"></a>Ejecutar un contenedor con la aceleración de GPU
+## <a name="run-a-container-with-gpu-acceleration"></a>Ejecutar un contenedor con aceleración GPU
 
-Para iniciar un contenedor con la aceleración de GPU, ejecute el siguiente comando:
+Para iniciar un contenedor con la aceleración GPU, ejecute el siguiente comando:
 
 ```shell
 docker run --isolation process --device class/5B45201D-F2F2-4F3B-85BB-30FF1F953599 mcr.microsoft.com/windows:1809
 ```
 
 > [!IMPORTANT]
-> DirectX (y todos los marcos integrados en la parte superior) son las únicas API que se pueden acelerar con una GPU hoy en día. no se admiten 3 marcos de terceros.
+> DirectX (y todos los marcos creados a partir de él) son las únicas API que se pueden acelerar con una GPU en la actualidad. no se admiten marcos de terceros.
 
-## <a name="hyper-v-isolated-windows-container-support"></a>Soporte técnico de contenedor de Hyper-V-aislada Windows
+## <a name="hyper-v-isolated-windows-container-support"></a>Compatibilidad con Hyper-V de contenedor de Windows aislado
 
-La aceleración de GPU para cargas de trabajo en contenedores de Windows aislado Hyper-V no se admite actualmente.
+La aceleración de GPU para las cargas de trabajo en contenedores de Windows aislados por Hyper-V no es compatible hoy.
 
-## <a name="hyper-v-isolated-linux-container-support"></a>Soporte de contenedor de Hyper-V-aislada Linux
+## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-V-compatibilidad con contenedores de Linux aislados
 
-La aceleración de GPU para cargas de trabajo en contenedores de Linux aislada Hyper-V no se admite actualmente.
+La aceleración de GPU para cargas de trabajo en contenedores de Linux aislados por Hyper-V no es compatible hoy.

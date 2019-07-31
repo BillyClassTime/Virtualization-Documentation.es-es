@@ -7,12 +7,12 @@ ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
-ms.openlocfilehash: 7882e89368bb88390c2efa93c3f2a8f04bb7a37a
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 94ac197f5bc660e52d215fa132eae78f521e1c30
+ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620783"
+ms.lasthandoff: 07/31/2019
+ms.locfileid: "9882898"
 ---
 # <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Crear una máquina virtual con Hyper-V en Windows 10
 
@@ -30,7 +30,7 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
   > **Nota**: Este es el nombre que usa Hyper-V para la máquina virtual, no el nombre de equipo asignado al sistema operativo invitado que se implementará en la máquina virtual.
 
 1. Seleccione la ubicación en la que se almacenarán los archivos de la máquina virtual, por ejemplo **c:\virtualmachine**. También puede aceptar la ubicación predeterminada. Haga clic en **Siguiente** cuando termine.
-    
+
   ![](media/new_vm_upd.png)
 
 1. Seleccione una generación para el equipo y haga clic en **Siguiente**.  
