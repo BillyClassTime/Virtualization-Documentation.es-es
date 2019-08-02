@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1,14, Linux, compilación
-ms.openlocfilehash: bdf1fd78bbbebcad3562872d9e71c961be6c64eb
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: a0b24782a0e511dfc8b6cf1a0c0bc24882ff977a
+ms.sourcegitcommit: 42cb47ba4f3e22163869d094bd0c9cff415a43b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883008"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "9884996"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -68,6 +68,12 @@ Los usuarios de Windows Server, versión 1903, pueden ir a la siguiente ubicaci�
 \\Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\NicList
 ```
 
+### <a name="containers-on-my-flannel-host-gw-deployment-on-azure-cannot-reach-the-internet"></a>Contenedores de mi host flannel: la implementación de GW en Azure no puede comunicarse con Internet ###
+Al implementar flannel en el modo host-GW en Azure, los paquetes tienen que pasar por el vSwitch de host físico de Azure. Los usuarios deben programar [rutas definidas](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined) por el usuario de tipo "dispositivo virtual" para cada subred asignada a un nodo. Esto se puede realizar a través del portal de Azure (vea un ejemplo [aquí](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal)) `az` o a través de Azure CLI. A continuación se muestra un ejemplo de UDR con el nombre "enroute" con los comandos AZ para un nodo con IP 10.0.0.4 y la subred Pod 10.244.0.0/24:
+```
+az network route-table create --resource-group <my_resource_group> --name BridgeRoute 
+az network route-table route create  --resource-group <my_resource_group> --address-prefix 10.244.0.0/24 --route-table-name BridgeRoute  --name MyRoute --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.0.4 
+```
 
 ### <a name="my-windows-pods-cannot-ping-external-resources"></a>Mis pods de Windows no pueden hacer ping a recursos externos ###
 Los pods de Windows no tienen reglas de salida programadas para el protocolo ICMP hoy. Sin embargo, se admite TCP/UDP. Al intentar demostrar la conectividad de recursos fuera del clúster, sustituya `ping <IP>` los comandos correspondientes `curl <IP>` .

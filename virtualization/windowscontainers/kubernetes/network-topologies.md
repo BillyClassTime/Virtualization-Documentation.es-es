@@ -5,54 +5,54 @@ ms.author: daschott
 ms.date: 02/09/2018
 ms.topic: get-started-article
 ms.prod: containers
-description: Topologías de red admitidas en Windows y Linux.
-keywords: kubernetes, 1.14, windows, introducción
+description: Topologías de red compatibles en Windows y Linux.
+keywords: kubernetes, 1,14, Windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 6a2b7021efa0d90b69a88e1b498cddeadb3af80e
-ms.sourcegitcommit: aaf115a9de929319cc893c29ba39654a96cf07e1
+ms.openlocfilehash: 6b0e13258b749ad3dfd5c8349200ca8a54908952
+ms.sourcegitcommit: 42cb47ba4f3e22163869d094bd0c9cff415a43b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/10/2019
-ms.locfileid: "9622920"
+ms.lasthandoff: 08/02/2019
+ms.locfileid: "9884986"
 ---
 # <a name="network-solutions"></a>Soluciones de red #
 
-Una vez que tengas [un nodo de maestro de Kubernetes de instalación](./creating-a-linux-master.md) ya estás listo para seleccionar una solución de red. Hay varias maneras de ganar la [subred de clúster](./getting-started-kubernetes-windows.md#cluster-subnet-def) de virtual enrutable en todos los nodos. Elegir una de las siguientes opciones para Kubernetes en Windows hoy en día:
+Una vez que haya [configurado un nodo maestro de Kubernetes](./creating-a-linux-master.md) , estará listo para elegir una solución de red. Hay varias maneras de hacer que la [subred del clúster](./getting-started-kubernetes-windows.md#cluster-subnet-def) virtual se pueda enrutar a través de los nodos. Elija una de las siguientes opciones para Kubernetes en Windows hoy:
 
-1. Usar un complemento CNI como [Flannel](#flannel-in-vxlan-mode) para configurar una red superpuesta para TI.
-2. Usar un complemento de CNI como [Flannel](#flannel-in-host-gateway-mode) las rutas de programa para TI.
-3. Configurar un inteligente de [cambiar la parte superior del rack (ToR)](#configuring-a-tor-switch) para enrutar a la subred.
+1. Use un complemento de CNI, como [flannel](#flannel-in-vxlan-mode) , para configurar una red de superposición para usted.
+2. Use un complemento de CNI, como [flannel](#flannel-in-host-gateway-mode) , para programar rutas para usted (usa el modo de red de l2bridge).
+3. Configure un [conmutador inteligente de subrack (Tor)](#configuring-a-tor-switch) para enrutar la subred.
 
 > [!tip]  
-> Hay un cuarto solución en Windows que aprovecha el vSwitch abierto (raíz) y de red Virtual abierto (OVN) de red. Documentar está fuera del ámbito de este documento, pero puede leer [estas instrucciones](https://kubernetes.io/docs/getting-started-guides/windows/#for-3-open-vswitch-ovs-open-virtual-network-ovn-with-overlay) para configurarlo.
+> Hay una cuarta solución de red en Windows que aprovecha el Open vSwitch (OvS) y Open Virtual Network (OVN). La documentación de este documento está fuera del ámbito, pero puede leer [estas instrucciones](https://kubernetes.io/docs/getting-started-guides/windows/#for-3-open-vswitch-ovs-open-virtual-network-ovn-with-overlay) para configurarlo.
 
-## <a name="flannel-in-vxlan-mode"></a>Flannel en modo de vxlan
+## <a name="flannel-in-vxlan-mode"></a>Flannel en modo vxlan
 
-Flannel en modo de vxlan puede usarse para configurar una red de superposición virtual configurable que usa VXLAN túnel para enrutar paquetes entre los nodos.
+Flannel en el modo vxlan se puede usar para configurar una red de superposición virtual configurable que use el túnel de VXLAN para enrutar paquetes entre nodos.
 
-### <a name="prepare-kubernetes-master-for-flannel"></a>Preparar el maestro de Kubernetes para Flannel
-Se recomienda algunos preparación secundaria en el [maestro de Kubernetes](./creating-a-linux-master.md) en nuestro clúster. Se recomienda para permitir puente el tráfico IPv4 iptables cadenas al usar Flannel. Esto puede hacerse mediante el siguiente comando:
+### <a name="prepare-kubernetes-master-for-flannel"></a>Preparar el maestro de Kubernetes para flannel
+Se recomienda una preparación menor en el [Kubernetes maestro](./creating-a-linux-master.md) de nuestro clúster. Se recomienda habilitar el tráfico IPv4 con puente en cadenas iptables al usar flannel. Esto se puede hacer con el siguiente comando:
 
 ```bash
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
 ```
 
-###  <a name="download--configure-flannel"></a>Descargar & configurar Flannel ###
-Descarga el manifiesto Flannel más reciente:
+###  <a name="download--configure-flannel"></a>Descargar & configurar flannel ###
+Descarga el manifiesto de flannel más reciente:
 
 ```bash
 wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-Hay dos secciones que se debe modificar para habilitar el back-end de redes vxlan:
+Hay dos secciones que debe modificar para habilitar el backend de redes de vxlan:
 
-1. En el `net-conf.json` sección de tu `kube-flannel.yml`, vuelve a comprobar:
- * La subred de clúster (por ejemplo, "10.244.0.0/16") se establece como deseado.
+1. En la `net-conf.json` sección de su `kube-flannel.yml`, vuelva a comprobar:
+ * La subred del clúster (por ejemplo, "10.244.0.0/16") se establece como se desee.
  * VNI 4096 se establece en el back-end
- * Puerto 4789 se establece en el back-end
-2. En el `cni-conf.json` sección de tu `kube-flannel.yml`, cambiar el nombre de la red `"vxlan0"`.
+ * El puerto 4789 está establecido en el back-end
+2. En la `cni-conf.json` sección de su `kube-flannel.yml`, cambie el nombre de red `"vxlan0"`a.
 
-Después de aplicar los pasos anteriores, la `net-conf.json` debe tener el siguiente aspecto:
+Después de aplicar los pasos anteriores, `net-conf.json` debe tener el siguiente aspecto:
 ```json
   net-conf.json: |
     {
@@ -66,9 +66,9 @@ Después de aplicar los pasos anteriores, la `net-conf.json` debe tener el sigui
 ```
 
 > [!NOTE]  
-> Debe establecerse el VNI 4096 y puerto 4789 para Flannel en Linux para interoperar con Flannel en Windows. Compatibilidad con otros VNIs estará disponible próximamente. Para ver una explicación de estos campos, consulte [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan) .
+> La VNI debe establecerse en 4096 y en el puerto 4789 para flannel en Linux para interoperar con flannel en Windows. El soporte técnico para otros VNIs estará disponible próximamente. Para obtener una explicación de estos campos, consulta [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan) .
 
-Tu `cni-conf.json` debe tener el siguiente aspecto:
+Debe `cni-conf.json` tener el siguiente aspecto:
 ```json
 cni-conf.json: |
     {
@@ -91,24 +91,24 @@ cni-conf.json: |
     }
 ```
 > [!tip]  
-> Para obtener más información sobre las opciones anteriores, vea a oficial CNI [flannel](https://github.com/containernetworking/plugins/tree/master/plugins/meta/flannel#network-configuration-reference), [portmap](https://github.com/containernetworking/plugins/tree/master/plugins/meta/portmap#port-mapping-plugin)y [puente](https://github.com/containernetworking/plugins/tree/master/plugins/main/bridge#network-configuration-reference) complemento documentos para Linux.
+> Para obtener más información sobre las opciones anteriores, consulte documentos oficiales de CNI [flannel](https://github.com/containernetworking/plugins/tree/master/plugins/meta/flannel#network-configuration-reference), [portmap](https://github.com/containernetworking/plugins/tree/master/plugins/meta/portmap#port-mapping-plugin)y complementos de [puente](https://github.com/containernetworking/plugins/tree/master/plugins/main/bridge#network-configuration-reference) para Linux.
 
-### <a name="launch-flannel--validate"></a>Iniciar Flannel & validar ###
-Iniciar Flannel usando:
+### <a name="launch-flannel--validate"></a>Iniciar flannel & validar ###
+Inicie flannel con:
 
 ```bash
 kubectl apply -f kube-flannel.yml
 ```
 
-A continuación, dado que los pods Flannel basado en Linux, aplicar la revisión de Linux [NodeSelector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) `kube-flannel-ds` DaemonSet seleccionar como destino solo Linux (que se iniciará el Flannel "flanneld" agente de host proceso en Windows más adelante al unir):
+Después, dado que los pods de flannel se basan en Linux, aplique [](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) el parche de `kube-flannel-ds` NodeSelector Linux a DaemonSet solo a Linux objetivo (a partir de ahora, iniciaremos el proceso de agente de host de flannel "flanneld" en Windows más adelante):
 
 ```
 kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
 ```
 > [!tip]  
-> Si todos los nodos no están en función de 64 x86, reemplaza `-amd64` anteriormente con la arquitectura del procesador.
+> Si alguno de los nodos no está basado en x86 `-amd64` -64, sustituya por la arquitectura del procesador.
 
-Después de unos minutos, deberías ver todos los pods como si se ha implementado la red de pod Flannel en ejecución.
+Después de unos minutos, deberías ver que todos los pods estén ejecutándose si la red pod de flannel fue implementada.
 
 ```bash
 kubectl get pods --all-namespaces
@@ -116,7 +116,7 @@ kubectl get pods --all-namespaces
 
 ![texto](media/kube-master.png)
 
-El DaemonSet Flannel también debe tener la NodeSelector `beta.kubernetes.io/os=linux` aplicado.
+El flannel DaemonSet también debería tener el NodeSelector `beta.kubernetes.io/os=linux` aplicado.
 
 ```bash
 kubectl get ds -n kube-system
@@ -125,40 +125,40 @@ kubectl get ds -n kube-system
 ![texto](media/kube-daemonset.png)
 
 > [!tip]  
-> Para lo demás flannel - ds-* DaemonSets, estos pueden se omiten o eliminar ya no programarse si no hay ningún nodo que coinciden con la arquitectura del procesador.
+> Para el resto de flannel-DS-* DaemonSets, se pueden ignorar o eliminar, ya que no se programarán si no hay nodos que coincidan con la arquitectura del procesador.
 
 > [!tip]  
-> ¿Confundirse? Este es un [ejemplo kube-flannel.yml](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/overlay/manifests/kube-flannel-example.yml) de completa para Flannel v0.11.0 con estos pasos aplicado previamente de subred de clúster de forma predeterminada `10.244.0.0/16`.
+> Sabe? A continuación se [muestra un ejemplo completo Kube-flannel. yml](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/overlay/manifests/kube-flannel-example.yml) para flannel v 0.11.0 con estos pasos preaplicados para la `10.244.0.0/16`subred de clúster predeterminada.
 
-Una vez que se realiza correctamente, seguir los [pasos siguientes](#next-steps).
+Una vez que se haya realizado correctamente, continúe con los [pasos siguientes](#next-steps).
 
-## <a name="flannel-in-host-gateway-mode"></a>Flannel en modo host-gateway
+## <a name="flannel-in-host-gateway-mode"></a>Flannel en modo de puerta de enlace de host
 
-Junto con [Flannel vxlan](#flannel-in-vxlan-mode), otra opción para las redes de Flannel es el *modo host-gateway* (gw host), que implica la programación de rutas estáticas en cada nodo para subredes del otro nodo con la dirección del host del nodo de destino como un salto siguiente.
+Junto con [flannel vxlan](#flannel-in-vxlan-mode), otra opción para la conexión de flannel es *el modo de puerta de enlace de host* (host-GW), que conlleva la programación de rutas estáticas en cada nodo para las subredes pod de otros nodos que usan la dirección de host del nodo de destino como próximo salto.
 
-### <a name="prepare-kubernetes-master-for-flannel"></a>Preparar el maestro de Kubernetes para Flannel
+### <a name="prepare-kubernetes-master-for-flannel"></a>Preparar el maestro de Kubernetes para flannel
 
-Se recomienda algunos preparación secundaria en el [maestro de Kubernetes](./creating-a-linux-master.md) en nuestro clúster. Se recomienda para permitir puente el tráfico IPv4 iptables cadenas al usar Flannel. Esto puede hacerse mediante el siguiente comando:
+Se recomienda una preparación menor en el [Kubernetes maestro](./creating-a-linux-master.md) de nuestro clúster. Se recomienda habilitar el tráfico IPv4 con puente en cadenas iptables al usar flannel. Esto se puede hacer con el siguiente comando:
 
 ```bash
 sudo sysctl net.bridge.bridge-nf-call-iptables=1
 ```
 
 
-###  <a name="download--configure-flannel"></a>Descargar & configurar Flannel ###
-Descarga el manifiesto Flannel más reciente:
+###  <a name="download--configure-flannel"></a>Descargar & configurar flannel ###
+Descarga el manifiesto de flannel más reciente:
 
 ```bash
 wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
 
-Hay un archivo que necesitas cambiar con el fin de habilitar la host-gw redes en ambos Windows y Linux.
+Hay un archivo que debe cambiar para habilitar las redes host-GW en Windows/Linux.
 
-En el `net-conf.json` sección de tu flannel.yml kube, vuelve a comprobar que:
-1. Se establece el tipo de back-end de red que se usa en `host-gw` en lugar de `vxlan`.
-2. La subred de clúster (por ejemplo, "10.244.0.0/16") se establece como deseado.
+En la `net-conf.json` sección de su Kube-flannel. yml, compruebe lo siguiente:
+1. El tipo de back-end de red que se `host-gw` usa se establece `vxlan`en en lugar de.
+2. La subred del clúster (por ejemplo, "10.244.0.0/16") se establece como se desee.
 
-Después de aplicar los 2 pasos, la `net-conf.json` debe tener el siguiente aspecto:
+Después de aplicar los dos pasos, `net-conf.json` debe tener el siguiente aspecto:
 ```json
 net-conf.json: |
     {
@@ -169,22 +169,22 @@ net-conf.json: |
     }
 ```
 
-### <a name="launch-flannel--validate"></a>Iniciar Flannel & validar ###
-Iniciar Flannel usando:
+### <a name="launch-flannel--validate"></a>Iniciar flannel & validar ###
+Inicie flannel con:
 
 ```bash
 kubectl apply -f kube-flannel.yml
 ```
 
-A continuación, dado que los pods Flannel basado en Linux, aplicar nuestra revisión de Linux [NodeSelector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) a `kube-flannel-ds` DaemonSet seleccionar como destino solo Linux (que se iniciará el Flannel "flanneld" agente de host proceso en Windows más adelante al unir):
+A continuación, dado que los pods de flannel se basan en Linux, [](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) aplique nuestro parche `kube-flannel-ds` de NodeSelector Linux a DaemonSet solo para Linux objetivo (iniciaremos el proceso de agente de host de flannel "flanneld" en Windows más adelante, al unirse):
 
 ```
 kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
 ```
 > [!tip]  
-> Si todos los nodos no están en función de 64 x86, reemplaza `-amd64` anteriormente con la arquitectura de procesador deseado.
+> Si algún nodo no está basado en x86-64 `-amd64` , reemplace por encima por la arquitectura de procesador deseada.
 
-Después de unos minutos, deberías ver todos los pods como si se ha implementado la red de pod Flannel en ejecución.
+Después de unos minutos, deberías ver que todos los pods estén ejecutándose si la red pod de flannel fue implementada.
 
 ```bash
 kubectl get pods --all-namespaces
@@ -192,7 +192,7 @@ kubectl get pods --all-namespaces
 
 ![texto](media/kube-master.png)
 
-El DaemonSet Flannel también debe tener el NodeSelector aplicado.
+El flannel DaemonSet también debería tener el NodeSelector aplicado.
 
 ```bash
 kubectl get ds -n kube-system
@@ -201,21 +201,21 @@ kubectl get ds -n kube-system
 ![texto](media/kube-daemonset.png)
 
 > [!tip]  
-> Para lo demás flannel - ds-* DaemonSets, estos pueden se omiten o eliminar ya no programarse si no hay ningún nodo que coinciden con la arquitectura del procesador.
+> Para el resto de flannel-DS-* DaemonSets, se pueden ignorar o eliminar, ya que no se programarán si no hay nodos que coincidan con la arquitectura del procesador.
 
 > [!tip]  
-> ¿Confundirse? Este es un v0.11.0 de para Flannel completa [ejemplo kube-flannel.yml](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/manifests/kube-flannel-example.yml) con estos 2 pasos aplicado previamente de subred de clúster de forma predeterminada `10.244.0.0/16`.
+> Sabe? A continuación se [muestra un ejemplo completo Kube-flannel. yml](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/manifests/kube-flannel-example.yml) para flannel v 0.11.0 con estos 2 pasos preaplicados para la `10.244.0.0/16`subred de clúster predeterminada.
 
-Una vez que se realiza correctamente, seguir los [pasos siguientes](#next-steps).
+Una vez que se haya realizado correctamente, continúe con los [pasos siguientes](#next-steps).
 
-## <a name="configuring-a-tor-switch"></a>Configuración de un conmutador ToR ##
+## <a name="configuring-a-tor-switch"></a>Configurar un modificador de ToR ##
 > [!NOTE]
-> Puedes omitir esta sección si has elegido [Flannel como solución de red](#flannel-in-host-gateway-mode).
-Configuración del conmutador ToR tiene lugar fuera de los nodos reales. Para obtener más información sobre esto, consulta [los documentos de Kubernetes oficiales](https://kubernetes.io/docs/getting-started-guides/windows/#upstream-l3-routing-topology).
+> Puede omitir esta sección si elige [flannel como su solución de red](#flannel-in-host-gateway-mode).
+La configuración del parámetro de ToR se produce fuera de los nodos reales. Para obtener más información, consulta los [documentos oficiales de Kubernetes](https://kubernetes.io/docs/getting-started-guides/windows/#upstream-l3-routing-topology).
 
 
 ## <a name="next-steps"></a>Pasos siguientes ## 
-En esta sección, hemos visto cómo seleccionar y configurar una solución de red. Ahora ya estás listo para paso 4:
+En esta sección, hemos explicado cómo elegir y configurar una solución de red. Ahora ya está listo para el paso 4:
 
 > [!div class="nextstepaction"]
-> [Unirse a los trabajadores de Windows](./joining-windows-workers.md)
+> [Unirse a trabajadores de Windows](./joining-windows-workers.md)
