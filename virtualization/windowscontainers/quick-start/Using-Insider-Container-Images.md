@@ -11,7 +11,7 @@ Este inicio rápido es específico de los contenedores de WindowsServer en el pr
 - Un sistema del equipo (físico o virtual) que ejecute la última versión de Windows Server desde el programa Windows Insider y/o la compilación más reciente de Windows 10 del programa Windows Insider.
 
 > [!IMPORTANT]
-> Debes usar una compilación de Windows Server desde el programa Windows Server Insider Preview o una compilación de Windows 10 desde el programa Windows Insider Preview para utilizar la imagen base que se describe a continuación. Si no estás utilizando una de estas compilaciones, el uso de estas imágenes base dará como resultado errores al iniciar un contenedor.
+> Debe usar una compilación de Windows Server desde el programa Windows Server Insider Preview o una compilación de Windows 10 desde el programa de Windows Insider Preview para usar la imagen básica que se describe a continuación. Si no estás utilizando una de estas compilaciones, el uso de estas imágenes base dará como resultado errores al iniciar un contenedor.
 
 ## <a name="install-docker-enterprise-edition-ee"></a>Instalar DockerEnterpriseEdition (EE)
 
@@ -20,7 +20,7 @@ Para trabajar con contenedores de Windows es necesario DockerEE. DockerEE consta
 Para instalar DockerEE, usaremos el módulo de PowerShell del proveedor OneGet. El proveedor habilitará la característica de contenedores en la máquina e instalará DockerEE, lo que requerirá un reinicio. Abre una sesión de PowerShell con privilegios elevados y ejecuta los comandos siguientes.
 
 > [!NOTE]
-> Instalar Docker EE con compilaciones de Windows Server Insider requiere otro proveedor de OneGet del que se usa para las compilaciones que no son de Insider. Si el proveedor de DockerMsftProviderOneGet y DockerEE ya están instalados, quítalos antes de continuar.
+> Instalar el acoplador EE con compilaciones de Insider de Windows Server requiere un proveedor de OneGet diferente al usado para las compilaciones que no son de Insider. Si el proveedor de DockerMsftProviderOneGet y DockerEE ya están instalados, quítalos antes de continuar.
 
 ```powershell
 Stop-Service docker
@@ -52,10 +52,10 @@ Antes de trabajar con los contenedores de Windows, debe instalarse una imagen ba
 
 | Imagen base del sistema operativo                       | Uso                      |
 |-------------------------------------|----------------------------|
-| MCR.Microsoft.com/Windows/servercore         | Producción y desarrollo |
-| MCR.Microsoft.com/Windows/nanoserver              | Producción y desarrollo |
-| MCR.Microsoft.com/Windows/servercore/Insider | Solo desarrollo           |
-| MCR.Microsoft.com/Windows/nanoserver/Insider        | Solo desarrollo           |
+| mcr.microsoft.com/windows/servercore         | Producción y desarrollo |
+| mcr.microsoft.com/windows/nanoserver              | Producción y desarrollo |
+| mcr.microsoft.com/windows/servercore/insider | Solo desarrollo           |
+| mcr.microsoft.com/windows/nanoserver/insider        | Solo desarrollo           |
 
 Para recuperar la imagen base de Insider de Nano Server, ejecuta lo siguiente:
 
@@ -70,7 +70,7 @@ docker pull mcr.microsoft.com/windows/servercore/insider
 ```
 
 > [!IMPORTANT]
-> Lee los contenedores de Windows del sistema operativo [CLUF](../EULA.md ) de la imagen y los [Términos de uso](https://www.microsoft.com/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
+> Lea el [CLUF](../EULA.md ) de la imagen de Windows Containers y las [condiciones de uso](https://www.microsoft.com/software-download/windowsinsiderpreviewserver)del programa Windows Insider.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
 title: Contenedores en la documentación de Windows
-description: documentación para ejecutar los contenedores en Windows
+description: documentación para ejecutar contenedores en Windows
 keywords: docker, contenedores
 author: cwilhit
 ms.date: 05/02/2016
@@ -8,16 +8,16 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 74c9d604-0915-4d89-bc69-0263b76bc66b
-ms.openlocfilehash: 9ee2a0adad762aa3cee53f3b44210976259b693f
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 771a4ef644525334e9135b8605da74503c16f21b
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620703"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998772"
 ---
 # <a name="containers-on-windows-documentation"></a>Contenedores en la documentación de Windows
 
-Contenedores de Windows proporcionan virtualización a nivel del sistema operativo que permite que varias aplicaciones aisladas se ejecuten en un solo sistema. En este conjunto de documentación encontrarás detalles técnicos, guías de implementación y guías de inicio rápido referentes a las operaciones de administración.
+Los contenedores de Windows proporcionan virtualización a nivel de sistema operativo que permite ejecutar varias aplicaciones aisladas en un solo sistema. En este conjunto de documentación encontrarás detalles técnicos, guías de implementación y guías de inicio rápido referentes a las operaciones de administración.
 
 ## <a name="getting-started"></a>Introducción
 Obtén información sobre los contenedores y luego empieza a usarlos.
@@ -26,7 +26,7 @@ Obtén información sobre los contenedores y luego empieza a usarlos.
 * [Usar contenedores en Windows10](quick-start/quick-start-windows-10.md)
 
 ## <a name="deployment"></a>Implementación
-Aprende a implementar contenedores de Windows en Windows Server 2019
+Aprenda a implementar contenedores de Windows en Windows Server 2019
 
 * [Requisitos del sistema](deploy-containers/system-requirements.md)
 * [Implementar un host de contenedor](deploy-containers/deploy-containers-on-server.md)
@@ -40,7 +40,7 @@ Obtén información acerca de cómo administrar Docker en Windows.
 * [Red de contenedores](container-networking/architecture.md)
 
 ## <a name="watch"></a>Ver
-¿Te interesa demostraciones y entrevistas del equipo de contenedor de Windows?
+¿Está interesado en demostraciones y entrevistas desde el equipo de contenedor de Windows?
 * [Canal de contenedores](https://channel9.msdn.com/Blogs/containers)
 
 ## <a name="community"></a>Comunidad

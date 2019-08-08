@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
-ms.openlocfilehash: 5ab7f684bba9cfa73c59b58ce660d3d519be0b72
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 088bc844790d94d30f6b4b05c5cd189392f47e66
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621443"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998282"
 ---
 # <a name="getting-started-with-swarm-mode"></a>Introducción al modo enjambre 
 
@@ -24,13 +24,13 @@ El modo enjambre es una característica de Docker que proporciona funciones de o
 Un enjambre se compone de dos tipos de hosts de contenedor: *nodos de administrador* y *nodos de trabajo*. Cada enjambre se inicializa a través de un nodo de administrador y todos los comandos de la CLI de Docker para el control y la supervisión de un enjambre se deben ejecutar desde uno de sus nodos de administrador. Los nodos de administrador se pueden ver como “guardianes” del estado del enjambre; en conjunto, forman un grupo de consenso que mantiene el conocimiento del estado de los servicios que se ejecutan en el enjambre, y su trabajo es garantizar que el estado real del enjambre siempre coincide con el estado pretendido, según lo que hayan definido el desarrollador o el administrador. 
 
 >[!NOTE]
->Cualquier enjambre puede tener varios nodos de administrador, pero siempre debe tener *al menos una*. 
+>Cualquier Swarm determinado puede tener varios nodos de administrador, pero siempre debe tener *al menos una*. 
 
 Los nodos de trabajo los organiza el enjambre de Docker a través de los nodos de administrador. Para unirse a un enjambre, un nodo de trabajo debe usar un “token de unión” que genera el nodo de administrador al inicializa el enjambre. Los nodos de trabajo simplemente reciben tareas desde los nodos de administrador y las ejecutan, por lo que no requieren (ni poseen) ningún conocimiento del estado del enjambre.
 
 ## <a name="swarm-mode-system-requirements"></a>Requisitos del sistema para el modo enjambre
 
-Al menos un sistema de equipo físico o virtual (para usar la funcionalidad completa de enjambre al menos dos nodos se recomienda) que ejecuten **Windows 10 Creators Update** o **Windows Server 2016** *con todas las últimas actualizaciones de productos\ **, el programa de instalación como un host de contenedor (consulta el tema, [los contenedores de Windows en Windows 10](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) o [contenedores de Windows en Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) para obtener más información sobre cómo empezar a trabajar con contenedores de Docker en Windows 10).
+Se recomienda al menos un sistema de equipo físico o virtual (para usar la funcionalidad completa de Swarm se recomienda al menos dos nodos) ejecutando **Windows 10 Creators Update** o **Windows Server 2016** *con todas las actualizaciones más recientes \ **, configuración como un host de contenedor (consulte el tema sobre [contenedores de Windows en Windows 10](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) o Windows containers [en Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) para obtener más información sobre cómo empezar a usar contenedores de acoplamiento en Windows 10).
 
 \***Nota**: el enjambre de Docker Swarm en Windows Server 2016 requiere [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217)
 
@@ -53,7 +53,7 @@ Cuando este comando se ejecuta desde un host de contenedor, el Docker Engine de 
 
 ## <a name="adding-nodes-to-a-swarm"></a>Agregar nodos a un enjambre
 
-Varios nodos son *no* es necesario para aprovechar el modo enjambre y modo de red superpuesta características. Todas las características de enjambre/superposición pueden usarse con un único host que se ejecute en modo enjambre (es decir, un nodo de administrador situado en modo enjambre con el comando `docker swarm init`).
+*No* se necesitan varios nodos para aprovechar el modo de Swarm y las características de modo de redes superpuestas. Todas las características de enjambre/superposición pueden usarse con un único host que se ejecute en modo enjambre (es decir, un nodo de administrador situado en modo enjambre con el comando `docker swarm init`).
 
 ### <a name="adding-workers-to-a-swarm"></a>Agregar nodos de trabajo a un enjambre
 
@@ -112,7 +112,7 @@ C:\> docker service create --name=<SERVICENAME> --endpoint-mode dnsrr --network=
 Aquí, \<SERVICENAME\> es el nombre que quieres darle al servicio; es el nombre que usarás para hacer referencia al servicio a través de la detección de servicios (que usa el servidor DNS nativo de Docker). \<NETWORKNAME\> es el nombre de la red a la que quieres conectar este servicio (por ejemplo, "myOverlayNet"). \<CONTAINERIMAGE\> es el nombre de la imagen de contenedor que definirá el servicio.
 
 >[!NOTE]
->El segundo argumento de este comando, `--endpoint-mode dnsrr`, es necesario especificarle a Docker engine que se usará la directiva de Round Robin de DNS para equilibrar el tráfico de red en los puntos de conexión de contenedor de servicio. Actualmente, Round robin de DNS es la única estrategia de equilibrio de carga compatible en Windows . La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para hosts de Windows Docker aún no se admite, pero pronto estará disponible. Los usuarios que deseen una estrategia de equilibrio de carga alternativa en estos momentos pueden configurar un equilibrador de carga externo (como NGINX) y usar el [modo de publicar puerto](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) del enjambre para exponer los puertos de host del contenedor para los que equilibrar la carga.
+>El segundo argumento para este comando, `--endpoint-mode dnsrr`debe especificar el motor de acoplamiento que usará la Directiva Round Robin de DNS para equilibrar el tráfico de red entre los puntos de conexión del contenedor de servicios. Actualmente, Round robin de DNS es la única estrategia de equilibrio de carga compatible en Windows . La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para hosts de Windows Docker aún no se admite, pero pronto estará disponible. Los usuarios que deseen una estrategia de equilibrio de carga alternativa en estos momentos pueden configurar un equilibrador de carga externo (como NGINX) y usar el [modo de publicar puerto](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) del enjambre para exponer los puertos de host del contenedor para los que equilibrar la carga.
 
 ## <a name="scaling-a-service"></a>Escalado de un servicio
 Una vez que un servicio se ha implementado en un clúster enjambre, se implementan en todo el clúster las instancias de contenedor que componen ese servicio. De manera predeterminada, el número de instancias de contenedor que respaldan un servicio (el número de “réplicas” o “tareas” para un servicio) es uno. Sin embargo, se puede crear un servicio con varias tareas mediante la opción `--replicas` para el comando `docker service create` o mediante el escalado del servicio después de haberlo creado.
@@ -181,7 +181,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 Para iniciar un servicio de Docker para un clúster enjambre de sistemas operativos combinados, debe haber una forma de distinguir qué nodos enjambre ejecutan el sistema operativo para el que se ha diseñado ese servicio y cuáles no. Las [etiquetas de objeto de Docker](https://docs.docker.com/engine/userguide/labels-custom-metadata/) proporcionan una forma útil de etiquetar nodos, de forma que los servicios pueden crearse y configurarse para ejecutarse solamente en los nodos que coincidan con su sistema operativo. 
 
 >[!NOTE]
->[Etiquetas de objeto de docker](https://docs.docker.com/engine/userguide/labels-custom-metadata/) se puede usar para aplicar los metadatos a una variedad de objetos de Docker (incluidas las redes, contenedores, volúmenes y las imágenes de contenedor) y para diversos fines (por ejemplo, las etiquetas se pueden usar para separar 'front-end' y 'back-end' componentes de una aplicación, por lo que permite microservicios front-end para que sea secheduled solo en 'front-end' denominados nodos y mircoservices de back-end 'back-end' con la etiqueta nodos programar solo). En este caso, usamos etiquetas en nodos para distinguir entre nodos con sistema operativo Windows y nodos con sistema operativo Linux.
+>Las [etiquetas de objeto](https://docs.docker.com/engine/userguide/labels-custom-metadata/) de acoplador se pueden usar para aplicar metadatos a una variedad de objetos de acoplamiento (incluyendo imágenes de contenedor, contenedores, volúmenes y redes) y para una variedad de propósitos (por ejemplo, las etiquetas se pueden usar para separar los componentes "front-end" y "back-end" de una aplicación, ya que permite que los microservicios de front-end se secheduledn solo en los nodos de la etiqueta "front-end" y mircoservices de back-end que se programarán solo en los nodos de etiqueta "back-end". En este caso, usamos etiquetas en nodos para distinguir entre nodos con sistema operativo Windows y nodos con sistema operativo Linux.
 
 Para etiquetar los nodos enjambre existente, usa la sintaxis siguiente:
 

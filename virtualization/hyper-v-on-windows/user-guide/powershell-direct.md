@@ -8,22 +8,22 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
-ms.openlocfilehash: ea6b71200d3115ba3d156b2c133e1be2fa495261
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: ed96c7ba30c83906cd3245a279ab078229400d8d
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620923"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998732"
 ---
 # <a name="virtual-machine-automation-and-management-using-powershell"></a>Administración y automatización de máquinas virtuales con PowerShell
 
 Puedes usar PowerShell Direct para ejecutar PowerShell arbitrario en una máquina virtual con Windows 10 o Windows Server 2016 desde el host de Hyper-V, independientemente de la configuración de administración remota o la configuración de red.
 
-Estas son algunas maneras de que poder ejecutar PowerShell Direct:
+A continuación se indican algunas maneras en las que puede ejecutar PowerShell Direct:
 
-* [Como una sesión interactiva mediante el cmdlet Enter-PSSession](#create-and-exit-an-interactive-powershell-session)
-* [Como una sección de uso único para ejecutar un único comando o script mediante el cmdlet Invoke-Command](#run-a-script-or-command-with-invoke-command)
-* [Como una sesión persistente (compilación 14280 y posterior) con New-PSSession, Copy-Item y los cmdlets de Remove-PSSession](#copy-files-with-new-pssession-and-copy-item)
+* [Como sesión interactiva con el cmdlet Enter-PSSession](#create-and-exit-an-interactive-powershell-session)
+* [Como una sección de un solo uso para ejecutar un solo comando o script con el cmdlet Invoke-Command](#run-a-script-or-command-with-invoke-command)
+* [Como una sesión persistente (compilación 14280 y posteriores) con los cmdlets New-PSSession, Copy-Item y Remove-PSSession](#copy-files-with-new-pssession-and-copy-item)
 
 ## <a name="requirements"></a>Requisitos
 **Requisitos del sistema operativo:**

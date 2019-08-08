@@ -8,28 +8,28 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: db360bdd2b62667ab017549b3c179d11278abc19
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 93c56dba88715df41cab054cda676879b275380b
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620803"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9999212"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
-En el anterior inicio rápido de Windows Server, se ha creado un contenedor de Windows a partir de un ejemplo de .NET Core creado previamente. En este ejercicio se muestra cómo crear tu propia imagen de contenedor desde un Dockerfile y almacenar la imagen de contenedor en el registro público de Docker Hub.
+En el anterior inicio rápido de Windows Server, se ha creado un contenedor de Windows a partir de un ejemplo de .NET Core creado previamente. En este ejercicio se muestra cómo crear su propia imagen de contenedor desde un Dockerfile y almacenar la imagen del contenedor en el registro público del concentrador de acoplamiento.
 
 Este inicio rápido es específico de los contenedores de Windows Server en Windows Server 2019 o Windows Server 2016 y usará la imagen base del contenedor de Windows Server Core. En la tabla de contenido del lado izquierdo de esta página encontrará documentación adicional de inicio rápido.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Asegúrese de que se cumplen los requisitos siguientes:
+Asegúrate de cumplir los siguientes requisitos:
 
-- Sistema de un equipo (físico o virtual) ejecutando Windows Server 2019 o Windows Server 2016.
-- Configure este sistema con la característica de contenedor de Windows y Docker. Para ver un tutorial sobre estos pasos, consulta [los contenedores de Windows en Windows Server](./quick-start-windows-server.md).
+- Un sistema informático (físico o virtual) con Windows Server 2019 o Windows Server 2016.
+- Configure este sistema con la característica contenedor de Windows y el acoplador. Para obtener un tutorial sobre estos pasos, vea [contenedores de Windows en Windows Server](./quick-start-windows-server.md).
 - Un identificador de Docker, que se usará para insertar una imagen de contenedor en Docker Hub. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
-## <a name="container-image---dockerfile"></a>Imagen de contenedor (dockerfile)
+## <a name="container-image---dockerfile"></a>Imagen de contenedor: Dockerfile
 
 Aunque se puede crear manualmente un contenedor, modificar y luego capturarse en una imagen nueva de contenedor, Docker incluye un método para automatizar este proceso con un Dockerfile. Para este ejercicio, se requiere un identificador de Docker. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
@@ -93,7 +93,7 @@ CONTAINER ID   IMAGE            COMMAND               CREATED              STATU
 c1dc6c1387b9   iis-dockerfile   "ping -t localhost"   About a minute ago   Up About a minute   0.0.0.0:80->80/tcp   cranky_brown
 ```
 
-Detener el contenedor.
+Detener contenedor.
 
 ```console
 docker stop <container name>
@@ -105,7 +105,7 @@ Quita el contenedor.
 docker rm -f <container name>
 ```
 
-## <a name="docker-push"></a>Inserción de docker
+## <a name="docker-push"></a>Inserción de acoplador
 
 Las imágenes de contenedor de Docker se pueden almacenar en un registro de contenedor. Una vez que se almacena una imagen en un registro, se puede recuperar para su uso posterior en varios hosts de contenedor. Docker proporciona un registro público para almacenar imágenes de contenedor en [Docker Hub](https://hub.docker.com/).
 
@@ -130,7 +130,7 @@ Una vez iniciada la sesión, se puede insertar la imagen de contenedor en Docker
 docker push <user>/iis-dockerfile
 ```
 
-Como Docker inserte cada capa hasta Docker Hub, docker omitirá capas que ya existen en Docker Hub o en otros registros (capas externas).  Por ejemplo, las versiones recientes de Windows Server Core que se hospedan en el registro de contenedor de Microsoft, o las capas de un registro corporativa privada, ¿se omite y no se inserta en Docker Hub.
+Como acoplador empuja cada capa hasta el concentrador de acoplamiento, el acoplador omite las capas que ya existen en el concentrador de acoplamiento o en otros registros (capas externas).  Por ejemplo, las versiones recientes de Windows Server Core hospedadas en el registro del contenedor de Microsoft, o las capas de un registro corporativo privado, se omitirán y no se insertarán en el concentrador de acoplamiento.
 
 La imagen de contenedor ya se puede descargar desde Docker Hub en cualquier host de contenedor de Windows mediante `docker pull`. Para este tutorial, se eliminará la imagen existente y después se extraerá de Docker Hub. 
 

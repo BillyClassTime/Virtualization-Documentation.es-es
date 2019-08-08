@@ -1,5 +1,5 @@
 ---
-title: Redes de contenedores de Windows
+title: Red de contenedor de Windows
 description: Sencilla introducción a la arquitectura de redes de contenedores de Windows.
 keywords: docker, contenedores
 author: jmesser81
@@ -8,17 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: ac0088995dfbda73351d39a494435c431e0939e7
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: cff56843a0eeb48ca5d19b694eb8eb4e758002aa
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576336"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998462"
 ---
-# <a name="windows-container-networking"></a>Redes de contenedores de Windows
+# <a name="windows-container-networking"></a>Red de contenedor de Windows
 
 >[!IMPORTANT]
->Por favor, hacen referencia a [Redes de contenedores de Docker](https://docs.docker.com/engine/userguide/networking/) para las redes de comandos, las opciones y syntax.* ** a excepción de los casos descritos en [características no admitidas y opciones de red](#unsupported-features-and-network-options), Docker todos los comandos de red de docker general se admiten en Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de red de Windows y Linux son diferentes y, como tal, encontrarás que algunos comandos de red de Linux (por ejemplo, ifconfig) no se admiten en Windows.
+>Haga referencia a la [red del contenedor de Dock](https://docs.docker.com/engine/userguide/networking/) para comandos, opciones y sintaxis de redes de acoplamiento general. * * * con la excepción de los casos descritos en las [características no compatibles y las opciones de red](#unsupported-features-and-network-options), todos los comandos de redes de acoplamiento son compatible con Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de redes de Windows y Linux son diferentes y, como tal, encontrarás que algunos comandos de red Linux (por ejemplo, ifconfig) no son compatibles con Windows.
 
 ## <a name="basic-networking-architecture"></a>Arquitectura de red básica
 
@@ -30,8 +30,8 @@ La primera vez que se ejecuta Docker Engine, crea una red NAT predeterminada, 'n
 
 ![texto](media/docker-network-ls.png)
 
-- Un vSwitch **interno** es aquella que no está conectado directamente a un adaptador de red en el host de contenedor.
-- Un vSwitch **externo** es aquella que está conectado directamente a un adaptador de red en el host de contenedor.
+- Un vSwitch **interno** es aquél que no está directamente conectado a un adaptador de red en el host contenedor.
+- Un vSwitch **externo** es aquel que se conecta directamente a un adaptador de red en el host contenedor.
 
 ![texto](media/get-vmswitch.png)
 
@@ -64,15 +64,15 @@ El servicio de redes de host (HNS) y el servicio de cálculo de host (HCS) traba
 
 ## <a name="unsupported-features-and-network-options"></a>Funciones y opciones de red no compatibles
 
-Las siguientes opciones de red están actualmente **no** se admite en Windows:
+Las siguientes opciones de red **no** se admiten actualmente en Windows:
 
-- Los contenedores de Windows conectados a redes superpuestas, NAT y l2bridge no admiten la comunicación a través de la pila IPv6.
-- La comunicación de contenedor a través de IPsec cifrada.
-- Compatibilidad de proxy HTTP para contenedores.
-- Asociar los puntos de conexión para que se ejecuta en el aislamiento de Hyper-V (agregado en caliente).
-- Redes de infraestructura virtualizada de Azure a través del controlador de red transparente.
+- Los contenedores de Windows adjuntos a redes de superl2bridge, NAT y superposiciones no admiten la comunicación a través de la pila de IPv6.
+- Comunicación de contenedores cifrados a través de IPsec.
+- Compatibilidad con proxy HTTP para contenedores.
+- Adjuntar puntos de conexión a la ejecución en el aislamiento de Hyper-V (adición en caliente).
+- Redes en infraestructura de Azure virtualizada a través del controlador de red transparente.
 
-| Comando        | Opción no compatible   |
+| Comando        | Opción no admitida   |
 |---------------|:--------------------:|
 | ``docker run``|   ``--ip6``, ``--dns-option`` |
 | ``docker network create``| ``--aux-address``, ``--internal``, ``--ip-range``, ``--ipam-driver``, ``--ipam-opt``, ``--ipv6``, ``--opt encrypted`` |

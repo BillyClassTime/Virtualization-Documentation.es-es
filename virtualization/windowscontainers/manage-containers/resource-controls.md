@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
-ms.openlocfilehash: 69eb4bbd94aee203f22384b6e0db6e922b3bf474
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 2cc5853648a9e1bb62ae684472fa7d9512cdb978
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621113"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998342"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Implementar controles de recursos para contenedores de Windows
 Hay varios controles de recursos que pueden implementarse por contenedor y por recurso.  De forma predeterminada, los contenedores ejecutados están sujetos a la administración habitual de recursos de Windows, lo que, en general, se comparte de forma equitativa. Sin embargo, un desarrollador o administrador puede limitar el uso de los recursos, o influir sobre él, tras configurar estos controles.  Entre los recursos que pueden controlarse se incluyen: CPU/procesador, memoria/RAM, disco/almacenamiento y redes/rendimiento.

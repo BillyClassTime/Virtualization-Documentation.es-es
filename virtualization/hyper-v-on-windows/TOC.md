@@ -25,7 +25,7 @@
 ## [Servicios de integración de Hyper-V](reference/integration-services.md)
 ## [Arquitectura de Hyper-V](reference/hyper-v-architecture.md)
 ## [Especificaciones de hipervisor](reference/tlfs.md)
-## [Métodos de copia de seguridad de Hyper-V](reference/HyperVBackupApproaches.md)
+## [Enfoques de copia de seguridad de Hyper-V](reference/HyperVBackupApproaches.md)
 
 # Comunidad y soporte técnico
 ## [Foros de Hyper-V](https://social.technet.microsoft.com/Forums/windowsserver/home?forum=winserverhyperv)

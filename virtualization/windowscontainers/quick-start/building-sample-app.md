@@ -7,12 +7,12 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 9cfb5cb062259e906ce499423619ec7a5b814ac9
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 08efc1092777e5649ecce4d978b056a4df644564
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9620843"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998232"
 ---
 # <a name="build-a-sample-app"></a>Crear una aplicación de ejemplo
 
@@ -66,7 +66,7 @@ FROM microsoft/aspnetcore-build:1.1 AS build-env
 WORKDIR /app
 ```
 
-El paso siguiente será copiar los archivos .csproj en el directorio temporal "/app" de nuestro contenedor. Lo hacemos porque los archivos .csproj incluyen una lista de referencias de paquetes que nuestro proyecto necesita.
+El paso siguiente será copiar los archivos .csproj en el directorio temporal "/app" de nuestro contenedor. Esto se hace porque los archivos. csproj contienen una lista de referencias de paquete que necesitan nuestros proyectos.
 
 Después de copiar este archivo, dotnet lo leerá y obtendrá todas las dependencias y herramientas que nuestro proyecto necesita.
 
@@ -128,7 +128,7 @@ Si haces clic en "MvcMovie" en la barra de navegación, te llevará a una págin
 
 Hemos tomado una aplicación web ASP.NET, la hemos configurado y la hemos compilado correctamente con Docker y, además, la hemos implementado en un contenedor en ejecución. Sin embargo, hay más pasos adicionales que puedes realizar. Podrías desglosar la aplicación web en más componentes: un contenedor que ejecuta la API web, un contenedor que ejecuta el front-end y un contenedor que ejecuta SQLServer.
 
-Ahora que tienes pillado el truco a los contenedores, enorme más y crea un software en contenedores.
+Ahora que ya tienes el bloqueo de los contenedores, puedes salir y crear excelentes software de contenedor.
 
 > [!div class="nextstepaction"]
-> [Echa un vistazo a otros ejemplos de contenedores](../samples.md)
+> [Consultar más muestras de contenedores](../samples.md)

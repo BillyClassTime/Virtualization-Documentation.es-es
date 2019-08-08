@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: c7a6462b331f469148eb4cf5a0a2740c9929fa29
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.openlocfilehash: 1348b9923d9de1314818f13414abdacee2cb9735
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9576806"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998612"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>Crear una galería de máquinas virtuales personalizada
 
@@ -103,7 +103,7 @@ Imágenes:
 
 Y, por supuesto, la máquina virtual (.iso o .vhdx).
 
-Para generar los hash, puedes usar el siguiente comando de powershell:
+Para generar los hash, puede usar el siguiente comando de PowerShell:
 
   ``` PowerShell
   Get-FileHash -Path .\TMLogo.jpg -Algorithm SHA256

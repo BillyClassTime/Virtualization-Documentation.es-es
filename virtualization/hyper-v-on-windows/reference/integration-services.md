@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 762b82f3714651ffb488f682581680c9526404a8
-ms.sourcegitcommit: 34d8b2ca5eebcbdb6958560b1f4250763bee5b48
+ms.openlocfilehash: 6568b68a77fc5506b58249caea44ec78e3e44de2
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "9621213"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998942"
 ---
 # <a name="hyper-v-integration-services"></a>Servicios de integración de Hyper-V
 
@@ -74,7 +74,7 @@ El campo `Status` viene determinado por el servicio de latido.
 **Nombre del demonio de Linux:** hv_utils  
 **Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar la desconexión de la máquina virtual, pero sería apagarlo con el interruptor, en vez de seleccionar el apagado.  
 **Incluido en:** Windows Server 2012, Windows 8  
-**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados será un disco duro apagado, lo que podría provocar daños de datos o la pérdida de datos.  
+**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se verán forzados, lo que podría provocar la pérdida de datos o la corrupción de los datos.  
 
 
 ## <a name="hyper-v-time-synchronization-service"></a>Servicio de sincronización de hora de Hyper-V

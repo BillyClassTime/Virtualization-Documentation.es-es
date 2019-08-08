@@ -7,12 +7,12 @@ ms.date: 09/26/2016
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: d3df0631a8a61db16ad207f49163a7304c5db717
-ms.sourcegitcommit: a7f9ab96be359afb37783bbff873713770b93758
+ms.openlocfilehash: 5fc9b5c9135e87a0d3246952c35c9755e9ad209e
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/28/2019
-ms.locfileid: "9681055"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998472"
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
@@ -21,72 +21,21 @@ En esta guía se enumeran los requisitos para un host contenedor de Windows.
 ## <a name="os-requirements"></a>Requisitos del sistema operativo
 
 - La característica contenedor de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Windows 10 Professional y Enterprise (edición de aniversario) y versiones posteriores.
-<<<<<<< ENCABEZADO
 - El rol de Hyper-V debe instalarse antes de poder ejecutar el aislamiento de Hyper-V
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\. Esta restricción no se aplica si solo se implementarán los contenedores aislados de Hyper-V.
-=======
-- El rol de Hyper-V debe instalarse antes de ejecutar los contenedores con el aislamiento de Hyper-V.
-- Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\. Esta restricción no se aplica si solo se van a implementar contenedores de Hyper-V.
->>>>>>> origen o maestra
 
 ## <a name="virtualized-container-hosts"></a>Hosts de contenedor virtualizados
 
-<<<<<<< HEAD si se va a ejecutar un host contenedor de Windows desde una máquina virtual de Hyper-V y también va a hospedar el aislamiento de Hyper-V; se debe habilitar la virtualización anidada. La virtualización anidada tiene los siguientes requisitos: = = = = = = = Si un host contenedor de Windows se ejecuta desde una máquina virtual Hyper-V y también hospeda contenedores con el aislamiento de Hyper-V, será necesario habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
->>>>>>> origen o maestra
+Si se va a ejecutar un host contenedor de Windows desde una máquina virtual de Hyper-V y también va a hospedar el aislamiento Hyper-V, se debe habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
 
 - Al menos 4 GB de RAM disponibles para el host de Hyper-V virtualizado.
 - Windows Server 2019, Windows Server versión 1803, Windows Server versión 1709, Windows Server 2016 o Windows 10 en el sistema host, y Windows Server (completo, núcleo) en la máquina virtual.
 - Un procesador con Intel VT-x (actualmente, esta característica solo está disponible para los procesadores Intel).
-<<<<<<< ENCABEZADO
 - La VM host de contenedor también necesitará al menos dos procesadores virtuales.
 
 ## <a name="supported-base-images"></a>Imágenes de base compatibles
 
-<a name="windows-containers-are-offered-with-four-container-base-images-windows-server-core-nano-server-windows-and-iot-core-not-all-configurations-support-both-os-images-this-table-details-the-supported-configurations"></a>Los contenedores de Windows se ofrecen con cuatro imágenes base de contenedor: Windows Server Core, nano Server, Windows y IoT Core. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
-=======
-- La máquina virtual del host de contenedor también necesitará al menos dos procesadores virtuales.
-
-## <a name="supported-base-images"></a>Imágenes base compatibles
-
 Los contenedores de Windows se ofrecen con cuatro imágenes base de contenedor: Windows Server Core, nano Server, Windows y IoT Core. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
-
-<table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
-<thead>
-<tr valign="top">
-<th><center>Sistema operativo host</center></th>
-<th><center>Contenedor de WindowsServer</center></th>
-<th><center>Aislamiento de Hyper-V</center></th>
-</tr>
-</thead>
-<tbody>
-<tr valign="top">
-<td><center>Windows Server 2016/2019 (Standard o Datacenter)</center></td>
-<td><center>Server Core, nano Server, Windows</center></td>
-<td><center>Server Core, nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Nano Server<a href="#warn-1">*</a></center></td>
-<td><center> Nano Server</center></td>
-<td><center>Server Core, nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>Windows 10 Pro / Enterprise</center></td>
-<td><center>Ventana<a href="#warn-2">**</a></center></td>
-<td><center>Server Core, nano Server, Windows</center></td>
-</tr>
-<tr valign="top">
-<td><center>IoT Core</center></td>
-<td><center>IoT Core</center></td>
-<td><center>No disponible</center></td>
-</tr>
-</tbody>
-</table>
-
-> [!Warning]  
-> <span id="warn-1">* A partir de Windows Server, la versión 1709 de nano Server ya no está disponible como host de contenedor.</span>
-
-> <span id="warn-2">* * Requiere la actualización del 2018 de octubre de Windows 10 y solicita directamente el aislamiento del proceso `--isolation=process` usando la marca al ejecutar los `docker run`contenedores a través de.</span>
->>>>>>> origen o maestra
 
 |Sistema operativo de host|Contenedor de Windows|Aislamiento de Hyper-V|
 |---------------------|-----------------|-----------------|

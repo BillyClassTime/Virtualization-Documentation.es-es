@@ -7,18 +7,18 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 970e92def02e5386d38a2e72d5ef921aa8321fdf
-ms.sourcegitcommit: 08cc38955faad26f075b912a64b8ffb6b36f190c
+ms.openlocfilehash: 6035143bc1449bc4a8e9bb7a4484b4c5329e6d3c
+ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9578688"
+ms.lasthandoff: 08/07/2019
+ms.locfileid: "9998632"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Crear una máquina virtual con Hyper-V
 
 Crea una máquina virtual e instala su sistema operativo.
 
-Hemos desarrollado nuevas herramientas para la creación de máquinas virtuales para que las instrucciones han cambiado significativamente en las tres últimas versiones.
+Hemos creado nuevas herramientas para crear máquinas virtuales, de modo que las instrucciones hayan cambiado significativamente en los últimos tres lanzamientos.
 
 Elige el sistema operativo para el conjunto correcto de instrucciones:
 
@@ -28,7 +28,7 @@ Elige el sistema operativo para el conjunto correcto de instrucciones:
 
 Empecemos.
 
-## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (versión 1709 de Windows 10)
+## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (Windows 10 versión 1709)
 
 En la actualización Fall Creators Update, Creación rápida se ha ampliado para incluir una galería de máquinas virtuales que se puede iniciar independientemente del administrador de Hyper-V.
 
@@ -81,7 +81,7 @@ La máquina virtual debe ser algo parecido a esto:
 
 > **Nota**: a menos que estés ejecutando una versión con licencia por volumen de Windows, necesitarás una licencia independiente para la ejecución de Windows en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
 
-## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Antes de Windows 10 Creators Update (versión 1607 y versiones anterior de Windows 10)
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Antes de que Windows 10 Creators Update (Windows 10 versión 1607 y versiones anteriores)
 
 Si no ejecutas Windows 10 Creators Update o una versión posterior, sigue estas instrucciones usando en su lugar el Asistente para crear una nueva máquina virtual:
 
