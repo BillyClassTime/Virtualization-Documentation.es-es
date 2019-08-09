@@ -3,18 +3,21 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 019dafe855e0fba696db4618a862ec086d435005
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 84c78947284e18dac347bc04b1ea5fcd96e3a814
+ms.sourcegitcommit: c9062b2c75838fcac64e8cd9bcc75d2f1a324d76
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882998"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "10008661"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
 La actualización de aniversario de Windows Server 2016 y Windows 10 (ambas versiones 14393) fueron las primeras versiones de Windows que podían compilar y ejecutar contenedores de Windows Server. Los contenedores compilados con estas versiones se pueden ejecutar en las versiones más recientes, como Windows Server versión 1709, pero hay algunos aspectos que debes saber antes de empezar.
 
 Dado que hemos mejorado las características de los contenedores de Windows, tuvimos que hacer algunos cambios que pueden afectar a la compatibilidad. Los contenedores más antiguos se ejecutarán de la misma en hosts más recientes con el [aislamiento de Hyper-V](../manage-containers/hyperv-container.md)y usarán la misma versión de kernel (la más antigua). Sin embargo, si desea ejecutar un contenedor basado en una compilación de Windows más reciente, solo se puede ejecutar en la compilación de host más reciente.
+
+>[!NOTE]
+> \ * Ya no se admite la versión 1709 de Windows Server. Para obtener más información, consulte [ciclos de vida de mantenimiento de imágenes básicos](base-image-lifecycle.md).
 
 ## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server, versión 1903 compatibilidad del sistema operativo de host
 
@@ -23,7 +26,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|Sí|Sí|
 |Windows Server 2019|Sí|No|
 |Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
 ## <a name="windows-server-2019-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server 2019
@@ -33,7 +36,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|Sí|Sí|
 |Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
 ## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server, versión 1803 compatibilidad del sistema operativo de host
@@ -43,18 +46,28 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|No|No|
 |Windows Server, versión 1803|Sí|Sí|
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
-## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server, versión 1709 compatibilidad del sistema operativo de host
+## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server, versión 1709 host compatible con el sistema operativo *
 
 |Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|No|No|
 |Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709|Sí|Sí|
+|Windows Server, versión 1709 *|Sí|Sí|
 |WindowsServer2016|Sí|No|
+
+## <a name="windows-server-2016-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server 2016
+
+|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server 2019, versión 1903|No|No|
+|Windows Server 2019|No|No|
+|Windows Server, versión 1803|No|No|
+|Windows Server, versión 1709 *|No|No|
+|WindowsServer2016|Sí|Sí|
 
 ## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10, versión 1903 host compatibilidad del sistema operativo
 
@@ -63,7 +76,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|No|No|
 |Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709|No|No|
+|Windows Server, versión 1709 *|No|No|
 |WindowsServer2016|Sí|Sí|
 
 ## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10, versión 1809 host compatibilidad del sistema operativo
@@ -73,7 +86,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|Sí|No|
 |Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
 ## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10, versión 1803 host compatibilidad del sistema operativo
@@ -83,7 +96,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Serve, versión 1903|No|No|
 |Windows Server 2019|No|No|
 |Windows Server, versión 1803|Sí|No||
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
 ## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 Fall Creators Update host Compatibility Compatibility
@@ -93,7 +106,7 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1903|No|No|
 |Windows Server 2019|No|No|
 |Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
 |WindowsServer2016|Sí|No|
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>Versión de host de contenedor coincidente con versiones de imagen de contenedor
