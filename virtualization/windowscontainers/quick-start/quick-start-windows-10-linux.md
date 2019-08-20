@@ -3,23 +3,19 @@ title: Contenedores de Windows y Linux en Windows 10
 description: Inicio rápido de implementación de contenedores
 keywords: acoplador, contenedores, LCOW
 author: taylorb-microsoft
-ms.date: 11/8/2018
+ms.date: 08/16/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 11e3c9f93400af2c1bc2d84136d512ac91cf4477
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: a52c18f13d0d6bd2102f045827285821a187579b
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9999092"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10045025"
 ---
 # <a name="linux-containers-on-windows-10"></a>Contenedores de Linux en Windows 10
-
-> [!div class="op_single_selector"]
-> - [Contenedores de Linux en Windows](quick-start-windows-10-linux.md)
-> - [Contenedores de Windows en Windows](quick-start-windows-10.md)
 
 El ejercicio recorrerá la creación y la ejecución de contenedores Linux en Windows 10.
 

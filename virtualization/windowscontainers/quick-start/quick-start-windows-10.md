@@ -3,23 +3,19 @@ title: Contenedores de Windows y Linux en Windows 10
 description: Inicio rápido de implementación de contenedores
 keywords: acoplador, contenedores, LCOW
 author: taylorb-microsoft
-ms.date: 11/8/2018
+ms.date: 08/16/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 094d7adde67b243a4bcadb1580e239d2175562c7
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: aa7a20d914fdb65597c0f31ef6d53b91f6497be4
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998192"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10044965"
 ---
 # <a name="windows-containers-on-windows-10"></a>Contenedores de Windows en Windows 10
-
-> [!div class="op_single_selector"]
-> - [Contenedores de Linux en Windows](quick-start-windows-10-linux.md)
-> - [Contenedores de Windows en Windows](quick-start-windows-10.md)
 
 El ejercicio recorrerá la creación y la ejecución de contenedores de Windows en Windows 10.
 
@@ -61,6 +57,9 @@ Los contenedores de Windows se crean a partir de imágenes base. El comando sigu
 ```console
 docker pull mcr.microsoft.com/windows/nanoserver:1809
 ```
+
+> [!NOTE]
+> Si ve un mensaje de error que dice `no matching manifest for unknown in the manifest list entries`, asegúrese de que no espera extraer un contenedor Linux.
 
 Una vez extraída, si se ejecuta `docker images`, se devolverá una lista de las imágenes instaladas, en este caso la imagen de Nano Server.
 

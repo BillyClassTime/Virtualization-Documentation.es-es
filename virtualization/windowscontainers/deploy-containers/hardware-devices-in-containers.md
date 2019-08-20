@@ -3,12 +3,12 @@ title: Dispositivos en contenedores de Windows
 description: ¿Qué compatibilidad con dispositivos hay en los contenedores de Windows?
 keywords: acoplador, contenedores, dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: ee9c5da5ef87dceb3374977670da2ea50ea87382
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 1ad63c158a42f116882c949b242274dde8d893fc
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883168"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10045035"
 ---
 # <a name="devices-in-containers-on-windows"></a>Dispositivos en contenedores de Windows
 
@@ -77,13 +77,13 @@ Hoy se admiten los siguientes dispositivos (y sus GUID de clase de interfaz de d
 </tbody>
 </table>
 
-> [!TIP]
-> Los dispositivos mencionados anteriormente son los _únicos_ dispositivos admitidos actualmente en los contenedores de Windows. Intentar pasar cualquier otro GUID de clase provocará que el contenedor no se inicie.
+> [!IMPORTANT]
+> La compatibilidad del dispositivo depende del controlador. Intentar pasar GUID de clase no definidos en la tabla anterior puede dar lugar a un comportamiento indefinido.
 
 ## <a name="hyper-v-isolated-windows-container-support"></a>Compatibilidad con Hyper-V de contenedor de Windows aislado
 
-La asignación de dispositivos y el uso compartido de dispositivos para cargas de trabajo en contenedores de Windows aislados no es compatible hoy.
+La asignación de dispositivos y el uso compartido de dispositivos para cargas de trabajo en contenedores de Windows aislados no se admite actualmente.
 
 ## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-V-compatibilidad con contenedores de Linux aislados
 
-La asignación de dispositivos y el uso compartido de dispositivos para cargas de trabajo en contenedores Linux aislados de Hyper-V no es compatible hoy.
+No se admite la asignación de dispositivos ni el uso compartido de dispositivos para cargas de trabajo en contenedores Linux aislados con Hyper-V.

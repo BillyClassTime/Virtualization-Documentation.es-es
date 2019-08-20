@@ -3,18 +3,21 @@ title: Aceleración de GPU en contenedores de Windows
 description: Qué nivel de aceleración de la GPU existe en contenedores de Windows
 keywords: acoplador, contenedores, dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: 6e5010efee10f9b488cbeb57b14bc86f30c1e766
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: c6746b45caece9802134831eb6cb3da885957ac5
+ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883278"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "10045045"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Aceleración de GPU en contenedores de Windows
 
 Para muchas cargas de trabajo de contenedor, los recursos de cálculo de CPU proporcionan el rendimiento suficiente. Sin embargo, para una determinada clase de carga de trabajo, la potencia de cómputo altamente paralela ofrecida por las GPU (unidades de procesamiento de gráficos) puede acelerar la operación por orden de magnitud, lo que hace que el rendimiento se mejore enormemente.
 
 Las GPU ya son una herramienta común para muchas cargas de trabajo populares, desde la representación y la simulación tradicionales hasta la inferencia de aprendizaje y formación de equipos. Los contenedores de Windows son compatibles con la aceleración GPU para DirectX y todos los marcos creados sobre él.
+
+> [!NOTE]
+> Esta característica está disponible en el escritorio del Docker versión 2,1 y en el motor del Dock-Enterprise, versión 19,03 o posterior.
 
 ## <a name="requirements"></a>Requisitos
 
@@ -42,8 +45,12 @@ docker run --isolation process --device class/5B45201D-F2F2-4F3B-85BB-30FF1F9535
 
 ## <a name="hyper-v-isolated-windows-container-support"></a>Compatibilidad con Hyper-V de contenedor de Windows aislado
 
-La aceleración de GPU para las cargas de trabajo en contenedores de Windows aislados por Hyper-V no es compatible hoy.
+Actualmente no se admite la aceleración de GPU para las cargas de trabajo en contenedores de Windows aislados.
 
 ## <a name="hyper-v-isolated-linux-container-support"></a>Hyper-V-compatibilidad con contenedores de Linux aislados
 
-La aceleración de GPU para cargas de trabajo en contenedores de Linux aislados por Hyper-V no es compatible hoy.
+Actualmente no se admite la aceleración de GPU para las cargas de trabajo en contenedores Linux aislados con Hyper-V.
+
+## <a name="more-information"></a>Más información
+
+Para obtener un ejemplo completo de una aplicación de DirectX contenedora que aprovecha la aceleración de GPU, consulta [ejemplo de contenedor de DirectX](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples/directx).
