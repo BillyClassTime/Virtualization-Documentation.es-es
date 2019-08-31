@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 84c78947284e18dac347bc04b1ea5fcd96e3a814
-ms.sourcegitcommit: c9062b2c75838fcac64e8cd9bcc75d2f1a324d76
+ms.openlocfilehash: 5fe1cca67c330cb59362e82762651d719708b526
+ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "10008661"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "10058510"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
@@ -73,11 +73,11 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 
 |Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709 *|No|No|
-|WindowsServer2016|Sí|Sí|
+|Windows Server, versión 1903|Sí|No|
+|Windows Server 2019|Sí|No|
+|Windows Server, versión 1803|Sí|No|
+|Windows Server, versión 1709 *|Sí|No|
+|WindowsServer2016|Sí|No|
 
 ## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10, versión 1809 host compatibilidad del sistema operativo
 

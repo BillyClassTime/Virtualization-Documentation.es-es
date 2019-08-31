@@ -7,12 +7,12 @@ ms.date: 07/25/2017
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 08efc1092777e5649ecce4d978b056a4df644564
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 7ffc16e9d5b7c4b4a935a06c012b1d28b5e70f1a
+ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998232"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "10058490"
 ---
 # <a name="build-a-sample-app"></a>Crear una aplicación de ejemplo
 
@@ -59,7 +59,8 @@ ENTRYPOINT ["dotnet", "MvcMovie.dll"]
 
 El primer grupo de líneas indica la imagen base sobre la que crearemos nuestro contenedor. Si el sistema local no tiene aún esta imagen, el docker intentará automáticamente obtenerla. Aspnetcore-build incluye dependencias para compilar nuestro proyecto. Después cambiamos el directorio de trabajo de nuestro contenedor para que sea "/app", de modo que todos los comandos que aparezcan en nuestro dockerfile se ejecutarán en dicho directorio.
 
-_NOTA_: Dado que debemos compilar nuestro proyecto, este primer contenedor que creamos es un contenedor temporal que usaremos para realizar únicamente esa tarea y luego lo eliminaremos al final del proceso.
+>[!NOTE]
+>Como debemos crear nuestro proyecto, este primer contenedor que creamos es un contenedor temporal que usaremos para hacerlo y, a continuación, descartarlo al final.
 
 ```Dockerfile
 FROM microsoft/aspnetcore-build:1.1 AS build-env
@@ -84,7 +85,8 @@ RUN dotnet publish -c Release -o out
 
 Deberíamos haber compilado nuestro proyecto correctamente. Ahora debemos crear nuestro contenedor finalizado. Dado que nuestra aplicación es ASP.NET, especificamos una imagen con estas bibliotecas como el origen. Después copiamos todos los archivos del directorio de salida de nuestro contenedor temporal en nuestro contenedor final. Configuramos nuestro contenedor para que se ejecute con el nuevo archivo .dll que hemos compilado cuando lo iniciamos.
 
-_NOTA_: La imagen base de este contenedor final es similar, pero distinta al comando anterior ```FROM```, es decir, no tiene las bibliotecas con la capacidad de _compilar_ una aplicación ASP.NET, solo pueden ejecutarla.
+>[!NOTE]
+>Nuestra imagen básica para este contenedor final es similar, pero diferente al ```FROM``` comando anterior, no tiene las bibliotecas capaces de _crear_ una aplicación de ASP.net, solo en ejecución.
 
 ```Dockerfile
 FROM microsoft/aspnetcore:1.1
@@ -99,7 +101,8 @@ Ahora hemos realizado correctamente lo que se denomina una _compilación multiet
 
 Ahora que se ha escrito en el dockerfile, lo único que queda por hacer es indicar al docker que compile nuestra aplicación y luego ejecute el contenedor. Especificamos el puerto en el que se publicará y después proporcionamos al contenedor una etiqueta denominada "myapp". En PowerShell, ejecuta los siguientes comandos.
 
-_NOTA_: El directorio de trabajo actual de la consola de PowerShell debe ser el directorio donde se encuentre el archivo dockerfile creado anteriormente.
+>[!NOTE]
+>El directorio de trabajo actual de la consola de PowerShell debe ser el directorio donde se encuentra el dockerfile creado arriba.
 
 ```Powershell
 docker build -t myasp .
@@ -120,7 +123,7 @@ Al ejecutar este comando, se obtendrá la dirección IP del contenedor en ejecuc
 
 Escribe esta dirección IP en el navegador web que quieras y aparecerá la aplicación ejecutándose correctamente en un contenedor.
 
-<center style="margin: 25px">![](media/SampleAppScreenshot.png)</center>
+>![](media/SampleAppScreenshot.png)
 
 Si haces clic en "MvcMovie" en la barra de navegación, te llevará a una página web donde puedes escribir, editar y eliminar entradas de películas.
 
