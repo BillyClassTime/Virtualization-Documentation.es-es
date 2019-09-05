@@ -8,12 +8,12 @@ ms.prod: containers
 description: Implementación de Kubernetes resoureces en un clúster de Kubernetes de sistema operativo mixto.
 keywords: kubernetes, 1,14, Windows, introducción
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 8c21581433f672a22a247db6643a19168eedea6c
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: e6c569ae8d5bf50e24ea0fc7a6dd04734b60a863
+ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883198"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "10069949"
 ---
 # <a name="deploying-kubernetes-resources"></a>Implementación de recursos de Kubernetes #
 Suponiendo que tiene un clúster de Kubernetes que consta de al menos 1 maestro y 1 trabajador, está listo para implementar los recursos de Kubernetes.
@@ -54,18 +54,6 @@ Si todo ha funcionado correctamente, podrás:
 
 > [!Note]  
 > Los *hosts contenedores* de Windows **no** podrán acceder a la dirección IP del servicio desde los servicios programados en ellas. Esta es una [limitación de plataforma conocida](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip) que se mejorará en versiones futuras a Windows Server. Sin embargo, los *pods* **** de Windows pueden acceder a la IP del servicio.
-
-### <a name="port-mapping"></a>Asignación de puertos ### 
-También es posible tener acceso a servicios hospedados en pods a través de sus respectivos nodos mediante la asignación de un puerto en el nodo. Hay [otra muestra YAML disponible](https://github.com/Microsoft/SDN/blob/master/Kubernetes/PortMapping.yaml) con una asignación de puerto 4444 en el nodo para el puerto 80 en el pod para demostrar esta característica. Para implementarlo, sigue los mismos pasos que antes:
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/PortMapping.yaml -O win-webserver-port-mapped.yaml
-kubectl apply -f win-webserver-port-mapped.yaml
-watch kubectl get pods -o wide
-```
-
-Ahora debería ser posible la acción `curl` en el IP del *nodo* del puerto 4444 y recibir una respuesta del servidor web. Ten en cuenta que esto limita el escalado a un solo pod por nodo ya que debe aplicar una asignación uno a uno.
-
 
 ## <a name="next-steps"></a>Pasos siguientes ##
 En esta sección, hemos explicado cómo programar recursos de Kubernetes en nodos de Windows. Esto concluye la guía. Si ha habido problemas, revise la sección de solución de problemas:

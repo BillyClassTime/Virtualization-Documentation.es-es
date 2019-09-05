@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1,14, Linux, compilación
-ms.openlocfilehash: a0b24782a0e511dfc8b6cf1a0c0bc24882ff977a
-ms.sourcegitcommit: 42cb47ba4f3e22163869d094bd0c9cff415a43b0
+ms.openlocfilehash: b6e4e648ff050e13a0930f2834949867e44ce895
+ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "9884996"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "10069939"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -43,6 +43,9 @@ nssm set <Service Name> AppStderr C:\k\mysvc.log
 Para obtener más información, consulte documentos oficiales sobre el [uso de NSSM](https://nssm.cc/usage) .
 
 ## <a name="common-networking-errors"></a>Errores comunes de red ##
+
+### <a name="hostport-publishing-is-not-working"></a>La publicación HostPort no funciona ###
+Actualmente, no es posible publicar puertos usando el campo Kubernetes `containers.ports.hostPort` , ya que Windows CNI no admite este campo. Usa NodePort Publishing por el momento de publicar puertos en el nodo.
 
 ### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>Veo errores como "error de hnsCall en Win32: el disco equivocado está en la unidad". ###
 Este error puede producirse cuando se realizan modificaciones personalizadas en objetos SNP o se instala una nueva actualización de Windows que introduce cambios en SNP sin recortar los objetos SNP anteriores. Indica que un objeto SNP creado previamente antes de una actualización es incompatible con la versión SNP instalada actualmente.
