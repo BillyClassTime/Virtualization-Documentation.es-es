@@ -41,7 +41,12 @@
 ### [Swarm de acoplamiento](manage-containers/swarm-mode.md)
 ### [Administración remota de un host de acoplador de Windows](management/manage_remotehost.md)
 ## Cargas
-### [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)
+### Cuentas de servicio administradas de grupo
+#### [Crear una gMSA](manage-containers/manage-serviceaccounts.md)
+#### [Configurar la aplicación para que use un gMSA](manage-containers/gmsa-configure-app.md)
+#### [Ejecutar un contenedor con un gMSA](manage-containers/gmsa-run-container.md)
+#### [Orquestar contenedores con un gMSA](manage-containers/gmsa-orchestrate-containers.md)
+#### [Solución de problemas de gMSAs](manage-containers/gmsa-troubleshooting.md)
 ### [Servicios de impresora](deploy-containers/print-spooler.md)
 ## Redes
 ### [Introducción](container-networking/architecture.md)
