@@ -1,72 +1,70 @@
 # Introducción
 ## [Acerca de los contenedores de Windows](about/index.md)
-## [Acerca del acoplador](about/docker-overview.md)
-## [Acerca de los orquestadores de contenedor de Windows](about/overview-container-orchestrators.md)
-## [Acerca de los ecosistemas de contenedor de construcción](about/container-ecosystem.md)
+## [Requisitos del sistema](deploy-containers/system-requirements.md)
 ## [Preguntas más frecuentes](about/faq.md)
 
-# Tutoriales rápidos
-## Inicio rápido de Windows 10
+# Introducción
+## Windows 10
 ### [Ejecutar el primer contenedor WCOW](quick-start/quick-start-windows-10.md)
-### [Ejecutar el primer contenedor LCOW](quick-start/quick-start-windows-10-linux.md)
 ### [Crear una aplicación de ejemplo](quick-start/building-sample-app.md)
-## Inicio rápido de Windows Server
-### [Ejecutar tu primer contenedor](quick-start/quick-start-windows-server.md)
-### [Automatizar compilaciones del contenedor](quick-start/quick-start-images.md)
-## Inicio rápido de Windows Insider
+## Windows Server
+### [Ejecutar el primer contenedor de Windows Server](quick-start/quick-start-windows-server.md)
+### [Automatizar las compilaciones de contenedores](quick-start/quick-start-images.md)
+## WindowsInsider
 ### [Usar las imágenes de Insider](quick-start/Using-Insider-Container-Images.md)
 ### [Crear y ejecutar una aplicación](quick-start/Nano-RS3-.NET-Core-and-PS.md)
-### [Problemas conocidos](quick-start/Insider-Known-Issues.md)
 
-# Docker en Windows
-## [Docker Engine en Windows](manage-docker/configure-docker-daemon.md)
-## [Dockerfiles en Windows](manage-docker/manage-windows-dockerfile.md)
-## [Optimizar Dockerfiles](manage-docker/optimize-windows-dockerfile.md)
-## [Almacenamiento de contenedores](manage-containers/container-storage.md)
-## [Administración remota de un host de acoplador de Windows](management/manage_remotehost.md)
-## [Controles de recursos](manage-containers/resource-controls.md)
-
-# Red de contenedores en Windows
-## [Introducción a las redes de contenedores](container-networking/architecture.md)
-## [Topologías y drivers de red](container-networking/network-drivers-topologies.md)
-## [Aislamiento de redes y seguridad](container-networking/network-isolation-security.md)
-## [Opciones avanzadas de red](container-networking/advanced.md)
-
-# Orquestación
-## Kubernetes en Windows 
-### [Introducción](kubernetes/getting-started-kubernetes-windows.md)
+# Tutoriales
+## Crear un contenedor de Windows
+### [Escribir un Dockerfile](manage-docker/manage-windows-dockerfile.md)
+### [Optimizar un Dockerfile](manage-docker/optimize-windows-dockerfile.md)
+## Kubernetes en Windows
+### [Kubernetes en Windows](kubernetes/getting-started-kubernetes-windows.md)
 ### [Crear un patrón de Kubernetes](kubernetes/creating-a-linux-master.md)
 ### [Elegir una solución de red](kubernetes/network-topologies.md)
 ### [Unirse a trabajadores de Windows](kubernetes/joining-windows-workers.md)
 ### [Unirse a trabajadores de Linux](kubernetes/joining-linux-workers.md)
-### [Implementación de recursos de Kubernetes](kubernetes/deploying-resources.md)
+### [Implementar recursos de Kubernetes](kubernetes/deploying-resources.md)
 ### [Solución de problemas](kubernetes/common-problems.md)
 ### [Servicios de Windows en Kubernetes](kubernetes/kube-windows-services.md)
-### [Compilando binarios de Kubernetes](kubernetes/compiling-kubernetes-binaries.md)
+### [Compilar binarios de Kubernetes](kubernetes/compiling-kubernetes-binaries.md)
 ## Service fabric en Windows
 ### [Implementa tu primer contenedor.](/azure/service-fabric/service-fabric-quickstart-containers)
-### [Implementar una aplicación .NET en un contenedor de Windows](/azure/service-fabric/service-fabric-host-app-in-a-container) 
-## Swarm de acoplamiento
-### [Introducción al modo Swarm](manage-containers/swarm-mode.md)
+### [Implementar una aplicación .NET en un contenedor de Windows](/azure/service-fabric/service-fabric-host-app-in-a-container)
+## Contenedores de Linux en Windows
+### [Introducción](deploy-containers/linux-containers.md)
+### [Ejecutar el primer contenedor LCOW](quick-start/quick-start-windows-10-linux.md)
 
-# Comunidad y soporte técnico
-## [Foro de contenedores](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
-## [Vídeos y blogs de la comunidad](communitylinks.md)
-## [Solución de problemas](troubleshooting.md)
+# Conceptos
+## Docker
+### [Docker Engine en Windows](manage-docker/configure-docker-daemon.md)
+### [Swarm de acoplamiento](manage-containers/swarm-mode.md)
+### [Administración remota de un host de acoplador de Windows](management/manage_remotehost.md)
+## Cargas
+### [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)
+### [Servicios de impresora](deploy-containers/print-spooler.md)
+## Redes
+### [Introducción](container-networking/architecture.md)
+### [Topologías y drivers de red](container-networking/network-drivers-topologies.md)
+### [Aislamiento de redes y seguridad](container-networking/network-isolation-security.md)
+### [Configurar opciones avanzadas de red](container-networking/advanced.md)
+## Almacenamiento
+### [Introducción](manage-containers/container-storage.md)
+## Dispositivos
+### [Dispositivos de hardware](deploy-containers/hardware-devices-in-containers.md)
+### [Aceleración de GPU](deploy-containers/gpu-acceleration.md)
+## [Controles de recursos](manage-containers/resource-controls.md)
+## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 
 # Referencia
-## [Requisitos del sistema](deploy-containers/system-requirements.md)
 ## [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
 ## [Ciclos de vida de mantenimiento de imágenes básicos](deploy-containers/base-image-lifecycle.md)
-## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
-## [Servicios de impresora](deploy-containers/print-spooler.md)
-## [Aceleración de GPU](deploy-containers/gpu-acceleration.md)
-## [Dispositivos de hardware en contenedores](deploy-containers/hardware-devices-in-containers.md)
-## [Herramientas de plataforma de contenedor](deploy-containers/containerd.md)
-## [Cuentas de servicio administradas de grupo](manage-containers/manage-serviceaccounts.md)
 ## [Optimización antivirus](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
-## [Contenedores de Linux en Windows](deploy-containers/linux-containers.md)
+## [Herramientas de plataforma de contenedor](deploy-containers/containerd.md)
+## [CLUF de la imagen de sistema operativo](Images_EULA.md)
 
-# [Muestras de contenedor](samples.md)
-
-# [CLUF de la imagen de sistema operativo](Images_EULA.md)
+# Recursos
+## [Muestras de contenedor](samples.md)
+## [Solución de problemas](troubleshooting.md)
+## [Foro de contenedores](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)
+## [Vídeos y blogs de la comunidad](communitylinks.md)

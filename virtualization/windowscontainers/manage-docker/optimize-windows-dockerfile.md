@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: 056ab87189e8e423df5758be0f622a43b92c9056
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: ae633c7ba5d9672335addcc582988fc47c13ed79
+ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882958"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "10077456"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Optimizar Dockerfiles de Windows
 
@@ -23,12 +23,12 @@ Hay muchas maneras de optimizar el proceso de compilación del acoplador y las i
 
 Antes de poder optimizar la compilación de Dock, tendrá que saber cómo funciona la compilación de Docker. Durante el proceso de compilación de Docker se usa un Dockerfile y cada instrucción accionable se ejecuta, de una en una, en su propio contenedor temporal. El resultado es una nueva capa de imagen para cada instrucción accionable.
 
-Por ejemplo, el siguiente ejemplo de Dockerfile usa `windowsservercore` la imagen de sistema operativo base, instala IIS y, a continuación, crea un sitio web simple.
+Por ejemplo, el siguiente ejemplo de Dockerfile usa `mcr.microsoft.com/windows/servercore:ltsc2019` la imagen de sistema operativo base, instala IIS y, a continuación, crea un sitio web simple.
 
 ```dockerfile
 # Sample Dockerfile
 
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
@@ -67,7 +67,7 @@ En esta sección, compararemos dos ejemplos de Dockerfiles que hacen las mismas 
 El siguiente ejemplo Dockerfile desagrupado descarga Python para Windows, lo instala y quita el archivo de instalación descargado una vez que se haya instalado la instalación. En este Dockerfile, cada acción tiene su propia `RUN` instrucción.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command Invoke-WebRequest "https://www.python.org/ftp/python/3.5.1/python-3.5.1.exe" -OutFile c:\python-3.5.1.exe
 RUN powershell.exe -Command Start-Process c:\python-3.5.1.exe -ArgumentList '/quiet InstallAllUsers=1 PrependPath=1' -Wait
@@ -88,7 +88,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 El segundo ejemplo es un Dockerfile que realiza exactamente la misma operación. Sin embargo, todas las acciones relacionadas se han agrupado en `RUN` una única instrucción. Cada paso de la `RUN` instrucción está en una nueva línea de la Dockerfile, mientras que el carácter ' \ \ ' se usa para el ajuste de línea.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command \
   $ErrorActionPreference = 'Stop'; \
@@ -113,7 +113,7 @@ Si hay un archivo en su Dockerfile, como un instalador, que no necesita después
 En el siguiente ejemplo Dockerfile, el paquete python se descarga, se ejecuta y después se quita. Todo se realiza en una operación `RUN` y da lugar a una única capa de imagen.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell.exe -Command \
   $ErrorActionPreference = 'Stop'; \
@@ -131,7 +131,7 @@ Puede dividir las operaciones en varias instrucciones individuales para optimiza
 En el siguiente ejemplo, tanto Apache como Visual Studio redistribuir paquetes se descargan, instalan y, a continuación, se limpian quitando los archivos que ya no se necesitan. Esto se hace todo con una única `RUN` instrucción. Si se actualiza cualquiera de estas acciones, todas las acciones se volverán a ejecutar.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
 
@@ -167,7 +167,7 @@ IMAGE               CREATED             CREATED BY                              
 En comparación, estas acciones se dividen en tres `RUN` instrucciones. En este caso, cada `RUN` instrucción se almacena en caché en una capa de imagen de contenedor y solo se debe volver a ejecutar las instrucciones que hayan cambiado en las compilaciones Dockerfile subsiguientes.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
     $ErrorActionPreference = 'Stop'; \
@@ -209,7 +209,7 @@ Un Dockerfile se procesa de arriba a abajo y cada instrucción se compara con la
 En los siguientes ejemplos se muestra cómo la ordenación de instrucciones Dockerfile puede afectar a la eficacia del almacenamiento en caché. Este sencillo Dockerfile de ejemplo tiene cuatro carpetas numeradas.  
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN mkdir test-1
 RUN mkdir test-2
@@ -233,7 +233,7 @@ afba1a3def0a        38 seconds ago       cmd /S /C mkdir test-4   42.46 MB
 El siguiente Dockerfile se ha modificado ligeramente, con la tercera `RUN` instrucción cambiada a un archivo nuevo. Cuando se ejecuta la compilación de Docker en este Dockerfile, las tres primeras instrucciones, que son idénticas a las del último ejemplo, usan las capas de la imagen almacenadas en caché. Sin embargo, dado que `RUN` la instrucción modificada no se almacena en caché, se crea una nueva capa para la instrucción modificada y todas las instrucciones posteriores.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN mkdir test-1
 RUN mkdir test-2
@@ -265,7 +265,7 @@ A continuación se reDockerfile:
 ```dockerfile
 # Sample Dockerfile
 
-from windowsservercore
+from mcr.microsoft.com/windows/servercore:ltsc2019
 run dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 run echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 cmd [ "cmd" ]
@@ -276,7 +276,7 @@ A continuación se encuentra el mismo Dockerfile con mayúsculas y minúsculas:
 ```dockerfile
 # Sample Dockerfile
 
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN dism /online /enable-feature /all /featurename:iis-webserver /NoRestart
 RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
@@ -287,7 +287,7 @@ CMD [ "cmd" ]
 Las operaciones largas y complejas pueden dividirse en varias líneas con el carácter `\` de barra diagonal inversa. El Dockerfile siguiente instala el paquete redistribuible de Visual Studio, quita los archivos del instalador y luego crea un archivo de configuración. Estas tres operaciones se especifican en una sola línea.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86.exe -Force ; New-Item c:\config.ini
 ```
@@ -295,7 +295,7 @@ RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86
 El comando se puede dividir con barras diagonales inversas para que todas las operaciones de `RUN` la instrucción se especifiquen en su propia línea.
 
 ```dockerfile
-FROM windowsservercore
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
 RUN powershell -Command \
     $ErrorActionPreference = 'Stop'; \
