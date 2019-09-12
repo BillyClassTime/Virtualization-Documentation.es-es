@@ -8,80 +8,44 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 0ec6eccbcf69532d583c32136f1a0c50c9811a8b
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: b2f2d6418fdda2ad0aa0b81c05efad6b99f74375
+ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998372"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "10107909"
 ---
-# <a name="windows-container-base-image-history"></a>Historial de imágenes base de contenedor de Windows
+# <a name="container-base-images"></a>Imágenes base del contenedor
 
-Cada contenedor de Windows se crea sobre un sistema operativo base proporcionado por Microsoft. Si no estás seguro de para qué versión de Windows se creó un contenedor, puedes ejecutar `docker inspect <tag>` y hacer que coincidan las dos primeras filas de la tabla que se muestra a continuación.
+## <a name="supported-base-images"></a>Imágenes de base compatibles
 
-Por ejemplo, `docker inspect microsoft/windowsservercore:10.0.14393.447` mostraría
+Los contenedores de Windows se ofrecen con cuatro imágenes base de contenedor: Windows Server Core, nano Server, Windows y IoT Core. Tenga en cuenta que no todas las configuraciones son compatibles con ambas imágenes del sistema operativo. En esta tabla se detallan las configuraciones compatibles.
 
-```
-...
-"RootFS": {
-    "Type": "layers",
-    "Layers": [
-        "sha256:3fd27ecef6a323f5ea7f3fde1f7b87a2dbfb1afa797f88fd7d20e8dbdc856f67",
-        "sha256:b9454c3094c68005f07ae8424021ff0e7906dac77a172a874cd5ec372528fc15"
-    ]
-}
-```
+|Sistema operativo de host|Contenedor de Windows|Aislamiento de Hyper-V|
+|---------------------|-----------------|-----------------|
+|Windows Server 2016 o Windows Server 2019 (Standard o Datacenter)|Server Core, nano Server, Windows|Server Core, nano Server, Windows|
+|Nano Server|Nano Server|Server Core, nano Server, Windows|
+|Windows 10 Pro o Windows 10 Enterprise|No disponible|Server Core, nano Server, Windows|
+|IoT Core|IoT Core|No disponible|
 
-Que son las dos capas en la imagen proporcionada por Microsoft. La primera es constante y representa la versión original de Windows Server y la segunda cambia en función de la última actualización acumulativa incluida.
+> [!WARNING]  
+> A partir de la versión 1709 de Windows Server, nano Server ya no está disponible como host de contenedor.
 
-Si quieres saber qué ha cambiado en cada versión, busca la Knowledge Base para esa versión en [historial de actualizaciones de Windows 10 y Windows Server 2016](https://support.microsoft.com/help/12387/windows-10-update-history)
+## <a name="base-image-differences"></a>Diferencias de las imágenes básicas
 
+¿Cómo elige elegir la imagen base adecuada para crearla? Aunque es gratis para compilar con cualquier cosa que desee, estas son las directrices generales para cada imagen:
 
-## <a name="tools-to-simplify-this-process"></a>Herramientas para simplificar el proceso
+- [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): Si su aplicación necesita .NET Framework completo, esta es la mejor imagen para usar.
+- [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): para las aplicaciones que solo requieren .net Core, nano Server proporcionará una imagen mucho más representativa.
+- [Windows](https://hub.docker.com/_/microsoft-windowsfamily-windows): es posible que la aplicación dependa de un componente o archivo. dll que falta en las imágenes Server Core o nano Server, como las bibliotecas GDI. Esta imagen contiene el conjunto de dependencias completo de Windows.
+- [IOT Core](https://hub.docker.com/_/microsoft-windows-iotcore): esta imagen está diseñada para aplicaciones de [IOT](https://developer.microsoft.com/windows/iot). Debe usar esta imagen de contenedor cuando dirija un host de IoT Core.
 
-Stefan Scherer ha creado una herramienta que puede leer el manifiesto de la imagen y determinar la versión sin necesidad de descargar el contenedor completo. Consulta su [blog](https://stefanscherer.github.io/winspector/) y el repositorio de [GitHub](https://github.com/StefanScherer/winspector) para obtener más información.
+Para la mayoría de los usuarios, Windows Server Core o nano Server será la imagen más adecuada para usar. A continuación se indican algunas cosas que debe tener en cuenta al crear una parte superior de nano Server:
 
+- Se quitó la pila de servicio
+- No se incluye .NETCore (aunque puedes usar la [imagen de .NETCoreNanoServer](https://hub.docker.com/r/microsoft/dotnet/))
+- Se quitó PowerShell
+- Se quitó WMI
+- A partir de Windows Server versión 1709, las aplicaciones se ejecutan en un contexto de usuario, por lo que se producirán errores en los comandos que requieran privilegios de administrador. Puede especificar la cuenta de administrador de contenedores a través de la bandera--usuario (como la ejecución de Docker--ContainerAdministrator de usuario) sin embargo, en el futuro pretendemos quitar completamente las cuentas de administrador de nanoserver.
 
-## <a name="image-versions"></a>Versiones de imagen
-
-<table>
-    <tr>
-        <th>Versión de Windows</th>
-        <th>microsoft/windowsservercore</th>
-        <th>microsoft/nanoserver</th>
-    </tr>
-    <tr>
-        <td>10.0.14393.206</td>
-        <td>sha256:3fd27ecef6a323f5ea7f3fde1f7b87a2dbfb1afa797f88fd7d20e8dbdc856f67</td>
-        <td>sha256:342d4e407550c52261edd20cd901b5ce438f0b1e940336de3978210612365063</td>
-    </tr>
-    <tr>
-        <td>10.0.14393.321</td>
-        <td>sha256:3fd27ecef6a323f5ea7f3fde1f7b87a2dbfb1afa797f88fd7d20e8dbdc856f67<br/>
-        sha256:cc6b0a07c696c3679af48ab4968de1b42d35e568f3d1d72df21f0acb52592e0b</td>
-        <td>sha256:342d4e407550c52261edd20cd901b5ce438f0b1e940336de3978210612365063<br/>
-        sha256:2c195a33d84d936c7b8542a8d9890a2a550e7558e6ac73131b130e5730b9a3a5</td>
-    </tr>
-    <tr>
-        <td>10.0.14393.447</td>
-        <td>sha256:3fd27ecef6a323f5ea7f3fde1f7b87a2dbfb1afa797f88fd7d20e8dbdc856f67<br/>
-        sha256:b9454c3094c68005f07ae8424021ff0e7906dac77a172a874cd5ec372528fc15</td>
-        <td>sha256:342d4e407550c52261edd20cd901b5ce438f0b1e940336de3978210612365063<br/>
-        sha256:c8606bedb07a714a6724b8f88ce85b71eaf5a1c80b4c226e069aa3ccbbe69154</td>
-    </tr>
-    <tr>
-        <td>10.0.14393.576</td>
-        <td>sha256:f358be10862ccbc329638b9e10b3d497dd7cd28b0e8c7931b4a545c88d7f7cd6<br/>
-        sha256:de57d9086f9a337bb084b78f5f37be4c8f1796f56a1cd3ec8d8d1c9c77eb693c</td>
-        <td>sha256:6c357baed9f5177e8c8fd1fa35b39266f329535ec8801385134790eb08d8787d<br/>
-        sha256:0d812bf7a7032db75770c3d5b92c0ac9390ca4a9efa0d90ba2f55ccb16515381</td>
-    </tr>
-    <tr>
-        <td>10.0.14393.693</td>
-        <td>sha256:f358be10862ccbc329638b9e10b3d497dd7cd28b0e8c7931b4a545c88d7f7cd6<br/>
-        sha256:c28d44287ce521eac86e0296c7677f5d8ca1e86d1e45e7618ec900da08c95df3</td>
-        <td>sha256:6c357baed9f5177e8c8fd1fa35b39266f329535ec8801385134790eb08d8787d<br/>
-        sha256:dd33c5d8d8b3c230886132c328a7801547f13de1dac9a629e2739164a285b3ab</td>
-    </tr>
-</table>
-
+Estas son las principales diferencias, es decir, no es una lista exhaustiva. Hay otros componentes que no se han mencionado que tampoco se encuentran. Ten en cuenta que siempre se pueden agregar capas sobre NanoServer según estimes oportuno. Para ver un ejemplo de esto, echa un vistazo al [Dockerfile de .NETCoreNanoServer](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1803/amd64/Dockerfile).

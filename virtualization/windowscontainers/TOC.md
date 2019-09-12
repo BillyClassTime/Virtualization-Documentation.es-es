@@ -38,6 +38,11 @@
 ### [Ejecutar el primer contenedor LCOW](quick-start/quick-start-windows-10-linux.md)
 
 # Conceptos
+## Aspectos esenciales del contenedor de Windows
+### [Controles de recursos](manage-containers/resource-controls.md)
+### [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
+### [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
+### [Imágenes base del contenedor](manage-containers/container-base-images.md)
 ## Docker
 ### [Docker Engine en Windows](manage-docker/configure-docker-daemon.md)
 ### [Swarm de acoplamiento](manage-containers/swarm-mode.md)
@@ -60,11 +65,8 @@
 ## Dispositivos
 ### [Dispositivos de hardware](deploy-containers/hardware-devices-in-containers.md)
 ### [Aceleración de GPU](deploy-containers/gpu-acceleration.md)
-## [Controles de recursos](manage-containers/resource-controls.md)
-## [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
 
 # Referencia
-## [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
 ## [Ciclos de vida de mantenimiento de imágenes básicos](deploy-containers/base-image-lifecycle.md)
 ## [Optimización antivirus](https://docs.microsoft.com/windows-hardware/drivers/ifs/anti-virus-optimization-for-windows-containers)
 ## [Herramientas de plataforma de contenedor](deploy-containers/containerd.md)

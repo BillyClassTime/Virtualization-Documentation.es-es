@@ -8,19 +8,19 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
-ms.openlocfilehash: 2cc5853648a9e1bb62ae684472fa7d9512cdb978
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 3e9f7e3208222cd6c0f512c5f892453ac6e6980c
+ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998342"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "10107879"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Implementar controles de recursos para contenedores de Windows
 Hay varios controles de recursos que pueden implementarse por contenedor y por recurso.  De forma predeterminada, los contenedores ejecutados están sujetos a la administración habitual de recursos de Windows, lo que, en general, se comparte de forma equitativa. Sin embargo, un desarrollador o administrador puede limitar el uso de los recursos, o influir sobre él, tras configurar estos controles.  Entre los recursos que pueden controlarse se incluyen: CPU/procesador, memoria/RAM, disco/almacenamiento y redes/rendimiento.
 
 Los contenedores de Windows utilizan [objetos de trabajo](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects) para agrupar y realizar un seguimiento de los procesos asociados a cada contenedor.  Los controles de recursos se implementan en el objeto de trabajo principal asociado al contenedor. 
 
-En el caso de [aislamiento de Hyper-V](https://docs.microsoft.com/virtualization/windowscontainers/about/index#windows-container-types), los controles de recursos se aplican a la máquina virtual y al objeto de trabajo del contenedor que se ejecuta automáticamente en dicha máquina. Esto garantiza que aunque un proceso que se ejecuta en el contenedor omitiera o pasara por alto los controles de objetos de trabajo, la máquina virtual se aseguraría de que fuera incapaz de superar los controles de recursos definidos.
+En el caso de [aislamiento de Hyper-V](./hyperv-container.md), los controles de recursos se aplican a la máquina virtual y al objeto de trabajo del contenedor que se ejecuta automáticamente en dicha máquina. Esto garantiza que aunque un proceso que se ejecuta en el contenedor omitiera o pasara por alto los controles de objetos de trabajo, la máquina virtual se aseguraría de que fuera incapaz de superar los controles de recursos definidos.
 
 ## <a name="resources"></a>Recursos
 Para cada recurso, esta sección ofrece una asignación entre la interfaz de línea de comandos Docker como un ejemplo de cómo debería usarse el control de recursos (un orquestador u otras herramientas pueden configurarlo) a la API de servicio de proceso de host (HCS) que ha implementado Windows (ten en cuenta que esta descripción es de nivel alto y que la implementación subyacente está sujeta a cambios).
