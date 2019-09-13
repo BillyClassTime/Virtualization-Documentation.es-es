@@ -7,30 +7,20 @@ ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: f5a51fd1211868195126f06d917c0bef6e496c3d
-ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
+ms.openlocfilehash: 8165d9c7ee3744fae31711e28be028208140813e
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "10077476"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129275"
 ---
 # <a name="containerize-a-net-core-app"></a>Contenedor de una aplicación .NET Core
 
-
-En este tutorial rápido, aprenderá a disponer de una aplicación de .NET Core simple. Usted podrá:
-
-> [!div class="checklist"]
-> * Clone el origen de la aplicación de muestra desde GitHub
-> * Crear un dockerfile para generar una imagen de contenedor con el origen de la aplicación
-> * Probar la aplicación principal de .NET en contenedores en un entorno de acoplamiento local
-
-## <a name="before-you-begin"></a>Antes de comenzar
-
-Este tutorial rápido supone que el entorno de desarrollo ya está configurado para usar contenedores. Si no tiene un entorno configurado para contenedores, visite el [Inicio rápido de Windows 10](./quick-start-windows-10.md) para obtener información sobre cómo comenzar.
+Este segmento supone que el entorno de desarrollo ya está configurado para usar contenedores. Si no tiene un entorno configurado para contenedores, visite "[configurar su entorno](./set-up-environment.md)" para obtener información sobre cómo comenzar.
 
 Necesitará el sistema de control de código fuente git instalado en su equipo. Puedes verlo aquí: [git](https://git-scm.com/download)
 
-## <a name="getting-started"></a>Tareas iniciales
+## <a name="clone-the-sample-code"></a>Clonar el código de ejemplo
 
 Todo el código fuente de ejemplo de contenedor se mantiene en el repositorio git de la [documentación](https://github.com/MicrosoftDocs/Virtualization-Documentation) en una `windows-container-samples`carpeta llamada. Clone este repositorio git en el directorio de trabajo de curent.
 

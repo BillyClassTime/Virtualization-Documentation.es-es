@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: f23fe8c5e5ad9dc3257f8b99d239b5fc97607add
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 9fef74c029dc3efc220b1f9924d2695cdbaa61be
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998242"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129305"
 ---
 # <a name="dockerfile-on-windows"></a>Dockerfile en Windows
 
@@ -31,7 +31,7 @@ La compilación del acoplador es el comando del motor de acoplamiento que consum
 
 En este tema se explica cómo usar Dockerfiles con contenedores de Windows, comprender su sintaxis básica y cuáles son las instrucciones de Dockerfile más comunes.
 
-En este documento se tratará el concepto de imágenes contenedoras y capas de imágenes contenedoras. Si desea obtener más información sobre las imágenes y la capa de imágenes, consulte [la guía de inicio rápido de las imágenes](../quick-start/quick-start-images.md).
+En este documento se tratará el concepto de imágenes contenedoras y capas de imágenes contenedoras. Si desea obtener más información sobre las imágenes y la capa de imágenes, consulte [contenedor de imágenes base](../manage-containers/container-base-images.md).
 
 Para obtener una visión completa de Dockerfiles, consulta la [referencia de Dockerfile](https://docs.docker.com/engine/reference/builder/).
 
@@ -69,7 +69,7 @@ Instrucciones Dockerfile proporcionan al motor de acoplamiento las instrucciones
 
 ### <a name="from"></a>FROM
 
-La instrucción `FROM` establece la imagen del contenedor que se usará durante el proceso de creación de la imagen. Por ejemplo, cuando se usa la instrucción `FROM microsoft/windowsservercore`, la imagen resultante deriva de la imagen base del sistema operativo de Windows Server Core y tiene una dependencia en esta. Si la imagen especificada no está presente en el sistema donde se ejecuta el proceso de compilación de Docker, el motor de Docker intentará descargar la imagen de un Registro de imágenes público o privado.
+La instrucción `FROM` establece la imagen del contenedor que se usará durante el proceso de creación de la imagen. Por ejemplo, cuando se usa la instrucción `FROM mcr.microsoft.com/windows/servercore`, la imagen resultante deriva de la imagen base del sistema operativo de Windows Server Core y tiene una dependencia en esta. Si la imagen especificada no está presente en el sistema donde se ejecuta el proceso de compilación de Docker, el motor de Docker intentará descargar la imagen de un Registro de imágenes público o privado.
 
 El formato de la instrucción FROM es similar a este:
 

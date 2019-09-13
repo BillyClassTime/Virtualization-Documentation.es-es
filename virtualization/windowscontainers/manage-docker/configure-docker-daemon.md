@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: 953dfaf71170de656f4e6ba5e91d524708d5a12a
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: c84a6652b5918238ee8ef6e1fa7a9b2aa596aefd
+ms.sourcegitcommit: 868a64eb97c6ff06bada8403c6179185bf96675f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998222"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "10129265"
 ---
 # <a name="docker-engine-on-windows"></a>Docker Engine en Windows
 
@@ -21,21 +21,20 @@ El motor de acoplamiento y el cliente no se incluyen con Windows y deben instala
 
 ## <a name="install-docker"></a>Instalar Docker
 
-Para trabajar con contenedores de Windows, necesita acoplador. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La manera más fácil de conseguir todo lo que esté instalada es en las guías de inicio rápido, que le ayudarán a configurarlo todo y ejecutar el primer contenedor.
+Para trabajar con contenedores de Windows, necesita acoplador. Docker está formado por el motor de Docker (dockerd.exe) y el cliente de Docker (docker.exe). La forma más sencilla de obtener todo lo que se ha instalado está en la guía de inicio rápido, que le ayudará a configurarlo todo y ejecutarlo.
 
-- [Contenedores de Windows en Windows Server 2019](../quick-start/quick-start-windows-server.md)
-- [Contenedores de Windows en Windows 10](../quick-start/quick-start-windows-10.md)
+- [Instalar Docker](../quick-start/set-up-environment.md)
 
 Para instalaciones con scripts, consulte [usar un script para instalar docko EE](https://docs.docker.com/install/windows/docker-ee/#use-a-script-to-install-docker-ee).
 
-Antes de que pueda usar el acoplador, tendrá que instalar las imágenes de contenedor. Para obtener más información, consulte [la guía de inicio rápido para usar imágenes](../quick-start/quick-start-images.md).
+Antes de que pueda usar el acoplador, tendrá que instalar las imágenes de contenedor. Para obtener más información, vea [documentos para nuestras imágenes base de contenedor](../manage-containers/container-base-images.md).
 
 ## <a name="configure-docker-with-a-configuration-file"></a>Configurar el acoplador con un archivo de configuración
 
 El método preferido para configurar el motor de Docker en Windows es usar un archivo de configuración. El archivo de configuración se encuentra en 'C:\ProgramData\Docker\config\daemon.json'. Puede crear este archivo si aún no existe.
 
 >[!NOTE]
->No todas las opciones de configuración del acoplador disponibles se aplican al acoplador en Windows. En el ejemplo siguiente se muestran las opciones de configuración que se aplican. Para obtener más información sobre la configuración del motor del acoplador, consulte [archivo de configuración de demonio](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file)de Docker.
+>No todas las opciones de configuración del acoplador disponibles se aplican al acoplador en Windows. En el ejemplo siguiente se muestran las opciones de configuración que se aplican. Para obtener más información sobre la configuración del motor del acoplador, consulte [archivo de configuración de demonio de Docker](https://docs.docker.com/engine/reference/commandline/dockerd/#/windows-configuration-file).
 
 ```json
 {
@@ -187,7 +186,7 @@ Para desinstalar el acoplador en Windows 10
 
 - Ve a **configuración** > **aplicaciones** en tu equipo con Windows 10
 - En **aplicaciones & características**, busque **acoplador para Windows**
-- Ir a la desinstalación **del acoplador para Windows** > ****
+- Ir a la**desinstalación** **del acoplador para Windows** > 
 
 Para desinstalar el acoplador en Windows Server 2016:
 
