@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 1a66ef0fd07162f8bcd78b9bffa159d3f96e4763
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: dbe0e629428bbd8ecfe3ec01bb1a69e3c9c3e231
+ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998802"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "10135348"
 ---
 # <a name="about-windows-containers"></a>Acerca de los contenedores de Windows
 
@@ -43,7 +43,7 @@ Vamos a conocer algunos términos que le resultarán útiles a la vez que comien
 - Imagen de contenedor: plantilla de solo lectura de instrucciones para crear un contenedor. Las imágenes se pueden basar en un entorno de sistema operativo básico y sin modificar, pero también se pueden crear desde el recinto de un contenedor modificado. Estas imágenes modificadas supercapan sus cambios en la parte superior de la capa de la imagen base, y estas capas se pueden copiar y volver a aplicar a otras imágenes base para crear una nueva imagen con los mismos cambios.
 - Repositorio de contenedores: el repositorio local que almacena la imagen de contenedor y sus dependencias cada vez que se crea una imagen nueva. Puede reutilizar las imágenes almacenadas tantas veces como desee en el host contenedor. También puede almacenar las imágenes de contenedor en un registro público o privado, como un concentrador acoplador, para que se puedan usar en muchos hosts de contenedor diferentes.
 - Contenedor Orchestrator: un proceso que automatiza y administra un gran número de contenedores y cómo interactúan entre sí. Para obtener más información, consulte [acerca de los Windows Container orchestrators](overview-container-orchestrators.md).
-- Dock: proceso automatizado que empaqueta y entrega imágenes de contenedor. Para obtener más información, vea la [información general](docker-overview.md)del acoplador, el [motor del acoplador en Windows](../manage-docker/configure-docker-daemon.md) o visite el [sitio web](https://www.docker.com)del acoplador.
+- Dock: proceso automatizado que empaqueta y entrega imágenes de contenedor. Para obtener más información, vea la [información general del acoplador](docker-overview.md), el [motor del acoplador en Windows](../manage-docker/configure-docker-daemon.md) o visite el [sitio web del acoplador](https://www.docker.com).
 
 ![Diagrama de flujo que muestra cómo se crean los contenedores. Las imágenes de la aplicación y la base se usan para crear un espacio aislado y una nueva imagen de la aplicación, que se superponer en la parte superior de la imagen base para crear un nuevo contenedor.](media/containerfund.png)
 
@@ -85,4 +85,4 @@ La siguiente presentación de vídeo le proporcionará una información general 
 
 Para configurar un contenedor en Windows Server, vea el [tutorial rápido de Windows Server](../quick-start/quick-start-windows-server.md).
 
-Para configurar un contenedor en Windows 10, consulta el [Inicio rápido de Windows 10](../quick-start/quick-start-windows-10.md).
+Para configurar un contenedor en Windows 10, vea [Introducción: configurar el entorno para contenedores](../quick-start/set-up-environment.md?tabs=Windows-10-Client).

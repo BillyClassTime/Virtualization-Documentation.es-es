@@ -3,17 +3,17 @@ title: Contenedores de Linux en Windows
 description: Obtenga más información sobre las diferentes formas de usar Hyper-V para ejecutar los contenedores de Linux en Windows como si estuvieran nativos.
 keywords: LCOW, contenedores de Linux, Docker, contenedores
 author: scooley
-ms.date: 11/02/2018
+ms.date: 09/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 0426b14c423c06a0f12ea91529ce794f7a972f47
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 14445f3e9d292dbdab28986e772d0c045fca1586
+ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998482"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "10135328"
 ---
 # <a name="linux-containers-on-windows"></a>Contenedores de Linux en Windows
 
@@ -21,8 +21,8 @@ Los contenedores de Linux conforman un enorme porcentaje del ecosistema de conte
 
 Ahora, hay dos formas de ejecutar contenedores Linux con Docker para Windows y Hyper-V:
 
-1. Ejecuta los contenedores de Linux en una VM completa de Linux: lo que normalmente hace el acoplador hoy.
-1. Ejecute los contenedores de Linux con el [aislamiento de Hyper-V](../manage-containers/hyperv-container.md) (LCOW): esta es una nueva opción en el Docker para Windows.
+- Ejecuta los contenedores de Linux en una VM completa de Linux: lo que normalmente hace el acoplador hoy.
+- Ejecute los contenedores de Linux con el [aislamiento de Hyper-V](../manage-containers/hyperv-container.md) (LCOW): esta es una nueva opción en el Docker para Windows.
 
 En este artículo se describe cómo funciona cada enfoque, se proporcionan instrucciones sobre cuándo elegir qué solución y compartir el trabajo en curso.
 
@@ -30,7 +30,7 @@ En este artículo se describe cómo funciona cada enfoque, se proporcionan instr
 
 Para ejecutar los contenedores de Linux en una VM de Linux, siga las instrucciones de la [Guía de introducción del Docker](https://docs.docker.com/docker-for-windows/).
 
-El acoplador ha podido ejecutar contenedores Linux en el escritorio de Windows desde que se lanzó por primera vez en 2016 (antes de que estuviera disponible el aislamiento de Hyper-V o LCOW) usando una máquina virtual basada en [LinuxKit](https://github.com/linuxkit/linuxkit) que se ejecuta en Hyper-v.
+El acoplador ha podido ejecutar contenedores Linux en el escritorio de Windows desde que se lanzó por primera vez en 2016 (antes de que estuviera disponible el aislamiento de Hyper-V o los contenedores Linux en Windows) usando una máquina virtual basada en [LinuxKit](https://github.com/linuxkit/linuxkit) que se ejecuta en Hyper-v.
 
 En este modelo, el cliente del acoplador se ejecuta en el escritorio de Windows, pero llama al demonio del acoplador en la máquina virtual de Linux.
 
@@ -47,9 +47,9 @@ Para ver si está ejecutando con una VM de Moby, consulte administrador de Hyper
 
 ## <a name="linux-containers-with-hyper-v-isolation"></a>Contenedores de Linux con aislamiento de Hyper-V
 
-Para probar LCOW, sigue las instrucciones de los contenedores de Linux en [esta guía de introducción](../quick-start/quick-start-windows-10.md)
+Para probar los contenedores de Linux en Windows (LCOW), siga las instrucciones del contenedor de Linux en [contenedores de Linux en Windows 10](../quick-start/quick-start-windows-10-linux.md).
 
-Los contenedores de Linux con aislamiento de Hyper-V ejecutan cada contenedor Linux (LCOW) en una VM optimizada de Linux con el SO suficiente para ejecutar contenedores.  En contraste con el enfoque de la VM de Moby, cada LCOW tiene su propio núcleo y su propio espacio aislado de VM.  También están administrados por el acoplador en Windows directamente.
+Los contenedores de Linux con el aislamiento de Hyper-V ejecutan cada contenedor Linux en una VM optimizada de Linux con el SO suficiente para ejecutar contenedores. En contraste con el enfoque de la VM de Moby, cada contenedor de Linux tiene su propio núcleo y su propio espacio aislado de VM. También están administrados por el acoplador en Windows directamente.
 
 ![Contenedores de Linux con aislamiento de Hyper-V (LCOW)](media/lcow-approach.png)
 
