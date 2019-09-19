@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: dbe0e629428bbd8ecfe3ec01bb1a69e3c9c3e231
-ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
+ms.openlocfilehash: 55fc032613b901ef1f5f9cf989891ceef99aac36
+ms.sourcegitcommit: 668d0c0a81e6d74d75a655be5a47c2bbc5e268de
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "10135348"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "10138516"
 ---
 # <a name="about-windows-containers"></a>Acerca de los contenedores de Windows
 
@@ -81,8 +81,4 @@ La siguiente presentación de vídeo le proporcionará una información general 
 
 ## <a name="try-windows-server-containers"></a>Usar contenedores de Windows Server
 
-¿Estás listo para comenzar a sacar partido de la increíble potencia de los contenedores? Los artículos siguientes le ayudarán a empezar:
-
-Para configurar un contenedor en Windows Server, vea el [tutorial rápido de Windows Server](../quick-start/quick-start-windows-server.md).
-
-Para configurar un contenedor en Windows 10, vea [Introducción: configurar el entorno para contenedores](../quick-start/set-up-environment.md?tabs=Windows-10-Client).
+Para empezar a usar contenedores en Windows Server o Windows 10, consulte Introducción [: configurar el entorno para contenedores](../quick-start/set-up-environment.md).

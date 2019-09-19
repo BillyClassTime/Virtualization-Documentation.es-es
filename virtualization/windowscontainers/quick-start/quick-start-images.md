@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 479e05b1-2642-47c7-9db4-d2a23592d29f
-ms.openlocfilehash: 01e687cfa2fd479eb87e5639581e1552ed801aef
-ms.sourcegitcommit: 9100d2218c160bbe9fbf24f3524c8ff5e3dd826c
+ms.openlocfilehash: 99b324c8cae5c8c8ed887b6e39d6818d9eddba15
+ms.sourcegitcommit: 668d0c0a81e6d74d75a655be5a47c2bbc5e268de
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "10135338"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "10138506"
 ---
 # <a name="automating-builds-and-saving-images"></a>Automatizar compilaciones y guardar imágenes
 
@@ -26,7 +26,7 @@ Este inicio rápido es específico de los contenedores de Windows Server en Wind
 Asegúrate de cumplir los siguientes requisitos:
 
 - Un sistema informático (físico o virtual) con Windows Server 2019 o Windows Server 2016.
-- Configure este sistema con la característica contenedor de Windows y el acoplador. Para obtener un tutorial sobre estos pasos, vea [contenedores de Windows en Windows Server](./quick-start-windows-server.md).
+- Configure este sistema con la característica contenedor de Windows y el acoplador. Para obtener un tutorial sobre estos pasos, consulte Introducción [: configurar el entorno para contenedores](../quick-start/set-up-environment.md).
 - Un identificador de Docker, que se usará para insertar una imagen de contenedor en Docker Hub. Si no tiene un identificador de Docker, suscríbase para obtenerlo en [Docker Cloud](https://cloud.docker.com/).
 
 ## <a name="container-image---dockerfile"></a>Imagen de contenedor: Dockerfile
@@ -159,4 +159,4 @@ docker pull <user>/iis-dockerfile
 Si te gustaría obtener información sobre cómo empaquetar una aplicación de ejemplo ASP.NET, consulta los tutoriales de Windows10 que se vinculan a continuación.
 
 > [!div class="nextstepaction"]
-> [Contenedores en Windows 10](./set-up-environment.md?tabs=Windows-10-Client)
+> [Contenedores en Windows 10](set-up-environment.md?tabs=Windows-10-Client)
