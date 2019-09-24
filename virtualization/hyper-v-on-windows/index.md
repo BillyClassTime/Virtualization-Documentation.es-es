@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 05269ce0-a54f-4ad8-af75-2ecf5142b866
-ms.openlocfilehash: daecf2701972a00f4587b409c2271a23a70684ab
-ms.sourcegitcommit: 66f6cba600432f8fac1c214f357b27eb783cb1ff
+ms.openlocfilehash: 0621a06832844b0350b33c763f0546afa9b596e6
+ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "9794592"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "10147308"
 ---
 # <a name="hyper-v-on-windows-10"></a>Hyper-V en Windows 10 
 
@@ -25,15 +25,15 @@ En los documentos siguientes se detalla la característica Hyper-V en Windows 10
 En los siguientes artículos se ofrece una introducción e información sobre Hyper-V en Windows.
 
 * [Introducción a Hyper-V](./about/index.md)
-* [Sistemas operativos invitados compatibles](about\supported-guest-os.md)
+* [Sistemas operativos invitados compatibles](about/supported-guest-os.md)
 
 ## <a name="get-started-with-hyper-v"></a>Introducción a Hyper-V
 En los siguientes documentos se ofrece una introducción rápida y guiada a Hyper-V en Windows 10.
 
-* [Instalar Hyper-V](quick-start\enable-hyper-v.md)
-* [Crear una máquina virtual](quick-start\create-virtual-machine.md)
-* [Crear un conmutador virtual](quick-start\connect-to-network.md)
-* [Hyper-V y PowerShell](quick-start\try-hyper-v-powershell.md)
+* [Instalar Hyper-V](quick-start/enable-hyper-v.md)
+* [Crear una máquina virtual](quick-start/create-virtual-machine.md)
+* [Crear un conmutador virtual](quick-start/connect-to-network.md)
+* [Hyper-V y PowerShell](quick-start/try-hyper-v-powershell.md)
 
 ## <a name="connect-with-community-and-support"></a>Conectar con la comunidad y el soporte técnico
 Recursos adicionales de la comunidad y de soporte técnico

@@ -3,12 +3,12 @@ title: Almacenamiento de contenedores de WindowsServer
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: patricklang
-ms.openlocfilehash: bddfb3a3510a6af674be73349a7e422434c1e0f4
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 5f8ff4b25ad4a4c34ed2e28683607cfc02891e1e
+ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882978"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "10147228"
 ---
 # <a name="overview"></a>Introducción
 
@@ -108,7 +108,8 @@ En Windows Server, versión 1709, una nueva característica denominada "Asignaci
     ```
     Este comando usará las credenciales para autenticar con el servidor SMB remoto. Después asigna la ruta de acceso de recurso compartido remoto a la letra de unidad G: (puede ser cualquier otra letra de unidad disponible). Los contenedores creados en este host del contenedor ahora pueden tener sus volúmenes de datos asignados a una ruta de acceso en la unidad G:.
 
-    > Nota: Al usar la asignación global de SMB para contenedores, todos los usuarios en el host del contenedor pueden acceder al recurso compartido remoto. Cualquier aplicación que se ejecuta en el host del contenedor también tendrá acceso al recurso compartido remoto asignado.
+    > [!NOTE]
+    > Al usar la asignación global SMB para contenedores, todos los usuarios del host contenedor pueden acceder al recurso compartido remoto. Cualquier aplicación que se ejecuta en el host del contenedor también tendrá acceso al recurso compartido remoto asignado.
 
 2. Crea contenedores con volúmenes de datos asignados al docker de recurso compartido de SMB globalmente montado, ejecuta: name demo - v g:\ContainerData:G:\AppData1 Microsoft/windowsservercore:1709 cmd.exe
 

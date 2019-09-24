@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
-ms.openlocfilehash: 749251e67b4e2eaffba8e43638fe4f596b31bba5
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: 0139f51e909149dde59f4030c6571aee82fed27e
+ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882908"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "10147248"
 ---
 # <a name="create-a-virtual-network"></a>Crear una red virtual
 
@@ -22,7 +22,7 @@ Las máquinas virtuales necesitarán una red virtual para compartir una red con 
 
 ## <a name="connect-virtual-machines-to-the-internet"></a>Conectar máquinas virtuales a Internet
 
-Hyper-V tiene tres tipos de conmutadores virtuales: externos, internos y privados. Crear un conmutador externo para compartir la red de tu equipo con las máquinas virtuales que se ejecutan en ella.
+Hyper-V tiene tres tipos de conmutadores virtuales: externos, internos y privados. Cree un conmutador externo para compartir la red del equipo con las máquinas virtuales que se ejecutan en él.
 
 Este ejercicio te guiará en el proceso de la creación de un conmutador virtual externo. Una vez completado, el host de Hyper-V tendrá un conmutador virtual que podrá conectar máquinas virtuales a Internet a través de la conexión de red del equipo. 
 
