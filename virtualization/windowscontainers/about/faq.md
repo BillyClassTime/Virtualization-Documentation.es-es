@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 0aa93b721ab1279cb789e3a18cad04bb668d2644
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: af12aff787cf178ff80d5db15cc926266816882f
+ms.sourcegitcommit: 579349d7bc6a7dbf68445339c468ad8d2b87d7de
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998522"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "10152736"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>Preguntas más frecuentes sobre los contenedores
 
@@ -46,7 +46,7 @@ A partir de la actualización de Windows 10 de octubre de 2018, puede ejecutar u
 Si desea ejecutar los contenedores de Windows de esta manera, tendrá que asegurarse de que su host ejecuta Windows 10 Build 17763 + y de tener una versión de Docker con Engine 18,09 o posterior.
 
 > [!WARNING]
-> Esta característica solo está destinada a desarrollos y pruebas. Debe continuar usando Windows Server como host para las implementaciones de producción. Al usar esta característica, también debe asegurarse de que las etiquetas de versión de contenedor y host coincidan; de lo contrario, es posible que el contenedor no se inicie o que presente un comportamiento no definido.
+> Esta característica solo se ha diseñado para el desarrollo y las pruebas. Debe continuar usando Windows Server como host para las implementaciones de producción. Al usar esta característica, también debe asegurarse de que las etiquetas de versión de contenedor y host coincidan; de lo contrario, es posible que el contenedor no se inicie o que presente un comportamiento no definido.
 
 ## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>¿Cómo hago para que mis imágenes de contenedor estén disponibles en máquinas con aire libre?
 
