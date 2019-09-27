@@ -33,14 +33,16 @@
 
 # Conceptos
 ## Aspectos esenciales del contenedor de Windows
-### [Controles de recursos](manage-containers/resource-controls.md)
-### [Aislamiento de Hyper-V](manage-containers/hyperv-container.md)
-### [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
 ### [Imágenes base del contenedor](manage-containers/container-base-images.md)
+### [Modos de aislamiento](manage-containers/hyperv-container.md)
+### [Compatibilidad de versiones](deploy-containers/version-compatibility.md)
+### [Controles de recursos](manage-containers/resource-controls.md)
 ## Docker
 ### [Docker Engine en Windows](manage-docker/configure-docker-daemon.md)
 ### [Swarm de acoplamiento](manage-containers/swarm-mode.md)
 ### [Administración remota de un host de acoplador de Windows](management/manage_remotehost.md)
+## Orquestación de contenedor
+### [Introducción](about/overview-container-orchestrators.md)
 ## Cargas
 ### Cuentas de servicio administradas de grupo
 #### [Crear una gMSA](manage-containers/manage-serviceaccounts.md)

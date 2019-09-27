@@ -1,5 +1,5 @@
 ---
-title: Acerca de los orquestadores de contenedor de Windows
+title: Introducción a la orquestación de contenedores de Windows
 description: Obtenga más información acerca de los Windows Container Orchestrator.
 keywords: docker, contenedores
 author: Heidilohr
@@ -8,14 +8,14 @@ ms.date: 05/22/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 1ccf63b0ae55501ba32f8bdd61994e7f8006b5e6
-ms.sourcegitcommit: daf1d2b5879c382404fc4d59f1c35c88650e20f7
+ms.openlocfilehash: 99a3b47a9d80e21c246fb3b4f61d650557eb37fa
+ms.sourcegitcommit: e9dda81f1f68359ece9ef132a184a30880bcdb1b
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 05/23/2019
-ms.locfileid: "9674902"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "10161792"
 ---
-# <a name="about-windows-container-orchestrators"></a>Acerca de los orquestadores de contenedor de Windows
+# <a name="windows-container-orchestration-overview"></a>Introducción a la orquestación de contenedores de Windows
 
 A causa de su pequeño tamaño y la orientación de la aplicación, los contenedores son ideales para entornos de entrega ágiles y arquitecturas basadas en microservicios. Sin embargo, un entorno que usa contenedores y microservidors puede tener cientos o miles de componentes para realizar un seguimiento de ellos. Es posible que pueda administrar manualmente algunas docenas de máquinas virtuales o servidores físicos, pero no hay forma de administrar correctamente un entorno de contenedor de escala de producción sin automatización. Esta tarea debe corresponder a su Orchestrator, que es un proceso que automatiza y administra un gran número de contenedores y cómo interactúan entre sí.
 
