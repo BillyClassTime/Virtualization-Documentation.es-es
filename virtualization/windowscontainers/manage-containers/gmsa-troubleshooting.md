@@ -2,18 +2,18 @@
 title: Solucionar problemas de gMSAs para contenedores de Windows
 description: Cómo solucionar problemas de cuentas de servicio administrados de grupo (gMSAs) para contenedores de Windows.
 keywords: acoplador, contenedores, Active Directory, GMSA, cuenta de servicio administrado de grupo, cuentas de servicio administradas de grupo, solución de problemas, solución de problemas
-author: Heidilohr
-ms.date: 09/10/2019
+author: rpsqrd
+ms.date: 10/03/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 00a0d9b1367da55b7669fc26a3eca303272967ab
-ms.sourcegitcommit: 5d4b6823b82838cb3b574da3cd98315cdbb95ce2
+ms.openlocfilehash: 89f255e307c2a48fd743d5abd1a49bba7703aaf3
+ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "10079769"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "10209855"
 ---
 # <a name="troubleshoot-gmsas-for-windows-containers"></a>Solucionar problemas de gMSAs para contenedores de Windows
 
@@ -142,9 +142,43 @@ Consulte [requisitos de puertos de Active Directory y servicios de dominio de Ac
 
     La verificación de confianza debe `NERR_SUCCESS` ser devuelto si el gMSA está disponible y la conectividad de red permite al contenedor hablar con el dominio. Si se produce un error, verifique la configuración de red del host y el contenedor. Ambos deben poder comunicarse con el controlador de dominio.
 
-4. Asegúrate de que tu aplicación esté [configurada para usar el gMSA](gmsa-configure-app.md). La cuenta de usuario dentro del contenedor no cambia cuando usa un gMSA. En su lugar, la cuenta del sistema usa el gMSA cuando se comunica con otros recursos de red. Esto significa que la aplicación tendrá que ejecutarse como servicio de red o sistema local para aprovechar la identidad gMSA.
+4. Compruebe si el contenedor puede obtener un vale de concesión de vales de Kerberos válido (TGT):
+
+    ```powershell
+    klist get krbtgt
+    ```
+
+    Este comando debe devolver "un vale para krbtgt se ha recuperado correctamente" y mostrar el controlador de dominio usado para recuperar el vale. Si puede obtener una etiqueta TGT pero `nltest` , en el paso anterior, se produce un error, puede indicar que la cuenta gMSA está mal configurada. Para obtener más información, consulta [consultar la cuenta de gMSA](#check-the-gmsa-account) .
+
+    Si no puede obtener un TGT dentro del contenedor, esto puede indicar problemas de conectividad DNS o de red. Asegúrese de que el contenedor puede resolver un controlador de dominio con el nombre DNS del dominio y que el controlador de dominio es enrutable desde el contenedor.
+
+5. Asegúrate de que tu aplicación esté [configurada para usar el gMSA](gmsa-configure-app.md). La cuenta de usuario dentro del contenedor no cambia cuando usa un gMSA. En su lugar, la cuenta del sistema usa el gMSA cuando se comunica con otros recursos de red. Esto significa que la aplicación tendrá que ejecutarse como servicio de red o sistema local para aprovechar la identidad gMSA.
 
     > [!TIP]
     > Si ejecuta `whoami` o usa otra herramienta para identificar el contexto de usuario actual en el contenedor, no verá el nombre del gMSA. Esto se debe a que siempre inicia sesión en el contenedor como un usuario local en lugar de una identidad de dominio. El gMSA es utilizado por la cuenta de equipo cada vez que se comunica con recursos de red, razón por la cual la aplicación necesita ejecutarse como servicio de red o sistema local.
 
-5. Por último, si el contenedor parece estar configurado correctamente pero los usuarios u otros servicios no se pueden autenticar automáticamente en la aplicación contenedora, compruebe los SPN en su cuenta de gMSA. Los clientes encontrarán la cuenta gMSA por el nombre en el que llegan a la aplicación. Esto puede significar que necesitarás SPN adicionales `host` para tu gMSA si, por ejemplo, los clientes se conectan a la aplicación a través de un equilibrador de carga o un nombre DNS diferente.
+### <a name="check-the-gmsa-account"></a>Comprobar la cuenta de gMSA
+
+1. Si el contenedor parece estar configurado correctamente pero los usuarios u otros servicios no se pueden autenticar automáticamente en la aplicación contenedora, compruebe los SPN en su cuenta de gMSA. Los clientes encontrarán la cuenta gMSA por el nombre en el que llegan a la aplicación. Esto puede significar que necesitarás SPN adicionales `host` para tu gMSA si, por ejemplo, los clientes se conectan a la aplicación a través de un equilibrador de carga o un nombre DNS diferente.
+
+2. Asegúrese de que el gMSA y el host del contenedor pertenezcan al mismo dominio de Active Directory. El host de contenedor no podrá recuperar la contraseña de gMSA si gMSA pertenece a un dominio diferente.
+
+3. Asegúrese de que hay una sola cuenta en el dominio con el mismo nombre que su gMSA. los objetos gMSA tienen signos de dólar ($) anexados a sus nombres de cuenta SAM, por lo que es posible que un gMSA se denomine "mydomain $" y que una cuenta de usuario no relacionada se denomine "mydomain" en el mismo dominio. Esto puede ocasionar problemas si el controlador de dominio o la aplicación tienen que buscar el gMSA por su nombre. Puede buscar objetos con nombres similares en Active Directory con el siguiente comando:
+
+    ```powershell
+    # Replace "GMSANAMEHERE" with your gMSA account name (no trailing dollar sign)
+    Get-ADObject -Filter 'sAMAccountName -like "GMSANAMEHERE*"'
+    ```
+
+4. Si ha habilitado la delegación no restringida en la cuenta gMSA, asegúrese de que el [atributo UserAccountControl](https://support.microsoft.com/en-us/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties) tenga `WORKSTATION_TRUST_ACCOUNT` habilitada la marca. Este indicador es necesario para que NETLOGON en el contenedor se comunique con el controlador de dominio, como sucede cuando una aplicación tiene que resolver un nombre en un SID o viceversa. Puede comprobar si la marca está configurada correctamente con los siguientes comandos:
+
+    ```powershell
+    $gMSA = Get-ADServiceAccount -Identity 'yourGmsaName' -Properties UserAccountControl
+    ($gMSA.UserAccountControl -band 0x1000) -eq 0x1000
+    ```
+
+    Si los comandos anteriores devuelven un valor `False`, use el `WORKSTATION_TRUST_ACCOUNT` siguiente para agregar la marca a la propiedad UserAccountControl de la cuenta gMSA. Este comando también borrará las `NORMAL_ACCOUNT`marcas `INTERDOMAIN_TRUST_ACCOUNT`, y `SERVER_TRUST_ACCOUNT` de la propiedad UserAccountControl.
+
+    ```powershell
+    Set-ADObject -Identity $gMSA -Replace @{ userAccountControl = ($gmsa.userAccountControl -band 0x7FFFC5FF) -bor 0x1000 }
+    ```

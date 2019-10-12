@@ -1,24 +1,28 @@
 ---
-title: Almacenamiento de contenedores de WindowsServer
+title: Descripción general del almacenamiento de contenedores
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
-author: patricklang
-ms.openlocfilehash: 5f8ff4b25ad4a4c34ed2e28683607cfc02891e1e
-ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
+author: cwilhit
+ms.openlocfilehash: fba08de884d59cc1b656895ec2b7078ba3975269
+ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "10147228"
+ms.lasthandoff: 10/12/2019
+ms.locfileid: "10209755"
 ---
-# <a name="overview"></a>Introducción
+# <a name="container-storage-overview"></a>Descripción general del almacenamiento de contenedores
 
 <!-- Great diagram would be great! -->
 
+En este tema se ofrece información general sobre las diferentes maneras en que los contenedores usan el almacenamiento en Windows. Los contenedores se comportan de manera diferente que las máquinas virtuales cuando se trata de almacenamiento. Por naturaleza, los contenedores se crean para evitar que una aplicación que se ejecuta dentro de ellos escriba el estado de todo el sistema de archivos del host. Los contenedores usan un espacio "de grietas" de forma predeterminada, pero Windows también proporciona un medio para conservar el almacenamiento.
+
+## <a name="scratch-space"></a>Espacio de desecho
+
+Los contenedores de Windows usan almacenamiento efímero de forma predeterminada. Todas las e/s de contenedor se producen en un "espacio de desecho" y cada contenedor obtiene su propia grieta. La creación de archivos y las escrituras de archivos se capturan en el espacio de desecho y no en el host. Cuando se detiene una instancia de contenedor, se descartan todos los cambios que se produjeron en el espacio de desecho. Cuando se inicia una nueva instancia de contenedor, se proporciona un nuevo espacio de tachado para la instancia.
 
 ## <a name="layer-storage"></a>Almacenamiento en capas
 
-Se trata de todos los archivos que están integrados en el contenedor. Cada vez que `docker pull`, `docker run` dicho contenedor: son iguales.
-
+Como se describe en la [Descripción general](../about/index.md)de los contenedores, las imágenes de contenedor son un conjunto de archivos expresados como una serie de capas. Almacenamiento de capas es todos los archivos que están integrados en el contenedor. Cada vez que `docker pull`, `docker run` dicho contenedor: son iguales.
 
 ### <a name="where-layers-are-stored-and-how-to-change-it"></a>Dónde se almacenan las capas y cómo cambiarlo
 
@@ -39,103 +43,27 @@ No debes modificar los archivos de los directorios de capa: se administran cuida
 
 Ejecutar contenedores puede usar la mayoría de las operaciones de NTFS a excepción de las transacciones. Esto incluye la configuración de ACL y todas las ACL se comprueban dentro del contenedor. Si quieres ejecutar procesos como varios usuarios dentro de un contenedor, puedes crear usuarios en tu `Dockerfile` con `RUN net user /create ...`, establece las ACL de archivos y luego configura procesos para ejecutar con dicho usuario con la [Directiva de USUARIO de Dockerfile](https://docs.docker.com/engine/reference/builder/#user).
 
+## <a name="persistent-storage"></a>Almacenamiento persistente
 
-## <a name="image-size"></a>Tamaño de la imagen
-Un patrón común para las aplicaciones Windows es consultar la cantidad de espacio de disco libre antes de instalar o crear nuevos archivos o como un desencadenador para limpiar los archivos temporales.  Con el objetivo de maximizar la compatibilidad de aplicaciones, la unidad C: de un contenedor de Windows representa un tamaño de espacio libre virtual de 20GB.  Es posible que algunos usuarios quieran anular este valor predeterminado y configurar el espacio libre a un valor inferior o mayor; esto puede lograrse mediante la opción "size" de la configuración "storage-opt".
+Los contenedores de Windows admiten mecanismos para proporcionar almacenamiento permanente a través de montajes y volúmenes enlazados. Para obtener más información, vea [almacenamiento persistente en contenedores](./persistent-storage.md).
+
+## <a name="storage-limits"></a>Límites de almacenamiento
+
+Un patrón común para las aplicaciones Windows es consultar la cantidad de espacio de disco libre antes de instalar o crear nuevos archivos o como un desencadenador para limpiar los archivos temporales.  Con el objetivo de maximizar la compatibilidad de aplicaciones, la unidad C: en un contenedor de Windows representa un tamaño libre virtual de 20 GB.
+
+Es posible que algunos usuarios deseen invalidar este valor predeterminado y configurar el espacio libre en un valor más pequeño o más grande. Esto se puede llevar a cabo con la opción "tamaño" dentro de la configuración "almacenamiento-opt".
 
 ### <a name="examples"></a>Ejemplos
-Línea de comandos: `docker run --storage-opt "size=50GB" microsoft/windowsservercore:1709 cmd`
 
-Archivo de configuración de Docker
-```
+Línea de comandos: `docker run --storage-opt "size=50GB" mcr.microsoft.com/windows/servercore:ltsc2019 cmd`
+
+También puede cambiar el archivo de configuración del acoplador directamente:
+
+```Docker Configuration File
 "storage-opts": [
     "size=50GB"
   ]
 ```
-> Ten en cuenta que este método funciona para la compilación docker.
-Consulta el documento [configurar docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.
 
-
-## <a name="persistent-volumes"></a>Volúmenes persistentes
-
-El almacenamiento persistente se puede proporcionar a los contenedores de varias maneras:
-
-- Enlazar montajes
-- Volúmenes con nombre
-
-Docker tiene una excelente introducción de cómo [usar volúmenes](https://docs.docker.com/engine/admin/volumes/volumes/) por lo que es mejor leerla primero. El resto de esta página se centra en las diferencias entre Linux y Windows y proporciona ejemplos en Windows.
-
-
-### <a name="bind-mounts"></a>Enlazar montajes
-
-[Enlazar montajes](https://docs.docker.com/engine/admin/volumes/bind-mounts/) permite que un contenedor comparta un directorio con el host. Esto es útil si quieres un lugar para almacenar archivos en la máquina local que están disponibles si reinicias un contenedor o quieres compartirlos con varios contenedores. Si quieres que el contenedor se ejecute en varias máquinas con acceso a los mismos archivos, debe usarse en su lugar un volumen con nombre o el montaje SMB.
-
-#### <a name="permissions"></a>Permisos
-
-El modelo de permiso utilizado para enlazar montajes varía según el nivel de aislamiento de tu contenedor.
-
-Los contenedores con **aislamiento de Hyper-V**, como contenedores Linux en Windows Server, versión 1709, usa un modelo de permiso sencillo de solo escritura o lectura-escritura.
-Se acceden a los archivos en el host mediante la cuenta `LocalSystem`. Si obtienes acceso denegado en el contenedor, asegúrate de que `LocalSystem` tenga acceso a ese directorio en el host.
-Cuando se usa la marca de solo lectura, los cambios realizados en el volumen dentro del contenedor no se mostrarán ni permanecerán en el directorio del host.
-
-Los contenedores de Windows Server con **aislamiento de procesos** son ligeramente diferentes, ya que usan la identidad del proceso dentro del contenedor para acceder a datos, lo que significa que se aceptan las ACL de archivos.
-La identidad del proceso que se ejecuta en el contenedor ("ContainerAdministrator" en Windows Server Core y "ContainerUser" en contenedores de Nano Server, de manera predeterminada) se utilizará para tener acceso a los archivos y directorios en el volumen montado en lugar de `LocalSystem`y necesitará tener acceso para usar los datos.
-Dado que estas identidades solo existen en el contexto del contenedor, no en el host donde se almacenan los archivos, debes usar un grupo de seguridad conocido, como `Authenticated Users` al configurar las ACL para tener acceso a los contenedores.
-
-> [!WARNING]
-> No unas mediante enlace directorios confidenciales, como por ejemplo, `C:\` en un contenedor que no es de confianza. Esto le permitiría cambiar archivos en el host al que normalmente no tendría acceso y podría crear una infracción de seguridad.
-
-Ejemplo de uso: 
-
-- `docker run -v c:\ContainerData:c:\data:RO` para acceso de solo lectura
-- `docker run -v c:\ContainerData:c:\data:RW` para acceso de lectura-escritura
-- `docker run -v c:\ContainerData:c:\data` para acceso de lectura-escritura (opción predeterminada)
-
-#### <a name="symlinks"></a>Symlinks
-
-Symlinks se resuelven en el contenedor. Si unes mediante enlace una ruta de acceso de host a un contenedor que es un symlink o incluye symlinks: el contenedor no podrá tener acceso a ellos.
-
-#### <a name="smb-mounts"></a>Montajes de SMB
-
-En Windows Server, versión 1709, una nueva característica denominada "Asignación global de SMB" hace posible montar un recurso compartido de SMB en el host y luego pasar los directorios del recurso compartido a un contenedor. El contenedor no debe configurarse con un servidor, recurso compartido, nombre de usuario o contraseña en concreto: todo se administra en el host en su lugar. El contenedor funcionará de la misma forma que si tuviera el almacenamiento local.
-
-##### <a name="configuration-steps"></a>Pasos de configuración
-
-1. En el host contenedor, asigne globalmente el recurso compartido SMB remoto:
-    ```
-    $creds = Get-Credential
-    New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
-    ```
-    Este comando usará las credenciales para autenticar con el servidor SMB remoto. Después asigna la ruta de acceso de recurso compartido remoto a la letra de unidad G: (puede ser cualquier otra letra de unidad disponible). Los contenedores creados en este host del contenedor ahora pueden tener sus volúmenes de datos asignados a una ruta de acceso en la unidad G:.
-
-    > [!NOTE]
-    > Al usar la asignación global SMB para contenedores, todos los usuarios del host contenedor pueden acceder al recurso compartido remoto. Cualquier aplicación que se ejecuta en el host del contenedor también tendrá acceso al recurso compartido remoto asignado.
-
-2. Crea contenedores con volúmenes de datos asignados al docker de recurso compartido de SMB globalmente montado, ejecuta: name demo - v g:\ContainerData:G:\AppData1 Microsoft/windowsservercore:1709 cmd.exe
-
-    Dentro del contenedor, G:\AppData1 se asignará al directorio de "ContainerData" del recurso compartido remoto. Todos los datos almacenados en el recurso compartido remoto asignado globalmente estarán disponibles para aplicaciones dentro del contenedor. Varios contenedores pueden obtener acceso de lectura y escritura a estos datos compartidos con el mismo comando.
-
-Esta compatibilidad de asignación global de SMB es una característica de cliente de SMB que puede funcionar en la parte superior de cualquier servidor SMB compatible, entre los que se incluyen:
-
-- Servidor de archivos de escalabilidad horizontal en la parte superior de Storage Spaces Direct (S2D) o una SAN tradicional
-- Azure Files (recurso compartido de SMB)
-- Servidor de archivos tradicional
-- Implementación de terceros 3 del protocolo SMB (ejemplo: dispositivos NAS)
-
-> [!NOTE]
-> La asignación global de SMB no es compatible con los recursos compartidos de DFS, DFSN y DFSR en Windows Server versión 1709.
-
-### <a name="named-volumes"></a>Volúmenes con nombre
-
-Los volúmenes con nombre te permiten crear un volumen según el nombre, asignarle a un contenedor y reutilizarlo más adelante con el mismo nombre. No tienes que realizar un seguimiento de la ruta de acceso real de dónde se creó, solo el nombre. Docker Engine en Windows tiene un complemento de volumen con nombre integrado que puede crear volúmenes en la máquina local. Un complemento adicional es necesario si quieres usar volúmenes con nombre en varias máquinas.
-
-Pasos de ejemplo:
-
-1. `docker volume create unwound` -Crear un volumen denominado "unwound"
-2. `docker run -v unwound:c:\data microsoft/windowsservercore` -Iniciar un contenedor con el volumen asignado a c:\data
-3. Escribir algunos archivos en c:\data en el contenedor y luego detener el contenedor
-4. `docker run -v unwound:c:\data microsoft/windowsservercore` - Iniciar un nuevo contenedor
-5. Ejecutar `dir c:\data` en el contenedor nuevo: los archivos siguen estando ahí
-
-> [!NOTE]
-> Windows Server convertirá los nombres de ruta de destino (la ruta dentro del contenedor) a minúsculas. `-v unwound:c:\MyData`i. e `-v unwound:/app/MyData` o en los contenedores de Linux, dará como resultado un directorio dentro del contenedor de `c:\mydata`, o `/app/mydata` en los contenedores de Linux, que se asignará (y se creará, si no existe).
+> [!TIP]
+> Este método también funciona para la compilación del Dock. Consulta el documento [configurar docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.
