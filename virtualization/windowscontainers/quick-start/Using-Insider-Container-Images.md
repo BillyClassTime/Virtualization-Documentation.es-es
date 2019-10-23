@@ -11,7 +11,7 @@ Este inicio rápido es específico de los contenedores de WindowsServer en el pr
 - Un sistema del equipo (físico o virtual) que ejecute la última versión de Windows Server desde el programa Windows Insider y/o la compilación más reciente de Windows 10 del programa Windows Insider.
 
 > [!IMPORTANT]
-> Debe usar una compilación de Windows Server desde el programa Windows Server Insider Preview o una compilación de Windows 10 desde el programa de Windows Insider Preview para usar la imagen básica que se describe a continuación. Si no estás utilizando una de estas compilaciones, el uso de estas imágenes base dará como resultado errores al iniciar un contenedor.
+> Windows requiere que la versión del sistema operativo del host coincida con la versión del sistema operativo del contenedor. Si desea ejecutar un contenedor basado en una compilación de Windows más reciente, asegúrese de que tiene una compilación de host equivalente. De lo contrario, puede usar el aislamiento de Hyper-V para ejecutar contenedores más antiguos en nuevas compilaciones de host. Puede obtener más información sobre la compatibilidad de la versión del contenedor de Windows en nuestros documentos de contenedor.
 
 ## <a name="install-docker-enterprise-edition-ee"></a>Instalar DockerEnterpriseEdition (EE)
 
@@ -48,25 +48,33 @@ Restart-Computer -Force
 
 ## <a name="install-base-container-image"></a>Instalar la imagen del contenedor de base
 
-Antes de trabajar con los contenedores de Windows, debe instalarse una imagen base. Al formar parte del programa Windows Insider, también puedes probar nuestras últimas compilaciones para las imágenes base. Con las imágenes base de Insider, ahora existen 4 imágenes base disponibles basadas en Windows Server. Consulta la tabla siguiente para comprobar los fines para los que debe usarse cada una:
+Antes de trabajar con los contenedores de Windows, debe instalarse una imagen base. Al formar parte del programa Windows Insider, también puedes probar nuestras últimas compilaciones para las imágenes base. Con las imágenes básicas de Insider, ahora hay 6 imágenes de base disponibles basadas en Windows Server. Consulta la tabla siguiente para comprobar los fines para los que debe usarse cada una:
 
 | Imagen base del sistema operativo                       | Uso                      |
 |-------------------------------------|----------------------------|
 | mcr.microsoft.com/windows/servercore         | Producción y desarrollo |
 | mcr.microsoft.com/windows/nanoserver              | Producción y desarrollo |
+| mcr.microsoft.com/windows/              | Producción y desarrollo |
 | mcr.microsoft.com/windows/servercore/insider | Solo desarrollo           |
 | mcr.microsoft.com/windows/nanoserver/insider        | Solo desarrollo           |
+| mcr.microsoft.com/windows/insider        | Solo desarrollo           |
 
-Para recuperar la imagen base de Insider de Nano Server, ejecuta lo siguiente:
+Para extraer la imagen de Server Core Sider base, consulte las marcas destacadas en el [repositorio de Hub del Docker de Server Core](https://hub.docker.com/_/microsoft-windows-servercore-insider) para usar el siguiente formato:
 
 ```console
-docker pull mcr.microsoft.com/nanoserver/insider
+docker pull mcr.microsoft.com/windows/servercore/insider:10.0.{build}.{revision}
 ```
 
-Para recuperar la imagen base de Windows Server Core Insider, ejecuta lo siguiente:
+Para extraer la imagen de la base de nano Server Insider, consulta las marcas destacadas en el [repositorio del Hub de nano Server Insider](https://store.docker.com/_/microsoft-windows-nanoserver-insider) para usar el siguiente formato:
 
 ```console
-docker pull mcr.microsoft.com/windows/servercore/insider
+docker pull mcr.microsoft.com/windows/nanoserver/insider:10.0.{build}.{revision}
+```
+
+Para extraer la imagen de Windows Insider, consulte las etiquetas destacadas en el [repositorio del concentrador de acoplamiento de Windows Insider](https://store.docker.com/_/microsoft-windows-insider) para usar el siguiente formato:
+
+```console
+docker pull mcr.microsoft.com/windows/insider:10.0.{build}.{revision}
 ```
 
 > [!IMPORTANT]

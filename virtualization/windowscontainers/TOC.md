@@ -2,6 +2,7 @@
 
 # Introducción
 ## [Acerca de los contenedores de Windows](about/index.md)
+## [Contenedores frente a máquinas virtuales](about/containers-vs-vm.md)
 ## [Requisitos del sistema](deploy-containers/system-requirements.md)
 ## [Preguntas más frecuentes](about/faq.md)
 
@@ -26,6 +27,8 @@
 ## Contenedores de Linux en Windows
 ### [Introducción](deploy-containers/linux-containers.md)
 ### [Ejecutar el primer contenedor LCOW](quick-start/quick-start-windows-10-linux.md)
+## Usar contenedores con el programa Windows Insider
+### [Introducción](deploy-containers/insider-overview.md)
 
 # Conceptos
 ## Aspectos esenciales del contenedor de Windows

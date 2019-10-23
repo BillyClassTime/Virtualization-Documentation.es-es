@@ -3,24 +3,25 @@ title: Requisitos de los contenedores de Windows
 description: Requisitos de los contenedores de Windows.
 keywords: metadatos, contenedores
 author: taylorb-microsoft
-ms.date: 09/26/2016
+ms.author: taylorb
+ms.date: 10/22/2019
 ms.topic: deployment-article
 ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: df5d8e17d0d512f7f53fcacf6c2c2a2652f3e7c0
-ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
+ms.openlocfilehash: 74f501e5efab3a93e60c9d4797464cea283cdc0b
+ms.sourcegitcommit: d0411b05d1ef7328a770766b84fd0743f9d9c237
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "10107869"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "10254265"
 ---
 # <a name="windows-container-requirements"></a>Requisitos de los contenedores de Windows
 
 En esta guía se enumeran los requisitos para un host contenedor de Windows.
 
-## <a name="os-requirements"></a>Requisitos del sistema operativo
+## <a name="operating-system-requirements"></a>Requisitos de sistema operativo
 
-- La característica contenedor de Windows solo está disponible en Windows Server 2016 (Core y con experiencia de escritorio), Windows 10 Professional y Enterprise (edición de aniversario) y versiones posteriores.
+- La característica contenedor de Windows está disponible en Windows Server (canal semianual), Windows Server 2019, Windows Server 2016 y Windows 10 Professional y Enterprise (versión 1607 y posteriores).
 - El rol de Hyper-V debe instalarse antes de poder ejecutar el aislamiento de Hyper-V
 - Los hosts de contenedor de Windows Server deben tener Windows instalado en c:\. Esta restricción no se aplica si solo se implementarán los contenedores aislados de Hyper-V.
 
@@ -29,7 +30,7 @@ En esta guía se enumeran los requisitos para un host contenedor de Windows.
 Si se va a ejecutar un host contenedor de Windows desde una máquina virtual de Hyper-V y también va a hospedar el aislamiento Hyper-V, se debe habilitar la virtualización anidada. La virtualización anidada consta de los siguientes requisitos:
 
 - Al menos 4 GB de RAM disponibles para el host de Hyper-V virtualizado.
-- Windows Server 2019, Windows Server versión 1803, Windows Server versión 1709, Windows Server 2016 o Windows 10 en el sistema host, y Windows Server (completo, núcleo) en la máquina virtual.
+- Windows Server (canal semianual), Windows Server 2019, Windows Server 2016 o Windows 10 en el sistema host; y Windows Server (completo o Server Core) en la máquina virtual.
 - Un procesador con Intel VT-x (actualmente, esta característica solo está disponible para los procesadores Intel).
 - La VM host de contenedor también necesitará al menos dos procesadores virtuales.
 
@@ -47,9 +48,13 @@ Se pueden configurar restricciones en la memoria disponible a través de los con
 | Nano Server | 40 MB                     | archivo de paginación de 130 MB + 1 GB |
 | ServerCore | 50 MB                     | archivo de paginación de 325 MB + 1 GB |
 
-#### <a name="windows-server-version-1709"></a>WindowsServer, versión1709
+#### <a name="windows-server-semi-annual-channel"></a>Windows Server (Canal semianual)
 
 | Imagen base  | Contenedor de Windows Server | Aislamiento de Hyper-V    |
 | ----------- | ------------------------ | -------------------- |
 | Nano Server | 30 MB                     | archivo de paginación de 110 MB + 1 GB |
 | ServerCore | 45 MB                     | archivo de paginación de 360 MB + 1 GB |
+
+## <a name="see-also"></a>Puedes ver también
+
+[Directiva de soporte técnico para los contenedores y el acoplador de Windows en escenarios locales](https://support.microsoft.com/help/4489234/support-policy-for-windows-containers-and-docker-on-premises)
