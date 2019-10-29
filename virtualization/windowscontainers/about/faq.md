@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 19ff54ec032d61b24aea9fec4f14e8fce301d33a
-ms.sourcegitcommit: 347d7c9d34f4c1d2473eb6c94c8ad6187318a037
+ms.openlocfilehash: aeb2b5dd0d9df95ee417b3a160d10d4991304689
+ms.sourcegitcommit: 4b37076f988608b6bf1270497c24325993ef41d3
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "10257957"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "10264366"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>Preguntas más frecuentes sobre los contenedores
 
@@ -40,9 +40,12 @@ El [CLUF](../images-eula.md) de la imagen del contenedor de Windows describe un 
 |Windows Server Standard                                         |Sin límite                                          |1                                                  |
 |Windows Server Datacenter                                       |Sin límite                                          |Sin límite                                          |
 |Windows 10 Pro y Enterprise                                   |Sin límites *(solo para fines de prueba o de desarrollo)*|Sin límites *(solo para fines de prueba o de desarrollo)*|
-|Windows 10 IoT Core y Enterprise)                             |Sin límites *(solo para fines de prueba o de desarrollo)*|Sin límites *(solo para fines de prueba o de desarrollo)*|
+|Windows 10 IoT Core y Enterprise                             |Máxima                                         |Máxima                                          |
 
-El uso de la imagen del contenedor de Windows Server se determina mediante la lectura del número de invitados de virtualización que se admiten en esa [edición](/windows-server/get-started-19/editions-comparison-19.md). El uso de la producción de contenedores en una edición de IoT de Windows depende de restricciones de licencia adicionales. Lea el CLUF de la [imagen del contenedor](../images-eula.md) para comprender exactamente lo que está permitido y lo que no.
+El uso de la imagen del contenedor de Windows Server se determina mediante la lectura del número de invitados de virtualización que se admiten en esa [edición](/windows-server/get-started-19/editions-comparison-19.md). <br/>
+
+>[!NOTE]
+>\ * El uso de la producción de contenedores en una edición de IoT de Windows depende de si ha aceptado las condiciones de uso comercial de Microsoft para las imágenes de tiempo de ejecución de Windows 10 Core o la licencia de dispositivo de Windows 10 IoT Enterprise ("contrato comercial de Windows IoT"). Las cláusulas y restricciones adicionales de los contratos de Windows IoT Commercial rigen para el uso de la imagen del contenedor en un entorno de producción. Lea el CLUF de la [imagen del contenedor](../images-eula.md) para comprender exactamente lo que está permitido y lo que no.
 
 ## <a name="as-a-developer-do-i-have-to-rewrite-my-app-for-each-type-of-container"></a>Como desarrollador, ¿tengo que volver a escribir mi aplicación para cada tipo de contenedor?
 
