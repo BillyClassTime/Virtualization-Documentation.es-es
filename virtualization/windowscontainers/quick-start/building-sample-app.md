@@ -7,12 +7,12 @@ ms.date: 09/10/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: cf8a14002e962242c34e9a10086120e6942d382b
-ms.sourcegitcommit: 6080b2c5053720490d374f6fb0daa870d5ddd4e8
+ms.openlocfilehash: db3caea3f7911ec6641930302198f976bd61240d
+ms.sourcegitcommit: da762ce138467e50dce22d5086ad407138b38e48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "10257779"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "10261834"
 ---
 # <a name="containerize-a-net-core-app"></a>Contenedor de una aplicación .NET Core
 
@@ -121,7 +121,7 @@ Dissect este comando:
 * `--name myapp` indica al acoplador que proporcione a este contenedor un nombre adecuado para realizar consultas (en lugar de tener que buscar el identificador de contaienr asignado en tiempo de ejecución por Docker).
 * `my-asp-app` es la imagen que desea que se ejecute el acoplador. Esta es la imagen del contenedor generada como culminación del `docker build` proceso.
 
-Abra un explorador Web de explorador Web y desplácese `https://localhost:5000` para que la aplicación contenedora lo saluda.
+Abra un explorador Web de explorador Web y desplácese `http://localhost:5000` para que la aplicación contenedora lo saluda.
 
 >![](media/SampleAppScreenshot.png)
 

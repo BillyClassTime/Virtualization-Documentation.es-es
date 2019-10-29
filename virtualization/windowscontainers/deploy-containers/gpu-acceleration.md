@@ -3,12 +3,12 @@ title: Aceleración de GPU en contenedores de Windows
 description: Qué nivel de aceleración de la GPU existe en contenedores de Windows
 keywords: acoplador, contenedores, dispositivos, hardware
 author: cwilhit
-ms.openlocfilehash: c6746b45caece9802134831eb6cb3da885957ac5
-ms.sourcegitcommit: 2f8fd4b2e7113fbb7c323d89f3c72df5e1a4437e
+ms.openlocfilehash: 8f63c74d7839385e21206188263b9e5d08e7eb60
+ms.sourcegitcommit: da762ce138467e50dce22d5086ad407138b38e48
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "10045045"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "10261864"
 ---
 # <a name="gpu-acceleration-in-windows-containers"></a>Aceleración de GPU en contenedores de Windows
 
@@ -24,7 +24,7 @@ Las GPU ya son una herramienta común para muchas cargas de trabajo populares, d
 Para que esta característica funcione, su entorno debe cumplir con los siguientes requisitos:
 
 - El host contenedor debe ejecutar Windows Server 2019 o Windows 10, versión 1809 o posterior.
-- La imagen base del contenedor debe ser [MCR.Microsoft.com/Windows:1809](https://hub.docker.com/_/microsoft-windowsfamily-windows) o posterior. Actualmente no se admiten las imágenes de contenedor de Windows Server Core y nano Server.
+- La imagen base del contenedor debe ser [MCR.Microsoft.com/Windows:1809](https://hub.docker.com/_/microsoft-windows) o posterior. Actualmente no se admiten las imágenes de contenedor de Windows Server Core y nano Server.
 - El host contenedor debe ejecutar el motor de acoplamiento 19,03 o una versión posterior.
 - El host contenedor debe tener una GPU que ejecute los drivers de pantalla versión WDDM 2,5 o posterior.
 
