@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: aeb2b5dd0d9df95ee417b3a160d10d4991304689
-ms.sourcegitcommit: 4b37076f988608b6bf1270497c24325993ef41d3
+ms.openlocfilehash: 405b2abc43a4ae2c546de351679deb755e4a9317
+ms.sourcegitcommit: 64573b539438de6ec5564b2949642ef12e55fc62
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "10264366"
+ms.lasthandoff: 11/01/2019
+ms.locfileid: "10274072"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>Preguntas más frecuentes sobre los contenedores
 
@@ -55,14 +55,14 @@ Un desarrollador puede crear una imagen de contenedor con un contenedor de Windo
 
 Los contenedores de Windows Server ofrecen mayor densidad y rendimiento para cuando la velocidad es fundamental, por ejemplo, un tiempo de giro más bajo y un rendimiento de tiempo de ejecución más rápido en comparación con las configuraciones anidadas. El aislamiento de Hyper-V, verdadero a su nombre, ofrece un mayor aislamiento, lo que garantiza que el código que se ejecuta en un contenedor no comprometa o afecte el sistema operativo del host u otros contenedores que se ejecuten en el mismo host. Esto es útil para escenarios de multiinquilino con requisitos para hospedar código que no es de confianza, incluidas las aplicaciones SaaS y el hospedaje de cálculos.
 
-## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10-enterprise-or-professional"></a>¿Puedo ejecutar contenedores de Windows en modo aislado de proceso en Windows 10 Enterprise o Professional?
+## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10"></a>¿Puedo ejecutar contenedores de Windows en modo aislado de proceso en Windows 10?
 
-A partir de la actualización de Windows 10 de octubre de 2018, puede ejecutar un contenedor de Windows con aislamiento de procesos, pero primero debe solicitar directamente el `--isolation=process` aislamiento de proceso usando la marca `docker run`al ejecutar los contenedores con.
+A partir de la actualización de Windows 10 de octubre de 2018, puede ejecutar un contenedor de Windows con aislamiento de procesos, pero primero debe solicitar directamente el `--isolation=process` aislamiento de proceso usando la marca `docker run`al ejecutar los contenedores con. El aislamiento de procesos es compatible con Windows 10 Pro, Windows 10 Enterprise, Windows 10 IoT Core y Windows 10 IoT Enterprise.
 
 Si desea ejecutar los contenedores de Windows de esta manera, tendrá que asegurarse de que su host ejecuta Windows 10 Build 17763 + y de tener una versión de Docker con Engine 18,09 o posterior.
 
 > [!WARNING]
-> Esta característica solo se ha diseñado para el desarrollo y las pruebas. Debe continuar usando Windows Server como host para las implementaciones de producción. Al usar esta característica, también debe asegurarse de que las etiquetas de versión de contenedor y host coincidan; de lo contrario, es posible que el contenedor no se inicie o que presente un comportamiento no definido.
+> Aparte de los hosts de IoT Core y IoT Enterprise (después de aceptar las cláusulas y restricciones adicionales), esta característica solo se ha concebido para el desarrollo y las pruebas. Debe continuar usando Windows Server como host para las implementaciones de producción. Al usar esta característica, también debe asegurarse de que las etiquetas de versión de contenedor y host coincidan; de lo contrario, es posible que el contenedor no se inicie o que presente un comportamiento no definido.
 
 ## <a name="how-do-i-make-my-container-images-available-on-air-gapped-machines"></a>¿Cómo hago para que mis imágenes de contenedor estén disponibles en máquinas con aire libre?
 
