@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
-ms.openlocfilehash: 088bc844790d94d30f6b4b05c5cd189392f47e66
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 560e9ffc92728628268d7d557b8fa8428316c8ec
+ms.sourcegitcommit: 551b783410ba49b4d439e3da084986cceffcb7e0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998282"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "10278967"
 ---
 # <a name="getting-started-with-swarm-mode"></a>Introducción al modo enjambre 
 
@@ -112,7 +112,7 @@ C:\> docker service create --name=<SERVICENAME> --endpoint-mode dnsrr --network=
 Aquí, \<SERVICENAME\> es el nombre que quieres darle al servicio; es el nombre que usarás para hacer referencia al servicio a través de la detección de servicios (que usa el servidor DNS nativo de Docker). \<NETWORKNAME\> es el nombre de la red a la que quieres conectar este servicio (por ejemplo, "myOverlayNet"). \<CONTAINERIMAGE\> es el nombre de la imagen de contenedor que definirá el servicio.
 
 >[!NOTE]
->El segundo argumento para este comando, `--endpoint-mode dnsrr`debe especificar el motor de acoplamiento que usará la Directiva Round Robin de DNS para equilibrar el tráfico de red entre los puntos de conexión del contenedor de servicios. Actualmente, Round robin de DNS es la única estrategia de equilibrio de carga compatible en Windows . La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para hosts de Windows Docker aún no se admite, pero pronto estará disponible. Los usuarios que deseen una estrategia de equilibrio de carga alternativa en estos momentos pueden configurar un equilibrador de carga externo (como NGINX) y usar el [modo de publicar puerto](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) del enjambre para exponer los puertos de host del contenedor para los que equilibrar la carga.
+>El segundo argumento para este comando, `--endpoint-mode dnsrr`debe especificar el motor de acoplamiento que usará la Directiva Round Robin de DNS para equilibrar el tráfico de red entre los puntos de conexión del contenedor de servicios. Por el momento, DNS Round-Robin es la única estrategia de equilibrio de carga admitida en Windows Server 2016. La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para los hosts del acoplador de Windows se admite en windows Server 2019 (y versiones posteriores), pero no en windows Server 2016. Los usuarios que buscan una estrategia de equilibrio de carga alternativa en Windows Server 2016 hoy pueden configurar un equilibrador de carga externo (por ejemplo, NGINX) y usar el [modo de puerto de publicación](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) de Swarm para exponer los puertos de host del contenedor por el que equilibrar el tráfico.
 
 ## <a name="scaling-a-service"></a>Escalado de un servicio
 Una vez que un servicio se ha implementado en un clúster enjambre, se implementan en todo el clúster las instancias de contenedor que componen ese servicio. De manera predeterminada, el número de instancias de contenedor que respaldan un servicio (el número de “réplicas” o “tareas” para un servicio) es uno. Sin embargo, se puede crear un servicio con varias tareas mediante la opción `--replicas` para el comando `docker service create` o mediante el escalado del servicio después de haberlo creado.
@@ -181,7 +181,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 Para iniciar un servicio de Docker para un clúster enjambre de sistemas operativos combinados, debe haber una forma de distinguir qué nodos enjambre ejecutan el sistema operativo para el que se ha diseñado ese servicio y cuáles no. Las [etiquetas de objeto de Docker](https://docs.docker.com/engine/userguide/labels-custom-metadata/) proporcionan una forma útil de etiquetar nodos, de forma que los servicios pueden crearse y configurarse para ejecutarse solamente en los nodos que coincidan con su sistema operativo. 
 
 >[!NOTE]
->Las [etiquetas de objeto](https://docs.docker.com/engine/userguide/labels-custom-metadata/) de acoplador se pueden usar para aplicar metadatos a una variedad de objetos de acoplamiento (incluyendo imágenes de contenedor, contenedores, volúmenes y redes) y para una variedad de propósitos (por ejemplo, las etiquetas se pueden usar para separar los componentes "front-end" y "back-end" de una aplicación, ya que permite que los microservicios de front-end se secheduledn solo en los nodos de la etiqueta "front-end" y mircoservices de back-end que se programarán solo en los nodos de etiqueta "back-end". En este caso, usamos etiquetas en nodos para distinguir entre nodos con sistema operativo Windows y nodos con sistema operativo Linux.
+>Las [etiquetas de objeto de acoplador](https://docs.docker.com/engine/userguide/labels-custom-metadata/) se pueden usar para aplicar metadatos a una variedad de objetos de acoplamiento (incluyendo imágenes de contenedor, contenedores, volúmenes y redes) y para una variedad de propósitos (por ejemplo, las etiquetas se pueden usar para separar los componentes "front-end" y "back-end" de una aplicación, ya que permite que los microservicios de front-end se secheduledn solo en los nodos de la etiqueta "front-end" y mircoservices de back-end que se programarán solo en los nodos de etiqueta "back-end". En este caso, usamos etiquetas en nodos para distinguir entre nodos con sistema operativo Windows y nodos con sistema operativo Linux.
 
 Para etiquetar los nodos enjambre existente, usa la sintaxis siguiente:
 
@@ -224,10 +224,13 @@ C:\> docker service create --name=linux_s1 --endpoint-mode dnsrr --network testo
 ## <a name="limitations"></a>Limitaciones
 Actualmente, el modo enjambre en Windows tiene las siguientes limitaciones:
 - No se admite el cifrado del plano de datos (es decir, el tráfico de contenedor a contenedor mediante la opción `--opt encrypted`).
-- La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para hosts de Windows Docker aún no se admite, pero pronto estará disponible. Los usuarios que deseen una estrategia de equilibrio de carga alternativa en estos momentos pueden configurar un equilibrador de carga externo (como NGINX) y usar el [modo de publicar puerto](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) del enjambre para exponer los puertos de host del contenedor para los que equilibrar la carga. Encontrarás más información sobre este tema más adelante.
+- La [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) para los hosts del acoplador de Windows no se admite en windows Server 2016, pero solo desde windows Server 2019. Los usuarios que deseen una estrategia de equilibrio de carga alternativa en estos momentos pueden configurar un equilibrador de carga externo (como NGINX) y usar el [modo de publicar puerto](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish) del enjambre para exponer los puertos de host del contenedor para los que equilibrar la carga. Encontrarás más información sobre este tema más adelante.
+
+ >[!NOTE]
+>Para obtener más información sobre cómo configurar la malla de enrutamiento Swarm de acoplamiento, consulte esta [entrada de blog](https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)
 
 ## <a name="publish-ports-for-service-endpoints"></a>Publicar puertos para los puntos de conexión de servicio
-La característica de [malla enrutamiento](https://docs.docker.com/engine/swarm/ingress/) del enjambre de Docker aún no se admite en Windows, pero los usuarios que quieran publicar los puertos para los puntos de conexión de servicios pueden hacerlo ya con el modo de publicar puerto. 
+ Los usuarios que buscan publicar puertos para sus puntos de conexión de servicio pueden hacerlo hoy usando el modo de puerto de publicación o la característica de [malla de enrutamiento](https://docs.docker.com/engine/swarm/ingress/) de Swarm. 
 
 Para hacer que los puertos de host se publiquen para cada uno de los puntos de conexión de tareas o contenedores que definen un servicio, usa el argumento `--publish mode=host,target=<CONTAINERPORT>` para el comando `docker service create`:
 
