@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: cff56843a0eeb48ca5d19b694eb8eb4e758002aa
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 8d2ddb80aa05b511dbc8c9532654b18956e340da
+ms.sourcegitcommit: 7fd95333bd7fd2ef3627b0b5c558067e0bd0e09f
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998462"
+ms.lasthandoff: 11/05/2019
+ms.locfileid: "10276520"
 ---
 # <a name="windows-container-networking"></a>Red de contenedor de Windows
 
@@ -58,7 +58,7 @@ El servicio de redes de host (HNS) y el servicio de cálculo de host (HCS) traba
 - Red NAT predeterminada: SNP crea reglas/asignaciones de enrutamiento de puerto WinNAT con las correspondientes reglas PERMITIR de Firewall de Windows
 - Resto de redes: SNP utiliza la plataforma de filtrado Virtual (VFP) para la creación de directivas
     - Esto incluye: equilibrio de carga, ACL encapsulación, etc.
-    - Busca nuestras API de SNP y el esquema **de próxima publicación**.
+    - Busca nuestras APIs y esquemas SNP publicados [aquí](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)
 
 ![texto](media/HNS-Management-Stack.png)
 
