@@ -3,117 +3,101 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 5fe1cca67c330cb59362e82762651d719708b526
-ms.sourcegitcommit: 27e9cd37beaf11e444767699886e5fdea5e1a2d0
+ms.openlocfilehash: 74e708969a33b9d98b627165a9a47b8017ce2129
+ms.sourcegitcommit: 604323c8815860679cd13e96b2f533b7a0e83c23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "10058510"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "10286529"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
-La actualización de aniversario de Windows Server 2016 y Windows 10 (ambas versiones 14393) fueron las primeras versiones de Windows que podían compilar y ejecutar contenedores de Windows Server. Los contenedores compilados con estas versiones se pueden ejecutar en las versiones más recientes, como Windows Server versión 1709, pero hay algunos aspectos que debes saber antes de empezar.
+La actualización de aniversario de Windows Server 2016 y Windows 10 (ambas versiones 14393) fueron las primeras versiones de Windows que podían compilar y ejecutar contenedores de Windows Server. Los contenedores creados con estas versiones pueden ejecutarse en versiones más recientes, pero hay algunas cosas que debe saber antes de empezar.
 
 Dado que hemos mejorado las características de los contenedores de Windows, tuvimos que hacer algunos cambios que pueden afectar a la compatibilidad. Los contenedores más antiguos se ejecutarán de la misma en hosts más recientes con el [aislamiento de Hyper-V](../manage-containers/hyperv-container.md)y usarán la misma versión de kernel (la más antigua). Sin embargo, si desea ejecutar un contenedor basado en una compilación de Windows más reciente, solo se puede ejecutar en la compilación de host más reciente.
 
->[!NOTE]
-> \ * Ya no se admite la versión 1709 de Windows Server. Para obtener más información, consulte [ciclos de vida de mantenimiento de imágenes básicos](base-image-lifecycle.md).
+## <a name="windows-server-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server
 
-## <a name="windows-server-version-1903-host-os-compatibility"></a>Windows Server, versión 1903 compatibilidad del sistema operativo de host
+<!-- start tab view -->
+# [<a name="windows-server-version-1909"></a>Windows Server, versión 1909](#tab/windows-server-1909)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|Sí|Sí|
-|Windows Server 2019|Sí|No|
-|Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10004;|&#10004;|
+|Windows Server, versión 1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-2019-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server 2019
+# [<a name="windows-server-version-1903"></a>Windows Server, versión 1903](#tab/windows-server-1903)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|Sí|Sí|
-|Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10004;|&#10004;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-version-1803-host-os-compatibility"></a>Windows Server, versión 1803 compatibilidad del sistema operativo de host
+# [<a name="windows-server-2019"></a>Windows Server 2019](#tab/windows-server-2019)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|Sí|Sí|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10004;|&#10004;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-server-version-1709-host-os-compatibility"></a>Windows Server, versión 1709 host compatible con el sistema operativo *
+# [<a name="windows-server-2016"></a>Windows Server 2016](#tab/windows-server-2016)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709 *|Sí|Sí|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10060;|&#10060;|
+|Windows Server 2016|&#10004;|&#10004;|
 
-## <a name="windows-server-2016-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows Server 2016
+---
+<!-- stop tab view -->
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+## <a name="windows-10-host-os-compatibility"></a>Compatibilidad del sistema operativo host de Windows 10
+
+<!-- start tab view -->
+
+# [<a name="windows-10-version-1903"></a>Windows 10, versión 1903](#tab/windows-10-1903)
+
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server 2019, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709 *|No|No|
-|WindowsServer2016|Sí|Sí|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server, versión 1803|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1903-host-os-compatibility"></a>Windows 10, versión 1903 host compatibilidad del sistema operativo
+# [<a name="windows-10-version-1809"></a>Windows 10, versión 1809](#tab/windows-10-1809)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|Sí|No|
-|Windows Server 2019|Sí|No|
-|Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1809-host-os-compatibility"></a>Windows 10, versión 1809 host compatibilidad del sistema operativo
+# [<a name="windows-10-version-1803"></a>Windows 10, versión 1803](#tab/windows-10-1803)
 
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
 |---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|Sí|No|
-|Windows Server, versión 1803|Sí|No|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+|Windows Server, versión 1909|&#10060;|&#10060;|
+|Windows Server, versión 1903|&#10060;|&#10060;|
+|Windows Server 2019|&#10060;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
 
-## <a name="windows-10-version-1803-host-os-compatibility"></a>Windows 10, versión 1803 host compatibilidad del sistema operativo
-
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
-|---|:---:|:---:|
-|Windows Serve, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|Sí|No||
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
-
-## <a name="windows-10-fall-creators-update-host-os-compatibility"></a>Windows 10 Fall Creators Update host Compatibility Compatibility
-
-|Sistema operativo de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
-|---|:---:|:---:|
-|Windows Server, versión 1903|No|No|
-|Windows Server 2019|No|No|
-|Windows Server, versión 1803|No|No|
-|Windows Server, versión 1709 *|Sí|No|
-|WindowsServer2016|Sí|No|
+---
+<!-- stop tab view -->
 
 ## <a name="matching-container-host-version-with-container-image-versions"></a>Versión de host de contenedor coincidente con versiones de imagen de contenedor
 
 ### <a name="windows-server-containers"></a>Contenedores de Windows Server
 
-Dado que los contenedores de Windows Server y el host subyacente comparten un único núcleo, la imagen base del contenedor debe coincidir con la del host. Si las versiones son distintas, el contenedor puede iniciarse, pero no se garantiza la funcionalidad completa. El sistema operativo Windows tiene cuatro niveles de versiones: principal, secundario, compilación y revisión. Por ejemplo, la versión 10.0.14393.103 tendría una versión principal de 10, una versión secundaria de 0, un número de compilación de 14393 y un número de revisión de 103. El número de compilación solo cambia cuando se publican nuevas versiones del sistema operativo, como la versión 1709, 1803, la actualización del otoño de creadores y así sucesivamente. El número de revisión se actualiza cuando se aplican las actualizaciones de Windows.
+Dado que los contenedores de Windows Server y el host subyacente comparten un único núcleo, la versión del sistema operativo de la imagen base del contenedor debe coincidir con la del host. Si las versiones son distintas, el contenedor puede iniciarse, pero no se garantiza la funcionalidad completa. El sistema operativo Windows tiene cuatro niveles de versiones: principal, secundario, compilación y revisión. Por ejemplo, la versión 10.0.14393.103 tendría una versión principal de 10, una versión secundaria de 0, un número de compilación de 14393 y un número de revisión de 103. El número de compilación solo cambia cuando se publican nuevas versiones del sistema operativo, como la versión 1709, 1903, etc. El número de revisión se actualiza cuando se aplican las actualizaciones de Windows.
 
 #### <a name="build-number-new-release-of-windows"></a>Número de compilación (nueva versión de Windows)
 
@@ -144,7 +128,7 @@ C:\>ver
 Microsoft Windows [Version 10.0.16299.125]
 ```
 
-Método 2: consultar la siguiente clave del registro: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion
+Método 2: consultar la siguiente clave del registro: HKEY_LOCAL_MACHINE \Software\Microsoft\Windows NT\CurrentVersion
 
 Por ejemplo:
 
@@ -280,7 +264,7 @@ services:
 ...
 ```
 
-En este caso, debes usar el método descrito en [errores de versiones](#errors-from-mismatched-versions) no coincidentes para modificar ese dockerfile en lugar de la línea de redacción del acoplador.
+En este caso, debes usar el método descrito en [errores de versiones no coincidentes](#errors-from-mismatched-versions) para modificar ese dockerfile en lugar de la línea de redacción del acoplador.
 
 ### <a name="mitigation---use-hyper-v-isolation-with-docker-swarm"></a>Mitigación: usar el aislamiento de Hyper-V con Docker Swarm
 
