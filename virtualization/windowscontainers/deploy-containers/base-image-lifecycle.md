@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: d3a8240dbba8af3c74ce5d185620e129d103ef81
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.openlocfilehash: bb5e5fabadde421de9d420edd2fc921457432930
+ms.sourcegitcommit: e61db4d98d9476a622e6cc8877650d9e7a6b4dd9
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883188"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "10288143"
 ---
 # <a name="base-image-servicing-lifecycles"></a>Ciclos de vida de mantenimiento de imágenes básicos
 
@@ -27,6 +27,7 @@ En la siguiente tabla se enumeran los distintos tipos de imagen base, su canal d
 
 |Imagen base                       |Canal de mantenimiento|Versión|Compilación del sistema operativo|Disponibilidad|Fecha de finalización del soporte estándar|Fecha de soporte extendido|
 |---------------------------------|-----------------|-------|--------|------------|---------------------------|---------------------|
+|Server Core, nano Server, Windows|Semestral      |1909   |18363   |12/11/2019  |05/11/2021                 |N/D                  |
 |Server Core, nano Server, Windows|Semestral      |1903   |18362   |05/21/2019  |12/08/2020                 |N/D                  |
 |ServerCore                      |A largo plazo        |1809   |17763   |13/11/2018  |9/1/2024                 |9/1/2029           |
 |Server Core, nano Server, Windows|Semestral      |1809   |17763   |13/11/2018  |05/12/2020                 |N/D                  |
@@ -35,4 +36,4 @@ En la siguiente tabla se enumeran los distintos tipos de imagen base, su canal d
 |ServerCore                      |A largo plazo        |1607   |14393   |15/10/2016  |11/01/2022                 |11/1/2027           |
 |Nano Server                      |Semestral      |1607   |14393   |15/10/2016  |10/09/2018                 |N/D                  |
 
-Para obtener información sobre los requisitos de servicio y otra información adicional, consulte las [preguntas más frecuentes](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)sobre la versión de Windows Lifecycle, la información de la [versión de Windows](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)y el repositorio del concentrador de acoplamiento de [imágenes de sistema operativo Windows base](https://hub.docker.com/_/microsoft-windows-base-os-images).
+Para obtener información sobre los requisitos de servicio y otra información adicional, consulte las [preguntas más frecuentes](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products)sobre la versión de Windows Lifecycle, la información de la [versión de Windows](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)y el [repositorio del concentrador de acoplamiento de imágenes de sistema operativo Windows base](https://hub.docker.com/_/microsoft-windows-base-os-images).
