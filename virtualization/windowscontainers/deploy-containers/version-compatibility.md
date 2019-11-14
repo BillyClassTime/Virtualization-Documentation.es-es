@@ -3,12 +3,12 @@ title: Compatibilidad con versiones de contenedores de Windows
 description: Cómo puede Windows ejecutar compilaciones y contenedores en varias versiones de Windows
 keywords: metadatos, contenedores, versión
 author: taylorb-microsoft
-ms.openlocfilehash: 74e708969a33b9d98b627165a9a47b8017ce2129
-ms.sourcegitcommit: 604323c8815860679cd13e96b2f533b7a0e83c23
+ms.openlocfilehash: 1f068cd011b2172e75c240d566473ccab25d984a
+ms.sourcegitcommit: 48ede8f27e089926b5b867037f31d14500af84ce
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "10286529"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "10296035"
 ---
 # <a name="windows-container-version-compatibility"></a>Compatibilidad de versiones de contenedor de Windows
 
@@ -62,6 +62,15 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 
 <!-- start tab view -->
 
+# [<a name="windows-10-version-1909"></a>Windows 10, versión 1909](#tab/windows-10-1909)
+
+|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
+|---|:---:|:---:|
+|Windows Server, versión 1909|&#10004;|&#10060;|
+|Windows Server, versión 1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
+
 # [<a name="windows-10-version-1903"></a>Windows 10, versión 1903](#tab/windows-10-1903)
 
 |Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
@@ -69,7 +78,6 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1909|&#10060;|&#10060;|
 |Windows Server, versión 1903|&#10004;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
-|Windows Server, versión 1803|&#10004;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
 # [<a name="windows-10-version-1809"></a>Windows 10, versión 1809](#tab/windows-10-1809)
@@ -79,15 +87,6 @@ Dado que hemos mejorado las características de los contenedores de Windows, tuv
 |Windows Server, versión 1909|&#10060;|&#10060;|
 |Windows Server, versión 1903|&#10060;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
-|Windows Server 2016|&#10004;|&#10060;|
-
-# [<a name="windows-10-version-1803"></a>Windows 10, versión 1803](#tab/windows-10-1803)
-
-|Versión del sistema operativo de imagen de contenedor|Compatible con el aislamiento de Hyper-V|Es compatible con el aislamiento de procesos|
-|---|:---:|:---:|
-|Windows Server, versión 1909|&#10060;|&#10060;|
-|Windows Server, versión 1903|&#10060;|&#10060;|
-|Windows Server 2019|&#10060;|&#10060;|
 |Windows Server 2016|&#10004;|&#10060;|
 
 ---
