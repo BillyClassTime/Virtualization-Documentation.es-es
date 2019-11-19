@@ -8,17 +8,17 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 8d2ddb80aa05b511dbc8c9532654b18956e340da
-ms.sourcegitcommit: 7fd95333bd7fd2ef3627b0b5c558067e0bd0e09f
+ms.openlocfilehash: e9d4a9ac88c6853ce019a2469ee80688490b8fdf
+ms.sourcegitcommit: bb4ec1f05921f982c00bdb3ace6d9bc1d5355296
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "10276520"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "10297246"
 ---
 # <a name="windows-container-networking"></a>Red de contenedor de Windows
 
 >[!IMPORTANT]
->Haga referencia a la [red del contenedor de Dock](https://docs.docker.com/engine/userguide/networking/) para comandos, opciones y sintaxis de redes de acoplamiento general. * * * con la excepción de los casos descritos en las [características no compatibles y las opciones de red](#unsupported-features-and-network-options), todos los comandos de redes de acoplamiento son compatible con Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de redes de Windows y Linux son diferentes y, como tal, encontrarás que algunos comandos de red Linux (por ejemplo, ifconfig) no son compatibles con Windows.
+>Hacer referencia a la [red del contenedor de Dock](https://docs.docker.com/engine/userguide/networking/) para comandos, opciones y sintaxis de redes de acoplamiento general. * * * con la excepción de los casos descritos en las [características no admitidas y las opciones de red](#unsupported-features-and-network-options), todos los comandos de los interconexiones de redes se admiten en Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de redes de Windows y Linux son diferentes y, como tal, encontrarás que algunos comandos de red Linux (por ejemplo, ifconfig) no son compatibles con Windows.
 
 ## <a name="basic-networking-architecture"></a>Arquitectura de red básica
 
@@ -69,7 +69,7 @@ Las siguientes opciones de red **no** se admiten actualmente en Windows:
 - Los contenedores de Windows adjuntos a redes de superl2bridge, NAT y superposiciones no admiten la comunicación a través de la pila de IPv6.
 - Comunicación de contenedores cifrados a través de IPsec.
 - Compatibilidad con proxy HTTP para contenedores.
-- Adjuntar puntos de conexión a la ejecución en el aislamiento de Hyper-V (adición en caliente).
+- Redes de [modo host](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/) 
 - Redes en infraestructura de Azure virtualizada a través del controlador de red transparente.
 
 | Comando        | Opción no admitida   |
