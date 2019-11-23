@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1,14, Linux, compilación
-ms.openlocfilehash: b6e4e648ff050e13a0930f2834949867e44ce895
-ms.sourcegitcommit: d252f356a3de98f224e1550536810dfc75345303
+ms.openlocfilehash: 8bebc83e03fe919f6af3968b0e0463ab3c6bb987
+ms.sourcegitcommit: 6b925368d122ba600d7d4c73bd240cdcb915cccd
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "10069939"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "10305729"
 ---
 # <a name="troubleshooting-kubernetes"></a>Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -43,6 +43,19 @@ nssm set <Service Name> AppStderr C:\k\mysvc.log
 Para obtener más información, consulte documentos oficiales sobre el [uso de NSSM](https://nssm.cc/usage) .
 
 ## <a name="common-networking-errors"></a>Errores comunes de red ##
+
+### <a name="load-balancers-are-plumbed-inconsistently-across-the-cluster-nodes"></a>Los equilibradores de carga se conectan de manera incoherente entre los nodos del clúster ###
+En la configuración de proxy de Kube (predeterminada), los clústeres que contienen 100 equilibradores de carga pueden quedarse sin puertos efímeros (dinámicos) disponibles debido al elevado número de puertos reservados en cada nodo para cada equilibrador de carga (no DSR). Esto se puede manifestar a través de errores en Kube-proxy como:
+```
+Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
+```
+
+Los usuarios pueden identificar este problema ejecutando el script [CollectLogs. PS1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1) y consultando los `*portrange.txt` archivos. También se generará un resumen heurístico `reservedports.txt`.
+
+Para resolver este problema, se pueden realizar algunos pasos:
+1.  Para una solución permanente, el equilibrio de carga del proxy de Kube debe establecerse en el [modo DSR](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710). Lamentablemente, el modo DSR se ha implementado por completo en [Windows Server Insider versión 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (o superior).
+2. Como solución alternativa, los usuarios también pueden aumentar la configuración predeterminada de Windows de los puertos efímeros disponibles mediante `netsh int ipv4 dynamicportrange TCP <start_range> <end_range>`un comando como. *ADVERTENCIA:* Reemplazar el intervalo de puertos dinámicos predeterminado puede tener consecuencias en otros procesos o servicios del host que dependen de los puertos TCP disponibles del intervalo no efímero, por lo que este intervalo debe seleccionarse con cuidado.
+3. También estamos trabajando en una mejora de escalabilidad para equilibradores de carga de modo no DSR que usan el uso compartido inteligente de grupos de puertos, que se ha programado para su lanzamiento a través de una actualización acumulativa en el primer trimestre de 2020.
 
 ### <a name="hostport-publishing-is-not-working"></a>La publicación HostPort no funciona ###
 Actualmente, no es posible publicar puertos usando el campo Kubernetes `containers.ports.hostPort` , ya que Windows CNI no admite este campo. Usa NodePort Publishing por el momento de publicar puertos en el nodo.
@@ -160,7 +173,7 @@ Remove-Item -Recurse c:\var
 ```
 
 ### <a name="my-windows-node-cannot-access-my-services-using-the-service-ip"></a>El nodo de Windows no puede acceder a mis servicios mediante la dirección IP de servicio ###
-Se trata de una limitación conocida de la actual pila de redes de Windows. Sin embargo, los *pods* **** de Windows pueden acceder a la IP del servicio.
+Se trata de una limitación conocida de la actual pila de redes de Windows. Sin embargo, los *pods* de **Windows pueden acceder** a la IP del servicio.
 
 ### <a name="no-network-adapter-is-found-when-starting-kubelet"></a>No se encuentra ningún adaptador de red al iniciar Kubelet ###
 La pila de redes de Windows necesita un adaptador virtual para que funcionen las redes de Kubernetes. Si los siguientes comandos no devuelven ningún resultado (en un shell de administrador), se ha producido un error en la creación de la red virtual, un requisito previo necesario para que funcione Kubelet:
