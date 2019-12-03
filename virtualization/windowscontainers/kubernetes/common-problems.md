@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Soluciones para problemas comunes al implementar Kubernetes y unirse a nodos de Windows.
 keywords: kubernetes, 1,14, Linux, compilación
-ms.openlocfilehash: 54396f4b350fa7dfe59e073601f41b0a73f06dca
-ms.sourcegitcommit: 76dce6463e820420073dda2dbad822ca4a6241ef
+ms.openlocfilehash: 471731ec50c7c03816a956bd7aae859ad218be6d
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "10307268"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "10332366"
 ---
 # Solución de problemas de Kubernetes #
 Esta página te guía a través de varios problemas comunes con las implementaciones, redes y configuración de Kubernetes.
@@ -45,7 +45,7 @@ Para obtener más información, consulte documentos oficiales sobre el [uso de N
 ## Errores comunes de red ##
 
 ### Los equilibradores de carga se conectan de manera incoherente entre los nodos del clúster ###
-En la configuración de Kube (predeterminada), los clústeres que contienen 100 equilibradores de carga pueden quedarse sin puertos TCP efímeros disponibles (también denominados el intervalo de puertos dinámicos, que normalmente cubre los puertos 49152 a 65535) debido al elevado número de puertos reservados en cada nodo para cada equilibrador de carga (no DSR). Esto se puede manifestar a través de errores en Kube-proxy como:
+En Windows, Kube-proxy crea un equilibrador de carga SNP para cada servicio de Kubernetes en el clúster. En la configuración de proxy de Kube (predeterminada), los nodos de los clústeres que contienen muchos equilibradores de carga (normalmente 100 +) se pueden ejecutar fuera de los puertos TCP efímeros disponibles (también denominados intervalo de puertos dinámicos, que de forma predeterminada cubre los puertos 49152 a 65535). Esto se debe a la cantidad máxima de puertos reservados en cada nodo para cada equilibrador de carga (no DSR). Este problema se puede manifestar a través de errores en Kube-proxy como:
 ```
 Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
 ```
@@ -55,9 +55,9 @@ Los usuarios pueden identificar este problema ejecutando el script [CollectLogs.
 El `CollectLogs.ps1` también imita la lógica de asignación SNP para probar la disponibilidad de asignación del grupo de puertos en el intervalo de puertos TCP efímeros `reservedports.txt`y notificar correctamente y error en. El script reserva 10 intervalos de puertos efímeros de 64 TCP (para emular el comportamiento SNP), cuenta el éxito de reserva & errores y, después, libera los intervalos de puertos asignados. Un número de éxito menor que 10 indica que el grupo efímero se está quedando sin espacio disponible. También se generará un resumen heurístico de cuántas reservas de puertos de bloqueo de 64 están aproximadamente disponibles `reservedports.txt`.
 
 Para resolver este problema, se pueden realizar algunos pasos:
-1.  Para una solución permanente, el equilibrio de carga del proxy de Kube debe establecerse en el [modo DSR](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710). Lamentablemente, el modo DSR se ha implementado por completo en [Windows Server Insider versión 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (o superior).
+1.  Para una solución permanente, el equilibrio de carga del proxy de Kube debe establecerse en el [modo DSR](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710). El modo DSR está totalmente implementado y disponible en [Windows Server Insider versión 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (o superior).
 2. Como solución alternativa, los usuarios también pueden aumentar la configuración predeterminada de Windows de los puertos efímeros disponibles mediante `netsh int ipv4 set dynamicportrange TCP <start_port> <port_count>`un comando como. *ADVERTENCIA:* Reemplazar el intervalo de puertos dinámicos predeterminado puede tener consecuencias en otros procesos o servicios del host que dependen de los puertos TCP disponibles del intervalo no efímero, por lo que este intervalo debe seleccionarse con cuidado.
-3. También estamos trabajando en una mejora de escalabilidad para equilibradores de carga de modo no DSR que usan el uso compartido inteligente de grupos de puertos, que se ha programado para su lanzamiento a través de una actualización acumulativa en el primer trimestre de 2020.
+3. Existe una mejora en la escalabilidad para equilibradores de carga de modo no DSR que usan el uso compartido inteligente de bloqueos de puertos, que se programa para su lanzamiento a través de una actualización acumulativa en el primer trimestre de 2020.
 
 ### La publicación HostPort no funciona ###
 Actualmente, no es posible publicar puertos usando el campo Kubernetes `containers.ports.hostPort` , ya que Windows CNI no admite este campo. Usa NodePort Publishing por el momento de publicar puertos en el nodo.
