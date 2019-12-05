@@ -9,7 +9,7 @@
       "build_output_subfolder": "virtualization-api",
       "locale": "es-es",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
@@ -24,7 +24,7 @@
       "build_output_subfolder": "virtualization-community",
       "locale": "es-es",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -37,7 +37,7 @@
       "build_output_subfolder": "virtualization-hyperv_on_windows",
       "locale": "es-es",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -50,7 +50,7 @@
       "build_output_subfolder": "virtualization-windowscontainers",
       "locale": "es-es",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content"
       },
@@ -63,7 +63,7 @@
       "build_output_subfolder": "virtualization",
       "locale": "es-es",
       "monikers": [],
-      "open_to_public_contributors": false,
+      "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
         "ManagedReference": "Content",
@@ -80,10 +80,14 @@
   "branches_to_filter": [
     "master-oldev",
     "live-oldev",
+    "master-sxs",
     "master",
-    "live-sxs"
+    "live"
   ],
   "skip_source_output_uploading": false,
+    "contribution_branch_mappings": {
+       "live-sxs": "live"
+  },
   "dependent_repositories": [
     {
       "path_to_root": "_themes",
@@ -100,6 +104,8 @@
         "master": "master"
       }
     }
-  ],
+  ],  
+  "git_repository_url_open_to_public_contributors": "https://github.com/MicrosoftDocs/Virtualization-Documentation.es-es/",
+  "git_repository_branch_open_to_public_contributors": "live",
   "need_generate_pdf_url_template": false
 }
