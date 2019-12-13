@@ -1,28 +1,28 @@
 ---
-title: Descripción general del almacenamiento de contenedores
+title: Información general de almacenamiento de contenedor
 description: Cómo los contenedores de Windows Server pueden usar hosts y otros tipos de almacenamiento
 keywords: contenedores, volumen, almacenamiento, montaje, enlazar montajes
 author: cwilhit
 ms.openlocfilehash: fba08de884d59cc1b656895ec2b7078ba3975269
-ms.sourcegitcommit: 22dcc1400dff44fb85591adf0fc443360ea92856
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/12/2019
-ms.locfileid: "10209755"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910275"
 ---
-# <a name="container-storage-overview"></a>Descripción general del almacenamiento de contenedores
+# <a name="container-storage-overview"></a>Información general de almacenamiento de contenedor
 
 <!-- Great diagram would be great! -->
 
-En este tema se ofrece información general sobre las diferentes maneras en que los contenedores usan el almacenamiento en Windows. Los contenedores se comportan de manera diferente que las máquinas virtuales cuando se trata de almacenamiento. Por naturaleza, los contenedores se crean para evitar que una aplicación que se ejecuta dentro de ellos escriba el estado de todo el sistema de archivos del host. Los contenedores usan un espacio "de grietas" de forma predeterminada, pero Windows también proporciona un medio para conservar el almacenamiento.
+En este tema se proporciona información general sobre las diferentes formas en que los contenedores usan el almacenamiento en Windows. Los contenedores se comportan de manera diferente que las máquinas virtuales cuando llegan al almacenamiento. Por naturaleza, los contenedores se compilan para evitar que una aplicación que se ejecuta dentro de ellos escriba el estado en todo el sistema de archivos del host. De forma predeterminada, los contenedores usan un espacio "temporal", pero Windows también proporciona un medio para conservar el almacenamiento.
 
 ## <a name="scratch-space"></a>Espacio de desecho
 
-Los contenedores de Windows usan almacenamiento efímero de forma predeterminada. Todas las e/s de contenedor se producen en un "espacio de desecho" y cada contenedor obtiene su propia grieta. La creación de archivos y las escrituras de archivos se capturan en el espacio de desecho y no en el host. Cuando se detiene una instancia de contenedor, se descartan todos los cambios que se produjeron en el espacio de desecho. Cuando se inicia una nueva instancia de contenedor, se proporciona un nuevo espacio de tachado para la instancia.
+Los contenedores de Windows usan el almacenamiento efímero de forma predeterminada. Todas las e/s de contenedor se producen en un "espacio de desecho" y cada contenedor obtiene su propia grieta. La creación de archivos y las escrituras de archivos se capturan en el espacio de desecho y no se convierten en el host. Cuando se detiene una instancia de contenedor, se descartan todos los cambios que se produjeron en el espacio de desecho. Cuando se inicia una nueva instancia de contenedor, se proporciona un nuevo espacio de desecho para la instancia.
 
 ## <a name="layer-storage"></a>Almacenamiento en capas
 
-Como se describe en la [Descripción general](../about/index.md)de los contenedores, las imágenes de contenedor son un conjunto de archivos expresados como una serie de capas. Almacenamiento de capas es todos los archivos que están integrados en el contenedor. Cada vez que `docker pull`, `docker run` dicho contenedor: son iguales.
+Tal como se describe en la [información general](../about/index.md)de los contenedores, las imágenes de contenedor son un paquete de archivos expresado como una serie de capas. El almacenamiento en capas es todos los archivos que están integrados en el contenedor. Cada vez que `docker pull`, `docker run` dicho contenedor: son iguales.
 
 ### <a name="where-layers-are-stored-and-how-to-change-it"></a>Dónde se almacenan las capas y cómo cambiarlo
 
@@ -36,7 +36,7 @@ No debes modificar los archivos de los directorios de capa: se administran cuida
 - [docker images](https://docs.docker.com/engine/reference/commandline/images/)
 - [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/)
 - [docker pull](https://docs.docker.com/engine/reference/commandline/pull/)
-- [docker load](https://docs.docker.com/engine/reference/commandline/load/)
+- [carga de Docker](https://docs.docker.com/engine/reference/commandline/load/)
 - [docker save](https://docs.docker.com/engine/reference/commandline/save/)
 
 ### <a name="supported-operations-in-layer-storage"></a>Operaciones compatibles en el almacenamiento en capas
@@ -45,19 +45,19 @@ Ejecutar contenedores puede usar la mayoría de las operaciones de NTFS a excepc
 
 ## <a name="persistent-storage"></a>Almacenamiento persistente
 
-Los contenedores de Windows admiten mecanismos para proporcionar almacenamiento permanente a través de montajes y volúmenes enlazados. Para obtener más información, vea [almacenamiento persistente en contenedores](./persistent-storage.md).
+Los contenedores de Windows admiten mecanismos para proporcionar almacenamiento persistente a través de montajes y volúmenes de enlace. Para obtener más información, consulte [almacenamiento persistente en contenedores](./persistent-storage.md).
 
 ## <a name="storage-limits"></a>Límites de almacenamiento
 
-Un patrón común para las aplicaciones Windows es consultar la cantidad de espacio de disco libre antes de instalar o crear nuevos archivos o como un desencadenador para limpiar los archivos temporales.  Con el objetivo de maximizar la compatibilidad de aplicaciones, la unidad C: en un contenedor de Windows representa un tamaño libre virtual de 20 GB.
+Un patrón común para las aplicaciones Windows es consultar la cantidad de espacio de disco libre antes de instalar o crear nuevos archivos o como un desencadenador para limpiar los archivos temporales.  Con el objetivo de maximizar la compatibilidad de aplicaciones, la unidad C: de un contenedor de Windows representa un tamaño libre virtual de 20 GB.
 
-Es posible que algunos usuarios deseen invalidar este valor predeterminado y configurar el espacio libre en un valor más pequeño o más grande. Esto se puede llevar a cabo con la opción "tamaño" dentro de la configuración "almacenamiento-opt".
+Algunos usuarios pueden querer invalidar este valor predeterminado y configurar el espacio libre en un valor menor o mayor. Esto puede realizarse a través de la opción "size" dentro de la configuración "Storage-opt".
 
 ### <a name="examples"></a>Ejemplos
 
 Línea de comandos: `docker run --storage-opt "size=50GB" mcr.microsoft.com/windows/servercore:ltsc2019 cmd`
 
-También puede cambiar el archivo de configuración del acoplador directamente:
+O bien, puede cambiar el archivo de configuración de Docker directamente:
 
 ```Docker Configuration File
 "storage-opts": [
@@ -66,4 +66,4 @@ También puede cambiar el archivo de configuración del acoplador directamente:
 ```
 
 > [!TIP]
-> Este método también funciona para la compilación del Dock. Consulta el documento [configurar docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.
+> Este método también sirve para la compilación de Docker. Consulta el documento [configurar docker](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon#configure-docker-with-configuration-file) para obtener más información sobre cómo modificar el archivo de configuración docker.

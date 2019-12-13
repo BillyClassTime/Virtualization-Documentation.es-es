@@ -1,5 +1,5 @@
 ---
-title: Redes de contenedores de Windows
+title: Red de contenedores de Windows
 description: Redes de contenedores de Windows avanzada.
 keywords: docker, contenedores
 author: jmesser81
@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 ms.openlocfilehash: deea1bfbcd3032f52a6912eb0c36ba467d8b9a9c
-ms.sourcegitcommit: b38f6abb399c87c57e1bb146f3dbcdaefd991245
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "10276498"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910715"
 ---
 # <a name="advanced-network-options-in-windows"></a>Opciones de red avanzadas en Windows
 
@@ -44,25 +44,25 @@ Cuando se establece el identificador de VLAN de una red, se establece el aislami
 
 ## <a name="specify-outboundnat-policy-for-a-network"></a>Especificar la Directiva OutboundNAT para una red
 
-> Se aplica a redes l2bridge
+> Se aplica a redes l2bridgeles
 
-Normalmente, al crear una `l2bridge` red de contenedor usando `docker network create`, los extremos de contenedor no tienen una directiva OutboundNAT SNP aplicada, lo que da como resultado que los contenedores no puedan alcanzar el mundo exterior. Si está creando una red, puede usar la `-o com.docker.network.windowsshim.enable_outboundnat=<true|false>` opción para aplicar la Directiva SNP de OutboundNAT para conceder acceso a los contenedores al mundo exterior:
+Normalmente, cuando se crea una red de contenedor `l2bridge` mediante `docker network create`, los puntos de conexión de contenedor no tienen aplicada una directiva OutboundNAT SNP, lo que da lugar a que los contenedores no puedan alcanzar el mundo exterior. Si va a crear una red, puede usar la opción `-o com.docker.network.windowsshim.enable_outboundnat=<true|false>` para aplicar la Directiva de OutboundNAT SNP para dar acceso a los contenedores al mundo exterior:
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true MyL2BridgeNetwork
 ```
 
-Si hay un conjunto de destinos (por ejemplo, se necesita la conectividad de contenedor a contenedor) en el lugar donde no queremos que se NAT'ing, también tenemos que especificar una de las excepciones:
+Si hay un conjunto de destinos (por ejemplo, se necesita conectividad de contenedor a contenedor) en el que no queremos que se produzca NAT'ing, también es necesario especificar una de las excepciones:
 
 ```
 C:\> docker network create -d l2bridge -o com.docker.network.windowsshim.enable_outboundnat=true -o com.docker.network.windowsshim.outboundnat_exceptions=10.244.10.0/24
 ```
 
-## <a name="specify-the-name-of-a-network-to-the-hns-service"></a>Especificar el nombre de una red con el servicio SNP
+## <a name="specify-the-name-of-a-network-to-the-hns-service"></a>Especificar el nombre de una red con el servicio HNS
 
 > Se aplica a todos los controladores de red. 
 
-Normalmente, cuando se crea un contenedor de red mediante `docker network create`, el servicio de Docker usa el nombre de red que tú proporcionas, pero el servicio SNP no lo hace. Si vas a crear una red, puedes especificar el nombre que proporciona el servicio SNP con la opción `-o com.docker.network.windowsshim.networkname=<network name>` en el comando `docker network create`. Por ejemplo, podrías usar el siguiente comando para crear una red transparente con un nombre especificado para el servicio SNP:
+Normalmente, cuando se crea un contenedor de red mediante `docker network create`, el servicio de Docker usa el nombre de red que tú proporcionas, pero el servicio SNP no lo hace. Si vas a crear una red, puedes especificar el nombre que proporciona el servicio SNP con la opción `-o com.docker.network.windowsshim.networkname=<network name>` en el comando `docker network create`. Por ejemplo, podrías usar el siguiente comando para crear una red transparente con un nombre especificado para el servicio HNS:
 
 ```
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.networkname=MyTransparentNetwork MyTransparentNetwork
@@ -78,13 +78,13 @@ Para enlazar una red (conectada a través del conmutador virtual de Hyper-V) con
 C:\> docker network create -d transparent -o com.docker.network.windowsshim.interface="Ethernet 2" TransparentNet2
 ```
 
-> Nota: El valor de *com.docker.network.windowsshim.interface* es el adaptador de red *Name*, que se puede encontrar de esta manera:
+> Nota: El valor de *com.docker.network.windowsshim.interface* es el *nombre* del adaptador de red, que se puede encontrar con lo siguiente:
 
 ```
 PS C:\> Get-NetAdapter
 ```
 
-## <a name="specify-the-dns-suffix-andor-the-dns-servers-of-a-network"></a>Especificar el sufijo DNS y/o los servidores DNS de una red
+## <a name="specify-the-dns-suffix-andor-the-dns-servers-of-a-network"></a>Especificación del sufijo DNS o de los servidores DNS de una red
 
 > Se aplica a todos los controladores de red. 
 
@@ -98,15 +98,15 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnss
 
 Consulta [este artículo](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/) para obtener más información.
 
-## <a name="tips--insights"></a>Sugerencias y detalles
+## <a name="tips--insights"></a>Recomendaciones e información útil
 A continuación hay una lista de sugerencias e información útil inspiradas por preguntas frecuentes sobre redes de contenedores de Windows que recibimos de la comunidad...
 
-#### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>SNP requiere que IPv6 esté habilitado en los equipos host de contenedor 
-Como parte de [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217), SNP requiere que IPv6 esté habilitado en los hosts del contenedor de Windows. Si te encuentras un error como el siguiente, es posible que IPv6 está deshabilitado en el equipo host.
+#### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>HNS requiere que IPv6 esté habilitado en los equipos host de contenedor 
+Como parte de [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217), HNS requiere que IPv6 esté habilitado en los hosts del contenedor de Windows. Si te encuentras un error como el siguiente, es posible que IPv6 está deshabilitado en el equipo host.
 ```
 docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11b92d488e8c5b53ab5e4331fd80636d encountered an error during CreateContainer: failure in a Windows system call: Element not found.
 ```
-Estamos trabajando en cambios en la plataforma para detectar y evitar automáticamente este problema. Actualmente, puede usarse la siguiente solución alternativa para garantizar que IPv6 está habilitado en el equipo host:
+Estamos trabajando en cambios en la plataforma para detectar y evitar automáticamente este problema. Actualmente, puede usarse la siguiente solución para garantizar que IPv6 está habilitado en el equipo host:
 
 ```
 C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters  /v DisabledComponents  /f
@@ -115,7 +115,7 @@ C:\> reg delete HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Para
 
 #### <a name="linux-containers-on-windows"></a>Contenedores de Linux en Windows
 
-**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información. A continuación se explica cómo [comenzar.](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux)
+**NUEVO:** estamos trabajando para que sea posible ejecutar los contenedores de Windows y Linux paralelamente _sin la VM Linux de Moby_. Consulta esta [entrada de blog sobre contenedores Linux en Windows (LCOW)](https://blog.docker.com/2017/11/docker-for-windows-17-11/) para obtener más información. Aquí se muestra cómo empezar a [trabajar](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10-linux).
 > NOTA: LCOW está haciendo que la VM Linux de Moby esté quedando obsoleta y utilizará el vSwitch interno predeterminado SNP "nat".
 
 #### <a name="moby-linux-vms-use-dockernat-switch-with-docker-for-windows-a-product-of-docker-cehttpswwwdockercomcommunity-edition"></a>Las VM Linux de Moby usan el conmutador DockerNAT con Docker para Windows (un producto de [Docker CE](https://www.docker.com/community-edition))
@@ -161,7 +161,7 @@ Con las redes de contenedor creadas usando el controlador l2bridge solo se admit
 Ten en cuenta que si se crean varias redes que usan un vSwitch externo para la conectividad (por ejemplo, Transparent, L2 Bridge, L2 Transparent) en el mismo host de contenedor, cada una de ellas requiere su propio adaptador de red. 
 
 #### <a name="ip-assignment-on-stopped-vs-running-containers"></a>Asignación de IP en contenedores detenidos y contenedores en ejecución
-La asignación de dirección IP estática se lleva a cabo directamente en el adaptador de red del contenedor y solo debe realizarse cuando el contenedor se encuentre en estado detenido. En Windows Server 2016 no se admiten ni el "agregado en caliente" de los adaptadores de redes de contenedor ni los cambios en la pila de red mientras se esté ejecutando el contenedor.
+La asignación de dirección IP estática se lleva a cabo directamente en el adaptador de red del contenedor y solo debe realizarse cuando el contenedor se encuentre en estado detenido. En Windows Server 2016 no se admiten ni el "agregado en caliente" de los adaptadores de red de contenedor ni los cambios en la pila de red mientras se esté ejecutando el contenedor.
 
 #### <a name="existing-vswitch-not-visible-to-docker-can-block-transparent-network-creation"></a>Un VSwitch existente (que no sea visible para Docker) puede bloquear la creación de una red transparente
 Si se produce un error al crear una red transparente, es posible que haya un vSwitch externo en el sistema que Docker no haya detectado de forma automática y, por tanto, que impida que la red transparente se enlace con el adaptador de red externo del host de contenedor. 
@@ -178,7 +178,7 @@ Hay tres formas de resolver este problema:
 PS C:\> restart-service hns
 PS C:\> restart-service docker
 ```
-* Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). La opción '-o ' se describe con más detalle en la sección [creación de varias redes transparentes en un único host de contenedor](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host) de este documento.
+* Otra opción es usar la opción "-o com.docker.network.windowsshim.interface" para enlazar el vSwitch externo de la red transparente a un adaptador de red específico que no esté en uso en el host de contenedor (es decir, un adaptador de red distinto del que usa el vSwitch que se ha creado fuera de banda). La opción "-o" se describe con más detalle en la sección [creación de varias redes transparentes en un único host de contenedor](advanced.md#creating-multiple-transparent-networks-on-a-single-container-host) de este documento.
 
 
 ## <a name="windows-server-2016-work-arounds"></a>Soluciones para Windows Server 2016 
@@ -230,4 +230,4 @@ networks:
       - subnet: 172.16.3.0/24
 ```
 
-Para obtener más información sobre la definición y configuración de redes de contenedor mediante Docker Compose, consulte la [referencia de archivos de Compose](https://docs.docker.com/compose/compose-file/).
+Para obtener más información sobre la definición y configuración de redes de contenedor mediante Docker Compose, consulte la [referencia del archivo de Compose](https://docs.docker.com/compose/compose-file/).

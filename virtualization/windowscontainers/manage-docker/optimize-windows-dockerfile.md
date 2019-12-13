@@ -9,21 +9,21 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
 ms.openlocfilehash: ae633c7ba5d9672335addcc582988fc47c13ed79
-ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "10077456"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910155"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Optimizar Dockerfiles de Windows
 
-Hay muchas maneras de optimizar el proceso de compilación del acoplador y las imágenes del Dock resultante. En este artículo se explica cómo funciona el proceso de compilación del acoplamiento y cómo crear imágenes de contenedores de Windows de manera óptima.
+Hay muchas maneras de optimizar el proceso de compilación de Docker y las imágenes de Docker resultantes. En este artículo se explica cómo funciona el proceso de compilación de Docker y cómo crear imágenes óptimamente para contenedores de Windows.
 
-## <a name="image-layers-in-docker-build"></a>Capas de imagen en la compilación del acoplador
+## <a name="image-layers-in-docker-build"></a>Capas de imagen en la compilación de Docker
 
-Antes de poder optimizar la compilación de Dock, tendrá que saber cómo funciona la compilación de Docker. Durante el proceso de compilación de Docker se usa un Dockerfile y cada instrucción accionable se ejecuta, de una en una, en su propio contenedor temporal. El resultado es una nueva capa de imagen para cada instrucción accionable.
+Antes de poder optimizar la compilación de Docker, debe saber cómo funciona la compilación de Docker. Durante el proceso de compilación de Docker se usa un Dockerfile y cada instrucción accionable se ejecuta, de una en una, en su propio contenedor temporal. El resultado es una nueva capa de imagen para cada instrucción accionable.
 
-Por ejemplo, el siguiente ejemplo de Dockerfile usa `mcr.microsoft.com/windows/servercore:ltsc2019` la imagen de sistema operativo base, instala IIS y, a continuación, crea un sitio web simple.
+Por ejemplo, en el siguiente ejemplo de Dockerfile se usa la imagen de sistema operativo base `mcr.microsoft.com/windows/servercore:ltsc2019`, se instala IIS y, a continuación, se crea un sitio web sencillo.
 
 ```dockerfile
 # Sample Dockerfile
@@ -34,9 +34,9 @@ RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 CMD [ "cmd" ]
 ```
 
-Es posible que este Dockerfile le cree una imagen con dos capas, una para la imagen del sistema operativo del contenedor y otra que incluye IIS y el sitio Web. Sin embargo, la imagen real tiene muchas capas, y cada capa depende de la anterior.
+Podría esperar que este Dockerfile genere una imagen con dos capas, una para la imagen del sistema operativo del contenedor y otra que incluye IIS y el sitio Web. Sin embargo, la imagen real tiene muchas capas y cada capa depende de la anterior.
 
-Para que esto sea más claro, ejecutamos el `docker history` comando en la imagen que realizaste nuestro ejemplo de Dockerfile.
+Para que esto sea más claro, vamos a ejecutar el comando `docker history` en la imagen que se ha realizado en el ejemplo Dockerfile.
 
 ```dockerfile
 docker history iis
@@ -48,23 +48,23 @@ f0e017e5b088        21 seconds ago       cmd /S /C echo "Hello World - Dockerfil
 6801d964fda5        4 months ago                                                         0 B
 ```
 
-La salida nos muestra que esta imagen tiene cuatro capas: la capa base y tres capas adicionales asignadas a cada instrucción de la Dockerfile. La capa inferior (`6801d964fda5` en este ejemplo) representa la imagen base del sistema operativo. Un nivel superior es la instalación de IIS. La siguiente capa incluye el nuevo sitio web y así sucesivamente.
+La salida muestra que esta imagen tiene cuatro capas: la capa base y tres capas adicionales que se asignan a cada instrucción del Dockerfile. La capa inferior (`6801d964fda5` en este ejemplo) representa la imagen base del sistema operativo. Una capa arriba es la instalación de IIS. La siguiente capa incluye el nuevo sitio web y así sucesivamente.
 
-Dockerfiles se puede escribir para minimizar las capas de la imagen, optimizar el rendimiento de la compilación y optimizar la accesibilidad a través de la legibilidad. En última instancia, hay muchas formas de realizar la misma tarea de compilación de la imagen. Comprender cómo el formato de Dockerfile afecta al tiempo de compilación y la imagen que crea mejora la experiencia de automatización.
+Dockerfiles se puede escribir para minimizar las capas de imagen, optimizar el rendimiento de la compilación y optimizar la accesibilidad a través de la legibilidad. En última instancia, hay muchas formas de realizar la misma tarea de compilación de la imagen. Entender cómo el formato de Dockerfile afecta al tiempo de compilación y la imagen que crea mejora la experiencia de automatización.
 
-## <a name="optimize-image-size"></a>Optimizar tamaño de imagen
+## <a name="optimize-image-size"></a>Optimizar el tamaño de la imagen
 
-En función de los requisitos de espacio, el tamaño de la imagen puede ser un factor importante al crear imágenes de contenedor de Dock. Las imágenes de contenedor se mueven entre registros y host, se exportan e importan y, en última instancia, usan espacio. En esta sección se explica cómo minimizar el tamaño de la imagen durante el proceso de compilación del acoplador para contenedores de Windows.
+En función de los requisitos de espacio, el tamaño de la imagen puede ser un factor importante a la hora de crear imágenes de contenedor de Docker. Las imágenes de contenedor se mueven entre registros y host, se exportan e importan y, en última instancia, usan espacio. En esta sección se explica cómo minimizar el tamaño de la imagen durante el proceso de compilación de Docker para contenedores de Windows.
 
-Para obtener más información sobre los procedimientos recomendados de Dockerfile, vea [procedimientos recomendados para escribir Dockerfiles en Docker.com](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
+Para obtener información adicional sobre los procedimientos recomendados de Dockerfile, consulte [procedimientos recomendados para escribir Dockerfiles en Docker.com](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/).
 
 ### <a name="group-related-actions"></a>Acciones relacionadas con grupos
 
-Como cada `RUN` instrucción crea una nueva capa en la imagen del contenedor, las acciones de agrupación en una `RUN` instrucción pueden reducir el número de capas en un Dockerfile. Aunque la minimización de capas puede no afectar mucho al tamaño de la imagen, la agrupación de acciones relacionadas sí, lo que se verá en los ejemplos siguientes.
+Dado que cada `RUN` instrucción crea una nueva capa en la imagen de contenedor, la agrupación de acciones en una `RUN` instrucción puede reducir el número de capas en un Dockerfile. Aunque la minimización de capas puede no afectar mucho al tamaño de la imagen, la agrupación de acciones relacionadas sí, lo que se verá en los ejemplos siguientes.
 
-En esta sección, compararemos dos ejemplos de Dockerfiles que hacen las mismas cosas. Sin embargo, una Dockerfile tiene una instrucción por acción, mientras que la otra tiene las acciones relacionadas agrupadas.
+En esta sección, se compararán dos Dockerfiles de ejemplo que hacen lo mismo. Sin embargo, un Dockerfile tiene una instrucción por acción, mientras que la otra tenía sus acciones relacionadas agrupadas.
 
-El siguiente ejemplo Dockerfile desagrupado descarga Python para Windows, lo instala y quita el archivo de instalación descargado una vez que se haya instalado la instalación. En este Dockerfile, cada acción tiene su propia `RUN` instrucción.
+En el siguiente ejemplo de Dockerfile desagrupado se descarga Python para Windows, se instala y se quita el archivo de instalación descargado una vez finalizada la instalación. En este Dockerfile, cada acción recibe su propia instrucción `RUN`.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -85,7 +85,7 @@ a395ca26777f        15 seconds ago      cmd /S /C powershell.exe -Command Remove
 957147160e8d        3 minutes ago       cmd /S /C powershell.exe -Command Invoke-WebR   125.7 MB
 ```
 
-El segundo ejemplo es un Dockerfile que realiza exactamente la misma operación. Sin embargo, todas las acciones relacionadas se han agrupado en `RUN` una única instrucción. Cada paso de la `RUN` instrucción está en una nueva línea de la Dockerfile, mientras que el carácter ' \ \ ' se usa para el ajuste de línea.
+El segundo ejemplo es un Dockerfile que realiza la misma operación exacta. Sin embargo, todas las acciones relacionadas se han agrupado en una sola instrucción `RUN`. Cada paso de la instrucción `RUN` está en una nueva línea de Dockerfile, mientras que el carácter '\\' se usa para el ajuste de línea.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -97,7 +97,7 @@ RUN powershell.exe -Command \
   Remove-Item c:\python-3.5.1.exe -Force
 ```
 
-La imagen resultante solo tiene una capa adicional para la `RUN` instrucción.
+La imagen resultante tiene solo una capa adicional para la instrucción `RUN`.
 
 ```dockerfile
 docker history doc-example-2
@@ -108,9 +108,9 @@ IMAGE               CREATED             CREATED BY                              
 
 ### <a name="remove-excess-files"></a>Quitar archivos sobrantes
 
-Si hay un archivo en su Dockerfile, como un instalador, que no necesita después de haberlo usado, puede quitarlo para reducir el tamaño de la imagen. Esto debe hacerse en el mismo paso en el que se copia el archivo en la capa de imagen. De este modo, se evitará que el archivo se mantenga en una capa de imagen de nivel inferior.
+Si hay un archivo en el Dockerfile, como un instalador, que no necesita después de que se haya usado, puede quitarlo para reducir el tamaño de la imagen. Esto debe hacerse en el mismo paso en el que se copia el archivo en la capa de imagen. Al hacerlo, se impide que el archivo se conserve en una capa de imagen de nivel inferior.
 
-En el siguiente ejemplo Dockerfile, el paquete python se descarga, se ejecuta y después se quita. Todo se realiza en una operación `RUN` y da lugar a una única capa de imagen.
+En el siguiente ejemplo de Dockerfile, el paquete de Python se descarga, ejecuta y se quita. Todo se realiza en una operación `RUN` y da lugar a una única capa de imagen.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -126,9 +126,9 @@ RUN powershell.exe -Command \
 
 ### <a name="multiple-lines"></a>Varias líneas
 
-Puede dividir las operaciones en varias instrucciones individuales para optimizar la velocidad de compilación del acoplador. Varias `RUN` operaciones aumentan la eficacia del almacenamiento en caché porque se crean `RUN` capas individuales para cada instrucción. Si ya se ha ejecutado una instrucción idéntica en una operación de compilación de acoplamiento diferente, esta operación almacenada en caché (capa de imagen) se vuelve a utilizar, lo que reduce el tiempo de ejecución de compilación del Dock.
+Puede dividir las operaciones en varias instrucciones individuales para optimizar la velocidad de compilación de Docker. Varias operaciones `RUN` aumentan la eficacia del almacenamiento en caché porque se crean capas individuales para cada instrucción `RUN`. Si ya se ha ejecutado una instrucción idéntica en una operación de compilación de Docker diferente, se reutiliza esta operación almacenada en caché (capa de imagen), lo que da lugar a una disminución del tiempo de ejecución de compilación de Docker.
 
-En el siguiente ejemplo, tanto Apache como Visual Studio redistribuir paquetes se descargan, instalan y, a continuación, se limpian quitando los archivos que ya no se necesitan. Esto se hace todo con una única `RUN` instrucción. Si se actualiza cualquiera de estas acciones, todas las acciones se volverán a ejecutar.
+En el ejemplo siguiente, se descargan los paquetes de redistribución de Apache y Visual Studio, se instalan y, después, se quitan los archivos que ya no son necesarios. Todo esto se realiza con una sola instrucción `RUN`. Si se actualiza alguna de estas acciones, se volverán a ejecutar todas las acciones.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -154,7 +154,7 @@ RUN powershell -Command \
   Remove-Item c:\php.zip
 ```
 
-La imagen resultante tiene dos capas, una para la imagen del sistema operativo base y otra que contiene todas las operaciones de `RUN` la instrucción única.
+La imagen resultante tiene dos capas, una para la imagen base del sistema operativo y otra que contiene todas las operaciones de la instrucción `RUN` única.
 
 ```dockerfile
 docker history doc-sample-1
@@ -164,7 +164,7 @@ IMAGE               CREATED             CREATED BY                              
 6801d964fda5        5 months ago                                                        0 B
 ```
 
-En comparación, estas acciones se dividen en tres `RUN` instrucciones. En este caso, cada `RUN` instrucción se almacena en caché en una capa de imagen de contenedor y solo se debe volver a ejecutar las instrucciones que hayan cambiado en las compilaciones Dockerfile subsiguientes.
+En comparación, estas acciones se dividen en tres instrucciones `RUN`. En este caso, cada instrucción `RUN` se almacena en caché en una capa de imagen de contenedor y solo se deben volver a ejecutar las que han cambiado en las compilaciones posteriores de Dockerfile.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -188,7 +188,7 @@ RUN powershell -Command \
     Remove-Item c:\php.zip -Force
 ```
 
-La imagen resultante consta de cuatro capas; una capa para la imagen del sistema operativo base y cada una `RUN` de las tres instrucciones. Como cada `RUN` instrucción se ejecutaba en su propia capa, cualquier ejecución posterior de esta Dockerfile o un conjunto idéntico de instrucciones en un Dockerfile diferente usarán capas de imagen almacenadas en caché, lo que reduce el tiempo de compilación.
+La imagen resultante se compone de cuatro capas; una capa para la imagen base del sistema operativo y cada una de las tres instrucciones `RUN`. Dado que cada `RUN` instrucción se ejecuta en su propia capa, las ejecuciones posteriores de este Dockerfile o un conjunto idéntico de instrucciones en un Dockerfile diferente utilizarán capas de imágenes almacenadas en caché, lo que reduce el tiempo de compilación.
 
 ```dockerfile
 docker history doc-sample-2
@@ -200,13 +200,13 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 6801d964fda5        5 months ago
 ```
 
-El orden de las instrucciones es importante al trabajar con cachés de imágenes, como verá en la siguiente sección.
+La forma de ordenar las instrucciones es importante cuando se trabaja con memorias caché de imágenes, como se verá en la sección siguiente.
 
 ### <a name="ordering-instructions"></a>Instrucciones de ordenación
 
 Un Dockerfile se procesa de arriba a abajo y cada instrucción se compara con las capas almacenadas en caché. Cuando se encuentra una instrucción sin una capa en caché, esta instrucción y todas las siguientes se procesan en nuevas capas de la imagen del contenedor. Por este motivo, es importante el orden en que se colocan las instrucciones. Coloque las instrucciones que se van a mantener constantes hacia la parte superior del Dockerfile. Coloque las que pueden cambiar hacia la parte inferior del Dockerfile. Al hacerlo, se reduce la probabilidad de que se niegue la caché existente.
 
-En los siguientes ejemplos se muestra cómo la ordenación de instrucciones Dockerfile puede afectar a la eficacia del almacenamiento en caché. Este sencillo Dockerfile de ejemplo tiene cuatro carpetas numeradas.  
+En los siguientes ejemplos se muestra cómo la ordenación de instrucciones Dockerfile puede afectar a la eficacia del almacenamiento en caché. Este Dockerfile de ejemplo sencillo tiene cuatro carpetas numeradas.  
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -217,7 +217,7 @@ RUN mkdir test-3
 RUN mkdir test-4
 ```
 
-La imagen resultante tiene cinco capas, una para la imagen del sistema operativo base y cada `RUN` una de las instrucciones.
+La imagen resultante tiene cinco capas, una para la imagen base del sistema operativo y cada una de las instrucciones `RUN`.
 
 ```dockerfile
 docker history doc-sample-1
@@ -230,7 +230,7 @@ afba1a3def0a        38 seconds ago       cmd /S /C mkdir test-4   42.46 MB
 6801d964fda5        5 months ago                                  0 B
 ```
 
-El siguiente Dockerfile se ha modificado ligeramente, con la tercera `RUN` instrucción cambiada a un archivo nuevo. Cuando se ejecuta la compilación de Docker en este Dockerfile, las tres primeras instrucciones, que son idénticas a las del último ejemplo, usan las capas de la imagen almacenadas en caché. Sin embargo, dado que `RUN` la instrucción modificada no se almacena en caché, se crea una nueva capa para la instrucción modificada y todas las instrucciones posteriores.
+Ahora se ha modificado ligeramente el siguiente Dockerfile, con la tercera `RUN` instrucción cambiada a un archivo nuevo. Cuando se ejecuta la compilación de Docker en este Dockerfile, las tres primeras instrucciones, que son idénticas a las del último ejemplo, usan las capas de la imagen almacenadas en caché. Sin embargo, dado que la instrucción de `RUN` modificada no se almacena en caché, se crea una nueva capa para la instrucción modificada y todas las instrucciones posteriores.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -241,7 +241,7 @@ RUN mkdir test-5
 RUN mkdir test-4
 ```
 
-Cuando compare los identificadores de imagen de la nueva imagen con los del primer ejemplo de esta sección, observará que las tres primeras capas de la parte inferior a la superior están compartidas, pero la cuarta y la quinta son únicas.
+Cuando se comparan los identificadores de imagen de la nueva imagen en el primer ejemplo de esta sección, observará que las tres primeras capas de la parte inferior a la superior están compartidas, pero la cuarta y la quinta son únicas.
 
 ```dockerfile
 docker history doc-sample-2
@@ -256,11 +256,11 @@ c92cc95632fb        28 seconds ago      cmd /S /C mkdir test-4   5.644 MB
 
 ## <a name="cosmetic-optimization"></a>Optimización cosmética
 
-### <a name="instruction-case"></a>Caso de instrucciones
+### <a name="instruction-case"></a>Caso de instrucción
 
-Las instrucciones de Dockerfile no distinguen entre mayúsculas y minúsculas, pero la Convención es de uso en mayúsculas. Esto mejora la legibilidad al diferenciar entre la llamada de instrucción y la operación de instrucción. En los dos ejemplos siguientes se compara un Dockerfile con mayúsculas y minúsculas.
+Las instrucciones de Dockerfile no distinguen mayúsculas de minúsculas, pero la Convención es usar mayúsculas. Esto mejora la legibilidad al diferenciar entre la llamada de instrucción y la operación de instrucción. En los dos ejemplos siguientes se compara un Dockerfile en mayúsculas y en mayúsculas.
 
-A continuación se reDockerfile:
+A continuación se encuentra un Dockerfile inversado:
 
 ```dockerfile
 # Sample Dockerfile
@@ -271,7 +271,7 @@ run echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
 cmd [ "cmd" ]
 ```
 
-A continuación se encuentra el mismo Dockerfile con mayúsculas y minúsculas:
+Lo siguiente es el mismo Dockerfile con el uso de mayúsculas:
 
 ```dockerfile
 # Sample Dockerfile
@@ -284,7 +284,7 @@ CMD [ "cmd" ]
 
 ### <a name="line-wrapping"></a>Ajuste de línea
 
-Las operaciones largas y complejas pueden dividirse en varias líneas con el carácter `\` de barra diagonal inversa. El Dockerfile siguiente instala el paquete redistribuible de Visual Studio, quita los archivos del instalador y luego crea un archivo de configuración. Estas tres operaciones se especifican en una sola línea.
+Las operaciones largas y complejas se pueden dividir en varias líneas mediante la barra diagonal inversa `\` carácter. El Dockerfile siguiente instala el paquete redistribuible de Visual Studio, quita los archivos del instalador y luego crea un archivo de configuración. Estas tres operaciones se especifican en una sola línea.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -292,7 +292,7 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN powershell -Command c:\vcredist_x86.exe /quiet ; Remove-Item c:\vcredist_x86.exe -Force ; New-Item c:\config.ini
 ```
 
-El comando se puede dividir con barras diagonales inversas para que todas las operaciones de `RUN` la instrucción se especifiquen en su propia línea.
+El comando se puede dividir con barras diagonales inversas para que cada operación de una `RUN` instrucción se especifique en su propia línea.
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019
@@ -304,8 +304,8 @@ RUN powershell -Command \
     New-Item c:\config.ini
 ```
 
-## <a name="further-reading-and-references"></a>Más lecturas y referencias
+## <a name="further-reading-and-references"></a>Lecturas y referencias adicionales
 
 [Dockerfile en Windows](manage-windows-dockerfile.md)
 
-[Procedimientos recomendados para escribir Dockerfiles en Docker.com](https://docs.docker.com/engine/reference/builder/)
+[Prácticas recomendadas para escribir Dockerfiles en Docker.com](https://docs.docker.com/engine/reference/builder/)

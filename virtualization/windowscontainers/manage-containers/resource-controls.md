@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
 ms.openlocfilehash: 3e9f7e3208222cd6c0f512c5f892453ac6e6980c
-ms.sourcegitcommit: 73134bf279f3ed18235d24ae63cdc2e34a20e7b7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "10107879"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910175"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Implementar controles de recursos para contenedores de Windows
 Hay varios controles de recursos que pueden implementarse por contenedor y por recurso.  De forma predeterminada, los contenedores ejecutados están sujetos a la administración habitual de recursos de Windows, lo que, en general, se comparte de forma equitativa. Sin embargo, un desarrollador o administrador puede limitar el uso de los recursos, o influir sobre él, tras configurar estos controles.  Entre los recursos que pueden controlarse se incluyen: CPU/procesador, memoria/RAM, disco/almacenamiento y redes/rendimiento.
@@ -28,38 +28,38 @@ Para cada recurso, esta sección ofrece una asignación entre la interfaz de lí
 |  | |
 | ----- | ------|
 | *Memoria* ||
-| Interfaz de docker | [--memory](https://docs.docker.com/engine/admin/resource_constraints/#memory) |
+| Interfaz de docker | [--memoria](https://docs.docker.com/engine/admin/resource_constraints/#memory) |
 | Interfaz de HCS | [MemoryMaximumInMB](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | [JOB_OBJECT_LIMIT_JOB_MEMORY](https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-_jobobject_basic_limit_information) |
 | Aislamiento de Hyper-V | Memoria de máquina virtual |
-| _Con respecto al aislamiento de Hyper-V en WindowsServer2016, ten en cuenta lo siguiente: al usar un límite de memoria verás cómo el contenedor asigna inicialmente el límite de memoria y luego se inicia para devolverlo al host del contenedor.  En versiones posteriores (1709 o posterior) esto se ha optimizado._ |
+| _Nota sobre el aislamiento de Hyper-V en Windows Server 2016: cuando se usa un límite de memoria, verá que el contenedor asigna la cantidad de memoria del Cap inicialmente y, a continuación, comienza a devolverla al host del contenedor.  En versiones posteriores (1709 o posteriores) esto se ha optimizado._ |
 | ||
 | *CPU (recuento)* ||
-| Interfaz de docker | [--cpus](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
+| Interfaz de docker | [--CPU](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
 | Interfaz de HCS | [ProcessorCount](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | Simulado con [JOB_OBJECT_CPU_RATE_CONTROL_HARD_CAP](https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-_jobobject_cpu_rate_control_information)* |
 | Aislamiento de Hyper-V | Número de procesadores virtuales expuestos |
 | ||
 | *CPU (porcentaje)* ||
-| Interfaz de docker | [--cpu-percent](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
+| Interfaz de docker | [--CPU-porcentaje](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
 | Interfaz de HCS | [ProcessorMaximum](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | [JOB_OBJECT_CPU_RATE_CONTROL_HARD_CAP](https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-_jobobject_cpu_rate_control_information) |
 | Aislamiento de Hyper-V | Límites de hipervisor en procesadores virtuales |
 | ||
 | *CPU (recursos compartidos)* ||
-| Interfaz de docker | [--cpu-shares](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
+| Interfaz de docker | [--CPU-recursos compartidos](https://docs.docker.com/engine/admin/resource_constraints/#cpu) |
 | Interfaz de HCS | [ProcessorWeight](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | [JOB_OBJECT_CPU_RATE_CONTROL_WEIGHT_BASED](https://docs.microsoft.com/windows/desktop/api/winnt/ns-winnt-_jobobject_cpu_rate_control_information) |
 | Aislamiento de Hyper-V | Pesos de procesadores virtuales de hipervisor |
 | ||
 | *Almacenamiento (imagen)* ||
-| Interfaz de docker | [--io-maxbandwidth/--io-maxiops](https://docs.docker.com/edge/engine/reference/commandline/run/#usage) |
+| Interfaz de docker | [--IO-maxbandwidth/--IO-maxiops](https://docs.docker.com/edge/engine/reference/commandline/run/#usage) |
 | Interfaz de HCS | [StorageIOPSMaximum y StorageBandwidthMaximum](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | [JOBOBJECT_IO_RATE_CONTROL_INFORMATION](https://docs.microsoft.com/windows/desktop/api/jobapi2/ns-jobapi2-jobobject_io_rate_control_information) |
 | Aislamiento de Hyper-V | [JOBOBJECT_IO_RATE_CONTROL_INFORMATION](https://docs.microsoft.com/windows/desktop/api/jobapi2/ns-jobapi2-jobobject_io_rate_control_information) |
 | ||
 | *Almacenamiento (volúmenes)* ||
-| Interfaz de docker | [--storage-opt size=](https://docs.docker.com/edge/engine/reference/commandline/run/#set-storage-driver-options-per-container) |
+| Interfaz de docker | [--Storage-OPC size =](https://docs.docker.com/edge/engine/reference/commandline/run/#set-storage-driver-options-per-container) |
 | Interfaz de HCS | [StorageSandboxSize](https://github.com/Microsoft/hcsshim/blob/b144c605002d4086146ca1c15c79e56bfaadc2a7/interface.go#L67) |
 | Kernel compartido | [JOBOBJECT_IO_RATE_CONTROL_INFORMATION](https://docs.microsoft.com/windows/desktop/api/jobapi2/ns-jobapi2-jobobject_io_rate_control_information) |
 | Aislamiento de Hyper-V | [JOBOBJECT_IO_RATE_CONTROL_INFORMATION](https://docs.microsoft.com/windows/desktop/api/jobapi2/ns-jobapi2-jobobject_io_rate_control_information) |

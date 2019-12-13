@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 0cc1b621-1a92-4512-8716-956d7a8fe495
-ms.openlocfilehash: 2e1fec6aa7149c801b1c72a0f8a346ca879015c2
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: b975c593bd5c736ec3e7e1e21b76b2f6a2c8f8a4
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998202"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909655"
 ---
 # <a name="remote-management-of-a-windows-docker-host"></a>Administración remota de un host de Windows Docker
 
@@ -23,7 +23,7 @@ Los pasos son muy simples:
 
 * Crea los certificados en el servidor mediante [dockertls](https://hub.docker.com/r/stefanscherer/dockertls-windows/). Si vas a crear los certificados con una dirección IP, quizá quieras usar una dirección IP estática para evitar tener que volver a crear los certificados cuando cambie la dirección IP.
 
-* Reinicia el servicio de Docker `Restart-Service Docker`
+* Reinicie el servicio Docker `Restart-Service Docker`
 * Haz que los puertos TLS de Docker 2375 y 2376 estén disponibles mediante la creación de una regla de NSG que permita el tráfico entrante. Ten en cuenta que, en el caso de las conexiones seguras, solo debes permitir el 2376.  
   El portal debería mostrar una configuración de NSG como esta:  
   ![NGS](media/nsg.png)  
@@ -33,7 +33,7 @@ Los pasos son muy simples:
 New-NetFirewallRule -DisplayName 'Docker SSL Inbound' -Profile @('Domain', 'Public', 'Private') -Direction Inbound -Action Allow -Protocol TCP -LocalPort 2376
 ```
 * Copia los archivos `ca.pem`, 'cert.pem' y 'key.pem' desde carpeta de Docker del usuario del equipo; por ejemplo, `c:\users\chris\.docker` en el equipo local. Por ejemplo, puedes usar ctrl-c y ctrl-v para copiar y pegar los archivos desde una sesión de RDP. 
-* Confirma que puedes conectarte al host de Docker remoto. Ejecución
+* Confirma que puedes conectarte al host de Docker remoto. Ejecute
 ```
 docker -D -H tcp://wsdockerhost.southcentralus.cloudapp.azure.com:2376 --tlsverify --tlscacert=c:\
 users\foo\.docker\client\ca.pem --tlscert=c:\users\foo\.docker\client\cert.pem --tlskey=c:\users\foo\.doc

@@ -6,21 +6,21 @@ ms.date: 11/02/2018
 ms.topic: get-started-article
 ms.prod: containers
 description: Compilación y compilación cruzada de archivos binarios de Kubernetes desde el origen.
-keywords: kubernetes, 1.12, linux, compilar
+keywords: kubernetes, 1,12, Linux, compilación
 ms.openlocfilehash: 40bf7e65a8910cdab095abb269aa0a92508189cd
-ms.sourcegitcommit: 0deb653de8a14b32a1cfe3e1d73e5d3f31bbe83b
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 04/26/2019
-ms.locfileid: "9574826"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909875"
 ---
 # <a name="compiling-kubernetes-binaries"></a>Compilar archivos binarios de Kubernetes #
 La compilación de Kubernetes requiere un entorno de trabajo Go. En esta página se muestran varias formas de compilación de archivos binarios de Linux y de compilación cruzada de archivos binarios de Windows.
 > [!NOTE] 
-> Esta página es voluntaria y solo se incluye para los desarrolladores de Kubernetes interesados que quieran experimentar con el código de origen de mayor & más reciente.
+> Esta página es totalmente voluntaria y solo se incluye para los desarrolladores de Kubernetes interesados que desean experimentar con el código fuente más reciente & mayor.
 
 > [!tip]
-> Para recibir notificaciones acerca de los avances más recientes puede suscribirse a [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce).
+> Para recibir notificaciones sobre los desarrollos más recientes, puede suscribirse a [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce).
 
 ## <a name="installing-go"></a>Instalar Go ##
 Para hacerlo más sencillo, este proceso pasa por la instalación de Go en una ubicación temporal y personalizada:
@@ -51,7 +51,7 @@ Para copiar archivos binarios de Windows en sus respectivas nodos, usa una herra
 > [!Tip]  
 > Si te encuentras con errores de "permiso denegado", estos pueden evitarse con la compilación de `kubelet` de Linux en primer lugar, según la nota indicada en [`acs-engine`](https://github.com/Azure/acs-engine/blob/master/scripts/build-windows-k8s.sh#L176):
 >  
-> _Debido a lo que parece un error en el sistema de compilación de Windows de Kubernetes, se debe compilar primero un archivo binario de Linux para generar `_output/bin/deepcopy-gen`. Compilar en Windows sin hacer este paso generará un `deepcopy-gen` vacío._
+> _Debido a lo que parece ser un error en el sistema de compilación de Windows Kubernetes, uno tiene que crear primero un archivo binario de Linux para generar `_output/bin/deepcopy-gen`. Al compilar en Windows sin hacer esto, se generará un `deepcopy-gen`vacío._
 
 En primer lugar, recupera el repositorio de Kubernetes:
 

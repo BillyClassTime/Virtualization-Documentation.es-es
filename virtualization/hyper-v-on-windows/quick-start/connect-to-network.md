@@ -9,11 +9,11 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 532195c6-564b-4954-97c2-5a5795368c09
 ms.openlocfilehash: 0139f51e909149dde59f4030c6571aee82fed27e
-ms.sourcegitcommit: 62fff5436770151a28b6fea2be3a8818564f3867
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "10147248"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909485"
 ---
 # <a name="create-a-virtual-network"></a>Crear una red virtual
 
@@ -60,7 +60,7 @@ Si la búsqueda no encuentra el administrador Hyper-V, significa que ni Hyper-V 
 
 Los pasos siguientes se pueden seguir para crear un conmutador virtual con una conexión externa mediante PowerShell. 
 
-1. Use **Get-NetAdapter** para devolver una lista de adaptadores de red conectados al sistema de Windows 10.
+1. Utilice **Get-NetAdapter** para devolver una lista de adaptadores de red conectados al sistema de Windows 10.
 
     ```powershell
     PS C:\> Get-NetAdapter
@@ -97,10 +97,10 @@ Para configurar una red NAT y conectarla a una máquina virtual, sigue el [Guía
 
 ### <a name="the-two-switch-approach"></a>El enfoque de dos conmutadores
 
-Si ejecuta Windows 10 Hyper-V en un equipo portátil y cambia frecuentemente entre redes inalámbricas y una red cableada, es posible que desee crear un conmutador virtual para las tarjetas de red Ethernet y las inalámbricas.  Según el modo en que el equipo portátil se conecte a la red, podrá cambiar las máquinas virtuales entre estos conmutadores. Las máquinas virtuales no cambian entre cables e inalámbricos de forma automática. 
+Si está ejecutando Hyper-V de Windows 10 en un portátil y, con frecuencia, cambia entre las redes inalámbricas y una red cableada, es posible que desee crear un conmutador virtual para las tarjetas de red Ethernet e inalámbrica.  Según el modo en que el equipo portátil se conecte a la red, puede cambiar las máquinas virtuales entre estos conmutadores. Las máquinas virtuales no cambian automáticamente entre cables e inalámbricos. 
 
 >[!IMPORTANT]
->El enfoque de dos interruptores no admite vSwitch externo por tarjeta inalámbrica y debe usarse solo para fines de prueba.
+>El enfoque de dos conmutadores no admite vSwitch externo a través de la tarjeta inalámbrica y debe usarse solo con fines de prueba.
 
 ## <a name="next-step---create-a-virtual-machine"></a>Siguiente paso: crear una máquina virtual
-[Crear una máquina virtual Windows](create-virtual-machine.md)
+[Creación de una máquina virtual de Windows](create-virtual-machine.md)

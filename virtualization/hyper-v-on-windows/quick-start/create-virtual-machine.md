@@ -8,11 +8,11 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 66723f33-b12c-49d1-82cf-71ba9d6087e9
 ms.openlocfilehash: 94ac197f5bc660e52d215fa132eae78f521e1c30
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9882898"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911655"
 ---
 # <a name="create-virtual-machine-with-hyper-v-on-windows-10"></a>Crear una máquina virtual con Hyper-V en Windows 10
 
@@ -24,12 +24,12 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
 
 1. En el Administrador de Hyper-V, haz clic en **Acción** > **Nueva** > **Máquina virtual** para que se abra el Asistente para nueva máquina virtual.
 
-1. Revise el contenido de "Antes de empezar" y haga clic en **Siguiente**.
+1. Revise el contenido de "antes de empezar2 y haga clic en **Siguiente**.
 
 1. Asigne un nombre a la máquina virtual.
   > **Nota**: Este es el nombre que usa Hyper-V para la máquina virtual, no el nombre de equipo asignado al sistema operativo invitado que se implementará en la máquina virtual.
 
-1. Seleccione la ubicación en la que se almacenarán los archivos de la máquina virtual, por ejemplo **c:\virtualmachine**. También puede aceptar la ubicación predeterminada. Haga clic en **Siguiente** cuando termine.
+1. Seleccione la ubicación en la que se almacenarán los archivos de la máquina virtual, por ejemplo **c:\virtualmachine**. También puede aceptar la ubicación predeterminada. Haga clic en **Siguiente** cuando haya terminado.
 
   ![](media/new_vm_upd.png)
 
@@ -51,11 +51,11 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
   
   ![](media/new_vhd_upd.png)
 
-1. En el Asistente de opciones de instalación, seleccione **Instalar un sistema operativo desde un archivo de imagen de arranque** y luego seleccione un archivo .iso del sistema operativo. Haga clic en **Siguiente** cuando se haya completado.
+1. En el Asistente de opciones de instalación, seleccione **Instalar un sistema operativo desde un archivo de imagen de arranque** y luego seleccione un archivo .iso de sistema operativo. Haga clic en **Siguiente** cuando se haya completado.
 
   Al crear una máquina virtual, puede configurar algunas opciones de instalación del sistema operativo. Las tres opciones disponibles son:
 
-  * **Instalar un sistema operativo más adelante**: esta opción no realiza ninguna modificación adicional en la máquina virtual.
+  * **Instalar un sistema operativo más tarde**: esta opción no realiza ninguna modificación adicional a la máquina virtual.
 
   * **Instalar un sistema operativo desde un archivo de imagen de arranque**: esto es similar a insertar un CD en la unidad de CD-ROM física de un equipo. Para configurar esta opción, seleccione una imagen .iso. Esta imagen se montará en la unidad de CD-ROM virtual de la máquina virtual. El orden de arranque de la máquina virtual cambia para arrancar primero desde la unidad de CD-ROM.
 
@@ -67,7 +67,7 @@ Aprende a crear una máquina virtual y a instalar un sistema operativo en la nue
 
 1. Abra PowerShell ISE como administrador.
 
-2. Ejecute el siguiente script.
+2. Ejecute el script siguiente:
 
   ``` powershell
   # Set VM Name, Switch Name, and Installation Media Path.
@@ -95,7 +95,7 @@ Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y c
 
 1. En el administrador de Hyper-V, haga doble clic en la máquina virtual. Esto inicia la herramienta VMConnect.
 
-2. En VMConnect, haga clic en el botón verde de Inicio. Esto es similar a presionar el botón de encendido de un equipo físico. Es posible que se le indique "Presione cualquier tecla para arrancar desde el CD o DVD". Hágalo.
+2. En VMConnect, haga clic en el botón verde de Inicio. Esto es similar a presionar el botón de encendido de un equipo físico. Es posible que se te indique "Presione cualquier tecla para arrancar desde CD o DVD". Hágalo.
 
   > **Nota**: Puede que necesite hacer clic en la ventana de VMConnect para garantizar que se envían las pulsaciones de tecla a la máquina virtual.
 
@@ -103,4 +103,4 @@ Para terminar de crear la máquina virtual, debe iniciar la máquina virtual y c
 
   ![](media/OSDeploy_upd.png) 
 
-  > **Nota**: A menos que esté ejecutando una versión con licencia por volumen de Windows, necesitará una licencia independiente para la versión de Windows que se ejecuta en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
+  > **Nota**: A menos que esté ejecutando una versión con licencia por volumen de Windows, necesitarás una licencia independiente para la versión de Windows que se ejecute en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.

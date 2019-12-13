@@ -1,6 +1,6 @@
 ---
 title: Modos de aislamiento
-description: Explicación del diferencias entre el aislamiento de Hyper-V y los contenedores aislados del proceso.
+description: Explicación de cómo difiere el aislamiento de Hyper-V de los contenedores aislados del proceso.
 keywords: docker, contenedores
 author: crwilhit
 ms.date: 09/26/2019
@@ -9,24 +9,24 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
 ms.openlocfilehash: fa95ffe1c699a2c837076fcc1b662f6b792b7dfb
-ms.sourcegitcommit: e9dda81f1f68359ece9ef132a184a30880bcdb1b
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "10161732"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909755"
 ---
 # <a name="isolation-modes"></a>Modos de aislamiento
 
-Los contenedores de Windows ofrecen dos modos diferentes de aislamiento `process` en `Hyper-V` tiempo de ejecución: y de aislamiento. Los contenedores que se ejecutan en ambos modos de aislamiento se crean, administran y funcionan de manera idéntica. También generan y usan las mismas imágenes del contenedor. La diferencia entre los modos de aislamiento es el grado de aislamiento que se crea entre el contenedor, el sistema operativo host y todos los demás contenedores que se ejecutan en ese host.
+Los contenedores de Windows ofrecen dos modos distintos de aislamiento en tiempo de ejecución: `process` y aislamiento de `Hyper-V`. Los contenedores que se ejecutan en ambos modos de aislamiento se crean, administran y funcionan de forma idéntica. También generan y usan las mismas imágenes del contenedor. La diferencia entre los modos de aislamiento es el grado de aislamiento que se crea entre el contenedor, el sistema operativo host y todos los demás contenedores que se ejecutan en ese host.
 
 ## <a name="process-isolation"></a>Aislamiento de procesos
 
-Este es el modo de aislamiento "tradicional" de los contenedores y es lo que se describe en la [información general](../about/index.md)de los contenedores de Windows. Con el aislamiento de procesos, varias instancias de contenedor se ejecutan simultáneamente en un host dado con aislamiento proporcionado por el espacio de nombres, el control de recursos y las tecnologías de aislamiento de procesos. Cuando se ejecuta en este modo, los contenedores comparten el mismo núcleo con el host, así como entre sí.  Esto es aproximadamente el mismo que se ejecutan los contenedores de Linux.
+Este es el modo de aislamiento "tradicional" para los contenedores y es lo que se describe en [Introducción a los contenedores de Windows](../about/index.md). Con el aislamiento de procesos, se ejecutan varias instancias de contenedor simultáneamente en un host dado con aislamiento proporcionado mediante tecnologías de espacio de nombres, control de recursos y aislamiento de procesos. Cuando se ejecuta en este modo, los contenedores comparten el mismo kernel con el host, así como entre sí.  Esto equivale aproximadamente al modo en que se ejecutan los contenedores de Linux.
 
 ![](media/container-arch-process.png)
 
 ## <a name="hyper-v-isolation"></a>Aislamiento de Hyper-V
-Este modo de aislamiento ofrece mayor seguridad y mayor compatibilidad entre las versiones del host y el contenedor. Con el aislamiento de Hyper-V, varias instancias de contenedor se ejecutan simultáneamente en un host; Sin embargo, cada contenedor se ejecuta dentro de una máquina virtual muy optimizada y obtiene efectivamente su propio núcleo. La presencia de la máquina virtual proporciona aislamiento de nivel de hardware entre cada contenedor, así como el host del contenedor.
+Este modo de aislamiento ofrece seguridad mejorada y mayor compatibilidad entre las versiones del host y del contenedor. Con el aislamiento de Hyper-V, varias instancias de contenedor se ejecutan simultáneamente en un host; Sin embargo, cada contenedor se ejecuta dentro de una máquina virtual altamente optimizada y, de hecho, obtiene su propio kernel. La presencia de la máquina virtual proporciona aislamiento de nivel de hardware entre cada contenedor y el host de contenedor.
 
 ![](media/container-arch-hyperv.png)
 
@@ -34,30 +34,30 @@ Este modo de aislamiento ofrece mayor seguridad y mayor compatibilidad entre las
 
 ### <a name="create-container"></a>Crear contenedor
 
-La administración de contenedores aislados con Hyper-V con Docker es casi idéntica a la administración de contenedores aislados por procesos. Para crear un contenedor con un acoplador exhaustivo de aislamiento de Hyper-V `--isolation` , use el `--isolation=hyperv`parámetro para establecer.
+La administración de contenedores aislados con Hyper-V con Docker es casi idéntica a la administración de contenedores aislados de proceso. Para crear un contenedor con el aislamiento de Hyper-V minucioso Docker, use el parámetro `--isolation` para establecer `--isolation=hyperv`.
 
 ```cmd
 docker run -it --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 cmd
 ```
 
-Para crear un contenedor con aislamiento detallado de proceso, use el `--isolation` parámetro para establecer. `--isolation=process`
+Para crear un contenedor con Docker exhaustivo de aislamiento de proceso, use el parámetro `--isolation` para establecer `--isolation=process`.
 
 ```cmd
 docker run -it --isolation=process mcr.microsoft.com/windows/servercore:ltsc2019 cmd
 ```
 
-Los contenedores de Windows que se ejecutan en Windows Server se ejecutan de forma predeterminada con el aislamiento de procesos. Los contenedores de Windows que se ejecutan en Windows 10 Pro y Enterprise se ejecutan de forma predeterminada con el aislamiento de Hyper-V. A partir de la actualización del 2018 de octubre de Windows, los usuarios que ejecutan un host de Windows 10 Pro o Enterprise pueden ejecutar un contenedor de Windows con aislamiento de procesos. Los usuarios deben solicitar directamente el aislamiento de procesos mediante `--isolation=process` la bandera.
+Los contenedores de Windows que se ejecutan en Windows Server de forma predeterminada se ejecutan con aislamiento de procesos. Los contenedores de Windows que se ejecutan en Windows 10 Pro y Enterprise de forma predeterminada se ejecutan con aislamiento de Hyper-V. A partir de la actualización 2018 de octubre de Windows 10, los usuarios que ejecutan un host de Windows 10 Pro o Enterprise pueden ejecutar un contenedor de Windows con aislamiento de procesos. Los usuarios deben solicitar directamente el aislamiento del proceso mediante el uso de la marca `--isolation=process`.
 
 > [!WARNING]
-> La ejecución con el aislamiento de procesos en Windows 10 Pro y Enterprise está pensada para el desarrollo y la prueba. Tu anfitrión debe estar ejecutando Windows 10 Build 17763 + y debe tener una versión de Dock con Engine 18,09 o posterior.
+> La ejecución con el aislamiento de procesos en Windows 10 Pro y Enterprise está pensada para desarrollo y pruebas. El host debe ejecutar Windows 10 Build 17763 + y debe tener una versión de Docker con el motor 18,09 o posterior.
 > 
-> Debe continuar usando Windows Server como host para las implementaciones de producción. Al usar esta característica en Windows 10 Pro y Enterprise, también debe asegurarse de que las etiquetas de versión de contenedor y host coincidan; de lo contrario, es posible que el contenedor no se inicie o que presente un comportamiento no definido.
+> Debe seguir usando Windows Server como host para las implementaciones de producción. Al usar esta característica en Windows 10 Pro y Enterprise, también debe asegurarse de que las etiquetas del host y de la versión del contenedor coinciden; de lo contrario, el contenedor puede no iniciarse o mostrar un comportamiento indefinido.
 
 ### <a name="isolation-explanation"></a>Explicación del aislamiento
 
-En este ejemplo se muestran las diferencias en las capacidades de aislamiento entre el proceso y el aislamiento de Hyper-V.
+En este ejemplo se muestran las diferencias en las funcionalidades de aislamiento entre el proceso y el aislamiento de Hyper-V.
 
-Aquí, se implementa un contenedor aislado por proceso que se va a hospedar en un proceso de ping de larga duración.
+En este caso, se implementa un contenedor aislado de proceso y se hospedará un proceso de ping de ejecución prolongada.
 
 ``` cmd
 docker run -d mcr.microsoft.com/windows/servercore:ltsc2019 ping localhost -t
@@ -81,7 +81,7 @@ Handles  NPM(K)    PM(K)      WS(K) VM(M)   CPU(s)     Id  SI ProcessName
      67       5      820       3836 ...71     0.03   3964   3 PING
 ```
 
-Para contrastarlo, este ejemplo inicia un contenedor Hyper-V-solated también con un proceso de ping.
+Por el contrario, en este ejemplo se inicia un contenedor de Hyper-V-solated también con un proceso de ping.
 
 ```
 docker run -d --isolation=hyperv mcr.microsoft.com/windows/servercore:ltsc2019 ping localhost -t
@@ -95,7 +95,7 @@ docker top 5d5611e38b31a41879d37a94468a1e11dc1086dcd009e2640d36023aa1663e62
 1732 ping
 ```
 
-Sin embargo, al buscar el proceso en el host de contenedor, no se encuentra un proceso de ping y se produce un error.
+Sin embargo, al buscar el proceso en el host de contenedor, no se encuentra un proceso ping y se produce un error.
 
 ```
 get-process -Name ping

@@ -9,11 +9,11 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
 ms.openlocfilehash: 6e3996af36b4a710f9a12b3a1371138b053a43d8
-ms.sourcegitcommit: f3b6b470dd9cde8e8cac7b13e7e7d8bf2a39aa34
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "10077506"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909905"
 ---
 # <a name="container-host-deployment-windows-server"></a>Implementación de host de contenedor: Windows Server
 
@@ -21,9 +21,9 @@ La implementación de un host de contenedor de Windows implica pasos distintos, 
 
 ## <a name="install-docker"></a>Instalar Docker
 
-Para trabajar con contenedores de Windows es necesario Docker. El acoplador consiste en el motor del acoplador y el cliente del acoplador.
+Para trabajar con contenedores de Windows es necesario Docker. Docker está formado por el motor de Docker y el cliente de Docker.
 
-Para instalar el Dock, usaremos el [módulo de PowerShell de proveedores de OneGet](https://github.com/OneGet/MicrosoftDockerProvider). El proveedor habilitará la característica de contenedores en su equipo e instalará el acoplador, que requerirá un reinicio.
+Para instalar Docker, usaremos el [módulo de PowerShell del proveedor OneGet](https://github.com/OneGet/MicrosoftDockerProvider). El proveedor habilitará la característica de contenedores en el equipo e instalará Docker, que requerirá un reinicio.
 
 Abra una sesión de PowerShell con privilegios elevados y ejecute los siguientes cmdlets.
 
@@ -45,48 +45,48 @@ Cuando la instalación se haya completado, reinicia el equipo.
 Restart-Computer -Force
 ```
 
-## <a name="install-a-specific-version-of-docker"></a>Instalar una versión específica del acoplador
+## <a name="install-a-specific-version-of-docker"></a>Instalación de una versión específica de Docker
 
-Actualmente hay dos canales disponibles para el acoplador EE para Windows Server:
+Actualmente hay dos canales disponibles para Docker EE para Windows Server:
 
-* `17.06` -Use esta versión si está usando el Docker Enterprise Edition (motor de acoplamiento, UCP, DTR). `17.06` es el valor predeterminado.
-* `18.03` -Use esta versión si solo ejecuta el motor Dock EE.
+* `17.06`: Use esta versión si usa Docker Enterprise Edition (motor de Docker, UCP, DTR). `17.06` es el valor predeterminado.
+* `18.03`: Use esta versión si solo está ejecutando el motor de Docker EE.
 
-Para instalar una versión específica, use la `RequiredVersion` Bandera:
+Para instalar una versión concreta, use la marca `RequiredVersion`:
 
 ```PowerShell
 Install-Package -Name docker -ProviderName DockerMsftProvider -Force -RequiredVersion 18.03
 ```
 
-La instalación de versiones específicas del acoplador de EE puede requerir una actualización de los módulos de DockerMsftProvider instalados anteriormente. Para actualizar:
+La instalación de versiones específicas de Docker EE puede requerir una actualización de los módulos de DockerMsftProvider instalados anteriormente. Para actualizar:
 
 ```PowerShell
 Update-Module DockerMsftProvider
 ```
 
-## <a name="update-docker"></a>Actualizar acoplador
+## <a name="update-docker"></a>Actualización de Docker
 
-Si necesita actualizar el motor del acoplador EE desde un canal anterior a un canal posterior, use las `-Update` marcas y `-RequiredVersion` :
+Si necesita actualizar el motor de Docker EE desde un canal anterior a un canal posterior, use las marcas `-Update` y `-RequiredVersion`:
 
 ```PowerShell
 Install-Package -Name docker -ProviderName DockerMsftProvider -Update -Force -RequiredVersion 18.03
 ```
 
-## <a name="install-base-container-images"></a>Instalar imágenes de contenedor base
+## <a name="install-base-container-images"></a>Instalación de imágenes de contenedor base
 
 Antes de trabajar con los contenedores de Windows, debe instalarse una imagen base. Las imágenes base están disponibles con Windows Server Core o Nano Server como el sistema operativo del contenedor. Para obtener información detallada sobre las imágenes del contenedor de Docker, consulte [Build your own images (Crear sus propias imágenes) en docker.com](https://docs.docker.com/engine/tutorials/dockerimages/).
 
-Con el lanzamiento de Windows Server 2019, las imágenes de contenedor con origen de Microsoft se mueven a un nuevo registro denominado Microsoft Container Registry. Las imágenes de contenedor publicadas por Microsoft deben continuar siendo descubiertas mediante el concentrador de acoplamiento. Para las nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, deberás tener la de MCR. Para las imágenes de contenedor anteriores publicadas antes de Windows Server 2019, debe continuar enviándolos desde el registro de un acoplador.
+Con el lanzamiento de Windows Server 2019, las imágenes de contenedor de origen de Microsoft se mueven a un nuevo registro llamado Microsoft Container Registry. Las imágenes de contenedor publicadas por Microsoft deben seguir siendo detectadas a través de Docker Hub. En el caso de las nuevas imágenes de contenedor publicadas con Windows Server 2019 y versiones posteriores, debe buscar para extraerlas desde MCR. En el caso de las imágenes de contenedor anteriores publicadas antes de Windows Server 2019, debe continuar con la extracción del registro de Docker.
 
-### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 y versiones posteriores
+### <a name="windows-server-2019-and-newer"></a>Windows Server 2019 y versiones más recientes
 
-Para instalar la imagen base de ' Windows Server Core ', ejecute lo siguiente:
+Para instalar la imagen base ' Windows Server Core ', ejecute lo siguiente:
 
 ```PowerShell
 docker pull mcr.microsoft.com/windows/servercore:ltsc2019
 ```
 
-Para instalar la imagen base del ' Nano Server ', ejecute lo siguiente:
+Para instalar la imagen base de nano Server, ejecute lo siguiente:
 
 ```PowerShell
 docker pull mcr.microsoft.com/windows/nanoserver:1809
@@ -106,7 +106,7 @@ Para instalar la imagen base de Nano Server, ejecute lo siguiente:
 docker pull mcr.microsoft.com/windows/nanoserver:1803
 ```
 
-> Lea el CLUF de la imagen del sistema de contenedores de Windows, que puede encontrarse aquí: [CLUF](../images-eula.md).
+> Lea el CLUF de la imagen de SO de contenedores de Windows, que se puede encontrar aquí: [EULA](../images-eula.md).
 
 ## <a name="hyper-v-isolation-host"></a>Host de aislamiento de Hyper-V
 

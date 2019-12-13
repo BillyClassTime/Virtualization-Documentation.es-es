@@ -1,29 +1,29 @@
 ---
 title: Virtualización anidada
 description: Virtualización anidada
-keywords: Windows 10, Hyper-V
+keywords: windows 10, hyper-v
 author: johncslack
 ms.date: 12/18/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 68c65445-ce13-40c9-b516-57ded76c1b15
-ms.openlocfilehash: f819ac04773188525af202d370ba271a2d93e259
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 625a9b36ff782c86065ef3d9124708e5716e066f
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998922"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910935"
 ---
 # <a name="run-hyper-v-in-a-virtual-machine-with-nested-virtualization"></a>Ejecución de Hyper-V en una máquina virtual con la virtualización anidada
 
-La virtualización anidada es una característica que te permite ejecutar Hyper-V dentro de una máquina virtual (VM) de Hyper-V. Esto es útil para ejecutar un emulador de teléfono de VisualStudio en una máquina virtual o probar configuraciones que normalmente requieren varios hosts.
+La virtualización anidada es una característica que te permite ejecutar Hyper-V dentro de una máquina virtual (VM) de Hyper-V. Esto es útil para ejecutar un emulador de teléfono de Visual Studio en una máquina virtual o probar configuraciones que normalmente requieren varios hosts.
 
 ![](./media/HyperVNesting.png)
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* El host de Hyper-V y el invitado deben tener la Actualización de aniversario de Windows10/WindowsServer2016 o posterior.
+* El host de Hyper-V y el invitado deben tener la Actualización de aniversario de Windows 10/Windows Server 2016 o posterior.
 * Versión de configuración de máquina virtual 8.0 o superior.
 * Un procesador Intel con tecnología VT-x y EPT: el anidamiento es actualmente **solo para Intel**.
 * Existen algunas diferencias con redes virtuales para máquinas virtuales de segundo nivel. Consulta "Redes de máquinas virtuales anidadas".

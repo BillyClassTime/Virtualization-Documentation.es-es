@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 18930864-476a-40db-aa21-b03dfb4fda98
-ms.openlocfilehash: 6568b68a77fc5506b58249caea44ec78e3e44de2
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 762b82f3714651ffb488f682581680c9526404a8
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998942"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911155"
 ---
 # <a name="hyper-v-integration-services"></a>Servicios de integración de Hyper-V
 
@@ -22,7 +22,7 @@ Los servicios de integración (también denominados componentes de integración)
 Este artículo es una referencia para cada servicio de integración disponible en Windows.  También sirve como punto de partida para cualquier información relacionada con servicios de integración específicos o su historial.
 
 **Guías de usuario:**  
-* [Administración de los servicios de integración](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/Manage-Hyper-V-integration-services)
+* [Administrar Integration Services](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/Manage-Hyper-V-integration-services)
 
 
 ## <a name="quick-reference"></a>Referencia rápida
@@ -30,12 +30,12 @@ Este artículo es una referencia para cada servicio de integración disponible e
 | Nombre | Nombre del servicio de Windows | Nombre del demonio de Linux |  Descripción | Efecto en la máquina virtual cuando se deshabilita |
 |:---------|:---------|:---------|:---------|:---------|
 | [Servicio de latido de Hyper-V](#hyper-v-heartbeat-service) |  vmicheartbeat | hv_utils | Informa de que la máquina virtual se está ejecutando correctamente. | Variable |
-| [Servicio de cierre de invitado de Hyper-V](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  Permite al host activar el apagado de máquinas virtuales. | **Alto** |
-| [Servicio de sincronización de hora de Hyper-V](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | Sincroniza el reloj de la máquina virtual con el reloj del equipo host. | **Alto** |
-| [Servicio de intercambio de datos de Hyper-V (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | Proporciona una forma de intercambiar metadatos básicos entre la máquina virtual y el host. | Mediana |
-| [Solicitante de instantáneas de volumen de Hyper-V](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | Permite al Servicio de instantáneas de volumen hacer una copia de seguridad de la máquina virtual sin apagarla. | Variable |
+| [Servicio de apagado de invitado de Hyper-V](#hyper-v-guest-shutdown-service) | vmicshutdown | hv_utils |  Permite al host activar el apagado de máquinas virtuales. | **Alta** |
+| [Servicio de sincronización de hora de Hyper-V](#hyper-v-time-synchronization-service) | vmictimesync | hv_utils | Sincroniza el reloj de la máquina virtual con el reloj del equipo host. | **Alta** |
+| [Servicio de intercambio de datos de Hyper-V (KVP)](#hyper-v-data-exchange-service-kvp) | vmickvpexchange | hv_kvp_daemon | Proporciona una forma de intercambiar metadatos básicos entre la máquina virtual y el host. | Medio |
+| [Solicitante de copia de instantáneas de volumen de Hyper-V](#hyper-v-volume-shadow-copy-requestor) | vmicvss | hv_vss_daemon | Permite al Servicio de instantáneas de volumen hacer una copia de seguridad de la máquina virtual sin apagarla. | Variable |
 | [Interfaz de servicio de invitado de Hyper-V](#hyper-v-powershell-direct-service) | vmicguestinterface | hv_fcopy_daemon | Proporciona una interfaz para que el host de Hyper-V copie archivos en o desde la máquina virtual. | Bajo |
-| [Servicio directo de PowerShell de Hyper-V](#hyper-v-powershell-direct-service) | vmicvmsession | no está disponible | Proporciona una forma de administrar la máquina virtual con PowerShell sin una conexión de red. | Bajo |  
+| [Servicio de PowerShell Direct de Hyper-V](#hyper-v-powershell-direct-service) | vmicvmsession | no está disponible | Proporciona una forma de administrar la máquina virtual con PowerShell sin una conexión de red. | Bajo |  
 
 
 ## <a name="hyper-v-heartbeat-service"></a>Servicio de latido de Hyper-V
@@ -74,7 +74,7 @@ El campo `Status` viene determinado por el servicio de latido.
 **Nombre del demonio de Linux:** hv_utils  
 **Descripción:** permite al host de Hyper-V solicitar el apagado de una máquina virtual.  El host siempre puede forzar la desconexión de la máquina virtual, pero sería apagarlo con el interruptor, en vez de seleccionar el apagado.  
 **Incluido en:** Windows Server 2012, Windows 8  
-**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados se verán forzados, lo que podría provocar la pérdida de datos o la corrupción de los datos.  
+**Efecto:** **Alto** cuando está deshabilitado, el host no puede activar un apagado en condiciones dentro de la máquina virtual.  Todos los apagados serán un apagado ininterrumpido, lo que podría provocar la pérdida de datos o daños en los datos.  
 
 
 ## <a name="hyper-v-time-synchronization-service"></a>Servicio de sincronización de hora de Hyper-V
@@ -147,5 +147,5 @@ PowerShell Direct permite la administración de PowerShell dentro de una máquin
 [Más información sobre PowerShell Direct](../user-guide/powershell-direct.md).  
 
 **Guías de usuario:**  
-* [Ejecución de un script en una máquina virtual](../user-guide/powershell-direct.md#run-a-script-or-command-with-invoke-command)
-* [Copiar archivos en y desde una máquina virtual](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)
+* [Ejecutar script en una máquina virtual](../user-guide/powershell-direct.md#run-a-script-or-command-with-invoke-command)
+* [Copia de archivos a y desde una máquina virtual](../user-guide/powershell-direct.md#copy-files-with-new-pssession-and-copy-item)

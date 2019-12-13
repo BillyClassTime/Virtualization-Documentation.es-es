@@ -1,23 +1,23 @@
 ---
 title: Habilitar Hyper-V en Windows 10
 description: Instalar Hyper-V en Windows 10
-keywords: Windows 10, Hyper-V
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 02/15/2019
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 752dc760-a33c-41bb-902c-3bb2ecd9ac86
-ms.openlocfilehash: bad59fcc65bf66ab3c6dc940a17111e46a9bc226
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: e1b6b55b2e17ac4f0883078748d75f6d4b9fcafa
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9999032"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74909465"
 ---
 # <a name="install-hyper-v-on-windows-10"></a>Instalar Hyper-V en Windows 10
 
 Habilitar Hyper-V para crear máquinas virtuales en Windows 10.  
-Hyper-V se puede habilitar de varias maneras, entre las que se incluyen el panel de control de Windows 10, PowerShell o el uso de la herramienta de administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada una de las opciones.
+Hyper-V se puede habilitar de muchas maneras, por ejemplo, mediante el panel de control de Windows 10, PowerShell o mediante la herramienta de administración y mantenimiento de imágenes de implementación (DISM). Este documento explica paso a paso cada una de las opciones.
 
 > **Nota:**  Hyper-V está integrado en Windows como función opcional: no existen descargas de Hyper-V.
 
@@ -25,18 +25,18 @@ Hyper-V se puede habilitar de varias maneras, entre las que se incluyen el panel
 
 * Windows 10 Enterprise, Pro o Education
 * Procesador de 64 bits con traducción de direcciones de segundo nivel (SLAT).
-* Compatibilidad de CPU para la extensión de modo de monitor de VM (VT-c en CPU Intel).
+* Compatibilidad de CPU para la extensión de modo de monitor de máquina virtual (VT-c en CPU de Intel).
 * Mínimo de 4 GB de memoria.
 
 El rol de Hyper-V **no** se puede instalar en Windows 10 Home.
 
-Actualice de Windows 10 Home Edition a Windows 10 Pro abriendo la actualización de la **configuración** > **y** > la**activación**de seguridad.
+Actualice de Windows 10 Home Edition a Windows 10 Pro; para ello, Abra **configuración** > **actualización y seguridad** > **activación**.
 
 Para más información y solución de problemas, consulta [Requisitos de sistema de Hyper-V en Windows 10](../reference/hyper-v-requirements.md).
 
 ## <a name="enable-hyper-v-using-powershell"></a>Habilitar Hyper-V usando PowerShell
 
-1. Abre una consola de PowerShell como administrador.
+1. Abra una consola de PowerShell como administrador.
 
 2. Ejecuta el siguiente comando:
 
@@ -68,9 +68,9 @@ Para más información sobre DISM, consulta [Referencia técnica de DISM](<https
 
 ## <a name="enable-the-hyper-v-role-through-settings"></a>Habilitar el rol de Hyper-V en Configuración
 
-1. Haz clic con el botón derecho en el botón Windows y selecciona ‘Aplicaciones y funciones’.
+1. Haz clic con el botón derecho en el botón Windows y selecciona "Programas y características".
 
-2. En la sección configuración relacionada **, seleccione programas y características** en la parte derecha. 
+2. Seleccione **programas y características** a la derecha en configuración relacionada. 
 
 3. Selecciona **Activar o desactivar las características de Windows**.
 
@@ -82,4 +82,4 @@ Cuando la instalación se complete, se te pedirá confirmación para reiniciar e
 
 ## <a name="make-virtual-machines"></a>Crear máquinas virtuales
 
-[Crea tu primera máquina virtual](quick-create-virtual-machine.md)
+[Creación de la primera máquina virtual](quick-create-virtual-machine.md)

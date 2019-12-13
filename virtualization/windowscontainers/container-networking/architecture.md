@@ -1,5 +1,5 @@
 ---
-title: Red de contenedor de Windows
+title: Redes de contenedores de Windows
 description: Sencilla introducción a la arquitectura de redes de contenedores de Windows.
 keywords: docker, contenedores
 author: jmesser81
@@ -9,16 +9,16 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
 ms.openlocfilehash: e9d4a9ac88c6853ce019a2469ee80688490b8fdf
-ms.sourcegitcommit: bb4ec1f05921f982c00bdb3ace6d9bc1d5355296
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "10297246"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910705"
 ---
-# <a name="windows-container-networking"></a>Red de contenedor de Windows
+# <a name="windows-container-networking"></a>Redes de contenedores de Windows
 
 >[!IMPORTANT]
->Hacer referencia a la [red del contenedor de Dock](https://docs.docker.com/engine/userguide/networking/) para comandos, opciones y sintaxis de redes de acoplamiento general. * * * con la excepción de los casos descritos en las [características no admitidas y las opciones de red](#unsupported-features-and-network-options), todos los comandos de los interconexiones de redes se admiten en Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de redes de Windows y Linux son diferentes y, como tal, encontrarás que algunos comandos de red Linux (por ejemplo, ifconfig) no son compatibles con Windows.
+>Haga referencia a las [redes de contenedor de Docker](https://docs.docker.com/engine/userguide/networking/) para los comandos, opciones y sintaxis de redes de Docker generales. * * * con la excepción de los casos descritos en [características no admitidas y opciones de red](#unsupported-features-and-network-options), todos los comandos de red de Docker se admiten en Windows con la misma sintaxis que en Linux. Sin embargo, las pilas de red de Windows y Linux son diferentes y, por lo tanto, verá que algunos comandos de red de Linux (por ejemplo, ifconfig) no se admiten en Windows.
 
 ## <a name="basic-networking-architecture"></a>Arquitectura de red básica
 
@@ -30,14 +30,14 @@ La primera vez que se ejecuta Docker Engine, crea una red NAT predeterminada, 'n
 
 ![texto](media/docker-network-ls.png)
 
-- Un vSwitch **interno** es aquél que no está directamente conectado a un adaptador de red en el host contenedor.
-- Un vSwitch **externo** es aquel que se conecta directamente a un adaptador de red en el host contenedor.
+- Un vSwitch **interno** es aquél que no está conectado directamente a un adaptador de red en el host del contenedor.
+- Un vSwitch **externo** es aquel que está conectado directamente a un adaptador de red en el host del contenedor.
 
 ![texto](media/get-vmswitch.png)
 
-La red 'nat' es la red predeterminada para los contenedores que se ejecutan en Windows. Los contenedores que se ejecuten en Windows sin marcas ni argumentos para implementar configuraciones de red específicas se adjuntarán a la red de 'nat' predeterminada y se les asignará automáticamente una dirección IP desde el intervalo de IP de prefijo interno de la red 'nat'. El prefijo IP interno predeterminado usado para 'nat' es 172.16.0.0/16. 
+La red 'nat' es la red predeterminada para los contenedores que se ejecutan en Windows. Los contenedores que se ejecuten en Windows sin marcas ni argumentos para implementar configuraciones de red específicas se adjuntarán a la red de 'nat' predeterminada y se les asignará automáticamente una dirección IP desde el intervalo de IP de prefijo interno de la red 'nat'. El prefijo IP interno de predeterminado usado para 'nat' es 172.16.0.0/16. 
 
-## <a name="container-network-management-with-host-network-service"></a>Administración de redes de contenedores con el servicio de redes de host
+## <a name="container-network-management-with-host-network-service"></a>Administración de redes de contenedores con el servicio de red de host
 
 El servicio de redes de host (HNS) y el servicio de cálculo de host (HCS) trabajan conjuntamente para crear contenedores y conectar puntos de conexión a una red.
 
@@ -58,19 +58,19 @@ El servicio de redes de host (HNS) y el servicio de cálculo de host (HCS) traba
 - Red NAT predeterminada: SNP crea reglas/asignaciones de enrutamiento de puerto WinNAT con las correspondientes reglas PERMITIR de Firewall de Windows
 - Resto de redes: SNP utiliza la plataforma de filtrado Virtual (VFP) para la creación de directivas
     - Esto incluye: equilibrio de carga, ACL encapsulación, etc.
-    - Busca nuestras APIs y esquemas SNP publicados [aquí](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)
+    - Busque nuestras API y el esquema de SNP publicados [aquí](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)
 
 ![texto](media/HNS-Management-Stack.png)
 
-## <a name="unsupported-features-and-network-options"></a>Funciones y opciones de red no compatibles
+## <a name="unsupported-features-and-network-options"></a>Características y opciones de red no compatibles
 
 Las siguientes opciones de red **no** se admiten actualmente en Windows:
 
-- Los contenedores de Windows adjuntos a redes de superl2bridge, NAT y superposiciones no admiten la comunicación a través de la pila de IPv6.
-- Comunicación de contenedores cifrados a través de IPsec.
-- Compatibilidad con proxy HTTP para contenedores.
+- Los contenedores de Windows conectados a las redes l2bridge, NAT y overlay no admiten la comunicación a través de la pila IPv6.
+- Comunicación de contenedor cifrada a través de IPsec.
+- Compatibilidad con el proxy HTTP para contenedores.
 - Redes de [modo host](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/) 
-- Redes en infraestructura de Azure virtualizada a través del controlador de red transparente.
+- Redes en la infraestructura virtualizada de Azure a través del controlador de red transparente.
 
 | Comando        | Opción no admitida   |
 |---------------|:--------------------:|

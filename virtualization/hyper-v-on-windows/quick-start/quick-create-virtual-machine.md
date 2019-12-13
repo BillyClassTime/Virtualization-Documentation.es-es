@@ -7,18 +7,18 @@ ms.date: 04/07/2018
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: f1e75efa-8745-4389-b8dc-91ca931fe5ae
-ms.openlocfilehash: 6035143bc1449bc4a8e9bb7a4484b4c5329e6d3c
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 970e92def02e5386d38a2e72d5ef921aa8321fdf
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998632"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911405"
 ---
 # <a name="create-a-virtual-machine-with-hyper-v"></a>Crear una máquina virtual con Hyper-V
 
 Crea una máquina virtual e instala su sistema operativo.
 
-Hemos creado nuevas herramientas para crear máquinas virtuales, de modo que las instrucciones hayan cambiado significativamente en los últimos tres lanzamientos.
+Hemos creado nuevas herramientas para crear máquinas virtuales, por lo que las instrucciones han cambiado significativamente en las tres últimas versiones.
 
 Elige el sistema operativo para el conjunto correcto de instrucciones:
 
@@ -28,7 +28,7 @@ Elige el sistema operativo para el conjunto correcto de instrucciones:
 
 Empecemos.
 
-## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (Windows 10 versión 1709)
+## <a name="windows-10-fall-creators-update-windows-10-version-1709"></a>Windows 10 Fall Creators Update (Windows 10, versión 1709)
 
 En la actualización Fall Creators Update, Creación rápida se ha ampliado para incluir una galería de máquinas virtuales que se puede iniciar independientemente del administrador de Hyper-V.
 
@@ -44,16 +44,16 @@ Para crear una nueva máquina virtual en la actualización Fall Creators Update:
 
     1. Si quieres usar tu propia imagen para crear la máquina virtual, selecciona **Origen de instalación Local**.
     1. Selecciona **Cambiar el origen de instalación**.
-      ![Botón para usar un origen de instalación local](media/change-source.png)
+      ![botón para usar un origen de instalación local](media/change-source.png)
     1. Elige la .iso o el .vhdx que quieres convertir en una nueva máquina virtual.
     1. Si la imagen es una imagen de Linux, desactiva la opción Arranque seguro.
-      ![Botón para usar un origen de instalación local](media/toggle-secure-boot.png)
+      ![botón para usar un origen de instalación local](media/toggle-secure-boot.png)
 
 1. Selecciona "Crear máquina virtual"
 
 Eso es todo.  Creación rápida se encargará del resto.
 
-## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 Creators Update (Windows 10 versión 1703)
+## <a name="windows-10-creators-update-windows-10-version-1703"></a>Windows 10 Creators Update (Windows 10, versión 1703)
 
 ![Captura de pantalla de la interfaz de usuario de creación rápida](media/quickcreatesteps_inked.jpg)
 
@@ -75,15 +75,15 @@ Eso es todo.  Creación rápida se encargará del resto.
 
 Enhorabuena, ya tienes una nueva máquina virtual.  Ahora estás listo para instalar el sistema operativo.
 
-La máquina virtual debe ser algo parecido a esto:
+La máquina virtual debe ser similar a la siguiente:
 
 ![Pantalla de inicio de la máquina virtual](media/OSDeploy_upd.png)
 
-> **Nota**: a menos que estés ejecutando una versión con licencia por volumen de Windows, necesitarás una licencia independiente para la ejecución de Windows en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
+> **Nota**: A menos que esté ejecutando una versión con licencia por volumen de Windows, necesitarás una licencia independiente para la versión de Windows que se ejecute en una máquina virtual. El sistema operativo de la máquina virtual es independiente del sistema operativo del host.
 
-## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Antes de que Windows 10 Creators Update (Windows 10 versión 1607 y versiones anteriores)
+## <a name="before-windows-10-creators-update-windows-10-version-1607-and-earlier"></a>Antes de Windows 10 Creators Update (Windows 10 versión 1607 y versiones anteriores)
 
-Si no ejecutas Windows 10 Creators Update o una versión posterior, sigue estas instrucciones usando en su lugar el Asistente para crear una nueva máquina virtual:
+Si no ejecutas Windows 10 Creators Update o una versión posterior, sigue estas instrucciones usando en su lugar el Asistente para crear nueva máquina virtual:
 
 1. [Crear una red virtual](connect-to-network.md)
-1. [Crear una nueva máquina virtual](create-virtual-machine.md)
+1. [Creación de una máquina virtual](create-virtual-machine.md)

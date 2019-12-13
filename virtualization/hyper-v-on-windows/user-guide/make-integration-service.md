@@ -1,5 +1,5 @@
 ---
-title: Crea tus propios servicios de integración
+title: Cree sus propios servicios de integración
 description: Servicios de integración de Windows 10.
 keywords: windows 10, hyper-v, HVSocket, AF_HYPERV
 author: scooley
@@ -8,23 +8,23 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: 1ef8f18c-3d76-4c06-87e4-11d8d4e31aea
 ms.openlocfilehash: 89a36ee87bce1da18852f0ebff248e239165eb7d
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883018"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911035"
 ---
 # <a name="make-your-own-integration-services"></a>Cree sus propios servicios de integración
 
-A partir de la Actualización de aniversario de Windows10, cualquiera puede crear las aplicaciones que se comuniquen entre el host de Hyper-V y sus máquinas virtuales con sockets de Hyper-V: un socket de Windows con una nueva familia de direcciones y un punto de conexión especializado para las máquinas virtuales de destino.  Todas las comunicaciones mediante sockets de Hyper-V se ejecutan sin usar redes y todos los datos permanecen en la misma memoria física. Las aplicaciones que usan sockets de Hyper-V son similares a los servicios de integración de Hyper-V.
+A partir de la Actualización de aniversario de Windows 10, cualquiera puede crear las aplicaciones que se comuniquen entre el host de Hyper-V y sus máquinas virtuales con sockets de Hyper-V: un socket de Windows con una nueva familia de direcciones y un punto de conexión especializado para las máquinas virtuales de destino.  Todas las comunicaciones mediante sockets de Hyper-V se ejecutan sin usar redes y todos los datos permanecen en la misma memoria física. Las aplicaciones que usan sockets de Hyper-V son similares a los servicios de integración de Hyper-V.
 
 Este documento explica paso a paso la creación de un programa simple basado en sockets de Hyper-V.
 
-**Sistemas operativos host admitidos**
+**Sistemas operativos de host admitidos**
 * Windows 10 y versiones posteriores
 * Windows Server 2016 y versiones posteriores
 
-**Sistemas operativos invitado admitidos**
+**Sistemas operativos de invitado admitidos**
 * Windows 10 y versiones posteriores
 * Windows Server 2016 y versiones posteriores
 * Invitados de Linux con servicios de integración de Linux (consulte [Supported Linux and FreeBSD virtual machines for Hyper-V on Windows](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Linux-and-FreeBSD-virtual-machines-for-Hyper-V-on-Windows) [Máquinas virtuales de Linux y FreeBSD soportadas para Hyper-V en Windows])
@@ -45,10 +45,10 @@ Este documento explica paso a paso la creación de un programa simple basado en 
 
 Requisitos:
 * Compilador de C/C++.  Si no tienes ninguno, echa un vistazo a la [comunidad de Visual Studio](https://aka.ms/vs).
-* [SDK de Windows10](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Preinstalado en Visual Studio2015 con la actualización 3 y versiones posteriores.
+* [SDK de Windows 10](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Preinstalado en Visual Studio 2015 con la actualización 3 y versiones posteriores.
 * Un equipo con uno de los sistemas operativos host mencionados anteriormente y con al menos una máquina virtual. Esto es para probar la aplicación.
 
-> **Nota:** La API para los sockets de Hyper-V se hizo públicamente disponible en la actualización de aniversario de Windows 10. Las aplicaciones que usan HVSocket se ejecutarán en cualquier host y invitado Windows 10, pero solo se pueden desarrollar con un SDK de Windows posterior a la compilación 14290.
+> **Nota:** La API para Sockets de Hyper-V está disponible públicamente en la actualización de aniversario de Windows 10. Las aplicaciones que usan HVSocket se ejecutarán en cualquier host y invitado de Windows 10, pero solo se pueden desarrollar con una Windows SDK posterior a la compilación 14290.
 
 ## <a name="register-a-new-application"></a>Registro de una nueva aplicación
 Para poder utilizar sockets de Hyper-V, la aplicación debe registrarse con el Registro del host de Hyper-V.
@@ -73,7 +73,7 @@ $service.PSChildName | clip.exe
 ```
 
 
-**Información y ubicación del Registro:**
+**Ubicación e información del registro:**
 ```
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\GuestCommunicationServices\
 ```
@@ -81,7 +81,7 @@ En esta ubicación del Registro, verás varios GUID.  Se trata de nuestros servi
 
 Información del Registro por cada servicio:
 * `Service GUID`
-    * `ElementName (REG_SZ)` es el nombre descriptivo del servicio.
+    * `ElementName (REG_SZ)`: este es el nombre descriptivo del servicio.
 
 Para registrar su propio servicio, cree una nueva clave del Registro con su propio GUID y un nombre descriptivo.
 
@@ -108,7 +108,7 @@ HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\G
 > ```
 >
 
-> **Sugerencia:**  Para generar un GUID en PowerShell y copiarlo en el Portapapeles, ejecuta:
+> **Sugerencia:** Para generar un GUID en PowerShell y copiarlo en el Portapapeles, ejecuta:
 >``` PowerShell
 >(New-Guid).Guid | clip.exe
 >```
@@ -133,11 +133,11 @@ int socket(int domain, int type, int protocol);
 
 Para un socket de Hyper-V:
 * Familia de direcciones: `AF_HYPERV` (Windows) o `AF_VSOCK` (invitado en Linux)
-* tipo: `SOCK_STREAM`
+* Tipo: `SOCK_STREAM`
 * protocolo: `HV_PROTOCOL_RAW` (Windows) o `0` (invitado en Linux)
 
 
-Este es un ejemplo de declaración o creación de instancia:
+Aquí se muestra un ejemplo de declaración o creación de instancia:
 ``` C
 // Windows
 SOCKET sock = socket(AF_HYPERV, SOCK_STREAM, HV_PROTOCOL_RAW);
@@ -216,7 +216,7 @@ Hay también un conjunto de caracteres comodín de VMID disponibles cuando no se
 | HV_GUID_PARENT | a42e7cda-d03f-480c-9cc2-a4de20abb878 | Dirección del elemento primario. Al usar este elemento VmId, se conecta a la partición primaria del conector.* |
 
 
-\* `HV_GUID_PARENT` El elemento primario de una máquina virtual es su host.  El elemento primario de un contenedor es el host del contenedor.
+\* `HV_GUID_PARENT` el elemento primario de una máquina virtual es su host.  El elemento primario de un contenedor es el host del contenedor.
 La conexión desde un contenedor que se ejecuta en una máquina virtual hará que se conecte a la máquina virtual que hospeda el contenedor.
 Escuchar este VmId acepta la conexión de: (contenedores Inside): host del contenedor.
 (Dentro de la máquina virtual: host contenedor / ningún contenedor): host de la máquina virtual.
@@ -229,4 +229,4 @@ Socket() Bind() Connect() Send() Listen() Accept()
 ## <a name="useful-links"></a>Vínculos útiles
 [API WinSock completa](https://docs.microsoft.com/windows/desktop/WinSock/winsock-functions)
 
-[Referencia de los servicios de integración de Hyper-V](../reference/integration-services.md)
+[Referencia de Integration Services de Hyper-V](../reference/integration-services.md)

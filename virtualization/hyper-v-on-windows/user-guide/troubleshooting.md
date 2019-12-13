@@ -1,19 +1,19 @@
 ---
 title: Solución de problemas de Hyper-V en Windows 10
 description: Solución de problemas de Hyper-V en Windows 10
-keywords: Windows 10, Hyper-V
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: f0ec8eb4-ffc4-4bf1-9a19-7a8c3975b359
-ms.openlocfilehash: bdb9feeb2452f2784a3b814e85dc72f3b967a9d3
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 03bbb4494bbbd790f16c4b6afef387905f7c6c83
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998872"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910895"
 ---
 # <a name="troubleshoot-hyper-v-on-windows-10"></a>Solución de problemas de Hyper-V en Windows 10
 
@@ -28,7 +28,7 @@ Si toma el punto de control de VMConnect y cambia el tipo de punto de control en
 Cierre VMConnect y vuelva a abrirlo para que tenga el tipo de punto de control correcto.
 
 ## <a name="when-i-try-to-create-a-virtual-hard-disk-on-a-flash-drive-an-error-message-is-displayed"></a>Cuando intento crear un disco duro virtual en una unidad flash, se muestra un mensaje de error
-Hyper-V no admite unidades de disco con formato FAT o FAT32, ya que estos sistemas de archivos no ofrecen listas de control de acceso (ACL) y no admiten archivos mayores de 4GB. Los discos con formato ExFAT solo ofrecen funcionalidad de ACL limitada y, por tanto, tampoco se admiten por razones de seguridad.
+Hyper-V no admite unidades de disco con formato FAT o FAT32, ya que estos sistemas de archivos no ofrecen listas de control de acceso (ACL) y no admiten archivos mayores de 4 GB. Los discos con formato ExFAT solo ofrecen funcionalidad de ACL limitada y, por tanto, tampoco se admiten por razones de seguridad.
 El mensaje de error que se muestra en PowerShell es "El sistema no pudo crear '\[path to VHD\]': no se puede completar la operación solicitada por una limitación del sistema de archivos (0x80070299).".
 
 Use una unidad con formato NTFS en su lugar. 

@@ -8,22 +8,22 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: fb228e06-e284-45c0-b6e6-e7b0217c3a49
-ms.openlocfilehash: ed96c7ba30c83906cd3245a279ab078229400d8d
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: ea6b71200d3115ba3d156b2c133e1be2fa495261
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998732"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74910925"
 ---
 # <a name="virtual-machine-automation-and-management-using-powershell"></a>Administración y automatización de máquinas virtuales con PowerShell
 
 Puedes usar PowerShell Direct para ejecutar PowerShell arbitrario en una máquina virtual con Windows 10 o Windows Server 2016 desde el host de Hyper-V, independientemente de la configuración de administración remota o la configuración de red.
 
-A continuación se indican algunas maneras en las que puede ejecutar PowerShell Direct:
+Estas son algunas formas de ejecutar PowerShell Direct:
 
-* [Como sesión interactiva con el cmdlet Enter-PSSession](#create-and-exit-an-interactive-powershell-session)
-* [Como una sección de un solo uso para ejecutar un solo comando o script con el cmdlet Invoke-Command](#run-a-script-or-command-with-invoke-command)
-* [Como una sesión persistente (compilación 14280 y posteriores) con los cmdlets New-PSSession, Copy-Item y Remove-PSSession](#copy-files-with-new-pssession-and-copy-item)
+* [Como una sesión interactiva mediante el cmdlet Enter-PSSession](#create-and-exit-an-interactive-powershell-session)
+* [Como sección de un solo uso para ejecutar un solo comando o script con el cmdlet Invoke-Command](#run-a-script-or-command-with-invoke-command)
+* [Como una sesión persistente (compilación 14280 y versiones posteriores) mediante los cmdlets New-PSSession, Copy-Item y Remove-PSSession](#copy-files-with-new-pssession-and-copy-item)
 
 ## <a name="requirements"></a>Requisitos
 **Requisitos del sistema operativo:**
@@ -128,7 +128,7 @@ Las sesiones persistentes de PowerShell son increíblemente útiles a la hora de
 
 Del mismo modo, las sesiones conservan el estado.  Puesto que las sesiones persistentes se almacenan, se conservarán las variables creadas en una sesión o pasadas a ella entre varias llamadas. Hay varias herramientas disponibles para trabajar con sesiones persistentes.  En este ejemplo se usarán [New-PSSession](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Core/New-PSSession?view=powershell-5.1) y [Copy-Item](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Copy-Item?view=powershell-5.1) para mover datos desde el host a una máquina virtual y desde una máquina virtual al host.
 
-**Para crear una sesión, copie archivos:**  
+**Para crear una sesión, copie los archivos:**  
 
 1. En el host de Hyper-V, abra PowerShell como administrador.
 
@@ -168,13 +168,13 @@ Del mismo modo, las sesiones conservan el estado.  Puesto que las sesiones persi
   
 -------------
 
-## <a name="troubleshooting"></a>Solucionar problemas
+## <a name="troubleshooting"></a>Solución de problemas
 
 Hay un pequeño conjunto de mensajes de error comunes que aparecen mediante PowerShell Direct.  Aquí se muestran los más comunes, algunas de las causas y herramientas para diagnosticar problemas.
 
 ### <a name="-vmname-or--vmid-parameters-dont-exist"></a>No existen los parámetros -VMName o -VMID
 **Problema:**  
-`Enter-PSSession`, `Invoke-Command` o `New-PSSession` no tienen un parámetro `-VMName` o `-VMId`.
+`Enter-PSSession`, `Invoke-Command`o `New-PSSession` no tienen un parámetro `-VMName` o `-VMId`.
 
 **Causas posibles:**  
 El problema más probable es que PowerShell Direct no sea compatible con el sistema operativo host.
@@ -219,7 +219,7 @@ New-PSSession : An error has occurred which Windows PowerShell cannot handle. A 
 ```
 
 **Causas posibles:**
-* Uno de los motivos mencionados anteriormente: todos pueden aplicarse `New-PSSession`  
+* Uno de los motivos indicados arriba: todos son igualmente aplicables a `New-PSSession`  
 * Un error en las compilaciones actuales en las que las credenciales deben pasarse de forma explícita con `-Credential`.  Cuando esto sucede, todo el servicio se bloquea en el sistema operativo invitado y debe reiniciarse.  Puede comprobar si la sesión sigue estando disponible con Enter-PSSession.
 
 Para solucionar el problema de las credenciales, inicie sesión en la máquina virtual con VMConnect, abra PowerShell y reinicie el servicio vmicvmsession con el PowerShell siguiente:
@@ -235,7 +235,7 @@ Enter-PSSession : Parameter set cannot be resolved using the specified named par
 ```
 
 **Causas posibles:**  
-* `-RunAsAdministrator` no se admite al conectar con máquinas virtuales.
+* `-RunAsAdministrator` no se admite al conectarse a máquinas virtuales.
      
   Cuando se conecta a un contenedor de Windows, el indicador `-RunAsAdministrator` permite conexiones de administrador sin credenciales explícitas.  Dado que las máquinas virtuales no proporcionan al host implícito acceso de administrador, debe especificar explícitamente las credenciales.
 

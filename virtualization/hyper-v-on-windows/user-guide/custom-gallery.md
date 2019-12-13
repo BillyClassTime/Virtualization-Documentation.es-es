@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9238389-7028-4015-8140-27253b156f37
-ms.openlocfilehash: 1348b9923d9de1314818f13414abdacee2cb9735
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: c7a6462b331f469148eb4cf5a0a2740c9929fa29
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998612"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911065"
 ---
 # <a name="create-a-custom-virtual-machine-gallery"></a>Crear una galería de máquinas virtuales personalizada
 
@@ -39,7 +39,7 @@ La lista de máquinas virtuales que ves en la galería es todo el contenido del 
 
 ![arquitectura de galerías](media/vmgallery-architecture.png)
 
-Clave del Registro: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
+Clave del registro: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization`
 
 Nombre del valor: `GalleryLocations`
 
@@ -52,7 +52,7 @@ Las máquinas virtuales de la galería pueden ser una imagen de disco (.iso) o u
 Las máquinas virtuales realizadas desde una unidad de disco duro virtual tiene algunos requisitos de configuración:
 
 1. Creado para admitir el firmware UEFI. Si se crean mediante Hyper-V, se trata de VM de generación 2.
-1. La unidad de disco duro virtual debe tener al menos 20GB; atención, ya que es el tamaño máximo.  Hyper-V no tomará el espacio que la VM no esté usando activamente.
+1. La unidad de disco duro virtual debe tener al menos 20 GB; atención, ya que es el tamaño máximo.  Hyper-V no tomará el espacio que la VM no esté usando activamente.
 
 ### <a name="testing-a-new-vm-image"></a>Prueba de una nueva imagen de VM
 
@@ -60,13 +60,13 @@ La galería de máquina virtual crea máquinas virtuales mediante el mismo mecan
 
 Para validar que una imagen de máquina virtual será capaz de arrancar y ejecutarse:
 
-1. Abre la Galería de VM (Creación rápida de Hyper-V) y selecciona **Origen de instalación Local **.
-  ![Botón para usar un origen de instalación local](media/use-local-source.png)
+1. Abre la Galería de VM (Creación rápida de Hyper-V) y selecciona **Origen de instalación Local** .
+  ![botón para usar un origen de instalación local](media/use-local-source.png)
 1. Selecciona **Cambiar el origen de instalación**.
-  ![Botón para usar un origen de instalación local](media/change-source.png)
+  ![botón para usar un origen de instalación local](media/change-source.png)
 1. Elige la .iso o el .vhdx que se usará en la galería.
 1. Si la imagen es una imagen de Linux, desactiva la opción Arranque seguro.
-  ![Botón para usar un origen de instalación local](media/toggle-secure-boot.png)
+  ![botón para usar un origen de instalación local](media/toggle-secure-boot.png)
 1. Crea la máquina virtual.  Si la máquina virtual arranca correctamente, está lista para la galería.
 
 ## <a name="build-a-new-gallery-source"></a>Crea un nuevo origen de galería.
@@ -98,12 +98,12 @@ Imágenes:
 ![Ubicaciones etiquetadas como imágenes de galería](media/gallery-pictures.png)
 
 * **logo**: obligatorio
-* símbolo
+* symbol
 * miniatura
 
 Y, por supuesto, la máquina virtual (.iso o .vhdx).
 
-Para generar los hash, puede usar el siguiente comando de PowerShell:
+Para generar los valores hash, puede usar el siguiente comando de PowerShell:
 
   ``` PowerShell
   Get-FileHash -Path .\TMLogo.jpg -Algorithm SHA256
@@ -118,7 +118,7 @@ La plantilla JSON siguiente tiene elementos de comienzo y el esquema de la galer
 La forma más sencilla de agregar el origen de la galería personalizada a la galería de VM es hacerlo en regedit.
 
 1. Abre **regedit.exe**
-1. Ve a `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\`
+1. Navegue a `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Virtualization\`.
 1. Busca el elemento `GalleryLocations`.
 
     Si ya existe, ve al menú **Editar** y **modifica**.
@@ -135,7 +135,7 @@ La forma más sencilla de agregar el origen de la galería personalizada a la ga
 
 La galería de máquinas virtuales proporciona informes de errores en el Visor de eventos de Windows.  Para comprobar si hay errores:
 
-1. Abre el Visor de eventos
+1. Abra el visor de eventos.
 1. Ve a **Registros de Windows** -> **Aplicación**
 1. Busca eventos desde VMCreate de origen.
 

@@ -1,23 +1,23 @@
 ---
 title: Pruebe las características de la versión preliminar para Hyper-V
 description: Pruebe las características de la versión preliminar para Hyper-V
-keywords: Windows 10, Hyper-V
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 426c87cc-fa50-4b8d-934e-0b653d7dea7d
-ms.openlocfilehash: 725466f657ae8fc4f14813822e90657e12d26fa6
-ms.sourcegitcommit: cdf127747cfcb839a8abf50a173e628dcfee02db
+ms.openlocfilehash: 8f1c1b96fe88f46a24b8ebb46d4f387c9717f6ba
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 08/07/2019
-ms.locfileid: "9998932"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911165"
 ---
 # <a name="try-pre-release-features-for-hyper-v"></a>Pruebe las características de la versión preliminar para Hyper-V
 
-> Esto es contenido preliminar y está sujeto a cambios.  
+> Este contenido es preliminar y está sujeto a cambios.  
   Las máquinas virtuales de versión preliminar están diseñadas únicamente para entornos de desarrollo o de prueba, ya que Microsoft no las admite.
 
 Obtenga acceso anticipado a las características de la versión preliminar para Hyper-V en Windows Server 2016 Technical Preview para probarlas en el entorno de desarrollo o de prueba. Puede ser el primero en ver las últimas características de Hyper-V y ayudar a darle forma al producto con sus comentarios anticipados.
@@ -47,6 +47,6 @@ Otros ejemplos con los que puede usar la marca -Prerelease:
 
  Los ejemplos descritos en estos artículos funcionan con los hosts de Hyper-V que ejecutan Windows 10 o Windows Server 2016 Technical Preview. Pero, por el momento, solo puede usar la marca -Prerelease para crear una máquina virtual de versión preliminar en hosts de Hyper-V que ejecutan Windows Server 2016 Technical Preview.
 
-## <a name="see-also"></a>Consulte también
+## <a name="see-also"></a>Consulta también
 -  [Virtualization Blog](https://techcommunity.microsoft.com/t5/Virtualization/bg-p/Virtualization) (Blog de virtualización): obtenga información sobre las características de la versión preliminar que están disponibles y cómo probarlas.
 - [Supported virtual machine configuration versions](https://docs.microsoft.com/windows-server/virtualization/hyper-v/deploy/Upgrade-virtual-machine-version-in-Hyper-V-on-Windows-or-Windows-Server#BKMK_SupportedConfigVersions) (Versiones de configuración de máquina virtual admitidas): obtenga información sobre cómo comprobar la versión de configuración de la máquina virtual y qué versiones admite Microsoft.

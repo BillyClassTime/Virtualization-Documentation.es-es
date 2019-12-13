@@ -1,7 +1,7 @@
 ---
 title: Requisitos de sistema de Hyper-V en Windows 10
 description: Requisitos de sistema de Hyper-V en Windows 10
-keywords: Windows 10, Hyper-V
+keywords: windows 10, hyper-v
 author: scooley
 ms.date: 05/02/2016
 ms.topic: article
@@ -9,25 +9,25 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
 ms.openlocfilehash: d4e3f7c1e94d0162ae9ee6251d9c6d8cc51bf1d3
-ms.sourcegitcommit: c4a3f88d1663dd19336bfd4ede0368cb18550ac7
+ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "9883078"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74911225"
 ---
 # <a name="windows-10-hyper-v-system-requirements"></a>Requisitos de sistema de Hyper-V en Windows 10
 
-Hyper-V está disponible en la versión de 64 bits de Windows 10 Pro, Enterprise y educación. Hyper-V requiere traducción de direcciones de segundo nivel (SLAT), que está presente en la generación actual de procesadores de 64 bits de Intel y AMD.
+Hyper-V está disponible en la versión de 64 bits de Windows 10 Pro, Enterprise y Education. Hyper-V requiere traducción de direcciones de segundo nivel (SLAT), que está presente en la generación actual de procesadores de 64 bits de Intel y AMD.
 
-Puede ejecutar tres o cuatro máquinas virtuales básicas en un host que tenga 4 GB de RAM, aunque se necesitarán más recursos si se desea ejecutar más. En el otro extremo del espectro, también se pueden crear máquinas virtuales grandes con 32 procesadores y 512GB de RAM, en función del hardware físico.
+Puede ejecutar tres o cuatro máquinas virtuales básicas en un host que tenga 4 GB de RAM, aunque se necesitarán más recursos si se desea ejecutar más. En el otro extremo del espectro, también se pueden crear máquinas virtuales grandes con 32 procesadores y 512 GB de RAM, en función del hardware físico.
 
 ## <a name="operating-system-requirements"></a>Requisitos del sistema operativo
 
 El rol de Hyper-V puede habilitarse en estas versiones de Windows 10:
 
-- Windows 10 Enterprise
+- Windows 10 Enterprise
 - Windows 10 Pro
-- Windows 10 Education
+- Windows 10 Education
 
 El rol de Hyper-V **no** se puede instalar en:
 
@@ -35,7 +35,7 @@ El rol de Hyper-V **no** se puede instalar en:
 - Windows 10 Mobile
 - Windows 10 Mobile Enterprise
 
->Windows 10 Home Edition puede actualizarse a Windows 10 Pro. Para hacerlo, abra **Configuración** > **Actualización y seguridad** > ** Activación**. Aquí puede visitar la tienda y comprar una actualización.
+>Windows 10 Home Edition puede actualizarse a Windows 10 Pro. Para hacerlo, abra **Configuración** > **Actualización y seguridad** >  **Activación**. Aquí puedes visitar la tienda y comprar una actualización.
 
 ## <a name="hardware-requirements"></a>Requisitos de hardware
 
