@@ -29,7 +29,9 @@ Todos los contenedores se crean a partir de imágenes de contenedor. Microsoft o
    ```console
    docker pull mcr.microsoft.com/windows/nanoserver:1903
    ```
-
+   > [!TIP]
+   Si al acceder al simbolo del sistema integrado le indica `docker : no matching manifest for windows/amd64 <version> in the manifest list entries at line:1 char:1`, asegurese que la versión de WIndows es correcta, utilice el comando winver y reemplace la versión al final de la imagen base.
+   >
    > [!TIP]
    > Si ve un mensaje de error que indica `no matching manifest for unknown in the manifest list entries`, asegúrese de que Docker no está configurado para ejecutar contenedores de Linux.
 
@@ -46,29 +48,46 @@ Todos los contenedores se crean a partir de imágenes de contenedor. Microsoft o
 
 En este sencillo ejemplo, se creará e implementará una imagen de contenedor "Hola mundo". Para obtener la mejor experiencia, ejecute estos comandos en una ventana de símbolo del sistema con privilegios elevados (pero no use el Windows PowerShell ISE; no funciona para las sesiones interactivas con contenedores, a medida que los contenedores parezcan bloqueados).
 
-1. Inicie un contenedor con una sesión interactiva desde la imagen de `nanoserver` escribiendo el siguiente comando en la ventana del símbolo del sistema:
+1. Identificador de contenedor para el contenedor que utilizará [Docker PS](https://docs.docker.com/engine/reference/commandline/ps/) :
 
    ```console
-   docker run -it mcr.microsoft.com/windows/nanoserver:1903 cmd.exe
+   docker ps
    ```
-2. Una vez iniciado el contenedor, la ventana del símbolo del sistema cambia el contexto al contenedor. Dentro del contenedor, vamos a crear un archivo de texto "Hola mundo" simple y, a continuación, salir del contenedor escribiendo los siguientes comandos:
+   A continución presentamos un ejemplo de la salida:
+   ```console
+   CONTAINER ID  IMAGE                                     COMMAND   CREATED       STATUS       PORTS     NAMES
+   529bd071e9a7  mcr.microsoft.com/windows/nanoserver:1903 "cmd.exe" 6 minutes ago Up 6 minutes           admiring_euclid
+   ``` 
+   
+2. Inicie un contenedor con una sesión interactiva desde la imagen de `nanoserver` escribiendo el siguiente comando en la ventana del símbolo del sistema, reemplazando `<containerid>` por el identificador del contenedor:
+
+   ```console
+   docker exec -it -u Administrator --privileged <conteiner id> cmd
+   ```
+   
+3. Una vez iniciado el contenedor, la ventana del símbolo del sistema cambia el contexto al contenedor. Dentro del contenedor, vamos a crear un archivo de texto "Hola mundo" simple y, a continuación, salir del contenedor escribiendo los siguientes comandos:
 
    ```cmd
    echo "Hello World!" > Hello.txt
    exit
    ```   
-
-3. Obtenga el identificador de contenedor para el contenedor que acaba de salir ejecutando el comando [Docker PS](https://docs.docker.com/engine/reference/commandline/ps/) :
+4 . Detenga el contenedor antes de ejecutar el siguiente paso:
 
    ```console
-   docker ps -a
-   ```
-
-4. Cree una nueva imagen "HelloWorld" que incluya los cambios en el primer contenedor que ejecutó. Para ello, ejecute el comando [Docker commit](https://docs.docker.com/engine/reference/commandline/commit/) , reemplazando `<containerid>` por el identificador del contenedor:
+   docker stop <containerid>
+   ````
+   
+5. Cree una nueva imagen "HelloWorld" que incluya los cambios en el primer contenedor que ejecutó. Para ello, ejecute el comando [Docker commit](https://docs.docker.com/engine/reference/commandline/commit/) , reemplazando `<containerid>` por el identificador del contenedor:
 
    ```console
    docker commit <containerid> helloworld
    ```
+
+6. Inicie el contenedor 
+
+   ```console
+   docker start <containerid>
+   ````
 
    Una vez finalizado, tendrá una imagen personalizada que contiene el script de hola a todos. Esto puede verse con el comando [Docker images](https://docs.docker.com/engine/reference/commandline/images/) .
 
@@ -83,8 +102,8 @@ En este sencillo ejemplo, se creará e implementará una imagen de contenedor "H
    helloworld                             latest              a1064f2ec798        10 seconds ago      258MB
    mcr.microsoft.com/windows/nanoserver   1903                2b9c381d0911        3 weeks ago         256MB
    ```
-
-5. Por último, ejecute el nuevo contenedor mediante el comando [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) con el parámetro `--rm` que quita automáticamente el contenedor una vez que se detiene la línea de comandos (cmd. exe).
+   
+7. Por último, ejecute el nuevo contenedor mediante el comando [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) con el parámetro `--rm` que quita automáticamente el contenedor una vez que se detiene la línea de comandos (cmd. exe).
 
    ```console
    docker run --rm helloworld cmd.exe /s /c type Hello.txt
